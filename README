@@ -1,0 +1,90 @@
+Neu machen:
+
+- API fuer laborstup
+  - wie komme ich aufs labor
+  - wie schalte ich strom ein
+  - wie connecte ich mich auf eine board (serielle schnittstelle)
+
+- configfiles
+
+- tc startet testcase
+  - aber tc kann auch alleine laufen
+
+    -> habe ich tb schon angelegt, ja, preufe habe ich verbindung
+       falls ja habe ich connection zu serielle, falls ja starte tc
+
+        falls nein, verbinde, conecte, schalte strom aus/ein, etc ...
+
+    das alles generische ueber laborsetup API
+    und alles automatisch, ohne in jedem tc einzubauen ...
+
+Ablauf eines test:
+
+- check state state:
+	- connect to vlab
+ 	 einloggen ->
+ 	 check if power is on
+
+	- connect to board
+	- check is board connected
+	  (get something back if return pressed ...)
+
+	- get board state
+	  - what is running 
+
+	- if board state is not correct boot to it
+
+	- set environment
+
+- start with testcase
+
+Problem:
+
+- How to check if class tb exists or not ????
+  Testcase starts with creating class, as testcase must run alone
+  but it can be started from another testcas too !!
+
+------------
+
+labor api:
+- connect lab
+
+- get power state
+- set power (on/off)#
+
+- chek if board is connected
+  (check if something back if return pressed)
+- conncet board
+  - n possibilities (kermit, connect ...)
+
+- get board state
+  what is currently running on the board
+  (define prompts for different states (u-boot prompt, linux prompt, etc ...)
+- boot to state X
+- set environment for state X
+
+
+--------------
+
+common:
+
+- tbot class
+
+- logging infrastructure
+  debug print for output on console
+
+- common config file for common parameters per cmdline
+
+--------------
+
+pyton2.7 tc_test.py
+  -> creates tb, and runs ...
+
+python2.7 tc_call.py
+  -> creates tb and calls tb, in tc_test.py ird dieses tb erwendet !
+
+- solve: define a define (wenn sowas in python geht fuer:
+
+if (tb nicht in arg, lege tb an)
+
+und gebe tb auch am ende zurueck ....

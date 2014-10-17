@@ -1,0 +1,5 @@
+- move lab_api things to lab_api
+- define config file for tbot with common parameter
+  - board name
+  - which lab_api to use
+- test
