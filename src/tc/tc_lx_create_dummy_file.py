@@ -12,11 +12,21 @@
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 # start with
-# python2.7 common/tbot.py -c tbot.cfg -t tc_call.py
-
+# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_create_dummy_file.py
 from tbotlib import tbot
 
 #here starts the real test
-logging.info("do something call test")
-tb.eof_call_tc("tc_first.py")
+logging.info("linux create dummy file")
+
+#set board state for which the tc is valid
+tb.set_board_state("linux")
+
+tmp = "dd if=/dev/urandom of=" + tb.tc_lx_dummy_file_tempfile + " bs=" + tb.tc_lx_dummy_file_bs + " count=" + tb.tc_lx_dummy_file_count
+tb.eof_write_con(tmp)
+
+ret = tb.eof_search_str_in_readline_con("copied")
+if ret != True:
+    tb.end_tc(False)
+
+tb.eof_read_end_state_con(2)
 tb.end_tc(True)

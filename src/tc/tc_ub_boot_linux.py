@@ -12,11 +12,30 @@
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 # start with
-# python2.7 common/tbot.py -c tbot.cfg -t tc_call.py
-
+# python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_boot_linux.py
+# load u-boot environment
+# boots currently with "run net_nfs"
 from tbotlib import tbot
 
 #here starts the real test
-logging.info("do something call test")
-tb.eof_call_tc("tc_first.py")
+logging.info("args: %s %s", tb.setenv_name, tb.setenv_value)
+#set board state for which the tc is valid
+tb.set_board_state("u-boot")
+
+# load U-Boot environment variables for tbot
+tb.eof_call_tc("tc_ub_load_board_env.py")
+
+#run tbot_boot_linux
+tmp = 'run tbot_boot_linux'
+tb.eof_write_con(tmp)
+
+#read until 'login:'
+tb.eof_search_str_in_readline_con("login:")
+
+tmp = 'root'
+tb.eof_write_con(tmp)
+
+tb.set_board_state("linux")
+
+tb.eof_read_end_state_con(2)
 tb.end_tc(True)

@@ -11,9 +11,6 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# Copyright tbot Team Members
-#
-import paramiko
 import logging
 import socket
 import datetime
@@ -22,38 +19,70 @@ import sys
 import os
 from struct import *
 import time
+import importlib
 #import serial
 
 # paramiko/paramiko/packet.py
 class tbot(object):
-    def __init__(self, cfgfile, logfilen):
-	self.cfgfile = cfgfile
+    def __init__(self, cfgfile, logfilen, verbose):
+        ## enable debug output
+        self.debug = False
+        ## enable debugstatus output
+        self.debugstatus = False
+        ## enable verbose output
+        self.verbose = verbose
+        ## contains return value from a tc
+        self.tc_return = True
+        self.cfgfile = cfgfile
         self.workdir = os.getcwd()
+        self.once = 1
 
         print("CUR WORK PATH: ", os.getcwd())
         print("CFGFILE ", self.cfgfile)
         now = datetime.datetime.now()
-	if logfilen == 'default':
+        # load config file
+        if logfilen == 'default':
             self.logfilen = 'log/' + now.strftime("%Y-%m-%d-%H-%M") + '.log'
-	else:
+        else:
             self.logfilen = logfilen
         if self.logfilen[0] != '/':
             # not absolute path, add workdir
             self.logfilen = self.workdir + '/' + self.logfilen
         print("LOGFILE ", self.logfilen)
-	try:
+
+        # open configuration file
+        try:
             fd = open(self.workdir + '/' + self.cfgfile, 'r')
-	except:
+        except:
             logging.warning("Could not find %s", self.cfgfile)
             sys.exit(1)
-	exec(fd)
+        exec(fd)
         fd.close()
-        self.__remainder = ''
-        self.ssh = None
+
+        # open defaultsettings for testcase variables
+        self.def_var_file = 'tc_default_vars.py'
+        try:
+            fd = open(self.workdir + '/src/common/' + self.def_var_file, 'r')
+        except:
+            logging.warning("Could not find %s", self.def_var_file)
+            sys.exit(1)
+        exec(fd)
+        fd.close()
+
+        try:
+            self.tc_dir
+        except AttributeError:
+            self.tc_dir = self.workdir + '/src/tc'
+
         self._main = 0
         self._ret = False
-	self.debug = 0
-	self.debugstatus = 0
+        self.__data = []
+        self.__remainder = []
+        self.buf = []
+
+        #HACK
+        self.channel_ctrl = 0
+        self.channel_con = 1
 
         self.numeric_level = getattr(logging, self.loglevel.upper(), None)
         if not isinstance(self.numeric_level, int):
@@ -62,9 +91,23 @@ class tbot(object):
             filename=self.logfilen, filemode='w', level=self.numeric_level)
         logging.info("*****************************************")
         logging.info('Started logging @  %s', now.strftime("%Y-%m-%d %H:%M"))
-        self.opened = False
-        self.reg = re.compile(self.prompt)
+        logging.info('working directory %s', self.workdir)
+        logging.info('testcase directory %s', self.tc_dir)
         sys.path.append(self.workdir)
+
+        # import lab api (the responsible python file must be included in *.cfg)
+        lab = tbot_lab_api(self)
+        self.lab = lab
+
+        # open filedescriptor ToDo per function call also the fd in the lab
+        self.__data.append('')
+        self.__data.append('')
+        self.__remainder.append('')
+        self.__remainder.append('')
+        self.buf.append('')
+        self.buf.append('')
+
+        self.check_state()
 
     def __del__(self):
         # without this timeout paramiko crashes sometimes with
@@ -75,117 +118,157 @@ class tbot(object):
         # comment out this code also did not help ...
         time.sleep(1)
 
+    def set_power_state(self, state):
+        """ set the power state to state
+            returns the state of the power
+            True if on
+            False if off
+        """
+        ret = self.lab.set_power_state(self.boardlabpowername, state)
+        return ret
+
+    def check_state(self):
+        """ check the state of the connection to the board
+        """
+        # check if we have connection to the lab
+        ret = self.lab.get_lab_connect_state()
+        if ret == False:
+            ret = self.lab.connect_lab()
+            if ret != True:
+                self.failure()
+
+        # check if we have powered on the board
+        ret = self.lab.get_power_state(self.boardlabpowername)
+        if ret == False:
+            ret = self.lab.set_power_state(self.boardlabpowername, "on")
+            if ret != True:
+                self.failure()
+
+        # connect to the board
+        ret = self.lab.connect_to_board(self.boardlabname)
+        if ret == False:
+            self.failure()
+        return True
+
+    def failure(self):
+        logging.info('End of TBOT: failure')
+        self.statusprint("End of TBOT: failure")
+        self._ret = False
+        sys.exit(1)
+
     def end_tc(self, ret):
-        """ end testcase. ret contains True if testcase
+        """ end testcase.
+            ret contains True if testcase
             ended successfully, False if not.
             Return: calls sys.exit(0 if ret == True 1 else)
         """
         self._ret = ret
         if self._main == 0:
-            if self.opened:
-                if self.use_tty:
-                    pass
-                else:
-                    self.ssh.close()
-            self.opened = False
             if self._ret:
                 logging.info('End of TBOT: success')
+                self.statusprint("End of TBOT: success")
                 sys.exit(0)
             else:
-                logging.info('End of TBOT: failure')
-                sys.exit(1)
+                self.failure()
         else:
             if self._ret:
-                logging.info('End of TC: success')
+                logging.info('End of TC: %s success')
+                logging.info('-----------------------------------------')
                 sys.exit(0)
             logging.info('End False')
             sys.exit(1)
 
     def debugprint(self, *args):
+        """ print a debug string on stdout.
+            This output can be enabled through self.debug
+        """
         if self.debug:
-            print(args)
+            print("%s" % (args))
 
     def statusprint(self, *args):
+        """ print a status string on stdout.
+            This output can be enabled through self.debugstatus
+        """
         if self.debugstatus:
-            print(args)
+            print("%s" % (args))
 
-    def _open_ssh(self):
-        # look in paramiko/demos/demo_simple.py
-        # for more infos how to use host keys ToDo
-        if not self.ssh:
-            self.ssh = paramiko.SSHClient()
-        self.opened = False
-        self.__remainder = ''
-        if self.accept_all == True:
-            #accept all host keys
-            logging.info("AutoAddPolicy")
-            self.ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-
-        try:
-            self.ssh.connect(self.ip, username=self.user, password=self.password)
-        except:
-            logging.info("no connection for %s@%s", self.user, self.ip)
-            self.ssh.close()
-            return None
-
-        self.opened = True
-        self.chan = self.ssh.invoke_shell()
-        if self.debug:
-            print repr(self.ssh.get_transport())
-        logging.debug(self.ssh.get_transport())
-        self.chan.settimeout(self.channel_timeout)
-
-        logging.info("got connection for %s@%s", self.user, self.ip)
-        self.count = 0
-        # http://www.lag.net/paramiko/docs/paramiko.Transport-class.html#set_keepalive
-        self.tr = self.get_transport()
-        self.tr.set_keepalive(self.keepalivetimeout)
-        self.set_prompt()
-        self.ser = None
-        return True
-
-    def _search_str(self, retry, string):
-        """ search string retry times
-	    return:
-	    True, if string found
-	    False if something read, but string not found
-	    None if nothing read, nothing found
-	"""
+    def _search_str(self, fd, retry, string):
+        """ search string retry times with read_line
+            return:
+            True, if string found
+            False if something read, but string not found
+            None if nothing read, nothing found
+        """
         reg = re.compile(string)
-	self.debugprint("search_str: str: ", string)
+        self.debugprint("search_str: str: ", string)
         i = 0
         while i < retry:
             res = None
-            ret = self.read_line(1)
-            self.debugprint ("search_str ret, buf: ", ret, self.buf)
+            ret = self.read_line(fd, self.read_line_retry)
+            self.debugprint ("search_str ret, buf: ", ret, self.buf[fd])
             if ret:
-                res = reg.search(self.buf)
-		if res:
-		    return True
-	        else:
-		    ret = False
-	    elif ret == False:
-                res = reg.search(self.buf)
-		if res:
-		    return True
+                res = reg.search(self.buf[fd])
+                if res:
+                    return True
+                else:
+                    ret = False
+            elif ret == False:
+                res = reg.search(self.buf[fd])
+                if res:
+                    return True
             self.debugprint("RES: ", res)
             i += 1
         return ret
 
-    def wait_answer(self, answer, retry):
-	""" wait for answer retry times
-	    return: True if found
-	            else False
-	"""
+    def wait_answer(self, fd, string, retry):
+        """ wait for identical answer retry times.
+            return: True if found
+                    else False
+        """
         i = 0
-        while i < retry:
-            ret = self._search_str(2, answer)
-            if ret:
-                return True
-	    if ret == False:
-	        i = 0
+        while (i < retry):
+            ret = self.read_line(fd, self.read_line_retry)
+            if ret == True:
+                if (string == self.buf[fd]):
+                    return True
+                else:
+                    reg = re.compile(string)
+                    res = reg.search(self.buf[fd])
+		    if res:
+		        return True
+            if ret == False:
+                if (string == self.buf[fd]):
+                    return True
+                else:
+                    reg = re.compile(string)
+                    res = reg.search(self.buf[fd])
+		    if res:
+		        return True
             i += 1
 	return False
+
+
+    def wait_prompt(self, retry):
+        """ wait for prompt retry times
+            return: True if found
+                    else False
+        """
+        ret = self._search_str(self.channel_con, retry, self.prompt)
+        if ret == True:
+            return True
+
+	return False
+
+    def eof_wait_prompt(self, retry):
+	""" wait for prompt retry times
+	    return: True if found
+                    else end testcase
+	"""
+        ret = self._search_str(self.channel_con, retry, self.prompt)
+        if ret == True:
+            return True
+
+        self.end_tc(False)
 
     def _login(self):
         # check if we need to login
@@ -207,69 +290,30 @@ class tbot(object):
             j += 1
         # got login
         # send user
-        self.write_stream(self.user)
+        self.write_stream(self.channel_con, self.user)
         # send passwd
         ret = self._search_str(5, 'login')
         return ret
 
-    def _open_tty(self):
-        self.ssh = None
-        print("OPEN TTY")
-        self.ser = serial.Serial(
-            port=self.port,
-            baudrate=self.baud,
-            parity=serial.PARITY_NONE,
-            stopbits=serial.STOPBITS_ONE,
-            timeout=1, # 0=nonblocking mode, n>0 seconds timeout
-            bytesize=serial.SEVENBITS
-        )
-        self.ser.open()
-        self.ser.isOpen()
-        print("IS OPEN", self.ser.isOpen())
-        print("READABLE: ", self.ser.readable())
-        print("WRITEABLE: ", self.ser.writable())
-        self.opened = True
-        return self._login()
-
-    def get_transport(self):
-        if self.use_tty:
-            print("get_transport ToDo")
-        else:
-            return self.ssh.get_transport()
-
-    def is_active(self):
-        if self.use_tty:
-            return self.ser.isOpen()
-        else:
-            return self.tr.is_active()
-
-    def get_channel(self):
-        if not self.use_tty:
-            return self.ssh.chan
-
-    def _open_stream(self):
-        if self.use_tty:
-            ret = self._open_tty()
-        else:
-            ret = self._open_ssh()
-        return ret
-
-    def check_open_fd(self):
+    def check_open_fd(self, fd):
         """check, if stream is open.
            return:
            True: If open
            False: If stream open failed
         """
         ret = True
-        if self.opened == False:
-            logging.debug("channel not open")
-            ret = self._open_stream()
-        elif self.is_active() == False:
-            logging.debug("channel not active")
-            ret = self._open_stream()
+	if self.lab.get_lab_connect_state() == False:
+            logging.debug("not connected to lab")
+            ret = self.lab.connect_lab()
+
+        #ToDo check here the specific fd
+	if self.lab.lab_check_fd(fd) == False:
+            logging.debug("fd not valid")
+            return False
+
 	return ret
 
-    def read_bytes(self):
+    def read_bytes(self, fd):
         """read bytes from stream.
            if stream is not open, open it
            return:
@@ -277,37 +321,23 @@ class tbot(object):
            None: Timeout, no bytes read
            self.__data contains the read bytes
         """
-        logging.debug("read_bytes: rem: %s", self.__remainder)
-        if self.__remainder != '':
-            self.__data = self.__remainder
-            self.__remainder = ''
-            logging.debug("read_bytes: rem: %s after", self.__remainder)
+        logging.debug("read_bytes %d: rem: %s", fd, self.__remainder[fd])
+        if self.__remainder[fd] != '':
+            self.__data[fd] = self.__remainder[fd]
+            self.__remainder[fd] = ''
+            logging.debug("read_bytes %d: rem: %s after", fd, self.__remainder[fd])
             return True
-        self.__data = ''
-        ret = self.check_open_fd()
+        self.__data[fd] = ''
+        ret = self.check_open_fd(fd)
         if not ret:
             logging.debug("read_bytes: Could not open")
             return None
-        if self.use_tty:
-            try:
-                print("REading")
-                self.__data = self.ser.read(100)
-                print("READ ", self.__data)
-                if self.__data == '':
-                    print("TIMEOUT")
-                    return None
-            except:
-                logging.debug("read_bytes: Timeout")
-                return None
-        else:
-            try:
-                self.__data = self.chan.recv(1024)
-            except socket.timeout:
-                logging.debug("read_bytes: Timeout")
-                return None
-        return True
+        ret = self.lab.recv(fd)
+        if ret == True:
+            self.__data[fd] = self.lab.get_bytes(fd)
+        return ret
 
-    def read_line(self, retry):
+    def read_line(self, fd, retry):
         """read a line. line end detected through '\n'
            return:
            True: if a line is read
@@ -317,171 +347,245 @@ class tbot(object):
            None: Timeout, no line read
         """
         i = 0
-        self.buf = ''
-        while not '\n' in self.buf:
-            ret = self.read_bytes()
+        self.buf[fd] = ''
+        #lineend = '\n'
+        lineend = pack('h', 13)
+        lineend = lineend[:1]
+        logging.debug("------------ lineend %s", lineend)
+        while not lineend in self.buf[fd]:
+            ret = self.read_bytes(fd)
             logging.debug("read_line i: %d re: %d ret: %s", i, retry, ret)
             if ret:
-                self.buf += self.__data
+                logging.debug("read_line data: %s", self.__data[fd])
+                self.buf[fd] += self.__data[fd]
                 i = 0
             else:
 		i += 1
                 if (i > retry):
-                    if (len(self.buf) > 0):
-                        logging.info("read %s@%s: %s", self.user, self.ip,
-				self.buf)
+                    if (len(self.buf[fd]) > 0):
+                        logging.info("read no ret %s %s", fd, self.buf[fd])
+                        if self.verbose:
+                            print("read %d: %s" % (fd, self.buf[fd]))
                         return False
                     return None
 
-        n = self.buf.index('\n')
-        self.__remainder = self.buf[n+1:]
-        self.buf = self.buf[:n]
-        if (len(self.buf) > 0) and (self.buf[-1] == '\r'):
-            self.buf = self.buf[:-1]
-        logging.info("read_line %s@%s: %s", self.user, self.ip, self.buf)
+        n = self.buf[fd].index(lineend)
+        self.__remainder[fd] = self.buf[fd][n+1:]
+        self.buf[fd] = self.buf[fd][:n]
+        # remove previous new line
+        if (len(self.buf[fd]) > 1) and (self.buf[fd][0] == '\n'):
+            self.buf[fd] = self.buf[fd][1:]
+        logging.debug("read_line n: %d rem: %s", n, self.__remainder[fd])
+        logging.info("read %d: %s", fd, self.buf[fd])
+        if self.verbose:
+            print("read %d: %s" % (fd, self.buf[fd]))
         return True
 
-    def read_end(self, retry):
+    def read_end(self, fd, retry, prompt):
         """read until end is detected. End is detected if
            shell prompt is read.
         """
-        ret = True
-        while ret:
-            ret = self.read_line(retry)
-            logging.debug("read_end ret: %s buf: %s", ret, self.buf)
-        ret = self.send_ctrl_m()
-        if not ret:
-            return ret
         while True:
-            ret = self.read_line(retry)
-            logging.debug("read_end rl ret: %s buf: %s", ret, self.buf)
+            ret = self.read_line(fd, retry)
+            logging.debug("read_end rl ret: %s buf: %s", ret, self.buf[fd])
             if not ret:
-                if (len(self.buf)) == 0:
+                if (len(self.buf[fd])) == 0:
                     return False
-            ret = self.is_end(self.buf)
+            ret = self.is_end_fd(fd, self.buf[fd])
             if ret:
                 return True
 
-    def is_end(self, string):
+    def read_end_state(self, fd, retry):
+        """read until end is detected. End is detected if
+           current prompt is read.
+        """
+        while True:
+            ret = self.read_line(fd, self.read_end_state_retry)
+            logging.debug("read_end rl ret: %s buf: %s", ret, self.buf[fd])
+            if not ret:
+                if (len(self.buf[fd])) == 0:
+                    return False
+            ret = self.is_end_fd(fd, self.buf[fd])
+            if ret:
+                return True
+
+    def read_end_state_con(self, retry):
+        ret = self.read_end_state(self.channel_con, retry)
+        return ret
+
+    def is_end(self, string, prompt):
         """check, if string contains a prompt
            return:
            True: if prompt is found
            False: if not found a prompt in string
         """
-        res = self.reg.search(string)
+        reg = re.compile(prompt)
+        res = reg.search(string)
         if res:
             logging.debug("Found end")
-        return res
+            return True
+        return False
+ 
+    def is_end_fd(self, fd, string):
+        """check, if string contains a prompt
+           return:
+           True: if prompt is found
+           False: if not found a prompt in string
+        """
+        if fd == self.channel_ctrl:
+            ret = self.is_end(string, self.labprompt)
+        if fd == self.channel_con:
+            ret = self.is_end(string, self.prompt)
+
+        return ret
     
-    def write_stream(self, string):
+    def write_stream(self, fd, string):
         """write a string to the opened stream
            If stream is not open, try to open it
            return:
            True: if write was successful
            None: not able to open the stream
         """
-        ret = self.check_open_fd()
+        ret = self.check_open_fd(fd)
+        if not ret:
+            logging.debug("write_stream: not open")
+            return None
+        
+        self.lab.write(fd, string)
+        #self.debugprint("str: %s len: %d\n", string, len(string))
+        #for i in range(0, len(string)):
+        #    self.lab.write(fd, string[i])
+
+        logging.info("write %d: %s", fd, string)
+        if self.verbose:
+            print("write %d: %s" % (fd, string))
+        # what I send must come also back!
+        #ret = self.wait_answer(fd, string, 2)
+        ret = self.wait_answer(fd, string, 2)
+        #print ("REREAD send", ret)
+        #TODO check return value
+        return True
+
+    def write_stream_passwd(self, fd, user, board):
+        """write a passwd for user to the opened stream
+           If stream is not open, try to open it
+           Do not log it.
+           return:
+           True: if write was successful
+           None: not able to open the stream
+        """
+        ret = self.check_open_fd(fd)
         if not ret:
             logging.debug("write_stream: not open")
             return None
 
-        logging.info("write %s@%s: %s", self.user, self.ip, string)
-        if self.use_tty:
-            self.ser.write(string + '\n')
-        else:
-            self.chan.send(string + '\n')
+        string = self.lab.get_password(user, board)
+        self.lab.write(fd, string)
+        logging.info("write %d: password ********", fd)
+        if self.verbose:
+            print("write %d: password ********" % (fd))
+        # what I send must come also back!
+        ret = self.wait_answer(fd, string, 2)
+        #TODO check return value
         return True
 
-    def send_console_end(self):
+    def write_stream_con(self, string):
+        """write a string to the opened stream
+           If stream is not open, try to open it
+           return:
+           True: if write was successful
+           None: not able to open the stream
+        """
+        ret = self.write_stream(self.channel_con, string)
+        return ret
+
+    def write_stream_ctrl(self, string):
+        """write a string to the opened stream
+           If stream is not open, try to open it
+           return:
+           True: if write was successful
+           None: not able to open the stream
+        """
+        ret = self.write_stream(self.channel_ctrl, string)
+        return ret
+
+    def send_console_end(self, fd):
         """write Ctrl-C to the opened stream
            If stream is not open, try to open it
            return:
            True: if write was successful
            None: not able to open the stream
         """
-        ret = self.check_open_fd()
+        ret = self.check_open_fd(fd)
         if not ret:
             logging.debug("send_Ctrl_console_end: not open")
             return None
         string = pack('h', 29)
+        string = string[:1]
         logging.debug("send Ctrl-console_end %s", string)
-        if self.use_tty:
-            self.ser.write(string)
-        else:
-            self.chan.send(string)
+        self.lab.write_no_ret(string, fd)
         return True
 
-
-    def send_ctrl_c(self):
+    def send_ctrl_c(self, fd):
         """write Ctrl-C to the opened stream
            If stream is not open, try to open it
            return:
            True: if write was successful
            None: not able to open the stream
         """
-        ret = self.check_open_fd()
+        ret = self.check_open_fd(fd)
         if not ret:
             logging.debug("send_Ctrl_C: not open")
             return None
         string = pack('h', 3)
+        string = string[:1]
         logging.debug("send Ctrl-C %s", string)
-        if self.use_tty:
-            self.ser.write(string)
-        else:
-            self.chan.send(string)
+        self.lab.write_no_ret(fd, string)
         return True
 
-    def send_ctrl_m(self):
+    def send_ctrl_c_con(self):
+        """write Ctrl-C to the opened stream
+           If stream is not open, try to open it
+           return:
+           True: if write was successful
+           None: not able to open the stream
+        """
+        ret = self.send_ctrl_c(self.channel_con)
+        return ret
+ 
+    def send_ctrl_m(self, fd):
         """write Ctrl-M to the opened stream
            If stream is not open, try to open it
            return:
            True: if write was successful
            None: not able to open the stream
         """
-        ret = self.check_open_fd()
+        ret = self.check_open_fd(fd)
         if not ret:
             logging.debug("send_ctrl_M: not open")
             return None
-        string = pack('h', 13)
+        string = pack('h', 10)
+        string = string[:1]
         logging.debug("send Ctrl-M %s", string)
-        if self.use_tty:
-            self.ser.write(string)
-        else:
-            self.chan.send(string)
+        self.lab.write_no_ret(fd, string)
         return True
 
-    def put(self, fr, to):
-        """put the file fr to the target with file
-           to.
-           return:
-           True: If put was successful
-           False: If put failed
-        """
-        logging.debug("try put %s %s", fr, to)
-        t = self.get_transport()
-        sftp = paramiko.SFTPClient.from_transport(t)
-        try:
-            ret = sftp.put(fr, to)
-        except:
-            ret = False
-		
-        logging.info("sftp put %s -> %s ret: %s\n", fr, to, ret)
-        return ret
-
-    def set_prompt(self):
+    def set_prompt(self, fd, prompt, header, end):
         """set the prompt on the target.
            True: If setting the prompt was successful
            False: If settting the prompt failed
         """
         ret = True
         while ret:
-            ret = self.read_line(1)
-        cmd = 'export PS1="\u@\h [\$(date +%k:%M:%S)] ' + self.prompt + '> "'
+            ret = self.read_line(fd, 1)
+        # contains the current prompt
+        self.prompt = prompt
+        cmd = header + self.prompt + end
         logging.debug("Prompt CMD:%s", cmd)
-        ret = self.write_stream(cmd)
+        ret = self.write_stream(fd, cmd)
         if not ret:
             return ret
-        ret = self.read_end(1)
+        ret = self.read_end(fd, 2, prompt)
         if ret:
             logging.info("set prompt:%s", cmd)
         return ret
@@ -495,7 +599,8 @@ class tbot(object):
              this function returns. If called testcase
              not set the ret variable default is false!
         """
-        filepath = self.workdir + "/" + name
+        filepath = self.tc_dir + "/" + name
+        logging.debug("call_tc filepath %s", filepath)
 	try:
             fd = open(filepath, 'r')
 	except:
@@ -503,8 +608,8 @@ class tbot(object):
             return False
         tb = self
         ret = False
-        logging.info("Starting with tc %s", name)
         logging.info("*****************************************")
+        logging.info("Starting with tc %s", name)
         self._main += 1
         try:
 	    exec(fd)
@@ -519,5 +624,223 @@ class tbot(object):
 
         fd.close()
         self._main -= 1
-        logging.info("End of tc %s with ret: %s", name, ret)
+        logging.debug("End of tc %s with ret: %s", name, ret)
         return ret
+
+    def set_board_state(self, state):
+        """ set the board in a state
+        """
+        tmp = "set board to state " + state
+        logging.debug(tmp)
+
+        ret = self.lab.set_board_state(state)
+        if ret == True:
+            return True
+
+        self.failure()
+
+    def eof_write(self, fd, string):
+        """ write a string to filedescriptor fd.
+            If write_stream returns not True, end tc
+            with failure
+        """
+        self.read_end_state(fd, 1)
+        ret = self.write_stream(fd, string)
+        if ret == True:
+            return True
+        self.end_tc(False)
+
+    def eof_wait_string(self, string, retry):
+        """ wait for a string, until prompt is read
+	    return: True if found
+	            else False
+        """
+        ret = wait_answer(self, self.channel_con, string, retry)
+        return ret
+
+    def eof_write_con(self, string):
+        """ write a string to console.
+            If write_stream returns not True, end tc
+            with failure
+        """
+        ret = self.eof_write(self.channel_con, string)
+        if self.once == 0:
+            ret = self.eof_write(self.channel_con, string)
+            self.once = 1
+
+        return True
+
+    def eof_write_con_lx_cmd(self, command):
+        """ write a linux command to console.
+            If linux command has success return True,
+            else end tc with failure
+        """
+        self.eof_write_con(command)
+        self.eof_read_end_state_con(1)
+        self.eof_call_tc("tc_lx_check_cmd_success.py")
+        return True
+ 
+    def eof_write_ctrl(self, string):
+        """ write a string to control.
+            If write_stream returns not True, end tc
+            with failure
+        """
+        ret = self.eof_write(self.channel_ctrl, string)
+        return True
+
+    def eof_write_con_passwd(self, user, board):
+        """ write a passwd to console. Do not log it.
+            If write_stream returns not True, end tc
+            with failure
+        """
+        ret = self.write_stream_passwd(self.channel_con, user, board)
+        return True
+
+    def eof_write_ctrl_passwd(self, user, board):
+        """ write a password to control. Do not log it.
+            If write_stream returns not True, end tc
+            with failure
+        """
+        ret = self.write_stream_passwd(self.channel_ctrl, user, board)
+        return True
+
+    def eof_read_end_state(self, fd, retry):
+        """ read until end is detected. End is detected if
+            current prompt is read. End testcase if read_end_state
+            not returns True.
+        """
+        ret = self.read_end_state(fd, retry)
+        if ret == True:
+            return True
+        self.end_tc(False)
+
+    def eof_read_end_state_con(self, retry):
+        """ read until end is detected. End is detected if
+            current prompt is read. End testcase if read_end_state
+            not returns True.
+        """
+        ret = self.eof_read_end_state(self.channel_con, retry)
+        return True
+
+    def eof_read_end_state_ctrl(self, retry):
+        """ read until end is detected. End is detected if
+            current prompt is read. End testcase if read_end_state
+            not returns True.
+        """
+        ret = self.eof_read_end_state(self.channel_ctrl, retry)
+        return True
+
+    def eof_search_str_in_readline(self, fd, string, endtc):
+        """ call read_line and search if it contains string
+            return True if found, False if prompt found
+            else end testcase
+        """
+        ret = self._search_str(fd, 1, string)
+        while ret != None:
+            if ret == True:
+                return True
+            if ret == False:
+                #check if it is a prompt
+                ret = self.is_end_fd(fd, self.buf[fd])
+                if ret == True:
+                    if endtc == 1:
+                        self.end_tc(False)
+                    else:
+                        return False
+            ret = self._search_str(fd, 1, string)
+
+        if endtc == 1:
+            self.end_tc(False)
+
+        return None
+ 
+    def eof_search_str_in_readline_lines(self, fd, lines, string):
+        """ call read_line lines time and search if it contains string
+            return True if found, end testcase if not
+        """
+        ret = self._search_str(fd, lines, string)
+        if ret == True:
+            return True
+        self.end_tc(False)
+
+    def eof_search_str_in_readline_lines_con(self, lines, string):
+        """ call read_line lines time and search if it contains string
+            return True if found, end testcase if not
+        """
+        ret = self.eof_search_str_in_readline_lines(self.channel_con, lines, string)
+        return True
+
+    def eof_search_str_in_readline_lines_ctrl(self, lines, string):
+        """ call read_line lines time and search if it contains string
+            return True if found, end testcase if not
+        """
+        ret = self.eof_search_str_in_readline_lines(self.channel_ctrl, lines, string)
+        return True
+
+    def eof_search_str_in_readline_con(self, string):
+        """ call read_line and search string.
+            if it contains string
+            return True
+            else end testcase
+        """
+        ret = self.eof_search_str_in_readline(self.channel_con, string, 1)
+        return ret
+
+    def eof_search_str_in_readline_ctrl(self, string):
+        """ call read_line and search string.
+            if it contains string
+            return True
+            else end testcase
+        """
+        ret = self.eof_search_str_in_readline(self.channel_ctrl, string, 1)
+        return ret
+
+    def search_str_in_readline_con(self, string):
+        """ call read_line and search if it contains string
+            return True if found, False if prompt found
+            None if nothing found, timeout
+        """
+        ret = self.eof_search_str_in_readline(self.channel_con, string, 0)
+        return ret
+
+    def search_str_in_readline_ctrl(self, string):
+        """ call read_line and search if it contains string
+            return True if found, False if prompt found
+            None if nothing found, timeout
+        """
+        ret = self.eof_search_str_in_readline(self.channel_ctrl, string, 0)
+        return ret
+
+    def eof_search_str_in_readline_end_con(self, string):
+        """ call read_line and search if it contains string
+            endtestcase if found, or timeout
+            if prompt found True
+        """
+        ret = self.search_str_in_readline_con(string)
+        if ret == True:
+            self.end_tc(False)
+        if ret == None:
+            self.end_tc(False)
+
+        return True
+
+    def eof_search_str_in_readline_end_ctrl(self, string):
+        """ call read_line and search if it contains string
+            endtestcase if found, or timeout
+            if prompt found True
+        """
+        ret = self.search_str_in_readline_ctrl(string)
+        if ret == True:
+            self.end_tc(False)
+        if ret == None:
+            self.end_tc(False)
+
+        return True
+
+    def eof_call_tc(self, name):
+        """ call tc name, end testcase on failure
+        """
+        ret = self.call_tc(name)
+        if ret == True:
+            return True
+        self.end_tc(False)

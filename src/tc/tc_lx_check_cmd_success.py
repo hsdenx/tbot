@@ -12,11 +12,14 @@
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 # start with
-# python2.7 common/tbot.py -c tbot.cfg -t tc_call.py
-
+# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_check_cmd_success.py
+# simple check if previous shell command was succesful
+#
 from tbotlib import tbot
 
-#here starts the real test
-logging.info("do something call test")
-tb.eof_call_tc("tc_first.py")
+#we can not check if we are in linux, as this deletes
+#the state of the last command...
+tb.eof_write_con("if [ $? -ne 0 ]; then echo 'FAILED'; fi")
+tb.eof_search_str_in_readline_end_con("FAILED")
+
 tb.end_tc(True)

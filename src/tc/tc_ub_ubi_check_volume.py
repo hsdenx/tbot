@@ -12,11 +12,17 @@
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 # start with
-# python2.7 common/tbot.py -c tbot.cfg -t tc_call.py
-
+# python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_ubi_check_volume.py
+# - checks if ubi volume exists
 from tbotlib import tbot
 
-#here starts the real test
-logging.info("do something call test")
-tb.eof_call_tc("tc_first.py")
+logging.info("args: %s %s", tb.tc_ub_ubi_load_addr, tb.tc_ub_ubi_load_name)
+
+#set board state for which the tc is valid
+tb.set_board_state("u-boot")
+
+tmp = "if ubi check  " + tb.tc_ub_ubi_load_name + "; then; echo OK; else; echo FAIL; fi"
+tb.eof_write_con(tmp)
+tb.eof_search_str_in_readline_end_con("FAIL")
+
 tb.end_tc(True)

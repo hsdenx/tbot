@@ -1,5 +1,40 @@
 - move lab_api things to lab_api
-- define config file for tbot with common parameter
-  - board name
-  - which lab_api to use
 - test
+- lab_api:
+  add ftp put and get
+- call testcases with arguments
+
+----------------------------------------
+
+- testcase linux
+  - get source
+  - compile
+    - kernel
+    - modules
+    - install modules
+    - DT
+    - FIT
+    - append DT
+
+- testcases for yocto
+  - install yocto
+  - install meta ..
+  - patch bblayers.conf
+  - patch local.conf
+  - call bitbake
+  - cp images
+
+- mtd-utils
+  - get source and compile
+  - install
+
+- devmem2
+  - get source and compile
+  - install
+
+- pinmux
+  - create pinmux file for reference
+  - check pinmux (create file and diff with reference)
+
+- gpio tests
+  - check registers with devmem

@@ -12,11 +12,27 @@
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 # start with
-# python2.7 common/tbot.py -c tbot.cfg -t tc_call.py
-
+# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_bonnie.py
+# run a bonnie test
 from tbotlib import tbot
 
-#here starts the real test
-logging.info("do something call test")
-tb.eof_call_tc("tc_first.py")
+logging.info("args: %s %s", tb.tc_lx_bonnie_dev, tb.tc_lx_bonnie_sz)
+
+#set board state for which the tc is valid
+tb.set_board_state("linux")
+
+#check if bonnie exist
+#if not download it, and try to install
+tb.eof_call_tc("tc_lx_bonnie_install.py")
+
+#start test
+# detect tc_lx_bonnie_sz ... should be 2*RAM size
+tmp = "bonnie++ -d " + tb.tc_lx_bonnie_dev + " -s " + tb.tc_lx_bonnie_sz + " -f -b -u root -m " + tb.boardname
+
+tb.eof_write_con(tmp)
+#bonnie takes loooong
+oldretry = tb.read_end_state_retry
+tb.read_end_state_retry = 1000
+tb.eof_read_end_state_con(1)
+tb.read_end_state_retry = oldretry
 tb.end_tc(True)

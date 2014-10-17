@@ -12,11 +12,28 @@
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 # start with
-# python2.7 common/tbot.py -c tbot.cfg -t tc_call.py
-
+# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_cpufreq.py
 from tbotlib import tbot
 
-#here starts the real test
-logging.info("do something call test")
-tb.eof_call_tc("tc_first.py")
+logging.info("args: %s", tb.tc_lx_cpufreq_frequences)
+
+def change_freq(tb, freq):
+    #cpufreq-set -g performance
+    tb.eof_write_con_lx_cmd("cpufreq-set -g performance")
+    #cpufreq-set -f freq
+    tmp="cpufreq-set -f " + freq
+    tb.eof_write_con_lx_cmd(tmp)
+    #cpufreq-info -f
+    tb.eof_write_con("cpufreq-info -f")
+    tb.eof_search_str_in_readline_con(freq)
+
+#set board state for which the tc is valid
+tb.set_board_state("linux")
+
+#check if cpufreq-info is installed
+tb.eof_write_con_lx_cmd("cpufreq-info")
+
+for freq in tb.tc_lx_cpufreq_frequences:
+    change_freq(tb, freq)
+
 tb.end_tc(True)

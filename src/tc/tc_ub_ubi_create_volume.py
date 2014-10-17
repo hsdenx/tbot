@@ -12,11 +12,17 @@
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 # start with
-# python2.7 common/tbot.py -c tbot.cfg -t tc_call.py
-
+# python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_ubi_create_volume.py
+# - create an ubi volume
 from tbotlib import tbot
 
-#here starts the real test
-logging.info("do something call test")
-tb.eof_call_tc("tc_first.py")
+logging.info("args: %s %s", tb.tc_ub_ubi_create_vol_name, tb.tc_ub_ubi_create_vol_sz)
+
+#set board state for which the tc is valid
+tb.set_board_state("u-boot")
+
+tmp = 'ubi create ' + tb.tc_ub_ubi_create_vol_name + ' ' + tb.tc_ub_ubi_create_vol_sz
+tb.eof_write_con(tmp)
+tb.eof_search_str_in_readline_end_con("exit not allowed")
+
 tb.end_tc(True)

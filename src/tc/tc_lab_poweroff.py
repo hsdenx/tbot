@@ -12,11 +12,13 @@
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 # start with
-# python2.7 common/tbot.py -c tbot.cfg -t tc_call.py
-
+# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lap_poweroff.py
+# simple power off the board
+#
 from tbotlib import tbot
 
-#here starts the real test
-logging.info("do something call test")
-tb.eof_call_tc("tc_first.py")
+ret = tb.set_power_state("off")
+if ret != False:
+    tb.end_tc(False)
+
 tb.end_tc(True)

@@ -12,11 +12,20 @@
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 # start with
-# python2.7 common/tbot.py -c tbot.cfg -t tc_call.py
-
+# python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_load_board_env.py
+# load U-Boot Environment for the board
+#
 from tbotlib import tbot
 
-#here starts the real test
-logging.info("do something call test")
-tb.eof_call_tc("tc_first.py")
+logging.info("args: %s %s %s", tb.boardname, tb.ub_load_board_env_addr, tb.ub_load_board_env_subdir)
+
+#set board state for which the tc is valid
+tb.set_board_state("u-boot")
+
+tmp = 'mw ' + tb.ub_load_board_env_addr + ' 0 0x4000;tftp ' + tb.ub_load_board_env_addr + ' /tftpboot/' + tb.tftpboardname + '/' + tb.ub_load_board_env_subdir + '/env.txt;env import -t ' + tb.ub_load_board_env_addr
+tb.eof_write_con(tmp)
+ret = tb.eof_search_str_in_readline_con("Bytes transferred")
+
+# ToDo check if env import has success
+tb.eof_read_end_state_con(2)
 tb.end_tc(True)
