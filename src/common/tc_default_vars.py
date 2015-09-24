@@ -281,3 +281,8 @@ try:
     self.tc_lx_check_if_file_exists_name
 except AttributeError:
     self.tc_lx_check_if_file_exists_name = "bonnie++-1.03e.tgz"
+
+try:
+    self.tc_lx_dmesg_grep_name
+except AttributeError:
+    self.tc_lx_dmesg_grep_name = "zigbee"

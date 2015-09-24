@@ -24,7 +24,23 @@ tb.statusprint("tc_shc u-boot setenv")
 #call ubot setenv
 tb.eof_call_tc("tc_ub_setenv.py")
 
-tb.statusprint("tc_shc partition check ")
+tb.statusprint("tc_shc linux dmesg checks")
+tb.tc_lx_dmesg_grep_name = "SHC"
+tb.eof_call_tc("tc_lx_dmesg_grep.py")
+tb.tc_lx_dmesg_grep_name = "zigbee"
+tb.eof_call_tc("tc_lx_dmesg_grep.py")
+tb.tc_lx_dmesg_grep_name = "homematic"
+tb.eof_call_tc("tc_lx_dmesg_grep.py")
+tb.tc_lx_dmesg_grep_name = "rtc-pcf8563"
+tb.eof_call_tc("tc_lx_dmesg_grep.py")
+tb.tc_lx_dmesg_grep_name = "tps65217 0-0024"
+tb.eof_call_tc("tc_lx_dmesg_grep.py")
+tb.tc_lx_dmesg_grep_name = "at24 0-0050"
+tb.eof_call_tc("tc_lx_dmesg_grep.py")
+tb.tc_lx_dmesg_grep_name = "Detected MACID"
+tb.eof_call_tc("tc_lx_dmesg_grep.py")
+
+tb.statusprint("tc_shc partition check")
 #call linux tc_lx_partition_check.py
 #for testing usb memstick
 #check if usb stick is authorized
@@ -43,6 +59,9 @@ tb.eof_call_tc("tc_lx_eeprom.py")
 #call linux tc_lx_cpufreq.py
 tb.statusprint("tc_shc cpu frequenc check")
 tb.eof_call_tc("tc_lx_cpufreq.py")
+
+tb.tc_lx_dmesg_grep_name = "MPU Reference"
+tb.eof_call_tc("tc_lx_dmesg_grep.py")
 
 tb.statusprint("tc_shc u-boot setenv")
 #call ubot setenv
