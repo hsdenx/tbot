@@ -12,4 +12,6 @@ python2.7 src/common/tbot.py -c tbot_smartweb.cfg -l log/smartweb-$logfile_end -
 
 python2.7 src/common/tbot.py -c tbot_aristainetos2.cfg -l log/aristainetos2-$logfile_end -t tc_board_aristainetos2.py -v
 
+python2.7 src/common/tbot.py -c tbot_mcx.cfg -l log/mcx-$logfile_end -t tc_board_mcx.py -v
+
 #python2.7 src/common/tbot.py -c tbot_sirius_dds.cfg -l log/sirius-dds-$logfile_end -t tc_board_sirius_dds.py
