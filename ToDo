@@ -28,10 +28,6 @@
   - get source and compile
   - install
 
-- devmem2
-  - get source and compile
-  - install
-
 - pinmux
   - create pinmux file for reference
   - check pinmux (create file and diff with reference)
