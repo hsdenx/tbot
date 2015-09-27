@@ -1,0 +1,786 @@
+.TH "tbotlib.tbot" 3 "Sun Sep 27 2015" "TBot" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+tbotlib.tbot \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits object\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fB__init__\fP (self, cfgfile, logfilen, \fBverbose\fP)"
+.br
+.ti -1c
+.RI "def \fB__del__\fP (self)"
+.br
+.ti -1c
+.RI "def \fBset_power_state\fP (self, state)"
+.br
+.ti -1c
+.RI "def \fBcheck_state\fP (self)"
+.br
+.ti -1c
+.RI "def \fBfailure\fP (self)"
+.br
+.ti -1c
+.RI "def \fBend_tc\fP (self, \fBret\fP)"
+.br
+.ti -1c
+.RI "def \fBdebugprint\fP (self, args)"
+.br
+.ti -1c
+.RI "def \fBstatusprint\fP (self, args)"
+.br
+.ti -1c
+.RI "def \fBwait_answer\fP (self, fd, string, retry)"
+.br
+.ti -1c
+.RI "def \fBwait_prompt\fP (self, retry)"
+.br
+.ti -1c
+.RI "def \fBeof_wait_prompt\fP (self, retry)"
+.br
+.ti -1c
+.RI "def \fBcheck_open_fd\fP (self, fd)"
+.br
+.ti -1c
+.RI "def \fBread_bytes\fP (self, fd)"
+.br
+.ti -1c
+.RI "def \fBread_line\fP (self, fd, retry)"
+.br
+.ti -1c
+.RI "def \fBread_end\fP (self, fd, retry, prompt)"
+.br
+.ti -1c
+.RI "def \fBread_end_state\fP (self, fd, retry)"
+.br
+.ti -1c
+.RI "def \fBread_end_state_con\fP (self, retry)"
+.br
+.ti -1c
+.RI "def \fBis_end\fP (self, string, prompt)"
+.br
+.ti -1c
+.RI "def \fBis_end_fd\fP (self, fd, string)"
+.br
+.ti -1c
+.RI "def \fBwrite_stream\fP (self, fd, string)"
+.br
+.ti -1c
+.RI "def \fBwrite_stream_passwd\fP (self, fd, user, board)"
+.br
+.ti -1c
+.RI "def \fBwrite_stream_con\fP (self, string)"
+.br
+.ti -1c
+.RI "def \fBwrite_stream_ctrl\fP (self, string)"
+.br
+.ti -1c
+.RI "def \fBsend_console_end\fP (self, fd)"
+.br
+.ti -1c
+.RI "def \fBsend_ctrl_c\fP (self, fd)"
+.br
+.ti -1c
+.RI "def \fBsend_ctrl_c_con\fP (self)"
+.br
+.ti -1c
+.RI "def \fBsend_ctrl_m\fP (self, fd)"
+.br
+.ti -1c
+.RI "def \fBset_prompt\fP (self, fd, prompt, header, end)"
+.br
+.ti -1c
+.RI "def \fBcall_tc\fP (self, name)"
+.br
+.ti -1c
+.RI "def \fBset_board_state\fP (self, state)"
+.br
+.ti -1c
+.RI "def \fBeof_write\fP (self, fd, string)"
+.br
+.ti -1c
+.RI "def \fBeof_wait_string\fP (self, string, retry)"
+.br
+.ti -1c
+.RI "def \fBeof_write_con\fP (self, string)"
+.br
+.ti -1c
+.RI "def \fBeof_write_con_lx_cmd\fP (self, command)"
+.br
+.ti -1c
+.RI "def \fBeof_write_ctrl\fP (self, string)"
+.br
+.ti -1c
+.RI "def \fBeof_write_con_passwd\fP (self, user, board)"
+.br
+.ti -1c
+.RI "def \fBeof_write_ctrl_passwd\fP (self, user, board)"
+.br
+.ti -1c
+.RI "def \fBeof_read_end_state\fP (self, fd, retry)"
+.br
+.ti -1c
+.RI "def \fBeof_read_end_state_con\fP (self, retry)"
+.br
+.ti -1c
+.RI "def \fBeof_read_end_state_ctrl\fP (self, retry)"
+.br
+.ti -1c
+.RI "def \fBeof_search_str_in_readline\fP (self, fd, string, endtc)"
+.br
+.ti -1c
+.RI "def \fBeof_search_str_in_readline_lines\fP (self, fd, lines, string)"
+.br
+.ti -1c
+.RI "def \fBeof_search_str_in_readline_lines_con\fP (self, lines, string)"
+.br
+.ti -1c
+.RI "def \fBeof_search_str_in_readline_lines_ctrl\fP (self, lines, string)"
+.br
+.ti -1c
+.RI "def \fBeof_search_str_in_readline_con\fP (self, string)"
+.br
+.ti -1c
+.RI "def \fBeof_search_str_in_readline_ctrl\fP (self, string)"
+.br
+.ti -1c
+.RI "def \fBsearch_str_in_readline_con\fP (self, string)"
+.br
+.ti -1c
+.RI "def \fBsearch_str_in_readline_ctrl\fP (self, string)"
+.br
+.ti -1c
+.RI "def \fBeof_search_str_in_readline_end_con\fP (self, string)"
+.br
+.ti -1c
+.RI "def \fBeof_search_str_in_readline_end_ctrl\fP (self, string)"
+.br
+.ti -1c
+.RI "def \fBeof_call_tc\fP (self, name)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBdebug\fP"
+.br
+.RI "\fIenable debug output \fP"
+.ti -1c
+.RI "\fBdebugstatus\fP"
+.br
+.RI "\fIenable debugstatus output \fP"
+.ti -1c
+.RI "\fBverbose\fP"
+.br
+.RI "\fIenable verbose output \fP"
+.ti -1c
+.RI "\fBtc_return\fP"
+.br
+.RI "\fIcontains return value from a tc \fP"
+.ti -1c
+.RI "\fBcfgfile\fP"
+.br
+.ti -1c
+.RI "\fBworkdir\fP"
+.br
+.ti -1c
+.RI "\fBonce\fP"
+.br
+.ti -1c
+.RI "\fBlogfilen\fP"
+.br
+.ti -1c
+.RI "\fBdef_var_file\fP"
+.br
+.ti -1c
+.RI "\fBtc_dir\fP"
+.br
+.ti -1c
+.RI "\fBbuf\fP"
+.br
+.ti -1c
+.RI "\fBchannel_ctrl\fP"
+.br
+.ti -1c
+.RI "\fBchannel_con\fP"
+.br
+.ti -1c
+.RI "\fBnumeric_level\fP"
+.br
+.ti -1c
+.RI "\fBlab\fP"
+.br
+.ti -1c
+.RI "\fBprompt\fP"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "tuple \fBret\fP = self\&._search_str(self\&.channel_con, retry, self\&.prompt)"
+.br
+.ti -1c
+.RI "tuple \fBfd\fP = open(filepath, 'r')"
+.br
+.ti -1c
+.RI "\fBtb\fP = self"
+.br
+.ti -1c
+.RI "\fBret\fP = False"
+.br
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "def tbotlib\&.tbot\&.call_tc ( self,  name)"
+
+.PP
+.nf
+Call another testcase.
+   return:
+   False: If Calling the testcase was not found
+  or testcase raised an execption
+   ! called testcase sets the ret variable, which
+     this function returns. If called testcase
+     not set the ret variable default is false!
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.check_open_fd ( self,  fd)"
+
+.PP
+.nf
+check, if stream is open.
+   return:
+   True: If open
+   False: If stream open failed
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.check_state ( self)"
+
+.PP
+.nf
+check the state of the connection to the board
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.debugprint ( self,  args)"
+
+.PP
+.nf
+print a debug string on stdout.
+    This output can be enabled through self.debug
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.end_tc ( self,  ret)"
+
+.PP
+.nf
+end testcase.
+    ret contains True if testcase
+    ended successfully, False if not.
+    Return: calls sys.exit(0 if ret == True 1 else)
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.eof_call_tc ( self,  name)"
+
+.PP
+.nf
+call tc name, end testcase on failure
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.eof_read_end_state ( self,  fd,  retry)"
+
+.PP
+.nf
+read until end is detected. End is detected if
+    current prompt is read. End testcase if read_end_state
+    not returns True.
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.eof_read_end_state_con ( self,  retry)"
+
+.PP
+.nf
+read until end is detected. End is detected if
+    current prompt is read. End testcase if read_end_state
+    not returns True.
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.eof_read_end_state_ctrl ( self,  retry)"
+
+.PP
+.nf
+read until end is detected. End is detected if
+    current prompt is read. End testcase if read_end_state
+    not returns True.
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.eof_search_str_in_readline ( self,  fd,  string,  endtc)"
+
+.PP
+.nf
+call read_line and search if it contains string
+    return True if found, False if prompt found
+    else end testcase
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.eof_search_str_in_readline_con ( self,  string)"
+
+.PP
+.nf
+call read_line and search string.
+    if it contains string
+    return True
+    else end testcase
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.eof_search_str_in_readline_ctrl ( self,  string)"
+
+.PP
+.nf
+call read_line and search string.
+    if it contains string
+    return True
+    else end testcase
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.eof_search_str_in_readline_end_con ( self,  string)"
+
+.PP
+.nf
+call read_line and search if it contains string
+    endtestcase if found, or timeout
+    if prompt found True
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.eof_search_str_in_readline_end_ctrl ( self,  string)"
+
+.PP
+.nf
+call read_line and search if it contains string
+    endtestcase if found, or timeout
+    if prompt found True
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.eof_search_str_in_readline_lines ( self,  fd,  lines,  string)"
+
+.PP
+.nf
+call read_line lines time and search if it contains string
+    return True if found, end testcase if not
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.eof_search_str_in_readline_lines_con ( self,  lines,  string)"
+
+.PP
+.nf
+call read_line lines time and search if it contains string
+    return True if found, end testcase if not
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.eof_search_str_in_readline_lines_ctrl ( self,  lines,  string)"
+
+.PP
+.nf
+call read_line lines time and search if it contains string
+    return True if found, end testcase if not
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.eof_wait_string ( self,  string,  retry)"
+
+.PP
+.nf
+wait for a string, until prompt is read
+return: True if found
+else False
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.eof_write ( self,  fd,  string)"
+
+.PP
+.nf
+write a string to filedescriptor fd.
+    If write_stream returns not True, end tc
+    with failure
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.eof_write_con ( self,  string)"
+
+.PP
+.nf
+write a string to console.
+    If write_stream returns not True, end tc
+    with failure
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.eof_write_con_lx_cmd ( self,  command)"
+
+.PP
+.nf
+write a linux command to console.
+    If linux command has success return True,
+    else end tc with failure
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.eof_write_con_passwd ( self,  user,  board)"
+
+.PP
+.nf
+write a passwd to console. Do not log it.
+    If write_stream returns not True, end tc
+    with failure
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.eof_write_ctrl ( self,  string)"
+
+.PP
+.nf
+write a string to control.
+    If write_stream returns not True, end tc
+    with failure
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.eof_write_ctrl_passwd ( self,  user,  board)"
+
+.PP
+.nf
+write a password to control. Do not log it.
+    If write_stream returns not True, end tc
+    with failure
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.is_end ( self,  string,  prompt)"
+
+.PP
+.nf
+check, if string contains a prompt
+   return:
+   True: if prompt is found
+   False: if not found a prompt in string
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.is_end_fd ( self,  fd,  string)"
+
+.PP
+.nf
+check, if string contains a prompt
+   return:
+   True: if prompt is found
+   False: if not found a prompt in string
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.read_bytes ( self,  fd)"
+
+.PP
+.nf
+read bytes from stream.
+   if stream is not open, open it
+   return:
+   True: If bytes read
+   None: Timeout, no bytes read
+   self.__data contains the read bytes
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.read_end ( self,  fd,  retry,  prompt)"
+
+.PP
+.nf
+read until end is detected. End is detected if
+   shell prompt is read.
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.read_end_state ( self,  fd,  retry)"
+
+.PP
+.nf
+read until end is detected. End is detected if
+   current prompt is read.
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.read_line ( self,  fd,  retry)"
+
+.PP
+.nf
+read a line. line end detected through '\n'
+   return:
+   True: if a line is read
+ self.buf contains the line
+   False:if timeout while reading, and some bytes
+ are read
+   None: Timeout, no line read
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.search_str_in_readline_con ( self,  string)"
+
+.PP
+.nf
+call read_line and search if it contains string
+    return True if found, False if prompt found
+    None if nothing found, timeout
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.search_str_in_readline_ctrl ( self,  string)"
+
+.PP
+.nf
+call read_line and search if it contains string
+    return True if found, False if prompt found
+    None if nothing found, timeout
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.send_console_end ( self,  fd)"
+
+.PP
+.nf
+write Ctrl-C to the opened stream
+   If stream is not open, try to open it
+   return:
+   True: if write was successful
+   None: not able to open the stream
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.send_ctrl_c ( self,  fd)"
+
+.PP
+.nf
+write Ctrl-C to the opened stream
+   If stream is not open, try to open it
+   return:
+   True: if write was successful
+   None: not able to open the stream
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.send_ctrl_c_con ( self)"
+
+.PP
+.nf
+write Ctrl-C to the opened stream
+   If stream is not open, try to open it
+   return:
+   True: if write was successful
+   None: not able to open the stream
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.send_ctrl_m ( self,  fd)"
+
+.PP
+.nf
+write Ctrl-M to the opened stream
+   If stream is not open, try to open it
+   return:
+   True: if write was successful
+   None: not able to open the stream
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.set_board_state ( self,  state)"
+
+.PP
+.nf
+set the board in a state
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.set_power_state ( self,  state)"
+
+.PP
+.nf
+set the power state to state
+    returns the state of the power
+    True if on
+    False if off
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.set_prompt ( self,  fd,  prompt,  header,  end)"
+
+.PP
+.nf
+set the prompt on the target.
+   True: If setting the prompt was successful
+   False: If settting the prompt failed
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.statusprint ( self,  args)"
+
+.PP
+.nf
+print a status string on stdout.
+    This output can be enabled through self.debugstatus
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.wait_answer ( self,  fd,  string,  retry)"
+
+.PP
+.nf
+wait for identical answer retry times.
+    return: True if found
+    else False
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.wait_prompt ( self,  retry)"
+
+.PP
+.nf
+wait for prompt retry times
+    return: True if found
+    else False
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.write_stream ( self,  fd,  string)"
+
+.PP
+.nf
+write a string to the opened stream
+   If stream is not open, try to open it
+   return:
+   True: if write was successful
+   None: not able to open the stream
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.write_stream_con ( self,  string)"
+
+.PP
+.nf
+write a string to the opened stream
+   If stream is not open, try to open it
+   return:
+   True: if write was successful
+   None: not able to open the stream
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.write_stream_ctrl ( self,  string)"
+
+.PP
+.nf
+write a string to the opened stream
+   If stream is not open, try to open it
+   return:
+   True: if write was successful
+   None: not able to open the stream
+
+.fi
+.PP
+ 
+.SS "def tbotlib\&.tbot\&.write_stream_passwd ( self,  fd,  user,  board)"
+
+.PP
+.nf
+write a passwd for user to the opened stream
+   If stream is not open, try to open it
+   Do not log it.
+   return:
+   True: if write was successful
+   None: not able to open the stream
+
+.fi
+.PP
+ 
+.SH "Member Data Documentation"
+.PP 
+.SS "tuple tbotlib\&.tbot\&.ret = self\&._search_str(self\&.channel_con, retry, self\&.prompt)\fC [static]\fP"
+
+.PP
+.nf
+wait for prompt retry times
+return: True if found
+            else end testcase
+
+.fi
+.PP
+ 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for TBot from the source code\&.

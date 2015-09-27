@@ -3,6 +3,7 @@
 - lab_api:
   add ftp put and get
 - call testcases with arguments
+- add manpages for the testcases
 
 ----------------------------------------
 
@@ -16,6 +17,20 @@
     - FIT
     - append DT
 
+- if tbot fails, start a git biscect section
+  and find out, which commit did it
+  - store commit id when tc is good -> last good commit
+    id is known
+
+  - if ret == fail
+        - start git bisect on lab pc
+          tc should not fail
+          from host pc call "tbot ... tc_lab_git_bisect"
+        - start "tbot ... tc_boardname..."
+        - if return good call "tbot lab_git_bisect good"
+          else "tbot tc_lab_git_biscet_bad"
+          if bisect end comes -> found it        
+
 - testcases for yocto
   - install yocto
   - install meta ..
@@ -28,9 +43,17 @@
   - get source and compile
   - install
 
+- readreg with devmem and compare with default from
+  file:
+  regaddr mask defaultvalue
+
+  - add testcase which fills this file
+
 - pinmux
   - create pinmux file for reference
   - check pinmux (create file and diff with reference)
+  - use readreg
 
 - gpio tests
   - check registers with devmem
+  - use readreg
