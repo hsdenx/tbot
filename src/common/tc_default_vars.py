@@ -88,6 +88,11 @@ except AttributeError:
     self.ub_load_board_env_subdir = 'tbot'
 
 try:
+    self.ub_boot_linux_cmd
+except AttributeError:
+    self.ub_boot_linux_cmd = 'run tbot_boot_linux'
+
+try:
     self.tftpboardname
 except AttributeError:
     self.tftpboardname = self.boardname
