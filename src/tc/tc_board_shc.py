@@ -13,60 +13,14 @@
 #
 # start with
 # python2.7 src/common/tbot.py -c tbot_shc.cfg -t tc_board_shc.py
-# start all testcases for the shc board
+# start all testcases for the shc board linux and linux-stable
 #
 from tbotlib import tbot
 
-#set board state for which the tc is valid
-tb.set_board_state("u-boot")
+tb.statusprint("tc_shc testing linux stable")
+tb.eof_call_tc("tc_board_shc_tests.py")
 
-tb.statusprint("tc_shc u-boot setenv")
-#call ubot setenv
-tb.eof_call_tc("tc_ub_setenv.py")
-
-tb.statusprint("tc_shc linux dmesg checks")
-tb.tc_lx_dmesg_grep_name = "SHC"
-tb.eof_call_tc("tc_lx_dmesg_grep.py")
-tb.tc_lx_dmesg_grep_name = "zigbee"
-tb.eof_call_tc("tc_lx_dmesg_grep.py")
-tb.tc_lx_dmesg_grep_name = "homematic"
-tb.eof_call_tc("tc_lx_dmesg_grep.py")
-tb.tc_lx_dmesg_grep_name = "rtc-pcf8563"
-tb.eof_call_tc("tc_lx_dmesg_grep.py")
-tb.tc_lx_dmesg_grep_name = "tps65217 0-0024"
-tb.eof_call_tc("tc_lx_dmesg_grep.py")
-tb.tc_lx_dmesg_grep_name = "at24 0-0050"
-tb.eof_call_tc("tc_lx_dmesg_grep.py")
-tb.tc_lx_dmesg_grep_name = "Detected MACID"
-tb.eof_call_tc("tc_lx_dmesg_grep.py")
-
-tb.statusprint("tc_shc partition check")
-#call linux tc_lx_partition_check.py
-#for testing usb memstick
-#check if usb stick is authorized
-tb.eof_call_tc("tc_lx_check_usb_authorized.py")
-tb.eof_call_tc("tc_lx_partition_check.py")
-tb.eof_call_tc("tc_lx_bonnie.py")
-
-tb.statusprint("tc_shc eeprom check ")
-#gpio 2_5 is eeprom WP
-#low = write protect
-tb.tc_lx_eeprom_wp_gpio='69'
-tb.tc_lx_eeprom_wp_val='0'
-#call linux tc_lx_eeprom.py
-tb.eof_call_tc("tc_lx_eeprom.py")
-
-#call linux tc_lx_cpufreq.py
-tb.statusprint("tc_shc cpu frequenc check")
-tb.eof_call_tc("tc_lx_cpufreq.py")
-
-tb.tc_lx_dmesg_grep_name = "MPU Reference"
-tb.eof_call_tc("tc_lx_dmesg_grep.py")
-
-tb.statusprint("tc_shc u-boot setenv")
-#call ubot setenv
-tb.eof_call_tc("tc_ub_setenv.py")
-
-# power off board at the end
-tb.eof_call_tc("tc_lab_poweroff.py")
+tb.statusprint("tc_shc testing linux mainline")
+tb.ub_boot_linux_cmd = 'run tbot_boot_linux_ml'
+tb.eof_call_tc("tc_board_shc_tests.py")
 tb.end_tc(True)
