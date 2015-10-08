@@ -24,6 +24,17 @@ import time
 from tbotlib import tbot
 import state_uboot
 import state_linux
+from lab_ssh import _lab_open_ssh
+from lab_ssh import lab_get_password
+from lab_ssh import lab_get_lab_connect_state
+from lab_ssh import lab_connect_lab
+from lab_ssh import lab_lab_open_fd
+from lab_ssh import lab_lab_check_fd
+from lab_ssh import lab_lab_close_fd
+from lab_ssh import lab_recv
+from lab_ssh import lab_get_bytes
+from lab_ssh import lab_write
+from lab_ssh import lab_write_no_ret
 
 class tbot_lab_api(object):
     def __init__(self, tb):
@@ -33,49 +44,14 @@ class tbot_lab_api(object):
         self.opened = False
         self.accept_all = True
         self.fdcount = 0
-        self.__data = []
-        self.__old = []
+        self.data = []
+        self.old = []
 
     def __del__(self):
         time.sleep(1)
 
     def _open_ssh(self):
-        # look in paramiko/demos/demo_simple.py
-        # for more infos how to use host keys ToDo
-        logging.debug("try to open ssh connection")
-        if not self.ssh:
-            self.ssh = paramiko.SSHClient()
-        self.opened = False
-        if self.accept_all == True:
-            #accept all host keys
-            logging.debug("AutoAddPolicy")
-            self.ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-
-        logging.debug("try connection for %s@%s", self.tb.user, self.tb.ip)
-        pword = self.get_password(self.tb.user, "lab")
-        try:
-            self.ssh.connect(self.tb.ip, username=self.tb.user, password=pword)
-        except:
-            logging.warning("no connection for %s@%s", self.tb.user, self.tb.ip)
-            self.ssh.close()
-            return None
-
-        self.opened = True
-        self.chan = []
-
-        # ToDo cleanup this
-        self.channel_ctrl = 0
-        self.channel_con = 1
-        # channel 0 for power
-        self.lab_open_fd()
-        # channel 1 for "console"
-        self.lab_open_fd()
-
-        logging.info("got connection for %s@%s", self.tb.user, self.tb.ip)
-        self.count = 0
-        # http://www.lag.net/paramiko/docs/paramiko.Transport-class.html#set_keepalive
-        self.tr = self.ssh.get_transport()
-        self.tr.set_keepalive(self.tb.keepalivetimeout)
+        _lab_open_ssh(self)
         return True
 
     def get_password(self, user, board):
@@ -89,32 +65,12 @@ class tbot_lab_api(object):
             if (user == 'anotheruser'):
                 password = 'passwordforanotheruser'
         """
-        filename = self.tb.workdir + "/password.py"
-        try:
-            fd = open(filename, 'r')
-        except:
-            logging.warning("Could not find %s", filename)
-            sys.exit(1)
-
-        exec(fd)
-        fd.close()
-        try:
-            password
-        except NameError:
-            logging.info("no password found for %s", user)
-            self.tb.end_tc(False)
-
-        return password
+	return lab_get_password(self, user, board)
 
     def get_lab_connect_state(self):
         """ get state of the connection to the lab
         """
-        if self.opened == True:
-            logging.debug("get connection state to lab OK")
-        else:
-            logging.debug("get connection state to lab False")
-# TODO check it really !!
-        return self.opened
+	return lab_get_lab_connect_state(self)
 
     def connect_lab(self):
         """ connect to the lab and set lab prompt
@@ -122,87 +78,37 @@ class tbot_lab_api(object):
             True, if connect
             False else
         """
-        logging.debug("connecting to lab")
-        st = self.get_lab_connect_state()
-        if st == True:
-            return True
-
-        ret = self._open_ssh()
-        if ret != True:
-            return ret
-
-        # set prompt for the power channel
-        ret = self.tb.set_prompt(self.channel_ctrl, self.tb.labprompt, 'export PS1="\u@\h [\$(date +%k:%M:%S)] ', ' >"')
-        return ret
+	return lab_connect_lab(self)
 
     def lab_open_fd(self):
         """ open a filedescriptor
             return here the fd !! ToDo
         """
-        channel = self.ssh.invoke_shell()
-        self.chan.append(channel)
-        if self.tb.debug:
-            print repr(self.ssh.get_transport())
-        logging.debug(self.ssh.get_transport())
-        channel.settimeout(self.tb.channel_timeout)
-        self.__data.append('')
-        self.__old.append('')
-        self.fdcount += 1
-
-        return True
+	return lab_lab_open_fd(self)
 
     def lab_check_fd(self, fd):
         """ check if  filedescriptor is valid
             ToDo
         """
-        return True
+        return lab_lab_check_fd(self, fd)
 
     def lab_close_fd(self):
         """ close a filedescriptor
             ToDo
         """
-        return True
+        return lab_lab_close_fd(self, fd)
 
     def recv(self, fd):
-        try:
-            self.__data[fd] = self.chan[fd].recv(1024)
-        except socket.timeout:
-            logging.debug("read_bytes: Timeout")
-            return None
-        return True
+        return lab_recv(self, fd)
 
     def get_bytes(self, fd):
-        self.__old[fd] = self.__data[fd]
-        self.__data[fd] = ''
-        return self.__old[fd]
+        return lab_get_bytes(self, fd)
 
     def write(self, fd, string):
-        if (len(string) > self.tb.term_line_length):
-            self.tb.debugprint("tooo long to write %s > %s", len(string), self.tb.term_line_length)
-            logging.debug("tooo long to write %s > %s", len(string), self.tb.term_line_length)
-            self.tb.tc_end(False)
-
-        logging.debug("write: %s@%s: %s", self.tb.user, self.tb.ip, string)
-        self.tb.debugprint("str: %s len: %d\n", string, len(string))
-        # send the complete bytes in 
-        # self.chan[fd].send(string)
-        # leads in errors, as the serial connection
-        # to the console is to slow ...
-        #for i in range(0, len(string)):
-        #    self.chan[fd].send(string[i])
-        #    sleep(0.2)
-
-        self.chan[fd].send(string)
-        # add here a return too ... ToDo: why?
-        self.chan[fd].send('\n')
-        self.chan[fd].send('\n')
-
-        return True
+        return lab_write(self, fd, string)
 
     def write_no_ret(self, fd, string):
-        logging.debug("write: %s@%s: %s", self.tb.user, self.tb.ip, string)
-        self.chan[fd].send(string)
-        return True
+        return lab_write_no_ret(self, fd ,string)
 
     def get_power_state(self, boardname):
         """ Get powerstate of the board in the lab
