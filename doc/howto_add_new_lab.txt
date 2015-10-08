@@ -1,0 +1,36 @@
+How To add a new lab:
+
+- if you use ssh for connecting to the lab host PC
+  (recommended!) it is very easy:
+
+- copy a well known working lab file from src/lab_api
+  for example src/lab_api/denx.py
+
+- There the ssh specific things are exported to
+  src/lab_api/lab_ssh.py, and you don;t have to do this!
+
+- Now you have to adapt 3 functions!
+
+  - get_power_state(self, boardname)
+
+    This function must return in which power state
+    the board boardname is
+
+  - set_power_state(self, boardname, state)
+
+    This function deals with powering on/off
+    your board boardname
+
+  - connect_to_board(self, boardname)
+
+    This function opens a connection to from the
+    lab host PC to the console on the board boardname.
+
+    This could be whatever you want.
+
+    Currently just boards with serial connection used,
+    but do here whatever you need to connect to the console
+    of the board boardname.
+
+Thats it! You have added a new lab, tbot should now to be
+able to execute testcases on your board.

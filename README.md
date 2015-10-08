@@ -1,8 +1,12 @@
 ##tbot
 
 - execute testcases on real hw
+- write testcases in python
 - call testcases from another testcase
-- logfile
+- create logfile
+- Based on ideas from:
+  http://www.denx.de/wiki/DUTS/DUTSDocs
+  but used python instead of expect
 
 ## Demo
 
@@ -22,6 +26,67 @@ Why python?
   file also accessible in buildbot
 
 -------------------------------------------------
+
+Basic ideas:
+
+- testcase:
+  a piece of python code, which contains
+  commands, sended to the boards console. Analyses
+  the output the commands send back. A testcase returns
+  always true if it succeeds, or false if it fails
+
+- board state:
+  A board state defines, in which state the board
+  has to be, when it sends commands to the board.
+  Currently there are 2 board states (u-boot and
+  linux, but more can be added). A board state
+  gets currently detected by analysing the prompt,
+  tbot gets when sending a ctrl-c followed by a return.
+  The prompt tbot expects can be defined in the board
+  configuration file, see later. Boardstates can
+  change within a testcase.
+
+- Lab
+  - There is a Lab host PC, which functions
+    as a switch, which handels incoming tbot
+    connections and routes them to the boards
+    which execute the tests.
+  - it can contain 1 or more boards. The lab host PC
+ 
+- Lab Host PC:
+  - must accept incoming tbot connections (currently
+    ssh)
+  - It must be able to power boards on/off, get the current
+    power state and must at least have a possibility
+    to connect to a console to the board (not necessarily
+    a serial console)
+  - good to have:
+    - tftpserver
+    - nfs server
+    - get source code from wherever you want
+    - able to compile source code
+    - ...
+
+- Board:
+  the real HW, on which you want to execute testcases
+
+Look for more infos into:
+doc/lab_prerequisite.txt
+doc/howto_add_new_lab.txt
+
+Dream:
+
+Setup somewhere a tbot host, which has access to
+labs with boards and do automated nightly builds
+and test the images on real hw. Also find out
+automated, which commit is the cause, when a testcase
+failed ... currently I think, not far away, except
+missing more labs and boards ...
+
+[![tbot_structure](https://github.com/hsdenx/tbot/blob/master/doc/tbot_structure.png)]
+
+-------------------------------------------------
+
 Theory of operation
 steps executed when calling a testcase:
 
