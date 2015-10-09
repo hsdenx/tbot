@@ -219,6 +219,21 @@ except AttributeError:
     self.tc_ub_ubi_write_vol_name = self.tc_ub_ubi_create_vol_name
 
 try:
+    self.tc_ub_ubifs_volume_name
+except AttributeError:
+    self.tc_ub_ubifs_volume_name = 'ubi:rootfs'
+
+try:
+    self.tc_ub_ubifs_ls_dir
+except AttributeError:
+    self.tc_ub_ubifs_ls_dir = '/'
+
+try:
+    self.tc_ub_ubifs_vol_exist_name
+except AttributeError:
+    self.tc_ub_ubifs_vol_exist_name = 'rootfs'
+
+try:
     self.tc_lx_gpio_nr
 except AttributeError:
     self.tc_lx_gpio_nr = '69'

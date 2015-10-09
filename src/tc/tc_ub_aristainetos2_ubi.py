@@ -27,11 +27,25 @@ time.sleep(10)
 #load ub tbot environment
 tb.eof_call_tc("tc_ub_load_board_env.py")
 
+# probe spi nor
 tb.eof_write_con("sf probe")
+
 #nand tests
 tb.tc_ub_ubi_prep_offset = '4096'
 tb.tc_ub_ubi_prep_partname = 'ubi'
 tb.eof_call_tc("tc_ub_ubi_prepare.py")
+
+#check if rootfs volume exists
+tb.tc_ub_ubifs_vol_exist_name = 'rootfs'
+tb.eof_call_tc("tc_ub_ubifs_check_vol_exist.py")
+if tb.tc_return:
+    print("EXISTING")
+else:
+    print("NOT EXISTING")
+#  delete it
+#  check if rootfs volume exists, must fail
+#and create it
+#check if rootfs volume exists
 
 #get file
 tb.tftp_addr_r = tb.tc_ub_ubi_write_addr
@@ -53,6 +67,12 @@ tmp = 'cmp.b ' + tb.tc_ub_ubi_load_addr + ' ' + tb.tc_ub_ubi_write_addr + ' ' + 
 tb.eof_write_con(tmp)
 tb.eof_search_str_in_readline_end_con("!=")
 tb.eof_read_end_state_con(1)
+
+#mount ubifs
+tb.eof_call_tc("tc_ub_ubifs_mount.py")
+#ls "/"
+tb.tc_ub_ubifs_ls_dir = '/'
+tb.eof_call_tc("tc_ub_ubifs_ls.py")
 
 #nor tests
 tb.tc_ub_ubi_prep_offset = '64'
@@ -82,6 +102,7 @@ tmp = "run tbot_cmp_ubi"
 tb.eof_write_con(tmp)
 tb.eof_search_str_in_readline_end_con("!=")
 tb.read_line_retry=read_line_retry_save
+tb.eof_read_end_state_con(0)
 
 # power off board at the end
 tb.eof_call_tc("tc_lab_poweroff.py")
