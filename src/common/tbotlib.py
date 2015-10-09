@@ -378,7 +378,7 @@ class tbot(object):
         logging.debug("read_line n: %d rem: %s", n, self.__remainder[fd])
         logging.info("read %d: %s", fd, self.buf[fd])
         if self.verbose:
-            print("read %d: %s" % (fd, self.buf[fd]))
+            print("read %d: %s" % (fd, self.buf[fd].replace("\n", "")))
         return True
 
     def read_end(self, fd, retry, prompt):
