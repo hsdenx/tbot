@@ -16,7 +16,7 @@
 # - write image into ubi volume
 from tbotlib import tbot
 
-logging.info("args: %s %s", tb.tc_ub_ubi_write_addr, tb.tc_ub_ubi_write_vol_name)
+logging.info("args: %s %s %s", tb.tc_ub_ubi_write_addr, tb.tc_ub_ubi_write_vol_name, tb.tc_ub_ubi_write_len)
 
 #set board state for which the tc is valid
 tb.set_board_state("u-boot")
@@ -25,11 +25,12 @@ tb.set_board_state("u-boot")
 #does not work, beause console hangs when getting $ ... :-( ToDo
 #or make a ub env command for this
 #or get the filesize from the tftp...
-tmp = "ubi write " + tb.tc_ub_ubi_write_addr + " " + tb.tc_ub_ubi_write_vol_name + " 700000"
+tmp = "ubi write " + tb.tc_ub_ubi_write_addr + " " + tb.tc_ub_ubi_write_vol_name + ' ' + tb.tc_ub_ubi_write_len
 tb.eof_write_con(tmp)
 tb.eof_search_str_in_readline_con("written to volume")
+tb.eof_read_end_state_con(0)
 
-tmp = "ubi"
+tmp = "ubi info l"
 tb.eof_write_con(tmp)
 tb.eof_read_end_state_con(1)
 

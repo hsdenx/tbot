@@ -12,7 +12,7 @@
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 # start with
-# python2.7 src/common/tbot.py -c tbot_aristainetos2.cfg -t tc_aristainetos2_ubi.py
+# python2.7 src/common/tbot.py -c tbot_aristainetos2.cfg -t tc_ub_aristainetos2_ubi.py
 # ubi testcases for the aristainetos2 board
 #
 import time
@@ -32,6 +32,27 @@ tb.eof_write_con("sf probe")
 tb.tc_ub_ubi_prep_offset = '4096'
 tb.tc_ub_ubi_prep_partname = 'ubi'
 tb.eof_call_tc("tc_ub_ubi_prepare.py")
+
+#get file
+tb.tftp_addr_r = tb.tc_ub_ubi_write_addr
+tb.tftp_file = '/tftpboot/aristainetos/tbot/rootfs-minimal.ubifs'
+tb.eof_call_tc("tc_ub_tftp_file.py")
+
+#write it in ubi volume
+tb.tc_ub_ubi_write_len = '0xc00000'
+tb.tc_ub_ubi_write_vol_name = 'rootfs'
+tb.eof_call_tc("tc_ub_ubi_write.py")
+
+#read file from ubi volume
+tb.tc_ub_ubi_load_addr = '11000000'
+tb.tc_ub_ubi_load_name = tb.tc_ub_ubi_write_vol_name
+tb.eof_call_tc("tc_ub_ubi_load.py")
+
+#cmp if all bytes are the same
+tmp = 'cmp.b ' + tb.tc_ub_ubi_load_addr + ' ' + tb.tc_ub_ubi_write_addr + ' ' + tb.tc_ub_ubi_write_len
+tb.eof_write_con(tmp)
+tb.eof_search_str_in_readline_end_con("!=")
+tb.eof_read_end_state_con(1)
 
 #nor tests
 tb.tc_ub_ubi_prep_offset = '64'

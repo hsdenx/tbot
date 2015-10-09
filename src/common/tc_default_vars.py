@@ -204,6 +204,11 @@ except AttributeError:
     self.tc_ub_ubi_create_vol_sz = "600000"
 
 try:
+    self.tc_ub_ubi_write_len
+except AttributeError:
+    self.tc_ub_ubi_write_len = '0xc00000'
+
+try:
     self.tc_ub_ubi_write_addr
 except AttributeError:
     self.tc_ub_ubi_write_addr = self.tc_ub_ubi_load_addr
