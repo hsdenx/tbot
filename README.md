@@ -5,7 +5,9 @@
 - call testcases from another testcase
 - create logfile
 - Based on ideas from:
+
   http://www.denx.de/wiki/DUTS/DUTSDocs
+
   but used python instead of expect
 
 ## Demo
@@ -78,12 +80,15 @@ Dream:
 
 Setup somewhere a tbot host, which has access to
 labs with boards and do automated nightly builds
-and test the images on real hw. Also find out
-automated, which commit is the cause, when a testcase
-failed ... currently I think, not far away, except
-missing more labs and boards ...
+and test the images on real hw.
 
-[![tbot_structure](https://github.com/hsdenx/tbot/blob/master/doc/tbot_structure.png)]
+http://xeidos.ddns.net/buildbot/waterfall
+
+Also find out automated, which commit is the cause,
+when a testcase failed ... currently I think, not
+far away, except missing more labs and boards ...
+
+![tbot_structure](https://github.com/hsdenx/tbot/blob/master/doc/tbot_structure.png)
 
 -------------------------------------------------
 
