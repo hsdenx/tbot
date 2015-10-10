@@ -21,4 +21,5 @@ ret = tb.set_power_state("off")
 if ret != False:
     tb.end_tc(False)
 
+tb.read_end_state_con(1)
 tb.end_tc(True)
