@@ -16,6 +16,7 @@ import socket
 import datetime
 import re
 import sys
+import traceback
 import os
 from struct import *
 import time
@@ -151,7 +152,7 @@ class tbot(object):
         return True
 
     def failure(self):
-        logging.info('End of TBOT: failure')
+        logging.info('End of TBOT: failure %s', sys.exc_info()[0])
         self.statusprint("End of TBOT: failure")
         self._ret = False
         sys.exit(1)
@@ -603,7 +604,7 @@ class tbot(object):
         logging.debug("call_tc filepath %s", filepath)
 	try:
             fd = open(filepath, 'r')
-	except:
+	except IOError:
             logging.warning("Could not find tc name: %s", name)
             return False
         tb = self
@@ -618,6 +619,7 @@ class tbot(object):
             logging.debug("tc %s exception ret: %s", name, ret)
         except:
             logging.debug("tc %s exception", name)
+            traceback.print_exc(file=sys.stdout)
             fd.close()
             self._main -= 1
             return False
