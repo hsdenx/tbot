@@ -311,3 +311,22 @@ try:
     self.tc_lx_dmesg_grep_name
 except AttributeError:
     self.tc_lx_dmesg_grep_name = "zigbee"
+
+try:
+    self.tc_lx_readreg_addr
+except AttributeError:
+    self.tc_lx_readreg_addr = "0x44e10800"
+
+try:
+    self.tc_lx_readreg_mask
+except AttributeError:
+    self.tc_lx_readreg_mask = "0x000000ff"
+
+try:
+    self.tc_lx_readreg_type
+except AttributeError:
+    self.tc_lx_readreg_type = "w"
+try:
+    self.tc_lx_readreg_value
+except AttributeError:
+    self.tc_lx_readreg_value = "0x31"
