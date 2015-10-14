@@ -40,6 +40,9 @@ tb.eof_call_tc("tc_lx_dmesg_grep.py")
 tb.tc_lx_dmesg_grep_name = "Detected MACID"
 tb.eof_call_tc("tc_lx_dmesg_grep.py")
 
+tb.statusprint("tc_shc pinmux check")
+tb.eof_call_tc("tc_lx_check_reg_file.py")
+
 tb.statusprint("tc_shc partition check")
 #call linux tc_lx_partition_check.py
 #for testing usb memstick
