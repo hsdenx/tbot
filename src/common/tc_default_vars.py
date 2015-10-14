@@ -326,7 +326,23 @@ try:
     self.tc_lx_readreg_type
 except AttributeError:
     self.tc_lx_readreg_type = "w"
+
 try:
     self.tc_lx_readreg_value
 except AttributeError:
     self.tc_lx_readreg_value = "0x31"
+
+try:
+    self.tc_lx_create_reg_file_name
+except AttributeError:
+    self.tc_lx_create_reg_file_name = "pinmux.reg"
+
+try:
+    self.tc_lx_create_reg_file_start
+except AttributeError:
+    self.tc_lx_create_reg_file_start = "0x44e10800"
+
+try:
+    self.tc_lx_create_reg_file_stop
+except AttributeError:
+    self.tc_lx_create_reg_file_stop = "0x44e10a34"
