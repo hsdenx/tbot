@@ -34,9 +34,12 @@ except:
     parser.add_option("-v", "--verbose",
            action="store_true", dest="verbose", default=False,
            help="be verbose, print all read/write to stdout")
+    parser.add_option("-w", "--workdir",
+           dest="workdir", default=os.getcwd(),
+           help="set workdir, default os.getcwd()")
     (options, args) = parser.parse_args()
     print("**** option cfg: %s log: %s tc: %s v %d" % (options.cfgfile, options.logfile, options.tc, options.verbose))
-    tb = tbot(options.cfgfile, options.logfile, options.verbose)
+    tb = tbot(options.workdir, options.cfgfile, options.logfile, options.verbose)
 
 ret = tb.call_tc(options.tc)
 if ret == False:

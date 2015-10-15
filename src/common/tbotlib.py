@@ -25,7 +25,7 @@ import importlib
 
 # paramiko/paramiko/packet.py
 class tbot(object):
-    def __init__(self, cfgfile, logfilen, verbose):
+    def __init__(self, workdir, cfgfile, logfilen, verbose):
         ## enable debug output
         self.debug = False
         ## enable debugstatus output
@@ -35,10 +35,10 @@ class tbot(object):
         ## contains return value from a tc
         self.tc_return = True
         self.cfgfile = cfgfile
-        self.workdir = os.getcwd()
+        self.workdir = workdir
         self.once = 1
 
-        print("CUR WORK PATH: ", os.getcwd())
+        print("CUR WORK PATH: ", self.workdir)
         print("CFGFILE ", self.cfgfile)
         now = datetime.datetime.now()
         # load config file
