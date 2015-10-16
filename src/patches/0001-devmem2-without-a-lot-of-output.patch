@@ -1,0 +1,35 @@
+From 49a4d40959ab5fcbb4a14818aa90c0b951a92545 Mon Sep 17 00:00:00 2001
+From: Heiko Schocher <hs@denx.de>
+Date: Sat, 26 Sep 2015 06:53:52 +0200
+Subject: [PATCH] devmem2: without a lot of output
+
+Signed-off-by: Heiko Schocher <hs@denx.de>
+---
+ devmem2.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/devmem2.c b/devmem2.c
+index 9bcb79d..5256fe8 100644
+--- a/devmem2.c
++++ b/devmem2.c
+@@ -73,7 +73,7 @@ int main(int argc, char **argv) {
+     /* Map one page */
+     map_base = mmap(0, MAP_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, target & ~MAP_MASK);
+     if(map_base == (void *) -1) FATAL;
+-    printf("Memory mapped at address %p.\n", map_base); 
++   // printf("Memory mapped at address %p.\n", map_base);
+     fflush(stdout);
+     
+     virt_addr = map_base + (target & MAP_MASK);
+@@ -91,7 +91,7 @@ int main(int argc, char **argv) {
+ 			fprintf(stderr, "Illegal data type '%c'.\n", access_type);
+ 			exit(2);
+ 	}
+-    printf("Value at address 0x%X (%p): 0x%X\n", target, virt_addr, read_result); 
++    printf("Value at address 0x%X (): 0x%X\n", target, read_result);
+     fflush(stdout);
+ 
+ 	if(argc > 3) {
+-- 
+2.1.0
+
