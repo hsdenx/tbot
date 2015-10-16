@@ -13,8 +13,8 @@
 #
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_create_reg_file.py
-# creates a reg file tb.tc_lx_create_reg_file_name on the lab host
-# in tb.tc_lab_source_dir
+# creates a reg file tb.tc_lx_create_reg_file_name on the tbot host
+# in tb.workdir
 # read from tb.tc_lx_create_reg_file_start to tb.tc_lx_create_reg_file_stop
 # and writes the results in the regfile
 # format of the regfile:
@@ -22,6 +22,7 @@
 # This reg file can be used as a default file, how the
 # registers must be setup, check it with testcase
 # src/tc/tc_lx_check_reg_file.py
+# ToDo: use the file from the lab host, not the tbot host
 from tbotlib import tbot
 
 logging.info("args: %s %s %s %s %s", tb.tc_lx_create_reg_file_name, tb.tc_lx_create_reg_file_start, tb.tc_lx_create_reg_file_stop, tb.tc_lx_readreg_mask, tb.tc_lx_readreg_type)
@@ -29,7 +30,7 @@ logging.info("args: %s %s %s %s %s", tb.tc_lx_create_reg_file_name, tb.tc_lx_cre
 #set board state for which the tc is valid
 tb.set_board_state("linux")
 
-fname = tb.tc_lab_source_dir + "/" + tb.tc_lx_create_reg_file_name
+fname = tb.workdir + "/" + tb.tc_lx_create_reg_file_name
 try:
     fd = open(fname, 'r+')
 except IOError:

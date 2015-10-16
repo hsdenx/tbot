@@ -14,10 +14,11 @@
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_check_reg_file.py
 # checks if the default values in reg file tb.tc_lx_create_reg_file_name
-# on the lab host in tb.tc_lab_source_dir have the same values, as the
+# on the tbot host in tb.workdir have the same values, as the
 # registers on the board
 # format of the regfile:
 # regaddr mask type defval
+# ToDo: use the file from the lab host, not the tbot host
 from tbotlib import tbot
 
 logging.info("args: %s", tb.tc_lx_create_reg_file_name)
@@ -25,7 +26,7 @@ logging.info("args: %s", tb.tc_lx_create_reg_file_name)
 #set board state for which the tc is valid
 tb.set_board_state("linux")
 
-fname = tb.tc_lab_source_dir + "/" + tb.tc_lx_create_reg_file_name
+fname = tb.workdir + "/" + tb.tc_lx_create_reg_file_name
 try:
     fd = open(fname, 'r')
 except IOError:
