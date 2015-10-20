@@ -1,0 +1,6 @@
+# pinmux reg am335x
+# regaddr mask type defval
+0x48002270 0xffffffff          w        0x0
+0x48002274 0xffffffff          w  0x4000000
+0x48002278 0xffffffff          w        0x0
+0x4800227c 0xffffffff          w        0x0
