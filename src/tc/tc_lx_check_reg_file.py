@@ -43,7 +43,7 @@ for line in fd.readlines():
     tb.eof_search_str_in_readline_con("Value at address")
     tmp=self.buf[1].split(":")[1]
     tmp=tmp[1:]
-    if (int(tmp, 16) & int(cols[1], 16)) != int(cols[3], 16):
+    if (int(tmp, 16) & int(cols[1], 16)) != (int(cols[3], 16) & int(cols[1], 16)):
         logging.info("args: %s %s & %s != %s", tb.tc_lx_create_reg_file_name, tmp, cols[1], cols[3])
         tb.end_tc(False)
 
