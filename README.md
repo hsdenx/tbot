@@ -49,15 +49,14 @@ Basic ideas:
   change within a testcase.
 
 - Lab
-  - There is a Lab host PC, which functions
-    as a switch, which handels incoming tbot
-    connections and routes them to the boards
-    which execute the tests.
-  - it can contain 1 or more boards. The lab host PC
- 
+  - a Lab contains a lab host PC and 1-n boards
+    on which testcases are executed.
+
 - Lab Host PC:
   - must accept incoming tbot connections (currently
     ssh)
+  - it works as a switch and routes incoming tbot
+    connections to to the boards in the lab.
   - It must be able to power boards on/off, get the current
     power state and must at least have a possibility
     to connect to a console to the board (not necessarily
@@ -70,11 +69,13 @@ Basic ideas:
     - ...
 
 - Board:
-  the real HW, on which you want to execute testcases
+  the real HW, on which testcases are executed.
 
 Look for more infos into:
+```
 doc/lab_prerequisite.txt
 doc/howto_add_new_lab.txt
+```
 
 Dream:
 
@@ -123,15 +124,21 @@ steps executed when calling a testcase:
   - u-boot: src/lab_api/state_uboot.py
     - connect to serial
     - try to get U-Boot prompt
+
       if not, reset board, wait for U-Boot prompt
+
       if not tc fail
 
   - linux: src/lab_api/state_linux.py
     - connect to serial
     - try to get linux tbot prompt
+
       if not, boot linux with using testcase:
+
          src/tc/tc_ub_boot_linux.py
+
          then get linux prompt, and set tbot linux prompt
+
          if not tc fail
 
 after this steps, we are ready to execute the testcase.
