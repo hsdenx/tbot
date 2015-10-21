@@ -18,25 +18,15 @@ import time
 sys.path.append("./common")
 from tbotlib import tbot
 
-def u_boot_login(tb, state, retry):
-    # check, if we get a prompt
-    # problem, what sending to u-boot, to get back a prompt?
-    ret = tb.send_ctrl_c(tb.channel_con)
-    if ret != True:
-        return False
-    ret = tb.send_ctrl_m(tb.channel_con)
-    if ret != True:
-        return False
-
+def u_boot_parse_input(tb, state):
+    logging.debug("------------------- parse input")
     reg2 = re.compile('noautoboot')
     reg = re.compile('autoboot')
-    i = 0
-    while(i < retry):
+    while(True):
         ret = tb.read_line(tb.channel_con, 1)
         logging.debug("setb a rl ret: %s buf: %s", ret, tb.buf[tb.channel_con])
         if ret == None:
-            i += 1
-            continue
+            return False
 
         res = reg2.search(tb.buf[tb.channel_con])
         if res:
@@ -48,22 +38,40 @@ def u_boot_login(tb, state, retry):
             tb.send_ctrl_m(tb.channel_con)
         else:
             if ret == True:
-                i = 0
                 ret2 = tb.is_end_fd(tb.channel_con, tb.buf[tb.channel_con])
                 logging.debug("setb T buf: %s ret2: %s", tb.buf[tb.channel_con], ret2)
                 if ret2:
                     logging.info("switched to state %s", state)
                     return True
-            if ret == False:
-                ret2 = tb.is_end_fd(tb.channel_con, tb.buf[tb.channel_con])
-                logging.debug("setb T buf: %s ret2: %s", tb.buf[tb.channel_con], ret2)
-                if ret2 == True:
-                    return True
             else:
-                #Timeout
-                logging.debug("setb Timeout%s", i)
-                i += 1
+                if ret == False:
+                    ret2 = tb.is_end_fd(tb.channel_con, tb.buf[tb.channel_con])
+                    logging.debug("setb T buf: %s ret2: %s", tb.buf[tb.channel_con], ret2)
+                    if ret2 == True:
+                        return True
+                else:
+                    #Timeout
+                    logging.debug("------------------- parse input Timeout end False")
+                    return False
     return False
+
+def u_boot_login(tb, state, retry):
+    # check, if we get a prompt
+    # problem, what sending to u-boot, to get back a prompt?
+    logging.debug("------------------- u_boot_login")
+    ret = u_boot_parse_input(tb, state)
+    if ret:
+        return True
+
+    logging.debug("------------------- u_boot_login ret %d", ret)
+    ret = tb.send_ctrl_c(tb.channel_con)
+    if ret != True:
+        return False
+    ret = tb.send_ctrl_m(tb.channel_con)
+    if ret != True:
+        return False
+    ret = u_boot_parse_input(tb, state)
+    return ret
 
 def u_boot_set_board_state(tb, state, retry):
     """ set the connection state to the board
