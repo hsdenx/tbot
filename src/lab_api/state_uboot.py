@@ -26,6 +26,7 @@ def u_boot_parse_input(tb, state):
         ret = tb.read_line(tb.channel_con, 1)
         logging.debug("setb a rl ret: %s buf: %s", ret, tb.buf[tb.channel_con])
         if ret == None:
+            logging.debug("------------------- parse input Timeout end False")
             return False
 
         res = reg2.search(tb.buf[tb.channel_con])
@@ -48,6 +49,7 @@ def u_boot_parse_input(tb, state):
                     ret2 = tb.is_end_fd(tb.channel_con, tb.buf[tb.channel_con])
                     logging.debug("setb T buf: %s ret2: %s", tb.buf[tb.channel_con], ret2)
                     if ret2 == True:
+                        logging.debug("------------------- parse input Timeout end True")
                         return True
                 else:
                     #Timeout
@@ -76,6 +78,7 @@ def u_boot_login(tb, state, retry):
 def u_boot_set_board_state(tb, state, retry):
     """ set the connection state to the board
     """
+    logging.debug("------------------- set board state")
     ret = False
     tmp = "switch state to " + state
     logging.info(tmp)
@@ -97,9 +100,11 @@ def u_boot_set_board_state(tb, state, retry):
     # switch to u-boot if not ?? repower ??
     ret = tb.lab.set_power_state(tb.boardlabpowername, "off")
     if ret == False:
+        tb.read_end_state_con(2)
         time.sleep(2)
         ret = tb.lab.set_power_state(tb.boardlabpowername, "on")
         if ret != True:
+            logging.debug("------------------- set board state failure")
             tb.failure()
             return False
 
@@ -107,6 +112,7 @@ def u_boot_set_board_state(tb, state, retry):
     if ret == True:
         return True
 
+    logging.debug("------------------- set board state failure end")
     # maybe connect to a BDI ?
     # currently failure
     tb.failure()

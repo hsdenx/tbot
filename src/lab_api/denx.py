@@ -144,7 +144,6 @@ class tbot_lab_api(object):
         if not ret:
             return ret
         ret = self.tb.read_end(self.channel_ctrl, 2, self.tb.labprompt)
-
         ret = self.get_power_state(boardname)
         return ret
 
