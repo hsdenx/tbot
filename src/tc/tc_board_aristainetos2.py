@@ -22,7 +22,7 @@ from tbotlib import tbot
 tb.set_board_state("u-boot")
 
 #this board needs some time to settle
-time.sleep(5)
+time.sleep(10)
 #call get u-boot source
 #cloning needs a bigger timeout, (git clone has no output)
 read_line_retry_save=tb.read_line_retry
