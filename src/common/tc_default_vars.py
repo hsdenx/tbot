@@ -346,3 +346,11 @@ try:
     self.tc_lx_create_reg_file_stop
 except AttributeError:
     self.tc_lx_create_reg_file_stop = "0x44e10a34"
+
+try:
+    self.tc_lx_regulator_nrs
+except AttributeError:
+    self.tc_lx_regulator_nrs = ['0 regulator-dummy -', '1 hsusb1_vbus 5000000',
+		'2 vmmc 3300000', '3 pbias_mmc_omap2430 3000000',
+		'4 DCDC1 1200000', '5 DCDC2 3300000', '6 DCDC3 1800000',
+		'7 LDO1 1800000', '8 LDO2 3300000']
