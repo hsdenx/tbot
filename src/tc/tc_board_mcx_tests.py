@@ -52,6 +52,9 @@ files = ['src/files/mcx_pinmux_part1.reg',
 for tb.tc_lx_create_reg_file_name in files:
     tb.eof_call_tc("tc_lx_check_reg_file.py")
 
+tb.statusprint("tc_mcx regulator check")
+tb.eof_call_tc("tc_lx_regulator.py")
+
 #call linux tc_lx_partition_check.py
 tb.eof_call_tc("tc_lx_partition_check.py")
 tb.eof_call_tc("tc_lx_bonnie.py")
