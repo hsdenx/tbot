@@ -36,8 +36,7 @@ checks = ['htkw mcx',
 'rtc-ds1307 0-0068: setting system',
 'input: EP0700M06',
 'Initialized drm',
-'Initialized omapdrm',
-'asix 2-1.3:1.0 eth1: register']
+'Initialized omapdrm']
 
 for tb.tc_lx_dmesg_grep_name in checks:
     tb.eof_call_tc("tc_lx_dmesg_grep.py")
