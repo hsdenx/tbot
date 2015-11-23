@@ -22,6 +22,10 @@ logging.info("args: %s %s %s", tb.boardname, tb.ub_load_board_env_addr, tb.ub_lo
 #set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
+#load U-Boot Env only if allowed
+if tb.tc_ub_boot_linux_load_env != 1:
+    tb.end_tc(True)
+
 tmp = 'mw ' + tb.ub_load_board_env_addr + ' 0 0x4000;tftp ' + tb.ub_load_board_env_addr + ' /tftpboot/' + tb.tftpboardname + '/' + tb.ub_load_board_env_subdir + '/env.txt;env import -t ' + tb.ub_load_board_env_addr
 tb.eof_write_con(tmp)
 ret = tb.eof_search_str_in_readline_con("Bytes transferred")
