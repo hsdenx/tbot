@@ -38,11 +38,28 @@ except IOError:
     tb.end_tc(False)
 
 #write comment
-fd.write("# pinmux reg am335x\n")
+# get Processor, Hardware
+tmp='cat /proc/cpuinfo'
+tb.eof_write_con(tmp)
+tb.eof_search_str_in_readline_con("Processor")
+tmp=self.buf[1].split(":")[1]
+processor=tmp[1:]
+tb.eof_search_str_in_readline_con("Hardware")
+hw=self.buf[1].split(":")[1]
+tb.eof_read_end_state_con(0)
+tmp='cat /proc/version'
+tb.eof_write_con(tmp)
+tb.read_line(self.channel_con, 0)
+tmp=self.buf[1]
+tb.eof_read_end_state_con(0)
+
+fd.write("# pinmux\n")
+fd.write("# processor: %s\n" % processor)
+fd.write("# hardware : %s\n" % hw)
+fd.write("# Linux    : %s\n" % tmp)
 fd.write("# regaddr mask type defval\n")
 
 #read from - to
-# 0x44e10800 - 0x44e10a34
 tb.tc_lx_readreg_mask = '0xffffffff'
 start = int(tb.tc_lx_create_reg_file_start, 16)
 stop = int(tb.tc_lx_create_reg_file_stop, 16)
@@ -59,10 +76,11 @@ for i in xrange(start, stop, step):
     tmp = 'devmem2 ' + hex(i) + " " + tb.tc_lx_readreg_type
     tb.eof_write_con(tmp)
     tb.eof_search_str_in_readline_con("opened")
-    tb.eof_search_str_in_readline_con("Value at address")
-    tmp=self.buf[1].split(":")[1]
-    tmp=tmp[1:]
-    fd.write('%-10s %10s %10s %10s\n' % (hex(i), tb.tc_lx_readreg_mask, tb.tc_lx_readreg_type, tmp))
+    ret = tb.search_str_in_readline_con("Value at address")
+    if ret == True:
+        tmp=self.buf[1].split(":")[1]
+        tmp=tmp[1:]
+        fd.write('%-10s %10s %10s %10s\n' % (hex(i), tb.tc_lx_readreg_mask, tb.tc_lx_readreg_type, tmp))
 
 fd.close()
 tb.end_tc(True)
