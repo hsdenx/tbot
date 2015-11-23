@@ -98,6 +98,11 @@ except AttributeError:
     self.ub_boot_linux_cmd = 'run tbot_boot_linux'
 
 try:
+    self.tc_lab_compile_uboot_boardname
+except AttributeError:
+    self.tc_lab_compile_uboot_boardname = self.boardname
+
+try:
     self.tftpboardname
 except AttributeError:
     self.tftpboardname = self.boardname

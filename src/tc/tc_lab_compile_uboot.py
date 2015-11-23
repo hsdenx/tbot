@@ -22,7 +22,7 @@ tmp = "make mrproper"
 tb.eof_write_ctrl(tmp)
 tb.eof_read_end_state_ctrl(1)
 
-tmp = "make " + tb.boardname + "_defconfig"
+tmp = "make " + tb.tc_lab_compile_uboot_boardname + "_defconfig"
 tb.eof_write_ctrl(tmp)
 tb.eof_search_str_in_readline_ctrl("configuration written to .config")
 tb.read_line_retry=read_line_retry_save
