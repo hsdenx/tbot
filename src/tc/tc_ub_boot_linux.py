@@ -22,8 +22,9 @@ logging.info("args: %s", tb.ub_boot_linux_cmd)
 #set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
-# load U-Boot environment variables for tbot
-tb.eof_call_tc("tc_ub_load_board_env.py")
+if tb.tc_ub_boot_linux_load_env == 1:
+    # load U-Boot environment variables for tbot
+    tb.eof_call_tc("tc_ub_load_board_env.py")
 
 #run tbot_boot_linux
 tb.eof_write_con(tb.ub_boot_linux_cmd)

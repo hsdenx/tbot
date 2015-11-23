@@ -41,6 +41,11 @@ try:
 except AttributeError:
     self.setenv_value = 'hulalahups'
 
+try:
+    self.tc_ub_boot_linux_load_env
+except AttributeError:
+    self.tc_ub_boot_linux_load_env = 1
+
 #src/tc/tc_tftp_file.py
 try:
     self.tftp_addr_r
