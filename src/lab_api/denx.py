@@ -233,12 +233,17 @@ class tbot_lab_api(object):
         reg3 = re.compile("noautoboot")
         reg4 = re.compile("autoboot")
         reg5 = re.compile("Connection closed")
+        reg6 = re.compile(self.tb.uboot_prompt)
+        reg7 = re.compile(self.tb.linux_prompt)
         i = 0
         retry = 3
         while(i < retry):
             ret = self.tb.read_line(self.channel_con, 1)
             if ret == None:
                 i += 1
+                if i >= retry:
+                    self.tb.check_debugger()
+                    i = 0
                 continue
 
             res = reg.search(self.tb.buf[self.channel_con])
@@ -262,6 +267,17 @@ class tbot_lab_api(object):
             res = reg5.search(self.tb.buf[self.channel_con])
             if res:
                 return False
+
+            res = reg6.search(self.tb.buf[self.channel_con])
+            if res:
+                logging.info("connected to %s state uboot", boardname)
+                return True
+
+            res = reg7.search(self.tb.buf[self.channel_con])
+            if res:
+                logging.info("connected to %s state linux", boardname)
+                return True
+            i = 0
 
         logging.info("connected to %s", boardname)
         return True
