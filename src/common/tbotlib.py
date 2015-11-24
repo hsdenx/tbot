@@ -392,6 +392,23 @@ class tbot(object):
             print("read %d: %s" % (fd, self.buf[fd].replace("\n", "")))
         return True
 
+    def flush_fd(self, fd):
+        while True:
+            ret = self.read_line(fd, 1)
+            if not ret:
+                if (len(self.buf[fd])) == 0:
+                    return False
+
+    def flush_con(self):
+        """ read out all chars in console fd
+        """
+        self.flush_fd(self.channel_con)
+
+    def flush_ctrl(self):
+        """ read out all chars in ctrl fd
+        """
+        self.flush_fd(self.channel_ctrl)
+
     def read_end(self, fd, retry, prompt):
         """read until end is detected. End is detected if
            shell prompt is read.
