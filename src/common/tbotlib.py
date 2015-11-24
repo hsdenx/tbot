@@ -128,6 +128,16 @@ class tbot(object):
         ret = self.lab.set_power_state(self.boardlabpowername, state)
         return ret
 
+    def check_debugger(self):
+        if self.board_has_debugger == 1:
+            from lab_bdi import bdi_class
+            bdi = bdi_class(self)
+            bdi.bdi_connect()
+            #read all pending chars from console
+            self.read_end_state_con(2)
+            bdi.send_bdi_cmd_wait_prompt(self.lab_bdi_upd_uboot_bdi_run)
+            bdi.bdi_quit()
+
     def check_state(self):
         """ check the state of the connection to the board
         """

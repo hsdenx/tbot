@@ -366,6 +366,11 @@ except AttributeError:
 		'7 LDO1 1800000', '8 LDO2 3300000']
 
 try:
+    self.board_has_debugger
+except AttributeError:
+    self.board_has_debugger = 0
+
+try:
     self.lab_bdi_upd_uboot_bdi_cmd
 except AttributeError:
     self.lab_bdi_upd_uboot_bdi_cmd = 'telnet bdi6'
