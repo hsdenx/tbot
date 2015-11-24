@@ -387,14 +387,29 @@ class tbot(object):
            shell prompt is read.
         """
         while True:
+            i = 0
             ret = self.read_line(fd, retry)
             logging.debug("read_end rl ret: %s buf: %s", ret, self.buf[fd])
             if not ret:
                 if (len(self.buf[fd])) == 0:
-                    return False
-            ret = self.is_end_fd(fd, self.buf[fd])
-            if ret:
-                return True
+                    if i > retry:
+                        return False
+                    else:
+                        i += 1
+                else:
+                    ret = self.is_end(self.buf[fd], prompt)
+                    if ret:
+                        return True
+                    else:
+                        if i > retry:
+                            return False
+                        else:
+                            i += 1
+            else:
+                i = 0
+                ret = self.is_end(self.buf[fd], prompt)
+                if ret:
+                    return True
 
     def read_end_state(self, fd, retry):
         """read until end is detected. End is detected if
