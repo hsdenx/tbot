@@ -399,3 +399,18 @@ try:
     self.lab_bdi_upd_uboot_bdi_run
 except AttributeError:
     self.lab_bdi_upd_uboot_bdi_run = 'res run'
+
+try:
+    self.board_git_bisect_get_source_tc
+except AttributeError:
+    self.board_git_bisect_get_source_tc = 'tc_lab_get_uboot_source.py'
+
+try:
+    self.board_git_bisect_call_tc
+except AttributeError:
+    self.board_git_bisect_call_tc = 'tc_board_tqm5200s_ub_comp_install.py'
+
+try:
+    self.board_git_bisect_good_commit
+except AttributeError:
+    self.board_git_bisect_good_commit = 'f9860cf'
