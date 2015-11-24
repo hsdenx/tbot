@@ -364,3 +364,33 @@ except AttributeError:
 		'2 vmmc 3300000', '3 pbias_mmc_omap2430 3000000',
 		'4 DCDC1 1200000', '5 DCDC2 3300000', '6 DCDC3 1800000',
 		'7 LDO1 1800000', '8 LDO2 3300000']
+
+try:
+    self.lab_bdi_upd_uboot_bdi_cmd
+except AttributeError:
+    self.lab_bdi_upd_uboot_bdi_cmd = 'telnet bdi6'
+
+try:
+    self.lab_bdi_upd_uboot_bdi_prompt
+except AttributeError:
+    self.lab_bdi_upd_uboot_bdi_prompt = 'BDI>'
+
+try:
+    self.lab_bdi_upd_uboot_bdi_era
+except AttributeError:
+    self.lab_bdi_upd_uboot_bdi_era = 'era'
+
+try:
+    self.lab_bdi_upd_uboot_bdi_prog
+except AttributeError:
+    self.lab_bdi_upd_uboot_bdi_prog = 'prog 0xfc000000'
+
+try:
+    self.lab_bdi_upd_uboot_bdi_file
+except AttributeError:
+    self.lab_bdi_upd_uboot_bdi_file = '/tftpboot/tqm5200s/tbot/u-boot.bin'
+
+try:
+    self.lab_bdi_upd_uboot_bdi_run
+except AttributeError:
+    self.lab_bdi_upd_uboot_bdi_run = 'res run'
