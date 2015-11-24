@@ -237,13 +237,17 @@ class tbot_lab_api(object):
         reg7 = re.compile(self.tb.linux_prompt)
         i = 0
         retry = 3
+        debugger = 0
         while(i < retry):
             ret = self.tb.read_line(self.channel_con, 1)
             if ret == None:
                 i += 1
+                if debugger:
+                    continue
                 if i >= retry:
                     self.tb.check_debugger()
                     i = 0
+                    debugger = 1
                 continue
 
             res = reg.search(self.tb.buf[self.channel_con])
