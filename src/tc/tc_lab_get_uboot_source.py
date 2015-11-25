@@ -43,4 +43,8 @@ if ret == True:
     tb.eof_search_str_in_readline_end_ctrl(tb.tc_lab_end_git_checkout_text)
 
 tb.eof_read_end_state_ctrl(1)
+
+# check if there are patches to apply
+tb.eof_call_tc("tc_lab_apply_patches.py")
+
 tb.end_tc(True)
