@@ -23,6 +23,11 @@ tb.set_board_state("u-boot")
 
 #this board needs some time to settle
 time.sleep(10)
+
+#delete old u-boot source tree
+tb.tc_lab_rm_dir = tb.tc_lab_source_dir + '/u-boot-' + tb.boardlabname
+tb.eof_call_tc("tc_lab_rm_dir.py")
+
 #call get u-boot source
 #cloning needs a bigger timeout, (git clone has no output)
 read_line_retry_save=tb.read_line_retry
@@ -50,6 +55,9 @@ tb.eof_call_tc("tc_lab_cp_file.py")
 
 #call upd_uboot
 tb.eof_call_tc("tc_ub_upd_uboot.py")
+
+#this board needs some time to settle
+time.sleep(10)
 
 #call ubi aristainetos2
 tb.eof_call_tc("tc_ub_aristainetos2_ubi.py")
