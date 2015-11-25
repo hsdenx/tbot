@@ -419,3 +419,8 @@ try:
     self.tc_lab_rm_dir
 except AttributeError:
     self.tc_lab_rm_dir =  self.tc_lab_source_dir + '/u-boot-tqm5200'
+
+try:
+    self.tc_lab_apply_patches_dir
+except AttributeError:
+    self.tc_lab_apply_patches_dir =  'none'
