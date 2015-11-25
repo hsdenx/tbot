@@ -21,7 +21,7 @@ tb.set_board_state("lab")
 
 tmp = "rm -rf " + self.tc_lab_rm_dir
 tb.eof_write_ctrl(tmp)
-tb.eof_read_end_state_ctrl(1)
+tb.eof_read_end_state_ctrl(10)
 
 #call get u-boot source
 tb.eof_call_tc("tc_lab_check_cmd_success.py")
