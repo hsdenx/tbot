@@ -20,6 +20,10 @@ from tbotlib import tbot
 #set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
+#delete old u-boot source tree
+tb.tc_lab_rm_dir = tb.tc_lab_source_dir + '/u-boot-' + tb.boardlabname
+tb.eof_call_tc("tc_lab_rm_dir.py")
+
 #cloning needs a bigger timeout, (git clone has no output)
 read_line_retry_save=tb.read_line_retry
 tb.read_line_retry=500
