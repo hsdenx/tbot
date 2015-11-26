@@ -21,7 +21,6 @@ from tbotlib import tbot
 
 logging.info("args: %s", tb.tc_lx_check_if_file_exists_name)
 
-tb.eof_call_tc("tc_lx_goto_tbot_workdir.py")
 tmp = 'test -r ' + tb.tc_lx_check_if_file_exists_name
 tb.eof_write_con(tmp)
 tb.eof_read_end_state_con(1)

@@ -31,6 +31,8 @@ if tb.tc_return == True:
     if tb.tc_return == True:
         tb.end_tc(True)
 
+tb.eof_call_tc("tc_lx_goto_tbot_workdir.py")
+
 #if not download it
 #git clone git://git.infradead.org/mtd-utils.git mtd-utils
 tb.tc_lx_check_if_dir_exists_name = "mtd-utils"
@@ -44,6 +46,12 @@ if tb.tc_return == False:
 #cd into dir
 tb.eof_write_con_lx_cmd('cd mtd-utils')
 tb.eof_call_tc("tc_lx_check_cmd_success.py")
+
+#if code is compiled, exit
+tb.tc_lx_check_if_file_exists_name = 'ubi-utils/mtdinfo'
+tb.eof_call_tc("tc_lx_check_if_file_exist.py")
+if tb.tc_return == True:
+    tb.end_tc(True)
 
 #apply patches if any
 # use src/tc/tc_lab_apply_patches.py

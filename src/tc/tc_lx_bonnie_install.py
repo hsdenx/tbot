@@ -21,6 +21,8 @@ logging.info("args: %s", tb.tc_lx_work_dir)
 #set board state for which the tc is valid
 tb.set_board_state("linux")
 
+tb.eof_call_tc("tc_lx_goto_tbot_workdir.py")
+
 # check if bonnie exist
 tb.tc_lx_check_if_cmd_exist_cmdname = 'bonnie++'
 tb.eof_call_tc("tc_lx_check_if_cmd_exist.py")
