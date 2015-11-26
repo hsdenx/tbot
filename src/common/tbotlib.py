@@ -258,7 +258,6 @@ class tbot(object):
             i += 1
 	return False
 
-
     def wait_prompt(self, retry):
         """ wait for prompt retry times
             return: True if found
@@ -445,9 +444,8 @@ class tbot(object):
         while True:
             ret = self.read_line(fd, self.read_end_state_retry)
             logging.debug("read_end rl ret: %s buf: %s", ret, self.buf[fd])
-            if not ret:
-                if (len(self.buf[fd])) == 0:
-                    return False
+            if ret == None:
+                return False
             ret = self.is_end_fd(fd, self.buf[fd])
             if ret:
                 return True
