@@ -429,3 +429,8 @@ try:
     self.tc_lab_apply_patches_dir
 except AttributeError:
     self.tc_lab_apply_patches_dir =  'none'
+
+try:
+    self.tc_ubi_cmd_path
+except AttributeError:
+    self.tc_ubi_cmd_path = "/work/tbot/mtd-utils"
