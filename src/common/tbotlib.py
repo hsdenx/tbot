@@ -879,6 +879,36 @@ class tbot(object):
 
         return True
 
+    def readline_and_search_strings(self, fd, strings):
+        """ read a line and search, if it contains a string
+            in strings. If found, return index
+            if read some chars, but no line, check if it
+            is a prompt, return False if it is a prompt.
+            else return None
+        """
+        ret = True
+        while ret == True:
+            ret = self.read_line(fd, self.read_line_retry)
+            if ret == True:
+                i = 0
+                for string in strings:
+                    reg = re.compile(string)
+                    res = reg.search(self.buf[fd])
+                    if res:
+                        return i
+                    i += 1
+                ret = self.is_end_fd(fd, self.buf[fd])
+                if ret == True:
+                    return 'prompt'
+                ret = True
+            elif ret == False:
+                #check if it is a prompt
+                ret = self.is_end_fd(fd, self.buf[fd])
+                if ret == True:
+                    return 'prompt'
+            elif ret == None:
+                return None
+
     def eof_call_tc(self, name):
         """ call tc name, end testcase on failure
         """
