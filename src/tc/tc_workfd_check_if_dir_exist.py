@@ -12,21 +12,21 @@
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_check_if_dir_exist.py
+# python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_check_if_dir_exist.py
 # check if a dir in tbot workdir exist
 # this tc returns always true, but sets
 # tb.tc_return True or False, because we may not
 # want to end testcase failed, if dir not exists.
 from tbotlib import tbot
 
-logging.info("args: %s", tb.tc_lx_check_if_dir_exists_name)
+logging.info("args: workfd %s %s", tb.workfd, tb.tc_workfd_check_if_dir_exists_name)
 
 tb.eof_call_tc("tc_lx_goto_tbot_workdir.py")
-tmp = 'test -d ' + tb.tc_lx_check_if_dir_exists_name
-tb.eof_write_con(tmp)
-tb.eof_read_end_state_con(1)
-tb.eof_write_con("if [ $? -ne 0 ]; then echo 'FAILED'; fi")
-ret = tb.search_str_in_readline_con("FAILED")
+tmp = 'test -d ' + tb.tc_workfd_check_if_dir_exists_name
+tb.eof_write(tb.workfd, tmp)
+tb.eof_read_end_state(tb.workfd, 1)
+tb.eof_write(tb.workfd, "if [ $? -ne 0 ]; then echo 'FAILED'; fi")
+ret = tb.eof_search_str_in_readline(tb.workfd, "FAILED", 0)
 if ret == True:
     tb.tc_return = False
 if ret == None:
@@ -34,5 +34,5 @@ if ret == None:
 if ret == False:
     tb.tc_return = True
 
-tb.eof_read_end_state_con(1)
+tb.eof_read_end_state(tb.workfd, 1)
 tb.end_tc(True)

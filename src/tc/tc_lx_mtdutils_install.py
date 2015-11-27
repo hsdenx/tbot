@@ -36,8 +36,9 @@ tb.eof_call_tc("tc_lx_goto_tbot_workdir.py")
 
 #if not download it
 #git clone git://git.infradead.org/mtd-utils.git mtd-utils
-tb.tc_lx_check_if_dir_exists_name = "mtd-utils"
-tb.eof_call_tc("tc_lx_check_if_dir_exist.py")
+tb.workfd = tb.channel_con
+tb.tc_workfd_check_if_dir_exists_name = "mtd-utils"
+tb.eof_call_tc("tc_workfd_check_if_dir_exist.py")
 if tb.tc_return == False:
     tmp = 'git clone git://git.infradead.org/mtd-utils.git mtd-utils'
     tb.eof_write_con(tmp)
