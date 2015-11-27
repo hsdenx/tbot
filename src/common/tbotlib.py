@@ -909,6 +909,18 @@ class tbot(object):
             elif ret == None:
                 return None
 
+    def set_term_length(self, fd):
+        #terminal line length
+        #ToDo How could this be set longer and do this correct
+        #
+        tmp = 'stty cols ' + self.term_line_length
+        self.eof_write(fd, tmp)
+        self.eof_read_end_state(fd, 1)
+        self.eof_write(fd, "export TERM=vt200")
+        self.eof_read_end_state(fd, 1)
+        self.eof_write(fd, "echo $COLUMNS")
+        self.eof_read_end_state(fd, 1)
+
     def eof_call_tc(self, name):
         """ call tc name, end testcase on failure
         """

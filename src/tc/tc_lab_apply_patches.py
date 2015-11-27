@@ -22,13 +22,7 @@ if tb.tc_lab_apply_patches_dir == 'none':
     tb.end_tc(True)
 
 # apply all patches in tc_lab_apply_patches_dir
-tmp = 'stty cols ' + tb.term_line_length
-tb.eof_write_ctrl(tmp)
-tb.eof_read_end_state_ctrl(1)
-tb.eof_write_ctrl("export TERM=vt200")
-tb.eof_read_end_state_ctrl(1)
-tb.eof_write_ctrl("echo $COLUMNS")
-tb.eof_read_end_state_ctrl(1)
+tb.set_term_length(tb.channel_ctrl)
 
 tmp = 'patch -p1 < ' + tb.tc_lab_apply_patches_dir + '/' + '*.patch'
 tb.eof_write_ctrl(tmp)

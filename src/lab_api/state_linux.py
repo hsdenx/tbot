@@ -64,13 +64,6 @@ def linux_set_board_state(tb, state, retry):
     tb.eof_call_tc("tc_ub_boot_linux.py")
 
     #terminal line length
-    #ToDo How could this be set longer and do this correct
-    #
-    tmp = 'stty cols ' + tb.term_line_length
-    tb.eof_write_con(tmp)
-    tb.eof_read_end_state_con(1)
-    tb.eof_write_con("export TERM=vt200")
-    tb.eof_read_end_state_con(1)
-    tb.eof_write_con("echo $COLUMNS")
-    tb.eof_read_end_state_con(1)
+    tb.set_term_length(tb.channel_con)
+
     return True
