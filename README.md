@@ -242,9 +242,19 @@ Suggestions welcome
   Also, no file handle is used in testcases ... maybe this
   was a bad decision ...
 
+  started introducing this. Testcases, which are not only
+  for lx over the console fd converted to using tb.workfd.
+  
+  Problem is, we cannot pass variables to tc ... so we must
+  use tb.workfd ... which maybe has problems when a tc call
+  anther tc and this second tc changes the tb.workfd ...
+  Maybe we must save it in call_tc and restore it in end_tc
+
 - rename functionnames
 
   rename functionnames in tbotlib to more meaningful names
+  Oh, yes ... and maybe extract more tbotlib functions
+  into testcases.
 
 -------------------------------------------------------------------------
 
