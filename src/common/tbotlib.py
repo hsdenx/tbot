@@ -719,7 +719,8 @@ class tbot(object):
         """
         self.eof_write_con(command)
         self.eof_read_end_state_con(1)
-        self.eof_call_tc("tc_lx_check_cmd_success.py")
+        self.workfd = self.channel_con
+        self.eof_call_tc("tc_workfd_check_cmd_success.py")
         return True
  
     def eof_write_ctrl(self, string):
@@ -853,31 +854,32 @@ class tbot(object):
         ret = self.eof_search_str_in_readline(self.channel_ctrl, string, 0)
         return ret
 
-    def eof_search_str_in_readline_end_con(self, string):
+    def eof_search_str_in_readline_end(self, fd, string):
         """ call read_line and search if it contains string
             endtestcase if found, or timeout
             if prompt found True
         """
-        ret = self.search_str_in_readline_con(string)
+        ret = self.eof_search_str_in_readline(fd, string, 0)
         if ret == True:
             self.end_tc(False)
         if ret == None:
             self.end_tc(False)
 
         return True
+ 
+    def eof_search_str_in_readline_end_con(self, string):
+        """ call read_line and search if it contains string
+            endtestcase if found, or timeout
+            if prompt found True
+        """
+        return self.eof_search_str_in_readline_end(self.channel_con, string)
 
     def eof_search_str_in_readline_end_ctrl(self, string):
         """ call read_line and search if it contains string
             endtestcase if found, or timeout
             if prompt found True
         """
-        ret = self.search_str_in_readline_ctrl(string)
-        if ret == True:
-            self.end_tc(False)
-        if ret == None:
-            self.end_tc(False)
-
-        return True
+        return self.eof_search_str_in_readline_end(self.channel_ctrl, string)
 
     def readline_and_search_strings(self, fd, strings):
         """ read a line and search, if it contains a string

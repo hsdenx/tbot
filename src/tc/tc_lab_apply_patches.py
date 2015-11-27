@@ -31,6 +31,7 @@ if ret == True:
     tb.end_tc(False)
 
 tb.eof_read_end_state_ctrl(1)
-tb.eof_call_tc("tc_lab_check_cmd_success.py")
+tb.workfd = tb.channel_ctrl
+tb.eof_call_tc("tc_workfd_check_cmd_success.py")
 
 tb.end_tc(True)

@@ -22,8 +22,7 @@ tb.set_board_state("lab")
 tmp = "cp " + self.tc_lab_cp_file_a + " " + self.tc_lab_cp_file_b
 tb.eof_write_ctrl(tmp)
 tb.eof_read_end_state_ctrl(1)
-
-#call get u-boot source
-tb.eof_call_tc("tc_lab_check_cmd_success.py")
+tb.workfd = tb.channel_ctrl
+tb.eof_call_tc("tc_workfd_check_cmd_success.py")
 
 tb.end_tc(True)

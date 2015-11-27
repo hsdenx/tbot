@@ -37,21 +37,25 @@ if tb.tc_return == False:
     tmp = 'www.lartmaker.nl/lartware/port/devmem2.c'
     tb.eof_write_con(tmp)
     tb.eof_read_end_state_con(1)
-    tb.eof_call_tc("tc_lx_check_cmd_success.py")
+    tb.workfd = tb.channel_con
+    tb.eof_call_tc("tc_workfd_check_cmd_success.py")
 
 #apply patch
 tmp = 'patch -p1 < 0001-devmem2-without-a-lot-of-output.patch'
 tb.eof_write_con(tmp)
-tb.eof_call_tc("tc_lx_check_cmd_success.py")
+tb.workfd = tb.channel_con
+tb.eof_call_tc("tc_workfd_check_cmd_success.py")
 #compile it
 oldretry = tb.read_end_state_retry
 tb.read_end_state_retry = 50
 tb.eof_write_con_lx_cmd('gcc -o devmem2 devmem2.c')
 tb.read_end_state_retry = oldretry
-tb.eof_call_tc("tc_lx_check_cmd_success.py")
+tb.workfd = tb.channel_con
+tb.eof_call_tc("tc_workfd_check_cmd_success.py")
 #compile it
 tb.eof_write_con_lx_cmd('cp devmem2 /usr/local/bin')
-tb.eof_call_tc("tc_lx_check_cmd_success.py")
+tb.workfd = tb.channel_con
+tb.eof_call_tc("tc_workfd_check_cmd_success.py")
 
 tb.eof_read_end_state_con(0)
 tb.end_tc(tb.tc_return)

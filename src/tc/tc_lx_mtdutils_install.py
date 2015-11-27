@@ -41,11 +41,13 @@ if tb.tc_return == False:
     tmp = 'git clone git://git.infradead.org/mtd-utils.git mtd-utils'
     tb.eof_write_con(tmp)
     tb.eof_read_end_state_con(1)
-    tb.eof_call_tc("tc_lx_check_cmd_success.py")
+    tb.workfd = tb.channel_con
+    tb.eof_call_tc("tc_workfd_check_cmd_success.py")
 
 #cd into dir
 tb.eof_write_con_lx_cmd('cd mtd-utils')
-tb.eof_call_tc("tc_lx_check_cmd_success.py")
+tb.workfd = tb.channel_con
+tb.eof_call_tc("tc_workfd_check_cmd_success.py")
 
 #if code is compiled, exit
 tb.tc_lx_check_if_file_exists_name = 'ubi-utils/mtdinfo'
@@ -62,11 +64,13 @@ oldretry = tb.read_end_state_retry
 tb.read_end_state_retry = 50
 tb.eof_write_con_lx_cmd('make')
 tb.read_end_state_retry = oldretry
-tb.eof_call_tc("tc_lx_check_cmd_success.py")
+tb.workfd = tb.channel_con
+tb.eof_call_tc("tc_workfd_check_cmd_success.py")
 
 #install it ...
 #tb.eof_write_con_lx_cmd('cp devmem2 /usr/local/bin')
-#tb.eof_call_tc("tc_lx_check_cmd_success.py")
+#tb.workfd = tb.channel_con
+#tb.eof_call_tc("tc_workfd_check_cmd_success.py")
 tb.tc_ubi_cmd_path = tb.tc_lx_work_dir + '/mtd-utils'
 
 tb.eof_read_end_state_con(0)

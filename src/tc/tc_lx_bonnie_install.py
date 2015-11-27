@@ -37,12 +37,14 @@ if tb.tc_return == False:
     tmp = 'wget http://www.coker.com.au/bonnie++/bonnie++-1.03e.tgz'
     tb.eof_write_con(tmp)
     tb.eof_read_end_state_con(1)
-    tb.eof_call_tc("tc_lx_check_cmd_success.py")
+    tb.workfd = tb.channel_con
+    tb.eof_call_tc("tc_workfd_check_cmd_success.py")
 
 #untar it
 tmp = 'tar xvzf ' + tb.tc_lx_check_if_file_exists_name
 tb.eof_write_con(tmp)
-tb.eof_call_tc("tc_lx_check_cmd_success.py")
+tb.workfd = tb.channel_con
+tb.eof_call_tc("tc_workfd_check_cmd_success.py")
 #check if dir exists
 tb.eof_write_con_lx_cmd('cd bonnie++-1.03e')
 tb.eof_write_con_lx_cmd('pwd')
