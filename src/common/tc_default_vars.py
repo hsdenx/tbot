@@ -434,3 +434,38 @@ try:
     self.tc_ubi_cmd_path
 except AttributeError:
     self.tc_ubi_cmd_path = "/work/tbot/mtd-utils"
+
+try:
+    self.tc_ubi_mtd_dev
+except AttributeError:
+    self.tc_ubi_mtd_dev = "/dev/mtd4"
+
+try:
+    self.tc_ubi_ubi_dev
+except AttributeError:
+    self.tc_ubi_ubi_dev = "/dev/ubi0"
+
+try:
+    self.tc_ubi_min_io_size
+except AttributeError:
+    self.tc_ubi_min_io_size = "1024"
+
+try:
+    self.tc_ubi_max_leb_cnt
+except AttributeError:
+    self.tc_ubi_max_leb_cnt = "100"
+
+try:
+    self.tc_ubi_leb_size
+except AttributeError:
+    self.tc_ubi_leb_size = "126976"
+
+try:
+    self.tc_ubi_vid_hdr_offset
+except AttributeError:
+    self.tc_ubi_vid_hdr_offset = "default"
+
+try:
+    self.tc_lx_ubi_format_filename
+except AttributeError:
+    self.tc_lx_ubi_format_filename = "/home/hs/ccu1/ecl-image-usbc.ubi"
