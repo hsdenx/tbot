@@ -31,8 +31,8 @@ if tb.tc_return == True:
     tb.end_tc(True)
 
 #if not download it
-tb.tc_lx_check_if_file_exists_name = "bonnie++-1.03e.tgz"
-tb.eof_call_tc("tc_lx_check_if_file_exist.py")
+tb.tc_workfd_check_if_file_exists_name = "bonnie++-1.03e.tgz"
+tb.eof_call_tc("tc_workfd_check_if_file_exist.py")
 if tb.tc_return == False:
     #wget http://www.coker.com.au/bonnie++/bonnie++-1.03e.tgz
     tmp = 'wget http://www.coker.com.au/bonnie++/bonnie++-1.03e.tgz'
@@ -42,7 +42,7 @@ if tb.tc_return == False:
     tb.eof_call_tc("tc_workfd_check_cmd_success.py")
 
 #untar it
-tmp = 'tar xvzf ' + tb.tc_lx_check_if_file_exists_name
+tmp = 'tar xvzf ' + tb.tc_workfd_check_if_file_exists_name
 tb.eof_write_con(tmp)
 tb.workfd = tb.channel_con
 tb.eof_call_tc("tc_workfd_check_cmd_success.py")

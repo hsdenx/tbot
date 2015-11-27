@@ -313,9 +313,9 @@ except AttributeError:
     self.tc_lx_work_dir = "/work/tbot"
 
 try:
-    self.tc_lx_check_if_file_exists_name
+    self.tc_workfd_check_if_file_exists_name
 except AttributeError:
-    self.tc_lx_check_if_file_exists_name = "bonnie++-1.03e.tgz"
+    self.tc_workfd_check_if_file_exists_name = "bonnie++-1.03e.tgz"
 
 try:
     self.tc_workfd_check_if_dir_exists_name
