@@ -30,7 +30,7 @@ def send_cmd(tb, cmd):
 read_line_retry_save=tb.read_line_retry
 tb.read_line_retry=500
 #call get u-boot source
-tb.statusprint("get u-boot source")
+tb.statusprint("get source tree")
 tb.eof_call_tc(tb.board_git_bisect_get_source_tc)
 tb.read_line_retry=read_line_retry_save
 
