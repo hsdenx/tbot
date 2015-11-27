@@ -61,7 +61,7 @@ if tb.tc_return == True:
 
 #compile it
 oldretry = tb.read_end_state_retry
-tb.read_end_state_retry = 50
+tb.read_end_state_retry = 100
 tb.eof_write_con_lx_cmd('make')
 tb.read_end_state_retry = oldretry
 tb.workfd = tb.channel_con
@@ -73,5 +73,5 @@ tb.eof_call_tc("tc_workfd_check_cmd_success.py")
 #tb.eof_call_tc("tc_workfd_check_cmd_success.py")
 tb.tc_ubi_cmd_path = tb.tc_lx_work_dir + '/mtd-utils'
 
-tb.eof_read_end_state_con(0)
-tb.end_tc(tb.tc_return)
+tb.flush_con()
+tb.end_tc(True)
