@@ -24,8 +24,9 @@ tb.set_board_state("linux")
 tb.eof_call_tc("tc_lx_goto_tbot_workdir.py")
 
 # check if bonnie exist
-tb.tc_lx_check_if_cmd_exist_cmdname = 'bonnie++'
-tb.eof_call_tc("tc_lx_check_if_cmd_exist.py")
+tb.workfd = tb.channel_con
+tb.tc_workfd_check_if_cmd_exist_cmdname = 'bonnie++'
+tb.eof_call_tc("tc_workfd_check_if_cmd_exist.py")
 if tb.tc_return == True:
     tb.end_tc(True)
 
@@ -56,6 +57,7 @@ tb.eof_write_con_lx_cmd('make install')
 tb.read_end_state_retry = oldretry
 
 #now check if it exists
-tb.eof_call_tc("tc_lx_check_if_cmd_exist.py")
+tb.workfd = tb.channel_con
+tb.eof_call_tc("tc_workfd_check_if_cmd_exist.py")
 tb.eof_read_end_state_con(0)
 tb.end_tc(tb.tc_return)

@@ -12,18 +12,18 @@
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_check_if_cmd_exist.py
+# python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_check_if_cmd_exist.py
 # check if a command exists
 # this tc returns always true, but sets
 # tb.tc_return True or False, because we may not
 # want to end testcase failed, if command not exists.
 from tbotlib import tbot
 
-logging.info("args: %s", tb.tc_lx_check_if_cmd_exist_cmdname)
+logging.info("args: workfd %s %s", tb.workfd, tb.tc_workfd_check_if_cmd_exist_cmdname)
 #command -v foo >/dev/null 2>&1 || { echo >&2 "I require foo but it's not installed.  Aborting."; exit 1; }
-tmp = 'command -v ' + tb.tc_lx_check_if_cmd_exist_cmdname + ' >/dev/null 2>&1 || { echo >&2 "not installed.";}'
-tb.eof_write_con(tmp)
-ret = tb.search_str_in_readline_con("not installed")
+tmp = 'command -v ' + tb.tc_workfd_check_if_cmd_exist_cmdname + ' >/dev/null 2>&1 || { echo >&2 "not installed.";}'
+tb.eof_write(tb.workfd, tmp)
+ret = tb.eof_search_str_in_readline(tb.workfd, "not installed", 0)
 if ret == True:
     tb.tc_return = False
 if ret == None:
@@ -31,5 +31,5 @@ if ret == None:
 if ret == False:
     tb.tc_return = True
 
-tb.eof_read_end_state_con(0)
+tb.eof_read_end_state(tb.workfd, 0)
 tb.end_tc(True)

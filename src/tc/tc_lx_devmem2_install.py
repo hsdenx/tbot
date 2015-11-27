@@ -24,8 +24,9 @@ tb.set_board_state("linux")
 tb.eof_call_tc("tc_lx_goto_tbot_workdir.py")
 
 # check if bonnie exist
-tb.tc_lx_check_if_cmd_exist_cmdname = 'devmem2'
-tb.eof_call_tc("tc_lx_check_if_cmd_exist.py")
+tb.workfd = tb.channel_con
+tb.tc_workfd_check_if_cmd_exist_cmdname = 'devmem2'
+tb.eof_call_tc("tc_workfd_check_if_cmd_exist.py")
 if tb.tc_return == True:
     tb.end_tc(True)
 

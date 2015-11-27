@@ -22,12 +22,13 @@ logging.info("args: %s", tb.tc_lx_work_dir)
 tb.set_board_state("linux")
 
 # check if mtdinfo exist
-tb.tc_lx_check_if_cmd_exist_cmdname = 'mtdinfo'
-tb.eof_call_tc("tc_lx_check_if_cmd_exist.py")
+tb.tc_workfd_check_if_cmd_exist_cmdname = 'mtdinfo'
+tb.workfd = tb.channel_con
+tb.eof_call_tc("tc_workfd_check_if_cmd_exist.py")
 if tb.tc_return == True:
     # check if mtdinfo exist
-    tb.tc_lx_check_if_cmd_exist_cmdname = 'ubinfo'
-    tb.eof_call_tc("tc_lx_check_if_cmd_exist.py")
+    tb.tc_workfd_check_if_cmd_exist_cmdname = 'ubinfo'
+    tb.eof_call_tc("tc_workfd_check_if_cmd_exist.py")
     if tb.tc_return == True:
         tb.end_tc(True)
 

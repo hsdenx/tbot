@@ -24,11 +24,11 @@ except AttributeError:
     self.tc_return = True
 
 try:
-    self.tc_lx_check_if_cmd_exist_cmdname
+    self.tc_workfd_check_if_cmd_exist_cmdname
 except NameError:
-    self.tc_lx_check_if_cmd_exist_cmdname = 'none'
+    self.tc_workfd_check_if_cmd_exist_cmdname = 'none'
 except AttributeError:
-    self.tc_lx_check_if_cmd_exist_cmdname = 'none'
+    self.tc_workfd_check_if_cmd_exist_cmdname = 'none'
 
 #src/tc/tc_ub_setenv.py
 try:
