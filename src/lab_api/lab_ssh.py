@@ -193,5 +193,8 @@ def lab_write(self, fd, string):
 
 def lab_write_no_ret(self, fd, string):
     logging.debug("write: %s@%s: %s", self.tb.user, self.tb.ip, string)
+    logging.info("write no ret %d: %s", fd, string)
+    if self.tb.verbose:
+        print("write no ret %d: %s" % (fd, string))
     self.chan[fd].send(string)
     return True
