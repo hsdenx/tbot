@@ -48,7 +48,7 @@
 * readreg with devmem and compare with default from
   file:
   regaddr mask defaultvalue
-  done: src/tc/tc_lx_readreg.py
+  done: src/tc/tc_lx_check_reg_file.py
 
   * add testcase which fills this file
     done: src/tc/tc_lx_create_reg_file.py
