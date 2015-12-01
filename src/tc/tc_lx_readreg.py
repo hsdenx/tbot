@@ -40,5 +40,5 @@ logging.debug("args: readval: %s masked: %x == %x", tmp, int(tmp, 16) & int(tb.t
 if (int(tmp, 16) & int(tb.tc_lx_readreg_mask, 16)) != int(tb.tc_lx_readreg_value, 16):
     tb.end_tc(False)
 
-tb.eof_read_end_state_con(0)
+tb.eof_read_end_state_con(1)
 tb.end_tc(True)

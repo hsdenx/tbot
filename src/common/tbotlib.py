@@ -412,8 +412,8 @@ class tbot(object):
         """read until end is detected. End is detected if
            shell prompt is read.
         """
+        i = 0
         while True:
-            i = 0
             ret = self.read_line(fd, retry)
             logging.debug("read_end rl ret: %s buf: %s", ret, self.buf[fd])
             if not ret:
@@ -441,14 +441,19 @@ class tbot(object):
         """read until end is detected. End is detected if
            current prompt is read.
         """
-        while True:
+        i = 0
+        while i <= retry:
             ret = self.read_line(fd, self.read_end_state_retry)
-            logging.debug("read_end rl ret: %s buf: %s", ret, self.buf[fd])
-            if ret == None:
-                return False
-            ret = self.is_end_fd(fd, self.buf[fd])
-            if ret:
-                return True
+            logging.debug("read_end rl ret: %s buf: %s i: %s retry: %s", ret, self.buf[fd], i, retry)
+            if ret != None:
+                if ret == True:
+                    i = 0
+                ret = self.is_end_fd(fd, self.buf[fd])
+                if ret:
+                    return True
+            i += 1
+
+        return False
 
     def read_end_state_con(self, retry):
         ret = self.read_end_state(self.channel_con, retry)
@@ -921,7 +926,7 @@ class tbot(object):
         self.eof_write(fd, "export TERM=vt200")
         self.eof_read_end_state(fd, 1)
         self.eof_write(fd, "echo $COLUMNS")
-        self.eof_read_end_state(fd, 1)
+        self.eof_read_end_state(fd, 2)
 
     def eof_call_tc(self, name):
         """ call tc name, end testcase on failure

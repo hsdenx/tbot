@@ -102,7 +102,7 @@ tmp = "run tbot_cmp_ubi"
 tb.eof_write_con(tmp)
 tb.eof_search_str_in_readline_end_con("!=")
 tb.read_line_retry=read_line_retry_save
-tb.eof_read_end_state_con(0)
+tb.eof_read_end_state_con(1)
 
 # power off board at the end
 tb.eof_call_tc("tc_lab_poweroff.py")

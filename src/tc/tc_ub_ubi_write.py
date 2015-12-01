@@ -28,7 +28,7 @@ tb.set_board_state("u-boot")
 tmp = "ubi write " + tb.tc_ub_ubi_write_addr + " " + tb.tc_ub_ubi_write_vol_name + ' ' + tb.tc_ub_ubi_write_len
 tb.eof_write_con(tmp)
 tb.eof_search_str_in_readline_con("written to volume")
-tb.eof_read_end_state_con(0)
+tb.eof_read_end_state_con(1)
 
 tmp = "ubi info l"
 tb.eof_write_con(tmp)

@@ -46,12 +46,12 @@ tmp=self.buf[1].split(":")[1]
 processor=tmp[1:]
 tb.eof_search_str_in_readline_con("Hardware")
 hw=self.buf[1].split(":")[1]
-tb.eof_read_end_state_con(0)
+tb.eof_read_end_state_con(1)
 tmp='cat /proc/version'
 tb.eof_write_con(tmp)
 tb.read_line(self.channel_con, 0)
 tmp=self.buf[1]
-tb.eof_read_end_state_con(0)
+tb.eof_read_end_state_con(1)
 
 fd.write("# pinmux\n")
 fd.write("# processor: %s\n" % processor)

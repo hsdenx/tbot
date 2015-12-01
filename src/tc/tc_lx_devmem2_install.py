@@ -58,5 +58,5 @@ tb.eof_write_con_lx_cmd('cp devmem2 /usr/local/bin')
 tb.workfd = tb.channel_con
 tb.eof_call_tc("tc_workfd_check_cmd_success.py")
 
-tb.eof_read_end_state_con(0)
+tb.eof_read_end_state_con(1)
 tb.end_tc(tb.tc_return)

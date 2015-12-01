@@ -59,5 +59,5 @@ tb.read_end_state_retry = oldretry
 #now check if it exists
 tb.workfd = tb.channel_con
 tb.eof_call_tc("tc_workfd_check_if_cmd_exist.py")
-tb.eof_read_end_state_con(0)
+tb.eof_read_end_state_con(1)
 tb.end_tc(tb.tc_return)

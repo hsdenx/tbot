@@ -24,6 +24,6 @@ tb.set_board_state("u-boot")
 tmp = 'ubifsmount ' + tb.tc_ub_ubifs_volume_name
 tb.eof_write_con(tmp)
 tb.eof_search_str_in_readline_end_con("Error")
-tb.eof_read_end_state_con(0)
+tb.eof_read_end_state_con(1)
 
 tb.end_tc(True)

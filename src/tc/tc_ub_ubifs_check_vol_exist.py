@@ -31,5 +31,5 @@ if ret == True:
 if ret == True:
     tb.tc_return = False
 
-tb.eof_read_end_state_con(0)
+tb.eof_read_end_state_con(1)
 tb.end_tc(True)
