@@ -38,6 +38,8 @@ tb.eof_call_tc("tc_lx_dmesg_grep.py")
 
 tb.statusprint("tc_ccu1 pinmux check")
 tb.eof_call_tc("tc_lx_check_reg_file.py")
+tb.tc_lx_create_reg_file_name = 'src/files/ccu1_pinmux_gpmc.reg'
+tb.eof_call_tc("tc_lx_check_reg_file.py")
 
 tb.statusprint("tc_ccu1 ubi check")
 tb.eof_call_tc("tc_lx_ubi_tests.py")
