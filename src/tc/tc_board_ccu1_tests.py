@@ -12,7 +12,7 @@
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 # start with
-# python2.7 src/common/tbot.py -c tbot_ccu1.cfg -t tc_board_shc_tests.py
+# python2.7 src/common/tbot.py -c tbot_ccu1.cfg -t tc_board_ccu1_tests.py
 # start all testcases for the ccu1 board
 #
 from tbotlib import tbot
