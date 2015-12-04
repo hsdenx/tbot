@@ -29,7 +29,7 @@ checks = ['htkw mcx',
 'Linux version',
 'Kernel command line',
 'Manufacturer ID: 0x2c',
-'5 cmdlinepart partitions found on MTD device omap2-nand.0'
+'5 cmdlinepart partitions found on MTD device omap2-nand.0',
 'ti_hecc 5c050000.hecc: device registered',
 'ehci-omap 48064800.ehci',
 'usb usb1: New USB device',
