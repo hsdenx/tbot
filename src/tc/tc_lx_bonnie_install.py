@@ -16,12 +16,13 @@
 # get bonnie source and install it
 from tbotlib import tbot
 
-logging.info("args: %s", tb.tc_lx_work_dir)
+logging.info("args: %s", tb.tc_workfd_work_dir)
 
 #set board state for which the tc is valid
 tb.set_board_state("linux")
 
-tb.eof_call_tc("tc_lx_goto_tbot_workdir.py")
+tb.workfd = tb.channel_con
+tb.eof_call_tc("tc_workfd_goto_tbot_workdir.py")
 
 # check if bonnie exist
 tb.workfd = tb.channel_con

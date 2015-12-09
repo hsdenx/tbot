@@ -16,7 +16,7 @@
 # get mtdutil source and install it
 from tbotlib import tbot
 
-logging.info("args: %s", tb.tc_lx_work_dir)
+logging.info("args: %s", tb.tc_workfd_work_dir)
 
 #set board state for which the tc is valid
 tb.set_board_state("linux")
@@ -32,14 +32,14 @@ if tb.tc_return == True:
     if tb.tc_return == True:
         tb.end_tc(True)
 
-tb.eof_call_tc("tc_lx_goto_tbot_workdir.py")
+tb.eof_call_tc("tc_workfd_goto_tbot_workdir.py")
 
 #if not download it
 #git clone git://git.infradead.org/mtd-utils.git mtd-utils
 tb.workfd = tb.channel_con
 tb.tc_workfd_check_if_dir_exists_name = "mtd-utils"
-tb.eof_call_tc("tc_workfd_check_if_dir_exist.py")
-if tb.tc_return == False:
+ret = tb.eof_call_tc("tc_workfd_check_if_dir_exist.py")
+if ret == False:
     tmp = 'git clone git://git.infradead.org/mtd-utils.git mtd-utils'
     tb.eof_write_con(tmp)
     tb.eof_read_end_state_con(1)
@@ -73,7 +73,7 @@ tb.eof_call_tc("tc_workfd_check_cmd_success.py")
 #tb.eof_write_con_lx_cmd('cp devmem2 /usr/local/bin')
 #tb.workfd = tb.channel_con
 #tb.eof_call_tc("tc_workfd_check_cmd_success.py")
-tb.tc_ubi_cmd_path = tb.tc_lx_work_dir + '/mtd-utils'
+tb.tc_ubi_cmd_path = tb.tc_workfd_work_dir + '/mtd-utils'
 
 tb.flush_con()
 tb.end_tc(True)

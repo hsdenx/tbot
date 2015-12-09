@@ -21,7 +21,7 @@ from tbotlib import tbot
 
 logging.info("args: workfd %s %s", tb.workfd, tb.tc_workfd_check_if_dir_exists_name)
 
-tb.eof_call_tc("tc_lx_goto_tbot_workdir.py")
+tb.eof_call_tc("tc_workfd_goto_tbot_workdir.py")
 tmp = 'test -d ' + tb.tc_workfd_check_if_dir_exists_name
 tb.eof_write(tb.workfd, tmp)
 tb.eof_read_end_state(tb.workfd, 1)
@@ -35,4 +35,4 @@ if ret == False:
     tb.tc_return = True
 
 tb.eof_read_end_state(tb.workfd, 1)
-tb.end_tc(True)
+tb.end_tc(tb.tc_return)

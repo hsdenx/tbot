@@ -12,30 +12,27 @@
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_goto_tbot_workdir.py
+# python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_goto_tbot_workdir.py
 # go into the tbot work dir
 # if not exist, create it
 from tbotlib import tbot
 
-logging.info("args: %s", tb.tc_lx_work_dir)
+logging.info("args: workfd: %s %s", tb.workfd, tb.tc_workfd_work_dir)
 
-#set board state for which the tc is valid
-tb.set_board_state("linux")
-
-tmp = '[ ! -d "' + tb.tc_lx_work_dir + '" ] && echo "Does not exist"'
-tb.eof_write_con(tmp)
-ret = tb.search_str_in_readline_con("Does not exist")
+tmp = '[ ! -d "' + tb.tc_workfd_work_dir + '" ] && echo "Does not exist"'
+tb.eof_write(tb.workfd, tmp)
+ret = tb.eof_search_str_in_readline(tb.workfd, "Does not exist", 0)
 if ret == True:
     # directory does not exist, create it
     cd_cmd_error_txt = "could not"
-    tmp = "mkdir -p " + tb.tc_lx_work_dir
-    tb.eof_write_con(tmp)
-    tb.eof_search_str_in_readline_end_con(cd_cmd_error_txt)
+    tmp = "mkdir -p " + tb.tc_workfd_work_dir
+    tb.eof_write(tb.workfd, tmp)
+    tb.eof_search_str_in_readline_end(tb.workfd, cd_cmd_error_txt)
 if ret == None:
     tb.end_tc(False)
 
 cd_cmd_error_txt = "No such"
-tmp = "cd " + tb.tc_lx_work_dir
-tb.eof_write_con(tmp)
-tb.eof_read_end_state_con(1)
+tmp = "cd " + tb.tc_workfd_work_dir
+tb.eof_write(tb.workfd, tmp)
+tb.eof_read_end_state(tb.workfd, 1)
 tb.end_tc(True)
