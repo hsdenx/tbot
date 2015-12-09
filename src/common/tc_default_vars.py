@@ -308,9 +308,9 @@ except AttributeError:
     self.tc_lx_check_usb_authorized = 'usb 1-1'
 
 try:
-    self.tc_lx_work_dir
+    self.tc_workfd_work_dir
 except AttributeError:
-    self.tc_lx_work_dir = "/work/tbot"
+    self.tc_workfd_work_dir = "/work/tbot"
 
 try:
     self.tc_workfd_check_if_file_exists_name
@@ -469,3 +469,25 @@ try:
     self.tc_lx_ubi_format_filename
 except AttributeError:
     self.tc_lx_ubi_format_filename = "/home/hs/ccu1/ecl-image-usbc.ubi"
+
+try:
+    self.tc_workfd_apply_patchwork_patches_list
+except AttributeError:
+    self.tc_workfd_apply_patchwork_patches_list = ['554216', '554217',
+		'554218', '554219', '554220', '554224', '554225',
+		'554227', '554228', '554229', '554230', '554231',
+		'554232', '554233', '554234']
+try:
+    self.tc_workfd_apply_patchwork_patches_checkpatch_cmd
+except AttributeError:
+    self.tc_workfd_apply_patchwork_patches_checkpatch_cmd = 'none'
+
+try:
+    self.tc_workfd_rm_file_name
+except AttributeError:
+    self.tc_workfd_rm_file_name = 'none'
+
+try:
+    self.tc_workfd_cd_name
+except AttributeError:
+    self.tc_workfd_cd_name = 'none'
