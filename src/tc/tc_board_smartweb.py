@@ -36,6 +36,14 @@ tb.read_line_retry=read_line_retry_save
 tb.statusprint("set toolchain")
 tb.eof_call_tc("tc_lab_set_toolchain.py")
 
+#add patchwork patches
+tb.statusprint("apply patchwork patches")
+tb.workfd = tb.channel_ctrl
+tb.tc_workfd_apply_patchwork_patches_checkpatch_cmd = 'scripts/checkpatch.pl'
+tb.tc_workfd_cd_name = 'u-boot-smartweb'
+tb.eof_call_tc("tc_workfd_cd_to_dir.py")
+tb.eof_call_tc("tc_workfd_apply_patchwork_patches.py")
+
 #call compile u-boot
 tb.statusprint("compile u-boot")
 tb.eof_call_tc("tc_lab_compile_uboot.py")
