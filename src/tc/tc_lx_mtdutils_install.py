@@ -53,8 +53,8 @@ tb.eof_call_tc("tc_workfd_check_cmd_success.py")
 
 #if code is compiled, exit
 tb.tc_workfd_check_if_file_exists_name = 'ubi-utils/mtdinfo'
-tb.eof_call_tc("tc_workfd_check_if_file_exist.py")
-if tb.tc_return == True:
+ret = tb.call_tc("tc_workfd_check_if_file_exist.py")
+if ret == True:
     tb.end_tc(True)
 
 #apply patches if any

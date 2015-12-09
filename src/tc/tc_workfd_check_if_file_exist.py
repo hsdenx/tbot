@@ -14,7 +14,6 @@
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_check_if_file_exist.py
 # check if a file in tbot workdir exist
-# this tc returns always true, but sets
 # tb.tc_return True or False, because we may not
 # want to end testcase failed, if file not exists.
 from tbotlib import tbot
@@ -34,4 +33,4 @@ if ret == False:
     tb.tc_return = True
 
 tb.eof_read_end_state(tb.workfd, 1)
-tb.end_tc(True)
+tb.end_tc(tb.tc_return)

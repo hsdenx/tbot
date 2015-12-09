@@ -32,8 +32,8 @@ if tb.tc_return == True:
 
 #if not download it
 tb.tc_workfd_check_if_file_exists_name = "bonnie++-1.03e.tgz"
-tb.eof_call_tc("tc_workfd_check_if_file_exist.py")
-if tb.tc_return == False:
+ret = tb.call_tc("tc_workfd_check_if_file_exist.py")
+if ret == False:
     #wget http://www.coker.com.au/bonnie++/bonnie++-1.03e.tgz
     tmp = 'wget http://www.coker.com.au/bonnie++/bonnie++-1.03e.tgz'
     tb.eof_write_con(tmp)
