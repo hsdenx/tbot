@@ -52,12 +52,19 @@ tb.eof_call_tc("tc_lab_compile_uboot.py")
 tb.statusprint("copy files")
 tb.tc_lab_cp_file_a = "u-boot.bin"
 tb.tc_lab_cp_file_b = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir
-#call cp files
+tb.eof_call_tc("tc_lab_cp_file.py")
+tb.tc_lab_cp_file_a = "System.map"
+tb.eof_call_tc("tc_lab_cp_file.py")
+tb.tc_lab_cp_file_a = "boot.bin"
+tb.eof_call_tc("tc_lab_cp_file.py")
+tb.tc_lab_cp_file_a = "spl/u-boot-spl.bin"
+tb.eof_call_tc("tc_lab_cp_file.py")
+tb.tc_lab_cp_file_a = "spl/u-boot-spl.map"
+tb.tc_lab_cp_file_b = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir + "/u-boot-spl.map"
 tb.eof_call_tc("tc_lab_cp_file.py")
 
-tb.tc_lab_cp_file_a = "System.map"
-#call cp files
-tb.eof_call_tc("tc_lab_cp_file.py")
+#call upd_spl
+tb.eof_call_tc("tc_ub_upd_spl.py")
 
 #call upd_uboot
 tb.eof_call_tc("tc_ub_upd_uboot.py")
@@ -65,6 +72,23 @@ tb.eof_call_tc("tc_ub_upd_uboot.py")
 #call upd_dfu
 tb.statusprint("u-boot dfu test")
 tb.eof_call_tc("tc_ub_dfu.py")
+
+#save working u-boot bin
+tb.tc_lab_cp_file_a = "u-boot.bin"
+tb.tc_lab_cp_file_b = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir + "/u-boot-latestworking.bin"
+tb.eof_call_tc("tc_lab_cp_file.py")
+tb.tc_lab_cp_file_a = "System.map"
+tb.tc_lab_cp_file_b = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir + "/u-boot-latestworking.System.map"
+tb.eof_call_tc("tc_lab_cp_file.py")
+tb.tc_lab_cp_file_a = "boot.bin"
+tb.tc_lab_cp_file_b = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir + "/u-boot-latestworking-boot.bin"
+tb.eof_call_tc("tc_lab_cp_file.py")
+tb.tc_lab_cp_file_a = "spl/u-boot-spl.bin"
+tb.tc_lab_cp_file_b = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir + "/u-boot-latestworking-spl.bin"
+tb.eof_call_tc("tc_lab_cp_file.py")
+tb.tc_lab_cp_file_a = "spl/u-boot-spl.map"
+tb.tc_lab_cp_file_b = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir + "/u-boot-latestworking-spl.System.map"
+tb.eof_call_tc("tc_lab_cp_file.py")
 
 # power off board at the end
 tb.eof_call_tc("tc_lab_poweroff.py")
