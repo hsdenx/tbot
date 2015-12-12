@@ -53,4 +53,7 @@ tb.eof_read_end_state(tb.workfd, 1)
 # check if there are patches to apply
 tb.eof_call_tc("tc_lab_apply_patches.py")
 
+# check if there are local "git am" patches to apply
+tb.eof_call_tc("tc_workfd_apply_local_patches.py")
+
 tb.end_tc(True)
