@@ -501,3 +501,23 @@ try:
     self.tc_lab_get_linux_source_git_branch
 except AttributeError:
     self.tc_lab_get_linux_source_git_branch = "master"
+
+try:
+    self.tc_workfd_apply_local_patches_dir
+except AttributeError:
+    self.tc_workfd_apply_local_patches_dir = "/work/hs/tbot/patches/mcx_linux_ml_patches"
+
+try:
+    self.tc_workfd_apply_local_patches_checkpatch_cmd
+except AttributeError:
+    self.tc_workfd_apply_local_patches_checkpatch_cmd = 'none'
+
+try:
+    self.tc_workfd_apply_local_patches_checkpatch_cmd_strict
+except AttributeError:
+    self.tc_workfd_apply_local_patches_checkpatch_cmd_strict = "no"
+
+try:
+    self.tc_workfd_get_list_of_files_mask
+except AttributeError:
+    self.tc_workfd_get_list_of_files_mask = '*'
