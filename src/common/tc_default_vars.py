@@ -491,3 +491,13 @@ try:
     self.tc_workfd_cd_name
 except AttributeError:
     self.tc_workfd_cd_name = 'none'
+
+try:
+    self.tc_lab_get_linux_source_git_repo
+except AttributeError:
+    self.tc_lab_get_linux_source_git_repo = "/home/git/linux.git"
+
+try:
+    self.tc_lab_get_linux_source_git_branch
+except AttributeError:
+    self.tc_lab_get_linux_source_git_branch = "master"
