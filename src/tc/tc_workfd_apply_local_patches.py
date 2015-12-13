@@ -36,7 +36,7 @@ def apply_one_patch(tb, filename):
                 tb.end_tc(False)
 
     tb.eof_write(tb.workfd, 'git am -3 ' + filename)
-    tb.eof_read_end_state(tb.workfd, 1)
+    tb.eof_read_end_state(tb.workfd, 2)
     tb.eof_call_tc("tc_workfd_check_cmd_success.py")
 
 #print some infos
