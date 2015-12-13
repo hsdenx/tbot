@@ -521,3 +521,48 @@ try:
     self.tc_workfd_get_list_of_files_mask
 except AttributeError:
     self.tc_workfd_get_list_of_files_mask = '*'
+
+try:
+    self.tc_workfd_compile_linux_boardname
+except AttributeError:
+    self.tc_workfd_compile_linux_boardname = self.boardname
+
+try:
+    self.tc_workfd_compile_linux_clean
+except AttributeError:
+    self.tc_workfd_compile_linux_clean = 'yes'
+
+try:
+    self.tc_workfd_compile_linux_modules
+except AttributeError:
+    self.tc_workfd_compile_linux_modules = 'none'
+
+try:
+    self.tc_workfd_compile_linux_modules_path
+except AttributeError:
+    self.tc_workfd_compile_linux_modules_path = 'none'
+
+try:
+    self.tc_workfd_compile_linux_dt_name
+except AttributeError:
+    self.tc_workfd_compile_linux_dt_name = 'none'
+
+try:
+    self.tc_workfd_compile_linux_append_dt
+except AttributeError:
+    self.tc_workfd_compile_linux_append_dt = 'no'
+
+try:
+    self.tc_workfd_compile_linux_load_addr
+except AttributeError:
+    self.tc_workfd_compile_linux_load_addr = 'no'
+
+try:
+    self.tc_workfd_compile_linux_fit_its_file
+except AttributeError:
+    self.tc_workfd_compile_linux_fit_its_file = 'no'
+
+try:
+    self.tc_workfd_compile_linux_mkimage
+except AttributeError:
+    self.tc_workfd_compile_linux_mkimage = '/home/hs/i2c/u-boot/tools/mkimage'

@@ -7,16 +7,6 @@
 
 ----------------------------------------
 
-- testcase linux
-  - get source
-  - compile
-    - kernel
-    - modules
-    - install modules
-    - DT
-    - FIT
-    - append DT
-
 - if tbot fails, start a git biscect section
   and find out, which commit did it
 
@@ -56,3 +46,17 @@
 - gpio tests
   - check registers with devmem
   - use readreg
+
+- get a list of patchworknumbers from patchwork
+  in your ToDo list ...
+
+- move power on/off into a testcase, and only
+  call it from lap_api
+
+- get power state from a board thorugh  testcase
+
+- move connect to a board into a testcase and
+  call it from lap_api
+
+  -> lap_api not really needed anymore ... sounds
+     good ...
