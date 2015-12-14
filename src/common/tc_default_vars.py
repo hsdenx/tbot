@@ -473,10 +473,18 @@ except AttributeError:
 try:
     self.tc_workfd_apply_patchwork_patches_list
 except AttributeError:
-    self.tc_workfd_apply_patchwork_patches_list = ['554216', '554217',
-		'554218', '554219', '554220', '554224', '554225',
-		'554227', '554228', '554229', '554230', '554231',
-		'554232', '554233', '554234']
+    self.tc_workfd_apply_patchwork_patches_list = []
+
+try:
+    self.tc_workfd_apply_patchwork_patches_list_hand
+except AttributeError:
+    self.tc_workfd_apply_patchwork_patches_list_hand = []
+
+try:
+    self.tc_workfd_apply_patchwork_patches_blacklist
+except AttributeError:
+    self.tc_workfd_apply_patchwork_patches_blacklist = []
+
 try:
     self.tc_workfd_apply_patchwork_patches_checkpatch_cmd
 except AttributeError:
@@ -566,3 +574,8 @@ try:
     self.tc_workfd_compile_linux_mkimage
 except AttributeError:
     self.tc_workfd_compile_linux_mkimage = '/home/hs/i2c/u-boot/tools/mkimage'
+
+try:
+   self.workfd_get_patchwork_number_user
+except AttributeError:
+   self.workfd_get_patchwork_number_user = 'hs'
