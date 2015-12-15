@@ -17,7 +17,40 @@
 #
 from tbotlib import tbot
 
-#set board state for which the tc is valid
+tb.workfd = tb.channel_ctrl
+
+tb.tc_workfd_apply_local_patches_checkpatch_cmd = 'scripts/checkpatch.pl'
+tb.tc_workfd_apply_local_patches_checkpatch_cmd_strict = "no"
+#get linux code
+tb.eof_call_tc("tc_workfd_get_linux_source.py")
+
+tmp = "cd " + tb.tc_lab_source_dir + "/linux-" + tb.boardlabname
+tb.eof_write(tb.workfd, tmp)
+tb.eof_read_end_state(tb.workfd, 1)
+tb.eof_call_tc("tc_workfd_check_cmd_success.py")
+
+#compile it
+tb.tc_lab_toolchain_rev = '5.4'
+tb.tc_lab_toolchain_name = 'armv5te'
+tb.tc_workfd_compile_linux_clean = 'no'
+tb.tc_workfd_compile_linux_load_addr = '0x80008000'
+tb.tc_workfd_compile_linux_modules ='yes'
+tb.tc_workfd_compile_linux_modules_path ='/opt/eldk-5.5/armv5te/rootfs-qte-sdk/home/hs/mcx/modules'
+tb.tc_workfd_compile_linux_dt_name = 'am3517-mcx.dtb'
+tb.tc_workfd_compile_linux_fit_its_file = '/work/hs/tbot/files/kernel_fdt_mcx.its'
+tb.tc_workfd_compile_linux_fit_file = 'mcx.itb'
+tb.tc_workfd_compile_linux_append_dt = 'Image-self-mcx'
+tb.eof_call_tc("tc_workfd_compile_linux.py")
+
+# copy files to tftpdir
+tb.statusprint("copy files")
+tb.tc_lab_cp_file_a = "/work/hs/tbot/linux-mcx/arch/arm/boot/uImage"
+tb.tc_lab_cp_file_b = "/tftpboot/mcx/tbot/uImage-hs-cur"
+tb.eof_call_tc("tc_lab_cp_file.py")
+tb.tc_lab_cp_file_a = "/work/hs/tbot/linux-mcx/arch/arm/boot/dts/am3517-mcx.dtb"
+tb.tc_lab_cp_file_b = "/tftpboot/mcx/tbot/mcx.dtb"
+tb.eof_call_tc("tc_lab_cp_file.py")
+
 tb.set_board_state("u-boot")
 
 tb.statusprint("u-boot setenv")
