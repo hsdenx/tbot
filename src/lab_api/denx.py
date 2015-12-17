@@ -147,86 +147,31 @@ class tbot_lab_api(object):
         ret = self.get_power_state(boardname)
         return ret
 
-#TODO not finish tested yet, as board was not accesible
-    def connect_to_laptop(self, board_prompt):
-        """ connect to a board over an laptop starting
-            kermit on it.
-            return: True on success
-            False else
-        """
-        self.tb.lab_con_laptop_ip = "hs@onb"
-        logging.info("Connect to Laptop")
-        self.tb.write_stream("ssh " + self.tb.lab_con_laptop_ip)
-        ret = self.tb.wait_answer('password:', 2)
-        self.tb.debugprint ("RET ssh " + self.tb.lab_con_laptop_ip + " :", ret)
-        if ret == False:
-            logging.error("No ssh to %s", self.tb.lab_con_laptop_ip)
-            self.tb.failure()
-
-        self.tb.write_stream(self.tb.lab_con_laptop_pwd)
-        ret = self.tb.wait_answer(self.tb.lap_prompt, 2)
-        if ret == False:
-            logging.error("No ssh to ",self.tb.lab_con_laptop_ip)
-            self.tb.failure()
-
-        # start kermit
-        logging.debug("Start Kermit")
-
-        self.tb.write_stream("kermit")
-        ret = self.tb.wait_answer('C-Kermit>', 10)
-        if ret == False:
-            logging.error("Could not start kermit")
-            self.tb.failure()
-
-        self.tb.write_stream("set line " + self.tb.kermit_line)
-        ret = self.tb.wait_answer('C-Kermit>', 2)
-        if ret == False:
-            logging.error("Could not set line %s", self.tb.kermit_line)
-            self.tb.failure()
-
-        self.tb.write_stream("set speed " + self.tb.kermit_speed)
-        ret = self.tb.wait_answer('C-Kermit>', 2)
-        if ret == False:
-            logging.error("Could not set speed %s", self.tb.kermit_speed)
-            self.tb.failure()
-
-        self.tb.write_stream("set flow-control none")
-        ret = self.tb.wait_answer('C-Kermit>', 2)
-        if ret == False:
-            logging.error("Could not set flow")
-            self.tb.failure()
-
-        self.tb.write_stream("set carrier-watch off")
-        ret = self.tb.wait_answer('C-Kermit>', 2)
-        if ret == False:
-            loggging.error("Could not set carrier")
-            self.tb.failure()
-
-        self.tb.write_stream("connect")
-        ret = self.tb.wait_answer('options', 2)
-        if ret == False:
-            loggging.error("Could not connect")
-            self.tb.failure()
-        return True
-
     def connect_to_board(self, boardname):
         """ connect to the board
         """
         tmp = "connect to board " + boardname
         logging.debug(tmp)
 
-	if boardname == 'pxm50':
-            ret = self.connect_to_laptop(boardname)
-            return ret
+	if boardname == 'dxr2':
+            try:
+                save_workfd = self.tb.workfd
+            except AttributeError:
+                save_workfd = self.tb.channel_ctrl
+            self.tb.workfd = self.tb.channel_con
+            ret = self.tb.call_tc("tc_workfd_connect_with_kermit.py")
+            self.tb.workfd = save_workfd
+            if ret != True:
+                return ret
+        else:
+            tmp = "connect " + boardname
+            ret = self.tb.write_stream(self.channel_con, tmp)
+            if not ret:
+                return ret
 
-        tmp = "connect " + boardname
-        ret = self.tb.write_stream(self.channel_con, tmp)
-        if not ret:
-            return ret
-
-        ret = self.tb.wait_answer(self.channel_con, "Connect", 50)
-        if not ret:
-            return ret
+            ret = self.tb.wait_answer(self.channel_con, "Connect", 50)
+            if not ret:
+                return ret
 
         reg = re.compile("not accessible")
         reg2 = re.compile("Locked by process")
@@ -235,6 +180,7 @@ class tbot_lab_api(object):
         reg5 = re.compile("Connection closed")
         reg6 = re.compile(self.tb.uboot_prompt)
         reg7 = re.compile(self.tb.linux_prompt)
+        reg8 = re.compile("Autobooting in")
         i = 0
         retry = 3
         debugger = 0
@@ -250,37 +196,44 @@ class tbot_lab_api(object):
                     debugger = 1
                 continue
 
-            res = reg.search(self.tb.buf[self.channel_con])
+            res = reg.search(self.tb.buf[self.tb.channel_con])
             if res:
                 return False
-            res = reg2.search(self.tb.buf[self.channel_con])
+            res = reg2.search(self.tb.buf[self.tb.channel_con])
             if res:
                 return False
-            res = reg3.search(self.tb.buf[self.channel_con])
+            res = reg3.search(self.tb.buf[self.tb.channel_con])
             if res:
                 tmp = 'noautoboot'
-                ret = self.tb.write_stream(self.channel_con, tmp)
+                ret = self.tb.write_stream(self.tb.channel_con, tmp)
                 i = 0
                 continue
 
-            res = reg4.search(self.tb.buf[self.channel_con])
+            res = reg4.search(self.tb.buf[self.tb.channel_con])
             if res:
                 i = 0
                 self.tb.send_ctrl_m(self.tb.channel_con)
 
-            res = reg5.search(self.tb.buf[self.channel_con])
+            res = reg5.search(self.tb.buf[self.tb.channel_con])
             if res:
                 return False
 
-            res = reg6.search(self.tb.buf[self.channel_con])
+            res = reg6.search(self.tb.buf[self.tb.channel_con])
             if res:
                 logging.info("connected to %s state uboot", boardname)
                 return True
 
-            res = reg7.search(self.tb.buf[self.channel_con])
+            res = reg7.search(self.tb.buf[self.tb.channel_con])
             if res:
                 logging.info("connected to %s state linux", boardname)
                 return True
+
+            res = reg8.search(self.tb.buf[self.tb.channel_con])
+            if res:
+                string = pack('h', 27)
+                string = string[:1]
+                ret = self.write_no_ret(self.tb.channel_con, string)
+                continue
             i = 0
 
         logging.info("connected to %s", boardname)

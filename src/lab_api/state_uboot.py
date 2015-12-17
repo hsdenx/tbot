@@ -15,11 +15,13 @@ import sys
 import re
 import logging
 import time
+from struct import pack
 sys.path.append("./common")
 from tbotlib import tbot
 
 def u_boot_parse_input(tb, state):
     logging.debug("------------------- parse input")
+    reg3 = re.compile("Autobooting in")
     reg2 = re.compile('noautoboot')
     reg = re.compile('autoboot')
     while(True):
@@ -29,6 +31,13 @@ def u_boot_parse_input(tb, state):
             logging.debug("------------------- parse input Timeout end False")
             return False
 
+        res = reg3.search(tb.buf[tb.channel_con])
+        if res:
+            string = pack('h', 27)
+            string = string[:1]
+            ret = tb.lab.write_no_ret(tb.channel_con, string)
+            ret = tb.lab.write_no_ret(tb.channel_con, string)
+            continue
         res = reg2.search(tb.buf[tb.channel_con])
         if res:
             ret = tb.write_stream(tb.channel_con, "noautoboot")
