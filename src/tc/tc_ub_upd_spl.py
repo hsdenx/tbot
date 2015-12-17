@@ -45,7 +45,7 @@ while upd_fail == True:
         tb.end_tc(False)
 
     tb.eof_write_con("run tbot_upd_spl")
-    searchlist = ["!= byte at", "error", "Retry count exceeded"]
+    searchlist = ["!= byte at", "error", "Retry count exceeded", "not defined"]
     tmp = True
     upd_fail = False
     while tmp == True:
@@ -58,6 +58,11 @@ while upd_fail == True:
             tmp = True
         elif tmp == 2:
             upd_fail = True
+            tmp = True
+        elif tmp == 3:
+            upd_fail = True
+            tmp = True
+        elif tmp == None:
             tmp = True
         elif tmp == 'prompt':
             i += 1
