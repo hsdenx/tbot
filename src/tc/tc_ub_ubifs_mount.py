@@ -23,7 +23,15 @@ tb.set_board_state("u-boot")
 
 tmp = 'ubifsmount ' + tb.tc_ub_ubifs_volume_name
 tb.eof_write_con(tmp)
-tb.eof_search_str_in_readline_end_con("Error")
-tb.eof_read_end_state_con(1)
+searchlist = ["Error"]
+tmp = True
+mounted = True
+while tmp == True:
+    tmp = tb.readline_and_search_strings(tb.channel_con, searchlist)
+    if tmp == 0:
+        mounted = False
+        tmp = True
+    elif tmp == 'prompt':
+        tmp = False
 
-tb.end_tc(True)
+tb.end_tc(mounted)
