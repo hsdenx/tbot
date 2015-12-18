@@ -229,11 +229,6 @@ except AttributeError:
     self.tc_ub_ubifs_ls_dir = '/'
 
 try:
-    self.tc_ub_ubifs_vol_exist_name
-except AttributeError:
-    self.tc_ub_ubifs_vol_exist_name = 'rootfs'
-
-try:
     self.tc_lx_gpio_nr
 except AttributeError:
     self.tc_lx_gpio_nr = '69'

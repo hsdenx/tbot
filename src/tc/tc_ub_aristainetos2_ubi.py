@@ -35,13 +35,10 @@ tb.tc_ub_ubi_prep_offset = '4096'
 tb.tc_ub_ubi_prep_partname = 'ubi'
 tb.eof_call_tc("tc_ub_ubi_prepare.py")
 
-#check if rootfs volume exists
-tb.tc_ub_ubifs_vol_exist_name = 'rootfs'
-tb.eof_call_tc("tc_ub_ubifs_check_vol_exist.py")
-if tb.tc_return:
-    print("EXISTING")
-else:
-    print("NOT EXISTING")
+#check if ubi rootfs volume exists
+tb.tc_ub_ubi_load_name = 'rootfs'
+tb.eof_call_tc("tc_ub_ubi_check_volume.py")
+
 #  delete it
 #  check if rootfs volume exists, must fail
 #and create it
