@@ -91,6 +91,8 @@ tb.eof_write(tb.workfd, "set carrier-watch off")
 tb.eof_read_end_state(tb.workfd, 1)
 tb.lab.write(tb.workfd, "connect")
 
+tb.channel_end[tb.workfd] = '1'
+
 # set back U-Boot prompt
 tb.prompt = tb.uboot_prompt
 tb.end_tc(True)

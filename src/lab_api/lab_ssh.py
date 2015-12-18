@@ -186,7 +186,8 @@ def lab_write(self, fd, string):
 
     self.chan[fd].send(string)
     # add here a return too ... ToDo: why?
-    self.chan[fd].send('\n')
+    if self.tb.channel_end[fd] == '2':
+        self.chan[fd].send('\n')
     self.chan[fd].send('\n')
 
     return True

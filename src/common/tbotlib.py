@@ -51,6 +51,7 @@ class tbot(object):
             self.logfilen = self.workdir + '/' + self.logfilen
         print("LOGFILE ", self.logfilen)
 
+        self.channel_end = ['2', '2']
         # open configuration file
         try:
             fd = open(self.workdir + '/' + self.cfgfile, 'r')
