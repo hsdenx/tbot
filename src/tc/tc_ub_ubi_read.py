@@ -21,7 +21,10 @@ logging.info("args: %s %s %s", tb.tc_ub_ubi_read_addr, tb.tc_ub_ubi_read_vol_nam
 #set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
-tmp = "ubi read " + tb.tc_ub_ubi_read_addr + " " + tb.tc_ub_ubi_read_vol_name + ' ' + tb.tc_ub_ubi_read_len
+tmp = "ubi read " + tb.tc_ub_ubi_read_addr + " " + tb.tc_ub_ubi_read_vol_name
+if tb.tc_ub_ubi_read_len != 'none':
+    tmp += ' ' + tb.tc_ub_ubi_read_len
+
 tb.eof_write_con(tmp)
 
 searchlist = ["bytes from volume"]

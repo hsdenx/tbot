@@ -58,9 +58,10 @@ tb.tc_ub_ubi_write_vol_name = 'rootfs'
 tb.eof_call_tc("tc_ub_ubi_write.py")
 
 #read file from ubi volume
-tb.tc_ub_ubi_load_addr = '11000000'
-tb.tc_ub_ubi_load_name = tb.tc_ub_ubi_write_vol_name
-tb.eof_call_tc("tc_ub_ubi_load.py")
+tb.tc_ub_ubi_read_addr = '11000000'
+tb.tc_ub_ubi_read_vol_name = tb.tc_ub_ubi_write_vol_name
+tb.tc_ub_ubi_read_len = tb.tc_ub_ubi_write_len
+tb.eof_call_tc("tc_ub_ubi_read.py")
 
 #cmp if all bytes are the same
 tmp = 'cmp.b ' + tb.tc_ub_ubi_load_addr + ' ' + tb.tc_ub_ubi_write_addr + ' ' + tb.tc_ub_ubi_write_len
