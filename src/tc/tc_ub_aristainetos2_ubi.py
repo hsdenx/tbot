@@ -83,27 +83,27 @@ tb.eof_call_tc("tc_ub_ubi_prepare.py")
 tb.eof_call_tc("tc_ub_ubi_check_volume.py")
 
 #write file into kernel volume
-tb.tftp_addr_r = tb.tc_ub_ubi_write_addr
-tb.tftp_file = '/tftpboot/aristainetos/tbot/aristainetos2.itb'
+tb.tc_ub_tftp_file_addr = tb.tc_ub_ubi_write_addr
+tb.tc_ub_tftp_file_name = '/tftpboot/aristainetos/tbot/aristainetos2.itb'
 tb.eof_call_tc("tc_ub_tftp_file.py")
 
-read_line_retry_save=tb.read_line_retry
-tb.read_line_retry=1000
+tb.eof_call_tc("tc_ub_get_filesize.py")
+tb.tc_ub_ubi_write_len = tb.ub_filesize
+
 tb.tc_ub_ubi_write_vol_name = 'kernel'
 tb.eof_call_tc("tc_ub_ubi_write.py")
 
 #read file from kernel partition
-tb.tc_ub_ubi_load_addr = '11000000'
-tb.eof_call_tc("tc_ub_ubi_load.py")
+tb.tc_ub_ubi_read_addr = '11000000'
+tb.tc_ub_ubi_read_vol_name = tb.tc_ub_ubi_write_vol_name
+tb.tc_ub_ubi_read_len = tb.tc_ub_ubi_write_len
+tb.eof_call_tc("tc_ub_ubi_read.py")
 
-#compare it with original
-#tmp = "cmp.b 11000000 14000000 ${filesize}"
-# does not work ... console hangs
-tmp = "run tbot_cmp_ubi"
-tb.eof_write_con(tmp)
-tb.eof_search_str_in_readline_end_con("!=")
-tb.read_line_retry=read_line_retry_save
-tb.eof_read_end_state_con(1)
+#cmp if all bytes are the same
+tb.tc_ub_cmp_addr1 = tb.tc_ub_ubi_read_addr
+tb.tc_ub_cmp_addr2 = tb.tc_ub_tftp_file_addr
+tb.tc_ub_cmp_len = tb.tc_ub_ubi_write_len
+tb.eof_call_tc("tc_ub_cmp.py")
 
 # power off board at the end
 tb.eof_call_tc("tc_lab_poweroff.py")
