@@ -220,11 +220,13 @@ class tbot_lab_api(object):
 
             res = reg6.search(self.tb.buf[self.tb.channel_con])
             if res:
+                self.tb.channel_end[self.tb.channel_con] = '1'
                 logging.info("connected to %s state uboot", boardname)
                 return True
 
             res = reg7.search(self.tb.buf[self.tb.channel_con])
             if res:
+                self.tb.channel_end[self.tb.channel_con] = '1'
                 logging.info("connected to %s state linux", boardname)
                 return True
 
@@ -236,6 +238,7 @@ class tbot_lab_api(object):
                 continue
             i = 0
 
+        self.tb.channel_end[self.tb.channel_con] = '1'
         logging.info("connected to %s", boardname)
         return True
 
