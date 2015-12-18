@@ -27,9 +27,27 @@ tb.set_board_state("u-boot")
 #or get the filesize from the tftp...
 tmp = "ubi write " + tb.tc_ub_ubi_write_addr + " " + tb.tc_ub_ubi_write_vol_name + ' ' + tb.tc_ub_ubi_write_len
 tb.eof_write_con(tmp)
-tb.eof_search_str_in_readline_con("written to volume")
-tb.eof_read_end_state_con(1)
 
-tb.eof_call_tc("tc_ub_ubi_info.py")
+
+searchlist = ["written to volume"]
+tmp = True
+found = False
+while tmp == True:
+    tmp = tb.readline_and_search_strings(tb.channel_con, searchlist)
+    if tmp == 0:
+        tmp = True
+        found = True
+    elif tmp == None:
+        # ! endless loop ...
+        tmp = True
+    elif tmp == 'prompt':
+        tmp = False
+
+if found == False:
+    tb.end_tc(False)
+
+#clear ubi part from uboot cmd buffer
+tb.eof_write_con("ubi info")
+tb.eof_read_end_state_con(1)
 
 tb.end_tc(True)
