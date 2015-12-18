@@ -48,8 +48,8 @@ else:
 #check if rootfs volume exists
 
 #get file
-tb.tftp_addr_r = tb.tc_ub_ubi_write_addr
-tb.tftp_file = '/tftpboot/aristainetos/tbot/rootfs-minimal.ubifs'
+tb.tc_ub_tftp_file_addr = tb.tc_ub_ubi_write_addr
+tb.tc_ub_tftp_file_name = '/tftpboot/aristainetos/tbot/rootfs-minimal.ubifs'
 tb.eof_call_tc("tc_ub_tftp_file.py")
 
 #write it in ubi volume

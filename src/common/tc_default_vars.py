@@ -48,16 +48,6 @@ except AttributeError:
 
 #src/tc/tc_tftp_file.py
 try:
-    self.tftp_addr_r
-except AttributeError:
-    self.tftp_addr_r = '21000000'
-try:
-    self.tftp_file
-except AttributeError:
-    self.tftp_file = '/tftpboot/at91_taurus/u-boot.bin'
-
-#src/tc/tc_tftp_file.py
-try:
     self.tc_lx_mount_dev
 except AttributeError:
     self.tc_lx_mount_dev = '/dev/sda1'
@@ -594,3 +584,13 @@ try:
     self.kermit_speed
 except AttributeError:
     self.kermit_speed = '115200'
+
+try:
+    self.tc_ub_tftp_file_addr
+except AttributeError:
+    self.tc_ub_tftp_file_addr = self.ub_load_board_env_addr
+
+try:
+    self.tc_ub_tftp_file_name
+except AttributeError:
+    self.tc_ub_tftp_file_name = '/tftpboot/' + self.tftpboardname + '/' + self.ub_load_board_env_subdir + '/env.txt'

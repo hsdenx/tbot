@@ -22,30 +22,15 @@ logging.info("u-boot bmp testcase")
 #set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
-ret = tb.write_stream("setenv tc_addr " + tb.ub_bmp_addr)
-if not ret:
-    tb.end_tc(False)
+tb.tc_ub_ubi_load_addr = tb.ub_bmp_addr
+tb.tc_ub_ubi_load_name = tb.ub_bmp_file
+tb.eof_call_tc("tc_ub_tftp_file.py")
 
-ret = tb.write_stream("setenv tc_file " + tb.ub_bmp_file)
-if not ret:
-    tb.end_tc(False)
+tb.eof_write_stream("bmp info ${tc_addr}")
+tb.eof_wait_answer('Compression', 30)
+tb.eof_read_end_state(2)
 
-ret = tb.call_tc("tc_ub_tftp_file.py")
-if ret == False:
-    tb.end_tc(False)
-
-ret = tb.write_stream("bmp info ${tc_addr}")
-if not ret:
-    tb.end_tc(False)
-ret = tb.wait_answer('Compression', 30)
-if ret == False:
-    tb.end_tc(False)
-ret = tb.read_end_state(2)
-if ret == False:
-    tb.end_tc(False)
-
-ret = tb.write_stream("bmp display ${tc_addr} 10 10")
-if not ret:
-    tb.end_tc(False)
+tb.eof_write_stream("bmp display ${tc_addr} 10 10")
+tb.eof_read_end_state(2)
 
 tb.end_tc(True)

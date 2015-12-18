@@ -26,33 +26,23 @@ tb.set_board_state("u-boot")
 if tb.tc_ub_boot_linux_load_env != 1:
     tb.end_tc(True)
 
+tb.tc_ub_tftp_file_addr = tb.ub_load_board_env_addr
+tb.tc_ub_tftp_file_name = '/tftpboot/' + tb.tftpboardname + '/' + tb.ub_load_board_env_subdir + '/env.txt'
+
 i = 0
 retry = 2
-load_fail = True
-while load_fail == True:
+load_fail = False
+while load_fail == False:
     if i >= retry:
         tb.end_tc(False)
 
-    tmp = 'mw ' + tb.ub_load_board_env_addr + ' 0 0x4000;tftp ' + tb.ub_load_board_env_addr + ' /tftpboot/' + tb.tftpboardname + '/' + tb.ub_load_board_env_subdir + '/env.txt;env import -t ' + tb.ub_load_board_env_addr
+    tmp = 'mw ' + tb.ub_load_board_env_addr + ' 0 0x4000'
     tb.eof_write_con(tmp)
-    searchlist = ["Bytes transferred", "error", "Retry count exceeded"]
-    tmp = True
-    load_fail = False
-    while tmp == True:
-        tmp = tb.readline_and_search_strings(tb.channel_con, searchlist)
-        if tmp == 0:
-            load_fail = False
-            tmp = False
-        elif tmp == 1:
-            upd_fail = True
-            tmp = True
-        elif tmp == 2:
-            upd_fail = True
-            tmp = True
-        elif tmp == 'prompt':
-            i += 1
-            tmp = False
+    tb.eof_read_end_state_con(2)
+    load_fail = tb.call_tc("tc_ub_tftp_file.py")
 
-# ToDo check if env import has success
+tmp = 'env import -t ' + tb.ub_load_board_env_addr
+tb.eof_write_con(tmp)
 tb.eof_read_end_state_con(2)
+
 tb.end_tc(True)

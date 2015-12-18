@@ -13,28 +13,35 @@
 #
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_tftp_file.py
-
+# load file tc_ub_tftp_file_name to tc_ub_tftp_file_addr
+# with tftp command in uboot
 from tbotlib import tbot
 
-#here starts the real test
-logging.info("u-boot tftp testcase")
+logging.info("args: %s %s %s", tb.boardname, tb.tc_ub_tftp_file_addr, tb.tc_ub_tftp_file_name)
+
 #set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
-# set necessary u-boot env variables
-# just a demo of call_tc.pc testcase, you could of course
-# build the complete command string for tftp
-# and send it to the board ...
-tb.setenv_name = 'tftp_addr_r'
-tb.setenv_value = tb.tftp_addr_r
-tb.eof_call_tc('tc_ub_setenv.py')
-tb.setenv_name = 'tftp_file'
-tb.setenv_value = tb.tftp_file
-tb.eof_call_tc('tc_ub_setenv.py')
+tmp = 'tftp ' + tb.tc_ub_tftp_file_addr + ' ' + tb.tc_ub_tftp_file_name
+tb.eof_write_con(tmp)
+searchlist = ["Bytes transferred", "error", "Retry count exceeded"]
+tmp = True
+load_fail = True
+while tmp == True:
+    tmp = tb.readline_and_search_strings(tb.channel_con, searchlist)
+    if tmp == 0:
+        load_fail = False
+        tmp = True
+    elif tmp == 1:
+        load_fail = True
+        tmp = True
+    elif tmp == 2:
+        load_fail = True
+        tmp = True
+    elif tmp == 'prompt':
+        tmp = False
 
-tb.eof_write_con('tftp ${tftp_addr_r} ${tftp_file}')
-ret = tb.wait_answer(tb.channel_con, 'Bytes', 30)
-if ret == False:
+if load_fail == True:
     tb.end_tc(False)
-tb.eof_read_end_state_con(2)
+
 tb.end_tc(True)
