@@ -49,8 +49,11 @@ tb.tc_ub_tftp_file_addr = tb.tc_ub_ubi_write_addr
 tb.tc_ub_tftp_file_name = '/tftpboot/aristainetos/tbot/rootfs-minimal.ubifs'
 tb.eof_call_tc("tc_ub_tftp_file.py")
 
+tb.eof_call_tc("tc_ub_get_filesize.py")
+tb.tc_ub_ubi_write_len = tb.ub_filesize
+
 #write it in ubi volume
-tb.tc_ub_ubi_write_len = '0xc00000'
+tb.tc_ub_ubi_write_len = tb.ub_filesize
 tb.tc_ub_ubi_write_vol_name = 'rootfs'
 tb.eof_call_tc("tc_ub_ubi_write.py")
 
@@ -61,10 +64,10 @@ tb.tc_ub_ubi_read_len = tb.tc_ub_ubi_write_len
 tb.eof_call_tc("tc_ub_ubi_read.py")
 
 #cmp if all bytes are the same
-tmp = 'cmp.b ' + tb.tc_ub_ubi_load_addr + ' ' + tb.tc_ub_ubi_write_addr + ' ' + tb.tc_ub_ubi_write_len
-tb.eof_write_con(tmp)
-tb.eof_search_str_in_readline_end_con("!=")
-tb.eof_read_end_state_con(1)
+tb.tc_ub_cmp_addr1 = tb.tc_ub_ubi_read_addr
+tb.tc_ub_cmp_addr2 = tb.tc_ub_tftp_file_addr
+tb.tc_ub_cmp_len = tb.tc_ub_ubi_write_len
+tb.eof_call_tc("tc_ub_cmp.py")
 
 #mount ubifs
 tb.eof_call_tc("tc_ub_ubifs_mount.py")
