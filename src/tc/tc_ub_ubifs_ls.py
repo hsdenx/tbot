@@ -23,7 +23,17 @@ tb.set_board_state("u-boot")
 
 tmp = 'ubifsls ' + tb.tc_ub_ubifs_ls_dir
 tb.eof_write_con(tmp)
-tb.eof_search_str_in_readline_end_con("File not")
-tb.eof_read_end_state_con(1)
+searchlist = ["File not"]
+tmp = True
+cmd_ok = True
+while tmp == True:
+    tmp = tb.readline_and_search_strings(tb.channel_con, searchlist)
+    if tmp == 0:
+        cmd_ok = False
+        tmp = True
+    elif tmp == None:
+        tmp = True
+    elif tmp == 'prompt':
+        tmp = False
 
-tb.end_tc(True)
+tb.end_tc(cmd_ok)
