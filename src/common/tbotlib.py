@@ -376,7 +376,7 @@ class tbot(object):
                     if (len(self.buf[fd]) > 0):
                         logging.info("read no ret %s %s", fd, self.buf[fd])
                         if self.verbose:
-                            print("read %d: %s" % (fd, self.buf[fd]))
+                            print("read no ret %d: %s" % (fd, self.buf[fd]))
                         return False
                     return None
 
