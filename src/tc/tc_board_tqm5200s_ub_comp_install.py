@@ -18,13 +18,9 @@
 #
 from tbotlib import tbot
 
-#cloning needs a bigger timeout, (git clone has no output)
-read_line_retry_save=tb.read_line_retry
-tb.read_line_retry=500
 #call get u-boot source
 tb.statusprint("get u-boot source")
 tb.eof_call_tc("tc_lab_get_uboot_source.py")
-tb.read_line_retry=read_line_retry_save
 
 #call set toolchain
 tb.statusprint("set toolchain")
@@ -57,5 +53,4 @@ tb.tc_lab_cp_file_b = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_e
 #call cp files
 tb.eof_call_tc("tc_lab_cp_file.py")
 
-tc_ub_upd_uboot.py
 tb.end_tc(True)
