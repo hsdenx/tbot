@@ -23,13 +23,18 @@ logging.info("args: workfd %s %s", tb.workfd, tb.tc_workfd_check_if_cmd_exist_cm
 #command -v foo >/dev/null 2>&1 || { echo >&2 "I require foo but it's not installed.  Aborting."; exit 1; }
 tmp = 'command -v ' + tb.tc_workfd_check_if_cmd_exist_cmdname + ' >/dev/null 2>&1 || { echo >&2 "not installed.";}'
 tb.eof_write(tb.workfd, tmp)
-ret = tb.eof_search_str_in_readline(tb.workfd, "not installed", 0)
-if ret == True:
-    tb.tc_return = False
-if ret == None:
-    tb.tc_return = False
-if ret == False:
-    tb.tc_return = True
+searchlist = ["not installed"]
+tmp = True
+cmd_installed = True
+while tmp == True:
+    tmp = tb.readline_and_search_strings(tb.workfd, searchlist)
+    if tmp == 0:
+        cmd_installed = False
+        tmp = True
+    elif tmp == 'None':
+        #endless loop ...
+        tmp = True
+    elif tmp == 'prompt':
+        tmp = False
 
-tb.eof_read_end_state(tb.workfd, 0)
-tb.end_tc(True)
+tb.end_tc(cmd_installed)
