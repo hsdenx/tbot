@@ -52,14 +52,12 @@ def linux_set_board_state(tb, state, retry):
     if ret != None:
         return False
 
-    tmp = 'PS1=' + tb.linux_prompt
-    ret = tb.eof_write(tb.channel_con, tmp)
-
-    tb.prompt = tb.linux_prompt
-    ret = tb.read_end_state(tb.channel_con, 1)
+    ret = tb.set_prompt(tb.channel_con, tb.linux_prompt, 'export PS1="\u@\h [\$(date +%k:%M:%S)] ', ' >"')
     if ret == True:
+        tb.prompt = tb.linux_prompt
         return True
 
+    # if not in linux, we state we are in u-boot ...
     # switch to linux through tc
     tb.eof_call_tc("tc_ub_boot_linux.py")
 
