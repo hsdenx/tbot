@@ -67,9 +67,22 @@ tb.eof_read_end_state_ctrl(1)
 
 tmp = "./src/dfu-util -a " + tb.tc_ub_dfu_dfu_util_alt_setting + " -U " + tb.tc_ub_dfu_dfu_util_downloadfile
 tb.eof_write_ctrl(tmp)
+searchlist = ["Claiming", "Copying data from DFU device to PC", "finished"]
+tmp = True
+attached = False
+while tmp == True:
+    tmp = tb.readline_and_search_strings(tb.channel_con, searchlist)
+    if tmp == 0:
+        attached = True
+        tmp = True
+    elif tmp == 'prompt':
+        tmp = False
+
+
 tb.eof_search_str_in_readline_ctrl("Claiming")
 tb.eof_search_str_in_readline_ctrl("Copying data from DFU device to PC")
 tb.eof_search_str_in_readline_ctrl("finished")
+tb.eof_read_end_state_ctrl(1)
 
 #on board we see
 ####
@@ -82,6 +95,8 @@ logging.info("download file")
 tmp = "./src/dfu-util -a " + tb.tc_ub_dfu_dfu_util_alt_setting + " -D " + tb.tc_ub_dfu_dfu_util_downloadfile
 tb.eof_write_ctrl(tmp)
 tb.eof_search_str_in_readline_ctrl("finished")
+tb.eof_search_str_in_readline_ctrl("Done!")
+tb.eof_read_end_state_ctrl(1)
 
 #on board we see
 ####
@@ -90,7 +105,7 @@ tb.eof_search_str_in_readline_con("OK")
 
 ###########################################
 #upload to lab again
-logging.info("upload file")
+logging.info("upload file again")
 #delete tmp file
 tmp = "rm -rf " + tb.tc_ub_dfu_dfu_util_downloadfile + ".new"
 tb.eof_write_ctrl(tmp)
@@ -101,6 +116,7 @@ tb.eof_write_ctrl(tmp)
 tb.eof_search_str_in_readline_ctrl("Claiming")
 tb.eof_search_str_in_readline_ctrl("Copying data from DFU device to PC")
 tb.eof_search_str_in_readline_ctrl("finished")
+tb.eof_read_end_state_ctrl(1)
 
 #on board we see
 ####
@@ -113,6 +129,7 @@ logging.info("diff files")
 tmp = "diff " + tb.tc_ub_dfu_dfu_util_downloadfile + " " + tb.tc_ub_dfu_dfu_util_downloadfile + ".new"
 tb.eof_write_ctrl(tmp)
 ret = tb.search_str_in_readline_ctrl("diff")
+tb.eof_read_end_state_ctrl(1)
 if ret == True:
     tb.end_tc(False)
 
