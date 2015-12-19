@@ -26,13 +26,9 @@ def send_cmd(tb, cmd):
     tb.eof_write_ctrl(cmd)
     tb.eof_read_end_state_ctrl(1)
 
-#cloning needs a bigger timeout, (git clone has no output)
-read_line_retry_save=tb.read_line_retry
-tb.read_line_retry=500
 #call get u-boot source
 tb.statusprint("get source tree")
 tb.eof_call_tc(tb.board_git_bisect_get_source_tc)
-tb.read_line_retry=read_line_retry_save
 
 #git bisect start
 send_cmd(tb, 'git bisect start')
