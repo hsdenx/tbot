@@ -21,6 +21,18 @@ logging.info("args: workfd %s", tb.workfd)
 #we can not check if we are in linux, as this deletes
 #the state of the last command...
 tb.eof_write(tb.workfd, "if [ $? -ne 0 ]; then echo 'FAILED'; fi")
-tb.eof_search_str_in_readline_end(tb.workfd, "FAILED")
+searchlist = ["FAILED"]
+tmp = True
+cmd_ok = True
+while tmp == True:
+    tmp = tb.readline_and_search_strings(tb.workfd, searchlist)
+    if tmp == 0:
+        cmd_ok = False
+        tmp = True
+    elif tmp == 'None':
+        #endless loop ...
+        tmp = True
+    elif tmp == 'prompt':
+        tmp = False
 
-tb.end_tc(True)
+tb.end_tc(cmd_ok)
