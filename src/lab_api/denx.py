@@ -72,13 +72,16 @@ class tbot_lab_api(object):
         """
 	return lab_get_lab_connect_state(self)
 
-    def connect_lab(self):
+    def connect_lab(self, fd):
         """ connect to the lab and set lab prompt
             return:
             True, if connect
             False else
         """
-	return lab_connect_lab(self)
+        ret = lab_connect_lab(self, fd)
+        if ret != True:
+            return ret
+        return True
 
     def lab_open_fd(self):
         """ open a filedescriptor
@@ -159,6 +162,7 @@ class tbot_lab_api(object):
             except AttributeError:
                 save_workfd = self.tb.channel_ctrl
             self.tb.workfd = self.tb.channel_con
+            self.tb.eof_read_end_state(self.tb.workfd, 1)
             ret = self.tb.call_tc("tc_workfd_connect_with_kermit.py")
             self.tb.workfd = save_workfd
             if ret != True:

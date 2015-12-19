@@ -109,7 +109,7 @@ class tbot(object):
         self.buf.append('')
         self.buf.append('')
 
-        self.check_state()
+        self.check_state(self.channel_ctrl)
 
     def __del__(self):
         # without this timeout paramiko crashes sometimes with
@@ -139,13 +139,13 @@ class tbot(object):
             bdi.send_bdi_cmd_wait_prompt(self.lab_bdi_upd_uboot_bdi_run)
             bdi.bdi_quit()
 
-    def check_state(self):
+    def check_state(self, fd):
         """ check the state of the connection to the board
         """
         # check if we have connection to the lab
         ret = self.lab.get_lab_connect_state()
         if ret == False:
-            ret = self.lab.connect_lab()
+            ret = self.lab.connect_lab(fd)
             if ret != True:
                 self.failure()
 
@@ -315,7 +315,7 @@ class tbot(object):
         ret = True
 	if self.lab.get_lab_connect_state() == False:
             logging.debug("not connected to lab")
-            ret = self.lab.connect_lab()
+            ret = self.lab.connect_lab(fd)
 
         #ToDo check here the specific fd
 	if self.lab.lab_check_fd(fd) == False:

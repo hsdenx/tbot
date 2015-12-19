@@ -7,6 +7,9 @@
 
 ----------------------------------------
 
+- rework prompt
+  save current prompt for each fd!!
+
 - if tbot fails, start a git biscect section
   and find out, which commit did it
 

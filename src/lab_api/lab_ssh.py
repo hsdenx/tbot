@@ -107,7 +107,7 @@ def lab_get_lab_connect_state(self):
 # TODO check it really !!
     return self.opened
 
-def lab_connect_lab(self):
+def lab_connect_lab(self, fd):
     """ connect to the lab and set lab prompt
         return:
         True, if connect
@@ -123,7 +123,8 @@ def lab_connect_lab(self):
         return ret
 
     # set prompt for the power channel
-    ret = self.tb.set_prompt(self.channel_ctrl, self.tb.labprompt, 'export PS1="\u@\h [\$(date +%k:%M:%S)] ', ' >"')
+    ret = self.tb.set_prompt(self.tb.channel_ctrl, self.tb.labprompt, 'export PS1="\u@\h [\$(date +%k:%M:%S)] ', ' >"')
+    ret = self.tb.set_prompt(self.tb.channel_con, self.tb.labprompt, 'export PS1="\u@\h [\$(date +%k:%M:%S)] ', ' >"')
     return ret
 
 def lab_lab_open_fd(self):
