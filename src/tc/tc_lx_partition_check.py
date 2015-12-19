@@ -45,9 +45,18 @@ tb.eof_call_tc("tc_lx_mount.py")
 #compare the dummy file with the file in the partition
 tmp = "cmp " + tb.tc_lx_dummy_file_tempfile + " " + tb.tc_lx_mount_dir + "/gnlmpf_partition"
 tb.eof_write_con(tmp)
-ret = tb.search_str_in_readline_con("diff")
-if ret == True:
-    tb.end_tc(False)
+searchlist = ["diff"]
+tmp = True
+cmd_ok = True
+while tmp == True:
+    tmp = tb.readline_and_search_strings(tb.channel_con, searchlist)
+    if tmp == 0:
+        cmd_ok = False
+        tmp = True
+    elif tmp == None:
+        #endless loop...
+        tmp = True
+    elif tmp == 'prompt':
+        tmp = False
 
-tb.eof_read_end_state_con(2)
-tb.end_tc(True)
+tb.end_tc(cmd_ok)
