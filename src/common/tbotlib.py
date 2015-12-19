@@ -442,19 +442,17 @@ class tbot(object):
         """read until end is detected. End is detected if
            current prompt is read.
         """
-        i = 0
-        while i <= retry:
-            ret = self.read_line(fd, self.read_end_state_retry)
-            logging.debug("read_end rl ret: %s buf: %s i: %s retry: %s", ret, self.buf[fd], i, retry)
-            if ret != None:
-                if ret == True:
-                    i = 0
-                ret = self.is_end_fd(fd, self.buf[fd])
-                if ret:
-                    return True
-            i += 1
+        searchlist = ["OK"]
+        tmp = True
+        while tmp == True:
+            tmp = self.readline_and_search_strings(fd, searchlist)
+            if tmp == 'prompt':
+                attached = True
+                tmp = False
+            else:
+                tmp = True
 
-        return False
+        return True
 
     def read_end_state_con(self, retry):
         ret = self.read_end_state(self.channel_con, retry)
@@ -692,7 +690,6 @@ class tbot(object):
             If write_stream returns not True, end tc
             with failure
         """
-        self.read_end_state(fd, 1)
         ret = self.write_stream(fd, string)
         if ret == True:
             return True
