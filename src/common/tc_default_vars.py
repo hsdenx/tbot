@@ -589,3 +589,8 @@ try:
     self.tc_ub_tftp_file_name
 except AttributeError:
     self.tc_ub_tftp_file_name = '/tftpboot/' + self.tftpboardname + '/' + self.ub_load_board_env_subdir + '/env.txt'
+
+try:
+    self.tc_ub_boot_linux_retry
+except AttributeError:
+    self.tc_ub_boot_linux_retry = 30

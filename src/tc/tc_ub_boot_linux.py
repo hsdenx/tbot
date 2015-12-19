@@ -30,8 +30,12 @@ tb.eof_write_con(tb.ub_boot_linux_cmd)
 
 #read until 'login:'
 ret = False
+i = 0
 while ret != True:
     ret = tb.search_str_in_readline_con("login:")
+    i += 1
+    if i >= tb.tc_ub_boot_linux_retry:
+        tb.end_tc(False)
 
 tmp = 'root'
 tb.eof_write_con(tmp)
