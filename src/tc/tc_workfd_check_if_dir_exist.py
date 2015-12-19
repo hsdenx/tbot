@@ -25,14 +25,5 @@ tb.eof_call_tc("tc_workfd_goto_tbot_workdir.py")
 tmp = 'test -d ' + tb.tc_workfd_check_if_dir_exists_name
 tb.eof_write(tb.workfd, tmp)
 tb.eof_read_end_state(tb.workfd, 1)
-tb.eof_write(tb.workfd, "if [ $? -ne 0 ]; then echo 'FAILED'; fi")
-ret = tb.eof_search_str_in_readline(tb.workfd, "FAILED", 0)
-if ret == True:
-    tb.tc_return = False
-if ret == None:
-    tb.tc_return = False
-if ret == False:
-    tb.tc_return = True
-
-tb.eof_read_end_state(tb.workfd, 1)
-tb.end_tc(tb.tc_return)
+tb.eof_call_tc("tc_workfd_check_cmd_success.py")
+tb.end_tc(True)
