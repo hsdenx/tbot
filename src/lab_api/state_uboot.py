@@ -109,7 +109,7 @@ def u_boot_set_board_state(tb, state, retry):
     # switch to u-boot if not ?? repower ??
     ret = tb.lab.set_power_state(tb.boardlabpowername, "off")
     if ret == False:
-        tb.read_end_state_con(2)
+        #tb.flush_fd(tb.channel_con)
         time.sleep(2)
         ret = tb.lab.set_power_state(tb.boardlabpowername, "on")
         if ret != True:

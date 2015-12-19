@@ -134,8 +134,6 @@ class tbot(object):
             from lab_bdi import bdi_class
             bdi = bdi_class(self)
             bdi.bdi_connect()
-            #read all pending chars from console
-            self.read_end_state_con(2)
             bdi.send_bdi_cmd_wait_prompt(self.lab_bdi_upd_uboot_bdi_run)
             bdi.bdi_quit()
 
@@ -442,13 +440,15 @@ class tbot(object):
         """read until end is detected. End is detected if
            current prompt is read.
         """
-        searchlist = ["OK"]
+        searchlist = ["Please RESET the board"]
         tmp = True
         while tmp == True:
             tmp = self.readline_and_search_strings(fd, searchlist)
             if tmp == 'prompt':
                 attached = True
                 tmp = False
+            elif tmp == 0:
+                return False
             else:
                 tmp = True
 
