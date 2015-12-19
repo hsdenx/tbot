@@ -29,12 +29,13 @@ tb.eof_call_tc("tc_ub_load_board_env.py")
 tb.eof_write_con(tb.ub_boot_linux_cmd)
 
 #read until 'login:'
-tb.eof_search_str_in_readline_con("login:")
+ret = False
+while ret != True:
+    ret = tb.search_str_in_readline_con("login:")
 
 tmp = 'root'
 tb.eof_write_con(tmp)
 
 tb.set_board_state("linux")
 
-tb.eof_read_end_state_con(2)
 tb.end_tc(True)
