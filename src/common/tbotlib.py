@@ -23,6 +23,37 @@ import time
 import importlib
 #import serial
 
+escape_dict={'\a':r'\a',
+           '\"':r'\"',
+           '|':r'\|',
+           '[':r'\[',
+           ']':r'\]',
+           '^':r'\^',
+           '$':r'\$',
+           '*':r'\*',
+           '?':r'\?',
+           ';':r'\;',
+           '&':r'\&',
+           '+':r'\+',
+           '{':r'\{',
+           '}':r'\}',
+           '(':r'\(',
+           ')':r'\)',
+           '\0':r'\0',
+           '\1':r'\1',
+           '\2':r'\2',
+           '\3':r'\3',
+           '\4':r'\4',
+           '\5':r'\5',
+           '\6':r'\6',
+           '\7':r'\7',
+           '\8':r'\8',
+           '\9':r'\9'}
+
+def raw(text):
+    """Returns a raw string representation of text"""
+    return "".join([escape_dict.get(char,char) for char in text])
+
 # paramiko/paramiko/packet.py
 class tbot(object):
     def __init__(self, workdir, cfgfile, logfilen, verbose):
@@ -238,11 +269,11 @@ class tbot(object):
         i = 0
         while (i < retry):
             ret = self.read_line(fd, self.read_line_retry)
+            reg = re.compile(raw(string))
             if ret == True:
                 if (string == self.buf[fd]):
                     return True
                 else:
-                    reg = re.compile(string)
                     res = reg.search(self.buf[fd])
 		    if res:
 		        return True
@@ -250,7 +281,6 @@ class tbot(object):
                 if (string == self.buf[fd]):
                     return True
                 else:
-                    reg = re.compile(string)
                     res = reg.search(self.buf[fd])
 		    if res:
 		        return True
