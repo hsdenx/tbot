@@ -28,8 +28,8 @@ tb.eof_call_tc("tc_workfd_check_if_cmd_exist.py")
 if tb.tc_return == True:
     # check if mtdinfo exist
     tb.tc_workfd_check_if_cmd_exist_cmdname = 'ubinfo'
-    tb.eof_call_tc("tc_workfd_check_if_cmd_exist.py")
-    if tb.tc_return == True:
+    ret = tb.call_tc("tc_workfd_check_if_cmd_exist.py")
+    if ret == True:
         tb.end_tc(True)
 
 tb.eof_call_tc("tc_workfd_goto_tbot_workdir.py")
@@ -38,7 +38,7 @@ tb.eof_call_tc("tc_workfd_goto_tbot_workdir.py")
 #git clone git://git.infradead.org/mtd-utils.git mtd-utils
 tb.workfd = tb.channel_con
 tb.tc_workfd_check_if_dir_exists_name = "mtd-utils"
-ret = tb.eof_call_tc("tc_workfd_check_if_dir_exist.py")
+ret = tb.call_tc("tc_workfd_check_if_dir_exist.py")
 if ret == False:
     tmp = 'git clone git://git.infradead.org/mtd-utils.git mtd-utils'
     tb.eof_write_con(tmp)
