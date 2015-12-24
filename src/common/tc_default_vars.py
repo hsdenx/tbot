@@ -496,6 +496,11 @@ except AttributeError:
     self.tc_lab_get_linux_source_git_branch = "master"
 
 try:
+    self.tc_lab_get_linux_source_git_reference
+except AttributeError:
+    self.tc_lab_get_linux_source_git_reference = 'none'
+
+try:
     self.tc_workfd_apply_local_patches_dir
 except AttributeError:
     self.tc_workfd_apply_local_patches_dir = "/work/hs/tbot/patches/mcx_linux_ml_patches"

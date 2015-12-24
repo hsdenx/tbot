@@ -18,6 +18,7 @@
 from tbotlib import tbot
 
 logging.info("args: workdfd: %s %s %s %s", tb.workfd, tb.tc_lab_get_linux_source_git_repo, tb.tc_lab_get_linux_source_git_branch, tb.tc_lab_apply_patches_dir)
+logging.info("args: %s", tb.tc_lab_get_linux_source_git_reference)
 
 tmp = "cd " + tb.tc_lab_source_dir
 tb.eof_write(tb.workfd, tmp)
@@ -32,7 +33,11 @@ ret = tb.call_tc("tc_workfd_check_cmd_success.py")
 #ret = tb.eof_search_str_in_readline(tb.workfd, cd_cmd_error_txt, 0)
 if ret == False:
     # clone linux git
-    tmp = "git clone " + tb.tc_lab_get_linux_source_git_repo + " " + linux_name
+    if tb.tc_lab_get_linux_source_git_reference != 'none':
+        opt = '--reference=' + tb.tc_lab_get_linux_source_git_reference + ' '
+    else:
+        opt = ''
+    tmp = "git clone " + opt + tb.tc_lab_get_linux_source_git_repo + " " + linux_name
     tb.eof_write(tb.workfd, tmp)
     tb.eof_read_end_state(tb.workfd, 100)
     tb.eof_call_tc("tc_workfd_check_cmd_success.py")
