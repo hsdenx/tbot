@@ -18,6 +18,9 @@ from tbotlib import tbot
 
 logging.info("args: workfd: %s %s %s %s", tb.workfd, tb.tc_workfd_apply_local_patches_dir, tb.tc_workfd_apply_local_patches_checkpatch_cmd, tb.tc_workfd_apply_local_patches_checkpatch_cmd_strict)
 
+if tb.tc_workfd_apply_local_patches_dir == 'none':
+   tb.end_tc(True)
+
 tb.set_term_length(tb.workfd)
 
 def apply_one_patch(tb, filename):
