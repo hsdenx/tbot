@@ -491,6 +491,11 @@ except AttributeError:
     self.tc_lab_get_linux_source_git_repo = "/home/git/linux.git"
 
 try:
+    self.tc_lab_get_linux_source_git_repo_user
+except AttributeError:
+    self.tc_lab_get_linux_source_git_repo_user = 'anonymous'
+
+try:
     self.tc_lab_get_linux_source_git_branch
 except AttributeError:
     self.tc_lab_get_linux_source_git_branch = "master"

@@ -18,7 +18,7 @@
 from tbotlib import tbot
 
 logging.info("args: workdfd: %s %s %s %s", tb.workfd, tb.tc_lab_get_linux_source_git_repo, tb.tc_lab_get_linux_source_git_branch, tb.tc_lab_apply_patches_dir)
-logging.info("args: %s", tb.tc_lab_get_linux_source_git_reference)
+logging.info("args: %s %s ", tb.tc_lab_get_linux_source_git_reference, tb.tc_lab_get_linux_source_git_repo_user)
 
 tmp = "cd " + tb.tc_lab_source_dir
 tb.eof_write(tb.workfd, tmp)
@@ -39,7 +39,29 @@ if ret == False:
         opt = ''
     tmp = "git clone " + opt + tb.tc_lab_get_linux_source_git_repo + " " + linux_name
     tb.eof_write(tb.workfd, tmp)
-    tb.eof_read_end_state(tb.workfd, 100)
+    searchlist = ["Username", "Password", "Authentication failed"] # add here error cases
+    tmp = True
+    clone_ok = True
+    while tmp == True:
+        tmp = tb.readline_and_search_strings(tb.workfd, searchlist)
+        if tmp == 0:
+            tb.write_stream(tb.workfd, tb.tc_lab_get_linux_source_git_repo_user)
+            tmp = True
+        if tmp == 1:
+            tb.write_stream_passwd(tb.workfd, tb.tc_lab_get_linux_source_git_repo_user, tb.tc_lab_get_linux_source_git_repo)
+            tmp = True
+        if tmp == 2:
+            clone_ok = False
+            tmp = True
+        elif tmp == None:
+            #endless loop
+            tmp = True
+        elif tmp == 'prompt':
+            tmp = False
+
+    if clone_ok != True:
+        tb.end_tc(False)
+
     tb.eof_call_tc("tc_workfd_check_cmd_success.py")
 
     tmp = "cd " + linux_name
