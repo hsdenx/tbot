@@ -938,6 +938,13 @@ class tbot(object):
                 ret = True
             elif ret == False:
                 #check if it is a prompt
+                i = 0
+                for string in strings:
+                    reg = re.compile(string)
+                    res = reg.search(self.buf[fd])
+                    if res:
+                        return i
+                    i += 1
                 ret = self.is_end_fd(fd, self.buf[fd])
                 if ret == True:
                     return 'prompt'
