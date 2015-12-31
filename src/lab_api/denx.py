@@ -116,66 +116,42 @@ class tbot_lab_api(object):
     def get_power_state(self, boardname):
         """ Get powerstate of the board in the lab
         """
-        tmp = "get power state " + boardname
+        tmp = "get power state " + boardname + " using tc " + self.tb.tc_lab_denx_get_power_state_tc
         logging.info(tmp)
 
-        tmp = "remote_power " + boardname + " -l"
-        ret = self.tb.write_stream(self.channel_ctrl, tmp)
-        if not ret:
-            self.tb.read_end(self.channel_ctrl, 1, self.tb.labprompt)
-            return ret
-
-        ret = self.tb.wait_answer(self.channel_ctrl, boardname, 2)
-        if ret:
-            reg = re.compile("ON")
-            res = reg.search(self.tb.buf[self.channel_ctrl])
-            if res:
-                self.tb.read_end(self.channel_ctrl, 1, self.tb.labprompt)
-                return True
-        
-        self.tb.read_end(self.channel_ctrl, 1, self.tb.labprompt)
+        self.tb.call_tc(self.tb.tc_lab_denx_get_power_state_tc)
+        if self.tb.power_state == 'on':
+            return True
         return False
 
     def set_power_state(self, boardname, state):
         """ set powerstate for the board in the lab
         """
-        tmp = "set power state " + boardname + " to " + state
+        tmp = "get power state " + boardname + " using tc " + self.tb.tc_lab_denx_power_tc
         logging.info(tmp)
 
-        tmp = "remote_power " + boardname + " " + state
-        ret = self.tb.write_stream(self.channel_ctrl, tmp)
-        if not ret:
-            return ret
-        ret = self.tb.read_end(self.channel_ctrl, 2, self.tb.labprompt)
+        self.tb.power_state = state
+        self.tb.call_tc(self.tb.tc_lab_denx_power_tc)
         ret = self.get_power_state(boardname)
         return ret
 
     def connect_to_board(self, boardname):
         """ connect to the board
         """
-        tmp = "connect to board " + boardname
+        tmp = "connect to board " + boardname + " using tc " + self.tb.tc_lab_denx_connect_to_board_tc
         logging.debug(tmp)
 
-	if boardname == 'dxr2':
-            try:
-                save_workfd = self.tb.workfd
-            except AttributeError:
-                save_workfd = self.tb.channel_ctrl
-            self.tb.workfd = self.tb.channel_con
-            self.tb.eof_read_end_state(self.tb.workfd, 1)
-            ret = self.tb.call_tc("tc_workfd_connect_with_kermit.py")
-            self.tb.workfd = save_workfd
-            if ret != True:
-                return ret
-        else:
-            tmp = "connect " + boardname
-            ret = self.tb.write_stream(self.channel_con, tmp)
-            if not ret:
-                return ret
+        try:
+            save_workfd = self.tb.workfd
+        except AttributeError:
+            save_workfd = self.tb.channel_ctrl
 
-            ret = self.tb.wait_answer(self.channel_con, "Connect", 50)
-            if not ret:
-                return ret
+        self.tb.workfd = self.tb.channel_con
+        self.tb.eof_read_end_state(self.tb.workfd, 1)
+        ret = self.tb.call_tc(self.tb.tc_lab_denx_connect_to_board_tc)
+        self.tb.workfd = save_workfd
+        if ret != True:
+            return ret
 
         reg = re.compile("not accessible")
         reg2 = re.compile("Locked by process")

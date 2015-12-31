@@ -604,3 +604,18 @@ try:
     self.tc_ub_boot_linux_retry
 except AttributeError:
     self.tc_ub_boot_linux_retry = 30
+
+try:
+    self.tc_lab_denx_power_tc
+except AttributeError:
+    self.tc_lab_denx_power_tc = 'tc_lab_denx_power.py'
+
+try:
+    self.tc_lab_denx_get_power_state_tc
+except AttributeError:
+    self.tc_lab_denx_get_power_state_tc = 'tc_lab_denx_get_power_state.py'
+
+try:
+    self.tc_lab_denx_connect_to_board_tc
+except AttributeError:
+    self.tc_lab_denx_connect_to_board_tc = 'tc_lab_denx_connect_to_board.py'

@@ -34,3 +34,19 @@ How To add a new lab:
 
 Thats it! You have added a new lab, tbot should now to be
 able to execute testcases on your board.
+
+While using tbot, I changed the denx lab a little bit ...
+I added 3 new testcases:
+src/tc/tc_lab_denx_get_power_state.py
+src/tc/tc_lab_denx_power.py
+src/tc/tc_lab_denx_connect_to_board.py
+
+which get called from src/lab_api/denx.py through
+self.tb.call_tc(self.tb.tc_lab_denx_get_power_state_tc)
+self.tb.call_tc(self.tb.tc_lab_denx_power_tc)
+self.tb.call_tc(self.tb.tc_lab_denx_connect_to_board_tc)
+
+So, no need to add a new lab, just write for this
+functions a new testcase, which do the respective functions
+on your lab pc, and overwrite the vars in your board config
+file ...

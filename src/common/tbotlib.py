@@ -68,6 +68,7 @@ class tbot(object):
         self.cfgfile = cfgfile
         self.workdir = workdir
         self.once = 1
+        self.power_state = 'undef'
 
         print("CUR WORK PATH: ", self.workdir)
         print("CFGFILE ", self.cfgfile)
@@ -180,7 +181,7 @@ class tbot(object):
 
         # check if we have powered on the board
         ret = self.lab.get_power_state(self.boardlabpowername)
-        if ret == False:
+        if self.power_state == 'off':
             ret = self.lab.set_power_state(self.boardlabpowername, "on")
             if ret != True:
                 self.failure()
