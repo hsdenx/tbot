@@ -63,6 +63,7 @@ while upd_fail == True:
             upd_fail = True
             tmp = True
         elif tmp == None:
+            #endless loop
             tmp = True
         elif tmp == 'prompt':
             i += 1

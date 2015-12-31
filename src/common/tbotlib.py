@@ -481,6 +481,7 @@ class tbot(object):
             elif tmp == 0:
                 return False
             else:
+                #endless loop
                 tmp = True
 
         return True

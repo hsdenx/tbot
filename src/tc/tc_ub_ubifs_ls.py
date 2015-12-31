@@ -32,6 +32,7 @@ while tmp == True:
         cmd_ok = False
         tmp = True
     elif tmp == None:
+        # endless loop
         tmp = True
     elif tmp == 'prompt':
         tmp = False
