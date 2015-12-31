@@ -26,11 +26,23 @@ tb.set_term_length(tb.channel_ctrl)
 
 tmp = 'patch -p1 < ' + tb.tc_lab_apply_patches_dir + '/' + '*.patch'
 tb.eof_write_ctrl(tmp)
-ret = tb.search_str_in_readline_ctrl('No such')
-if ret == True:
+
+searchlist = ["No such"]
+tmp = True
+apply_ok = True
+while tmp == True:
+    tmp = tb.readline_and_search_strings(tb.channel_ctrl, searchlist)
+    if tmp == 0:
+        apply_ok = False
+    elif tmp == None:
+        # ! endless loop ...
+        tmp = True
+    elif tmp == 'prompt':
+        tmp = False
+
+if apply_ok == False:
     tb.end_tc(False)
 
-tb.eof_read_end_state_ctrl(1)
 tb.workfd = tb.channel_ctrl
 tb.eof_call_tc("tc_workfd_check_cmd_success.py")
 
