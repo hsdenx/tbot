@@ -63,6 +63,7 @@ while upd_fail == True:
             upd_fail = True
             tmp = True
         elif tmp == None:
+            #endless loop
             tmp = True
         elif tmp == 'prompt':
             i += 1
@@ -74,7 +75,22 @@ tb.eof_read_end_state_con(1)
 tb.eof_write_con("run tbot_cmp_uboot")
 
 # read "!=" -> error
-tb.eof_search_str_in_readline_end_con("!=")
+searchlist = ["!="]
+tmp = True
+upd_fail = False
+while tmp == True:
+    tmp = tb.readline_and_search_strings(tb.channel_con, searchlist)
+    if tmp == 0:
+        upd_fail = True
+        tmp = True
+    elif tmp == None:
+        #endless loop
+        tmp = True
+    elif tmp == 'prompt':
+        tmp = False
+
+if upd_fail:
+    tb.end_tc(False)
 
 # reset the board
 tb.eof_write_con("res")
