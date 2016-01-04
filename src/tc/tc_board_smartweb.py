@@ -39,12 +39,19 @@ tb.eof_call_tc("tc_workfd_get_patchwork_number_list.py")
 
 tb.tc_workfd_apply_patchwork_patches_list += tb.tc_workfd_apply_patchwork_patches_list_hand
 
-#add patchwork patches
-tb.statusprint("apply patchwork patches")
+#apply local patches
 tb.workfd = tb.channel_ctrl
-tb.tc_workfd_apply_patchwork_patches_checkpatch_cmd = 'scripts/checkpatch.pl'
 tb.tc_workfd_cd_name = 'u-boot-smartweb'
 tb.eof_call_tc("tc_workfd_cd_to_dir.py")
+
+tb.tc_workfd_apply_local_patches_dir = "/work/hs/tbot/patches/smartweb_uboot_patches"
+tb.tc_workfd_apply_local_patches_checkpatch_cmd_strict = "no"
+tb.tc_workfd_apply_local_patches_checkpatch_cmd = 'scripts/checkpatch.pl'
+tb.eof_call_tc("tc_workfd_apply_local_patches.py")
+
+#add patchwork patches
+tb.statusprint("apply patchwork patches")
+tb.tc_workfd_apply_patchwork_patches_checkpatch_cmd = 'scripts/checkpatch.pl'
 tb.eof_call_tc("tc_workfd_apply_patchwork_patches.py")
 
 #call compile u-boot
