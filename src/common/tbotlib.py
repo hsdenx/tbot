@@ -162,12 +162,7 @@ class tbot(object):
         return ret
 
     def check_debugger(self):
-        if self.board_has_debugger == 1:
-            from lab_bdi import bdi_class
-            bdi = bdi_class(self)
-            bdi.bdi_connect()
-            bdi.send_bdi_cmd_wait_prompt(self.lab_bdi_upd_uboot_bdi_run)
-            bdi.bdi_quit()
+        self.eof_call_tc("tc_lab_bdi_run.py")
 
     def check_state(self, fd):
         """ check the state of the connection to the board

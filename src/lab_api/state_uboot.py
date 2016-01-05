@@ -116,6 +116,7 @@ def u_boot_set_board_state(tb, state, retry):
             logging.debug("------------------- set board state failure")
             tb.failure()
             return False
+        tb.eof_call_tc("tc_lab_bdi_run.py")
 
     ret = u_boot_login(tb, state, retry)
     if ret == True:
