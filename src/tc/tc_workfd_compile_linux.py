@@ -32,8 +32,6 @@ tb.eof_read_end_state(tb.workfd, 1)
 tb.statusprint("set toolchain")
 tb.eof_call_tc("tc_lab_set_toolchain.py")
 
-read_line_retry_save=tb.read_line_retry
-tb.read_line_retry=500
 if tb.tc_workfd_compile_linux_clean == 'yes':
     tmp = "make mrproper"
     tb.eof_write(tb.workfd, tmp)
@@ -50,7 +48,6 @@ tmp = "make " + tb.tc_workfd_compile_linux_boardname + "_defconfig"
 tb.eof_write(tb.workfd, tmp)
 tb.eof_read_end_state(tb.workfd, 10)
 tb.eof_call_tc("tc_workfd_check_cmd_success.py")
-tb.read_line_retry=read_line_retry_save
 
 tmp = "make" + ld + "uImage"
 tb.eof_write(tb.workfd, tmp)
@@ -98,6 +95,4 @@ if tb.tc_workfd_compile_linux_append_dt != 'no':
     tb.eof_read_end_state(tb.workfd, 10)
     tb.eof_call_tc("tc_workfd_check_cmd_success.py")
 
-
-tb.eof_read_end_state(tb.workfd, 1)
 tb.end_tc(True)

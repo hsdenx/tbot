@@ -75,8 +75,6 @@ if ret == False:
     tb.eof_read_end_state(tb.workfd, 1)
     tb.eof_call_tc("tc_workfd_check_cmd_success.py")
 
-tb.eof_read_end_state(tb.workfd, 1)
-
 # check if there are patches to apply
 tb.eof_call_tc("tc_lab_apply_patches.py")
 
