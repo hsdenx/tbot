@@ -596,9 +596,14 @@ except AttributeError:
     self.tc_ub_tftp_file_addr = self.ub_load_board_env_addr
 
 try:
+    self.tc_ub_tftp_path
+except AttributeError:
+    self.tc_ub_tftp_path = '/tftpboot/' + self.tftpboardname + '/' + self.ub_load_board_env_subdir
+
+try:
     self.tc_ub_tftp_file_name
 except AttributeError:
-    self.tc_ub_tftp_file_name = '/tftpboot/' + self.tftpboardname + '/' + self.ub_load_board_env_subdir + '/env.txt'
+    self.tc_ub_tftp_file_name = self.tc_ub_tftp_path + '/env.txt'
 
 try:
     self.tc_ub_boot_linux_retry
@@ -619,3 +624,13 @@ try:
     self.tc_lab_denx_connect_to_board_tc
 except AttributeError:
     self.tc_lab_denx_connect_to_board_tc = 'tc_lab_denx_connect_to_board.py'
+
+try:
+    self.tc_ub_memory_ram_ws_base
+except AttributeError:
+    self.tc_ub_memory_ram_ws_base = '0x100000'
+
+try:
+    self.tc_ub_memory_ram_ws_base_alt
+except AttributeError:
+    self.tc_ub_memory_ram_ws_base_alt = '0x200000'
