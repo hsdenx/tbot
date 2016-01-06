@@ -22,12 +22,42 @@ logging.info("dev: %s fs_type: %s dir: %s", tb.tc_lx_mount_dev, tb.tc_lx_mount_f
 tb.set_board_state("linux")
 
 tb.eof_write_con("mount")
-ret = tb.search_str_in_readline_con(tb.tc_lx_mount_dev)
-if ret != True:
-    #mount device
-    tmp = "mount -t " + tb.tc_lx_mount_fs_type + " " + tb.tc_lx_mount_dev + " " + tb.tc_lx_mount_dir
-    tb.eof_write_con(tmp)
-    tb.eof_search_str_in_readline_con("mounted filesystem")
+searchlist = [tb.tc_lx_mount_dev]
+tmp = True
+found = False
+while tmp == True:
+    tmp = tb.readline_and_search_strings(tb.channel_con, searchlist)
+    if tmp == 0:
+        found = True
+        tmp = True
+    elif tmp == None:
+        #endless loop ...
+        tmp = True
+    elif tmp == 'prompt':
+        tmp = False
 
-tb.eof_read_end_state_con(2)
-tb.end_tc(True)
+if found == True:
+    tb.end_tc(True)
+
+#mount device
+tmp = "mount -t " + tb.tc_lx_mount_fs_type + " " + tb.tc_lx_mount_dev + " " + tb.tc_lx_mount_dir
+tb.eof_write_con(tmp)
+searchlist = ["mounted filesystem"]
+tmp = True
+cmd_ok = False
+while tmp == True:
+    tmp = tb.readline_and_search_strings(tb.channel_con, searchlist)
+    if tmp == 0:
+        cmd_ok = True
+        tmp = True
+    elif tmp == None:
+        #endless loop ...
+        tmp = True
+    elif tmp == 'prompt':
+        tmp = False
+
+if cmd_ok == True:
+    tb.end_tc(True)
+
+tb.workfd = tb.channel_con
+tb.eof_call_tc("tc_workfd_check_cmd_success.py")
