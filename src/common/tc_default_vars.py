@@ -634,3 +634,8 @@ try:
     self.tc_ub_memory_ram_ws_base_alt
 except AttributeError:
     self.tc_ub_memory_ram_ws_base_alt = '0x200000'
+
+try:
+    self.tc_lx_trigger_wdt_cmd
+except AttributeError:
+    self.tc_lx_trigger_wdt_cmd = '/home/hs/wdt &'
