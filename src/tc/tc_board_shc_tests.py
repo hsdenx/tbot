@@ -49,6 +49,9 @@ tb.statusprint("tc_shc partition check")
 #check if usb stick is authorized
 tb.eof_call_tc("tc_lx_check_usb_authorized.py")
 tb.eof_call_tc("tc_lx_partition_check.py")
+tb.workfd = tb.channel_con
+# only all 60 days
+tb.tc_workfd_check_tc_time_timeout = 60 * 24 * 60 * 60
 tb.eof_call_tc("tc_lx_bonnie.py")
 
 tb.statusprint("tc_shc eeprom check ")

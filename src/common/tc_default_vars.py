@@ -639,3 +639,8 @@ try:
     self.tc_lx_trigger_wdt_cmd
 except AttributeError:
     self.tc_lx_trigger_wdt_cmd = '/home/hs/wdt &'
+
+try:
+    self.tc_workfd_tbotfiles_dir
+except AttributeError:
+    self.tc_workfd_tbotfiles_dir = self.tc_workfd_work_dir + "/tmpfiles"

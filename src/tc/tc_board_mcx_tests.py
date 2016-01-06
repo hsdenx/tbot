@@ -90,6 +90,9 @@ tb.eof_call_tc("tc_lx_regulator.py")
 
 #call linux tc_lx_partition_check.py
 tb.eof_call_tc("tc_lx_partition_check.py")
+tb.workfd = tb.channel_con
+# only all 60 days
+tb.tc_workfd_check_tc_time_timeout = 60 * 24 * 60 * 60
 tb.eof_call_tc("tc_lx_bonnie.py")
 
 # power off board at the end
