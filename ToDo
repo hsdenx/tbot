@@ -50,16 +50,34 @@
   - check registers with devmem
   - use readreg
 
-- get a list of patchworknumbers from patchwork
+* get a list of patchworknumbers from patchwork
   in your ToDo list ...
+  done for u-boot:
+  src/tc/tc_workfd_get_patchwork_number_list.py
 
-- move power on/off into a testcase, and only
+* move power on/off into a testcase, and only
   call it from lap_api
+  done:
+  src/tc/tc_lab_denx_power.py
 
-- get power state from a board thorugh  testcase
+* get power state from a board through  testcase
+  done:
+  src/tc/tc_lab_denx_get_power_state.py
 
-- move connect to a board into a testcase and
+* move connect to a board into a testcase and
   call it from lap_api
+  done:
+  src/tc/tc_lab_denx_connect_to_board.py
 
   -> lap_api not really needed anymore ... sounds
      good ...
+
+* timer for starting a testcase. Some testcases
+  do extensive read/write/erase accesses, and if
+  this is done very often (for example every night)
+  hw gets damaged ... so add a possibility to
+  start a testcase only if a timer expires ...
+  done:
+  src/tc/tc_workfd_check_tc_time.py
+  used for example in:
+  src/tc/tc_lx_bonnie.py
