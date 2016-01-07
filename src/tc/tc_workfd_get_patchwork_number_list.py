@@ -113,5 +113,5 @@ while page != 'end':
 i = 0
 for j in tb.tc_workfd_apply_patchwork_patches_list:
     logging.info("nr: %s %s\n" % (tb.tc_workfd_apply_patchwork_patches_list[i], tb.tc_workfd_apply_patchwork_patches_list_title[i]))
-    i = i + 1
+    i += 1
 tb.end_tc(True)
