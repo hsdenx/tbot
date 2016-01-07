@@ -438,7 +438,7 @@ class tbot(object):
                 if ret:
                     return True
 
-    def read_end_state(self, fd, retry):
+    def read_end_state(self, fd):
         """read until end is detected. End is detected if
            current prompt is read.
         """
@@ -457,8 +457,8 @@ class tbot(object):
 
         return True
 
-    def read_end_state_con(self, retry):
-        ret = self.read_end_state(self.channel_con, retry)
+    def read_end_state_con(self):
+        ret = self.read_end_state(self.channel_con)
         return ret
 
     def is_end(self, string, prompt):
@@ -718,16 +718,34 @@ class tbot(object):
             self.once = 1
 
         return True
+  
+    def eof_write_cmd(self, fd, command):
+        """ write a command to fd, wait for prompt
+            return True, if prompt read
+            else end tc with failure
+        """
+        self.eof_write(fd, command)
+        self.eof_read_end_state(fd)
+        return True
+
+    def eof_write_lx_cmd_check(self, fd, command):
+        """ write a linux command to console.
+            If linux command has success return True,
+            else end tc with failure
+        """
+        self.eof_write_cmd(fd, command)
+        tmpfd = self.workfd
+        self.workfd = fd
+        self.eof_call_tc("tc_workfd_check_cmd_success.py")
+        self.workfd = tmpfd
+        return True
 
     def eof_write_con_lx_cmd(self, command):
         """ write a linux command to console.
             If linux command has success return True,
             else end tc with failure
         """
-        self.eof_write_con(command)
-        self.eof_read_end_state_con(1)
-        self.workfd = self.channel_con
-        self.eof_call_tc("tc_workfd_check_cmd_success.py")
+        self.eof_write_lx_cmd_check(self.channel_con, command)
         return True
  
     def eof_write_ctrl(self, string):
@@ -754,12 +772,12 @@ class tbot(object):
         ret = self.write_stream_passwd(self.channel_ctrl, user, board)
         return True
 
-    def eof_read_end_state(self, fd, retry):
+    def eof_read_end_state(self, fd):
         """ read until end is detected. End is detected if
             current prompt is read. End testcase if read_end_state
             not returns True.
         """
-        ret = self.read_end_state(fd, retry)
+        ret = self.read_end_state(fd)
         if ret == True:
             return True
         self.end_tc(False)
@@ -769,7 +787,7 @@ class tbot(object):
             current prompt is read. End testcase if read_end_state
             not returns True.
         """
-        ret = self.eof_read_end_state(self.channel_con, retry)
+        ret = self.eof_read_end_state(self.channel_con)
         return True
 
     def eof_read_end_state_ctrl(self, retry):
@@ -777,7 +795,7 @@ class tbot(object):
             current prompt is read. End testcase if read_end_state
             not returns True.
         """
-        ret = self.eof_read_end_state(self.channel_ctrl, retry)
+        ret = self.eof_read_end_state(self.channel_ctrl)
         return True
 
     def eof_search_str_in_readline(self, fd, string, endtc):
@@ -932,11 +950,11 @@ class tbot(object):
         #
         tmp = 'stty cols ' + self.term_line_length
         self.eof_write(fd, tmp)
-        self.eof_read_end_state(fd, 1)
+        self.eof_read_end_state(fd)
         self.eof_write(fd, "export TERM=vt200")
-        self.eof_read_end_state(fd, 1)
+        self.eof_read_end_state(fd)
         self.eof_write(fd, "echo $COLUMNS")
-        self.eof_read_end_state(fd, 2)
+        self.eof_read_end_state(fd)
 
     def eof_call_tc(self, name):
         """ call tc name, end testcase on failure
@@ -950,7 +968,7 @@ class tbot(object):
         """ send a cmd to fd and wait for end
         """
         self.eof_write(fd, cmd)
-        self.eof_read_end_state(fd, 1)
+        self.eof_read_end_state(fd)
 
     def tbot_send_wait_list(self, fd, cmdlist):
         """ send a list of cmd to fd and wait for end

@@ -22,19 +22,15 @@ from tbotlib import tbot
 
 logging.info("args: %s %s %s", tb.board_git_bisect_get_source_tc, tb.board_git_bisect_call_tc, tb.board_git_bisect_good_commit)
 
-def send_cmd(tb, cmd):
-    tb.eof_write_ctrl(cmd)
-    tb.eof_read_end_state_ctrl(1)
-
 #call get u-boot source
 tb.statusprint("get source tree")
 tb.eof_call_tc(tb.board_git_bisect_get_source_tc)
 
 #git bisect start
-send_cmd(tb, 'git bisect start')
+tb.eof_write_cmd(tb.channel_ctrl, 'git bisect start')
 
 #current version is bad
-send_cmd(tb, 'git bisect bad')
+tb.eof_write_cmd(tb.channel_ctrl, 'git bisect bad')
 
 #git bisect good commit
 tmp = 'git bisect good ' + tb.board_git_bisect_good_commit
@@ -66,11 +62,11 @@ while inwhile:
         tb.eof_read_end_state_ctrl(1)
 
 # print some statistic
-send_cmd(tb, 'git bisect visualize')
-send_cmd(tb, 'git bisect log')
+tb.eof_write_cmd(tb.channel_ctrl, 'git bisect visualize')
+tb.eof_write_cmd(tb.channel_ctrl, 'git bisect log')
 
 # reset source tree
-send_cmd(tb, 'git bisect reset')
+tb.eof_write_cmd(tb.channel_ctrl, 'git bisect reset')
 
 # power off board at the end
 tb.eof_call_tc("tc_lab_poweroff.py")

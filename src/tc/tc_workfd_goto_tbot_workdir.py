@@ -33,6 +33,5 @@ if ret == None:
 
 cd_cmd_error_txt = "No such"
 tmp = "cd " + tb.tc_workfd_work_dir
-tb.eof_write(tb.workfd, tmp)
-tb.eof_read_end_state(tb.workfd, 1)
+tb.eof_write_cmd(tb.workfd, tmp)
 tb.end_tc(True)

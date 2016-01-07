@@ -21,14 +21,11 @@ logging.info("args: workdfd: %s %s %s %s", tb.workfd, tb.tc_lab_get_linux_source
 logging.info("args: %s %s ", tb.tc_lab_get_linux_source_git_reference, tb.tc_lab_get_linux_source_git_repo_user)
 
 tmp = "cd " + tb.tc_lab_source_dir
-tb.eof_write(tb.workfd, tmp)
-tb.eof_read_end_state(tb.workfd, 1)
-tb.eof_call_tc("tc_workfd_check_cmd_success.py")
+tb.eof_write_lx_cmd_check(tb.workfd, tmp)
 
 linux_name = "linux-" + tb.boardlabname
 tmp = "cd " + linux_name
-tb.eof_write(tb.workfd, tmp)
-tb.eof_read_end_state(tb.workfd, 1)
+tb.eof_write_cmd(tb.workfd, tmp)
 ret = tb.call_tc("tc_workfd_check_cmd_success.py")
 #ret = tb.eof_search_str_in_readline(tb.workfd, cd_cmd_error_txt, 0)
 if ret == False:
@@ -65,17 +62,13 @@ if ret == False:
     tb.eof_call_tc("tc_workfd_check_cmd_success.py")
 
     tmp = "cd " + linux_name
-    tb.eof_write(tb.workfd, tmp)
-    tb.eof_read_end_state(tb.workfd, 1)
-    tb.eof_call_tc("tc_workfd_check_cmd_success.py")
+    tb.eof_write_lx_cmd_check(tb.workfd, tmp)
 
     #check out a specific branch
     tmp = "git checkout " + tb.tc_lab_get_linux_source_git_branch
-    tb.eof_write(tb.workfd, tmp)
-    tb.eof_read_end_state(tb.workfd, 1)
-    tb.eof_call_tc("tc_workfd_check_cmd_success.py")
+    tb.eof_write_lx_cmd_check(tb.workfd, tmp)
 
-# check if there are patches to apply
+# check if there are patches to applys
 tb.eof_call_tc("tc_lab_apply_patches.py")
 
 # check if there are local "git am" patches to apply

@@ -147,7 +147,7 @@ class tbot_lab_api(object):
             save_workfd = self.tb.channel_ctrl
 
         self.tb.workfd = self.tb.channel_con
-        self.tb.eof_read_end_state(self.tb.workfd, 1)
+        self.tb.eof_read_end_state(self.tb.workfd)
         ret = self.tb.call_tc(self.tb.tc_lab_denx_connect_to_board_tc)
         self.tb.workfd = save_workfd
         if ret != True:

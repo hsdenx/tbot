@@ -47,7 +47,7 @@ while i < 50:
     #poweroff
     tb.eof_call_tc("tc_lab_poweroff.py")
     #read rest of bytes from con
-    tb.read_end_state_con(1)
+    tb.read_end_state_con()
     time.sleep(3)
     i += 1
 

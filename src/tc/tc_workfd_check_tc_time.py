@@ -30,14 +30,14 @@ tb.set_board_state("linux")
 timefile = tb.tc_workfd_tbotfiles_dir + "/" + "workfd_check_tc_time_" + tb.boardname + "_" + tb.tc_workfd_check_tc_time_tcname
 
 def check_tc_time_create(tb, timefile):
-    tb.eof_write(tb.workfd, 'echo ' + str(int(time.time())) + ' > ' + timefile)
-    tb.eof_read_end_state(tb.workfd, 1)
-    tb.eof_write(tb.workfd, 'cat ' + ' ' + timefile)
-    tb.eof_read_end_state(tb.workfd, 1)
+    tmp = 'echo ' + str(int(time.time())) + ' > ' + timefile
+    tb.eof_write_cmd(tb.workfd, tmp)
+    tmp = 'cat ' + ' ' + timefile
+    tb.eof_write_cmd(tb.workfd, tmp)
 
 #try to open file
-tb.eof_write(tb.workfd, 'cat ' + timefile)
-tb.eof_read_end_state(tb.workfd, 1)
+tmp = 'cat ' + timefile
+tb.eof_write_cmd(tb.workfd, tmp)
 ret = tb.call_tc("tc_workfd_check_cmd_success.py")
 # if not create it, and return false
 if ret == False:
@@ -60,7 +60,7 @@ else:
     logging.debug("error, could not read line")
     tb.end_tc(False)
     
-tb.eof_read_end_state(tb.workfd, 1)
+tb.eof_read_end_state(tb.workfd)
 
 curtime = int(time.time())
 logging.info("cur %d ftime: %d + timeout: %d", curtime, filetime, tb.tc_workfd_check_tc_time_timeout)

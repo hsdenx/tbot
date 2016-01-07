@@ -20,9 +20,6 @@ from tbotlib import tbot
 logging.info("args: workfd %s %s %s", tb.workfd, tb.tc_workfd_generate_random_file_name, tb.tc_workfd_generate_random_file_length)
 
 tmp = "dd if=/dev/urandom of=" + tb.tc_workfd_generate_random_file_name + " bs=1 count=" + tb.tc_workfd_generate_random_file_length
-
-tb.eof_write(tb.workfd, tmp)
-tb.eof_read_end_state(tb.workfd, 1)
-tb.eof_call_tc("tc_workfd_check_cmd_success.py")
+tb.eof_write_lx_cmd_check(tb.workfd, tmp)
 
 tb.end_tc(True)

@@ -16,20 +16,16 @@
 # compile u-boot
 from tbotlib import tbot
 
-read_line_retry_save=tb.read_line_retry
-tb.read_line_retry=500
+savefd = tb.workfd
+tb.workfd = tb.channel_ctrl
 tmp = "make mrproper"
-tb.eof_write_ctrl(tmp)
-tb.eof_read_end_state_ctrl(1)
+tb.eof_write_lx_cmd_check(tb.workfd, tmp)
 
 tmp = "make " + tb.tc_lab_compile_uboot_boardname + "_defconfig"
-tb.eof_write_ctrl(tmp)
-tb.eof_search_str_in_readline_ctrl("configuration written to .config")
-tb.read_line_retry=read_line_retry_save
+tb.eof_write_lx_cmd_check(tb.workfd, tmp)
 
 tmp = "make all"
-tb.eof_write_ctrl(tmp)
-tb.eof_search_str_in_readline_end_ctrl("Error")
+tb.eof_write_lx_cmd_check(tb.workfd, tmp)
 
-tb.eof_read_end_state_ctrl(1)
+tb.workfd = savefd
 tb.end_tc(True)

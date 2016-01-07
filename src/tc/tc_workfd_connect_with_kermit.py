@@ -44,7 +44,7 @@ if tb.tc_workfd_connect_with_kermit_ssh != 'none':
 
     # set prompt
     tb.set_prompt(tb.workfd, tb.labprompt, 'export PS1="\u@\h [\$(date +%k:%M:%S)] ', ' >"')
-    tb.eof_read_end_state(tb.workfd, 1)
+    tb.eof_read_end_state(tb.workfd)
 
 tb.set_term_length(tb.workfd)
 tb.eof_write(tb.workfd, 'kermit')
@@ -84,11 +84,9 @@ tb.eof_write(tb.workfd, "set speed " + tb.kermit_speed)
 
 # check for "you must SET LINE"
 
-tb.eof_read_end_state(tb.workfd, 1)
-tb.eof_write(tb.workfd, "set flow-control none")
-tb.eof_read_end_state(tb.workfd, 1)
-tb.eof_write(tb.workfd, "set carrier-watch off")
-tb.eof_read_end_state(tb.workfd, 1)
+tb.eof_read_end_state(tb.workfd)
+tb.eof_write_cmd(tb.workfd, "set flow-control none")
+tb.eof_write_cmd(tb.workfd, "set carrier-watch off")
 tb.lab.write(tb.workfd, "connect")
 
 tb.channel_end[tb.workfd] = '1'

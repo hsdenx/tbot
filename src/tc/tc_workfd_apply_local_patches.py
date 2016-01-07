@@ -26,28 +26,21 @@ tb.set_term_length(tb.workfd)
 def apply_one_patch(tb, filename):
     if tb.tc_workfd_apply_local_patches_checkpatch_cmd != 'none':
         tmp = tb.tc_workfd_apply_local_patches_checkpatch_cmd + ' ' + filename
-        tb.eof_write(tb.workfd, tmp)
-        tb.eof_read_end_state(tb.workfd, 10)
+        tb.eof_write_cmd(tb.workfd, tmp)
         ret = tb.call_tc("tc_workfd_check_cmd_success.py")
         if ret != True:
             logging.warn("checkpatch error")
             tmp = 'ls ' + filename
-            tb.eof_write(tb.workfd, tmp)
-            tb.eof_read_end_state(tb.workfd, 10)
-            tb.call_tc("tc_workfd_check_cmd_success.py")
+            tb.eof_write_lx_cmd_check(tb.workfd, tmp)
             if tb.tc_workfd_apply_local_patches_checkpatch_cmd_strict == "yes":
                 tb.end_tc(False)
 
-    tb.eof_write(tb.workfd, 'git am -3 ' + filename)
-    tb.eof_read_end_state(tb.workfd, 10)
-    tb.eof_call_tc("tc_workfd_check_cmd_success.py")
+    tmp = 'git am -3 ' + filename
+    tb.eof_write_lx_cmd_check(tb.workfd, tmp)
 
 #print some infos
-tb.eof_write(tb.workfd, 'pwd')
-tb.eof_read_end_state(tb.workfd, 1)
-tb.eof_write(tb.workfd, 'git describe')
-tb.eof_read_end_state(tb.workfd, 5)
-tb.eof_call_tc("tc_workfd_check_cmd_success.py")
+tb.eof_write_cmd(tb.workfd, 'pwd')
+tb.eof_write_lx_cmd_check(tb.workfd, 'git describe')
 
 tb.tc_workfd_get_list_of_files_dir = tb.tc_workfd_apply_local_patches_dir
 tb.tc_workfd_get_list_of_files_mask = '*.patch'

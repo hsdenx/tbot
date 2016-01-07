@@ -20,9 +20,5 @@ from tbotlib import tbot
 tb.set_board_state("lab")
 
 tmp = "rm -rf " + self.tc_lab_rm_dir
-tb.eof_write_ctrl(tmp)
-tb.eof_read_end_state_ctrl(10)
-tb.workfd = tb.channel_ctrl
-tb.eof_call_tc("tc_workfd_check_cmd_success.py")
-
+tb.eof_write_lx_cmd_check(tb.channel_ctrl, tmp)
 tb.end_tc(True)

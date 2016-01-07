@@ -28,9 +28,7 @@ tb.eof_call_tc("tc_ub_tftp_file.py")
 
 tb.eof_write_stream("bmp info ${tc_addr}")
 tb.eof_wait_answer('Compression', 30)
-tb.eof_read_end_state(2)
+tb.eof_read_end_state(tb.channel_con)
 
-tb.eof_write_stream("bmp display ${tc_addr} 10 10")
-tb.eof_read_end_state(2)
-
+tb.eof_write_cmd(tb.channel_con, "bmp display ${tc_addr} 10 10")
 tb.end_tc(True)
