@@ -65,12 +65,12 @@ class tbot_lab_api(object):
             if (user == 'anotheruser'):
                 password = 'passwordforanotheruser'
         """
-	return lab_get_password(self, user, board)
+        return lab_get_password(self, user, board)
 
     def get_lab_connect_state(self):
         """ get state of the connection to the lab
         """
-	return lab_get_lab_connect_state(self)
+        return lab_get_lab_connect_state(self)
 
     def connect_lab(self, fd):
         """ connect to the lab and set lab prompt
@@ -87,7 +87,7 @@ class tbot_lab_api(object):
         """ open a filedescriptor
             return here the fd !! ToDo
         """
-	return lab_lab_open_fd(self)
+        return lab_lab_open_fd(self)
 
     def lab_check_fd(self, fd):
         """ check if  filedescriptor is valid
@@ -221,14 +221,6 @@ class tbot_lab_api(object):
         self.tb.channel_end[self.tb.channel_con] = '1'
         logging.info("connected to %s", boardname)
         return True
-
-    def get_board_connection_state(self, boardname):
-        """ get the connection state to the board ToDo
-        """
-        ret = True
-        tmp = "connection state to board " + boardname + " is " + ret
-        logging.debug(tmp)
-        return ret
 
     def get_board_state(self, name):
         """ Get boardstate of the board in the lab

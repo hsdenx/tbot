@@ -150,7 +150,7 @@ def lab_lab_check_fd(self, fd):
     """
     return True
 
-def lab_lab_close_fd(self):
+def lab_lab_close_fd(self, fd):
     """ close a filedescriptor
         ToDo
     """

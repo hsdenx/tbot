@@ -239,6 +239,7 @@ class tbot(object):
         reg = re.compile(string)
         self.debugprint("search_str: str: ", string)
         i = 0
+        ret = False
         while i < retry:
             res = None
             ret = self.read_line(fd, self.read_line_retry)
@@ -271,64 +272,39 @@ class tbot(object):
                     return True
                 else:
                     res = reg.search(self.buf[fd])
-		    if res:
-		        return True
+                    if res:
+                        return True
             if ret == False:
                 if (string == self.buf[fd]):
                     return True
                 else:
                     res = reg.search(self.buf[fd])
-		    if res:
-		        return True
+                    if res:
+                        return True
             i += 1
-	return False
+        return False
 
     def wait_prompt(self, retry):
         """ wait for prompt retry times
             return: True if found
-                    else False
+            else False
         """
         ret = self._search_str(self.channel_con, retry, self.prompt)
         if ret == True:
             return True
 
-	return False
+        return False
 
     def eof_wait_prompt(self, retry):
-	""" wait for prompt retry times
-	    return: True if found
+        """ wait for prompt retry times
+	        return: True if found
                     else end testcase
-	"""
+	    """
         ret = self._search_str(self.channel_con, retry, self.prompt)
         if ret == True:
             return True
 
         self.end_tc(False)
-
-    def _login(self):
-        # check if we need to login
-        # if we logged in, set prompt
-        # if we get no login, send ctrl-m ...
-        j = 0
-        retry = 5
-        retry2 = 5
-        while j < retry:
-            self.send_ctrl_m()
-            i = 0
-            while i < retry2:
-                ret = self._search_str(5, 'login')
-                if ret:
-                    i = retry2
-                i += 1
-            if ret:
-                j = retry
-            j += 1
-        # got login
-        # send user
-        self.write_stream(self.channel_con, self.user)
-        # send passwd
-        ret = self._search_str(5, 'login')
-        return ret
 
     def check_open_fd(self, fd):
         """check, if stream is open.
@@ -337,7 +313,7 @@ class tbot(object):
            False: If stream open failed
         """
         ret = True
-	if self.lab.get_lab_connect_state() == False:
+        if self.lab.get_lab_connect_state() == False:
             logging.debug("not connected to lab")
             ret = self.lab.connect_lab(fd)
 
@@ -346,7 +322,7 @@ class tbot(object):
             logging.debug("fd not valid")
             return False
 
-	return ret
+        return ret
 
     def read_bytes(self, fd):
         """read bytes from stream.
@@ -395,7 +371,7 @@ class tbot(object):
                 self.buf[fd] += self.__data[fd]
                 i = 0
             else:
-		i += 1
+                i += 1
                 if (i > retry):
                     if (len(self.buf[fd]) > 0):
                         logging.info("read no ret %s %s", fd, self.buf[fd])
@@ -504,6 +480,7 @@ class tbot(object):
            True: if prompt is found
            False: if not found a prompt in string
         """
+        ret = False
         if fd == self.channel_ctrl:
             ret = self.is_end(string, self.labprompt)
         if fd == self.channel_con:
@@ -673,9 +650,9 @@ class tbot(object):
         """
         filepath = self.tc_dir + "/" + name
         logging.debug("call_tc filepath %s", filepath)
-	try:
+        try:
             fd = open(filepath, 'r')
-	except IOError:
+        except IOError:
             logging.warning("Could not find tc name: %s", name)
             return False
         tb = self
@@ -684,7 +661,7 @@ class tbot(object):
         logging.info("Starting with tc %s", name)
         self._main += 1
         try:
-	    exec(fd)
+            exec(fd)
         except SystemExit:
             ret = self._ret
             logging.debug("tc %s exception ret: %s", name, ret)
@@ -973,7 +950,7 @@ class tbot(object):
         """ send a cmd to fd and wait for end
         """
         self.eof_write(fd, cmd)
-        self.eof_read_end_state(fd, 1);
+        self.eof_read_end_state(fd, 1)
 
     def tbot_send_wait_list(self, fd, cmdlist):
         """ send a list of cmd to fd and wait for end
