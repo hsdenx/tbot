@@ -135,7 +135,7 @@ def tbot_send_list(tb, mm_list):
                 tmp = True
         if cmd_ok != True:
             tb.send_ctrl_c(tb.channel_con)
-            tb.eof_read_end_state_con(1);
+            tb.eof_read_end_state_con(1)
             tb.end_tc(False)
 
 mm_list = [
@@ -144,7 +144,7 @@ mm_list = [
 tb.eof_write_con("mm " +  tb.tc_ub_memory_ram_ws_base)
 tbot_send_list(tb, mm_list)
 tb.send_ctrl_c(tb.channel_con)
-tb.eof_read_end_state_con(1);
+tb.eof_read_end_state_con(1)
 tb.tbot_send_wait(tb.channel_con, "md " + tb.tc_ub_memory_ram_ws_base + " 10")
 
 mm_list = [
@@ -153,7 +153,7 @@ mm_list = [
 tb.eof_write_con("mm.w " +  tb.tc_ub_memory_ram_ws_base)
 tbot_send_list(tb, mm_list)
 tb.send_ctrl_c(tb.channel_con)
-tb.eof_read_end_state_con(1);
+tb.eof_read_end_state_con(1)
 
 tb.tbot_send_wait(tb.channel_con, "md " + tb.tc_ub_memory_ram_ws_base + " 10")
 
@@ -163,7 +163,7 @@ mm_list = [
 tb.eof_write_con("mm.b " +  tb.tc_ub_memory_ram_ws_base)
 tbot_send_list(tb, mm_list)
 tb.send_ctrl_c(tb.channel_con)
-tb.eof_read_end_state_con(1);
+tb.eof_read_end_state_con(1)
 
 tb.tbot_send_wait(tb.channel_con, "md " + tb.tc_ub_memory_ram_ws_base + " 10")
 
@@ -175,7 +175,7 @@ if ret == False:
     sz = hex(sz)
     tb.tbot_eof_send_check(tb.channel_con, "mtest " + tb.tc_ub_memory_ram_ws_base + " " + sz, "0000000f")
     tb.send_ctrl_c(tb.channel_con)
-    tb.eof_read_end_state_con(1);
+    tb.eof_read_end_state_con(1)
 
 # mw
 ret = tb.tbot_send_check(tb.channel_con, "help mw", "Unknown command")
@@ -206,7 +206,7 @@ if ret == False:
     tb.eof_write_con("nm " +  tb.tc_ub_memory_ram_ws_base)
     tbot_send_list(tb, nm_list)
     tb.send_ctrl_c(tb.channel_con)
-    tb.eof_read_end_state_con(1);
+    tb.eof_read_end_state_con(1)
 
     tb.tbot_send_wait(tb.channel_con, "md " + tb.tc_ub_memory_ram_ws_base + " 10")
 
