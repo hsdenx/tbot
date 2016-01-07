@@ -968,3 +968,47 @@ class tbot(object):
         if ret == True:
             return True
         self.end_tc(False)
+
+    def tbot_send_wait(self, fd, cmd):
+        """ send a cmd to fd and wait for end
+        """
+        self.eof_write(fd, cmd)
+        self.eof_read_end_state(fd, 1);
+
+    def tbot_send_wait_list(self, fd, cmdlist):
+        """ send a list of cmd to fd and wait for end
+        """
+        for tmp_cmd in cmdlist:
+            self.tbot_send_wait(fd, tmp_cmd)
+
+    def tbot_send_check(self, fd, cmd, string):
+        """ send a cmd and check if a string is read.
+            Wait until prompt is read.
+            If string is found, cmd is OK -> return True
+            else: return False
+        """
+        self.eof_write(fd, cmd)
+        searchlist = [string]
+        tmp = True
+        cmd_ok = False
+        while tmp == True:
+            tmp = self.readline_and_search_strings(fd, searchlist)
+            if tmp == 0:
+                cmd_ok = True
+                tmp = True
+            elif tmp == 'prompt':
+                tmp = False
+            else:
+                #endless loop
+                tmp = True
+        return cmd_ok
+
+    def tbot_eof_send_check(self, fd, cmd, string):
+        """ send a cmd and check if a string is read.
+            Wait until prompt is read.
+            If string is found, cmd is OK
+            else: CMD is not OK -> TC fails False
+        """
+        ret = self.tbot_send_check(fd, cmd, string)
+        if ret == False:
+            tb.end_tc(False)

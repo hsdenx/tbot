@@ -20,10 +20,6 @@ from tbotlib import tbot
 #set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
-def tbot_send_wait(tb, cmd):
-    tb.eof_write_con(cmd)
-    tb.eof_read_end_state_con(1);
-
 cmdlist = [
 "help",
 "help help",
@@ -37,8 +33,7 @@ cmdlist = [
 "help version",
 ]
 
-for tmp_cmd in cmdlist:
-    tbot_send_wait(tb, tmp_cmd)
+tb.tbot_send_wait_list(tb.channel_con, cmdlist)
 
 cmd = "version"
 tb.eof_write_con(cmd)
