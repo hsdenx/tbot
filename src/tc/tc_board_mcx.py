@@ -22,7 +22,7 @@ tb.tc_lx_regulator_nrs = ['0 regulator-dummy -', '1 hsusb1_vbus 5000000',
 		'2 vmmc 3300000', '3 vdd_core 1200000',
 		'4 vddshv 3300000', '5 vdds 1800000',
 		'6 LDO1 1800000', '7 LDO2 3300000']
-tb.eof_call_tc("tc_board_mcx_tests.py")
+#tb.eof_call_tc("tc_board_mcx_tests.py")
 
 tb.statusprint("tc_mcx testing linux mainline")
 tb.tc_lx_regulator_nrs = ['0 regulator-dummy -', '1 hsusb1_vbus 5000000',
