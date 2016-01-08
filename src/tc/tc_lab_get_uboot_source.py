@@ -24,25 +24,19 @@ tb.eof_search_str_in_readline_end_ctrl(cd_cmd_error_txt)
 
 u_boot_name = "u-boot-" + tb.boardlabname
 tmp = "cd " + u_boot_name
-tb.eof_write_ctrl(tmp)
-ret = tb.search_str_in_readline_ctrl(cd_cmd_error_txt)
-if ret == True:
+tb.eof_write_cmd(tb.channel_ctrl, tmp)
+tb.workfd = tb.channel_ctrl
+ret = tb.call_tc("tc_workfd_check_cmd_success.py")
+if ret == False:
     # clone u-boot.git
     tmp = "git clone " + tb.tc_lab_get_uboot_source_git_repo + " " + u_boot_name
-    tb.eof_write_ctrl(tmp)
-    tb.eof_search_str_in_readline_ctrl(tb.tc_lab_end_git_clone_text)
+    tb.eof_write_lx_cmd_check(tb.channel_ctrl, tmp)
 
     tmp = "cd " + u_boot_name
-    tb.eof_write_ctrl(tmp)
-    ret = tb.search_str_in_readline_ctrl(cd_cmd_error_txt)
-    if ret == True:
-        tb.end_tc(False)
+    tb.eof_write_lx_cmd_check(tb.channel_ctrl, tmp)
     #check out a specific branch
     tmp = "git checkout " + tb.tc_lab_get_uboot_source_git_branch
-    tb.eof_write_ctrl(tmp)
-    tb.eof_search_str_in_readline_end_ctrl(tb.tc_lab_end_git_checkout_text)
-
-tb.eof_read_end_state_ctrl(1)
+    tb.eof_write_lx_cmd_check(tb.channel_ctrl, tmp)
 
 # check if there are patches to apply
 tb.eof_call_tc("tc_lab_apply_patches.py")

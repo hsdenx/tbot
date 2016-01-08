@@ -30,10 +30,7 @@ tb.eof_call_tc("tc_lab_rm_dir.py")
 
 #call get u-boot source
 #cloning needs a bigger timeout, (git clone has no output)
-read_line_retry_save=tb.read_line_retry
-tb.read_line_retry=500
 tb.eof_call_tc("tc_lab_get_uboot_source.py")
-tb.read_line_retry=read_line_retry_save
 
 #call set toolchain
 tb.eof_call_tc("tc_lab_set_toolchain.py")
