@@ -47,10 +47,4 @@ tb.eof_call_tc("tc_lab_bdi_upd_uboot.py")
 #check if u-boot works
 tb.set_board_state("u-boot")
 
-#save working u-boot bin
-tb.tc_lab_cp_file_a = "u-boot.bin"
-tb.tc_lab_cp_file_b = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir + "/u-boot-latestworking.bin"
-#call cp files
-tb.eof_call_tc("tc_lab_cp_file.py")
-
 tb.end_tc(True)

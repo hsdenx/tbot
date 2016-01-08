@@ -22,4 +22,13 @@ tb.tc_lab_rm_dir = tb.tc_lab_source_dir + '/u-boot-' + tb.boardlabname
 tb.eof_call_tc("tc_lab_rm_dir.py")
 tb.eof_call_tc("tc_board_tqm5200s_ub_comp_install.py")
 
+tb.statusprint("start all DUTS testcases")
+tb.eof_call_tc("uboot/duts/tc_ub_start_all_duts.py")
+
+#save working u-boot bin
+tb.tc_lab_cp_file_a = "u-boot.bin"
+tb.tc_lab_cp_file_b = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir + "/u-boot-latestworking.bin"
+#call cp files
+tb.eof_call_tc("tc_lab_cp_file.py")
+
 tb.end_tc(True)
