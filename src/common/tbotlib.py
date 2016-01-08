@@ -57,6 +57,13 @@ def raw(text):
 # paramiko/paramiko/packet.py
 class tbot(object):
     def __init__(self, workdir, cfgfile, logfilen, verbose):
+        """
+        :param workdir: workdir for tbot
+        :param cfgfile: board config file
+        :param logfilen: name of logfile
+        :param verbose: be verbose
+        :return:
+        """
         ## enable debug output
         self.debug = False
         ## enable debugstatus output
@@ -144,6 +151,10 @@ class tbot(object):
         self.check_state(self.channel_ctrl)
 
     def __del__(self):
+        """
+        cleanup
+        :return:
+        """
         # without this timeout paramiko crashes sometimes with
         #   File "/usr/lib/python2.7/threading.py", line 551, in __bootstrap_inner
         #   File "/usr/lib/python2.7/dist-packages/paramiko/transport.py", line 1574, in run
@@ -153,19 +164,29 @@ class tbot(object):
         time.sleep(1)
 
     def set_power_state(self, state):
-        """ set the power state to state
-            returns the state of the power
-            True if on
-            False if off
+        """
+        set the power state to state
+        returns the state of the power
+        :param state: 'on' or 'off'
+        :return: True if on, False if off
         """
         ret = self.lab.set_power_state(self.boardlabpowername, state)
         return ret
 
     def check_debugger(self):
+        """
+        checks if a debugger is attached, and if so,
+        run the target. For this tc "tc_lab_bdi_run.py"
+        is called.
+        :return: True
+        """
         self.eof_call_tc("tc_lab_bdi_run.py")
 
     def check_state(self, fd):
-        """ check the state of the connection to the board
+        """
+        check the state of the connection to the board
+        :param fd: not used
+        :return: True, if connection is OK
         """
         # check if we have connection to the lab
         ret = self.lab.get_lab_connect_state()
@@ -447,7 +468,6 @@ class tbot(object):
         while tmp == True:
             tmp = self.readline_and_search_strings(fd, searchlist)
             if tmp == 'prompt':
-                attached = True
                 tmp = False
             elif tmp == 0:
                 return False
@@ -720,18 +740,35 @@ class tbot(object):
         return True
   
     def eof_write_cmd(self, fd, command):
-        """ write a command to fd, wait for prompt
-            return True, if prompt read
-            else end tc with failure
+        """
+        write a command to fd, wait for prompt
+        :param fd: filedescriptor
+        :param command: commandstring
+        :return: True if prompt read
+        end testcase with False else
         """
         self.eof_write(fd, command)
         self.eof_read_end_state(fd)
         return True
 
+    def eof_write_cmd_list(self, fd, cmdlist):
+        """
+        send a list of cmd to fd and wait for end
+        :param fd: filedescriptor
+        :param cmdlist: list of commandstrings
+        :return: True if prompt found
+        else endtestcase with False
+        """
+        for tmp_cmd in cmdlist:
+            self.eof_write_cmd(fd, tmp_cmd)
+
     def eof_write_lx_cmd_check(self, fd, command):
-        """ write a linux command to console.
-            If linux command has success return True,
-            else end tc with failure
+        """
+        write a linux command to console.
+        :param fd: filedescriptor
+        :param command: commandstring
+        :return: True if linux command ended succesful
+        else testase fails with False
         """
         self.eof_write_cmd(fd, command)
         tmpfd = self.workfd
@@ -741,9 +778,11 @@ class tbot(object):
         return True
 
     def eof_write_con_lx_cmd(self, command):
-        """ write a linux command to console.
-            If linux command has success return True,
-            else end tc with failure
+        """
+        write a linux command to console.
+        :param command: commandstring
+        :return: True if linux command was successful
+        else end testcase with False
         """
         self.eof_write_lx_cmd_check(self.channel_con, command)
         return True
@@ -821,29 +860,6 @@ class tbot(object):
             self.end_tc(False)
 
         return None
- 
-    def eof_search_str_in_readline_lines(self, fd, lines, string):
-        """ call read_line lines time and search if it contains string
-            return True if found, end testcase if not
-        """
-        ret = self._search_str(fd, lines, string)
-        if ret == True:
-            return True
-        self.end_tc(False)
-
-    def eof_search_str_in_readline_lines_con(self, lines, string):
-        """ call read_line lines time and search if it contains string
-            return True if found, end testcase if not
-        """
-        ret = self.eof_search_str_in_readline_lines(self.channel_con, lines, string)
-        return True
-
-    def eof_search_str_in_readline_lines_ctrl(self, lines, string):
-        """ call read_line lines time and search if it contains string
-            return True if found, end testcase if not
-        """
-        ret = self.eof_search_str_in_readline_lines(self.channel_ctrl, lines, string)
-        return True
 
     def eof_search_str_in_readline_con(self, string):
         """ call read_line and search string.
@@ -907,11 +923,16 @@ class tbot(object):
         return self.eof_search_str_in_readline_end(self.channel_ctrl, string)
 
     def readline_and_search_strings(self, fd, strings):
-        """ read a line and search, if it contains a string
-            in strings. If found, return index
-            if read some chars, but no line, check if it
-            is a prompt, return False if it is a prompt.
-            else return None
+        """
+        read a line and search, if it contains a string
+        in strings. If found, return index
+        if read some chars, but no line, check if it
+        is a prompt, return 'prompt' if it is a prompt.
+        if a string in strings found return index
+        else return None
+        :param fd: filedescriptor used
+        :param strings: a list of strings
+        :return:
         """
         ret = True
         while ret == True:
@@ -941,13 +962,18 @@ class tbot(object):
                 ret = self.is_end_fd(fd, self.buf[fd])
                 if ret == True:
                     return 'prompt'
+                else:
+                    return None
             elif ret == None:
                 return None
 
     def set_term_length(self, fd):
-        #terminal line length
-        #ToDo How could this be set longer and do this correct
-        #
+        """
+        set terminal line length
+        ToDo How could this be set longer and do this correct
+        :param fd: filedescritor
+        :return:
+        """
         tmp = 'stty cols ' + self.term_line_length
         self.eof_write(fd, tmp)
         self.eof_read_end_state(fd)
@@ -964,23 +990,14 @@ class tbot(object):
             return True
         self.end_tc(False)
 
-    def tbot_send_wait(self, fd, cmd):
-        """ send a cmd to fd and wait for end
+    def write_cmd_check(self, fd, cmd, string):
         """
-        self.eof_write(fd, cmd)
-        self.eof_read_end_state(fd)
-
-    def tbot_send_wait_list(self, fd, cmdlist):
-        """ send a list of cmd to fd and wait for end
-        """
-        for tmp_cmd in cmdlist:
-            self.tbot_send_wait(fd, tmp_cmd)
-
-    def tbot_send_check(self, fd, cmd, string):
-        """ send a cmd and check if a string is read.
-            Wait until prompt is read.
-            If string is found, cmd is OK -> return True
-            else: return False
+        send a cmd and check if a string is read.
+        :param fd: filedescriptor
+        :param cmd: commandstring
+        :param string: string which must be read
+        :return: True if prompt and string is read
+        else False
         """
         self.eof_write(fd, cmd)
         searchlist = [string]
@@ -998,12 +1015,15 @@ class tbot(object):
                 tmp = True
         return cmd_ok
 
-    def tbot_eof_send_check(self, fd, cmd, string):
-        """ send a cmd and check if a string is read.
-            Wait until prompt is read.
-            If string is found, cmd is OK
-            else: CMD is not OK -> TC fails False
+    def eof_write_cmd_check(self, fd, cmd, string):
         """
-        ret = self.tbot_send_check(fd, cmd, string)
+        send a cmd and check if a string is read.
+        :param fd: filedescriptor
+        :param cmd: commandstring
+        :param string: string which must be read
+        :return: True if prompt and string is read
+        else end Testcase with False
+        """
+        ret = self.write_cmd_check(fd, cmd, string)
         if ret == False:
             tb.end_tc(False)

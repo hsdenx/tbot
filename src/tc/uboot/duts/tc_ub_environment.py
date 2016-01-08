@@ -41,5 +41,5 @@ cmdlist = [
 "setenv cons_opts"
 ]
 
-tb.tbot_send_wait_list(tb.channel_con, cmdlist)
+tb.eof_write_cmd_list(tb.channel_con, cmdlist)
 tb.end_tc(True)

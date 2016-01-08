@@ -33,7 +33,7 @@ cmdlist = [
 "help version",
 ]
 
-tb.tbot_send_wait_list(tb.channel_con, cmdlist)
+tb.eof_write_cmd_list(tb.channel_con, cmdlist)
 
 cmd = "version"
 tb.eof_write_con(cmd)
