@@ -12,27 +12,17 @@
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_start_all_duts.py
-# start all DUTS tests
+# python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_dtt.py
+# convert duts tests from:
+# http://git.denx.de/?p=duts.git;a=blob;f=testsystems/dulg/testcases/15_UBootDtt.tc;h=e420c7b45cd73b00465d69f969039222868f4cc7;hb=101ddd5dbd547d5046363358d560149d873b238a
 from tbotlib import tbot
 
+#set board state for which the tc is valid
+tb.set_board_state("u-boot")
 
-dutslist = [
-"uboot/duts/tc_ub_basic.py",
-"uboot/duts/tc_ub_bdinfo.py",
-"uboot/duts/tc_ub_boot.py",
-"uboot/duts/tc_ub_coninfo.py",
-"uboot/duts/tc_ub_download.py",
-"uboot/duts/tc_ub_environment.py",
-"uboot/duts/tc_ub_flinfo.py",
-"uboot/duts/tc_ub_i2c_help.py",
-"uboot/duts/tc_ub_memory.py",
-"uboot/duts/tc_ub_run.py",
-"uboot/duts/tc_ub_date.py",
-"uboot/duts/tc_ub_dtt.py"
-]
+ret = tb.write_cmd_check(tb.channel_con, "help dtt", "Unknown command")
+if ret == True:
+    tb.end_tc(True)
 
-for tc in dutslist:
-  tb.eof_call_tc(tc)
-
+tb.eof_write_cmd_check(tb.channel_con, "dtt", "DTT")
 tb.end_tc(True)
