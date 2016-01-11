@@ -26,7 +26,6 @@ logging.info("args: workdfd: %s %s", tb.workfd, tb.tc_workfd_tbotfiles_dir)
 logging.info("args: %s %s %s", tb.boardname, tb.tc_workfd_check_tc_time_tcname, tb.tc_workfd_check_tc_time_timeout)
 
 #set board state for which the tc is valid
-tb.set_board_state("linux")
 timefile = tb.tc_workfd_tbotfiles_dir + "/" + "workfd_check_tc_time_" + tb.boardname + "_" + tb.tc_workfd_check_tc_time_tcname
 
 def check_tc_time_create(tb, timefile):

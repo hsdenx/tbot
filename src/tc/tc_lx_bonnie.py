@@ -22,10 +22,13 @@ logging.info("args: %s %s", tb.tc_lx_bonnie_dev, tb.tc_lx_bonnie_sz)
 tb.set_board_state("linux")
 
 tb.tc_workfd_check_tc_time_tcname = 'bonnie'
+savefd = tb.workfd
+tb.workfd = tb.channel_ctrl
 ret = tb.call_tc("tc_workfd_check_tc_time.py")
 if ret == False:
     # do not start bonnie, timer is not expired
     tb.end_tc(True)
+tb.workfd = savefd
 
 #check if bonnie exist
 #if not download it, and try to install
