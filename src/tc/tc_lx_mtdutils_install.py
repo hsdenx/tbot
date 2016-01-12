@@ -28,6 +28,7 @@ tb.eof_call_tc("tc_workfd_check_if_cmd_exist.py")
 if tb.tc_return == True:
     # check if mtdinfo exist
     tb.tc_workfd_check_if_cmd_exist_cmdname = 'ubinfo'
+    tb.tc_ubi_cmd_path = ''
     ret = tb.call_tc("tc_workfd_check_if_cmd_exist.py")
     if ret == True:
         tb.end_tc(True)
@@ -55,6 +56,7 @@ tb.eof_call_tc("tc_workfd_check_cmd_success.py")
 tb.tc_workfd_check_if_file_exists_name = 'ubi-utils/mtdinfo'
 ret = tb.call_tc("tc_workfd_check_if_file_exist.py")
 if ret == True:
+    tb.tc_ubi_cmd_path = tb.tc_workfd_work_dir + '/mtd-utils'
     tb.end_tc(True)
 
 #apply patches if any
@@ -62,10 +64,7 @@ if ret == True:
 # but this is for ctrl fd ...
 
 #compile it
-oldretry = tb.read_end_state_retry
-tb.read_end_state_retry = 100
 tb.eof_write_con_lx_cmd('make')
-tb.read_end_state_retry = oldretry
 tb.workfd = tb.channel_con
 tb.eof_call_tc("tc_workfd_check_cmd_success.py")
 
@@ -74,6 +73,5 @@ tb.eof_call_tc("tc_workfd_check_cmd_success.py")
 #tb.workfd = tb.channel_con
 #tb.eof_call_tc("tc_workfd_check_cmd_success.py")
 tb.tc_ubi_cmd_path = tb.tc_workfd_work_dir + '/mtd-utils'
-
 tb.flush_con()
 tb.end_tc(True)
