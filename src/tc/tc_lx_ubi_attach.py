@@ -29,23 +29,15 @@ def create_ubi_cmd(tb, cmd):
     tmp = tb.tc_ubi_cmd_path + '/' + cmd
     return tmp
 
-tmp = create_ubi_cmd(tb, 'ubi-utils/ubiattach /dev/ubi_ctrl -m ' + mtd_dev_nr)
+cmd = create_ubi_cmd(tb, 'ubi-utils/ubiattach /dev/ubi_ctrl -m ' + mtd_dev_nr)
 if tb.tc_ubi_vid_hdr_offset != 'default':
-    tmp += ' -O ' + tb.tc_ubi_vid_hdr_offset
+    cmd += ' -O ' + tb.tc_ubi_vid_hdr_offset
 
-ret = True
-i = 0
-while ret == True:
-    tb.eof_write_con(tmp)
-    ret = tb.search_str_in_readline_con('error')
-    if ret == True:
-        if i == 0:
-            i += 1
-            ret = tb.call_tc("tc_lx_ubi_detach.py")
-            if ret != True:
-                tb.end_tc(False)
-        else:
-            tb.end_tc(False)
-           
-tb.flush_con()
+ret = tb.write_cmd_check(tb.workfd, cmd, "error")
+if ret:
+    tb.eof_call_tc("tc_lx_ubi_detach.py")
+    ret = tb.write_cmd_check(tb.workfd, cmd, "error")
+    if ret:
+        tb.end_tc(False)
+
 tb.end_tc(True)
