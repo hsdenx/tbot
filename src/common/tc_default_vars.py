@@ -644,3 +644,13 @@ try:
     self.tc_workfd_tbotfiles_dir
 except AttributeError:
     self.tc_workfd_tbotfiles_dir = self.tc_workfd_work_dir + "/tmpfiles"
+
+try:
+    self.tc_workfd_create_ubi_rootfs_path
+except AttributeError:
+    self.tc_workfd_create_ubi_rootfs_path = '/opt/eldk-5.4/armv7a-hf/rootfs-minimal-mtdutils'
+
+try:
+    self.tc_workfd_create_ubi_rootfs_target
+except AttributeError:
+    self.tc_workfd_create_ubi_rootfs_target = '/tftpboot/dxr2/tbot/rootfs-minimal.ubifs'
