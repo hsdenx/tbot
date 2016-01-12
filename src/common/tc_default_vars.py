@@ -9,6 +9,11 @@ except AttributeError:
     self.debugprint(tmp)
 
 try:
+    self.wdt_timeout
+except AttributeError:
+    self.wdt_timeout = '120' # wdt timeout after 2 minutes
+
+try:
     self.read_line_retry
 except AttributeError:
     self.read_line_retry = 1

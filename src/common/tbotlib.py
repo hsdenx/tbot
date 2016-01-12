@@ -19,6 +19,8 @@ import sys
 import traceback
 import os
 from struct import *
+import subprocess
+import atexit
 import time
 import importlib
 #import serial
@@ -148,6 +150,8 @@ class tbot(object):
         self.buf.append('')
         self.buf.append('')
 
+        self.wdtfile = self.workdir + "/" + self.cfgfile + ".wdt"
+        self.tbot_start_wdt()
         self.check_state(self.channel_ctrl)
 
     def __del__(self):
@@ -162,6 +166,32 @@ class tbot(object):
         # strange thing here, paramiko crashes before this code is reached
         # comment out this code also did not help ...
         time.sleep(1)
+
+    def tbot_start_wdt(self):
+        """
+        start the WDT process
+        :return:
+        """
+        filepath = self.workdir + "/src/common/tbot_wdt.py"
+        self.own_pid = str(os.getpid())
+        self.tbot_trigger_wdt()
+        self.wdt_process = subprocess.Popen(['python2.7', filepath, self.wdtfile, self.own_pid, self.logfilen, self.wdt_timeout], close_fds=True)
+        atexit.register(self.wdt_process.terminate)
+
+    def tbot_trigger_wdt(self):
+        """
+        trigger the WDT
+        :return:
+        """
+        try:
+            fd = open(self.wdtfile, 'w')
+        except IOError:
+            logging.warning("Could not open: %s", self.wdtfile)
+            sys.exit(1)
+        fd.seek(0, 0)
+        line = str(int(time.time()))
+        fd.write(line)
+        fd.close()
 
     def set_power_state(self, state):
         """
@@ -475,6 +505,7 @@ class tbot(object):
                 #endless loop
                 tmp = True
 
+        self.tbot_trigger_wdt()
         return True
 
     def read_end_state_con(self):
@@ -515,6 +546,7 @@ class tbot(object):
            True: if write was successful
            None: not able to open the stream
         """
+        self.tbot_trigger_wdt()
         ret = self.check_open_fd(fd)
         if not ret:
             logging.debug("write_stream: not open")
@@ -543,6 +575,7 @@ class tbot(object):
            True: if write was successful
            None: not able to open the stream
         """
+        self.tbot_trigger_wdt()
         ret = self.check_open_fd(fd)
         if not ret:
             logging.debug("write_stream: not open")
