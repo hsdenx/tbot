@@ -18,6 +18,11 @@
 from tbotlib import tbot
 
 tb.workfd = tb.channel_ctrl
+
+#delete old u-boot source tree
+tb.tc_lab_rm_dir = tb.tc_lab_source_dir + "/linux-" + tb.boardlabname
+tb.eof_call_tc("tc_lab_rm_dir.py")
+
 tb.eof_call_tc("tc_workfd_get_linux_source.py")
 
 tmp = "cd " + tb.tc_lab_source_dir + "/linux-" + tb.boardlabname
@@ -51,6 +56,7 @@ tb.set_board_state("u-boot")
 tb.statusprint("u-boot setenv")
 tb.eof_call_tc("tc_ub_setenv.py")
 
+tb.workfd = tb.channel_con
 # start triggering wdt immediately
 tb.eof_call_tc("tc_lx_trigger_wdt.py")
 
@@ -59,7 +65,7 @@ checks = ['Siemens',
 'Linux version',
 'Kernel command line',
 'Manufacturer ID: 0x2c',
-'9 cmdlinepart partitions found on MTD device omap2-nand.0',
+'9 cmdlinepart partitions found on MTD device omap2-nand_concat',
 'at24 0-0050: 16384 byte',
 'input: gpio-keys as /devices/gpio-keys/input/input0'
 ]
@@ -68,10 +74,13 @@ for tb.tc_lx_dmesg_grep_name in checks:
     tb.eof_call_tc("tc_lx_dmesg_grep.py")
 
 tb.statusprint("tc_mcx pinmux check")
-files = ['src/files/dxr2_etamin_pinmux.reg'
-]
+files = ['src/files/dxr2_etamin_pinmux.reg']
 for tb.tc_lx_create_reg_file_name in files:
     tb.eof_call_tc("tc_lx_check_reg_file.py")
+
+tb.statusprint("ubi checks")
+tb.eof_call_tc("tc_lx_ubi_tests.py")
+tb.eof_call_tc("tc_board_dxr2_lx_ubi_tests.py")
 
 # power off board at the end
 #tb.eof_call_tc("tc_lab_poweroff.py")

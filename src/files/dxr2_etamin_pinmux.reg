@@ -1,7 +1,7 @@
 # pinmux
 # processor: ARMv7 Processor rev 2 (v7l)
 # hardware :  Generic AM33XX (Flattened Device Tree)
-# Linux    : Linux version 3.18.10-01759-g2d4052c (hs@pollux.denx.de) (gcc version 4.7.2 (GCC) ) #2 PREEMPT Mon Dec 28 07:40:34 CET 2015
+# Linux    : Linux version 3.18.10-01759-g86c5d37-dirty (hs@pollux.denx.de) (gcc version 4.7.2 (GCC) ) #22 PREEMPT Tue Jan 12 07:47:55 CET 2016
 # regaddr mask type defval
 0x44e10000 0xffffffff          w 0x4E8B0100
 0x44e10004 0xffffffff          w        0x0
@@ -481,15 +481,15 @@
 0x44e10870 0xffffffff          w       0x30
 0x44e10874 0xffffffff          w       0x37
 0x44e10878 0xffffffff          w        0xF
-0x44e1087c 0xffffffff          w        0x0
-0x44e10880 0xffffffff          w        0xF
+0x44e1087c 0xffffffff          w        0x8
+0x44e10880 0xffffffff          w        0x8
 0x44e10884 0xffffffff          w        0xF
 0x44e10888 0xffffffff          w        0xF
 0x44e1088c 0xffffffff          w        0xF
-0x44e10890 0xffffffff          w        0x0
-0x44e10894 0xffffffff          w        0x0
-0x44e10898 0xffffffff          w        0x0
-0x44e1089c 0xffffffff          w        0x0
+0x44e10890 0xffffffff          w        0x8
+0x44e10894 0xffffffff          w        0x8
+0x44e10898 0xffffffff          w        0x8
+0x44e1089c 0xffffffff          w        0x8
 0x44e108a0 0xffffffff          w       0x2F
 0x44e108a4 0xffffffff          w       0x2F
 0x44e108a8 0xffffffff          w       0x2F

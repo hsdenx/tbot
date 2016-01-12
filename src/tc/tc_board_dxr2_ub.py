@@ -28,12 +28,18 @@ tb.eof_call_tc("tc_lab_rm_dir.py")
 tb.statusprint("get u-boot source")
 tb.eof_call_tc("tc_lab_get_uboot_source.py")
 
-#get current list of patches in ToDo list
-tb.statusprint("get patchwork patches")
-tb.eof_call_tc("tc_workfd_get_patchwork_number_list.py")
+#tb.statusprint("apply local patches")
+#tb.tc_workfd_apply_local_patches_dir = "/work/hs/tbot/patches/dxr2_uboot_patches"
+#tb.tc_workfd_apply_local_patches_checkpatch_cmd_strict = "no"
+#tb.tc_workfd_apply_local_patches_checkpatch_cmd = 'scripts/checkpatch.pl'
+#tb.eof_call_tc("tc_workfd_apply_local_patches.py")
 
-tb.tc_workfd_apply_patchwork_patches_list_hand += tb.tc_workfd_apply_patchwork_patches_list
-tb.tc_workfd_apply_patchwork_patches_list = tb.tc_workfd_apply_patchwork_patches_list_hand
+#get current list of patches in ToDo list
+#tb.statusprint("get patchwork patches")
+#tb.eof_call_tc("tc_workfd_get_patchwork_number_list.py")
+
+#tb.tc_workfd_apply_patchwork_patches_list_hand += tb.tc_workfd_apply_patchwork_patches_list
+#tb.tc_workfd_apply_patchwork_patches_list = tb.tc_workfd_apply_patchwork_patches_list_hand
 
 #call set toolchain
 tb.statusprint("set toolchain")
