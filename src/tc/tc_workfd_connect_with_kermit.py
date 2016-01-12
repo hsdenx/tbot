@@ -88,9 +88,26 @@ tb.eof_read_end_state(tb.workfd)
 tb.eof_write_cmd(tb.workfd, "set flow-control none")
 tb.eof_write_cmd(tb.workfd, "set carrier-watch off")
 tb.lab.write(tb.workfd, "connect")
+searchlist = ["Connecting"]
+tmp = True
+cmd_ok = False
+i = 0
+while tmp == True:
+    tmp = self.readline_and_search_strings(tb.workfd, searchlist)
+    if tmp == 0:
+        cmd_ok = True
+        tmp = True
+    elif tmp == 'prompt':
+        tmp = False
+    else:
+        #endless loop
+        tmp = True
+        i += 1
+        if i > 3:
+            tmp = False
 
 tb.channel_end[tb.workfd] = '1'
 
 # set back U-Boot prompt
 tb.prompt = tb.uboot_prompt
-tb.end_tc(True)
+tb.end_tc(cmd_ok)

@@ -164,10 +164,14 @@ class tbot_lab_api(object):
         i = 0
         retry = 3
         debugger = 0
+        # self.tb.send_ctrl_c(self.tb.channel_con)
+        self.tb.send_ctrl_m(self.tb.channel_con)
         while(i < retry):
-            ret = self.tb.read_line(self.channel_con, 1)
+            ret = self.tb.read_line(self.tb.channel_con, 1)
             if ret == None:
                 i += 1
+                # self.tb.send_ctrl_c(self.tb.channel_con)
+                self.tb.send_ctrl_m(self.tb.channel_con)
                 if debugger:
                     continue
                 if i >= retry:
@@ -216,7 +220,6 @@ class tbot_lab_api(object):
                 string = string[:1]
                 ret = self.write_no_ret(self.tb.channel_con, string)
                 continue
-            i = 0
 
         self.tb.channel_end[self.tb.channel_con] = '1'
         logging.info("connected to %s", boardname)
