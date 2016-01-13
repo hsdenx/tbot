@@ -21,6 +21,7 @@ logging.info("args: workfd %s %s %s", tb.workfd, tb.tc_workfd_cp_file_a, tb.tc_w
 tb.eof_write(tb.workfd, "su")
 tb.eof_search_str_in_readline(tb.workfd, "Password", 1)
 tb.write_stream_passwd(tb.workfd, "root", "lab")
+tb.set_prompt(tb.workfd, tb.linux_prompt, 'export PS1="\u@\h [\$(date +%k:%M:%S)] ', ' >"')
 tmp = "\cp " + tb.tc_workfd_cp_file_a + " " + tb.tc_workfd_cp_file_b
 tb.eof_write_lx_cmd_check(tb.workfd, tmp)
 

@@ -22,6 +22,7 @@ logging.info("%s", tb.tc_workfd_create_ubi_rootfs_target)
 tb.eof_write(tb.workfd, "su")
 tb.eof_search_str_in_readline(tb.workfd, "Password", 1)
 tb.write_stream_passwd(tb.workfd, "root", "lab")
+tb.set_prompt(tb.workfd, tb.linux_prompt, 'export PS1="\u@\h [\$(date +%k:%M:%S)] ', ' >"')
 
 tmp = "date > " + tb.tc_workfd_create_ubi_rootfs_path + "/creation_time"
 tb.eof_write_lx_cmd_check(tb.workfd, tmp)
