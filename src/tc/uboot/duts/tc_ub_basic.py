@@ -37,7 +37,7 @@ tb.eof_write_cmd_list(tb.channel_con, cmdlist)
 
 cmd = "version"
 tb.eof_write_con(cmd)
-searchlist = ["U-Boot"]
+searchlist = ["U-Boot "]
 tmp = True
 cmd_ok = False
 while tmp == True:
