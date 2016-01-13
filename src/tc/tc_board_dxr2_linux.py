@@ -53,7 +53,7 @@ tb.eof_call_tc("tc_lab_cp_file.py")
 
 #call ubot setenv
 tb.set_board_state("u-boot")
-tb.eof_write_cmd("version")
+tb.eof_write_cmd(tb.channel_con, "version")
 
 tb.workfd = tb.channel_con
 # start triggering wdt immediately
