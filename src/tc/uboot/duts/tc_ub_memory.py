@@ -17,7 +17,7 @@
 # http://git.denx.de/?p=duts.git;a=blob;f=testsystems/dulg/testcases/10_UBootMemory.tc;h=f5fb055499db17c322859215ab489cefb063ac47;hb=101ddd5dbd547d5046363358d560149d873b238a
 from tbotlib import tbot
 
-logging.info("args: %s %s", tb.tc_ub_memory_ram_ws_base, tb.tc_ub_memory_ram_ws_base_alt)
+logging.info("args: %s %s %s", tb.tc_ub_memory_ram_ws_base, tb.tc_ub_memory_ram_ws_base_alt, tb.tc_ub_memory_ram_big)
 
 #set board state for which the tc is valid
 tb.set_board_state("u-boot")
@@ -46,10 +46,17 @@ tb.eof_write_cmd(tb.channel_con, "md " + tb.tc_ub_memory_ram_ws_base + " 0x40")
 # crc check
 tb.eof_write_cmd(tb.channel_con, "mw " + tb.tc_ub_memory_ram_ws_base + " 0xc0cac01a 0x100")
 tb.eof_write_cmd(tb.channel_con, "md " + tb.tc_ub_memory_ram_ws_base + " 0x100")
-tb.eof_write_cmd_check(tb.channel_con, "crc " + tmp + " 0x3fc", "5db8222f")
+if tb.tc_ub_memory_ram_big == 'yes': 
+    tb.eof_write_cmd_check(tb.channel_con, "crc " + tmp + " 0x3fc", "5db8222f")
+else:
+    tb.eof_write_cmd_check(tb.channel_con, "crc " + tmp + " 0x3fc", "5caee82a")
+
 tb.eof_write_cmd(tb.channel_con, "mw " + tb.tc_ub_memory_ram_ws_base + " 0x00c0ffee 0x100")
 tb.eof_write_cmd(tb.channel_con, "md " + tb.tc_ub_memory_ram_ws_base + " 0x100")
-tb.eof_write_cmd_check(tb.channel_con, "crc " + tmp + " 0x3fc", "de3ac1b8")
+if tb.tc_ub_memory_ram_big == 'yes': 
+    tb.eof_write_cmd_check(tb.channel_con, "crc " + tmp + " 0x3fc", "de3ac1b8")
+else:
+    tb.eof_write_cmd_check(tb.channel_con, "crc " + tmp + " 0x3fc", "56a87cac")
 
 # cmp
 tb.eof_write_cmd(tb.channel_con, "help cmp")
