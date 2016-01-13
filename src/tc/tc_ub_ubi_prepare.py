@@ -52,24 +52,16 @@ def ubiprep(tb, tmp):
     searchlist = ["init error", "available PEBs", "empty MTD device detected"]
     tmp = True
     cmd_ok = False
-    i = 0
-    retry = 50
-    while i < retry:
+    while tmp:
         tmp = tb.readline_and_search_strings(tb.channel_con, searchlist)
-        if tmp == None:
-            i += 1
-        elif tmp == 1:
-            i = 0
+        if tmp == 1:
             cmd_ok = True
-        elif tmp == 2:
-            i = 0
+            tmp = True
         elif tmp == 'prompt':
-            i = retry
+            tmp = False
         else:
-            i = 0
+            tmp = True
 
-    if i >= retry:
-        logging.info("%d >= %d cmd ok: %s", i, retry, cmd_ok)
     if cmd_ok == False:
         tb.end_tc(False)
     return cmd_ok
