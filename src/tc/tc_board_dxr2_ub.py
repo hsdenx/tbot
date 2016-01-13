@@ -78,6 +78,9 @@ tb.eof_call_tc("tc_ub_upd_uboot.py")
 tb.statusprint("u-boot ubi test")
 tb.eof_call_tc("tc_board_dxr2_ub_ubi.py")
 
+tb.statusprint("start all DUTS testcases")
+tb.eof_call_tc("uboot/duts/tc_ub_start_all_duts.py")
+
 #save working u-boot bin
 tb.tc_lab_cp_file_a = "u-boot.bin"
 tb.tc_lab_cp_file_b = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir + "/u-boot-latestworking.bin"
