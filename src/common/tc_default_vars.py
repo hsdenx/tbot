@@ -659,3 +659,8 @@ try:
     self.tc_workfd_create_ubi_rootfs_target
 except AttributeError:
     self.tc_workfd_create_ubi_rootfs_target = '/tftpboot/dxr2/tbot/rootfs-minimal.ubifs'
+
+try:
+    self.tc_ub_i2c_help_with_bus
+except AttributeError:
+    self.tc_ub_i2c_help_with_bus = 'no'

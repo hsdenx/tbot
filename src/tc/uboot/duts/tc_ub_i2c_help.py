@@ -23,16 +23,28 @@ ret = tb.write_cmd_check(tb.channel_con, "help i2c", "Unknown command")
 if ret == True:
     tb.end_tc(True)
 
-searchlist = ["i2c crc32", "i2c loop chip", "i2c md chip address",
+if tb.tc_ub_i2c_help_with_bus == 'yes':
+    searchlist = ["i2c bus", "crc32", "i2c dev", "i2c loop chip", "i2c md chip address",
               "i2c mm chip address", "i2c mw chip address", "i2c nm chip address",
               "i2c probe", "i2c read chip address", "i2c write memaddress",
               "i2c reset", "i2c speed"]
-ok_list = [False, False, False, False, False, False, False, False, False, False, False]
+    ok_list = [False, False, False, False, False, False, False, False, False, False, False, False, False]
+    count = 14
+else:
+    searchlist = ["i2c crc32", "i2c loop chip", "i2c md chip address",
+              "i2c mm chip address", "i2c mw chip address", "i2c nm chip address",
+              "i2c probe", "i2c read chip address", "i2c write memaddress",
+              "i2c reset", "i2c speed"]
+    ok_list = [False, False, False, False, False, False, False, False, False, False, False]
+    count = 12
+
+tmp = "help i2c"
+tb.eof_write_con(tmp)
 tmp = True
 cmd_ok = True
 while tmp == True:
     tmp = tb.readline_and_search_strings(tb.channel_con, searchlist)
-    if tmp in range(0, 12):
+    if tmp in range(0, count):
         ok_list[tmp] = True
         if tmp > 0:
             if ok_list[tmp - 1] != True:
