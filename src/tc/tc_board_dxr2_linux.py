@@ -53,8 +53,6 @@ tb.eof_call_tc("tc_lab_cp_file.py")
 
 #call ubot setenv
 tb.set_board_state("u-boot")
-tb.eof_call_tc("tc_ub_setenv.py")
-
 tb.eof_write_cmd("version")
 
 tb.workfd = tb.channel_con
