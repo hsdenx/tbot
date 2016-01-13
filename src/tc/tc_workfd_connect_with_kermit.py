@@ -87,7 +87,7 @@ tb.eof_write(tb.workfd, "set speed " + tb.kermit_speed)
 tb.eof_read_end_state(tb.workfd)
 tb.eof_write_cmd(tb.workfd, "set flow-control none")
 tb.eof_write_cmd(tb.workfd, "set carrier-watch off")
-tb.lab.write(tb.workfd, "connect")
+tb.eof_write(tb.workfd, "connect")
 searchlist = ["Connecting"]
 tmp = True
 cmd_ok = False
