@@ -978,11 +978,10 @@ class tbot(object):
                     if res:
                         return i
                     i += 1
-               # in a whole line can not occur a prompt !
-               # ret = self.is_end_fd(fd, self.buf[fd])
-               # if ret == True:
-               #     return 'prompt'
-               # ret = True
+                ret = self.is_end_fd(fd, self.buf[fd])
+                if ret == True:
+                    return 'prompt'
+                ret = True
             elif ret == False:
                 #check if it is a prompt
                 i = 0
