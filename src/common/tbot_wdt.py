@@ -36,7 +36,9 @@ while run:
         sys.exit(1)
     fd.seek(0, 0)
     line = fd.readline()
-    oldvalue = int(line)
+    if line == '':
+        continue
+    oldvalue = int(line.strip())
     newvalue = int(time.time())
     if newvalue > oldvalue + timeout:
         print("************ WDT Timeout")
