@@ -19,8 +19,9 @@ from tbotlib import tbot
 #set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
-tmp = "help i2c"
-tb.eof_write_con(tmp)
+ret = tb.write_cmd_check(tb.channel_con, "help i2c", "Unknown command")
+if ret == True:
+    tb.end_tc(True)
 
 searchlist = ["i2c crc32", "i2c loop chip", "i2c md chip address",
               "i2c mm chip address", "i2c mw chip address", "i2c nm chip address",
