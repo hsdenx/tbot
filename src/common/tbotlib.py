@@ -1059,4 +1059,4 @@ class tbot(object):
         """
         ret = self.write_cmd_check(fd, cmd, string)
         if ret == False:
-            tb.end_tc(False)
+            self.end_tc(False)
