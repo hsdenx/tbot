@@ -17,7 +17,7 @@
 from tbotlib import tbot
 from lab_bdi import bdi_class
 
-logging.info("args: %s %s", tb.lab_bdi_upd_uboot_bdi_prompt, tb.lab_bdi_upd_uboot_bdi_run)
+logging.info("args: %s %s %s", tb.board_has_debugger, tb.lab_bdi_upd_uboot_bdi_prompt, tb.lab_bdi_upd_uboot_bdi_run)
 
 if tb.board_has_debugger == 0:
     tb.end_tc(True)
