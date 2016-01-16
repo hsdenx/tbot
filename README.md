@@ -12,7 +12,7 @@
 
 ## Demo
 
-[![Demo tbot](https://github.com/hsdenx/tbot/blob/master/demo.gif)](https://youtu.be/ZzVMcx1S5C8)
+[![Demo tbot](https://github.com/hsdenx/tbot/blob/master/demo.gif)](https://www.youtube.com/watch?v=ZwUA0QNDnP4)
 
 -------------------------------------------------
 
