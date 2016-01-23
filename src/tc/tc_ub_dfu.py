@@ -37,12 +37,9 @@ while ret == True:
     if ret == False:
         tb.end_tc(False)
 
-#auf pollux
 #switch to root
-tb.eof_write_ctrl("su")
-tb.eof_search_str_in_readline_ctrl("Password")
-tb.eof_write_ctrl_passwd("root", "lab")
-#tb.eof_write_ctrl("PS1=ttbott #")
+tb.workfd = tb.channel_ctrl
+tb.eof_call_tc("tc_workfd_switch_su.py")
 
 #cd /home/hs/zug/dfu-util/
 tb.tc_ub_dfu_dfu_util_path = "/home/hs/zug/dfu-util"
