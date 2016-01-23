@@ -31,50 +31,82 @@ Why python?
 
 Basic ideas:
 
-- testcase:
-  a piece of python code, which contains
-  commands, sended to the boards console. Analyses
-  the output the commands send back. A testcase returns
-  always true if it succeeds, or false if it fails
+- Virtual laboratory (VL)
+   VL is the basic environment that groups:
+  - [a number of] boards - target devices on which tbot executes testcases.
+  - one Lab PC
 
-- board state:
-  A board state defines, in which state the board
-  has to be, when it sends commands to the board.
-  Currently there are 2 board states (u-boot and
-  linux, but more can be added). A board state
-  gets currently detected by analysing the prompt,
-  tbot gets when sending a ctrl-c followed by a return.
-  The prompt tbot expects can be defined in the board
-  configuration file, see later. Boardstates can
-  change within a testcase.
+- Test case (TC):
+  A piece of python code, which uses the tbot class.
+  Tbot provides functions for sending shell commands and parsing the
+  shell commands output.
+  Tbot waits endless for a shell commands end (detected through reading
+  the consoles prompt).
+  A TC can also call other TC-es.
+  
+  remark:
+  Tbot not really waits endless, for a shell commands end, instead
+  tbot starts a watchdog in the background, and if it triggers, tbot
+  ends the TC as failed. In the tbot beginning there was a lot of
+  timeouts / retry cases, but it turned out, that waiting endless
+  is robust and easy ... ToDo: clean up tbot code ...
+   
+- Host PC (where tbot runs, currently only linux host tested)
+  must not a powerful machine.
 
-- Lab
-  - a Lab contains a lab host PC and 1-n boards
-    on which testcases are executed.
+- Lab PC: 
+  - Host PC connects through ssh to the Lab PC
+    -> so it is possible to test boards, which
+       are not at the same place as the Host PC.
+       (Lab PC and Host PC can be the same of course)
+       -> maybe we can setup a Testsystem, which does nightly
+          U-Boot/Linux builds and test current mainline U-Boot
+          on boards all over the world ...
 
-- Lab Host PC:
-  - must accept incoming tbot connections (currently
-    ssh)
-  - it works as a switch and routes incoming tbot
-    connections to to the boards in the lab.
-  - It must be able to power boards on/off, get the current
-    power state and must at least have a possibility
-    to connect to a console to the board (not necessarily
-    a serial console)
-  - good to have:
-    - tftpserver
-    - nfs server
-    - get source code from wherever you want
-    - able to compile source code
-    - ...
+  - necessary tasks a Lab PC must deliver:
+    - connect to boards console through a shell command.
+    - power on/off boards through a shell command
+    - detect the current power state of a board through
+      a shell command
 
-- Board:
-  the real HW, on which testcases are executed.
+  - optional tasks:
+    - tftp server (for example loading images)
+    - nfs server (used as rootfs for linux kernels)
+    - Internet access for example for downloading
+      U-Boot source with git.
+    - toolchains installed for compiling source code
+
+      -> a linux machine is preffered.
+
+  - currently only Lab PC with an installed linux supported/tested.
+
+- Boards(s):
+  the boards on which shell commands are executed.
+
+- Board state:
+  equals to the software, the board is currently running.
+
+  Currently tbot supports 2 board states:
+    - "u-boot", if the board is running U-Boot
+    - "linux", if the board is running a linux kernel
+
+  It should be easy to add other board states to tbot, see
+  https://github.com/hsdenx/tbot/tree/master/src/lab_api
+
+  A board state is detected through analysing the boards
+  shell prompt. In linux tbot sets a special tbot prompt,
+  in U-Boot the prompt is static, and configurable through a
+  board config file.
+
+  A TC can say in which board state it want to send shell commands.
+  Tbot tries to detect the current board state, if board is not in
+  the requested  board state, tbot tries to switch into the correct
+  state. If this fails, the TC fails.
+  It is possible to switch in a single TC between board states.
 
 Look for more infos into:
 ```
-doc/lab_prerequisite.txt
-doc/howto_add_new_lab.txt
+doc/README.install
 ```
 
 Dream:
