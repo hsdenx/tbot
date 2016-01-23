@@ -127,11 +127,16 @@ class tbot(object):
         self.channel_ctrl = 0
         self.channel_con = 1
 
-        self.numeric_level = getattr(logging, self.loglevel.upper(), None)
-        if not isinstance(self.numeric_level, int):
-            raise ValueError('Invalid log level: %s' % self.loglevel)
-        logging.basicConfig(format='%(asctime)s:%(levelname)-7s:%(module)-10s# %(message)s',
-            filename=self.logfilen, filemode='w', level=self.numeric_level)
+        self.con_loglevel = 25
+        logging.addLevelName(self.con_loglevel, "CON")
+        if (self.loglevel == 'CON'):
+            logging.basicConfig(format='%(asctime)s:# %(message)s',
+                filename=self.logfilen, filemode='w')
+        else:
+            logging.basicConfig(format='%(asctime)s:%(levelname)-7s:%(module)-10s# %(message)s',
+                filename=self.logfilen, filemode='w')
+        l = logging.getLogger()
+        l.setLevel(self.loglevel)
         logging.info("*****************************************")
         logging.info('Started logging @  %s', now.strftime("%Y-%m-%d %H:%M"))
         logging.info('working directory %s', self.workdir)
@@ -280,6 +285,14 @@ class tbot(object):
         if self.debugstatus:
             print("%s" % (args))
 
+    def con_log(self, *args):
+        """
+        logs a console string
+        :param args: console string
+        :return:
+        """
+        logging.log(self.con_loglevel, *args)
+
     def _search_str(self, fd, retry, string):
         """ search string retry times with read_line
             return:
@@ -425,7 +438,7 @@ class tbot(object):
                 i += 1
                 if (i > retry):
                     if (len(self.buf[fd]) > 0):
-                        logging.info("read no ret %s %s", fd, self.buf[fd])
+                        self.con_log("%d: %s", fd, self.buf[fd])
                         if self.verbose:
                             print("read no ret %d: %s" % (fd, self.buf[fd]))
                         return False
@@ -438,7 +451,7 @@ class tbot(object):
         if (len(self.buf[fd]) > 1) and (self.buf[fd][0] == '\n'):
             self.buf[fd] = self.buf[fd][1:]
         logging.debug("read_line n: %d rem: %s", n, self.__remainder[fd])
-        logging.info("read %d: %s", fd, self.buf[fd])
+        self.con_log("%d: %s", fd, self.buf[fd])
         if self.verbose:
             print("read %d: %s" % (fd, self.buf[fd].replace("\n", "")))
         return True
@@ -557,7 +570,7 @@ class tbot(object):
         #for i in range(0, len(string)):
         #    self.lab.write(fd, string[i])
 
-        logging.info("write %d: %s", fd, string)
+        self.con_log("%d: %s", fd, string)
         if self.verbose:
             print("write %d: %s" % (fd, string))
         # what I send must come also back!
@@ -583,7 +596,7 @@ class tbot(object):
 
         string = self.lab.get_password(user, board)
         self.lab.write(fd, string)
-        logging.info("write %d: password ********", fd)
+        self.con_log("%d: password ********", fd)
         if self.verbose:
             print("write %d: password ********" % (fd))
         # what I send must come also back!

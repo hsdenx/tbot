@@ -1,4 +1,4 @@
-- rename denx pi to a common name and
+- rename denx API to a common name and
   define ssh as standard -> lap API not really
   needed for different VL
 
@@ -8,9 +8,10 @@
   - get rid of all retry places
   - clean up tbotlib function names
 
-- current loglevel INFO has to much output
-  introduce a new loglevel whih only logs the
+* current loglevel INFO has to much output
+  introduce a new loglevel which only logs the
   read/write to fd.
+  Done, name: 'CO, name: 'CON''
 
 - introduce a "layering" like yocto do, so U-Boot TC can integrated
   into U-Boot source code.

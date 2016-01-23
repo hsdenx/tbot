@@ -1,0 +1,17 @@
+Documentation of tbot variables
+===============================
+
+loglevel:
+
+set the used loglevel for tbots logfile.
+
+values:
+Level     Numeric value
+CRITICAL  50
+ERROR     40
+WARNING   30
+CON       25             log write/read to fd only
+INFO      20             more Infos
+DEBUG     10
+NOTSET     0
+
