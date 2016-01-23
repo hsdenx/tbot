@@ -62,7 +62,7 @@ else:
 tb.eof_write_cmd(tb.channel_con, "help cmp")
 
 #generate random file, and tftp it twice
-tb.wordfd = tb.channel_ctrl
+tb.workfd = tb.channel_ctrl
 tb.tc_workfd_generate_random_file_name = tb.tc_ub_tftp_path + "random"
 tb.tc_workfd_generate_random_file_length = '1048576'
 tb.eof_call_tc("tc_workfd_generate_random_file.py")
