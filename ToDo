@@ -1,11 +1,65 @@
-- move lab_api things to lab_api
-- test
-- lab_api:
-  add ftp put and get
-- call testcases with arguments
+- rename denx pi to a common name and
+  define ssh as standard -> lap API not really
+  needed for different VL
+
+- Get Vars for TC from U-Boot Code
+
+- cleanup tbot code
+  - get rid of all retry places
+  - clean up tbotlib function names
+
+- current loglevel INFO has to much output
+  introduce a new loglevel whih only logs the
+  read/write to fd.
+
+- introduce a "layering" like yocto do, so U-Boot TC can integrated
+  into U-Boot source code.
+
+  Proposal:
+  introduce  subdirs in "src/tc"
+
+       lab: all lab specific stuff
+       lab/common: common lab stuff (for example ssh handling)
+       lab/denx: denx specific
+
+
+       u-boot: all u-boot tests
+       u-boot/common: common u-boot tc
+       u-boot/duts: DUTS tc
+       u-boot-dxr2: all u-boot dxr2 board specific tc
+
+       board: board tc
+       board/common: common boar tc
+       board/dxr2: all tc for dxr2 board
+
+       linux: all linux tc
+       linux/common: common linux tc
+       linux/dxr2
+
+       tbot: common tbot tc
+       tbot/
+
+  - need a mechanism in tbot, how it gets automatically for example
+    U-Boot TC from U-Boot source...
+
+- search TC names in src/tc through all subdirs
+
+- simplify tbot log output (seperate a lot of output which is currently
+  in INFO logging level, to another logging level)
+  - make the timestamp configurable
+
+- Open more than 2 filehandles ?
+  Do we need for more complex TC more than 2 filehandles?
+
+- Find a way to document all TC and variables they use in an automated
+  way.
+
 - add manpages for the testcases
 
-----------------------------------------
+- lab_api:
+  add ftp put and get ?
+
+- call testcases with arguments
 
 - rework prompt
   save current prompt for each fd!!
@@ -54,6 +108,10 @@
   in your ToDo list ...
   done for u-boot:
   src/tc/tc_workfd_get_patchwork_number_list.py
+
+- Delete from the tc_workfd_apply_patchwork_patches_list_hand
+  python list an entry, if while "git am" the patch "git am"
+  detects, that this patch is already in mainline.
 
 * move power on/off into a testcase, and only
   call it from lap_api
