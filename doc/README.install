@@ -175,7 +175,7 @@ $
              keepalive message.
   line 14: channel_timeout: passed to paramiko
   line 15: loglevel: tbots loglevel for adding entries into the logfile.
-  line 16: lap_api: used lap API (currently only 'denx'), should be
+  line 16: lap_api: used lap API (currently only 'ssh_std'), should be
              renamed and declared as standard, not needed longer.
   line 17: wdt_timeout: timeout in seconds for tbots watchdog.
              Watchdog gets triggered if prompt get read.

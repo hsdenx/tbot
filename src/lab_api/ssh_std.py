@@ -11,6 +11,12 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# standard lab API
+# use ssh for connecting to Lab PC
+# call tb.tc_lab_denx_get_power_state_tc for getting Power state
+# call tb.tc_lab_denx_get_power_tc for setting Power state
+# call tb.tc_lab_denx_connect_to_board_tc for connecting to the board
+#
 import paramiko
 import logging
 import socket
@@ -38,7 +44,7 @@ from lab_ssh import lab_write_no_ret
 
 class tbot_lab_api(object):
     def __init__(self, tb):
-        logging.info("setup with denx API")
+        logging.info("setup with ssh standard API")
         self.tb = tb
         self.ssh = False
         self.opened = False

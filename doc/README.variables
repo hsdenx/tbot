@@ -15,3 +15,20 @@ INFO      20             more Infos
 DEBUG     10
 NOTSET     0
 
+tc_lab_denx_get_power_state_tc:
+  name of the TC which gets called for getting the current
+  power state.
+  default:
+  'tc_lab_denx_get_power_state.py'
+
+tb.tc_lab_denx_power_tc:
+  name of the TC which gets called for setting a new
+  power state.
+  default:
+  'tc_lab_denx_power.py'
+
+tb.tc_lab_denx_connect_to_board_tc:
+  name of the TC which gets called for connecting to
+  the boards console.
+  default:
+  'tc_lab_denx_connect_to_board.py'

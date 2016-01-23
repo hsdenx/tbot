@@ -1,6 +1,7 @@
-- rename denx API to a common name and
+* rename denx API to a common name and
   define ssh as standard -> lap API not really
   needed for different VL
+  renamed to 'ssh_std'
 
 - Get Vars for TC from U-Boot Code
 
