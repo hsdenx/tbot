@@ -19,6 +19,31 @@ from tbotlib import tbot
 
 logging.info("args: %s %s %s", tb.tc_ub_memory_ram_ws_base, tb.tc_ub_memory_ram_ws_base_alt, tb.tc_ub_memory_ram_big)
 
+tb.tc_workfd_cd_name = 'u-boot-' + tb.boardlabname
+if (tb.tc_ub_memory_ram_ws_base == 'undef'):
+    # Try to get the SDRAM Base
+    tb.uboot_config_option = 'CONFIG_SYS_SDRAM_BASE'
+    tb.eof_call_tc("tc_workfd_get_uboot_config_hex.py")
+    tb.tc_ub_memory_ram_ws_base = tb.config_result
+
+if (tb.tc_ub_memory_ram_ws_base_alt == 'undef'):
+    try:
+        tmp = int(tb.tc_ub_memory_ram_ws_base, 16)
+    except:
+        tb.end_tc(False)
+    tmp += 1024 * 1024
+    tb.tc_ub_memory_ram_ws_base_alt = hex(tmp)
+
+if (tb.tc_ub_memory_ram_big == 'undef'):
+    # Try to get CONFIG_SYS_ARCH
+    tb.uboot_config_option = 'CONFIG_SYS_ARCH'
+    tb.eof_call_tc("tc_workfd_get_uboot_config_string.py")
+    if tb.tc_ub_memory_ram_big == '"powerpc"':
+        tb.tc_ub_memory_ram_big = 'yes'
+    else:
+        tb.tc_ub_memory_ram_big = 'no'
+
+logging.info("args: %s %s %s", tb.tc_ub_memory_ram_ws_base, tb.tc_ub_memory_ram_ws_base_alt, tb.tc_ub_memory_ram_big)
 #set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
@@ -73,14 +98,22 @@ tb.tc_ub_tftp_file_addr = tb.tc_ub_memory_ram_ws_base_alt
 tb.eof_call_tc("tc_ub_tftp_file.py")
 
 # compare
-tb.eof_write_cmd_check(tb.channel_con, "cmp " + tb.tc_ub_memory_ram_ws_base + " " + tb.tc_ub_memory_ram_ws_base_alt + " 40000", "same")
+ret = tb.write_cmd_check(tb.channel_con, "cmp " + tb.tc_ub_memory_ram_ws_base + " " + tb.tc_ub_memory_ram_ws_base_alt + " 40000", "!=")
+if ret == True:
+    tb.end_tc(False)
 tb.eof_write_cmd(tb.channel_con, "md " + tb.tc_ub_memory_ram_ws_base + " 0xc")
 tb.eof_write_cmd(tb.channel_con, "md " + tb.tc_ub_memory_ram_ws_base_alt + " 0xc")
 tb.eof_write_cmd(tb.channel_con, "md " + tb.tc_ub_memory_ram_ws_base + " 0x40")
 
-tb.eof_write_cmd_check(tb.channel_con, "cmp.l " + tb.tc_ub_memory_ram_ws_base + " " + tb.tc_ub_memory_ram_ws_base_alt + " 40000", "same")
-tb.eof_write_cmd_check(tb.channel_con, "cmp.w " + tb.tc_ub_memory_ram_ws_base + " " + tb.tc_ub_memory_ram_ws_base_alt + " 80000", "same")
-tb.eof_write_cmd_check(tb.channel_con, "cmp.b " + tb.tc_ub_memory_ram_ws_base + " " + tb.tc_ub_memory_ram_ws_base_alt + " 100000", "same")
+ret = tb.write_cmd_check(tb.channel_con, "cmp.l " + tb.tc_ub_memory_ram_ws_base + " " + tb.tc_ub_memory_ram_ws_base_alt + " 40000", "!=")
+if ret == True:
+    tb.end_tc(False)
+ret = tb.write_cmd_check(tb.channel_con, "cmp.w " + tb.tc_ub_memory_ram_ws_base + " " + tb.tc_ub_memory_ram_ws_base_alt + " 80000", "!=")
+if ret == True:
+    tb.end_tc(False)
+ret = tb.write_cmd_check(tb.channel_con, "cmp.b " + tb.tc_ub_memory_ram_ws_base + " " + tb.tc_ub_memory_ram_ws_base_alt + " 100000", "!=")
+if ret == True:
+    tb.end_tc(False)
 
 # cp
 tb.eof_write_cmd(tb.channel_con, "help cp")

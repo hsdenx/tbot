@@ -633,17 +633,17 @@ except AttributeError:
 try:
     self.tc_ub_memory_ram_ws_base
 except AttributeError:
-    self.tc_ub_memory_ram_ws_base = '0x100000'
+    self.tc_ub_memory_ram_ws_base = 'undef'
 
 try:
     self.tc_ub_memory_ram_ws_base_alt
 except AttributeError:
-    self.tc_ub_memory_ram_ws_base_alt = '0x200000'
+    self.tc_ub_memory_ram_ws_base_alt = 'undef'
 
 try:
     self.tc_ub_memory_ram_big
 except AttributeError:
-    self.tc_ub_memory_ram_big = 'yes'
+    self.tc_ub_memory_ram_big = 'undef'
 
 try:
     self.tc_lx_trigger_wdt_cmd

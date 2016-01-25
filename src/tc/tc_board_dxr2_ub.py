@@ -28,6 +28,7 @@ tb.eof_call_tc("tc_lab_rm_dir.py")
 tb.statusprint("get u-boot source")
 tb.eof_call_tc("tc_lab_get_uboot_source.py")
 
+tb.workfd = tb.channel_ctrl
 #tb.statusprint("apply local patches")
 #tb.tc_workfd_apply_local_patches_dir = "/work/hs/tbot/patches/dxr2_uboot_patches"
 #tb.tc_workfd_apply_local_patches_checkpatch_cmd_strict = "no"
@@ -78,6 +79,7 @@ tb.eof_call_tc("tc_ub_upd_uboot.py")
 tb.statusprint("u-boot ubi test")
 tb.eof_call_tc("tc_board_dxr2_ub_ubi.py")
 
+tb.workfd = tb.channel_ctrl
 tb.statusprint("start all DUTS testcases")
 tb.eof_call_tc("uboot/duts/tc_ub_start_all_duts.py")
 

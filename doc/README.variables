@@ -1,6 +1,13 @@
 Documentation of tbot variables
 ===============================
 
+config_result:
+  return value from TC:
+    tc_workfd_get_uboot_config_hex.py
+    tc_workfd_get_uboot_config_string.py
+  founded string/hex value
+  else 'undef'
+
 loglevel:
 
 set the used loglevel for tbots logfile.
@@ -14,6 +21,9 @@ CON       25             log write/read to fd only
 INFO      20             more Infos
 DEBUG     10
 NOTSET     0
+
+Testcases
+=========
 
 tc_lab_denx_get_power_state_tc:
   name of the TC which gets called for getting the current
@@ -32,3 +42,29 @@ tb.tc_lab_denx_connect_to_board_tc:
   the boards console.
   default:
   'tc_lab_denx_connect_to_board.py'
+
+tb.tc_workfd_get_uboot_config_hex.py:
+  get a hex value from a config file
+  Input:
+  tb.tc_workfd_cd_name: name of the dir, where to find the
+    config files.
+  tb.uboot_get_parameter_file_list: list of files, where TC searches
+    for the define
+  tb.uboot_config_option: config option which get searched
+
+  return value:
+  TC ends True, if hex value found, else False
+  tb.config_result: founded hex value, else 'undef'
+
+tb.tc_workfd_get_uboot_config_string.py:
+  get a string value from a config file
+  Input:
+  tb.tc_workfd_cd_name: name of the dir, where to find the
+    config files.
+  tb.uboot_get_parameter_file_list: list of files, where TC searches
+    for the define
+  tb.uboot_config_option: config option which get searched
+
+  return value:
+  TC ends True, if string value found, else False
+  tb.config_result: founded string value, else 'undef'

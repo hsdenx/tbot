@@ -4,6 +4,9 @@
   renamed to 'ssh_std'
 
 - Get Vars for TC from U-Boot Code
+  started with, see TC:
+  src/tc/tc_workfd_get_uboot_config_hex.py
+  src/tc/tc_workfd_get_uboot_config_string.py
 
 - cleanup tbot code
   - get rid of all retry places
