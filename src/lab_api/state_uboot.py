@@ -52,6 +52,7 @@ def u_boot_parse_input(tb, state):
                 logging.debug("setb T buf: %s ret2: %s", tb.buf[tb.channel_con], ret2)
                 if ret2:
                     logging.info("switched to state %s", state)
+                    tb.flush_fd(tb.channel_con)
                     return True
             else:
                 if ret == False:
