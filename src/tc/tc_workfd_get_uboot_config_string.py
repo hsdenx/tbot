@@ -59,8 +59,7 @@ def search_define(tb):
                         tb.config_found = True
                         tb.config_result = tmp[1]
 
-                    # check if string contains a string (first is " last is ")
-                    # if not, it is maybe another define ... search this define
+                    tb.config_result = tb.config_result.split('"')
                 tmp = True
             elif tmp == None:
                 # ! endless loop ...
