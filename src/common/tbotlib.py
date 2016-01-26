@@ -130,11 +130,11 @@ class tbot(object):
         self.con_loglevel = 25
         logging.addLevelName(self.con_loglevel, "CON")
         if (self.loglevel == 'CON'):
-            logging.basicConfig(format='%(asctime)s:# %(message)s',
-                filename=self.logfilen, filemode='w')
+            logformat = '# %(message)s'
         else:
-            logging.basicConfig(format='%(asctime)s:%(levelname)-7s:%(module)-10s# %(message)s',
-                filename=self.logfilen, filemode='w')
+            logformat = '%(asctime)s:%(levelname)-7s:%(module)-10s# %(message)s'
+
+        logging.basicConfig(format=logformat, filename=self.logfilen, filemode='w')
         l = logging.getLogger()
         l.setLevel(self.loglevel)
         logging.info("*****************************************")
