@@ -19,7 +19,6 @@ from tbotlib import tbot
 
 logging.info("args: %s %s %s", tb.tc_ub_memory_ram_ws_base, tb.tc_ub_memory_ram_ws_base_alt, tb.tc_ub_memory_ram_big)
 
-tb.tc_workfd_cd_name = 'u-boot-' + tb.boardlabname
 if (tb.tc_ub_memory_ram_ws_base == 'undef'):
     # Try to get the SDRAM Base
     tb.uboot_config_option = 'CONFIG_SYS_SDRAM_BASE'

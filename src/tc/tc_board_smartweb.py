@@ -21,8 +21,8 @@ from tbotlib import tbot
 tb.set_board_state("u-boot")
 
 #delete old u-boot source tree
-tb.tc_lab_rm_dir = tb.tc_lab_source_dir + '/u-boot-' + tb.boardlabname
-tb.eof_call_tc("tc_lab_rm_dir.py")
+tb.workfd = tb.channel_ctrl
+tb.eof_call_tc("tc_workfd_rm_uboot_code.py")
 
 #cloning needs a bigger timeout, (git clone has no output)
 #call get u-boot source
@@ -42,8 +42,7 @@ tb.tc_workfd_apply_patchwork_patches_list = tb.tc_workfd_apply_patchwork_patches
 
 #apply local patches
 tb.workfd = tb.channel_ctrl
-tb.tc_workfd_cd_name = 'u-boot-smartweb'
-tb.eof_call_tc("tc_workfd_cd_to_dir.py")
+tb.eof_call_tc("tc_workfd_goto_uboot_code.py")
 
 tb.tc_workfd_apply_local_patches_dir = "/work/hs/tbot/patches/smartweb_uboot_patches"
 tb.tc_workfd_apply_local_patches_checkpatch_cmd_strict = "no"

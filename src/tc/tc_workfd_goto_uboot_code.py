@@ -12,23 +12,13 @@
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 # start with
-# python2.7 src/common/tbot.py -c tbot_tqm5200s.cfg -t tc_board_tqm5200s_try_cur_ub.py
-# remove current u-boot code on the lab PC
-# then call tc tc_board_tqm5200s_ub_comp_install.py
-#
+# python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_goto_uboot_code.py
+# switch into U-Boot source
 from tbotlib import tbot
 
-tb.workfd = tb.channel_ctrl
-tb.eof_call_tc("tc_workfd_rm_uboot_code.py")
-tb.eof_call_tc("tc_board_tqm5200s_ub_comp_install.py")
+logging.info("args: %s", tb.workfd)
 
-tb.statusprint("start all DUTS testcases")
-tb.eof_call_tc("uboot/duts/tc_ub_start_all_duts.py")
-
-#save working u-boot bin
-tb.tc_lab_cp_file_a = "u-boot.bin"
-tb.tc_lab_cp_file_b = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir + "/u-boot-latestworking.bin"
-#call cp files
-tb.eof_call_tc("tc_lab_cp_file.py")
+tmp = "cd " + tb.tc_lab_source_dir + "/u-boot-" + tb.boardlabname
+tb.eof_write_lx_cmd_check(tb.workfd, tmp)
 
 tb.end_tc(True)

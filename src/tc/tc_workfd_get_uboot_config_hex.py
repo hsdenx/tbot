@@ -15,7 +15,6 @@
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_get_uboot_config_hex.py
 # get a hex parameter from U-Boot configuration
 # Input:
-# tb.tc_workfd_cd_name: name of the u-boot source
 # tb.uboot_get_parameter_file_list: list of files, where TC searches
 #   for the define
 # tb.uboot_config_option: config option which get searched
@@ -25,12 +24,12 @@
 # tb.config_result: founded hex value, else 'undef'
 from tbotlib import tbot
 
-logging.info("args: workfd: %s %s %s %s", tb.workfd, tb.tc_workfd_cd_name, tb.uboot_get_parameter_file_list, tb.uboot_config_option)
+logging.info("args: workfd: %s %s %s", tb.workfd, tb.uboot_get_parameter_file_list, tb.uboot_config_option)
 
 tb.config_result = 'undef'
-# must be set: tb.tc_workfd_cd_name
-tb.eof_call_tc("tc_workfd_cd_to_dir.py")
-#check if u-boot source is configured
+# switch into u-boot source
+tb.eof_call_tc("tc_workfd_goto_uboot_code.py")
+# check if u-boot source is configured
 tb.tc_workfd_check_if_file_exists_name = '.config'
 tb.eof_call_tc("tc_workfd_check_if_file_exist.py")
 

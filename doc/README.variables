@@ -22,6 +22,9 @@ INFO      20             more Infos
 DEBUG     10
 NOTSET     0
 
+tc_lab_source_dir:
+  directory on the lab PC, where tbot downloads source code
+
 Testcases
 =========
 
@@ -68,3 +71,14 @@ tb.tc_workfd_get_uboot_config_string.py:
   return value:
   TC ends True, if string value found, else False
   tb.config_result: founded string value, else 'undef'
+
+tb.tc_workfd_goto_lab_source_dir.py:
+  for switching into tc_lab_source_dir
+tb.tc_workfd_goto_linux_code.py:
+  going into linux code for the board
+tb.tc_workfd_goto_uboot_code.py:
+  going into uboot code for the board
+tb.tc_workfd_rm_linux_code.py:
+  delete linux code
+tb.tc_workfd_rm_uboot_code.py:
+  delete uboot code

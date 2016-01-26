@@ -24,9 +24,9 @@ tb.set_board_state("u-boot")
 #this board needs some time to settle
 time.sleep(10)
 
+tb.workfd = tb.channel_ctrl
 #delete old u-boot source tree
-tb.tc_lab_rm_dir = tb.tc_lab_source_dir + '/u-boot-' + tb.boardlabname
-tb.eof_call_tc("tc_lab_rm_dir.py")
+tb.eof_call_tc("tc_workfd_rm_uboot_code.py")
 
 #call get u-boot source
 #cloning needs a bigger timeout, (git clone has no output)

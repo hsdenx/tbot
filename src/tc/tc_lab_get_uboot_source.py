@@ -17,17 +17,11 @@
 # and go into the source tree
 from tbotlib import tbot
 
-cd_cmd_error_txt = "No such"
-tmp = "cd " + tb.tc_lab_source_dir
-tb.eof_write_ctrl(tmp)
-tb.eof_search_str_in_readline_end_ctrl(cd_cmd_error_txt)
-
-u_boot_name = "u-boot-" + tb.boardlabname
-tmp = "cd " + u_boot_name
-tb.eof_write_cmd(tb.channel_ctrl, tmp)
 tb.workfd = tb.channel_ctrl
-ret = tb.call_tc("tc_workfd_check_cmd_success.py")
+ret = tb.call_tc("tc_workfd_goto_uboot_code.py")
 if ret == False:
+    u_boot_name = "u-boot-" + tb.boardlabname
+    tb.eof_call_tc("tc_workfd_goto_lab_source_dir.py")
     # clone u-boot.git
     tmp = "git clone " + tb.tc_lab_get_uboot_source_git_repo + " " + u_boot_name
     tb.eof_write_lx_cmd_check(tb.channel_ctrl, tmp)

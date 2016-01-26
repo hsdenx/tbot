@@ -24,8 +24,7 @@ tb.tc_workfd_apply_local_patches_checkpatch_cmd_strict = "no"
 #get linux code
 tb.eof_call_tc("tc_workfd_get_linux_source.py")
 
-tmp = "cd " + tb.tc_lab_source_dir + "/linux-" + tb.boardlabname
-tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+tb.eof_call_tc("tc_workfd_goto_linux_code.py")
 
 #compile it
 tb.tc_lab_toolchain_rev = '5.4'
