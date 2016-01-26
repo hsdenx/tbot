@@ -79,6 +79,10 @@ tb.eof_call_tc("tc_ub_upd_spl.py")
 #call upd_uboot
 tb.eof_call_tc("tc_ub_upd_uboot.py")
 
+tb.workfd = tb.channel_ctrl
+tb.statusprint("start all DUTS testcases")
+tb.eof_call_tc("uboot/duts/tc_ub_start_all_duts.py")
+
 #call upd_dfu
 tb.statusprint("u-boot dfu test")
 tb.eof_call_tc("tc_ub_dfu.py")
