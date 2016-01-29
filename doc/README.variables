@@ -34,19 +34,19 @@ tc_lab_denx_get_power_state_tc:
   default:
   'tc_lab_denx_get_power_state.py'
 
-tb.tc_lab_denx_power_tc:
+tc_lab_denx_power_tc:
   name of the TC which gets called for setting a new
   power state.
   default:
   'tc_lab_denx_power.py'
 
-tb.tc_lab_denx_connect_to_board_tc:
+tc_lab_denx_connect_to_board_tc:
   name of the TC which gets called for connecting to
   the boards console.
   default:
   'tc_lab_denx_connect_to_board.py'
 
-tb.tc_workfd_get_uboot_config_hex.py:
+tc_workfd_get_uboot_config_hex.py:
   get a hex value from a config file
   Input:
   tb.tc_workfd_cd_name: name of the dir, where to find the
@@ -59,7 +59,7 @@ tb.tc_workfd_get_uboot_config_hex.py:
   TC ends True, if hex value found, else False
   tb.config_result: founded hex value, else 'undef'
 
-tb.tc_workfd_get_uboot_config_string.py:
+tc_workfd_get_uboot_config_string.py:
   get a string value from a config file
   Input:
   tb.tc_workfd_cd_name: name of the dir, where to find the
@@ -72,13 +72,18 @@ tb.tc_workfd_get_uboot_config_string.py:
   TC ends True, if string value found, else False
   tb.config_result: founded string value, else 'undef'
 
-tb.tc_workfd_goto_lab_source_dir.py:
+tc_workfd_goto_lab_source_dir.py:
   for switching into tc_lab_source_dir
-tb.tc_workfd_goto_linux_code.py:
+tc_workfd_goto_linux_code.py:
   going into linux code for the board
-tb.tc_workfd_goto_uboot_code.py:
+tc_workfd_goto_uboot_code.py:
   going into uboot code for the board
 tb.tc_workfd_rm_linux_code.py:
   delete linux code
-tb.tc_workfd_rm_uboot_code.py:
+tc_workfd_rm_uboot_code.py:
   delete uboot code
+
+tc_workfd_ssh.py:
+  connect over ssh testcase.
+  tb.workfd_ssh_cmd:
+    string after "ssh"

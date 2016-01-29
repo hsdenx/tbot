@@ -20,33 +20,9 @@ logging.info("args: ssh: %s", tb.tc_workfd_connect_with_kermit_ssh)
 logging.info("args: kermit: %s %s", tb.kermit_line, tb.kermit_speed)
 
 if tb.tc_workfd_connect_with_kermit_ssh != 'none':
-    tb.eof_write(tb.workfd, tb.tc_workfd_connect_with_kermit_ssh)
-    ret = tb.wait_answer(tb.workfd, 'password:', 2)
-    if ret == False:
-        logging.error("No ssh to %s", tb.tc_workfd_connect_with_kermit_ssh)
-        tb.end_tc(False)
-    string = tb.lab.get_password(tb.tc_workfd_connect_with_kermit_ssh, 'lab')
-    tb.lab.write(tb.workfd, string)
-    searchlist = ["login:"]
-    tmp = True
-    ret = False
-    while tmp == True:
-        tmp = tb.readline_and_search_strings(tb.workfd, searchlist)
-        if tmp == 0:
-            ret = True
-            tmp = True
-        elif tmp == 'prompt':
-            tmp = False
+    tb.workfd_ssh_cmd = tb.tc_workfd_connect_with_kermit_ssh
+    tb.eof_call_tc("tc_workfd_ssh.py")
 
-    if ret != True:
-        logging.error("No login to %s", tb.tc_workfd_connect_with_kermit_ssh)
-        tb.end_tc(False)
-
-    # set prompt
-    tb.set_prompt(tb.workfd, tb.labprompt, 'export PS1="\u@\h [\$(date +%k:%M:%S)] ', ' >"')
-    tb.eof_read_end_state(tb.workfd)
-
-tb.set_term_length(tb.workfd)
 tb.eof_write(tb.workfd, 'kermit')
 tb.prompt = 'C-Kermit>'
 
