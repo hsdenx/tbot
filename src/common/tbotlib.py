@@ -693,8 +693,11 @@ class tbot(object):
         while ret:
             ret = self.read_line(fd, 1)
         # contains the current prompt
-        self.prompt = prompt
-        cmd = header + self.prompt + end
+        if fd == self.channel_ctrl:
+            self.labprompt = prompt
+        if fd == self.channel_con:
+            self.prompt = prompt
+        cmd = header + prompt + end
         logging.debug("Prompt CMD:%s", cmd)
         ret = self.write_stream(fd, cmd)
         if not ret:
