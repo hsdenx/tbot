@@ -570,7 +570,6 @@ class tbot(object):
         #for i in range(0, len(string)):
         #    self.lab.write(fd, string[i])
 
-        self.con_log("%d: %s", fd, string)
         if self.verbose:
             print("write %d: %s" % (fd, string))
         # what I send must come also back!
