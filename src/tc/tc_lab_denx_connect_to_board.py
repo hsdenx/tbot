@@ -23,7 +23,7 @@ ret = tb.write_stream(tb.workfd, tmp)
 if not ret:
     tb.end_tc(False)
 
-searchlist = ["Unknown target", "Connect"]
+searchlist = ["Unknown target", "Connect", "not accessible", "Locked by process"]
 tmp = True
 connected = True
 while tmp == True:
@@ -35,6 +35,10 @@ while tmp == True:
         tmp = True
     elif tmp == 1:
         tmp = False
+    elif tmp == 2:
+        connected = False
+    elif tmp == 3:
+        connected = False
 
 if not connected:
     tb.end_tc(False)
