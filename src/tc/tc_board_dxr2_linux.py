@@ -24,7 +24,7 @@ tb.eof_call_tc("tc_workfd_rm_linux_code.py")
 
 tb.eof_call_tc("tc_workfd_get_linux_source.py")
 
-tb.eof_call_tc("tc_workfd_goto_linux_source.py")
+tb.eof_call_tc("tc_workfd_goto_linux_code.py")
 
 #compile it
 tb.tc_lab_toolchain_rev = '5.4'

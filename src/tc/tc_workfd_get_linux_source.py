@@ -20,7 +20,7 @@ from tbotlib import tbot
 logging.info("args: workdfd: %s %s %s %s", tb.workfd, tb.tc_lab_get_linux_source_git_repo, tb.tc_lab_get_linux_source_git_branch, tb.tc_lab_apply_patches_dir)
 logging.info("args: %s %s ", tb.tc_lab_get_linux_source_git_reference, tb.tc_lab_get_linux_source_git_repo_user)
 
-ret = tb.call_tc("tc_workfd_goto_linux_source.py")
+ret = tb.call_tc("tc_workfd_goto_linux_code.py")
 if ret == False:
     linux_name = "linux-" + tb.boardlabname
     tb.eof_call_tc("tc_workfd_goto_lab_source_dir.py")
