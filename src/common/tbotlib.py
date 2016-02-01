@@ -722,10 +722,10 @@ class tbot(object):
             logging.debug("call_tc filepath %s", filepath)
             try:
                 fd = open(filepath, 'r')
+                if fd:
+                    break
             except IOError:
                 logging.warning("not found %s", filepath)
-            if fd:
-                break
 
         try:
             if not fd:
