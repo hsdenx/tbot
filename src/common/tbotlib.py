@@ -708,21 +708,33 @@ class tbot(object):
         return ret
 
     def call_tc(self, name):
-        """Call another testcase.
+        """Call another testcase. Search for the TC name
+           through all subdirs in 'src/tc'.
            return:
-           False: If Calling the testcase was not found
+           False: If testcase was not found
                   or testcase raised an execption
            ! called testcase sets the ret variable, which
              this function returns. If called testcase
              not set the ret variable default is false!
         """
-        filepath = self.tc_dir + "/" + name
-        logging.debug("call_tc filepath %s", filepath)
+        for root, dirs, files in os.walk(self.tc_dir):
+            filepath = root + "/" + name
+            logging.debug("call_tc filepath %s", filepath)
+            try:
+                fd = open(filepath, 'r')
+            except IOError:
+                logging.warning("not found %s", filepath)
+            if fd:
+                break
+
         try:
-            fd = open(filepath, 'r')
-        except IOError:
+            if not fd:
+                logging.warning("Could not find tc name: %s", name)
+                return False
+        except:
             logging.warning("Could not find tc name: %s", name)
             return False
+
         tb = self
         ret = False
         logging.info("*****************************************")
