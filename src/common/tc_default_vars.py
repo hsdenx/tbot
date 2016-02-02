@@ -669,3 +669,24 @@ try:
     self.tc_ub_i2c_help_with_bus
 except AttributeError:
     self.tc_ub_i2c_help_with_bus = 'no'
+
+try:
+    self.dfu_test_sizes_default
+except AttributeError:
+    self.dfu_test_sizes_default = [
+        64 - 1,
+        64,
+        64 + 1,
+        128 - 1,
+        128,
+        128 + 1,
+        960 - 1,
+        960,
+        960 + 1,
+        4096 - 1,
+        4096,
+        4096 + 1,
+        1024 * 1024 - 1,
+        1024 * 1024,
+        8 * 1024 * 1024,
+    ]
