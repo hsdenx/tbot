@@ -82,6 +82,10 @@ tb.workfd = tb.channel_ctrl
 tb.statusprint("start all DUTS testcases")
 tb.eof_call_tc("uboot/duts/tc_ub_start_all_duts.py")
 
+tb.eof_call_tc("tc_ub_dfu_random.py")
+tb.tc_ub_dfu_dfu_util_alt_setting = 'uboot_def_test'
+tb.eof_call_tc("tc_ub_dfu_random_default.py")
+
 #save working u-boot bin
 tb.tc_lab_cp_file_a = "u-boot.bin"
 tb.tc_lab_cp_file_b = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir + "/u-boot-latestworking.bin"
