@@ -24,6 +24,7 @@ tb.set_board_state("u-boot")
 #load ub tbot environment
 tb.eof_call_tc("tc_ub_load_board_env.py")
 
+tb.eof_write_cmd(tb.channel_con, "mtdparts")
 # all 30 days, erase the nand
 savefd = tb.workfd
 tb.workfd = tb.channel_ctrl
