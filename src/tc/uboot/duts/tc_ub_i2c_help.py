@@ -19,7 +19,7 @@ from tbotlib import tbot
 #set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
-ret = tb.write_cmd_check(tb.channel_con, "help i2c", "Unknown command")
+ret = tb.write_cmd_check(tb.c_con, "help i2c", "Unknown command")
 if ret == True:
     tb.end_tc(True)
 
@@ -39,22 +39,20 @@ else:
     count = 12
 
 tmp = "help i2c"
-tb.eof_write_con(tmp)
+tb.eof_write(tb.c_con, tmp)
 tmp = True
 cmd_ok = True
 while tmp == True:
-    tmp = tb.readline_and_search_strings(tb.channel_con, searchlist)
-    if tmp in range(0, count):
-        ok_list[tmp] = True
-        if tmp > 0:
-            if ok_list[tmp - 1] != True:
-                logging.info("%d : %s not found", tmp - 1, searchlist[tmp - 1])
-                cmd_ok = False
-        tmp = True
-    elif tmp == None:
-        # ! endless loop ...
-        tmp = True
-    elif tmp == 'prompt':
+    ret = tb.tbot_read_line_and_check_strings(tb.c_con, searchlist)
+    if ret == 'prompt':
         tmp = False
+    else:
+        cnt = int(ret)
+        if tmp in range(0, count):
+            ok_list[cnt] = True
+            if cnt > 0:
+                if ok_list[cnt - 1] != True:
+                    logging.info("%d : %s not found", cnt - 1, searchlist[cnt - 1])
+                    cmd_ok = False
 
 tb.end_tc(cmd_ok)

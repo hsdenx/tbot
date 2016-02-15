@@ -1,3 +1,12 @@
+- introduce a connection class and use pexpect
+  get rid of paramiko
+
+  - instead printing fd (0 or 1) use the connection
+    name.
+
+- use a dict() for all the parameters
+  instead using src/common/tc_defaults.py
+
 * rename denx API to a common name and
   define ssh as standard -> lap API not really
   needed for different VL
@@ -144,3 +153,20 @@
   src/tc/tc_workfd_check_tc_time.py
   used for example in:
   src/tc/tc_lx_bonnie.py
+
+- WDT timeout runtime changeable
+
+- statistic/report module
+  TC report start end (automatically) events to it
+  TC specific events possible
+  automatic timestamp generate
+  also log events from each read/write
+  -> at the end a specific format of the result can be
+     generated, thorugh modules which are registered
+     as backends on the event module.
+     for eample:
+     - cdash (notification to a central server, push principle)
+     - dot graph (generate a graph from tcs for visual representation)
+     - xunit report (xml file for Jenkins visualization)
+     - DULG: create DULG specific files
+     - kernelCI

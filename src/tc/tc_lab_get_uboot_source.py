@@ -17,22 +17,24 @@
 # and go into the source tree
 from tbotlib import tbot
 
-tb.workfd = tb.channel_ctrl
+save = tb.workfd
+tb.workfd = tb.c_ctrl
 ret = tb.call_tc("tc_workfd_goto_uboot_code.py")
 if ret == False:
     u_boot_name = "u-boot-" + tb.boardlabname
     tb.eof_call_tc("tc_workfd_goto_lab_source_dir.py")
     # clone u-boot.git
     tmp = "git clone " + tb.tc_lab_get_uboot_source_git_repo + " " + u_boot_name
-    tb.eof_write_lx_cmd_check(tb.channel_ctrl, tmp)
+    tb.eof_write_lx_cmd_check(tb.workfd, tmp)
 
     tmp = "cd " + u_boot_name
-    tb.eof_write_lx_cmd_check(tb.channel_ctrl, tmp)
+    tb.eof_write_lx_cmd_check(tb.workfd, tmp)
     #check out a specific branch
     tmp = "git checkout " + tb.tc_lab_get_uboot_source_git_branch
-    tb.eof_write_lx_cmd_check(tb.channel_ctrl, tmp)
+    tb.eof_write_lx_cmd_check(tb.workfd, tmp)
 
 # check if there are patches to apply
 tb.eof_call_tc("tc_lab_apply_patches.py")
 
+tb.workfd = save
 tb.end_tc(True)

@@ -17,29 +17,28 @@
 # boots currently with "run net_nfs"
 from tbotlib import tbot
 
-#here starts the real test
+# here starts the real test
 logging.info("args: %s", tb.ub_boot_linux_cmd)
-#set board state for which the tc is valid
+# set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
 # load U-Boot environment variables for tbot
 tb.eof_call_tc("tc_ub_load_board_env.py")
 
-#run tbot_boot_linux
+# run tbot_boot_linux
 tb.eof_write_con(tb.ub_boot_linux_cmd)
 
-#read until 'login:'
-ret = False
-i = 0
-while ret != True:
-    ret = tb.search_str_in_readline_con("login:")
-    i += 1
-    if i >= tb.tc_ub_boot_linux_retry:
-        tb.end_tc(False)
+# read until 'login:'
+ret = tb.tbot_expect_string(tb.c_con, 'login:')
+if ret == 'prompt':
+    tb.end_tc(False)
 
 tmp = 'root'
-tb.eof_write_con(tmp)
+tb.eof_write(tb.c_con, tmp)
 
-tb.set_board_state("linux")
+tb.c_con.set_prompt(tb.linux_prompt_default)
+tb.tbot_expect_prompt(tb.c_con)
+
+tb.set_prompt(tb.c_con, tb.linux_prompt, "", "")
 
 tb.end_tc(True)

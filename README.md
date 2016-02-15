@@ -204,22 +204,6 @@ every board needs a board config file. It contains
 the board specific setting (which lab api to use, boardname,
 lab specific settings username/password, ...)
 
-- selects lab in which the board really exists:
-  - self.lab_api='denx'
-
-    use the denx lab for this board, Code in src/lab_api/denx.py
-
--------------------------------------------------------------------------
-
-Different labs have different setups.
-You can define new labs, which fit your needs in src/lap_api.
-
-- define which board states defined in the lab
-- define lab specific tasks
-  for example:
-  - how to power on board
-  - connect to serial,
-
 -------------------------------------------------------------------------
 
 As we have usernames and passwords, they are not included
@@ -377,17 +361,7 @@ self.accept_all=True
 self.keepalivetimeout=1
 self.channel_timeout=0.5
 self.loglevel='INFO' #debug logging level
-self.lab_api='denx' #use the "denx" lab
 
-#include tc and common directories (FixMe)
-sys.path.append("./tc")
-sys.path.append("./lab_api")
-sys.path.append("./common")
-#include lab api
-sys.path.append("src/lab_api")
-from denx import tbot_lab_api
-
-#lab_api u-boot
 self.uboot_prompt = 'U-Boot#'
 self.linux_prompt = 'ttbott#'
 
@@ -396,7 +370,6 @@ self.setenv_name = 'Heiko'
 self.setenv_value = 'Schocher'
 self.ub_load_board_env_addr = '0x81000000'
 self.ub_load_board_env_subdir = '20150814-stable'
-self.read_line_retry=40
 ```
 --------------
 

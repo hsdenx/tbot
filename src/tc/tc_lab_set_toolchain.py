@@ -16,9 +16,9 @@
 # set the toolchain
 from tbotlib import tbot
 
+c = tb.c_ctrl
 tmp = "eldk-switch -m -r " + tb.tc_lab_toolchain_rev + " " + tb.tc_lab_toolchain_name
-tb.eof_write_ctrl(tmp)
-tb.eof_search_str_in_readline_ctrl("using ELDK")
-
-tb.eof_read_end_state_ctrl(1)
+tb.event.create_event('main', tb.boardname, "Toolchain", tmp)
+tb.eof_write(c, tmp)
+tb.eof_expect_string(c, 'using ELDK')
 tb.end_tc(True)

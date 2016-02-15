@@ -26,22 +26,24 @@ logging.info("args: %s %s %s", tb.board_git_bisect_get_source_tc, tb.board_git_b
 tb.statusprint("get source tree")
 tb.eof_call_tc(tb.board_git_bisect_get_source_tc)
 
+c = tb.c_ctrl
 #git bisect start
-tb.eof_write_cmd(tb.channel_ctrl, 'git bisect start')
+tb.eof_write_cmd(c, 'git bisect start')
 
 #current version is bad
-tb.eof_write_cmd(tb.channel_ctrl, 'git bisect bad')
+tb.eof_write_cmd(c, 'git bisect bad')
 
 #git bisect good commit
 tmp = 'git bisect good ' + tb.board_git_bisect_good_commit
-tb.eof_write_ctrl(tmp)
-ret = tb.read_end(tb.channel_ctrl, 4, "Bisecting")
-if ret != True:
+tb.eof_write(c, tmp)
+ret = tb.tbot_expect_string(c, 'Bisecting')
+if ret == 'prompt':
     tb.end_tc(False)
+
 #read commit id
-tb.read_line(tb.channel_ctrl, 1)
-commit = self.buf[0][1:8]
-tb.eof_read_end_state_ctrl(1)
+tb.read_line(c)
+commit = self.buf[1:8]
+tb.tbot_expect_prompt(c)
 
 #do the steps
 i = 0
@@ -55,18 +57,18 @@ while inwhile:
         tmp = 'git bisect good'
     else:
         tmp = 'git bisect bad'
-    tb.eof_write_ctrl(tmp)
-    ret = tb.eof_search_str_in_readline(tb.channel_ctrl, "the first bad commit", 0)
-    if ret == True:
+    tb.eof_write(c, tmp)
+    ret = tb.tbot_expect_string(c, 'the first bad commit')
+    if ret == '0':
         inwhile = False
-        tb.eof_read_end_state_ctrl(1)
+        tb.tbot_expect_prompt(c)
 
 # print some statistic
-tb.eof_write_cmd(tb.channel_ctrl, 'git bisect visualize')
-tb.eof_write_cmd(tb.channel_ctrl, 'git bisect log')
+tb.eof_write_cmd(c, 'git bisect visualize')
+tb.eof_write_cmd(c, 'git bisect log')
 
 # reset source tree
-tb.eof_write_cmd(tb.channel_ctrl, 'git bisect reset')
+tb.eof_write_cmd(c, 'git bisect reset')
 
 # power off board at the end
 tb.eof_call_tc("tc_lab_poweroff.py")

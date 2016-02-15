@@ -25,6 +25,35 @@ NOTSET     0
 tc_lab_source_dir:
   directory on the lab PC, where tbot downloads source code
 
+linux_prompt_default:
+  used in src/lab_api/state_linux.py
+  prompt expected after linux is booted on the board.
+  default:
+  'root@generic-armv7a-hf:~#'
+
+workfd_get_patchwork_number_user:
+  used in tc_workfd_get_patchwork_number_list.py
+  user for which the patchwork list get created
+  default:
+  'hs'
+  special values:
+  'all' get all patches from patchwork
+
+workfd_get_patchwork_number_list_order:
+  used in tc_workfd_get_patchwork_number_list.py
+  define the order with which the patchwork webpage sorts
+  the patches.
+  default:
+  '-delegate'
+  special values:
+  '-date'
+
+tc_workfd_apply_patchwork_patches_eof:
+  used in tc_workfd_apply_patchwork_patches.py
+  end testcase with False, if appling patch fails
+  default:
+  'yes'
+
 Testcases
 =========
 
@@ -86,4 +115,7 @@ tc_workfd_rm_uboot_code.py:
 tc_workfd_ssh.py:
   connect over ssh testcase.
   tb.workfd_ssh_cmd:
+    string after "ssh"
+  tb.workfd_ssh_cmd_prompt:
+    prompt after login into ssh
     string after "ssh"

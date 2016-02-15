@@ -41,5 +41,5 @@ cmdlist = [
 "setenv cons_opts"
 ]
 
-tb.eof_write_cmd_list(tb.channel_con, cmdlist)
+tb.eof_write_cmd_list(tb.c_con, cmdlist)
 tb.end_tc(True)

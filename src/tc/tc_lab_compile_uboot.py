@@ -17,7 +17,7 @@
 from tbotlib import tbot
 
 savefd = tb.workfd
-tb.workfd = tb.channel_ctrl
+tb.workfd = tb.c_ctrl
 tmp = "make mrproper"
 tb.eof_write_lx_cmd_check(tb.workfd, tmp)
 

@@ -20,9 +20,9 @@ from tbotlib import tbot
 #set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
-ret = tb.write_cmd_check(tb.channel_con, "help dtt", "Unknown command")
+ret = tb.write_cmd_check(tb.c_con, "help dtt", "Unknown command")
 if ret == True:
     tb.end_tc(True)
 
-tb.eof_write_cmd_check(tb.channel_con, "dtt", "DTT")
+tb.eof_write_cmd_check(tb.c_con, "dtt", "DTT")
 tb.end_tc(True)

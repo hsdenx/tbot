@@ -14,54 +14,51 @@
 import sys
 import re
 import logging
-sys.path.append("./common")
-from tbotlib import tbot
 
+def state_lx_parse_input(tb, c, retry):
+    sl = [pexpect.EOF, 'login']
+    i = 0
+    oldt = c.h.timeout
+    c.h.timeout = 4
+    while(i < retry):
+        ret = tb.tbot_read_line_and_check_strings(c, sl)
+        if ret == '1':
+            tb.write_stream(c, 'root')
+            i = 0
+        if ret == 'exception':
+            tb.send_ctrl_c(c)
+        if ret == 'prompt':
+            c.h.timeout = oldt
+            return True
+        i += 1
+
+    c.h.timeout = oldt
+    return False
+ 
 def linux_set_board_state(tb, state, retry):
     """ set the connection state to the board
     """
     ret = False
     tmp = "switch state to " + state
     logging.info(tmp)
+    c = tb.c_con
 
     # set new prompt
-    try:
-        tb.linux_prompt
-    except AttributeError:
-        tb.linux_prompt = '#'
-
-    # set linux prompt
-    # if we cannot set prompt, we are not in linux ...
-
-    # check, if we get a prompt
-    ret = tb.send_ctrl_m(tb.channel_con)
-    if ret != True:
-        return False
-
-    #check also, if we are in linux login shell
-    reg = re.compile("login:")
-    ret = tb.read_line(tb.channel_con, 1)
-    while(ret != None):
-        res = reg.search(tb.buf[tb.channel_con])
-        if res:
-            tmp = 'root'
-            tb.write_stream(tb.channel_con, tmp)
-        ret = tb.read_line(tb.channel_con, 1)
-        logging.debug("state 2 linux get propmt ret: %s buf: %s", ret, tb.buf[tb.channel_con])
-
-    if ret != None:
-        return False
-
-    ret = tb.set_prompt(tb.channel_con, tb.linux_prompt, 'export PS1="\u@\h [\$(date +%k:%M:%S)] ', ' >"')
-    if ret == True:
-        tb.prompt = tb.linux_prompt
+    tb.send_ctrl_c(c)
+    sl = [tb.linux_prompt, tb.linux_prompt_default, tb.uboot_prompt]
+    ret = tb.tbot_read_line_and_check_strings(c, sl)
+    if ret == '0':
         return True
 
-    # if not in linux, we state we are in u-boot ...
-    # switch to linux through tc
-    tb.eof_call_tc("tc_ub_boot_linux.py")
+    if ret == '1':
+        tb.set_prompt(c, tb.linux_prompt, "", "")
+        tb.set_term_length(c)
+        return True
+
+    if ret == '2':
+        tb.eof_call_tc("tc_ub_boot_linux.py")
 
     #terminal line length
-    tb.set_term_length(tb.channel_con)
+    tb.set_term_length(c)
 
     return True

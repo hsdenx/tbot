@@ -175,12 +175,8 @@ $
              keepalive message.
   line 14: channel_timeout: passed to paramiko
   line 15: loglevel: tbots loglevel for adding entries into the logfile.
-  line 16: lap_api: used lap API (currently only 'ssh_std'), should be
-             renamed and declared as standard, not needed longer.
   line 17: wdt_timeout: timeout in seconds for tbots watchdog.
              Watchdog gets triggered if prompt get read.
-  line 20,21: include denx api
-                should be removed.
   line 24: tc_lab_denx_connect_to_board_tc: Which TC is used for
              connecting to the boards console the TC, here:
              https://github.com/hsdenx/tbot/blob/master/src/tc/tc_workfd_connect_with_kermit.py

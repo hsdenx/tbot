@@ -21,13 +21,13 @@ from time import gmtime, strftime
 #set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
-ret = tb.write_cmd_check(tb.channel_con, "help date", "Unknown command")
+ret = tb.write_cmd_check(tb.c_con, "help date", "Unknown command")
 if ret == True:
     tb.end_tc(True)
 
-tb.eof_write_cmd(tb.channel_con, "date reset")
+tb.eof_write_cmd(tb.c_con, "date reset")
 time=strftime("%m%d%H%M%Y.%S", gmtime())
-tb.eof_write_cmd(tb.channel_con, "date " + time)
-tb.eof_write_cmd_check(tb.channel_con, "date", "Date:")
+tb.eof_write_cmd(tb.c_con, "date " + time)
+tb.eof_write_cmd_check(tb.c_con, "date", "Date:")
 
 tb.end_tc(True)

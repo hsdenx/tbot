@@ -33,22 +33,19 @@ cmdlist = [
 "help version",
 ]
 
-tb.eof_write_cmd_list(tb.channel_con, cmdlist)
+c = tb.c_con
+tb.eof_write_cmd_list(c, cmdlist)
 
 cmd = "version"
-tb.eof_write_con(cmd)
+tb.eof_write(c, cmd)
 searchlist = ["U-Boot "]
 tmp = True
 cmd_ok = False
 while tmp == True:
-    tmp = tb.readline_and_search_strings(tb.channel_con, searchlist)
-    if tmp == 0:
-        tmp = True
+    ret = tb.tbot_read_line_and_check_strings(c, searchlist)
+    if ret == '0':
         cmd_ok = True
-    elif tmp == None:
-        # ! endless loop ...
-        tmp = True
-    elif tmp == 'prompt':
+    elif ret == 'prompt':
         tmp = False
 
 tb.end_tc(cmd_ok)

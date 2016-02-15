@@ -14,14 +14,9 @@ except AttributeError:
     self.wdt_timeout = '120' # wdt timeout after 2 minutes
 
 try:
-    self.read_line_retry
+    self.labsshprompt
 except AttributeError:
-    self.read_line_retry = 1
-
-try:
-    self.read_end_state_retry
-except AttributeError:
-    self.read_end_state_retry = 1
+    self.labsshprompt = 'pollux:'
 
 try:
     self.tc_return
@@ -481,6 +476,16 @@ except AttributeError:
     self.tc_workfd_apply_patchwork_patches_checkpatch_cmd = 'none'
 
 try:
+   self.tc_workfd_apply_patchwork_patches_eof
+except AttributeError:
+   self.tc_workfd_apply_patchwork_patches_eof = 'yes'
+
+try:
+   self.tc_workfd_get_patchwork_number_list_order
+except AttributeError:
+   self.tc_workfd_get_patchwork_number_list_order = '-delegate'
+
+try:
     self.tc_workfd_rm_file_name
 except AttributeError:
     self.tc_workfd_rm_file_name = 'none'
@@ -579,6 +584,11 @@ try:
    self.workfd_get_patchwork_number_user
 except AttributeError:
    self.workfd_get_patchwork_number_user = 'hs'
+
+try:
+   self.workfd_get_patchwork_number_list_order
+except AttributeError:
+   self.workfd_get_patchwork_number_list_order = '-delegate'
 
 try:
     self.tc_workfd_connect_with_kermit_ssh
@@ -690,3 +700,13 @@ except AttributeError:
         1024 * 1024,
         8 * 1024 * 1024,
     ]
+
+try:
+    self.workfd_ssh_cmd_prompt
+except AttributeError:
+    self.workfd_ssh_cmd_prompt = '$'
+
+try:
+    self.linux_prompt_default
+except AttributeError:
+    self.linux_prompt_default = 'root@generic-armv7a-hf:~#'

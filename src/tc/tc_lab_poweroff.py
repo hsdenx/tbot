@@ -17,7 +17,7 @@
 #
 from tbotlib import tbot
 
-ret = tb.set_power_state("off")
+ret = tb.set_power_state(self.boardname, "off")
 if ret != False:
     tb.end_tc(False)
 

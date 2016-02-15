@@ -1,0 +1,44 @@
+tbot now creates events when executing TC. There are standard Events which
+get created automatically from tbot, also a TC can create TC specific
+Events.
+
+At the end of tbot execution, this events can used to create specific files
+through Eventbackends for presenting the testresults.
+
+Eventlist:
+==========
+
+Event-ID
+log            log content
+Boardname      Name of board
+Start          Start of TC
+End            End of TC
+
+./src/tc/tc_lab_set_toolchain.py
+Toolchain      used Toolchain
+
+src/tc/linux/tc_workfd_apply_patchwork_patches.py:
+PW_NR          current patchwork patchnumber
+PW_CLEAN       current patchworknumber patch is clean or not
+PW_AA          current patchworknumber patch is already applied
+PW_APPLY       current patchworknumber patch is applies clean or not
+
+planned Event backends:
+=======================
+
+- DUTS:
+  make from the logs tbot collected, DUTS specific textfiles, so the logs
+  can integrated into the DULG
+
+- dot graph:
+  Use the Eventinformation for creating nice DOT graphics from the test.
+
+- xunit:
+  create xunit files for presenting the results in jenkins
+
+- cdash
+  notification to a central server of the testresults, push principle
+
+- kernel CI
+  adapt to a format, so the testresults can be presented at kernel CI
+  (just an idea...)
