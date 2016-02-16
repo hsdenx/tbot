@@ -20,6 +20,7 @@ from tbotlib import tbot
 #set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
+"""
 #delete old u-boot source tree
 tb.eof_call_tc("tc_workfd_rm_uboot_code.py")
 
@@ -73,6 +74,7 @@ tb.eof_call_tc("tc_ub_upd_spl.py")
 #call update u-boot
 tb.statusprint("update u-boot")
 tb.eof_call_tc("tc_ub_upd_uboot.py")
+"""
 
 #call dxr2 u-boot ubi tests
 tb.statusprint("u-boot ubi test")
@@ -82,9 +84,11 @@ tb.workfd = tb.channel_ctrl
 tb.statusprint("start all DUTS testcases")
 tb.eof_call_tc("uboot/duts/tc_ub_start_all_duts.py")
 
+"""
 tb.eof_call_tc("tc_ub_dfu_random.py")
 tb.tc_ub_dfu_dfu_util_alt_setting = 'uboot_def_test'
 tb.eof_call_tc("tc_ub_dfu_random_default.py")
+"""
 
 #save working u-boot bin
 tb.tc_lab_cp_file_a = "u-boot.bin"

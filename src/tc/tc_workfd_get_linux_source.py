@@ -13,8 +13,14 @@
 #
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_get_linux_source.py
-# get U-Boot source
+## @package tc_workfd_get_linux_source
+# get Linux source
 # and go into the source tree
+# @param: workfd filehandle on which TC sends commands
+# @param: tc_lab_get_linux_source_git_repo: linux repo
+#
+# @return: nothing
+#
 from tbotlib import tbot
 
 logging.info("args: workdfd: %s %s %s %s", tb.workfd, tb.tc_lab_get_linux_source_git_repo, tb.tc_lab_get_linux_source_git_branch, tb.tc_lab_apply_patches_dir)

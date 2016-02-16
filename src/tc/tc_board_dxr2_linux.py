@@ -20,10 +20,11 @@ from tbotlib import tbot
 tb.workfd = tb.channel_ctrl
 
 #delete old u-boot source tree
+"""
 tb.eof_call_tc("tc_workfd_rm_linux_code.py")
 
 tb.eof_call_tc("tc_workfd_get_linux_source.py")
-
+"""
 tb.eof_call_tc("tc_workfd_goto_linux_code.py")
 
 #compile it
@@ -34,7 +35,7 @@ tb.tc_workfd_compile_linux_boardname = 'am335x-dxr2'
 tb.tc_workfd_compile_linux_load_addr = '0x80008000'
 tb.tc_workfd_compile_linux_modules ='yes'
 tb.tc_workfd_compile_linux_modules_path ='/opt/eldk-5.5/armv5te/rootfs-qte-sdk/home/hs/dxr2/modules'
-tb.tc_workfd_compile_linux_dt_name = 'am335x-draco-ref.dtb'
+tb.tc_workfd_compile_linux_dt_name = 'am335x-draco-ref-ddp.dtb'
 tb.tc_workfd_compile_linux_fit_its_file = 'no'
 tb.tc_workfd_compile_linux_fit_file = 'dxr2.itb'
 tb.tc_workfd_compile_linux_append_dt = 'no'
@@ -62,9 +63,9 @@ checks = ['Siemens',
 'Linux version',
 'Kernel command line',
 'Manufacturer ID: 0x2c',
-'9 cmdlinepart partitions found on MTD device omap2-nand_concat',
+'cmdlinepart partitions found on MTD device omap2-nand_concat',
 'at24 0-0050: 16384 byte',
-'input: gpio-keys as /devices/gpio-keys/input/input0'
+'input: gpio-keys'
 ]
 
 for tb.tc_lx_dmesg_grep_name in checks:

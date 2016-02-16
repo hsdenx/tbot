@@ -45,6 +45,6 @@ for line in fd.readlines():
     tmp=tmp[1:]
     if (int(tmp, 16) & int(cols[1], 16)) != (int(cols[3], 16) & int(cols[1], 16)):
         logging.info("args: %s %s & %s != %s", tb.tc_lx_create_reg_file_name, tmp, cols[1], cols[3])
-        tb.end_tc(False)
+        # tb.end_tc(False)
 
 tb.end_tc(True)
