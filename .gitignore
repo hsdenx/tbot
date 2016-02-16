@@ -1,3 +1,7 @@
 log
 *.swp
 *.pyc
+*.orig
+*.3
+*.png
+*.wdt
