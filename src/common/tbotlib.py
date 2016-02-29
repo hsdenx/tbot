@@ -325,6 +325,7 @@ class tbot(object):
         """
         self._ret = ret
         if self._main == 0:
+            self.event.create_event('main', self.boardname, "BoardnameEnd", True)
             if self._ret:
                 logging.info('End of TBOT: success')
                 self.statusprint("End of TBOT: success")

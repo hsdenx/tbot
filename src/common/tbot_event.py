@@ -20,6 +20,8 @@ import os
 from struct import *
 import time
 import importlib
+sys.path.append("src/common/event/")
+from web_patchwork import web_patchwork
 
 class events(object):
     """ The event class
@@ -42,6 +44,7 @@ class events(object):
         except:
             logging.warning("Could not create %s", logfile)
             sys.exit(1)
+        self.webpatch = web_patchwork(tb, 'webpatch.html')
 
     def __del__(self):
         """
@@ -60,6 +63,9 @@ class events(object):
         """
         if id == 'Start':
             self.stack.append(name)
+        if id ==  'BoardnameEnd':
+            self.webpatch.create_webfile()
+
         if id == 'End':
             self.stack.pop()
             try:
@@ -69,6 +75,7 @@ class events(object):
 
         tmp = "EVENT " + str(id) + " " + str(pname) + " " + str(name) + " " + str(value) + "\n"
         self.fd.write(tmp)
+        self.event_list.append(tmp)
 
     def create_event_log(self, c, dir, string):
         try:
@@ -77,6 +84,7 @@ class events(object):
             name = 'main'
         tmp = "EVENT log " + name + " " + str(c.name) + " " + str(dir) + " " + string + "\n"
         self.fd.write(tmp)
+        self.event_list.append(tmp)
         if dir == 'r':
             se = string.rstrip()
             se = se.lstrip()
@@ -87,6 +95,7 @@ class events(object):
         """
         register a backend.
         """
+
     def list_backend(self):
         """
         lit all registered backends.
