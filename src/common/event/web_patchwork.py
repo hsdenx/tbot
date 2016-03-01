@@ -20,7 +20,7 @@ class web_patchwork(object):
         self.tb = tb
         self.webfile = webfile
         self.fd = open(self.tb.workdir + '/' + self.webfile, 'w')
-        print("LJDKJSANDKJASNDKJN open", self.webfile, self.fd)
+        #print("LJDKJSANDKJASNDKJN open", self.webfile, self.fd)
         #try:
         #    self.fd = open(self.tb.workdir + '/' + self.webfile, 'w')
         #except:
@@ -28,7 +28,7 @@ class web_patchwork(object):
         #    sys.exit(1)
 
     def create_webfile(self):
-        print("LJDKJSANDKJASNDKJN creating", self.webfile)
+        #print("LJDKJSANDKJASNDKJN creating", self.webfile)
         self.write_header()
         self.write_table()
         self.write_bottom()
@@ -70,7 +70,7 @@ class web_patchwork(object):
         logcc = ''
         for event in self.tb.event.event_list:
             tmp = event.split()
-            print("TMPTMPTMPT", tmp)
+            #print("TMPTMPTMPT", tmp)
             # search for EVENT PW_NR
             if tmp[1] == 'PW_NR':
                 nr = tmp[4]
