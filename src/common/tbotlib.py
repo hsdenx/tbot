@@ -313,7 +313,7 @@ class tbot(object):
     def failure(self):
         logging.info('End of TBOT: failure %s', sys.exc_info()[0])
         self.statusprint("End of TBOT: failure")
-        traceback.print_stack()
+        #traceback.print_stack()
         self._ret = False
         sys.exit(1)
 
