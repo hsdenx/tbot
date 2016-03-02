@@ -23,16 +23,21 @@
 # registers must be setup, check it with testcase
 # src/tc/tc_ub_check_reg_file.py
 # ToDo: use the file from the lab host, not the tbot host
+import datetime
 from tbotlib import tbot
 
-logging.info("args: %s %s %s %s %s", tb.tc_ub_create_reg_file_name, tb.tc_ub_create_reg_file_start, tb.tc_ub_create_reg_file_stop, tb.tc_ub_readreg_mask, tb.tc_ub_readreg_type)
+logging.info("args: %s %s %s %s %s %s", tb.tc_ub_create_reg_file_name,
+             tb.tc_ub_create_reg_file_start,
+             tb.tc_ub_create_reg_file_stop,
+             tb.tc_ub_readreg_mask, tb.tc_ub_readreg_type,
+             tb.tc_ub_create_reg_file_mode)
 
 #set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
 fname = tb.workdir + "/" + tb.tc_ub_create_reg_file_name
 try:
-    fd = open(fname, 'r+')
+    fd = open(fname, tb.tc_ub_create_reg_file_mode)
 except IOError:
     logging.warning("Could not open: %s", fname)
     tb.end_tc(False)
@@ -52,6 +57,7 @@ vers = tmp.lstrip()
 tb.tbot_expect_prompt(c)
 
 fd.write("# pinmux\n")
+fd.write("# Date: " + datetime.datetime.now().ctime() + "\n")
 fd.write("# U-Boot    : %s\n" % vers)
 fd.write("# regaddr mask type defval\n")
 
