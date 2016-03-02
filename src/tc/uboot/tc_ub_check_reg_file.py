@@ -34,12 +34,13 @@ except IOError:
     logging.warning("Could not open: %s", fname)
     tb.end_tc(False)
 
+retval = True
 for line in fd.readlines():
     cols = line.split()
     if cols[0] == '#':
         continue
     val = cols[0]
-    tmp = 'md.'+ cols[2] + ' ' + val
+    tmp = 'md.'+ cols[2] + ' ' + val + ' 1'
     tb.eof_write(c, tmp)
     val = val.replace('0x','')
     ret = tb.tbot_expect_string(c, val)
@@ -55,7 +56,7 @@ for line in fd.readlines():
         val = '0x' + val
 
     if (int(val, 16) & int(cols[1], 16)) != (int(cols[3], 16) & int(cols[1], 16)):
-        logging.info("args: %s %s & %s != %s", tb.tc_ub_create_reg_file_name, val, cols[1], cols[3])
-        tb.end_tc(False)
+        logging.info("args: %s %s %s & %s != %s", tb.tc_ub_create_reg_file_name, cols[0], val, cols[1], cols[3])
+        retval = False
 
-tb.end_tc(True)
+tb.end_tc(retval)

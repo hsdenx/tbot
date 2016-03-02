@@ -70,7 +70,7 @@ if tb.tc_ub_readreg_type == 'b':
 #read register value
 for i in xrange(start, stop, step):
     val = str(hex(i))
-    tmp = 'md.' + tb.tc_ub_readreg_type + " " + val
+    tmp = 'md.' + tb.tc_ub_readreg_type + " " + val + ' 1'
     tb.eof_write(c, tmp)
     val = val.replace('0x','')
     ret = tb.tbot_expect_string(c, val)
