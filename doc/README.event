@@ -33,6 +33,10 @@ planned Event backends:
 
 - dot graph:
   Use the Eventinformation for creating nice DOT graphics from the test.
+  see a raw example:
+  src/common/event/dot.py
+  Demo Output of the tc_board_smartweb.py TC:
+  https://github.com/hsdenx/tbot/blob/event-devel/smartweb_demo.png
 
 - xunit:
   create xunit files for presenting the results in jenkins
