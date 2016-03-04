@@ -23,6 +23,7 @@ import importlib
 sys.path.append("src/common/event/")
 from web_patchwork import web_patchwork
 from dot import dot
+from statisitic_plot import statistic_plot_backend
 
 class events(object):
     """ The event class
@@ -52,12 +53,17 @@ class events(object):
              'tc_workfd_check_if_file_exist.py',
              'tc_workfd_rm_file.py']
         self.dot = dot(tb, 'tc.dot', 'log/event.log', self.ignoretclist)
+        self.ignoretclist = ['tc_workfd_check_cmd_success.py']
+        self.statistic = statistic_plot_backend(tb, 'stat.dat', 'log/event.log', self.ignoretclist)
 
     def __del__(self):
         """
         cleanup
         :return:
         """
+
+    def event_flush(self):
+        self.fd.flush()
 
     def create_event(self, pname, name, id, value):
         """
@@ -71,8 +77,10 @@ class events(object):
         if id == 'Start':
             self.stack.append(name)
         if id ==  'BoardnameEnd':
+            self.event_flush()
             self.webpatch.create_webfile()
             self.dot.create_dotfile()
+            self.statistic.create_statfile()
 
         if id == 'End':
             self.stack.pop()
