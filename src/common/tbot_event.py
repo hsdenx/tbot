@@ -22,6 +22,7 @@ import time
 import importlib
 sys.path.append("src/common/event/")
 from web_patchwork import web_patchwork
+from dot import dot
 
 class events(object):
     """ The event class
@@ -39,12 +40,18 @@ class events(object):
         self.event_list = []
         self.stack = []
         self.tb = tb
+        self.logfile = logfile
         try:
             self.fd = open(tb.workdir + '/' + logfile, 'w')
         except:
             logging.warning("Could not create %s", logfile)
             sys.exit(1)
         self.webpatch = web_patchwork(tb, 'webpatch.html')
+        self.ignoretclist = ['tc_workfd_check_cmd_success.py',
+             'tc_lab_cp_file.py',
+             'tc_workfd_check_if_file_exist.py',
+             'tc_workfd_rm_file.py']
+        self.dot = dot(tb, 'tc.dot', 'log/event.log', self.ignoretclist)
 
     def __del__(self):
         """
@@ -65,6 +72,7 @@ class events(object):
             self.stack.append(name)
         if id ==  'BoardnameEnd':
             self.webpatch.create_webfile()
+            self.dot.create_dotfile()
 
         if id == 'End':
             self.stack.pop()
