@@ -9,6 +9,11 @@ except AttributeError:
     self.debugprint(tmp)
 
 try:
+    self.lab_tmp_dir
+except AttributeError:
+    self.lab_tmp_dir = '/var/tmp/'
+
+try:
     self.wdt_timeout
 except AttributeError:
     self.wdt_timeout = '120' # wdt timeout after 2 minutes
@@ -126,7 +131,7 @@ except AttributeError:
 try:
     self.tc_ub_dfu_dfu_util_downloadfile
 except AttributeError:
-    self.tc_ub_dfu_dfu_util_downloadfile = "/tmp/dfu_file"
+    self.tc_ub_dfu_dfu_util_downloadfile = self.lab_tmp_dir + "dfu_file"
 
 try:
     self.tc_lab_source_dir
@@ -166,12 +171,12 @@ except AttributeError:
 try:
     self.tc_lab_cp_file_a
 except AttributeError:
-    self.tc_lab_cp_file_a = "/tmp/gnlmpf"
+    self.tc_lab_cp_file_a = self.lab_tmp_dir + "gnlmpf"
 
 try:
     self.tc_lab_cp_file_b
 except AttributeError:
-    self.tc_lab_cp_file_b = "/tmp/gnlmpf2"
+    self.tc_lab_cp_file_b = self.lab_tmp_dir + "gnlmpf2"
 
 try:
     self.tc_ub_ubi_prep_partname
@@ -251,7 +256,7 @@ except AttributeError:
 try:
     self.tc_lx_eeprom_tmp_dir
 except AttributeError:
-    self.tc_lx_eeprom_tmp_dir = "/tmp/"
+    self.tc_lx_eeprom_tmp_dir = self.lab_tmp_dir
 
 #has the eeprom a wp gpio
 try:

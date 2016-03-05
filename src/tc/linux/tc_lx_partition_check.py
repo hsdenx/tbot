@@ -26,7 +26,7 @@ tb.eof_call_tc("tc_lx_mount.py")
 # create tempfile
 tb.tc_lx_dummy_file_bs = "1024"
 tb.tc_lx_dummy_file_count = "1024"
-tb.tc_lx_dummy_file_tempfile = "/tmp/gnlmpf_partition"
+tb.tc_lx_dummy_file_tempfile = tb.lab_tmp_dir + "gnlmpf_partition"
 tb.eof_call_tc("tc_lx_create_dummy_file.py")
 
 # copy dummy file into partition

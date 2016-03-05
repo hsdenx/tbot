@@ -84,7 +84,7 @@ if ret != 'prompt':
     tb.end_tc(False)
 
 # create random file
-tb.tc_workfd_generate_random_file_name = '/tmp/random'
+tb.tc_workfd_generate_random_file_name = tb.lab_tmp_dir + 'random'
 tb.tc_workfd_generate_random_file_length = tb.tc_ub_dfu_rand_size
 tb.eof_call_tc("tc_workfd_generate_random_file.py");
 
@@ -110,9 +110,9 @@ if ret == 'prompt':
     tb.tbot_expect_prompt(ctrl)
     tb.end_tc(False)
 
-ret = tb.eof_write_cmd(ctrl, 'rm -f /tmp/gnlmpf')
+ret = tb.eof_write_cmd(ctrl, 'rm -f ' + tb.lab_tmp_dir + 'gnlmpf')
 # upload it back
-tmp = dfu_cmd + " -a " + tb.tc_ub_dfu_dfu_util_alt_setting + " -U /tmp/gnlmpf"
+tmp = dfu_cmd + " -a " + tb.tc_ub_dfu_dfu_util_alt_setting + " -U " + tb.lab_tmp_dir + 'gnlmpf'
 tb.eof_write(ctrl, tmp)
 
 dfu_check_one(tb, ctrl, 'Claiming')
@@ -136,7 +136,7 @@ tb.tbot_expect_prompt(c)
 #############################
 # now diff the files
 logging.info("diff files")
-tmp = "cmp " + tb.tc_workfd_generate_random_file_name + " /tmp/gnlmpf"
+tmp = "cmp " + tb.tc_workfd_generate_random_file_name + " " + tb.lab_tmp_dir + "gnlmpf"
 tb.eof_write(ctrl, tmp)
 searchlist = ["EOF", "differ"]
 tmp = True
@@ -154,8 +154,8 @@ while tmp == True:
 if differ and not differ_at_end:
     tb.end_tc(False)
 
-tb.eof_write_cmd(tb.workfd, "rm -f /tmp/gnlmpf")
-tb.eof_write_cmd(tb.workfd, "rm -f /tmp/random")
+tb.eof_write_cmd(tb.workfd, "rm -f " + tb.lab_tmp_dir + "gnlmpf")
+tb.eof_write_cmd(tb.workfd, "rm -f " + tb.lab_tmp_dir + "random")
 
 #############################
 # exit from root
