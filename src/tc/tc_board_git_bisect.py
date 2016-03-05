@@ -39,10 +39,6 @@ tb.eof_write(c, tmp)
 ret = tb.tbot_expect_string(c, 'Bisecting')
 if ret == 'prompt':
     tb.end_tc(False)
-
-#read commit id
-tb.read_line(c)
-commit = self.buf[1:8]
 tb.tbot_expect_prompt(c)
 
 #do the steps
