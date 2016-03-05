@@ -106,8 +106,12 @@ class tbot(object):
         try:
             fd = open(self.workdir + '/' + self.cfgfile, 'r')
         except:
-            logging.warning("Could not find %s", self.cfgfile)
-            sys.exit(1)
+            # try in 'config'
+            try:
+                fd = open(self.workdir + '/config/' + self.cfgfile, 'r')
+            except:
+                logging.warning("Could not find %s", self.cfgfile)
+                sys.exit(1)
         exec(fd)
         fd.close()
 
