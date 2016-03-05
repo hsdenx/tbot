@@ -13,7 +13,7 @@
 #
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lab_bdi_upd_uboot.py
-# update u-boot with BDI
+# BDI run
 from tbotlib import tbot
 from lab_bdi import bdi_class
 
@@ -36,8 +36,8 @@ while (ret != '0'):
 tb.tbot_expect_prompt(c)
 
 tb.write_stream(c, tb.lab_bdi_upd_uboot_bdi_run)
-ret = tb.tbot_expect_string(c, 'processing target startup passed')
+ret = tb.tbot_expect_string(c, 'resetting target passed')
 while (ret != '0'):
-    ret = tb.tbot_expect_string(c, 'processing target startup passed')
+    ret = tb.tbot_expect_string(c, 'resetting target passed')
 tb.tbot_expect_prompt(c)
 tb.end_tc(True)

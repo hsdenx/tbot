@@ -26,7 +26,17 @@ if tb.board_has_debugger == 0:
 c = tb.workfd
 tb.write_stream(c, tb.lab_bdi_upd_uboot_bdi_cmd)
 c.set_prompt(tb.lab_bdi_upd_uboot_bdi_prompt)
-tb.tbot_expect_prompt(c)
+searchlist = ["Connection refused"]
+tmp = True
+while tmp == True:
+    ret = tb.tbot_read_line_and_check_strings(c, searchlist)
+    if ret == '0':
+        # back to linux
+        c.set_prompt(tb.linux_prompt)
+        tb.tbot_expect_prompt(c)
+        tb.end_tc(False)
+    elif ret == 'prompt':
+        tmp = False
 
 c.lineend = '\r\0'
 tb.end_tc(True)

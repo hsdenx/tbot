@@ -20,28 +20,41 @@ logging.info("args: %s %s %s", tb.boardname, tb.lab_bdi_upd_uboot_bdi_cmd, tb.la
 logging.info("%s %s %s", tb.lab_bdi_upd_uboot_bdi_era, tb.lab_bdi_upd_uboot_bdi_prog, tb.lab_bdi_upd_uboot_bdi_file)
 logging.info("%s", tb.lab_bdi_upd_uboot_bdi_run)
 
-print ("LKSDMLKSDMLSDM TODO tc_lab_bdi_upd_uboot.py")
-tb.end_tc(True)
-bdi = bdi_class(tb)
+c = tb.workfd
 
-# -> connect to bdi
-bdi.bdi_connect()
+# check if we are in the BDI
+if c.get_prompt() != tb.lab_bdi_upd_uboot_bdi_prompt:
+    ret = tb.call_tc("tc_lab_bdi_connect.py")
+    if ret != True:
+        tb.end_tc(False)
 
 # -> res;h
-bdi.send_bdi_cmd_wait_prompt("res halt")
+tb.write_stream(c, 'res halt')
+ret = tb.tbot_expect_string(c, 'processing target startup passed')
+while (ret != '0'):
+    ret = tb.tbot_expect_string(c, 'processing target startup passed')
+tb.tbot_expect_prompt(c)
 
 # -> era
-bdi.send_bdi_cmd_wait_string_and_prompt(tb.lab_bdi_upd_uboot_bdi_era, 'Erasing flash passed')
+tb.write_stream(c, 'era')
+ret = tb.tbot_expect_string(c, 'Erasing flash passed')
+while (ret != '0'):
+    ret = tb.tbot_expect_string(c, 'Erasing flash passed')
+tb.tbot_expect_prompt(c)
 
 # -> program bin
-tmp=tb.lab_bdi_upd_uboot_bdi_prog + ' ' + tb.lab_bdi_upd_uboot_bdi_file + ' BIN'
-bdi.send_bdi_cmd_wait_string_and_prompt(tmp, 'Programming flash passed')
+tmp = tb.lab_bdi_upd_uboot_bdi_prog + ' ' + tb.lab_bdi_upd_uboot_bdi_file + ' BIN'
+tb.write_stream(c, tmp)
+ret = tb.tbot_expect_string(c, 'Programming flash passed')
+while (ret != '0'):
+    ret = tb.tbot_expect_string(c, 'Programming flash passed')
+tb.tbot_expect_prompt(c)
 
-#read all pending chars from console
-tb.flush(tb.c_con)
+tb.write_stream(c, tb.lab_bdi_upd_uboot_bdi_run)
+ret = tb.tbot_expect_string(c, 'resetting target passed')
+while (ret != '0'):
+    ret = tb.tbot_expect_string(c, 'resetting target passed')
+tb.tbot_expect_prompt(c)
 
-# run the binary
-bdi.send_bdi_cmd_wait_prompt(tb.lab_bdi_upd_uboot_bdi_run)
-
-bdi.bdi_quit()
+tb.eof_call_tc("tc_lab_bdi_disconnect.py")
 tb.end_tc(True)
