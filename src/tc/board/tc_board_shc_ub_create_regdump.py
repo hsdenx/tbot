@@ -24,6 +24,7 @@ tb.set_board_state("u-boot")
 tb.workfd = tb.c_con
 
 tb.tc_ub_create_reg_file_name = 'src/files/shc_ub_pinmux_new.reg'
+tb.tc_ub_create_reg_file_comment = 'pinmux'
 tb.tc_ub_create_reg_file_start = '44e10800'
 tb.tc_ub_create_reg_file_stop = '44e10a34'
 tb.tc_ub_readreg_mask = '0xffffffff'
@@ -36,27 +37,27 @@ tb.eof_call_tc("tc_ub_create_reg_file.py")
 # now append all further register dumps
 tb.tc_ub_create_reg_file_mode = 'a'
 
-# CM_PER
+tb.tc_ub_create_reg_file_comment = 'CM_PER'
 tb.tc_ub_create_reg_file_start = '44e00000'
 tb.tc_ub_create_reg_file_stop = '44e00154'
 tb.eof_call_tc("tc_ub_create_reg_file.py")
 
-# CM_WKUP
+tb.tc_ub_create_reg_file_comment = 'CM_WKUP'
 tb.tc_ub_create_reg_file_start = '44e00400'
 tb.tc_ub_create_reg_file_stop = '44e004dc'
 tb.eof_call_tc("tc_ub_create_reg_file.py")
 
-# CM_DPLL
+tb.tc_ub_create_reg_file_comment = 'CM_DPLL'
 tb.tc_ub_create_reg_file_start = '44e00500'
 tb.tc_ub_create_reg_file_stop = '44e00540'
 tb.eof_call_tc("tc_ub_create_reg_file.py")
 
-# CM_MPU
+tb.tc_ub_create_reg_file_comment = 'CM_MPU'
 tb.tc_ub_create_reg_file_start = '44e00600'
 tb.tc_ub_create_reg_file_stop = '44e00608'
 tb.eof_call_tc("tc_ub_create_reg_file.py")
 
-# CM_RTC
+tb.tc_ub_create_reg_file_comment = 'CM_RTC'
 tb.tc_ub_create_reg_file_start = '44e00800'
 tb.tc_ub_create_reg_file_stop = '44e00808'
 tb.eof_call_tc("tc_ub_create_reg_file.py")

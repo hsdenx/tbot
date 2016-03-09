@@ -26,11 +26,11 @@
 import datetime
 from tbotlib import tbot
 
-logging.info("args: %s %s %s %s %s %s", tb.tc_ub_create_reg_file_name,
+logging.info("args: %s %s %s %s %s %s %s", tb.tc_ub_create_reg_file_name,
              tb.tc_ub_create_reg_file_start,
              tb.tc_ub_create_reg_file_stop,
              tb.tc_ub_readreg_mask, tb.tc_ub_readreg_type,
-             tb.tc_ub_create_reg_file_mode)
+             tb.tc_ub_create_reg_file_mode, tb.tc_ub_create_reg_file_comment)
 
 #set board state for which the tc is valid
 tb.set_board_state("u-boot")
@@ -56,10 +56,12 @@ tmp = tmp.replace('\n','')
 vers = tmp.lstrip()
 tb.tbot_expect_prompt(c)
 
-fd.write("# pinmux\n")
+if tb.tc_ub_create_reg_file_comment != '':
+    fd.write('# ' + tb.tc_ub_create_reg_file_comment + '\n')
 fd.write("# Date: " + datetime.datetime.now().ctime() + "\n")
 fd.write("# U-Boot    : %s\n" % vers)
 fd.write("# regaddr mask type defval\n")
+
 
 #read from - to
 tb.tc_ub_readreg_mask = '0xffffffff'
