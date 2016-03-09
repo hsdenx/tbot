@@ -1,0 +1,24 @@
+# MMC0
+# Date: Mon Mar  7 13:14:04 2016
+# U-Boot    : 2013.01.01-00032-g5b3e379-dirty ( - )
+# regaddr mask type defval
+0x48060110 0xffffffff          l     0x2015
+0x48060114 0xffffffff          l        0x1
+0x48060124 0xffffffff          l        0x0
+0x48060128 0xffffffff          l        0x0
+0x4806012c 0xffffffff          l      0x600
+0x48060228 0xffffffff          l      0xd02
+0x4806022c 0xffffffff          l    0xe0107
+0x480602fc 0xffffffff          l 0x31010000
+# MMC1
+# Date: Mon Mar  7 13:14:20 2016
+# U-Boot    : 2013.01.01-00032-g5b3e379-dirty ( - )
+# regaddr mask type defval
+0x481d8110 0xffffffff          l     0x2015
+0x481d8114 0xffffffff          l        0x1
+0x481d8124 0xffffffff          l        0x0
+0x481d8128 0xffffffff          l        0x0
+0x481d812c 0xffffffff          l      0x620
+0x481d8228 0xffffffff          l      0xd00
+0x481d822c 0xffffffff          l    0xe0107
+0x481d82fc 0xffffffff          l 0x31010000
