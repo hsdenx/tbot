@@ -68,4 +68,28 @@ self.tc_ub_create_reg_file_name = 'src/files/shc_ub_pinmux_mmc.reg'
 tb.eof_call_tc("tc_ub_check_reg_file.py")
 self.tc_ub_create_reg_file_name = 'src/files/shc_ub_pinmux_gpio.reg'
 tb.eof_call_tc("tc_ub_check_reg_file.py")
+
+tb.workfd = tb.c_ctrl
+tb.statusprint("start all DUTS testcases")
+tb.eof_call_tc("uboot/duts/tc_ub_start_all_duts.py")
+
+#save working u-boot bin
+tb.tc_lab_cp_file_a = "u-boot.bin"
+tb.tc_lab_cp_file_b = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir + "/u-boot-latestworking.bin"
+tb.eof_call_tc("tc_lab_cp_file.py")
+tb.tc_lab_cp_file_a = "System.map"
+tb.tc_lab_cp_file_b = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir + "/u-boot-latestworking.System.map"
+tb.eof_call_tc("tc_lab_cp_file.py")
+tb.tc_lab_cp_file_a = "u-boot.img"
+tb.tc_lab_cp_file_b = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir + "/u-boot-latestworking-u-boot.img"
+tb.tc_lab_cp_file_a = "MLO"
+tb.tc_lab_cp_file_b = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir + "/u-boot-latestworking-MLO"
+tb.eof_call_tc("tc_lab_cp_file.py")
+tb.tc_lab_cp_file_a = "spl/u-boot-spl.bin"
+tb.tc_lab_cp_file_b = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir + "/u-boot-latestworking-spl.bin"
+tb.eof_call_tc("tc_lab_cp_file.py")
+tb.tc_lab_cp_file_a = "spl/u-boot-spl.map"
+tb.tc_lab_cp_file_b = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir + "/u-boot-latestworking-spl.System.map"
+tb.eof_call_tc("tc_lab_cp_file.py")
+
 tb.end_tc(True)
