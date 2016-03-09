@@ -69,7 +69,7 @@ def search_define(tb, c):
                 hexnum = True
                 intnum = True
                 try:
-                    num = hex(tb.config_result)
+                    num = int(tb.config_result, 16)
                 except:
                     hexnum = False
 
