@@ -52,8 +52,8 @@ class statistic_plot_backend(object):
         self.tb = tb
         self.fdfile = fdfile
         self.fdinfile = fdinfile
-        self.fd = open(fdfile, 'w')
-        self.fdin = open(fdinfile, 'r')
+        self.fd = open(tb.workdir + '/' + fdfile, 'w')
+        self.fdin = open(tb.workdir + '/' + fdinfile, 'r')
         self.tc_list = []
         self.ignoretclist = ignorelist
 
