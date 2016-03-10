@@ -270,7 +270,7 @@ class tbot(object):
         try:
             password
         except NameError:
-            logging.info("no password found for %s", user)
+            logging.error("no password found for %s", user)
             self.end_tc(False)
 
         return password
