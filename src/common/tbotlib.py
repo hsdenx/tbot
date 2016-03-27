@@ -175,6 +175,14 @@ class tbot(object):
         """
         time.sleep(1)
 
+    def cleanup(self):
+        """
+        cleanup
+        :return:
+        """
+        self.c_ctrl.cleanup()
+        self.c_con.cleanup()
+
     def get_power_state(self, boardname):
         """ Get powerstate of the board in the lab
         """
@@ -319,6 +327,7 @@ class tbot(object):
         self.statusprint("End of TBOT: failure")
         #traceback.print_stack()
         self._ret = False
+        self.cleanup()
         sys.exit(1)
 
     def end_tc(self, ret):
@@ -333,6 +342,7 @@ class tbot(object):
             if self._ret:
                 logging.info('End of TBOT: success')
                 self.statusprint("End of TBOT: success")
+                self.cleanup()
                 sys.exit(0)
             else:
                 self.failure()

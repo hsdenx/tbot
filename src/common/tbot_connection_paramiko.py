@@ -115,6 +115,10 @@ class Connection(object):
         self.created = True
         return True
 
+    def cleanup(self):
+        if self.ssh:
+           self.ssh.close()
+
     def set_timeout(self, timeout):
         self.timeout = timeout
         if timeout != None:
