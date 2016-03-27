@@ -25,7 +25,7 @@ c = tb.c_con
 tmp = 'ubifsmount ' + tb.tc_ub_ubifs_volume_name
 tb.eof_write(c, tmp)
 ret = tb.tbot_expect_string(c, 'Error')
-if ret == 'prompt'
+if ret == 'prompt':
     tb.end_tc(True)
 
 tb.tbot_expect_prompt(c)
