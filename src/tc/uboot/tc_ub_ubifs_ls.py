@@ -25,7 +25,7 @@ c = tb.c_con
 tmp = 'ubifsls ' + tb.tc_ub_ubifs_ls_dir
 tb.eof_write(c, tmp)
 ret = tb.tbot_expect_string(c, 'File not')
-if ret == 'prompt'
+if ret == 'prompt':
     tb.end_tc(True)
 
 tb.tbot_expect_prompt(c)
