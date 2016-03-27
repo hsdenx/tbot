@@ -289,8 +289,12 @@ class Connection(object):
                         'exception' if exception occured
                         else string index
         """
-        se = self._tolist(string, self.prompt)
-        #print("CCCCCC expectstring", se, self.data)
+        ign = ['==>']
+        cnt_ign = len(ign)
+        # search first ignore strings, then the string to
+        # search, and at the end, search the prompt
+        se = self._tolist(ign, string, self.prompt)
+        #print("CCCCCC expectstring", se, cnt_ign)
         if self.data == '':
             # if we have no data, read it
             tmp = self.lab_recv()
@@ -316,17 +320,19 @@ class Connection(object):
                     #print("CCCCCCC expectsrting labrecv second", ret)
                     self.tb.event.create_event_log(self, "re", self.data)
                     return 'exception'
+            elif ret < cnt_ign:
+                self.tb.event.create_event_log(self, "ig", self.data)
             else:
                 loop = False
         
         self.tb.event.create_event_log(self, "r", self.logbuf)
         count = len(se)
         count -= 1
-        #print("CCCCCC ret", ret)
+        #print("CCCCCC ret", ret, count, cnt_ign, str(int(ret) - cnt_ign))
         if ret == str(count):
             return 'prompt'
 
-        return ret
+        return str(int(ret) - cnt_ign)
 
     def flush(self):
         """ read out all bytes from connection
