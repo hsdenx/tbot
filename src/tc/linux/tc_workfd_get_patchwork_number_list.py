@@ -53,14 +53,21 @@ def analyse_one_page(tb, urll, url, page):
             for line2 in data: # files are iterable
                 fd.write(line2)
                 if tmp == True:
-                    line2 = line2.split('>')[1]
-                    line2 = line2.split('<')[0]
+                    # line2 contains now patchtitle
+                    patchtitle = line2.split('\n')[0]
                     break
                 res = reg2.search(line2)
                 if res:
                     #read one more line -> patchtitle
                     tmp = True
 
+            # read delegated to
+            line = data.readline()
+            fd.write(line)
+            line = data.readline()
+            fd.write(line)
+            line = data.readline()
+            fd.write(line)
             line = data.readline()
             fd.write(line)
             line = data.readline()
@@ -75,11 +82,11 @@ def analyse_one_page(tb, urll, url, page):
                 applypatch = True
                 for black in tb.tc_workfd_apply_patchwork_patches_blacklist:
                     if nr == black:
-                        logging.info("blacklisted: %s %s\n" % (nr, line2))
+                        logging.info("blacklisted: %s %s\n" % (nr, patchtitle))
                         applypatch = False
                 if applypatch == True:
                     tb.tc_workfd_apply_patchwork_patches_list.append(nr)
-                    tb.tc_workfd_apply_patchwork_patches_list_title.append(line2)
+                    tb.tc_workfd_apply_patchwork_patches_list_title.append(patchtitle)
 
         line = data.readline()
 
