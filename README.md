@@ -16,6 +16,20 @@
 
 -------------------------------------------------
 
+Submitting patches
+
+You can submit your patches (or post questions reagarding the project to the tbot Mailing List:
+
+tbot-devel@googlegroups.com
+
+When creating patches, please use something like:
+
+git format-patch -s <revision range>
+
+Please use 'git send- email' to send the generated patches to the ML to bypass changes from your mailer.
+
+-------------------------------------------------
+
 Why python?
 - python has a lot of string manipulation possibility
 - easy to use
