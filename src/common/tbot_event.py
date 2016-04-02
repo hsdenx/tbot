@@ -24,6 +24,7 @@ import importlib
 sys.path.append("src/common/event/")
 from web_patchwork import web_patchwork
 from dot import dot
+from dashboard import dashboard
 from statisitic_plot import statistic_plot_backend
 
 class events(object):
@@ -86,9 +87,12 @@ class events(object):
             self.dot = dot(self.tb, 'tc.dot', 'log/event.log', self.ignoretclist)
             self.ignoretclist = ['tc_workfd_check_cmd_success.py']
             self.statistic = statistic_plot_backend(self.tb, 'stat.dat', 'log/event.log', self.ignoretclist)
+            self.dashboard = dashboard(self.tb, 'log/event.log', 'localhost', 'tbot', 'tbot', 'tbot_root', 'tbot_results')
+            # execute the event backends
             self.webpatch.create_webfile()
             self.dot.create_dotfile()
             self.statistic.create_statfile()
+            self.dashboard.insert_test_into_db()
 
         if id == 'End':
             self.stack.pop()
