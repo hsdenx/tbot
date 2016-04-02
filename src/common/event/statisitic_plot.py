@@ -50,6 +50,7 @@ class statistic_plot_backend(object):
     def __init__(self, tb, fdfile, fdinfile, ignorelist):
         self.dotnr = 0
         self.tb = tb
+        self.ev = self.tb.event
         self.fdfile = fdfile
         self.fdinfile = fdinfile
         self.fd = open(tb.workdir + '/' + fdfile, 'w')
@@ -71,14 +72,14 @@ class statistic_plot_backend(object):
         self.fd.write('\n')
 
     def get_event_typ(self, tmp):
-        if tmp[1] == 'Start':
-            return tmp[1]
-        if tmp[1] == 'End':
-            return tmp[1]
+        if tmp[self.ev.id] == 'Start':
+            return tmp[self.ev.id]
+        if tmp[self.ev.id] == 'End':
+            return tmp[self.ev.id]
         return 'none'
 
     def get_event_name(self, tmp):
-        return tmp[3]
+        return tmp[self.ev.name]
 
     def check_ignore_list(self, typ, name):
         if typ != 'Start':
@@ -91,7 +92,7 @@ class statistic_plot_backend(object):
                     tmp = line.split()
                     if tmp == []:
                         continue
-                    if tmp[0] != 'EVENT':
+                    if tmp[self.ev.typ] != 'EVENT':
                         continue
                     ntyp = self.get_event_typ(tmp)
                     if typ == 'none':
@@ -129,13 +130,13 @@ class statistic_plot_backend(object):
             tmp = line.split()
             if tmp == []:
                 continue
-            if tmp[0] != 'EVENT':
+            if tmp[self.ev.typ] != 'EVENT':
                 continue
             typ = self.get_event_typ(tmp)
             if typ == 'none':
                 continue
             newname = self.get_event_name(tmp)
-            result = tmp[4]
+            result = tmp[self.ev.value]
             ret = self.check_ignore_list(typ, newname)
             if ret == 'ignore':
                 continue

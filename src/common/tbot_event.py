@@ -19,6 +19,7 @@ import traceback
 import os
 from struct import *
 import time
+from time import gmtime, strftime
 import importlib
 sys.path.append("src/common/event/")
 from web_patchwork import web_patchwork
@@ -42,19 +43,18 @@ class events(object):
         self.stack = []
         self.tb = tb
         self.logfile = logfile
+        self.typ = 0
+        self.date = 1
+        self.time = 2
+        self.id = 3
+        self.pname = 4
+        self.name = 5
+        self.value = 6
         try:
             self.fd = open(tb.workdir + '/' + logfile, 'w')
         except:
             logging.warning("Could not create %s", logfile)
             sys.exit(1)
-        self.webpatch = web_patchwork(tb, 'webpatch.html')
-        self.ignoretclist = ['tc_workfd_check_cmd_success.py',
-             'tc_lab_cp_file.py',
-             'tc_workfd_check_if_file_exist.py',
-             'tc_workfd_rm_file.py']
-        self.dot = dot(tb, 'tc.dot', 'log/event.log', self.ignoretclist)
-        self.ignoretclist = ['tc_workfd_check_cmd_success.py']
-        self.statistic = statistic_plot_backend(tb, 'stat.dat', 'log/event.log', self.ignoretclist)
 
     def __del__(self):
         """
@@ -78,6 +78,14 @@ class events(object):
             self.stack.append(name)
         if id ==  'BoardnameEnd':
             self.event_flush()
+            self.webpatch = web_patchwork(self.tb, 'webpatch.html')
+            self.ignoretclist = ['tc_workfd_check_cmd_success.py',
+                 'tc_lab_cp_file.py',
+                 'tc_workfd_check_if_file_exist.py',
+                 'tc_workfd_rm_file.py']
+            self.dot = dot(self.tb, 'tc.dot', 'log/event.log', self.ignoretclist)
+            self.ignoretclist = ['tc_workfd_check_cmd_success.py']
+            self.statistic = statistic_plot_backend(self.tb, 'stat.dat', 'log/event.log', self.ignoretclist)
             self.webpatch.create_webfile()
             self.dot.create_dotfile()
             self.statistic.create_statfile()
@@ -89,7 +97,7 @@ class events(object):
             except:
                 nametest = 'main'
 
-        tmp = "EVENT " + str(id) + " " + str(pname) + " " + str(name) + " " + str(value) + "\n"
+        tmp = "EVENT " + strftime("%Y-%m-%d %H:%M:%S", gmtime()) + " " + str(id) + " " + str(pname) + " " + str(name) + " " + str(value) + "\n"
         self.fd.write(tmp)
         self.event_list.append(tmp)
 
@@ -98,7 +106,7 @@ class events(object):
             name = self.stack[-1]
         except:
             name = 'main'
-        tmp = "EVENT log " + name + " " + str(c.name) + " " + str(dir) + " " + string + "\n"
+        tmp = "EVENT " + strftime("%Y-%m-%d %H:%M:%S", gmtime()) + " log " + name + " " + str(c.name) + " " + str(dir) + " " + string + "\n"
         self.fd.write(tmp)
         self.event_list.append(tmp)
         if dir == 'r':

@@ -18,6 +18,7 @@ import os
 class web_patchwork(object):
     def __init__(self, tb, webfile):
         self.tb = tb
+        self.ev = self.tb.event
         self.webfile = webfile
         self.fd = open(self.tb.workdir + '/' + self.webfile, 'w')
         #print("LJDKJSANDKJASNDKJN open", self.webfile, self.fd)
@@ -72,28 +73,28 @@ class web_patchwork(object):
             tmp = event.split()
             #print("TMPTMPTMPT", tmp)
             # search for EVENT PW_NR
-            if tmp[1] == 'PW_NR':
-                nr = tmp[4]
+            if tmp[self.ev.id] == 'PW_NR':
+                nr = tmp[self.ev.value]
                 logcc = ''
                 aa = 'no'
                 cc = 'unknown'
                 ac = 'unknown'
-            if tmp[2] == 'tc_workfd_apply_patchwork_patches.py' and tmp[4] == 'r':
+            if tmp[self.ev.pname] == 'tc_workfd_apply_patchwork_patches.py' and tmp[self.ev.value] == 'r':
                 logcc += event.split('ctrl r')[1]
                 logcc += '\r\n'
 
             # search for EVENT PW_CLEAN
-            if tmp[1] == 'PW_CLEAN':
-                if tmp[4] == 'True':
+            if tmp[self.ev.id] == 'PW_CLEAN':
+                if tmp[self.ev.value] == 'True':
                     cc = 'clean'
                 else:
                     cc = 'not clean'
             # search for EVENT PW_AA
-            if tmp[1] == 'PW_AA':
+            if tmp[self.ev.id] == 'PW_AA':
                 aa = 'yes'
             # search for EVENT PW_APPLY
-            if tmp[1] == 'PW_APPLY':
-                if tmp[4] == 'True':
+            if tmp[self.ev.id] == 'PW_APPLY':
+                if tmp[self.ev.value] == 'True':
                     ac = 'clean'
                 else:
                     ac = 'not clean'

@@ -26,6 +26,7 @@ class dot(object):
           dot -Tps tc.dot > tc.ps
         """
         self.tb = tb
+        self.ev = self.tb.event
         self.dotfile = dotfile
         self.eventfile = eventlogfile
         self.fd = open(self.tb.workdir + '/' + self.dotfile, 'w')
@@ -58,14 +59,14 @@ class dot(object):
         self.fd.write(tmp)
 
     def get_event_typ(self, tmp):
-        if tmp[1] == 'Start':
-            return tmp[1]
-        if tmp[1] == 'End':
-            return tmp[1]
+        if tmp[self.ev.id] == 'Start':
+            return tmp[self.ev.id]
+        if tmp[self.ev.id] == 'End':
+            return tmp[self.ev.id]
         return 'none'
 
     def get_event_name(self, tmp):
-        return tmp[3]
+        return tmp[self.ev.name]
 
     def check_ignore_list(self, typ, name):
         if typ != 'Start':
@@ -78,7 +79,7 @@ class dot(object):
                     tmp = line.split()
                     if tmp == []:
                         continue
-                    if tmp[0] != 'EVENT':
+                    if tmp[self.ev.typ] != 'EVENT':
                         continue
                     ntyp = self.get_event_typ(tmp)
                     if typ == 'none':
@@ -94,13 +95,13 @@ class dot(object):
             tmp = line.split()
             if tmp == []:
                 continue
-            if tmp[0] != 'EVENT':
+            if tmp[self.ev.typ] != 'EVENT':
                 continue
             typ = self.get_event_typ(tmp)
             if typ == 'none':
                 continue
             newname = self.get_event_name(tmp)
-            result = tmp[4]
+            result = tmp[self.ev.value]
             ret = self.check_ignore_list(typ, newname)
             if ret == 'ignore':
                 continue
