@@ -41,6 +41,7 @@ while load_fail == False:
     tb.eof_write(c, tmp)
     tb.tbot_expect_prompt(c)
     load_fail = tb.call_tc("tc_ub_tftp_file.py")
+    i += 1
 
 tmp = 'env import -t ' + tb.ub_load_board_env_addr
 tb.eof_write(c, tmp)
