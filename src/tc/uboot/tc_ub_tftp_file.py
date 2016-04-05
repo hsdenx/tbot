@@ -25,7 +25,7 @@ tb.set_board_state("u-boot")
 c = tb.c_con
 tmp = 'tftp ' + tb.tc_ub_tftp_file_addr + ' ' + tb.tc_ub_tftp_file_name
 tb.eof_write(c, tmp)
-searchlist = ["Bytes transferred", "error", "Retry count exceeded"]
+searchlist = ["Bytes transferred", "error", "Retry count exceeded", "ERROR"]
 tmp = True
 load_fail = True
 while tmp == True:
@@ -35,6 +35,8 @@ while tmp == True:
     elif ret == '1':
         load_fail = True
     elif ret == '2':
+        load_fail = True
+    elif ret == '3':
         load_fail = True
     elif ret == 'prompt':
         tmp = False
