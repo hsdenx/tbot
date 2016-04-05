@@ -14,25 +14,64 @@
 import sys
 import re
 import logging
+import time
 
-def state_lx_parse_input(tb, c, retry):
-    sl = [pexpect.EOF, 'login']
+def state_lx_parse_input(tb, c, retry, sl):
     i = 0
-    oldt = c.h.timeout
-    c.h.timeout = 4
+    ctrlc_send = 0
+    oldt = c.get_timeout()
+    c.set_timeout(4)
     while(i < retry):
         ret = tb.tbot_read_line_and_check_strings(c, sl)
+        if ret == 'exception':
+            if ctrlc_send == 0:
+                # try first to get the linux prompt
+                tb.send_ctrl_c(c)
+                ctrlc_send = 1
+                i = 0
+            else:
+                # we get nothing -> power off / on the board
+                ret = tb.set_power_state(tb.boardlabpowername, "off")
+                if ret == False:
+                    time.sleep(2)
+                    ret = tb.set_power_state(tb.boardlabpowername, "on")
+                    # set old timeout (wait endless)
+                    # if after a power on not comes at least U-Boot
+                    # prompt, wait endless until tbot WDT triggers ...
+                    c.set_timeout(oldt)
+                    i = 0
+            continue
+ 
+        if ret == 'prompt':
+            c.set_timeout(oldt)
+            return True
+
+        if ret == '0':
+            c.set_timeout(oldt)
+            return True
+
         if ret == '1':
+            tb.set_prompt(c, tb.linux_prompt, "", "")
+            c.set_timeout(oldt)
+            return True
+
+        if ret == '2':
+            tb.eof_call_tc("tc_ub_boot_linux.py")
+            c.set_timeout(oldt)
+            i = 0
+            continue
+
+        if ret == '3':
             tb.write_stream(c, 'root')
             i = 0
-        if ret == 'exception':
-            tb.send_ctrl_c(c)
-        if ret == 'prompt':
-            c.h.timeout = oldt
-            return True
+
+        if ret == '4':
+            tb.write_stream(c, '\n')
+            i = 0
+
         i += 1
 
-    c.h.timeout = oldt
+    c.set_timeout(oldt)
     return False
  
 def linux_set_board_state(tb, state, retry):
@@ -45,18 +84,8 @@ def linux_set_board_state(tb, state, retry):
 
     # set new prompt
     tb.send_ctrl_c(c)
-    sl = [tb.linux_prompt, tb.linux_prompt_default, tb.uboot_prompt]
-    ret = tb.tbot_read_line_and_check_strings(c, sl)
-    if ret == '0':
-        return True
-
-    if ret == '1':
-        tb.set_prompt(c, tb.linux_prompt, "", "")
-        tb.set_term_length(c)
-        return True
-
-    if ret == '2':
-        tb.eof_call_tc("tc_ub_boot_linux.py")
+    sl = [tb.linux_prompt, tb.linux_prompt_default, tb.uboot_prompt, 'login', 'Password']
+    state_lx_parse_input(tb, c, retry, sl)
 
     #terminal line length
     tb.set_term_length(c)
