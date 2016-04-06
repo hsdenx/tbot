@@ -75,6 +75,9 @@ class Connection(object):
 
         logging.debug("%s read: %s", self.name, tmp)
         self.data += tmp
+        se = tmp.rstrip()
+        se = se.lstrip()
+        self.tb.verboseprint("%s: %s" % (self.name, se))
         return True
 
     def lab_write(self, string):

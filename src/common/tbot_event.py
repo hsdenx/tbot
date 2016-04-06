@@ -117,7 +117,6 @@ class events(object):
             se = string.rstrip()
             se = se.lstrip()
             self.tb.con_log("%s: %s", c.name, se)
-            self.tb.verboseprint("%s: %s" % (c.name, se))
 
     def register_backend(self):
         """
