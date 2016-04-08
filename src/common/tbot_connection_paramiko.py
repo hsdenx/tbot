@@ -296,12 +296,18 @@ class Connection(object):
                         'exception' if exception occured
                         else string index
         """
+        # list of strings, which get ignored
         ign = ['==>']
         cnt_ign = len(ign)
+        # list of strings, which are not allowed
+        # ToDo make them configurable and make this
+        # option enable/disable
+        error = ['Resetting CPU']
+        cnt_error = len(error)
         # search first ignore strings, then the string to
         # search, and at the end, search the prompt
-        se = self._tolist(ign, string, self.prompt)
-        #print("CCCCCC expectstring", se, cnt_ign)
+        se = self._tolist(ign, error, string, self.prompt)
+        # print("CCCCCC expectstring", se, cnt_ign, cnt_error)
         if self.data == '':
             # if we have no data, read it
             tmp = self.lab_recv()
@@ -317,18 +323,22 @@ class Connection(object):
         loop = True
         while(loop == True):
             ret = self.__search_strings(se)
-            #print("CCCCC expectstring ret", ret)
+            # print("CCCCC expectstring ret", se, ret, cnt_ign, cnt_error)
             if ret == 'none':
                 tmp = self.lab_recv()
                 self.logbuf += self.data
-                #print("CCCCC expectstring tmp", tmp, self.data)
+                # print("CCCCC expectstring tmp", tmp, self.data)
                 if tmp == None and self.timeout != None:
                     # ToDo give paramiko the timeout
-                    #print("CCCCCCC expectsrting labrecv second", ret)
+                    # print("CCCCCCC expectsrting labrecv second", ret)
                     self.tb.event.create_event_log(self, "re", self.data)
                     return 'exception'
-            elif ret < cnt_ign:
+            elif ret < str(cnt_ign):
                 self.tb.event.create_event_log(self, "ig", self.data)
+                continue
+            elif ret < str(cnt_ign + cnt_error):
+                self.tb.event.create_event_log(self, "er", self.data)
+                self.tb.end_tc(False)
             else:
                 loop = False
         
@@ -339,7 +349,7 @@ class Connection(object):
         if ret == str(count):
             return 'prompt'
 
-        return str(int(ret) - cnt_ign)
+        return str(int(ret) - (cnt_ign + cnt_error))
 
     def flush(self):
         """ read out all bytes from connection
