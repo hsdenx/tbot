@@ -19,6 +19,12 @@ except AttributeError:
     self.wdt_timeout = '120' # wdt timeout after 2 minutes
 
 try:
+    self.state_linux_timeout
+except AttributeError:
+    self.state_linux_timeout = 4
+
+
+try:
     self.labsshprompt
 except AttributeError:
     self.labsshprompt = 'pollux:'

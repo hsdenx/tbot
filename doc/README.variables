@@ -31,6 +31,12 @@ linux_prompt_default:
   default:
   'root@generic-armv7a-hf:~#'
 
+state_linux_timeout
+  used in src/lab_api/state_linux.py
+  timeout in seconds, until connection detects, no chars
+  from console.
+  default: 4
+
 workfd_get_patchwork_number_user:
   used in tc_workfd_get_patchwork_number_list.py
   user for which the patchwork list get created
