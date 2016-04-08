@@ -31,16 +31,27 @@ i = 0
 while i < 50:
     logging.info("********************** itteration: %d ***************", i)
     tb.statusprint("********************** itteration: %d ***************" % i)
-    #set board state for which the tc is valid
+    # which bootmode
+    mode = randint(1,3)
+    tb.statusprint("mode %s" % mode)
+    if mode == 2:
+        tb.set_board_state("u-boot")
+        tmp = 'boot'
+        tb.eof_write(c, tmp)
+    if mode == 3:
+        tb.set_board_state("u-boot")
+        tmp = 'run bootcmd'
+        tb.eof_write(c, tmp)
+
     tb.set_board_state("linux")
 
-    #sleep random time (3-10 seconds)
+    # sleep random time (3-10 seconds)
     timerand=randint(3,10)
     tb.statusprint("random time %s" % timerand)
     time.sleep(timerand)
-    #poweroff
+    # poweroff
     tb.eof_call_tc("tc_lab_poweroff.py")
-    #read rest of bytes from con
+    # read rest of bytes from con
     tb.flush(c)
     time.sleep(3)
     i += 1
