@@ -31,6 +31,7 @@ class dashboard(object):
         self.pw = pw
         self.dbname = dbname
         self.tname = tname
+        self.webdir = '/var/www/html'
         try:
             self.connection = MySQLdb.connect(self.host, self.user, self.pw, self.dbname)
         except:
@@ -44,15 +45,11 @@ class dashboard(object):
     def insert(self, query):
         try:
             self.cursor.execute(query)
-            self.connection.commit()
         except:
             self.connection.rollback()
 
-    def query(self, query):
-        cursor = self.connection.cursor( MySQLdb.cursors.DictCursor )
-        cursor.execute(query)
-
-        return cursor.fetchall()
+        self.connection.commit()
+        self.iddb = self.cursor.lastrowid
 
     def __del__(self):
         self.connection.close()
@@ -91,4 +88,17 @@ class dashboard(object):
         query = "INSERT INTO " +  self.tname + " (`test_date`, `toolchain`, `binaryversion`, `defname`, `testcase`, `success`) VALUES ('" + self.dt + "', '" + self.tool + "', '" + self.bina + "', '" + self.defname + "', '" + self.tcname + "', '" + self.suc + "')"
         logging.debug("DB query %s", query)
         self.insert(query)
+        # now create the images, and move them to the webserverdirectory
+        # ToDo:
+        # catch errors
+        # make this configurable
+        newdir = self.webdir + '/id_' + str(self.iddb)
+        os.system("dot -Tpng tc.dot > tc.png")
+        os.system("gnuplot src/files/balkenplot.sem")
+        os.system("sudo mkdir " + newdir)
+        tmp = "sudo cp tc.png " + newdir + "/graph.png"
+        os.system(tmp)
+        tmp = "sudo cp output.jpg " + newdir + "/statistic.jpg"
+        os.system(tmp)
+        # at the end, close
         self.fdin.close()
