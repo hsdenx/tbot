@@ -721,3 +721,23 @@ try:
     self.linux_prompt_default
 except AttributeError:
     self.linux_prompt_default = 'root@generic-armv7a-hf:~#'
+
+try:
+    self.create_dot
+except AttributeError:
+    self.create_dot = 'no'
+
+try:
+    self.create_statistic
+except AttributeError:
+    self.create_statistic = 'no'
+
+try:
+    self.create_dashboard
+except AttributeError:
+    self.create_dashboard = 'no'
+
+try:
+    self.create_webpatch
+except AttributeError:
+    self.create_webpatch = 'no'

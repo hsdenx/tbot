@@ -60,6 +60,28 @@ tc_workfd_apply_patchwork_patches_eof:
   default:
   'yes'
 
+create_dot:
+  if 'yes' create at the end a "graphviz" image
+  default:
+  'no'
+
+create_statistic:
+  if 'yes' create at the end statistic image with
+  gnuplot.
+  default:
+  'no'
+
+create_dashboard:
+  if 'yes' create a "dashboard" at the end of tbot.
+  default:
+  'no'
+
+create_webpatch:
+  if 'yes' create a "webpatch" html page at the end of
+  tbot.
+  default:
+  'no'
+
 Testcases
 =========
 

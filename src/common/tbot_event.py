@@ -79,20 +79,28 @@ class events(object):
             self.stack.append(name)
         if id ==  'BoardnameEnd':
             self.event_flush()
-            self.webpatch = web_patchwork(self.tb, 'webpatch.html')
-            self.ignoretclist = ['tc_workfd_check_cmd_success.py',
+            if (self.tb.create_webpatch == 'yes'):
+                self.webpatch = web_patchwork(self.tb, 'webpatch.html')
+            if (self.tb.create_dot == 'yes'):
+                self.ignoretclist = ['tc_workfd_check_cmd_success.py',
                  'tc_lab_cp_file.py',
                  'tc_workfd_check_if_file_exist.py',
                  'tc_workfd_rm_file.py']
-            self.dot = dot(self.tb, 'tc.dot', 'log/event.log', self.ignoretclist)
-            self.ignoretclist = ['tc_workfd_check_cmd_success.py']
-            self.statistic = statistic_plot_backend(self.tb, 'stat.dat', 'log/event.log', self.ignoretclist)
-            self.dashboard = dashboard(self.tb, 'log/event.log', 'localhost', 'tbot', 'tbot', 'tbot_root', 'tbot_results')
+                self.dot = dot(self.tb, 'tc.dot', 'log/event.log', self.ignoretclist)
+            if (self.tb.create_statistic == 'yes'):
+                self.statistic = statistic_plot_backend(self.tb, 'stat.dat', 'log/event.log', self.ignoretclist)
+            if (self.tb.create_dashboard == 'yes'):
+                self.dashboard = dashboard(self.tb, 'log/event.log', 'localhost', 'tbot', 'tbot', 'tbot_root', 'tbot_results')
+
             # execute the event backends
-            self.webpatch.create_webfile()
-            self.dot.create_dotfile()
-            self.statistic.create_statfile()
-            self.dashboard.insert_test_into_db()
+            if (self.tb.create_webpatch == 'yes'):
+                self.webpatch.create_webfile()
+            if (self.tb.create_dot == 'yes'):
+                self.dot.create_dotfile()
+            if (self.tb.create_statistic == 'yes'):
+                self.statistic.create_statfile()
+            if (self.tb.create_dashboard == 'yes'):
+                self.dashboard.insert_test_into_db()
 
         if id == 'End':
             self.stack.pop()
