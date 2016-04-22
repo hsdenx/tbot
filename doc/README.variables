@@ -22,6 +22,13 @@ INFO      20             more Infos
 DEBUG     10
 NOTSET     0
 
+tc_lab_compile_uboot_makeoptions:
+  used in src/tc/tc_lab_compile_uboot.py
+  make it possible to set options in the "make all"
+  all, when compiling u-boot.
+  default:
+  '-j4'
+
 tc_lab_source_dir:
   directory on the lab PC, where tbot downloads source code
 

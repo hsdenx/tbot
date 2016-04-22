@@ -24,7 +24,7 @@ tb.eof_write_lx_cmd_check(tb.workfd, tmp)
 tmp = "make " + tb.tc_lab_compile_uboot_boardname + "_defconfig"
 tb.eof_write_lx_cmd_check(tb.workfd, tmp)
 
-tmp = "make all"
+tmp = "make " + self.tc_lab_compile_uboot_makeoptions + " all"
 tb.eof_write_lx_cmd_check(tb.workfd, tmp)
 
 tb.workfd = savefd

@@ -104,6 +104,11 @@ except AttributeError:
     self.tc_lab_compile_uboot_boardname = self.boardname
 
 try:
+    self.tc_lab_compile_uboot_makeoptions
+except AttributeError:
+    self.tc_lab_compile_uboot_makeoptions = '-j4'
+
+try:
     self.tftpboardname
 except AttributeError:
     self.tftpboardname = self.boardname
