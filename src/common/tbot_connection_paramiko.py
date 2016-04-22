@@ -34,6 +34,15 @@ class Connection(object):
         self.logbuf = ''
         self.ssh = False
         self.accept_all = True
+        self.lastpos = 0
+        # list of strings, which get ignored
+        self.ign = ['==>']
+        self.cnt_ign = len(self.ign)
+        # list of strings, which are not allowed
+        # ToDo make them configurable and make this
+        # option enable/disable
+        self.error = ['Resetting CPU']
+        self.cnt_error = len(self.error)
 
     def open_paramiko(self, user, ip, passwd):
         # look in paramiko/demos/demo_simple.py
@@ -232,10 +241,10 @@ class Connection(object):
         :return: string(index) where found, 'none'
         """
         i = 0
-        #print("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP START", self.name)
-        #print("buf", buf)
-        #print("string", string)
-        #print("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP")
+        # print("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP START", self.name)
+        # print("buf", buf)
+        # print("string", string)
+        # print("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP")
         lens = len(string)
         bufl = len(buf)
         if bufl < lens:
@@ -268,23 +277,74 @@ class Connection(object):
         #print("EEEEEEEEEEEEEEEEE none ")
         return 'none'
 
-    def __search_strings(self, se):
+    def search_one_strings(self, se):
         """ search in self.data if a string from se is found
         :return: 'none' if nothing is found, else str(index)
         """
         i = 0
+        # print("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP START")
+        # print("buf", self.data)
+        # print("se", se)
+        # print("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP")
         for tmp in se:
             ret = self.__search_string(self.data, tmp)
+            # print("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP ret", ret)
             if ret == 'none':
                 i += 1
                 continue
-            # found index in self.data
-            # copy self.data from 0 - index
-            ind = int(ret)
-            ind += len(tmp)
-            self.logbuf = self.data[0:ind]
-            self.data = self.data[ind:]
+
+            # save position
+            self.lastpos = int(ret) + len(tmp)
+            # print("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP lastpos ", self.lastpos, len(tmp), tmp)
             return str(i)
+
+        # print("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP ret none")
+        return 'none'
+
+    def copy_data(self, pos):
+        # copy self.data from 0 - index
+        self.logbuf = self.data[0:pos]
+        self.data = self.data[pos:]
+
+    def __search_strings(self, se):
+        """ search in self.data if a string from se is found
+        :return: 'none' if nothing is found,
+                 else str(index) is found
+        """
+	reterr = self.search_one_strings(self.error)
+        if reterr != 'none':
+            return 'error'
+
+        # if retsring before ign, return retstring
+        # if ign before retstring reutrn 'ign'
+        # print("CCCCCCCCCCCCCCCCCCCCCCCCC search string")
+	ret_str = self.search_one_strings(se)
+        lp_str = self.lastpos
+        # print("CCCCCCCCCCCCCCCCCCCCCCCCC search ign")
+	ret_ign = self.search_one_strings(self.ign)
+        lp_ign = self.lastpos
+
+        # print("CCCCCCCCCCCCCCCCCCCCCCCCC", lp_str, lp_ign)
+        # print("CCCCCCCCCCCCCCCCCCCCCCCCC", ret_str, ret_ign)
+        if ret_str == 'none' and ret_ign != 'none':
+            self.copy_data(lp_ign)
+            return 'ign'
+        if ret_str != 'none' and ret_ign == 'none':
+            self.copy_data(lp_str)
+            return ret_str
+        if ret_str != 'none' and ret_ign != 'none':
+            if lp_str > lp_ign:
+                self.copy_data(lp_ign)
+                return 'ign'
+            else:
+                self.copy_data(lp_str)
+                return ret_str
+
+        # if nothing found, check at the end for prompt
+	ret = self.search_one_strings(self._tolist(self.prompt))
+        if ret != 'none':
+            self.copy_data(self.lastpos)
+            return 'prompt'
 
         return 'none'
 
@@ -296,18 +356,11 @@ class Connection(object):
                         'exception' if exception occured
                         else string index
         """
-        # list of strings, which get ignored
-        ign = ['==>']
-        cnt_ign = len(ign)
-        # list of strings, which are not allowed
-        # ToDo make them configurable and make this
-        # option enable/disable
-        error = ['Resetting CPU']
-        cnt_error = len(error)
         # search first ignore strings, then the string to
         # search, and at the end, search the prompt
-        se = self._tolist(ign, error, string, self.prompt)
-        # print("CCCCCC expectstring", se, cnt_ign, cnt_error)
+        # se = self._tolist(ign, error, string, self.prompt)
+        se = self._tolist(string)
+        # print("EEEEEEEEEEEEEEEEEE expectstring", se, self.data)
         if self.data == '':
             # if we have no data, read it
             tmp = self.lab_recv()
@@ -323,7 +376,7 @@ class Connection(object):
         loop = True
         while(loop == True):
             ret = self.__search_strings(se)
-            # print("CCCCC expectstring ret", se, ret, cnt_ign, cnt_error)
+            # print("EEEEEEE expectstring ret", ret)
             if ret == 'none':
                 tmp = self.lab_recv()
                 self.logbuf += self.data
@@ -333,23 +386,18 @@ class Connection(object):
                     # print("CCCCCCC expectsrting labrecv second", ret)
                     self.tb.event.create_event_log(self, "re", self.data)
                     return 'exception'
-            elif ret < str(cnt_ign):
+            elif ret == 'ign':
                 self.tb.event.create_event_log(self, "ig", self.data)
                 continue
-            elif ret < str(cnt_ign + cnt_error):
+            elif ret == 'error':
                 self.tb.event.create_event_log(self, "er", self.data)
                 self.tb.end_tc(False)
             else:
                 loop = False
         
         self.tb.event.create_event_log(self, "r", self.logbuf)
-        count = len(se)
-        count -= 1
-        #print("CCCCCC ret", ret, count, cnt_ign, str(int(ret) - cnt_ign))
-        if ret == str(count):
-            return 'prompt'
-
-        return str(int(ret) - (cnt_ign + cnt_error))
+        # print("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC ret", ret)
+        return ret
 
     def flush(self):
         """ read out all bytes from connection
