@@ -36,6 +36,8 @@ while tmp == True:
         load_fail = True
     elif ret == '2':
         load_fail = True
+        # send Ctrl-C
+        self.send_ctrl_c(c)
     elif ret == '3':
         load_fail = True
     elif ret == 'prompt':
