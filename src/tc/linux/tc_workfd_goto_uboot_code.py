@@ -16,7 +16,7 @@
 # switch into U-Boot source
 from tbotlib import tbot
 
-logging.info("args: %s", tb.workfd)
+logging.info("args: %s", tb.workfd.name)
 
 tmp = "cd " + tb.tc_lab_source_dir + "/u-boot-" + tb.boardlabname
 tb.eof_write_lx_cmd_check(tb.workfd, tmp)
