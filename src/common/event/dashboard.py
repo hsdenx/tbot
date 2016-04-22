@@ -99,15 +99,17 @@ class dashboard(object):
         # now create the images, and move them to the webserverdirectory
         # ToDo:
         # catch errors
-        newdir = self.webdir + '/id_' + str(self.iddb)
-        os.system("sudo mkdir " + newdir)
+        newdir = self.webdir + '/tbot/id_' + str(self.iddb)
+        os.system("mkdir " + newdir)
         if (self.tb.create_dot == 'yes'):
             os.system("dot -Tpng tc.dot > tc.png")
-            tmp = "sudo cp tc.png " + newdir + "/graph.png"
+            tmp = "cp tc.png " + newdir + "/graph.png"
             os.system(tmp)
         if (self.tb.create_statistic == 'yes'):
             os.system("gnuplot src/files/balkenplot.sem")
-            tmp = "sudo cp output.jpg " + newdir + "/statistic.jpg"
+            tmp = "cp output.jpg " + newdir + "/statistic.jpg"
             os.system(tmp)
+        tmp = "cp " + self.tb.logfilen + " " + newdir + "/tbot.log"
+        os.system(tmp)
         # at the end, close
         self.fdin.close()
