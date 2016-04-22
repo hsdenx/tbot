@@ -50,4 +50,6 @@ while tmp == True:
         tmp = True
         ret = True
 
+tb.event.create_event('main', tb.boardname, "UBOOT_VERSION", tb.tc_return)
+
 tb.end_tc(ret)

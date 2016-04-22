@@ -79,6 +79,14 @@ class dashboard(object):
                         self.suc = '0'
             if tmp[self.ev.id] == 'Boardname':
                 self.dt = tmp[self.ev.date] + " " + tmp[self.ev.time]
+            if tmp[self.ev.id] == 'UBOOT_DEFCONFIG':
+                self.defname = tmp[self.ev.value]
+            if tmp[self.ev.id] == 'UBOOT_VERSION':
+                if self.bina == 'unknown':
+                    self.bina = ' '.join(tmp[self.ev.value:])
+                else:
+                    self.bina += ' <br> '
+                    self.bina += ' '.join(tmp[self.ev.value:])
             if tmp[self.ev.id] == 'Toolchain':
                 self.tool = ' '.join(tmp[self.ev.value:])
 

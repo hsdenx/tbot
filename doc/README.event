@@ -24,6 +24,12 @@ PW_CLEAN       current patchworknumber patch is clean or not
 PW_AA          current patchworknumber patch is already applied
 PW_APPLY       current patchworknumber patch is applies clean or not
 
+src/tc/tc_lab_compile_uboot.py
+UBOOT_DEFCONFIG used U-Boot configuration
+
+src/tc/uboot/tc_ub_get_version.py
+UBOOT_VERSION   U-Boot/SPL version
+
 planned Event backends:
 =======================
 

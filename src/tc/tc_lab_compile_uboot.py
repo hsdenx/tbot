@@ -21,7 +21,9 @@ tb.workfd = tb.c_ctrl
 tmp = "make mrproper"
 tb.eof_write_lx_cmd_check(tb.workfd, tmp)
 
-tmp = "make " + tb.tc_lab_compile_uboot_boardname + "_defconfig"
+defname = tb.tc_lab_compile_uboot_boardname + "_defconfig"
+tmp = "make " + defname
+tb.event.create_event('main', tb.boardname, "UBOOT_DEFCONFIG", defname)
 tb.eof_write_lx_cmd_check(tb.workfd, tmp)
 
 tmp = "make " + self.tc_lab_compile_uboot_makeoptions + " all"
