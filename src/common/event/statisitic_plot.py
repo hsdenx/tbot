@@ -58,12 +58,20 @@ class statistic_plot_backend(object):
         self.tc_list = []
         self.ignoretclist = ignorelist
 
+    def close(self):
+        self.fd.close()
+        self.fdin.close()
+
+    def __del__(self):
+        self.close()
+
     def create_statfile(self):
         self.analyse()
         self.print_list()
         self.write_header()
         self.write_table()
         self.write_bottom()
+        self.close()
  
     def write_header(self):
         self.fd.write('Name\tFail\tOk\n')
