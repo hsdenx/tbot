@@ -24,7 +24,6 @@ import importlib
 sys.path.append("src/common/event/")
 from web_patchwork import web_patchwork
 from dot import dot
-from dashboard import dashboard
 from statisitic_plot import statistic_plot_backend
 
 class events(object):
@@ -90,6 +89,7 @@ class events(object):
             if (self.tb.create_statistic == 'yes'):
                 self.statistic = statistic_plot_backend(self.tb, 'stat.dat', 'log/event.log', self.ignoretclist)
             if (self.tb.create_dashboard == 'yes'):
+                from dashboard import dashboard
                 self.dashboard = dashboard(self.tb, 'log/event.log', 'localhost', 'tbot', 'tbot', 'tbot_root', 'tbot_results')
 
             # execute the event backends
