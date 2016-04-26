@@ -18,7 +18,7 @@
 
 Submitting patches
 
-You can submit your patches (or post questions reagarding the project to the tbot Mailing List:
+You can submit your patches or post questions reagarding the project to the tbot Mailing List:
 
 tbot-devel@googlegroups.com
 
@@ -122,12 +122,16 @@ Basic ideas:
   state. If this fails, the TC fails.
   It is possible to switch in a single TC between board states.
 
-- Events
+- Events:
+
   tbot creates while executing testcases so called events.
   After tbot ended with the testcase it can call event_backends,
   which convert the events to different formats, see more
+
   doc/README.event
+
   demo for a event backend:
+
   http://xeidos.ddns.net/tests/test_db_auslesen.php
 
 Look for more infos into:
