@@ -41,6 +41,10 @@ Why python?
   them on real hw with tbot. Results and the log
   file also accessible in buildbot
 
+  demo for a usecase with buildbot:
+
+  http://xeidos.ddns.net/buildbot/tgrid
+
 -------------------------------------------------
 
 Basic ideas:
@@ -117,6 +121,14 @@ Basic ideas:
   the requested  board state, tbot tries to switch into the correct
   state. If this fails, the TC fails.
   It is possible to switch in a single TC between board states.
+
+- Events
+  tbot creates while executing testcases so called events.
+  After tbot ended with the testcase it can call event_backends,
+  which convert the events to different formats, see more
+  doc/README.event
+  demo for a event backend:
+  http://xeidos.ddns.net/tests/test_db_auslesen.php
 
 Look for more infos into:
 ```

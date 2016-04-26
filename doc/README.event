@@ -47,8 +47,14 @@ planned Event backends:
 - xunit:
   create xunit files for presenting the results in jenkins
 
+- statistic
+  use gnuplot for a ploting some TC statistic results.
+  src/common/event/statisitic_plot.py
+
 - cdash
   notification to a central server of the testresults, push principle
+  src/common/event/dashboard.py
+  http://xeidos.ddns.net/tests/test_db_auslesen.php  
 
 - kernel CI
   adapt to a format, so the testresults can be presented at kernel CI
