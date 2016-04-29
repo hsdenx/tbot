@@ -662,6 +662,11 @@ except AttributeError:
     self.tc_lab_denx_connect_to_board_tc = 'tc_lab_denx_connect_to_board.py'
 
 try:
+    self.tc_lab_denx_disconnect_from_board_tc
+except AttributeError:
+    self.tc_lab_denx_disconnect_from_board_tc = 'tc_lab_denx_disconnect_from_board.py'
+
+try:
     self.tc_ub_memory_ram_ws_base
 except AttributeError:
     self.tc_ub_memory_ram_ws_base = 'undef'

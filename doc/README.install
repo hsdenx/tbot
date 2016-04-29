@@ -90,7 +90,7 @@ $
 
     - now copy this file to for example
       (replace XXX to a proper value)
-      cp src/tc/tc_lab_denx_connect_to_board.py src/tc/tc_lab_denx_connect_to_board_XXX.py
+      cp src/tc/tc_lab_denx_connect_to_board.py src/tc/tc_lab_XXX_connect_to_board.py
       and adapt the commands to your needs.
 
       If connect fails end this TC with "tb.end_tc(False)"
@@ -106,7 +106,7 @@ $
       https://github.com/hsdenx/tbot/blob/master/tbot_dxr2.cfg#L24
 
     - set in your board config file:
-      self.tc_lab_denx_connect_to_board_tc = 'tc_lab_denx_connect_to_board_XXX.py'
+      self.tc_lab_denx_connect_to_board_tc = 'tc_lab_XXX_connect_to_board.py'
 
   remarks while writting this:
   - Currently there is only the denx VL. Original idea was to include

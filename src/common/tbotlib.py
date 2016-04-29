@@ -222,6 +222,22 @@ class tbot(object):
         self.workfd = save_workfd
         return ret
 
+    def disconnect_from_board(self, boardname):
+        """ disconnect from the board
+        """
+        tmp = "disconnect from board " + boardname + " using tc " + self.tc_lab_denx_disconnect_from_board_tc
+        logging.debug(tmp)
+
+        try:
+            save_workfd = self.workfd
+        except AttributeError:
+            save_workfd = self.c_ctrl
+
+        self.workfd = self.c_con
+        ret = self.call_tc(self.tc_lab_denx_disconnect_from_board_tc)
+        self.workfd = save_workfd
+        return ret
+
     def get_board_state(self, name):
         """ Get boardstate of the board in the lab
             if it send a response if return is pressed
