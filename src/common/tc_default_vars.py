@@ -761,3 +761,8 @@ try:
     self.create_webpatch
 except AttributeError:
     self.create_webpatch = 'no'
+
+try:
+    self.tc_ub_test_py_hook_script_path
+except AttributeError:
+    self.tc_ub_test_py_hook_script_path = '$HOME/testframework/hook-scripts'
