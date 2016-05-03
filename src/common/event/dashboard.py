@@ -14,6 +14,8 @@
 # MySQLdb python module is needed, install it for
 # example on the raspberry pi with:
 # apt-get install python-mysqldb
+# apt-get install sshpass
+# passing password to scp
 import logging
 import sys
 import os
@@ -63,6 +65,7 @@ class dashboard(object):
         self.bina = 'unknown'
         self.defname = 'unknown'
         self.tcname = ''
+        self.testpypatch = ''
         self.suc = '1'
         for line in self.fdin:
             tmp = line.split()
@@ -84,6 +87,8 @@ class dashboard(object):
                 self.dt = tmp[self.ev.date] + " " + tmp[self.ev.time]
             if tmp[self.ev.id] == 'UBOOT_DEFCONFIG':
                 self.defname = tmp[self.ev.value]
+            if tmp[self.ev.id] == 'UBOOT_TEST_PY':
+                self.testpypatch = tmp[self.ev.value]
             if tmp[self.ev.id] == 'UBOOT_VERSION':
                 if self.bina == 'unknown':
                     self.bina = ' '.join(tmp[self.ev.value:])
@@ -112,6 +117,13 @@ class dashboard(object):
             os.system("gnuplot src/files/balkenplot.sem")
             tmp = "cp output.jpg " + newdir + "/statistic.jpg"
             os.system(tmp)
+        if self.testpypatch != '':
+            passwd = self.tb.tbot_get_password(self.tb.user, 'lab')
+            tmp = "sshpass -p '" + passwd + "' scp " + self.tb.user + "@" +  self.tb.ip +  ":" + self.testpypatch + "/test-log.html " + newdir
+            os.system(tmp)
+            tmp = "sshpass -p '" + passwd + "' scp " + self.tb.user + "@" +  self.tb.ip +  ":" + self.testpypatch + "/multiplexed_log.css " + newdir
+            os.system(tmp)
+
         tmp = "cp " + self.tb.logfilen + " " + newdir + "/tbot.log"
         os.system(tmp)
         # at the end, close

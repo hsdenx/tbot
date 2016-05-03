@@ -60,4 +60,6 @@ if ret == False:
 
 tb.set_board_state("u-boot")
 tb.workfd = savefd
+
+tb.event.create_event('main', tb.boardname, "UBOOT_TEST_PY", tc_ub_test_py_uboot_dir)
 tb.end_tc(cmdsuccess)
