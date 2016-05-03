@@ -67,6 +67,13 @@ tc_workfd_apply_patchwork_patches_eof:
   default:
   'yes'
 
+tc_workfd_connect_with_kermit_rlogin:
+  used in tc src/tc/linux/tc_workfd_connect_with_kermit.py
+  make it possible to connect to a "rlogin" connection,
+  instad to a serial.
+  default:
+  'none'
+
 create_dot:
   if 'yes' create at the end a "graphviz" image
   default:

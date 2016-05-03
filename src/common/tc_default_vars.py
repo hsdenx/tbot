@@ -617,6 +617,11 @@ except AttributeError:
     self.tc_workfd_connect_with_kermit_ssh = "none"
 
 try:
+    self.tc_workfd_connect_with_kermit_rlogin
+except AttributeError:
+    self.tc_workfd_connect_with_kermit_rlogin = "none"
+
+try:
     self.kermit_line
 except AttributeError:
     self.kermit_line = '/dev/ttyUSB0'
