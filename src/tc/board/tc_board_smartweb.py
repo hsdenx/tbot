@@ -93,6 +93,10 @@ tb.workfd = tb.c_ctrl
 tb.statusprint("start all DUTS testcases")
 tb.eof_call_tc("uboot/duts/tc_ub_start_all_duts.py")
 
+#call test/py
+tb.statusprint("u-boot test/py test")
+tb.eof_call_tc("tc_ub_test_py.py")
+
 #call upd_dfu
 tb.statusprint("u-boot dfu test")
 tb.eof_call_tc("tc_ub_dfu.py")
