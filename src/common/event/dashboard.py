@@ -66,6 +66,7 @@ class dashboard(object):
         self.defname = 'unknown'
         self.tcname = ''
         self.testpypatch = ''
+        self.uboot_src_path = ''
         self.suc = '1'
         for line in self.fdin:
             tmp = line.split()
@@ -87,6 +88,8 @@ class dashboard(object):
                 self.dt = tmp[self.ev.date] + " " + tmp[self.ev.time]
             if tmp[self.ev.id] == 'UBOOT_DEFCONFIG':
                 self.defname = tmp[self.ev.value]
+            if tmp[self.ev.id] == 'UBOOT_SRC_PATH':
+                self.uboot_src_path = tmp[self.ev.value]
             if tmp[self.ev.id] == 'UBOOT_TEST_PY':
                 self.testpypatch = tmp[self.ev.value]
             if tmp[self.ev.id] == 'UBOOT_VERSION':
@@ -122,6 +125,10 @@ class dashboard(object):
             tmp = "sshpass -p '" + passwd + "' scp " + self.tb.user + "@" +  self.tb.ip +  ":" + self.testpypatch + "/test-log.html " + newdir
             os.system(tmp)
             tmp = "sshpass -p '" + passwd + "' scp " + self.tb.user + "@" +  self.tb.ip +  ":" + self.testpypatch + "/multiplexed_log.css " + newdir
+            os.system(tmp)
+        if self.uboot_src_path != '':
+            passwd = self.tb.tbot_get_password(self.tb.user, 'lab')
+            tmp = "sshpass -p '" + passwd + "' scp " + self.tb.user + "@" +  self.tb.ip +  ":" + self.uboot_src_path + "/.config " + newdir
             os.system(tmp)
 
         tmp = "cp " + self.tb.logfilen + " " + newdir + "/tbot.log"

@@ -26,6 +26,7 @@ PW_APPLY       current patchworknumber patch is applies clean or not
 
 src/tc/tc_lab_compile_uboot.py
 UBOOT_DEFCONFIG used U-Boot configuration
+UBOOT_SRC_PATH  path, where U-boot source is located
 
 src/tc/uboot/tc_ub_test_py.py
 UBOOT_TEST_PY   path to test py result
