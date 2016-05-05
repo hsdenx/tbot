@@ -34,22 +34,17 @@ tc_ub_test_py_uboot_dir = tb.tc_lab_source_dir + "/u-boot-" + tb.boardlabname
 
 cmd = 'PATH=' + tb.tc_ub_test_py_hook_script_path + ':$PATH;PYTHONPATH=' + tc_ub_test_py_uboot_dir + ';./test/py/test.py --bd ' + tb.boardname + ' -s --build-dir .'
 tb.eof_write(c, cmd)
-searchlist = ['INTERNALERROR', '====', 'failed', 'error']
+searchlist = ['INTERNALERROR', 'failed', 'error']
 tmp = True
 cmdsuccess = True
-track = 0
 while tmp == True:
     ret = tb.tbot_read_line_and_check_strings(tb.workfd, searchlist)
     if ret == '0':
         cmdsuccess = False
     if ret == '1':
-        track = 1
+        cmdsuccess = False
     if ret == '2':
-        if track == 1:
-            cmdsuccess = False
-    if ret == '3':
-        if track == 1:
-            cmdsuccess = False
+        cmdsuccess = False
     if ret == 'prompt':
         tmp = False
 
