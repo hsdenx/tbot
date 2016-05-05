@@ -286,20 +286,42 @@ class Connection(object):
         # print("buf", self.data)
         # print("se", se)
         # print("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP")
+        lastpos = []
         for tmp in se:
             ret = self.__search_string(self.data, tmp)
-            # print("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP ret", ret)
+            # print("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP ret", ret, i)
             if ret == 'none':
+                lastpos.append('none')
                 i += 1
                 continue
 
             # save position
-            self.lastpos = int(ret) + len(tmp)
-            # print("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP lastpos ", self.lastpos, len(tmp), tmp)
-            return str(i)
+            lastpos.append(str(int(ret) + len(tmp)))
 
-        # print("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP ret none")
-        return 'none'
+        # print("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP lastpos", lastpos)
+        i = 0
+        f = 0
+        p = 0
+        init = 'no'
+        for tmp in se:
+            if lastpos[i] != 'none':
+                if init == 'no':
+                    p = int(lastpos[i])
+                    f = i
+                    init = 'yes'
+                else:
+                    if (int(lastpos[i]) < p):
+                        p = int(lastpos[i])
+                        f = i
+            i += 1
+
+        if init == 'no':
+            # print("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP ret none")
+            return 'none'
+        else:
+            self.lastpos = p
+            # print("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP lastpos ", self.lastpos)
+            return str(f)
 
     def copy_data(self, pos):
         # copy self.data from 0 - index
