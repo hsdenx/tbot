@@ -18,6 +18,9 @@
 #
 from tbotlib import tbot
 
+#set board state for which the tc is valid
+tb.set_board_state("u-boot")
+
 tb.workfd = tb.c_ctrl
 tb.eof_call_tc("tc_workfd_rm_uboot_code.py")
 tb.eof_call_tc("tc_board_tqm5200s_ub_comp_install.py")
