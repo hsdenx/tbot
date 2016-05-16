@@ -355,7 +355,7 @@ class Connection(object):
             self.copy_data(lp_str)
             return ret_str
         if ret_str != 'none' and ret_ign != 'none':
-            if lp_str > lp_ign:
+            if lp_str >= lp_ign:
                 self.copy_data(lp_ign)
                 return 'ign'
             else:

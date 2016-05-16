@@ -24,7 +24,6 @@ tb.set_board_state("u-boot")
 tb.workfd = tb.c_ctrl
 tb.eof_call_tc("tc_workfd_rm_uboot_code.py")
 tb.eof_call_tc("tc_board_tqm5200s_ub_comp_install.py")
-
 tb.statusprint("start all DUTS testcases")
 tb.eof_call_tc("uboot/duts/tc_ub_start_all_duts.py")
 
