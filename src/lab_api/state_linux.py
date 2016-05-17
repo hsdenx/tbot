@@ -58,8 +58,7 @@ def state_lx_parse_input(tb, c, retry, sl):
         if ret == '2':
             tb.eof_call_tc("tc_ub_boot_linux.py")
             c.set_timeout(oldt)
-            i = 0
-            continue
+            return True
 
         if ret == '3':
             tb.write_stream(c, 'root')
