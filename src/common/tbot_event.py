@@ -121,7 +121,7 @@ class events(object):
         tmp = "EVENT " + strftime("%Y-%m-%d %H:%M:%S", gmtime()) + " log " + name + " " + str(c.name) + " " + str(dir) + " " + string + "\n"
         self.fd.write(tmp)
         self.event_list.append(tmp)
-        if dir == 'r':
+        if dir == 'r' or dir == 're' or dir == 'ig' or dir == 'er':
             se = string.rstrip()
             se = se.lstrip()
             self.tb.con_log("%s: %s", c.name, se)
