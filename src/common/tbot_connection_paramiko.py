@@ -41,6 +41,7 @@ class Connection(object):
         # list of strings, which are not allowed
         # ToDo make them configurable and make this
         # option enable/disable
+        self.check_error = True
         self.error = ['Resetting CPU']
         self.cnt_error = len(self.error)
 
@@ -328,14 +329,18 @@ class Connection(object):
         self.logbuf = self.data[0:pos]
         self.data = self.data[pos:]
 
+    def set_check_error(self, value):
+        self.check_error = value
+
     def __search_strings(self, se):
         """ search in self.data if a string from se is found
         :return: 'none' if nothing is found,
                  else str(index) is found
         """
-	reterr = self.search_one_strings(self.error)
-        if reterr != 'none':
-            return 'error'
+        if self.check_error:
+            reterr = self.search_one_strings(self.error)
+            if reterr != 'none':
+                return 'error'
 
         # if retsring before ign, return retstring
         # if ign before retstring reutrn 'ign'
