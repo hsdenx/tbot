@@ -56,8 +56,8 @@ def state_lx_parse_input(tb, c, retry, sl):
             return True
 
         if ret == '2':
-            tb.eof_call_tc("tc_ub_boot_linux.py")
             c.set_timeout(oldt)
+            tb.eof_call_tc("tc_ub_boot_linux.py")
             return True
 
         if ret == '3':
