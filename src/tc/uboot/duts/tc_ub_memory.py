@@ -51,6 +51,9 @@ tb.set_board_state("u-boot")
 basecmdlist = [
 "base",
 "md 0 0xc",
+]
+
+basecmdlist2 = [
 "base " + tb.tc_ub_memory_ram_ws_base,
 "md 0 0xc",
 "md 0 0x40",
@@ -58,7 +61,10 @@ basecmdlist = [
 ]
 
 tb.eof_write_cmd(tb.c_con, "help base")
+tb.c_con.set_check_error(False)
 tb.eof_write_cmd_list(tb.c_con, basecmdlist)
+tb.c_con.set_check_error(True)
+tb.eof_write_cmd_list(tb.c_con, basecmdlist2)
 
 tmp = int(tb.tc_ub_memory_ram_ws_base, 16)
 tmp += 4
