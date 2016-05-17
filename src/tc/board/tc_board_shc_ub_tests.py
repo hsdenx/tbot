@@ -54,6 +54,16 @@ tb.tc_lab_cp_file_a = "spl/u-boot-spl.map"
 tb.tc_lab_cp_file_b = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir + "/u-boot-spl.map"
 tb.eof_call_tc("tc_lab_cp_file.py")
 
+tb.workfd = tb.c_ctrl
+tb.eof_call_tc("tc_workfd_goto_uboot_code.py")
+
+# check U-Boot version
+tb.workfd = tb.c_ctrl
+tb.tc_ub_get_version_file = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir + '/u-boot.bin'
+tb.tc_ub_get_version_string = 'U-Boot 20'
+tb.eof_call_tc("tc_ub_get_version.py")
+tb.uboot_vers = tb.tc_return
+
 # update U-Boot
 tb.eof_call_tc("tc_board_shc_upd_ub.py")
 
