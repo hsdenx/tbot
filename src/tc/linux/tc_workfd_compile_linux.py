@@ -64,8 +64,15 @@ if tb.tc_workfd_compile_linux_modules != 'none':
 
 # compile DT (if wanted)
 if tb.tc_workfd_compile_linux_dt_name != 'none':
-    tmp = "make " + tb.tc_workfd_compile_linux_dt_name
-    tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+    x=[]
+    for i in tb.tc_workfd_compile_linux_dt_name:
+        if isinstance(i, str):
+            x.append(i)
+        else:
+            x += list(i)
+    for i in x:
+        tmp = "make " + i
+        tb.eof_write_lx_cmd_check(tb.workfd, tmp)
 
 # create FIT image (if wanted)
 # $UBPATH/tools/mkimage  -f $FIT_FILE_NAME $BOARD.itb
