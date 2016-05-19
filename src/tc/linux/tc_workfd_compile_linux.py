@@ -19,6 +19,7 @@ from tbotlib import tbot
 
 logging.info("args: workdfd: %s %s", tb.workfd.name, tb.tc_workfd_compile_linux_clean)
 logging.info("args: %s", tb.tc_workfd_compile_linux_load_addr)
+logging.info("args: %s", tb.tc_workfd_compile_linux_makeoptions)
 logging.info("args: %s %s", tb.tc_workfd_compile_linux_fit_its_file, \
              tb.tc_workfd_compile_linux_fit_file)
 logging.info("args: %s %s", tb.tc_workfd_compile_linux_boardname, \
@@ -50,12 +51,12 @@ else:
 tmp = "make " + tb.tc_workfd_compile_linux_boardname + "_defconfig"
 tb.eof_write_lx_cmd_check(tb.workfd, tmp)
 
-tmp = "make" + ld + "uImage"
+tmp = "make" + ld + " " + tb.tc_workfd_compile_linux_makeoptions + " uImage"
 tb.eof_write_lx_cmd_check(tb.workfd, tmp)
 
 # compile modules (if wanted)
 if tb.tc_workfd_compile_linux_modules != 'none':
-    tmp = "make" + ld + "modules"
+    tmp = "make" + ld + " " + tb.tc_workfd_compile_linux_makeoptions + " modules"
     tb.eof_write_lx_cmd_check(tb.workfd, tmp)
     # install modules (if wanted)
     if tb.tc_workfd_compile_linux_modules_path != 'none':

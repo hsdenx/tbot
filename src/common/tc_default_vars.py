@@ -602,6 +602,11 @@ except AttributeError:
     self.tc_workfd_compile_linux_mkimage = '/home/hs/i2c/u-boot/tools/mkimage'
 
 try:
+    self.tc_workfd_compile_linux_makeoptions
+except AttributeError:
+    self.tc_workfd_compile_linux_makeoptions = ''
+
+try:
    self.workfd_get_patchwork_number_user
 except AttributeError:
    self.workfd_get_patchwork_number_user = 'hs'

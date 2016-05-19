@@ -74,6 +74,13 @@ tc_workfd_connect_with_kermit_rlogin:
   default:
   'none'
 
+tc_work_compile_linux_makeoptions:
+  used in src/tc/linux/tc_workfd_compile_linux.py
+  make it possible to set options in the "make uImage",
+  when compiling linux.
+  default:
+  ''
+
 create_dot:
   if 'yes' create at the end a "graphviz" image
   default:
