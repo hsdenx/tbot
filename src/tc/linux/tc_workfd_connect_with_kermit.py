@@ -80,8 +80,8 @@ if tb.tc_workfd_connect_with_kermit_rlogin != 'none':
             tb.end_tc(False)
         else:
             tmp = False
+    tb.workfd.set_timeout(oldt)
 
-tb.workfd.set_timeout(oldt)
 # set now U-Boot prompt ?
 tb.workfd.set_prompt(tb.uboot_prompt)
 tb.end_tc(True)
