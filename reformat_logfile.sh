@@ -1,7 +1,12 @@
 #!/bin/sh
+# $1 : input logfile
+# $2 : output file
 
 #delete all unnecessary line
-sed '/read '$1'/!d' $2 > gnlmpf
-#delete ":tbotlib   # read_line hs@pollux.denx.org:"
-sed 's/INFO   :tbotlib   # read '$1':/ /g' gnlmpf > $3
+sed '/INFO/d' $1 > gnlmpf
+#delete "tb_ctrl:"
+sed 's/^.*tb_ctrl/tb_ctrl/' gnlmpf > gnlmpf2
+sed 's/^.*tb_con/tb_con/' gnlmpf2 > $2
+
 rm gnlmpf
+rm gnlmpf2
