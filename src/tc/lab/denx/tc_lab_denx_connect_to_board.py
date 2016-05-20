@@ -21,7 +21,7 @@ logging.info("args: %s %s", tb.workfd.name, tb.boardlabname)
 tmp = "connect " + tb.boardlabname
 tb.eof_write(tb.workfd, tmp)
 
-searchlist = ["Unknown target", "Connect", "not accessible", "Locked by process"]
+searchlist = ["Unknown target", "Connect", "not accessible", "Locked by process", "Connection closed by"]
 tmp = True
 connected = True
 while tmp == True:
@@ -33,6 +33,8 @@ while tmp == True:
     elif ret == '2':
         connected = False
     elif ret == '3':
+        connected = False
+    elif ret == '4':
         connected = False
 
 if not connected:
@@ -47,6 +49,9 @@ if tmp == '2':
     ret = False
 if tmp == '3':
     logging.error("Locked by process")
+    ret = False
+if tmp == '4':
+    logging.error("Conection closed")
     ret = False
 
 tb.workfd.set_timeout(None)
