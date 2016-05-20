@@ -25,16 +25,22 @@ c = tb.c_ctrl
 # apply all patches in tc_lab_apply_patches_dir
 tb.set_term_length(c)
 
-tmp = 'patch -p1 < ' + tb.tc_lab_apply_patches_dir + '/' + '*.patch'
+tmp = 'for i in ' + tb.tc_lab_apply_patches_dir + '/*.patch; do patch -p1 < $i; done'
 tb.eof_write(c, tmp)
 
-searchlist = ["No such"]
+searchlist = ["No such", "FAILED", "Assume -R?"]
 tmp = True
 apply_ok = True
 while tmp == True:
     tmp = tb.tbot_read_line_and_check_strings(c, searchlist)
     if tmp == '0':
         apply_ok = False
+        tmp = True
+    if tmp == '1':
+        apply_ok = False
+        tmp = True
+    if tmp == '2':
+        tb.eof_write(c, 'y')
         tmp = True
     elif tmp == 'prompt':
         tmp = False
