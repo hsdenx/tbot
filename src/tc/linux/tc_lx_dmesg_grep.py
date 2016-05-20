@@ -22,7 +22,7 @@ logging.info("args: %s", tb.tc_lx_dmesg_grep_name)
 tb.set_board_state("linux")
 
 c = tb.c_con
-tmp = 'dmesg | grep "' + tb.tc_lx_dmesg_grep_name + '"'
+tmp = 'dmesg | grep \'' + tb.tc_lx_dmesg_grep_name + '\''
 tb.eof_write(c, tmp)
 tb.eof_expect_string(c, tb.tc_lx_dmesg_grep_name)
 
