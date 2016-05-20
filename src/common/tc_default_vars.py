@@ -427,6 +427,11 @@ except AttributeError:
     self.board_git_bisect_good_commit = 'f9860cf'
 
 try:
+    self.board_git_bisect_patches
+except AttributeError:
+    self.board_git_bisect_patches = 'none'
+
+try:
     self.tc_lab_rm_dir
 except AttributeError:
     self.tc_lab_rm_dir =  self.tc_lab_source_dir + '/u-boot-tqm5200'

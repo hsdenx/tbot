@@ -29,6 +29,13 @@ tc_lab_compile_uboot_makeoptions:
   default:
   '-j4'
 
+board_git_bisect_patches:
+  used in src/tc/tc_board_git_bisect.py
+  contains a directory with patches, which get after each
+  "git bisect" step applied with the "patch" command.
+  default:
+  'none'
+
 tc_lab_source_dir:
   directory on the lab PC, where tbot downloads source code
 

@@ -20,7 +20,7 @@
 # tc for testing good or bad is board_git_bisect_call_tc
 from tbotlib import tbot
 
-logging.info("args: %s %s %s", tb.board_git_bisect_get_source_tc, tb.board_git_bisect_call_tc, tb.board_git_bisect_good_commit)
+logging.info("args: %s %s %s %s", tb.board_git_bisect_get_source_tc, tb.board_git_bisect_call_tc, tb.board_git_bisect_good_commit, tb.board_git_bisect_patches)
 
 #call get u-boot source
 tb.statusprint("get source tree")
@@ -44,20 +44,43 @@ tb.tbot_expect_prompt(c)
 #do the steps
 i = 0
 inwhile = True
+error = False
 while inwhile:
     i += 1
     tb.statusprint("cycle %s" % (i))
     logging.info("cycle %s", i)
+
+    if tb.board_git_bisect_patches != 'none':
+        tmp = tb.tc_lab_apply_patches_dir
+        tb.eof_call_tc("tc_lab_apply_patches.py")
+        tb.tc_lab_apply_patches_dir = tb.board_git_bisect_patches
+
     ret = tb.call_tc(tb.board_git_bisect_call_tc)
     if ret == True:
         tmp = 'git bisect good'
     else:
         tmp = 'git bisect bad'
     tb.eof_write(c, tmp)
-    ret = tb.tbot_expect_string(c, 'the first bad commit')
-    if ret == '0':
-        inwhile = False
-        tb.tbot_expect_prompt(c)
+    tmp2 = True
+    se = ['the first bad commit', 'Aborting']
+    while tmp2 == True:
+        ret = tb.tbot_read_line_and_check_strings(c, se)
+        if ret == '0':
+            inwhile = False
+        if ret == '1':
+            inwhile = False
+            error = True
+        if ret == 'prompt':
+            tmp2 = False
+
+    if tb.board_git_bisect_patches != 'none':
+        tb.eof_write_cmd(c, 'git reset --hard HEAD')
+        tb.eof_write_cmd(c, 'git clean -f')
+
+tb.tc_lab_apply_patches_dir = tmp
+
+if error:
+    tb.end_tc(False)
 
 # print some statistic
 tb.eof_write_cmd(c, 'git bisect visualize')
