@@ -539,7 +539,7 @@ except AttributeError:
 try:
     self.tc_workfd_apply_local_patches_dir
 except AttributeError:
-    self.tc_workfd_apply_local_patches_dir = "/work/hs/tbot/patches/mcx_linux_ml_patches"
+    self.tc_workfd_apply_local_patches_dir = 'none'
 
 try:
     self.tc_workfd_apply_local_patches_checkpatch_cmd
