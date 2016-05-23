@@ -87,6 +87,7 @@ class tbot(object):
         self.workdir = workdir
         self.power_state = 'undef'
         self.tc_stack = []
+        self.donotlog = False
 
         print("CUR WORK PATH: ", self.workdir)
         print("CFGFILE ", self.cfgfile)
@@ -395,6 +396,8 @@ class tbot(object):
         :param args: console string
         :return:
         """
+        if self.donotlog == True:
+            return
         logging.log(self.con_loglevel, *args)
 
     def check_open_fd(self, c):
@@ -412,10 +415,12 @@ class tbot(object):
             logname = 'log/ssh_tb_ctrl.log'
 
         passwd = self.tbot_get_password(self.user, self.ip)
+        self.donotlog = True
         ret = c.create('not needed', logname, self.labprompt, self.user, self.ip, passwd)
         c.set_timeout(None)
         c.set_prompt(self.labsshprompt)
         c.expect_prompt()
+        self.donotlog = False
         self.set_prompt(c, self.linux_prompt,
                         'export PS1="\u@\h [\$(date +%k:%M:%S)] ', ' >"')
 
