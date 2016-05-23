@@ -73,7 +73,7 @@ checks = ['Machine model: aristainetos2',
 'imx-drm display-subsystem: bound imx-ipuv3-crtc.2 (ops ipu_crtc_ops)',
 'imx-drm display-subsystem: bound display@di0 (ops imx_pd_ops)',
 'Console: switching to colour frame buffer device 60x50',
-'rtc-ds1307 2-0068: setting system clock to'
+'rtc-ds1307 2-0068: rtc core: registered m41t00 as rtc0'
 ]
 
 for tb.tc_lx_dmesg_grep_name in checks:
