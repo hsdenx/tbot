@@ -32,7 +32,7 @@ tb.set_board_state("linux")
 
 fname = tb.workdir + "/" + tb.tc_lx_create_reg_file_name
 try:
-    fd = open(fname, 'r+')
+    fd = open(fname, 'w')
 except IOError:
     logging.warning("Could not open: %s", fname)
     tb.end_tc(False)
@@ -42,22 +42,31 @@ c = tb.c_con
 # get Processor, Hardware
 tmp='cat /proc/cpuinfo'
 tb.eof_write(c, tmp)
-ret = tb.tbot_expect_string(c, 'Processor')
+ret = tb.tbot_expect_string(c, 'model name\t:')
 if ret == 'prompt':
     tb.end_tc(False)
-tmp = self.buf.split(":")[1]
-processor = tmp[1:]
-ret = tb.tbot_expect_string(c, 'Hardware')
+ret = tb.tbot_expect_string(c, '\n')
 if ret == 'prompt':
     tb.end_tc(False)
-hw = self.buf.split(":")[1]
+tmp = tb.buf
+processor = tmp.rstrip()
+ret = tb.tbot_expect_string(c, 'Hardware\t:')
+if ret == 'prompt':
+    tb.end_tc(False)
+ret = tb.tbot_expect_string(c, '\n')
+if ret == 'prompt':
+    tb.end_tc(False)
+hw = tb.buf.rstrip()
 tb.tbot_expect_prompt(c)
 tmp = 'cat /proc/version'
 tb.eof_write(c, tmp)
 ret = tb.tbot_expect_string(c, 'Linux version')
 if ret == 'prompt':
     tb.end_tc(False)
-vers = self.buf
+ret = tb.tbot_expect_string(c, '\n')
+if ret == 'prompt':
+    tb.end_tc(False)
+vers = tb.buf.rstrip()
 tb.tbot_expect_prompt(c)
 
 fd.write("# pinmux\n")
@@ -82,16 +91,19 @@ if tb.tc_lx_readreg_type == 'b':
 for i in xrange(start, stop, step):
     tmp = 'devmem2 ' + hex(i) + " " + tb.tc_lx_readreg_type
     tb.eof_write(c, tmp)
-    ret = tb_tbot_expect_string(c, 'opened')
-    if ret = 'prompt':
+    ret = tb.tbot_expect_string(c, 'opened')
+    if ret == 'prompt':
         tb.end_tc(False)
-    ret = tb_tbot_expect_string(c, 'Value at address')
-    if ret = 'prompt':
+    ret = tb.tbot_expect_string(c, 'Value at address')
+    if ret == 'prompt':
         tb.end_tc(False)
-    tmp = self.c_con.buf.split(":")[1]
+    ret = tb.tbot_expect_string(c, '\n')
+    if ret == 'prompt':
+        tb.end_tc(False)
+    tmp = tb.buf.split(":")[1]
     tmp = tmp[1:]
-    fd.write('%-10s %10s %10s %10s\n' % (hex(i), tb.tc_lx_readreg_mask, tb.tc_lx_readreg_type, tmp))
-    tb_tbot_expect_prompt(c)
+    fd.write('%-10s %10s %10s %10s\n' % (hex(i), tb.tc_lx_readreg_mask, tb.tc_lx_readreg_type, tmp.rstrip()))
+    tb.tbot_expect_prompt(c)
 
 fd.close()
 tb.end_tc(True)
