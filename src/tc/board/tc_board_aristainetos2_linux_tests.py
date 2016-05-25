@@ -79,8 +79,6 @@ checks = ['Machine model: aristainetos2',
 for tb.tc_lx_dmesg_grep_name in checks:
     tb.eof_call_tc("tc_lx_dmesg_grep.py")
 
-tb.end_tc(True)
-
 tb.statusprint("tc_mcx pinmux check")
 files = ['src/files/aristainetos2_pinmux.reg']
 for tb.tc_lx_create_reg_file_name in files:
