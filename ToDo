@@ -7,11 +7,6 @@
 - use a dict() for all the parameters
   instead using src/common/tc_defaults.py
 
-* rename denx API to a common name and
-  define ssh as standard -> lap API not really
-  needed for different VL
-  renamed to 'ssh_std'
-
 - Get Vars for TC from U-Boot Code
   started with, see TC:
   src/tc/tc_workfd_get_uboot_config_hex.py
@@ -20,11 +15,6 @@
 - cleanup tbot code
   - get rid of all retry places
   - clean up tbotlib function names
-
-* current loglevel INFO has to much output
-  introduce a new loglevel which only logs the
-  read/write to fd.
-  Done, name: 'CO, name: 'CON''
 
 - introduce a "layering" like yocto do, so U-Boot TC can integrated
   into U-Boot source code.
@@ -62,21 +52,12 @@
   in INFO logging level, to another logging level)
   - make the timestamp configurable
 
-- Open more than 2 filehandles ?
-  Do we need for more complex TC more than 2 filehandles?
-
 - Find a way to document all TC and variables they use in an automated
   way.
 
 - add manpages for the testcases
 
-- lab_api:
-  add ftp put and get ?
-
 - call testcases with arguments
-
-- rework prompt
-  save current prompt for each fd!!
 
 - if tbot fails, start a git biscect section
   and find out, which commit did it
@@ -106,53 +87,13 @@
   - call bitbake
   - cp images
 
-* readreg with devmem and compare with default from
-  file:
-  regaddr mask defaultvalue
-  done: src/tc/tc_lx_check_reg_file.py
-
-  * add testcase which fills this file
-    done: src/tc/tc_lx_create_reg_file.py
-
 - gpio tests
   - check registers with devmem
   - use readreg
 
-* get a list of patchworknumbers from patchwork
-  in your ToDo list ...
-  done for u-boot:
-  src/tc/tc_workfd_get_patchwork_number_list.py
-
 - Delete from the tc_workfd_apply_patchwork_patches_list_hand
   python list an entry, if while "git am" the patch "git am"
   detects, that this patch is already in mainline.
-
-* move power on/off into a testcase, and only
-  call it from lap_api
-  done:
-  src/tc/tc_lab_denx_power.py
-
-* get power state from a board through  testcase
-  done:
-  src/tc/tc_lab_denx_get_power_state.py
-
-* move connect to a board into a testcase and
-  call it from lap_api
-  done:
-  src/tc/tc_lab_denx_connect_to_board.py
-
-  -> lap_api not really needed anymore ... sounds
-     good ...
-
-* timer for starting a testcase. Some testcases
-  do extensive read/write/erase accesses, and if
-  this is done very often (for example every night)
-  hw gets damaged ... so add a possibility to
-  start a testcase only if a timer expires ...
-  done:
-  src/tc/tc_workfd_check_tc_time.py
-  used for example in:
-  src/tc/tc_lx_bonnie.py
 
 - WDT timeout runtime changeable
 
@@ -170,3 +111,5 @@
      - xunit report (xml file for Jenkins visualization)
      - DULG: create DULG specific files
      - kernelCI
+     - format log output into a readable format
+       may something like output from u-boot:/tools/test/py
