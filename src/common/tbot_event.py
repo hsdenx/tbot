@@ -24,6 +24,7 @@ import importlib
 sys.path.append("src/common/event/")
 from web_patchwork import web_patchwork
 from dot import dot
+from html_log import html_log
 from statisitic_plot import statistic_plot_backend
 
 class events(object):
@@ -102,6 +103,8 @@ class events(object):
             if (self.tb.create_dashboard == 'yes'):
                 from dashboard import dashboard
                 self.dashboard = dashboard(self.tb, 'log/event.log', 'localhost', 'tbot', 'tbot', 'tbot_root', 'tbot_results')
+            if (self.tb.create_html_log == 'yes'):
+                self.html_log = html_log(self.tb, 'log/html_log.html')
 
             # execute the event backends
             if (self.tb.create_webpatch == 'yes'):
@@ -112,6 +115,8 @@ class events(object):
                 self.statistic.create_statfile()
             if (self.tb.create_dashboard == 'yes'):
                 self.dashboard.insert_test_into_db()
+            if (self.tb.create_html_log == 'yes'):
+                self.html_log.create_htmlfile()
 
     def create_event_log(self, c, dir, string):
         if self.tb.donotlog == True:

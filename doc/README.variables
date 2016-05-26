@@ -110,6 +110,11 @@ create_webpatch:
   default:
   'no'
 
+create_html_log:
+  if 'yes' create a html log at the end of tbot.
+  default:
+  'no'
+
 tc_ub_test_py_hook_script_path:
   used in src/tc/uboot/tc_ub_test_py.py
   contains the path to the test/py hook-scripts
