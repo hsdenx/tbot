@@ -396,8 +396,6 @@ class tbot(object):
         :param args: console string
         :return:
         """
-        if self.donotlog == True:
-            return
         logging.log(self.con_loglevel, *args)
 
     def check_open_fd(self, c):
