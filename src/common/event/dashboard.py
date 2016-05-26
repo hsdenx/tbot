@@ -120,6 +120,11 @@ class dashboard(object):
             os.system("gnuplot src/files/balkenplot.sem")
             tmp = "cp output.jpg " + newdir + "/statistic.jpg"
             os.system(tmp)
+        if (self.tb.create_html_log == 'yes'):
+            tmp = "cp log/html_log.html " + newdir + "/html_log.html"
+            os.system(tmp)
+            tmp = "cp log/multiplexed_tbotlog.css " + newdir + "/multiplexed_tbotlog.css"
+            os.system(tmp)
         if self.testpypatch != '':
             passwd = self.tb.tbot_get_password(self.tb.user, 'lab')
             tmp = "sshpass -p '" + passwd + "' scp " + self.tb.user + "@" +  self.tb.ip +  ":" + self.testpypatch + "/test-log.html " + newdir
