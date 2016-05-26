@@ -76,7 +76,18 @@ class events(object):
         """
         if id == 'Start':
             self.stack.append(name)
-        if id ==  'BoardnameEnd':
+        if id == 'End':
+            self.stack.pop()
+            try:
+                nametest = self.stack[-1]
+            except:
+                nametest = 'main'
+
+        tmp = "EVENT " + strftime("%Y-%m-%d %H:%M:%S", gmtime()) + " " + str(id) + " " + str(pname) + " " + str(name) + " " + str(value) + "\n"
+        self.fd.write(tmp)
+        self.event_list.append(tmp)
+
+        if id == 'BoardnameEnd':
             self.event_flush()
             if (self.tb.create_webpatch == 'yes'):
                 self.webpatch = web_patchwork(self.tb, 'webpatch.html')
@@ -102,18 +113,9 @@ class events(object):
             if (self.tb.create_dashboard == 'yes'):
                 self.dashboard.insert_test_into_db()
 
-        if id == 'End':
-            self.stack.pop()
-            try:
-                nametest = self.stack[-1]
-            except:
-                nametest = 'main'
-
-        tmp = "EVENT " + strftime("%Y-%m-%d %H:%M:%S", gmtime()) + " " + str(id) + " " + str(pname) + " " + str(name) + " " + str(value) + "\n"
-        self.fd.write(tmp)
-        self.event_list.append(tmp)
-
     def create_event_log(self, c, dir, string):
+        if self.tb.donotlog == True:
+            return
         try:
             name = self.stack[-1]
         except:
