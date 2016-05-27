@@ -125,9 +125,10 @@ class events(object):
             name = self.stack[-1]
         except:
             name = 'main'
-        tmp = "EVENT " + strftime("%Y-%m-%d %H:%M:%S", gmtime()) + " log " + name + " " + str(c.name) + " " + str(dir) + " " + string + "\n"
-        self.fd.write(tmp)
+        tmp = "EVENT " + strftime("%Y-%m-%d %H:%M:%S", gmtime()) + " log " + name + " " + str(c.name) + " " + str(dir) + " " + string
         self.event_list.append(tmp)
+        tmp += '\n'
+        self.fd.write(tmp)
         if dir == 'r' or dir == 're' or dir == 'ig' or dir == 'er':
             se = string.rstrip()
             se = se.lstrip()
