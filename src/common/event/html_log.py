@@ -151,7 +151,10 @@ class html_log(object):
             ststr = 'OK'
 
         self.fd.write('<div class="section-trailer block-trailer">' + name + '</div>\n')
-        self.fd.write('<div class="status-pass">\n')
+        if status == 'True':
+            self.fd.write('<div class="status-pass">\n')
+        else:
+            self.fd.write('<div class="status-fail">\n')
         self.fd.write('<pre>' + ststr + '\n')
         self.fd.write('</pre>\n')
         self.fd.write('</div>\n')
