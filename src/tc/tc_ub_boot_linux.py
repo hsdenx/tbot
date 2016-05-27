@@ -39,6 +39,6 @@ tb.eof_write(tb.c_con, tmp)
 tb.c_con.set_prompt(tb.linux_prompt_default)
 tb.tbot_expect_prompt(tb.c_con)
 
-tb.set_prompt(tb.c_con, tb.linux_prompt, "", "")
+tb.set_prompt(tb.c_con, tb.linux_prompt, 'linux')
 
 tb.end_tc(True)

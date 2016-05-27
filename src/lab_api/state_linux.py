@@ -51,7 +51,7 @@ def state_lx_parse_input(tb, c, retry, sl):
             return True
 
         if ret == '1':
-            tb.set_prompt(c, tb.linux_prompt, "", "")
+            tb.set_prompt(c, tb.linux_prompt, 'linux')
             c.set_timeout(oldt)
             return True
 

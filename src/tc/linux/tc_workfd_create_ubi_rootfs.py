@@ -25,7 +25,7 @@ if ret == 'prompt':
     tb.end_tc(False)
 
 tb.write_stream_passwd(tb.workfd, "root", "lab")
-tb.set_prompt(tb.workfd, tb.linux_prompt, 'export PS1="\u@\h [\$(date +%k:%M:%S)] ', ' >"')
+tb.set_prompt(tb.workfd, tb.linux_prompt, 'linux')
 
 tmp = "date > " + tb.tc_workfd_create_ubi_rootfs_path + "/creation_time"
 tb.eof_write_lx_cmd_check(tb.workfd, tmp)

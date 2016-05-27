@@ -419,8 +419,7 @@ class tbot(object):
         c.set_prompt(self.labsshprompt)
         c.expect_prompt()
         self.donotlog = False
-        self.set_prompt(c, self.linux_prompt,
-                        'export PS1="\u@\h [\$(date +%k:%M:%S)] ', ' >"')
+        self.set_prompt(c, self.linux_prompt, 'linux')
 
         self.set_term_length(c)
         return True
@@ -568,19 +567,27 @@ class tbot(object):
         self.write_stream(c, string)
         return True
 
-    def set_prompt(self, c, prompt, header, end):
+    def set_prompt(self, c, prompt, ptype):
         """set the prompt on the target.
            True: If setting the prompt was successful
            False: If settting the prompt failed
         """
+        if ptype == 'linux':
+            header = 'export PS1="\u@\h [\$(date +%k:%M:%S)] ' 
+            end = '> "'
+        else:
+            header = ''
+            end = ''
+
         # contains the current prompt
         c.set_prompt(prompt)
-        cmd = header + prompt + end
-        cmd = 'export PS1=' + prompt
-        logging.debug("Prompt CMD:%s", cmd)
-        ret = self.write_stream(c, cmd)
-        if ret:
-            logging.info("set prompt:%s", cmd)
+        if ptype == 'linux':
+            cmd = header + prompt + end
+            logging.debug("Prompt CMD:%s", cmd)
+            ret = self.write_stream(c, cmd)
+            if ret:
+                logging.info("set prompt:%s", cmd)
+
         c.expect_prompt()
         c.expect_prompt()
         return ret

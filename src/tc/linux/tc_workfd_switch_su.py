@@ -28,7 +28,7 @@ if ret == 'prompt':
 tb.eof_write_ctrl_passwd("root", "lab")
 
 # set prompt
-tb.set_prompt(tb.workfd, tb.labprompt, 'export PS1="\u@\h [\$(date +%k:%M:%S)] ', ' >"')
+tb.set_prompt(tb.workfd, tb.labprompt, 'linux')
 
 tb.set_term_length(tb.workfd)
 tb.end_tc(True)
