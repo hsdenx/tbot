@@ -113,10 +113,10 @@ class events(object):
                 self.dot.create_dotfile()
             if (self.tb.create_statistic == 'yes'):
                 self.statistic.create_statfile()
-            if (self.tb.create_dashboard == 'yes'):
-                self.dashboard.insert_test_into_db()
             if (self.tb.create_html_log == 'yes'):
                 self.html_log.create_htmlfile()
+            if (self.tb.create_dashboard == 'yes'):
+                self.dashboard.insert_test_into_db()
 
     def create_event_log(self, c, dir, string):
         if self.tb.donotlog == True:
