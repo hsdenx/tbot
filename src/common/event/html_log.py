@@ -205,6 +205,13 @@ class html_log(object):
             tc_name = self.get_event_name(tmp)
 
             if typ == 'Start' or typ == 'Boardname':
+                # write con block need log
+                self.write_con_log_block(conlog)
+                # write ctrl need log
+                self.write_ctrl_log_block(ctrlog)
+                # write end of tc block (name, status)
+                conlog = ''
+                ctrlog = ''
                 self.write_testcase(tc_name, el)
 
             # get status (end of TC) parse "End" or "BoardnameEnd" check if name == name !
