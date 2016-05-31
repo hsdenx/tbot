@@ -25,6 +25,7 @@ class html_log(object):
         self.htmlfile = htmlfile
         self.fd = open(self.tb.workdir + '/' + self.htmlfile, 'w')
         self.dotnr = 0
+        self.htmlid = 0
 
     def create_htmlfile(self):
         self.write_html_header()
@@ -101,8 +102,9 @@ class html_log(object):
         self.fd.write('\n')
 
     def write_tc_start_block(self, name):
+        self.htmlid += 1
         self.fd.write('<!-- a testcase -->\n')
-        self.fd.write('<div class="section block">\n')
+        self.fd.write('<div class="section block" id="' + str(self.htmlid) + '">\n')
         self.fd.write('<div class="section-header block-header">' + name + '</div>\n')
         self.fd.write('<div class="section-content block-content">\n')
         self.fd.write('<div class="action">\n')
@@ -114,8 +116,9 @@ class html_log(object):
     def write_con_log_block(self, log):
         if log == '':
             return
+        self.htmlid += 1
         self.fd.write('<!-- console log of testcase -->\n')
-        self.fd.write('<div class="stream block">\n')
+        self.fd.write('<div class="stream block" id="' + str(self.htmlid) + '">\n')
         self.fd.write('<div class="stream-header block-header">console</div>\n')
         self.fd.write('<div class="stream-content block-content">\n')
         self.fd.write('<pre>\n')
@@ -131,8 +134,9 @@ class html_log(object):
     def write_ctrl_log_block(self, log):
         if log == '':
             return
+        self.htmlid += 1
         self.fd.write('<!-- ctrl log of testcase -->\n')
-        self.fd.write('<div class="stream block">\n')
+        self.fd.write('<div class="stream block" id="' + str(self.htmlid) + '">\n')
         self.fd.write('<div class="stream-header block-header">control</div>\n')
         self.fd.write('<div class="stream-content block-content">\n')
         self.fd.write('<pre>\n')
