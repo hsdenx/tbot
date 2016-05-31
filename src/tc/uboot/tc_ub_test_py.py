@@ -22,6 +22,9 @@ from tbotlib import tbot
 
 logging.info("args: %s %s %s", tb.boardname, tb.boardlabname, tb.tc_ub_test_py_hook_script_path)
 
+# set board state for which the tc is valid
+tb.set_board_state("u-boot")
+
 tb.disconnect_from_board(tb.boardlabname)
 
 c = tb.c_con
@@ -34,20 +37,18 @@ tc_ub_test_py_uboot_dir = tb.tc_lab_source_dir + "/u-boot-" + tb.boardlabname
 
 cmd = 'PATH=' + tb.tc_ub_test_py_hook_script_path + ':$PATH;PYTHONPATH=' + tc_ub_test_py_uboot_dir + ';./test/py/test.py --bd ' + tb.boardname + ' -s --build-dir .'
 tb.eof_write(c, cmd)
-searchlist = ['INTERNALERROR', 'failed', 'error']
+searchlist = ['INTERNALERROR']
 tmp = True
 cmdsuccess = True
 while tmp == True:
     ret = tb.tbot_read_line_and_check_strings(tb.workfd, searchlist)
     if ret == '0':
         cmdsuccess = False
-    if ret == '1':
-        cmdsuccess = False
-    if ret == '2':
-        cmdsuccess = False
     if ret == 'prompt':
         tmp = False
 
+cmdsuccess = tb.call_tc("tc_workfd_check_cmd_success.py")
+logging.info("test/py: %s", cmdsuccess)
 ret = tb.connect_to_board(tb.boardlabname)
 if ret == False:
     tb.workfd = savefd
