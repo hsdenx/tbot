@@ -16,23 +16,17 @@
 # create a ubifs rootfs
 from tbotlib import tbot
 
-logging.info("args: workdfd: %s %s", tb.workfd, tb.tc_workfd_create_ubi_rootfs_path)
+logging.info("args: workdfd: %s %s", tb.workfd.name, tb.tc_workfd_create_ubi_rootfs_path)
 logging.info("%s", tb.tc_workfd_create_ubi_rootfs_target)
 
-tb.eof_write(tb.workfd, "su")
-ret = tb.tbot_expect_string(tb.workfd, 'Password')
-if ret == 'prompt':
-    tb.end_tc(False)
-
-tb.write_stream_passwd(tb.workfd, "root", "lab")
-tb.set_prompt(tb.workfd, tb.linux_prompt, 'linux')
+tb.eof_call_tc("tc_workfd_switch_su.py")
 
 tmp = "date > " + tb.tc_workfd_create_ubi_rootfs_path + "/creation_time"
 tb.eof_write_lx_cmd_check(tb.workfd, tmp)
 tmp = "cat " + tb.tc_workfd_create_ubi_rootfs_path + "/creation_time"
 tb.eof_write_lx_cmd_check(tb.workfd, tmp)
 
-tmp = "mkfs.ubifs --root=" + tb.tc_workfd_create_ubi_rootfs_path + " --min-io-size=" + tb.tc_ubi_min_io_size + " --leb-size=" + tb.tc_ubi_leb_size + " --max-leb-cnt=" + tb.tc_ubi_max_leb_cnt + " -F --output=" + tb.tc_workfd_create_ubi_rootfs_target
+tmp = "mkfs.ubifs --root=" + tb.tc_workfd_create_ubi_rootfs_path + " -m " + tb.tc_ubi_min_io_size + " -e " + tb.tc_ubi_leb_size + " -c " + tb.tc_ubi_max_leb_cnt + " -F --output=" + tb.tc_workfd_create_ubi_rootfs_target
 tb.eof_write_lx_cmd_check(tb.workfd, tmp)
 tb.eof_write_cmd(tb.workfd, "exit")
 tb.end_tc(True)
