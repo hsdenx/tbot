@@ -25,7 +25,7 @@ tb.set_board_state("u-boot")
 tb.eof_call_tc("tc_ub_load_board_env.py")
 
 c = tb.c_con
-# "ubi part" if yes -> call ubi dettach
+# "ubi part" if yes -> call ubi detach
 tmp = "if ubi part; then; echo OK; else; echo FAIL; fi"
 tb.eof_write(c, tmp)
 searchlist = ["OK"]
@@ -39,7 +39,7 @@ while tmp == True:
         tmp = False
 
 if attached == True:
-    tb.eof_write(c, "ubi dettach")
+    tb.eof_write(c, "ubi detach")
     tb.tbot_expect_prompt(c)
 
 tmp = "ubi part " + tb.tc_ub_ubi_prep_partname
