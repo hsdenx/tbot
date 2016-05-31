@@ -23,7 +23,7 @@ tb.set_board_state("u-boot")
 
 tmp = 'ubi create ' + tb.tc_ub_ubi_create_vol_name + ' ' + tb.tc_ub_ubi_create_vol_sz
 tb.eof_write(tb.c_con, tmp)
-ret = tb.tbot_epect_string(tb.c_con, 'exit not allowed')
+ret = tb.tbot_expect_string(tb.c_con, 'exit not allowed')
 if ret == 'prompt':
     tb.end_tc(True)
 
