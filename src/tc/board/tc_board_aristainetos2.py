@@ -24,6 +24,8 @@ tb.set_board_state("u-boot")
 #this board needs some time to settle
 time.sleep(10)
 
+self.tc_lab_apply_patches_dir = '/work/hs/tbot/patches/u-boot-aristainetos'
+
 tb.workfd = tb.c_ctrl
 #delete old u-boot source tree
 tb.eof_call_tc("tc_workfd_rm_uboot_code.py")
@@ -34,6 +36,15 @@ tb.eof_call_tc("tc_lab_get_uboot_source.py")
 
 #call set toolchain
 tb.eof_call_tc("tc_lab_set_toolchain.py")
+
+#apply local patches
+tb.workfd = tb.c_ctrl
+tb.eof_call_tc("tc_workfd_goto_uboot_code.py")
+
+#add patchwork patches
+tb.statusprint("apply patchwork patches")
+tb.tc_workfd_apply_patchwork_patches_list = tb.tc_workfd_apply_patchwork_patches_list_hand
+tb.eof_call_tc("tc_workfd_apply_patchwork_patches.py")
 
 #call compile u-boot
 tb.eof_call_tc("tc_lab_compile_uboot.py")
