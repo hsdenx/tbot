@@ -34,11 +34,11 @@ tb.statusprint("set toolchain")
 tb.eof_call_tc("tc_lab_set_toolchain.py")
 
 #get current list of patches in ToDo list
-tb.statusprint("get patchwork patches")
-tb.eof_call_tc("tc_workfd_get_patchwork_number_list.py")
+#tb.statusprint("get patchwork patches")
+#tb.eof_call_tc("tc_workfd_get_patchwork_number_list.py")
 
-tb.tc_workfd_apply_patchwork_patches_list_hand += tb.tc_workfd_apply_patchwork_patches_list
-tb.tc_workfd_apply_patchwork_patches_list = tb.tc_workfd_apply_patchwork_patches_list_hand
+#tb.tc_workfd_apply_patchwork_patches_list_hand += tb.tc_workfd_apply_patchwork_patches_list
+#tb.tc_workfd_apply_patchwork_patches_list = tb.tc_workfd_apply_patchwork_patches_list_hand
 
 #apply local patches
 tb.workfd = tb.c_ctrl
