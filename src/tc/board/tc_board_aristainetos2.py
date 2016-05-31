@@ -61,6 +61,13 @@ tb.eof_call_tc("tc_lab_cp_file.py")
 tb.tc_lab_cp_file_a = "u-boot.imx"
 tb.eof_call_tc("tc_lab_cp_file.py")
 
+# check U-Boot version
+tb.workfd = tb.c_ctrl
+tb.tc_ub_get_version_file = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir + '/u-boot.bin'
+tb.tc_ub_get_version_string = 'U-Boot 20'
+tb.eof_call_tc("tc_ub_get_version.py")
+tb.uboot_vers = tb.tc_return
+
 #call upd_uboot
 tb.eof_call_tc("tc_ub_upd_uboot.py")
 
