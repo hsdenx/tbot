@@ -17,7 +17,7 @@
 #
 from tbotlib import tbot
 
-logging.info("args: workfd %s", tb.workfd)
+logging.info("args: workfd %s", tb.workfd.name)
 
 #switch to root
 tb.eof_write(tb.workfd, "su")
