@@ -44,12 +44,16 @@ tmp='cat /proc/cpuinfo'
 tb.eof_write(c, tmp)
 ret = tb.tbot_expect_string(c, 'model name\t:')
 if ret == 'prompt':
-    tb.end_tc(False)
-ret = tb.tbot_expect_string(c, '\n')
-if ret == 'prompt':
-    tb.end_tc(False)
-tmp = tb.buf
-processor = tmp.rstrip()
+    processor = 'unknown'
+    tmp = 'cat /proc/cpuinfo'
+    tb.eof_write(c, tmp)
+else:
+    ret = tb.tbot_expect_string(c, '\n')
+    if ret == 'prompt':
+        tb.end_tc(False)
+    tmp = tb.buf
+    processor = tmp.rstrip()
+
 ret = tb.tbot_expect_string(c, 'Hardware\t:')
 if ret == 'prompt':
     tb.end_tc(False)
