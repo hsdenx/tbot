@@ -88,6 +88,12 @@ tc_work_compile_linux_makeoptions:
   default:
   ''
 
+do_connect_to_board:
+  if True (default) tbot connects on startup with a boards
+  console.
+  default:
+  True
+
 create_dot:
   if 'yes' create at the end a "graphviz" image
   default:

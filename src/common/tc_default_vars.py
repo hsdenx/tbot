@@ -109,6 +109,11 @@ except AttributeError:
     self.tc_lab_compile_uboot_makeoptions = '-j4'
 
 try:
+    self.do_connect_to_board
+except AttributeError:
+    self.do_connect_to_board = True
+
+try:
     self.tc_lab_compile_uboot_export_path
 except AttributeError:
     self.tc_lab_compile_uboot_export_path = 'none'

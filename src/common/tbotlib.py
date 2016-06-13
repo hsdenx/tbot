@@ -209,6 +209,11 @@ class tbot(object):
     def connect_to_board(self, boardname):
         """ connect to the board
         """
+        if self.do_connect_to_board == False:
+            tmp = "do not connect tot board"
+            logging.debug(tmp)
+            return True
+
         tmp = "connect to board " + boardname + " using tc " + self.tc_lab_denx_connect_to_board_tc
         logging.debug(tmp)
 
