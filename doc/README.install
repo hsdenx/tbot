@@ -48,11 +48,11 @@ $
 
   Task a) power on/off board:
     default TC for this task is:
-    https://github.com/hsdenx/tbot/blob/master/src/tc/tc_lab_denx_power.py
+    https://github.com/hsdenx/tbot/blob/master/src/tc/lab/denx/tc_lab_denx_power.py
 
     - now copy this file to for example
-      cp src/tc/tc_lab_denx_power.py src/tc/tc_lab_denx_power_XXX.py
-      (replace XXX to a proper value)
+      cp src/tc/lab/denx/tc_lab_denx_power.py src/tc/lab/denx/tc_lab_denx_power_XXX.py
+      (replace XXX to a proper value, and/or make a subdirectory in src/tc/lab)
       and adapt the "remote_power" command from the denx lab to your needs.
 
       As this TC powers on the board for all your boards in your VL,
@@ -71,11 +71,11 @@ $
 
   Task b) power on/off board:
     default TC for this task is:
-    https://github.com/hsdenx/tbot/blob/master/src/tc/tc_lab_denx_get_power_state.py
+    https://github.com/hsdenx/tbot/blob/master/src/tc/lab/denx/tc_lab_denx_get_power_state.py
 
     - now copy this file to for example
       (replace XXX to a proper value)
-      cp src/tc/tc_lab_denx_get_power_state.py src/tc/tc_lab_denx_get_power_state_XXX.py
+      cp src/tc/lab/denx/tc_lab_denx_get_power_state.py src/tc/lab/denx/tc_lab_denx_get_power_state_XXX.py
       and adapt the commands to your needs.
 
       If the power of the board is on, call "tb.end_tc(True)"
@@ -86,11 +86,11 @@ $
 
   Task c) connect to the boards console:
     default TC for this task is:
-    https://github.com/hsdenx/tbot/blob/master/src/tc/tc_lab_denx_connect_to_board.py
+    https://github.com/hsdenx/tbot/blob/master/src/tc/lab/denx/tc_lab_denx_connect_to_board.py
 
     - now copy this file to for example
       (replace XXX to a proper value)
-      cp src/tc/tc_lab_denx_connect_to_board.py src/tc/tc_lab_XXX_connect_to_board.py
+      cp src/tc/lab/denx/tc_lab_denx_connect_to_board.py src/tc/lab/denx/tc_lab_XXX_connect_to_board.py
       and adapt the commands to your needs.
 
       If connect fails end this TC with "tb.end_tc(False)"
@@ -99,7 +99,7 @@ $
       If you want to use kermit for connecting to the boards console, you
       can use:
 
-      https://github.com/hsdenx/tbot/blob/master/src/tc/tc_workfd_connect_with_kermit.py
+      https://github.com/hsdenx/tbot/blob/master/src/tc/linux/tc_workfd_connect_with_kermit.py
 
       Example for such a board in the VL from denx:
       self.tc_lab_denx_connect_to_board_tc = 'tc_workfd_connect_with_kermit.py'
@@ -177,7 +177,7 @@ $
              Watchdog gets triggered if prompt get read.
   line 24: tc_lab_denx_connect_to_board_tc: Which TC is used for
              connecting to the boards console the TC, here:
-             https://github.com/hsdenx/tbot/blob/master/src/tc/tc_workfd_connect_with_kermit.py
+             https://github.com/hsdenx/tbot/blob/master/src/tc/linux/tc_workfd_connect_with_kermit.py
   line 27: uboot_prompt: boards U-Boot prompt
   line 28: linux_prompt: boards linux prompt
 
