@@ -34,6 +34,9 @@ UBOOT_TEST_PY   path to test py result
 src/tc/uboot/tc_ub_get_version.py
 UBOOT_VERSION   U-Boot/SPL version
 
+src/tc/linux/tc_lx_get_version.py
+LINUX_VERSION	Linux version
+
 planned Event backends:
 =======================
 
