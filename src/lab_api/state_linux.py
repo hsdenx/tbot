@@ -18,11 +18,13 @@ import time
 
 def state_lx_parse_input(tb, c, retry, sl):
     i = 0
+    # print("PPPPPPPPPPPP START", sl, c.data, c.logbuf)
     ctrlc_send = 0
     oldt = c.get_timeout()
     c.set_timeout(tb.state_linux_timeout)
     while(i < retry):
         ret = tb.tbot_read_line_and_check_strings(c, sl)
+        # print("PPPPPPPPPPPP", i, retry, ret, sl, c.data, c.logbuf)
         if ret == 'exception':
             if ctrlc_send == 0:
                 # try first to get the linux prompt

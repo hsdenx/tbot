@@ -250,11 +250,11 @@ class Connection(object):
         bufl = len(buf)
         if bufl < lens:
             return 'none'
-        #print("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP", lens, bufl)
+        # print("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP", lens, bufl)
         while (i < bufl):
             if buf[i] == string[0]:
                 if lens == 1:
-                    #print("EEEEEEEEEEEEEEEEE", str(i))
+                    # print("EEEEEEEEEEEEEEEEE", str(i))
                     return str(i)
 
                 s = i + 1
@@ -268,14 +268,14 @@ class Connection(object):
                         break
                     j += 1
                     if j == lens:
-                        #print("EEEEEEEEEEEEEEEEE", str(i))
+                        # print("EEEEEEEEEEEEEEEEE", str(i))
                         return str(i)
                     s += 1
                     if s == bufl:
                         return 'none'
             i += 1
 
-        #print("EEEEEEEEEEEEEEEEE none ")
+        # print("EEEEEEEEEEEEEEEEE none ")
         return 'none'
 
     def search_one_strings(self, se):
@@ -337,6 +337,7 @@ class Connection(object):
         :return: 'none' if nothing is found,
                  else str(index) is found
         """
+        # print("CCCCCCCCCCCCCCCCCCCCCCCCC search string error", self.check_error, self.error)
         if self.check_error:
             reterr = self.search_one_strings(self.error)
             if reterr != 'none':
@@ -344,7 +345,7 @@ class Connection(object):
 
         # if retsring before ign, return retstring
         # if ign before retstring reutrn 'ign'
-        # print("CCCCCCCCCCCCCCCCCCCCCCCCC search string")
+        # print("CCCCCCCCCCCCCCCCCCCCCCCCC search string", se)
 	ret_str = self.search_one_strings(se)
         lp_str = self.lastpos
         # print("CCCCCCCCCCCCCCCCCCCCCCCCC search ign")
@@ -369,6 +370,7 @@ class Connection(object):
 
         # if nothing found, check at the end for prompt
 	ret = self.search_one_strings(self._tolist(self.prompt))
+        # print("CCCCCCCCCCCCCCCCCCCCCCCCC search for prompt end", ret)
         if ret != 'none':
             self.copy_data(self.lastpos)
             return 'prompt'
@@ -392,18 +394,18 @@ class Connection(object):
             # if we have no data, read it
             tmp = self.lab_recv()
             self.logbuf += self.data
-            #print("CCCCCC expectstring now", ret, self.data)
-            #print("CCCC timeout", self.timeout)
+            # print("CCCCCC expectstring now", tmp, self.data)
+            # print("CCCC timeout", self.timeout)
             if tmp == None and self.timeout != None:
                 # ToDo give paramiko the timeout
-                #print("CCCCCCC expectsrting labrecv", ret)
+                # print("CCCCCCC expectsrting labrecv", ret)
                 self.tb.event.create_event_log(self, "re", 'exception')
                 return 'exception'
 
         loop = True
         while(loop == True):
             ret = self.__search_strings(se)
-            # print("EEEEEEE expectstring ret", ret)
+            # print("EEEEEEE expectstring ret", ret, self.data, self.logbuf)
             if ret == 'none':
                 tmp = self.lab_recv()
                 self.logbuf += self.data

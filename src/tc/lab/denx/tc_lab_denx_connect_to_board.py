@@ -42,6 +42,10 @@ if not connected:
 
 # check for 'not accessible'
 tb.workfd.set_timeout(2)
+tmp_ign = tb.workfd.ign
+tb.workfd.ign = ['==>', 'rlogin']
+tb.workfd.cnt_ign = len(tb.workfd.ign)
+
 tmp = tb.tbot_read_line_and_check_strings(tb.workfd, searchlist)
 ret = True
 if tmp == '2':
@@ -55,4 +59,7 @@ if tmp == '4':
     ret = False
 
 tb.workfd.set_timeout(None)
+
+tb.workfd.ign = tmp_ign
+tb.workfd.cnt_ign = len(tb.workfd.ign)
 tb.end_tc(ret)
