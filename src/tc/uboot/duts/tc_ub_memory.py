@@ -211,13 +211,18 @@ if ret == False:
     sz = int(tb.tc_ub_memory_ram_ws_base, 16)
     sz += 1024 * 1024
     sz = hex(sz)
-    tb.eof_write_cmd_check(tb.c_con, "mtest " + tb.tc_ub_memory_ram_ws_base + " " + sz, "0000000f")
+    tb.eof_write(tb.c_con, "mtest " + tb.tc_ub_memory_ram_ws_base + " " + sz)
+    # check here for "Testing" then for "Pattern 00000000  Writing...  Reading...Iteration"
+    # then stop
     tb.send_ctrl_c(tb.c_con)
     tb.c_con.expect_prompt()
 
 # mw
 ret = tb.write_cmd_check(tb.c_con, "help mw", "Unknown command")
 if ret == False:
+    tmp = int(tb.tc_ub_memory_ram_ws_base, 16)
+    tmp += 4
+    tmp = hex(tmp)
     tb.eof_write_cmd(tb.c_con, "md " + tb.tc_ub_memory_ram_ws_base + " 0x10")
     tb.eof_write_cmd(tb.c_con, "mw " + tb.tc_ub_memory_ram_ws_base + " 0xaabbccdd")
     tb.eof_write_cmd(tb.c_con, "md " + tb.tc_ub_memory_ram_ws_base + " 0x10")
