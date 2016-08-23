@@ -47,26 +47,24 @@ class statistic_plot_backend(object):
     plot 'stat.dat' using 2:xtic(1), for [i=3:3] '' using i
 
     """
-    def __init__(self, tb, fdfile, fdinfile, ignorelist):
+    def __init__(self, tb, fdfile, ignorelist):
         self.dotnr = 0
         self.tb = tb
         self.ev = self.tb.event
         self.fdfile = fdfile
-        self.fdinfile = fdinfile
         self.fd = open(tb.workdir + '/' + fdfile, 'w')
-        self.fdin = open(tb.workdir + '/' + fdinfile, 'r')
         self.tc_list = []
         self.ignoretclist = ignorelist
 
     def close(self):
         self.fd.close()
-        self.fdin.close()
 
     def __del__(self):
         self.close()
 
     def create_statfile(self):
-        self.analyse()
+        el = list(self.tb.event.event_list)
+        self.analyse(el)
         self.print_list()
         self.write_header()
         self.write_table()
@@ -89,14 +87,27 @@ class statistic_plot_backend(object):
     def get_event_name(self, tmp):
         return tmp[self.ev.name]
 
-    def check_ignore_list(self, typ, name):
+    def get_next_event(self, el):
+        if el == None:
+            return ''
+
+        if len(el) == 0:
+            return ''
+
+        ret = el[0]
+        el.pop(0)
+        return ret
+
+    def check_ignore_list(self, typ, name, evl):
         if typ != 'Start':
             return 'ok'
 
         for ign in self.ignoretclist:
             if ign == name:
                 # search until End event
-                for line in self.fdin:
+                line = 'start'
+                while line != '':
+                    line = self.get_next_event(evl)
                     tmp = line.split()
                     if tmp == []:
                         continue
@@ -133,8 +144,10 @@ class statistic_plot_backend(object):
             tmp = el[0] + '\t' + str(el[2]) + '\t' + str(el[1]) + '\n'
             self.fd.write(tmp)
 
-    def analyse(self):
-        for line in self.fdin:
+    def analyse(self, evl):
+        line = 'start'
+        while line != '':
+            line = self.get_next_event(evl)
             tmp = line.split()
             if tmp == []:
                 continue
@@ -145,7 +158,7 @@ class statistic_plot_backend(object):
                 continue
             newname = self.get_event_name(tmp)
             result = tmp[self.ev.value]
-            ret = self.check_ignore_list(typ, newname)
+            ret = self.check_ignore_list(typ, newname, evl)
             if ret == 'ignore':
                 continue
             if typ == 'Start':

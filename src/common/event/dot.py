@@ -16,7 +16,7 @@ import sys
 import os
 
 class dot(object):
-    def __init__(self, tb, dotfile, eventlogfile, ignorelist):
+    def __init__(self, tb, dotfile, ignorelist):
         """
         create a dot description file from the executed testcases.
         after tbot hs finsihed
@@ -28,9 +28,7 @@ class dot(object):
         self.tb = tb
         self.ev = self.tb.event
         self.dotfile = dotfile
-        self.eventfile = eventlogfile
         self.fd = open(self.tb.workdir + '/' + self.dotfile, 'w')
-        self.fdin = open(self.tb.workdir + '/' + self.eventfile, 'r')
         self.dotnr = 0
         self.ignoretclist = ignorelist
 
@@ -39,7 +37,6 @@ class dot(object):
         self.write_table()
         self.write_bottom()
         self.fd.close()
-        self.fdin.close()
  
     def write_header(self):
         self.fd.write('digraph tc_dot_output\n{\nrankdir=LR;\n')
@@ -68,14 +65,24 @@ class dot(object):
     def get_event_name(self, tmp):
         return tmp[self.ev.name]
 
-    def check_ignore_list(self, typ, name):
+    def get_next_event(self, el):
+        if len(el) == 0:
+            return ''
+
+        ret = el[0]
+        el.pop(0)
+        return ret
+
+    def check_ignore_list(self, typ, name, el):
         if typ != 'Start':
             return 'ok'
 
         for ign in self.ignoretclist:
             if ign == name:
                 # search until End event
-                for line in self.fdin:
+                line = 'start'
+                while line != '':
+                    line = self.get_next_event(el)
                     tmp = line.split()
                     if tmp == []:
                         continue
@@ -90,8 +97,10 @@ class dot(object):
 
         return 'ok'
 
-    def call_anal(self, name, current):
-        for line in self.fdin:
+    def call_anal(self, name, current, el):
+        line = 'start'
+        while line != '':
+            line = self.get_next_event(el)
             tmp = line.split()
             if tmp == []:
                 continue
@@ -102,13 +111,13 @@ class dot(object):
                 continue
             newname = self.get_event_name(tmp)
             result = tmp[self.ev.value]
-            ret = self.check_ignore_list(typ, newname)
+            ret = self.check_ignore_list(typ, newname, el)
             if ret == 'ignore':
                 continue
             if typ == 'Start':
                 nr = self.create_knoten(newname)
                 self.write_knotenline(current, nr, 'black')
-                color = self.call_anal(newname, nr)
+                color = self.call_anal(newname, nr, el)
                 self.write_knotenline(nr, current, color)
 
             if typ == 'End':
@@ -120,7 +129,8 @@ class dot(object):
         return 'end'
     
     def write_table(self):
+        el = list(self.tb.event.event_list)
         nr = self.create_knoten('main')
         end = 'go'
         while end != 'end':
-            end = self.call_anal('main', nr)
+            end = self.call_anal('main', nr, el)

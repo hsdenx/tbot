@@ -97,12 +97,12 @@ class events(object):
                  'tc_lab_cp_file.py',
                  'tc_workfd_check_if_file_exist.py',
                  'tc_workfd_rm_file.py']
-                self.dot = dot(self.tb, 'tc.dot', 'log/event.log', self.ignoretclist)
+                self.dot = dot(self.tb, 'tc.dot', self.ignoretclist)
             if (self.tb.create_statistic == 'yes'):
-                self.statistic = statistic_plot_backend(self.tb, 'stat.dat', 'log/event.log', self.ignoretclist)
+                self.statistic = statistic_plot_backend(self.tb, 'stat.dat', self.ignoretclist)
             if (self.tb.create_dashboard == 'yes'):
                 from dashboard import dashboard
-                self.dashboard = dashboard(self.tb, 'log/event.log', 'localhost', 'tbot', 'tbot', 'tbot_root', 'tbot_results')
+                self.dashboard = dashboard(self.tb, 'localhost', 'tbot', 'tbot', 'tbot_root', 'tbot_results')
             if (self.tb.create_html_log == 'yes'):
                 self.html_log = html_log(self.tb, 'log/html_log.html')
 

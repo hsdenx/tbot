@@ -22,15 +22,13 @@ import os
 import MySQLdb
 
 class dashboard(object):
-    def __init__(self, tb, eventlogfile, host, user, pw, dbname, tname):
+    def __init__(self, tb, host, user, pw, dbname, tname):
         """
         push tbot results to a mysql database
         after tbot has finished
         """
         self.tb = tb
         self.ev = self.tb.event
-        self.eventfile = eventlogfile
-        self.fdin = open(self.tb.workdir + '/' + self.eventfile, 'r')
         self.host = host
         self.user = user
         self.pw = pw
@@ -59,7 +57,16 @@ class dashboard(object):
     def __del__(self):
         self.connection.close()
 
+    def get_next_event(self, el):
+        if len(el) == 0:
+            return ''
+
+        ret = el[0]
+        el.pop(0)
+        return ret
+
     def insert_test_into_db(self):
+        evl = list(self.tb.event.event_list)
         self.dt = ''
         self.tool = 'unknown'
         self.bina = 'unknown'
@@ -68,7 +75,9 @@ class dashboard(object):
         self.testpypatch = ''
         self.uboot_src_path = ''
         self.suc = '1'
-        for line in self.fdin:
+        line = 'start'
+        while line != '':
+            line = self.get_next_event(evl)
             tmp = line.split()
             if tmp == []:
                 continue
@@ -138,5 +147,3 @@ class dashboard(object):
 
         tmp = "cp " + self.tb.logfilen + " " + newdir + "/tbot.log"
         os.system(tmp)
-        # at the end, close
-        self.fdin.close()

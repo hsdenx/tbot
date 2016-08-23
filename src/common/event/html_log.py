@@ -250,5 +250,5 @@ class html_log(object):
                 continue
 
     def write_log(self):
-        el = self.tb.event.event_list
+        el = list(self.tb.event.event_list)
         self.write_testcase('StartHTML', el)
