@@ -17,7 +17,7 @@
 #
 from tbotlib import tbot
 
-logging.info("args: workfd %s", tb.workfd.name)
+logging.info("args: workfd %s %s", tb.workfd.name, tb.switch_su_board)
 
 #switch to root
 tb.eof_write(tb.workfd, "su")
@@ -25,7 +25,7 @@ tb.tbot_expect_string(tb.workfd, 'assword')
 if ret == 'prompt':
     tb.end_tc(False)
 
-tb.eof_write_ctrl_passwd("root", "lab")
+tb.eof_write_workfd_passwd("root", tb.switch_su_board)
 
 # set prompt
 tb.set_prompt(tb.workfd, tb.labprompt, 'linux')
