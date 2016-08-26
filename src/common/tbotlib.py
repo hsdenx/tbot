@@ -740,6 +740,14 @@ class tbot(object):
         ret = self.write_stream_passwd(self.c_ctrl, user, board)
         return True
 
+    def eof_write_workfd_passwd(self, user, board):
+        """ write a password to workfd. Do not log it.
+            If write_stream returns not True, end tc
+            with failure
+        """
+        ret = self.write_stream_passwd(self.workfd, user, board)
+        return True
+
     def set_term_length(self, c):
         """
         set terminal line length
