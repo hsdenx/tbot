@@ -589,7 +589,7 @@ class tbot(object):
         if ptype == 'linux':
             cmd = header + prompt + end
             logging.debug("Prompt CMD:%s", cmd)
-            ret = self.write_stream(c, cmd)
+            ret = c.sendcmd(cmd)
             if ret:
                 logging.info("set prompt:%s", cmd)
 

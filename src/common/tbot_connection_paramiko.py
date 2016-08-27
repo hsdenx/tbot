@@ -399,7 +399,7 @@ class Connection(object):
         if self.data == '':
             # if we have no data, read it
             tmp = self.lab_recv()
-            self.logbuf += self.data
+            self.logbuf = self.data
             # print("CCCCCC expectstring now", tmp, self.data)
             # print("CCCC timeout", self.timeout)
             if tmp == None and self.timeout != None:
@@ -414,13 +414,13 @@ class Connection(object):
             # print("EEEEEEE expectstring ret", ret, self.data, self.logbuf)
             if ret == 'none':
                 tmp = self.lab_recv()
-                self.logbuf += self.data
-                # print("CCCCC expectstring tmp", tmp, self.data)
+                # print("CCCCC expectstring tmp", tmp, self.timeout, self.data)
                 if tmp == None and self.timeout != None:
                     # ToDo give paramiko the timeout
                     # print("CCCCCCC expectsrting labrecv second", ret)
                     self.tb.event.create_event_log(self, "re", self.data)
                     return 'exception'
+                self.logbuf = self.data
             elif ret == 'ign':
                 self.tb.event.create_event_log(self, "ig", self.data)
                 continue
