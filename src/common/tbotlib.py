@@ -422,7 +422,7 @@ class tbot(object):
         ret = c.create('not needed', logname, self.labprompt, self.user, self.ip, passwd)
         c.set_timeout(None)
         c.set_prompt(self.labsshprompt)
-        c.expect_prompt()
+        self.tbot_expect_prompt(c)
         self.donotlog = False
         self.set_prompt(c, self.linux_prompt, 'linux')
 
@@ -579,7 +579,7 @@ class tbot(object):
         """
         if ptype == 'linux':
             header = 'export PS1="\u@\h [\$(date +%k:%M:%S)] ' 
-            end = '> "'
+            end = '"'
         else:
             header = ''
             end = ''
@@ -593,7 +593,6 @@ class tbot(object):
             if ret:
                 logging.info("set prompt:%s", cmd)
 
-        c.expect_prompt()
         c.expect_prompt()
         return ret
 
@@ -823,7 +822,7 @@ class tbot(object):
         return ret
 
     def tbot_expect_prompt(self, c):
-        """
+        """ searches for prompt, endless
         """
         c.expect_prompt()
         self.buf = c.get_log()

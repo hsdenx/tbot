@@ -27,7 +27,7 @@ except AttributeError:
 try:
     self.labsshprompt
 except AttributeError:
-    self.labsshprompt = 'pollux:'
+    self.labsshprompt = '$ '
 
 try:
     self.tc_return

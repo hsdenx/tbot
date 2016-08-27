@@ -223,9 +223,11 @@ class Connection(object):
         return True
 
     def expect_prompt(self):
-        """expect prompt
+        """expect prompt, search endless for prompt
+           true if found
+           false if not
         """
-        ret = self.expect_string(self.prompt)
+        ret = self.expect_string(self.prompt, promptonly = True)
         return ret
 
     def _tolist(self, *args):
@@ -332,12 +334,12 @@ class Connection(object):
     def set_check_error(self, value):
         self.check_error = value
 
-    def __search_strings(self, se):
+    def __search_strings(self, se, promptonly = False):
         """ search in self.data if a string from se is found
         :return: 'none' if nothing is found,
                  else str(index) is found
         """
-        # print("CCCCCCCCCCCCCCCCCCCCCCCCC search string error", self.check_error, self.error)
+        # print("CCCCCCCCCCCCCCCCCCCCCCCCC search string error", self.check_error, self.error, promptonly)
         if self.check_error:
             reterr = self.search_one_strings(self.error)
             if reterr != 'none':
@@ -346,10 +348,14 @@ class Connection(object):
         # if retsring before ign, return retstring
         # if ign before retstring reutrn 'ign'
         # print("CCCCCCCCCCCCCCCCCCCCCCCCC search string", se)
-	ret_str = self.search_one_strings(se)
-        lp_str = self.lastpos
+        if promptonly == False:
+            ret_str = self.search_one_strings(se)
+            lp_str = self.lastpos
+        else:
+            ret_str = 'none'
+
         # print("CCCCCCCCCCCCCCCCCCCCCCCCC search ign")
-	ret_ign = self.search_one_strings(self.ign)
+        ret_ign = self.search_one_strings(self.ign)
         lp_ign = self.lastpos
 
         # print("CCCCCCCCCCCCCCCCCCCCCCCCC", lp_str, lp_ign)
@@ -369,15 +375,15 @@ class Connection(object):
                 return ret_str
 
         # if nothing found, check at the end for prompt
-	ret = self.search_one_strings(self._tolist(self.prompt))
-        # print("CCCCCCCCCCCCCCCCCCCCCCCCC search for prompt end", ret)
-        if ret != 'none':
+	tmp = self.search_one_strings(self._tolist(self.prompt))
+        # print("CCCCCCCCCCCCCCCCCCCCCCCCC search for prompt end", tmp, self.lastpos)
+        if tmp == '0':
             self.copy_data(self.lastpos)
             return 'prompt'
 
         return 'none'
 
-    def expect_string(self, string):
+    def expect_string(self, string, promptonly = False):
         """expect a string
 
         :param string:
@@ -389,7 +395,7 @@ class Connection(object):
         # search, and at the end, search the prompt
         # se = self._tolist(ign, error, string, self.prompt)
         se = self._tolist(string)
-        # print("EEEEEEEEEEEEEEEEEE expectstring", se, self.data)
+        # print("EEEEEEEEEEEEEEEEEE expectstring", se, len(self.logbuf), self.data, promptonly)
         if self.data == '':
             # if we have no data, read it
             tmp = self.lab_recv()
@@ -404,7 +410,7 @@ class Connection(object):
 
         loop = True
         while(loop == True):
-            ret = self.__search_strings(se)
+            ret = self.__search_strings(se, promptonly)
             # print("EEEEEEE expectstring ret", ret, self.data, self.logbuf)
             if ret == 'none':
                 tmp = self.lab_recv()
@@ -421,6 +427,25 @@ class Connection(object):
             elif ret == 'error':
                 self.tb.event.create_event_log(self, "er", self.data)
                 self.tb.end_tc(False)
+            elif ret == 'prompt':
+                # look if it is really a prompt
+                if self.data != '':
+                    # not at the end, is it in first chars ?
+                    tmp = self.logbuf.find(self.prompt)
+                    # print("Prompt", len(self.data), tmp)
+                    if tmp == 0:
+                        loop = False
+                    if tmp == 1:
+                        tmp = self.logbuf.find('\n')
+                        # print("Prompt ret 1", len(self.data), tmp)
+                        if tmp == 0:
+                            loop = False
+                else:
+                    # look if prompt is at the end
+                    tmp = self.logbuf.find(self.prompt)
+                    if tmp == (len(self.logbuf) - len(self.prompt)):
+                        loop = False
+                    # print("Prompt data == 0", tmp, loop, len(self.logbuf), len(self.prompt))
             else:
                 loop = False
         
