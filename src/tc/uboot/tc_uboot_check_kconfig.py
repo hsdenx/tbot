@@ -12,7 +12,7 @@
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 # start with
-# python2.7 src/common/tbot.py -c config/tbot_dxr2_uboot_kconfig_check.cfg -t tc_uboot_check_kconfig.py
+# python2.7 src/common/tbot.py -c config/tbot_uboot_kconfig_check.cfg -t tc_uboot_check_kconfig.py
 # check for all boards, if a patch changes the u-boot binary
 # If U-boot binary changed by the patch this testcase fails.
 # use this testcase, if you for example move a config option
@@ -188,7 +188,7 @@ for board in tb.tc_lab_compile_uboot_list_boardlist:
 
     if uboot_spl_md5sum != uboot_spl_patched_md5sum:
         logging.error("%s u-boot spl bin diff %s != %s", board, uboot_spl_md5sum, uboot_spl_patched_md5sum)
-        tb.statusprint("%s u-boot bin diff %s != %s" % (board, uboot_md5sum, uboot_patched_md5sum))
+        tb.statusprint("%s u-boot spl bin diff %s != %s" % (board, uboot_spl_md5sum, uboot_spl_patched_md5sum))
         result = False
         bad_spl.append(board)
     else:
