@@ -20,6 +20,7 @@ from tbotlib import tbot
 logging.info("args: workdfd: %s %s", tb.workfd.name, tb.tc_workfd_compile_linux_clean)
 logging.info("args: %s", tb.tc_workfd_compile_linux_load_addr)
 logging.info("args: %s", tb.tc_workfd_compile_linux_makeoptions)
+logging.info("args: %s", tb.tc_workfd_compile_linux_make_target)
 logging.info("args: %s %s", tb.tc_workfd_compile_linux_fit_its_file, \
              tb.tc_workfd_compile_linux_fit_file)
 logging.info("args: %s %s", tb.tc_workfd_compile_linux_boardname, \
@@ -43,7 +44,7 @@ if tb.tc_workfd_compile_linux_clean == 'yes':
     tb.eof_write_lx_cmd_check(tb.workfd, tmp)
 
 # compile kernel
-if tb.tc_workfd_compile_linux_load_addr:
+if tb.tc_workfd_compile_linux_load_addr != 'no':
     ld = ' LOADADDR=' + tb.tc_workfd_compile_linux_load_addr + ' '
 else:
     ld = ' '
@@ -51,7 +52,7 @@ else:
 tmp = "make " + tb.tc_workfd_compile_linux_boardname + "_defconfig"
 tb.eof_write_lx_cmd_check(tb.workfd, tmp)
 
-tmp = "make" + ld + " " + tb.tc_workfd_compile_linux_makeoptions + " uImage"
+tmp = "make" + ld + " " + tb.tc_workfd_compile_linux_makeoptions + " " + tb.tc_workfd_compile_linux_make_target
 tb.eof_write_lx_cmd_check(tb.workfd, tmp)
 
 # compile modules (if wanted)

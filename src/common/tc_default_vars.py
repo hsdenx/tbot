@@ -607,9 +607,19 @@ except AttributeError:
     self.tc_workfd_compile_linux_load_addr = 'no'
 
 try:
+    self.tc_workfd_compile_linux_make_target
+except AttributeError:
+    self.tc_workfd_compile_linux_make_target = 'uImage'
+
+try:
     self.tc_workfd_compile_linux_fit_its_file
 except AttributeError:
     self.tc_workfd_compile_linux_fit_its_file = 'no'
+
+try:
+    self.tc_workfd_compile_linux_fit_file
+except AttributeError:
+    self.tc_workfd_compile_linux_fit_file = 'no'
 
 try:
     self.tc_workfd_compile_linux_mkimage
