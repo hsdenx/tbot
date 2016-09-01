@@ -801,3 +801,38 @@ try:
     self.switch_su_board
 except AttributeError:
     self.switch_su_board = 'lab'
+
+try:
+    self.tc_workfd_can_ssh
+except AttributeError:
+    self.tc_workfd_can_ssh = 'no'
+
+try:
+    self.tc_workfd_can_ssh_prompt
+except AttributeError:
+    self.tc_workfd_can_ssh_prompt = '$'
+
+try:
+    self.tc_workfd_can_su
+except AttributeError:
+    self.tc_workfd_can_su = 'no'
+
+try:
+    self.tc_workfd_can_dev
+except AttributeError:
+    self.tc_workfd_can_dev = 'can0'
+
+try:
+    self.tc_workfd_can_bitrate
+except AttributeError:
+    self.tc_workfd_can_bitrate = '500000'
+
+try:
+    self.tc_workfd_can_iproute_dir
+except AttributeError:
+    self.tc_workfd_can_iproute_dir = '/home/hs/iproute2'
+
+try:
+    self.tc_workfd_can_util_dir
+except AttributeError:
+    self.tc_workfd_can_util_dir = '/home/hs/can-utils'
