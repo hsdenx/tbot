@@ -1,0 +1,15 @@
+# pinmux
+# processor:  ARMv7 Processor rev 10 (v7l)
+# hardware :  Freescale i.MX6 Quad/DualLite/Solo (Device Tree)
+# Linux    :  3.10.17+gcbd3e92 (jom2ot@ninja) (gcc version 4.9.1 (GCC) ) #2 SMP PREEMPT Wed Jul 13 14:41:12 CEST 2016
+# regaddr mask type defval
+# PWM1
+0x2080000  0xffffffff          w      0x1C20051
+0x2080004  0xffffffff          w      0x38
+0x208000c  0xffffffff          w      0xd6d8
+0x2080010  0xffffffff          w      0xd6d6
+# PWM3
+# 0x2088000  0xffffffff          w      0x0
+# 0x2088004  0xffffffff          w      0x8
+# 0x208800c  0xffffffff          w      0x0
+# 0x2088010  0xffffffff          w      0xfffe
