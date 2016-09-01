@@ -2,6 +2,11 @@
 # variables testcases use ...
 
 try:
+    self.uboot_strings
+except AttributeError:
+    self.uboot_strings = ['Autobooting in', 'noautoboot',  'autoboot', 'EOF', 'RomBOOT']
+
+try:
     self.term_line_length
 except AttributeError:
     self.term_line_length = '200'

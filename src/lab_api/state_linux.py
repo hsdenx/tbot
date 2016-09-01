@@ -71,6 +71,10 @@ def state_lx_parse_input(tb, c, retry, sl):
             tb.write_stream(c, '\n')
             i = 0
 
+        if (ret == '5') or (ret == '6') or (ret == '7'):
+            # U-Boot autobooting
+            tb.send_ctrl_c(c)
+            i = 0
         i += 1
 
     c.set_timeout(oldt)
@@ -87,6 +91,7 @@ def linux_set_board_state(tb, state, retry):
     # set new prompt
     tb.send_ctrl_c(c)
     sl = [tb.linux_prompt, tb.linux_prompt_default, tb.uboot_prompt, 'login', 'Password']
+    sl = sl + tb.uboot_strings
     state_lx_parse_input(tb, c, retry, sl)
 
     #terminal line length

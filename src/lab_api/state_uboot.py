@@ -20,7 +20,7 @@ from struct import pack
 
 def u_boot_parse_input(tb, c, retry):
     logging.debug("------------------- parse input")
-    sl = ['Autobooting in', 'noautoboot',  'autoboot', 'EOF', 'RomBOOT']
+    sl = tb.uboot_strings
     i = 0
     oldt = c.get_timeout()
     c.set_timeout(1)
