@@ -11,10 +11,13 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_get_version.py
 # get the U-Boot and/or SPL version from a binary
 # and save it in tb.uboot_vers or tb.spl_vers
+# End:
+
 from tbotlib import tbot
 
 logging.info("arg: %s %s %s", tb.workfd.name, tb.tc_ub_get_version_file, tb.tc_ub_get_version_string)

@@ -11,11 +11,13 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot_fipad.cfg -t tc_board_fipad_upd_ub.py
 # update SPL and u-boot.img on the SPI NOR or the MMC0
 # card, and boot it ...
-#
+# End:
+
 from tbotlib import tbot
 
 logging.info("typ: %s", tb.tc_board_fipad_upd_ub_typ)

@@ -11,10 +11,13 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lab_denx_get_power_state.py
 # get the power state of the board, and save it in
 # tb.power_state
+# End:
+
 from tbotlib import tbot
 
 logging.info("args: %s %s", tb.boardname, tb.boardlabpowername)

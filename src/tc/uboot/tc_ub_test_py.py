@@ -11,13 +11,17 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_test_py.py
 # call test/py from u-boot source
 # - disconnect console
 # - call test/py
 # - connect back to console
-#
+# test/py hookscript directory:
+# tb.tc_ub_test_py_hook_script_path
+# End:
+
 from tbotlib import tbot
 
 logging.info("args: %s %s %s", tb.boardname, tb.boardlabname, tb.tc_ub_test_py_hook_script_path)

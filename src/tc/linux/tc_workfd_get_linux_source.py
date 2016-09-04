@@ -11,16 +11,14 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_get_linux_source.py
-## @package tc_workfd_get_linux_source
-# get Linux source
-# and go into the source tree
-# @param: workfd filehandle on which TC sends commands
-# @param: tc_lab_get_linux_source_git_repo: linux repo
-#
-# @return: nothing
-#
+# get Linux source tb.tc_lab_get_linux_source_git_repo with "git clone"
+# and go into the source tree. Apply patches if needed with:
+# tc_lab_apply_patches.py and tc_workfd_apply_local_patches.py
+# End:
+
 from tbotlib import tbot
 
 logging.info("args: workdfd: %s %s %s %s", tb.workfd.name, tb.tc_lab_get_linux_source_git_repo,

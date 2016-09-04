@@ -11,13 +11,17 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot_tqm5200s.cfg -t tc_board_git_bisect.py
 # get a source code with tc tb.board_git_bisect_get_source_tc
 # and start a "git bisect" session
 # current commit is bad
-# good commit id is defined through board_git_bisect_good_commit
-# tc for testing good or bad is board_git_bisect_call_tc
+# good commit id is defined through tb.board_git_bisect_good_commit
+# tc for testing good or bad is tb.board_git_bisect_call_tc
+# if you have some local patches, which needs to be applied
+# each git bisect step, set tb.board_git_bisect_patches
+# End:
 from tbotlib import tbot
 
 logging.info("args: %s %s %s %s", tb.board_git_bisect_get_source_tc, tb.board_git_bisect_call_tc, tb.board_git_bisect_good_commit, tb.board_git_bisect_patches)

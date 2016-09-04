@@ -11,12 +11,14 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot_dxr2_uboot.cfg -t tc_board_dxr2_uboot_patchwork.py
 # dxr2 check all patches with patchworknumber > default_nr
 # in patchwork, if it is checkpatch clean and applies to
-# current mainline clean
-#
+# current mainline without errors
+# End:
+
 from tbotlib import tbot
 
 #set board state for which the tc is valid

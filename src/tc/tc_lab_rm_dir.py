@@ -11,10 +11,12 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lab_rm_dir.py
 # simple rm a directory on the lab
-#
+# End:
+
 from tbotlib import tbot
 
 tb.set_board_state("lab")

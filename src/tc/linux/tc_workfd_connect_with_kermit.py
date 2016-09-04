@@ -11,8 +11,20 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_connect_with_kermit.py
+# connect with kermit to serials board console
+# - if tb.tc_workfd_connect_with_kermit_ssh != 'none'
+#   connect first with ssh to another PC (where kermit is started)
+# - start kermit
+# - if tb.tc_workfd_connect_with_kermit_rlogin == 'none'
+#   connect with command in tb.tc_workfd_connect_with_kermit_rlogin
+#   else
+#   set line tb.kermit_line and speed tb.kermit_speed and
+#   connect to serial line.
+# End:
+
 from tbotlib import tbot
 
 logging.info("args: workdfd: %s", tb.workfd)

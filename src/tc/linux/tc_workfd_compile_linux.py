@@ -11,10 +11,31 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_compile_linux.py
-# compile linux
+# compile linux:
+# - set toolchain with tc_lab_set_toolchain.py
+# - if tb.tc_workfd_compile_linux_clean == 'yes'
+#   call "make mrproper"
+# - tb.tc_workfd_compile_linux_load_addr != 'no'
+#   add LOAD_ADDR=tb.tc_workfd_compile_linux_load_addr to make
+# - make tb.tc_workfd_compile_linux_boardname defconfig
+# - make tb.tc_workfd_compile_linux_makeoptions tb.tc_workfd_compile_linux_make_target
+# - if tb.tc_workfd_compile_linux_modules != 'none'
+#   compile modules
+# - if tb.tc_workfd_compile_linux_dt_name != 'none'
+#   compile DTB from list tb.tc_workfd_compile_linux_dt_name
+# - if tb.tc_workfd_compile_linux_fit_its_file != 'no'
+#   create FIT image
+#   mkimage path: tb.tc_workfd_compile_linux_mkimage
+#   fit description file: tb.tc_workfd_compile_linux_fit_its_file
+#   tb.tc_workfd_compile_linux_fit_file
+# - if tb.tc_workfd_compile_linux_append_dt != 'no'
+#   append dtb to kernel image
 # tc_workfd_compile_linux_boardname _defconfig
+# End:
+
 from tbotlib import tbot
 
 logging.info("args: workdfd: %s %s", tb.workfd.name, tb.tc_workfd_compile_linux_clean)

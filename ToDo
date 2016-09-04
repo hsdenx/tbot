@@ -4,6 +4,16 @@
   - instead printing fd (0 or 1) use the connection
     name.
 
+- automatically create a documentation for all testcases
+  default_vars and tbotlib functions.
+
+  - html (doc/doc_ty.py)
+    - testcase
+      link to other testcases, defaultvars (may show them if
+      mouse is over the name)
+    - defaultvars
+    - tbotlib
+
 - use a dict() for all the parameters
   instead using src/common/tc_defaults.py
 

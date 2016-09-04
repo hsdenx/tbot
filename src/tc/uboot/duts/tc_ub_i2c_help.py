@@ -11,12 +11,15 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_i2c_help.py
 # simple prints "help i2c" cmd
+# End:
+
 from tbotlib import tbot
 
-#set board state for which the tc is valid
+# set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
 ret = tb.write_cmd_check(tb.c_con, "help i2c", "Unknown command")

@@ -11,6 +11,7 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_readreg.py
 # read with devmem2 a register in linux
@@ -20,6 +21,8 @@
 # and compare it with tb.tc_lx_readreg_value
 # if it is the same tc is True
 # else eof
+#end:
+
 from tbotlib import tbot
 
 logging.info("args: %s %s %s %s", tb.tc_lx_readreg_addr, tb.tc_lx_readreg_mask,

@@ -11,6 +11,7 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_get_patchwork_number_list.py
 # get a list of patchworknumbers
@@ -21,6 +22,12 @@
 # tb.workfd_get_patchwork_number_user
 # It would be better to login and look for the users
 # ToDo list, but I did not find out, how to login ...
+# ignore patches on blacklist:
+# tb.tc_workfd_apply_patchwork_patches_blacklist
+# also you can set the patch order with:
+# tb.tc_workfd_get_patchwork_number_list_order
+# End:
+
 from tbotlib import tbot
 import urllib2  # the lib that handles the url stuff
 import urllib, sys

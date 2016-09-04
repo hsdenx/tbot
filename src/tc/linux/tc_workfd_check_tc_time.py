@@ -11,6 +11,7 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_check_tc_time.py
 # check if time for a special testcase is expired.
@@ -19,6 +20,8 @@
 # checks, if the testcases is ready for a new run.
 # False means time is not expired
 # True means time is expired
+# End:
+
 from tbotlib import tbot
 import time
 

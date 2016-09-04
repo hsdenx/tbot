@@ -11,14 +11,18 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_upd_spl.py
 # update new spl to board
 # steps:
 # - load tbot u-boot env vars
-# - execute "run upd_spl"
+# - execute "run tbot_upd_spl"
+# - execute "run tbot_cmp_spl"
 # - reset board
 # - get u-boot
+# End:
+
 from tbotlib import tbot
 
 logging.info("args: %s %s %s", tb.boardname, tb.ub_load_board_env_addr, tb.ub_load_board_env_subdir)

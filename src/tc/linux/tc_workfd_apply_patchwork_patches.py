@@ -11,15 +11,19 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_apply_patchwork_patches.py
-# apply patchworkpatches to current dir
+# apply patchworkpatches from list:
+# tb.tc_workfd_apply_patchwork_patches_list:
+# to source in current directory.
 # creates event:
 # - PW_NR: which patchwork number used
 # - PW_CLEAN: is it checkpatch clean
 # - PW_AA: already applied
 # - PW_APPLY: apply it clean to source
-#
+# End:
+
 from tbotlib import tbot
 
 logging.info("args: workfd: %s %s %s %s", tb.workfd,

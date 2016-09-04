@@ -11,12 +11,28 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c config/tbot_uboot_kconfig_check.cfg -t tc_uboot_check_kconfig.py
 # check for all boards, if a patch changes the u-boot binary
 # If U-boot binary changed by the patch this testcase fails.
 # use this testcase, if you for example move a config option
-# into Kconfig.
+# into Kconfig. As we need reproducable builds, we need to
+# patch U-Boot with tb.tc_uboot_check_kconfig_preparepatch
+# - rm U-Boot code with tc_workfd_rm_uboot_code.py
+# - get U-Boot code with tc_lab_get_uboot_source.py
+# - create a list of boards (all defconfigs)
+# - do for all boards:
+#   - get architecture and set toolchain
+#   - set SOURCE_DATE_EPOCH=0 to get reproducibl builds
+#   - compile U-Boot and calculate md5sum
+#     with tc_workfd_compile_uboot.py and tc_workfd_md5sum.py
+#   - apply patch with tc_workfd_apply_patches.py
+#   - compile U-Boot again (patched version)
+#   - calculate md5sum
+#   - check if they are the same
+# End:
+
 import os
 from tbotlib import tbot
 
@@ -25,7 +41,7 @@ logging.info("args: %s", tb.tc_uboot_check_kconfig_preparepatch)
 #set board state for which the tc is valid
 tb.set_board_state("lab")
 
-#delete old u-boot source tree
+# delete old u-boot source tree
 tb.workfd = tb.c_ctrl
 tb.eof_call_tc("tc_workfd_rm_uboot_code.py")
 

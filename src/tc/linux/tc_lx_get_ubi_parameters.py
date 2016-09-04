@@ -11,14 +11,22 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_get_ubi_parameters.py
+# get ubi parameters of ubi device tb.tc_ubi_mtd_dev
+# save them into:
+# - tb.tc_ubi_max_leb_cnt
+# - tb.tc_ubi_min_io_size
+# - tb.tc_ubi_leb_size
+# End:
+
 from tbotlib import tbot
 
-#here starts the real test
+# here starts the real test
 logging.info("args: %s %s %s", tb.tc_ubi_cmd_path, tb.tc_ubi_mtd_dev, tb.tc_ubi_ubi_dev)
 
-#set board state for which the tc is valid
+# set board state for which the tc is valid
 tb.set_board_state("linux")
 
 c = tb.c_con

@@ -11,10 +11,12 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_boot_linux.py
-# load u-boot environment
-# boots currently with "run net_nfs"
+# - load u-boot environment with testcase "tc_ub_load_board_env.py"
+# - execute u-boot cmd tb.ub_boot_linux_cmd
+# End:
 from tbotlib import tbot
 
 # here starts the real test

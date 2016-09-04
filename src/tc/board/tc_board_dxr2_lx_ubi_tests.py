@@ -10,9 +10,12 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_board_dxr2_lx_ubi_tests.py
 # more dxr2 specific ubi tests, maybe make them common
+# End:
+
 from tbotlib import tbot
 
 #here starts the real test

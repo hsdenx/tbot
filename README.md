@@ -155,6 +155,15 @@ far away, except missing more labs and boards ...
 
 -------------------------------------------------
 
+![Dokumentation of Testcases](https://github.com/hsdenx/tbot/blob/master/doc/doc_testcase.html)
+
+created with
+```
+python2.7 doc/doc_tc.py
+```
+
+-------------------------------------------------
+
 Theory of operation
 steps executed when calling a testcase:
 

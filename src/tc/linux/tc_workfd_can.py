@@ -11,6 +11,7 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_can.py
 #
@@ -40,6 +41,7 @@
 # - get rid of tb.tc_workfd_can_iproute_dir and tb.tc_workfd_can_util_dir
 #   (add the commands to rootfs ...)
 # - support different can devices on the CAN PC and board
+# End:
 
 from tbotlib import tbot
 

@@ -11,9 +11,12 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_ubifs_mount.py
-# - mounts an ubifs
+# - mount ubifs tb.tc_ub_ubifs_volume_name
+# End:
+
 from tbotlib import tbot
 
 logging.info("args: %s", tb.tc_ub_ubifs_volume_name)

@@ -11,10 +11,13 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_memory.py
 # convert duts tests from:
 # http://git.denx.de/?p=duts.git;a=blob;f=testsystems/dulg/testcases/10_UBootMemory.tc;h=f5fb055499db17c322859215ab489cefb063ac47;hb=101ddd5dbd547d5046363358d560149d873b238a
+# End:
+
 from tbotlib import tbot
 
 logging.info("args: %s %s %s", tb.tc_ub_memory_ram_ws_base, tb.tc_ub_memory_ram_ws_base_alt,
@@ -45,7 +48,7 @@ if (tb.tc_ub_memory_ram_big == 'undef'):
 
 logging.info("args: %s %s %s", tb.tc_ub_memory_ram_ws_base, tb.tc_ub_memory_ram_ws_base_alt,
              tb.tc_ub_memory_ram_big)
-#set board state for which the tc is valid
+# set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
 basecmdlist = [
@@ -93,7 +96,7 @@ else:
 # cmp
 tb.eof_write_cmd(tb.c_con, "help cmp")
 
-#generate random file, and tftp it twice
+# generate random file, and tftp it twice
 tb.workfd = tb.c_ctrl
 tb.tc_workfd_generate_random_file_name = tb.tc_ub_tftp_path + "random"
 tb.tc_workfd_generate_random_file_length = '1048576'
@@ -205,7 +208,7 @@ tb.c_con.expect_prompt()
 
 tb.eof_write_cmd(tb.c_con, "md " + tb.tc_ub_memory_ram_ws_base + " 10")
 
-#mtest
+# mtest
 ret = tb.write_cmd_check(tb.c_con, "help mtest", "Unknown command")
 if ret == False:
     sz = int(tb.tc_ub_memory_ram_ws_base, 16)
@@ -240,7 +243,7 @@ if ret == False:
 
     tb.eof_write_cmd(tb.c_con, "md " + tb.tc_ub_memory_ram_ws_base + " 0x40")
 
-#nm
+# nm
 ret = tb.write_cmd_check(tb.c_con, "help nm", "Unknown command")
 if ret == False:
     nm_list = [

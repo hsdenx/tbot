@@ -11,12 +11,15 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_check_if_dir_exist.py
 # check if a dir in tbot workdir exist
 # this tc returns always true, but sets
 # tb.tc_return True or False, because we may not
 # want to end testcase failed, if dir not exists.
+# End:
+
 from tbotlib import tbot
 
 logging.info("args: workfd %s %s", tb.workfd, tb.tc_workfd_check_if_dir_exists_name)

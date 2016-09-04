@@ -11,6 +11,7 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_get_uboot_config_hex.py
 # get a hex parameter from U-Boot configuration
@@ -22,6 +23,8 @@
 # return value:
 # TC ends True, if hex value found, else False
 # tb.config_result: founded hex value, else 'undef'
+# End:
+
 from tbotlib import tbot
 
 logging.info("args: workfd: %s %s %s", tb.workfd.name, tb.uboot_get_parameter_file_list,

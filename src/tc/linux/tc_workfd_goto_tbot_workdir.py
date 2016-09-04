@@ -11,10 +11,13 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_goto_tbot_workdir.py
-# go into the tbot work dir
+# go into the tbot work dir tb.tc_workfd_work_dir
 # if not exist, create it
+# End:
+
 from tbotlib import tbot
 
 logging.info("args: workfd: %s %s", tb.workfd, tb.tc_workfd_work_dir)

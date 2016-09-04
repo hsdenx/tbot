@@ -11,11 +11,13 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_dfu_random_default.py
 # test a U-Boot dfu alt setting tb.tc_ub_dfu_dfu_util_alt_setting
 # with reading / writing different sizes
-# 
+# End:
+
 from tbotlib import tbot
 
 # here starts the real test

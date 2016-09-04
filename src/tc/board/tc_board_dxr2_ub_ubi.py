@@ -11,10 +11,12 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot_dxr2.cfg -t tc_board_dxr2_ub_ubi.py
 # start all ubi testcases for the dxr2 board
-#
+# End:
+
 import time
 from tbotlib import tbot
 

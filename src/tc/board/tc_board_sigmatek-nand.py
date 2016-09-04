@@ -11,6 +11,7 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot_sigmatek-nand.cfg -t tc_board_sigmatek-nand.py
 # On the sigmatek-nand board we have problems with a crash in U-boot
@@ -20,7 +21,8 @@
 # - power off the board
 # - wait 3 seconds for powering really of the board
 # - loop this 50 times
-#
+# End:
+
 import time
 from random import randint
 from tbotlib import tbot

@@ -10,8 +10,15 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_ubi_tests.py
+# - install mtd utils if needed with tc_lx_mtdutils_install.py
+# - attach ubi device with tc_lx_ubi_attach.py
+# - get info with tc_lx_ubi_info.py
+# - get parameters with tc_lx_get_ubi_parameters.py
+# End:
+
 from tbotlib import tbot
 
 # here starts the real test

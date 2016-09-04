@@ -11,14 +11,18 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_get_version.py
-# get the linux version
+# get the linux version and create event LINUX_VERSION
+# save the linux version in tb.tc_return
+# End:
+
 from tbotlib import tbot
 
 logging.info("args: %s", tb.workfd.name)
 
-#set board state for which the tc is valid
+# set board state for which the tc is valid
 tb.set_board_state("linux")
 
 c = tb.workfd

@@ -11,10 +11,12 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot_mcx.cfg -t tc_board_mcx.py
 # start all testcases for the mcx board linux stable and linux-ml
-#
+# End:
+
 from tbotlib import tbot
 
 tb.statusprint("tc_mcx testing linux stable")

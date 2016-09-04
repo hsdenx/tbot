@@ -161,25 +161,22 @@ $
   line  6: tftpboardname: name used for tftp subdir (from where
              U-Boot loads images for example).
              may differ from tb.boardname, default tb.boardname
-  line  7: labprompt: linux prompt tbot sets
-             no defaultvalue, must be set (maybe we should introduce
-             "ttbott" as default ...
-  line  8: debug: If True, adds debug output on the tbot shell
-  line  9: debugstatus: enable status debug output on the shell
-  line 10: ip: Where tbot finds the Lab PC
-  line 11: user: As which user does tbot logs into the Lab PC
-  line 12: accept_all: passed to paramiko, accept all connections
-  line 13: keepalivetimout: passed to paramiko, timeout for sending
+  line  7: debug: If True, adds debug output on the tbot shell
+  line  8: debugstatus: enable status debug output on the shell
+  line  9: ip: Where tbot finds the Lab PC
+  line 10: user: As which user does tbot logs into the Lab PC
+  line 11: accept_all: passed to paramiko, accept all connections
+  line 12: keepalivetimout: passed to paramiko, timeout for sending
              keepalive message.
-  line 14: channel_timeout: passed to paramiko
-  line 15: loglevel: tbots loglevel for adding entries into the logfile.
-  line 17: wdt_timeout: timeout in seconds for tbots watchdog.
+  line 13: channel_timeout: passed to paramiko
+  line 14: loglevel: tbots loglevel for adding entries into the logfile.
+  line 16: wdt_timeout: timeout in seconds for tbots watchdog.
              Watchdog gets triggered if prompt get read.
-  line 24: tc_lab_denx_connect_to_board_tc: Which TC is used for
+  line 23: tc_lab_denx_connect_to_board_tc: Which TC is used for
              connecting to the boards console the TC, here:
              https://github.com/hsdenx/tbot/blob/master/src/tc/linux/tc_workfd_connect_with_kermit.py
-  line 27: uboot_prompt: boards U-Boot prompt
-  line 28: linux_prompt: boards linux prompt
+  line 26: uboot_prompt: boards U-Boot prompt
+  line 27: linux_prompt: boards linux prompt
 
   Now comes a list of variables TC needs, this vary from what you
   you want to test...
@@ -213,18 +210,6 @@ hs@localhost:tbot  [event-devel] $ python2.7 src/common/tbot.py -c tbot_dxr2.cfg
 ('CFGFILE ', 'tbot_dxr2.cfg')
 ('LOGFILE ', '/home/hs/data/Entwicklung/tbot/log/tbot.log')
 tb_ctrl: Last login: Mon Apr 25 14:52:42 2016 from 87.97.29.27
-*************************************************************
-BDI2000 Assignment:    (last updated:  2015-11-20 12:30 MET)
-bdi1  => techem     bdi2  => cetec_mx25   bdi3  => lpc3250
-bdi4  => -          bdi5  => --Rev.B!--   bdi6  => tqm5200s
-bdi7  => [stefano]  bdi8  => smartweb     bdi9  => sigmatek-nand
-bdi10 => pcm052     bdi11 => socrates     bdi12 => aristainetos
-bdi13 => imx53      bdi14 => ib8315       bdi15 => cairo
-bdi16 => g2c1       bdi17 => lwe090       bdi18 => symphony
-bdi19 => dxr2       bdi20 => ima3-mx6     bdi21 => sama5d3
-bdi98 => -          bdi99 => -            bdi0  => -
-Please power off unused systems when you leave!   Thanks, wd.
-*************************************************************
 tb_ctrl: pollux:~ hs $
 tb_ctrl: export PS1=ttbott
 ttbott
@@ -236,18 +221,6 @@ tb_ctrl: echo $COLUMNS
 200
 ttbott
 tb_con: Last login: Tue Apr 26 06:28:59 2016 from 87.97.29.27
-*************************************************************
-BDI2000 Assignment:    (last updated:  2015-11-20 12:30 MET)
-bdi1  => techem     bdi2  => cetec_mx25   bdi3  => lpc3250
-bdi4  => -          bdi5  => --Rev.B!--   bdi6  => tqm5200s
-bdi7  => [stefano]  bdi8  => smartweb     bdi9  => sigmatek-nand
-bdi10 => pcm052     bdi11 => socrates     bdi12 => aristainetos
-bdi13 => imx53      bdi14 => ib8315       bdi15 => cairo
-bdi16 => g2c1       bdi17 => lwe090       bdi18 => symphony
-bdi19 => dxr2       bdi20 => ima3-mx6     bdi21 => sama5d3
-bdi98 => -          bdi99 => -            bdi0  => -
-Please power off unused systems when you leave!   Thanks, wd.
-*************************************************************                                                                                                                             
 tb_con: pollux:~ hs $                                                                                                                                                                     
 tb_con: export PS1=ttbot                                                                                                                                                                  
 tb_con: t                                                                                                                                                                                 

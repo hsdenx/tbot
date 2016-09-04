@@ -11,9 +11,11 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot_aristainetos2.cfg -t tc_board_aristainetos2_linux_bisect.py
 # start a git bisect for the aristainetos2 board
+# End:
 #
 from tbotlib import tbot
 

@@ -11,9 +11,14 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_mtdutils_install.py
-# get mtdutil source and install it
+# check if mtdutils are installed. If not, clone the code with
+# git clone git://git.infradead.org/mtd-utils.git mtd-utils
+# and install it
+# End:
+
 from tbotlib import tbot
 
 logging.info("args: %s", tb.tc_workfd_work_dir)

@@ -11,18 +11,21 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_create_reg_file.py
 # creates a reg file tb.tc_ub_create_reg_file_name on the tbot host
 # in tb.workdir
 # read from tb.tc_ub_create_reg_file_start to tb.tc_ub_create_reg_file_stop
-# and writes the results in the regfile
+# and writes the results in the regfile tb.tc_ub_create_reg_file_name
 # format of the regfile:
 # regaddr mask type defval
 # This reg file can be used as a default file, how the
 # registers must be setup, check it with testcase
-# src/tc/tc_ub_check_reg_file.py
+# tc_ub_check_reg_file.py
 # ToDo: use the file from the lab host, not the tbot host
+# End:
+
 import datetime
 from tbotlib import tbot
 

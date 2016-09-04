@@ -11,10 +11,13 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_generate_random_file.py
-# simple create a random file
-#
+# simple create a random file tb.tc_workfd_generate_random_file_name
+# with tb.tc_workfd_generate_random_file_length length.
+# End:
+
 from tbotlib import tbot
 
 logging.info("args: workfd %s %s %s", tb.workfd.name, tb.tc_workfd_generate_random_file_name,

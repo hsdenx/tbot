@@ -11,9 +11,15 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_create_ubi_rootfs.py
 # create a ubifs rootfs
+# ubi rootfs path: tb.tc_workfd_create_ubi_rootfs_path
+# ubi parameters:
+# tb.tc_ubi_min_io_size tb.tc_ubi_leb_size tb.tc_ubi_max_leb_cnt
+# output path: tb.tc_workfd_create_ubi_rootfs_target
+# End:
 from tbotlib import tbot
 
 logging.info("args: workdfd: %s %s", tb.workfd.name, tb.tc_workfd_create_ubi_rootfs_path)

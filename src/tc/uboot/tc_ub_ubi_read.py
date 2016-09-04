@@ -11,9 +11,13 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_ubi_read.py
-# - read ubi volume to tb.tc_ub_ubi_read_addr
+# - read ubi volume tb.tc_ub_ubi_prep_offset to tb.tc_ub_ubi_read_addr
+# with len tb.tc_ub_ubi_read_len
+# End:
+
 from tbotlib import tbot
 
 logging.info("args: %s %s %s", tb.tc_ub_ubi_read_addr, tb.tc_ub_ubi_read_vol_name, tb.tc_ub_ubi_read_len)

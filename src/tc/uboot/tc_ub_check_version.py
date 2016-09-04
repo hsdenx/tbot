@@ -11,10 +11,13 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_check_version.py
-# check the U-Boot and U-Boot SPL version
-#
+# check if the current running U-Boot vers == tb.uboot_vers
+# and SPL vers == tb.spl_vers
+# End:
+
 from tbotlib import tbot
 
 logging.info("arg: %s %s", tb.uboot_vers, tb.spl_vers)

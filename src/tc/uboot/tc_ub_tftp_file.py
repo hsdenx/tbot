@@ -11,10 +11,13 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_tftp_file.py
-# load file tc_ub_tftp_file_name to tc_ub_tftp_file_addr
+# load file tb.tc_ub_tftp_file_name to tb.tc_ub_tftp_file_addr
 # with tftp command in uboot
+# End:
+
 from tbotlib import tbot
 
 logging.info("args: %s %s %s", tb.boardname, tb.tc_ub_tftp_file_addr, tb.tc_ub_tftp_file_name)

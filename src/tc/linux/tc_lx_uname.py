@@ -11,14 +11,18 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_dmesg_grep.py
+# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_uname.py
+# simple linux "uname -a" command
+# End:
+
 from tbotlib import tbot
 
-#here starts the real test
+# here starts the real test
 logging.info("args: %s", tb.workfd.name)
 
-#set board state for which the tc is valid
+# set board state for which the tc is valid
 tb.set_board_state("linux")
 
 c = tb.workfd

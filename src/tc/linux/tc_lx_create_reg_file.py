@@ -11,6 +11,7 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_create_reg_file.py
 # creates a reg file tb.tc_lx_create_reg_file_name on the tbot host
@@ -21,8 +22,10 @@
 # regaddr mask type defval
 # This reg file can be used as a default file, how the
 # registers must be setup, check it with testcase
-# src/tc/tc_lx_check_reg_file.py
+# tc_lx_check_reg_file.py
 # ToDo: use the file from the lab host, not the tbot host
+# End:
+
 from tbotlib import tbot
 
 logging.info("args: %s %s %s %s %s", tb.tc_lx_create_reg_file_name, tb.tc_lx_create_reg_file_start, tb.tc_lx_create_reg_file_stop, tb.tc_lx_readreg_mask, tb.tc_lx_readreg_type)

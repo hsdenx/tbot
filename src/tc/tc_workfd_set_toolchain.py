@@ -11,12 +11,15 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_set_toolchain.py
 # set the toolchain, dependend on the architecture setting in
 # tb.tc_workfd_set_toolchain_arch
 # supported toolchains defined in
 # tb.tc_workfd_set_toolchain_t_p and tb.tc_workfd_set_toolchain_cr_co
+# End:
+
 from tbotlib import tbot
 
 logging.info("args: %s %s", tb.workfd.name, tb.tc_workfd_set_toolchain_arch)

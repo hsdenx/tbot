@@ -11,9 +11,12 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_rm_uboot_code.py
-# rm U-Boot source
+# rm U-Boot source tb.tc_lab_source_dir + '/u-boot-' + tb.boardlabname
+# End:
+
 from tbotlib import tbot
 
 logging.info("args: %s", tb.workfd)

@@ -11,11 +11,13 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot_tqm5200s.cfg -t tc_board_tqm5200s_ub_comp_install.py
 # compile and install U-Boot for the tqm5200s board
 # install U-Boot with BDI
-#
+# End:
+
 from tbotlib import tbot
 
 #call get u-boot source

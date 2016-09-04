@@ -11,9 +11,12 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_grep.py
-# search string in file
+# search string tb.tc_workfd_grep_string in file tb.tc_workfd_grep_file
+# End:
+
 from tbotlib import tbot
 
 logging.info("args: workfd: %s %s %s", tb.workfd.name, tb.tc_workfd_grep_file, tb.tc_workfd_grep_string)

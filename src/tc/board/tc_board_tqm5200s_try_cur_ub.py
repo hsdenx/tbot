@@ -11,11 +11,13 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot_tqm5200s.cfg -t tc_board_tqm5200s_try_cur_ub.py
 # remove current u-boot code on the lab PC
 # then call tc tc_board_tqm5200s_ub_comp_install.py
-#
+# End:
+
 from tbotlib import tbot
 
 #set board state for which the tc is valid

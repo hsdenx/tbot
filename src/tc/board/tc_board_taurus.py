@@ -11,10 +11,12 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot_taurus.cfg -t tc_board_taurus.py
 # start all testcases for the taurus board
-#
+# End:
+
 from tbotlib import tbot
 
 #set board state for which the tc is valid

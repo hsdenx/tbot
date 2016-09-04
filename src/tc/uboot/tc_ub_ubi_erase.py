@@ -11,12 +11,16 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_ubi_erase.py
 # - erase an ubi device
+#   execute U-Boot Env tbot_ubi_erase
+# End:
+
 from tbotlib import tbot
 
-#set board state for which the tc is valid
+# set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
 c = tb.c_con

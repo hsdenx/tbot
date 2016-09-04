@@ -11,9 +11,12 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_goto_linux_code.py
-# switch into linux source
+# switch into linux source tb.tc_lab_source_dir + "/linux-" + tb.boardlabname
+# End:
+
 from tbotlib import tbot
 
 logging.info("args: %s", tb.workfd)

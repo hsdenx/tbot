@@ -11,10 +11,12 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot_dxr2.cfg -t tc_board_dxr2.py
 # start all testcases for the dxr2 board
-#
+# End:
+
 from tbotlib import tbot
 
 #set board state for which the tc is valid

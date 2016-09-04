@@ -11,19 +11,22 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_check_reg_file.py
 # checks if the default values in reg file tb.tc_lx_create_reg_file_name
 # on the tbot host in tb.workdir have the same values, as the
-# registers on the board
+# registers on the board. Needs devmem2 installed.
 # format of the regfile:
 # regaddr mask type defval
 # ToDo: use the file from the lab host, not the tbot host
+# End:
+
 from tbotlib import tbot
 
 logging.info("args: %s", tb.tc_lx_create_reg_file_name)
 
-#set board state for which the tc is valid
+# set board state for which the tc is valid
 tb.set_board_state("linux")
 
 c = tb.c_con

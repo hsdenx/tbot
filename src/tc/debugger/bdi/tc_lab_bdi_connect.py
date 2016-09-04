@@ -11,9 +11,14 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lab_bdi_connect.py
-# connect to the BDI
+# connect to the BDI if tb.board_has_debugger != 0
+# - send to workfd tb.tb.lab_bdi_upd_uboot_bdi_cmd
+# - set BDI prompt tb.lab_bdi_upd_uboot_bdi_prompt
+# - wait for BDI prompt
+# End:
 
 from tbotlib import tbot
 

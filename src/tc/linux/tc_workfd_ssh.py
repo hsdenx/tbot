@@ -11,10 +11,13 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_ssh.py
-# login with ssh
-#
+# login with ssh to tb.workfd_ssh_cmd and set new ssh prompt
+# tb.workfd_ssh_cmd_prompt
+# End:
+
 from tbotlib import tbot
 
 logging.info("args: workfd %s %s %s", tb.workfd.name, tb.workfd_ssh_cmd,

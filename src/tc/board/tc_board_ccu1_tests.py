@@ -11,10 +11,12 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot_ccu1.cfg -t tc_board_ccu1_tests.py
 # start all testcases for the ccu1 board
-#
+# End:
+
 from tbotlib import tbot
 
 #set board state for which the tc is valid

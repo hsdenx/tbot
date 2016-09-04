@@ -11,10 +11,18 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_dfu.py
 # test dfu
-# 
+# - use dfu-util in tb.tc_ub_dfu_dfu_util_path
+# - upload file tb.tc_ub_dfu_dfu_util_alt_setting to
+#   tb.tc_ub_dfu_dfu_util_downloadfile
+# - download it back to the board
+# - upload it again
+# - and compare the two files
+# End:
+
 from tbotlib import tbot
 
 # here starts the real test

@@ -11,6 +11,7 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot_sirius_dds.cfg -t tc_board_sirius_dds.py
 # On the sirius board we have problems with ubifs
@@ -24,7 +25,8 @@
 # - wait 3 seconds for powering really of the board
 # - loop this 50 times
 # if we have an ubifs error, testcase ends with error
-#
+# End:
+
 import time
 from random import randint
 from tbotlib import tbot

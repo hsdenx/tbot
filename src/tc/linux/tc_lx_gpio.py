@@ -11,8 +11,13 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_gpio.py
+# set in linux gpio tb.tc_lx_gpio_nr to direction tb.tc_lx_gpio_dir
+# and value tb.tc_lx_gpio_val
+# End:
+
 from tbotlib import tbot
 
 # here starts the real test

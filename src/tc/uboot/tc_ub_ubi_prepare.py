@@ -11,9 +11,15 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_ubi_prepare.py
 # - ubi prepare
+#   execute "ubi part" ith tb.tc_ub_ubi_prep_partname
+#   if tb.tc_ub_ubi_prep_offset != 'none'
+#   with offset tb.tc_ub_ubi_prep_offset
+# End:
+
 from tbotlib import tbot
 
 logging.info("args: %s %s", tb.tc_ub_ubi_prep_partname, tb.tc_ub_ubi_prep_offset)

@@ -11,9 +11,16 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_apply_local_patches.py
-# apply patchworkpatches to current dir
+# apply patches from directory tb.tc_workfd_apply_local_patches_dir
+# with 'git am -3' to the source in current directory.
+# if tb.tc_workfd_apply_local_patches_checkpatch_cmd != 'none'
+# check the patches with the checkpatch cmd tb.tc_workfd_apply_local_patches_checkpatch_cmd
+# before applying.
+# End:
+
 from tbotlib import tbot
 
 logging.info("args: workfd: %s %s %s %s", tb.workfd,

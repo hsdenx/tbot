@@ -11,9 +11,13 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_ubi_create_volume.py
-# - create an ubi volume
+# - create ubi volume tb.tc_ub_ubi_create_vol_name with size
+# tb.tc_ub_ubi_create_vol_sz
+# End:
+
 from tbotlib import tbot
 
 logging.info("args: %s %s", tb.tc_ub_ubi_create_vol_name, tb.tc_ub_ubi_create_vol_sz)

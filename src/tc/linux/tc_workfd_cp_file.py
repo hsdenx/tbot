@@ -11,10 +11,11 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_cp_file.py
-# simple copy  file from a to b
-#
+# simple copy file from tb.tc_workfd_cp_file_a to tb.tc_workfd_cp_file_b
+# End:
 from tbotlib import tbot
 
 logging.info("args: workfd %s %s %s", tb.workfd, tb.tc_workfd_cp_file_a, tb.tc_workfd_cp_file_b)
