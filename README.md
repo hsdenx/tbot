@@ -158,6 +158,12 @@ far away, except missing more labs and boards ...
 Dokumentation of Testcases:
 https://github.com/hsdenx/tbot/blob/master/doc/doc_testcase.html
 
+try to open it with:
+
+http://htmlpreview.github.io/?https://github.com/hsdenx/tbot/blob/master/doc/doc_testcase.html
+
+best view when opening it from local clone ...
+
 created with
 ```
 python2.7 doc/doc_tc.py
