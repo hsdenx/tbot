@@ -155,7 +155,8 @@ far away, except missing more labs and boards ...
 
 -------------------------------------------------
 
-![Dokumentation of Testcases](https://github.com/hsdenx/tbot/blob/master/doc/doc_testcase.html)
+Dokumentation of Testcases:
+https://github.com/hsdenx/tbot/blob/master/doc/doc_testcase.html
 
 created with
 ```
