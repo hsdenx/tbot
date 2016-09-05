@@ -763,6 +763,11 @@ except AttributeError:
     self.linux_prompt_default = 'root@generic-armv7a-hf:~#'
 
 try:
+    self.labprompt
+except AttributeError:
+    self.labprompt = self.linux_prompt
+
+try:
     self.create_dot
 except AttributeError:
     self.create_dot = 'no'
