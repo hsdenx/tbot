@@ -159,8 +159,7 @@ Dokumentation of Testcases:
 https://github.com/hsdenx/tbot/blob/master/doc/doc_testcase.html
 
 try to open it with:
-
-http://htmlpreview.github.io/?https://github.com/hsdenx/tbot/blob/master/doc/doc_testcase.html
+![tbot_testcase_doc](http://xeidos.ddns.net/tbot/doc/doc_testcase.html)
 
 best view when opening it from local clone ...
 
