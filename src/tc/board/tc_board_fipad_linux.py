@@ -105,10 +105,7 @@ else:
 	#'da9063-rtc da9063-rtc: IRQ is',
 	'da9063-rtc da9063-rtc: rtc core: registered da9063-rtc',
 	'at24 5-0050: 131072 byte 24c1024 EEPROM, writable, 128 bytes/write',
-	'da9063-battery da9063-battery: Iset=6000uA, Vset=3100mV',
-	'spitest spi0.0: gpio 26 reserved',
-	'spitest spi0.0: gpio 105 reserved',
-	'spitest spi0.0: gpio 27 reserved'
+	'da9063-battery da9063-battery: Iset=6000uA, Vset=3100mV'
 	]
 
 for tb.tc_lx_dmesg_grep_name in checks:
@@ -157,7 +154,7 @@ else:
               {"cmd":"cat /sys/class/rtc/rtc1/name", "val":"da9063-rtc"},
               {"cmd":"cat /sys/class/rtc/rtc1/hctosys", "val":"1"},
               {"cmd":"/media/mmcblk1p2/opt/a-sample-test/functional/GetBoardID.sh", "val":"PCBA HW version: 0.0.0"},
-              {"cmd":"lsblk", "val":"mmcblk1p2  179:10   0     1G  0 part /media/mmcblk1p2"},
+              {"cmd":"lsblk", "val":"/media/mmcblk1p2"},
               {"cmd":"hexdump -C /sys/bus/nvmem/devices/imx-ocotp0/nvmem", "val":"00000100  da ba da ba da ba da ba  da ba da ba da ba da ba"}]
 
 for bl in basiclist:
@@ -165,6 +162,13 @@ for bl in basiclist:
         tb.eof_write_cmd(tb.c_con, bl["cmd"])
     else:
         tb.eof_write_cmd_check(tb.c_con, bl["cmd"], bl["val"])
+
+# Test spitest module
+tb.tc_workfd_insmod_mpath = '/home/hs/fipad/modules/lib/modules'
+tb.tc_workfd_insmod_module_path = 'kernel/drivers/char/bosch'
+tb.tc_workfd_insmod_module = 'spitest'
+tb.tc_workfd_insmod_module_checks = ['spitest spi0.0: gpio 26 reserved', 'spitest spi0.0: gpio 105 reserved', 'spitest spi0.0: gpio 27 reserved']
+tb.eof_call_tc("tc_workfd_insmod.py")
 
 # regulator tests
 if lx_vers != '3':
