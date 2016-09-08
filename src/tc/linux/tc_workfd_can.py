@@ -97,7 +97,7 @@ tb.eof_write_cmd(tb.c_con, tmp)
 tmp = 'cd ' + tb.tc_workfd_can_util_dir
 tb.eof_write_cmd(tb.c_con, tmp)
 tmp = './cansend ' + tb.tc_workfd_can_dev + ' 123#DEADBEEF'
-tb.eof_write(tb.c_con, tmp)
+tb.eof_write_cmd(tb.c_con, tmp)
 
 # now we must get "can0  123   [4]  DE AD BE EF"
 tmp = tb.tc_workfd_can_dev + '  123   [4]  DE AD BE EF'
