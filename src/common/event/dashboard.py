@@ -105,8 +105,10 @@ class dashboard(object):
                 if self.bina == 'unknown':
                     self.bina = ' '.join(tmp[self.ev.value:])
                 else:
-                    self.bina += ' <br> '
-                    self.bina += ' '.join(tmp[self.ev.value:])
+                    vers = ' '.join(tmp[self.ev.value:])
+                    if vers not in self.bina:
+                        self.bina += ' <br> '
+                        self.bina += vers
             if tmp[self.ev.id] == 'Toolchain':
                 self.tool = ' '.join(tmp[self.ev.value:])
 
