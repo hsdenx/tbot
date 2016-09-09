@@ -655,6 +655,7 @@ class tbot(object):
             with failure
         """
         ret = c.sendcmd(string)
+        self.tbot_trigger_wdt()
         if ret == True:
             return True
         self.end_tc(False)

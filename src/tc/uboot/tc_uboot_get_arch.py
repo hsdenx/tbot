@@ -21,8 +21,8 @@ from tbotlib import tbot
 
 logging.info("args: %s", tb.tc_workfd_grep_file)
 
-archs = ['ARC', 'ARM', 'AVR32', 'BLACKFIN', 'M68K', 'MICROBLAZE', 'MIPS', 'NDS32', 'NIOS2', 'OPENRISC', 'PPC', 'SANDBOX', 'SH', 'SPARC', 'X86']
-archs_ret = ['arc', 'arm', 'avr32', 'blackfin', 'm68k', 'microblaze', 'mips', 'nds32', 'nios2', 'openrisc', 'powerpc', 'sandbox', 'sh', 'sparc', 'x86']
+archs = ['ARC', 'ARM64', 'ARM', 'AVR32', 'BLACKFIN', 'M68K', 'MICROBLAZE', 'MIPS', 'NDS32', 'NIOS2', 'OPENRISC', 'PPC', 'SANDBOX', 'SH', 'SPARC', 'X86']
+archs_ret = ['arc', 'arm64', 'arm', 'avr32', 'blackfin', 'm68k', 'microblaze', 'mips', 'nds32', 'nios2', 'openrisc', 'powerpc', 'sandbox', 'sh', 'sparc', 'x86']
 
 tb.cur_uboot_arch = 'undef'
 index = 0

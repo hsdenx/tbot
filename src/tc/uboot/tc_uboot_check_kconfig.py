@@ -72,8 +72,8 @@ for name in tb.list_of_files:
 
 # overwrite board list, if you want to do a
 # short test for all supported archs
-# nds32 m68k sh mips blackfin arc avr32 microblaze nios2 openrisc sandbox sparc x86
-# tb.tc_lab_compile_uboot_list_boardlist = ['adp-ag101p', 'amcore', 'ap_sh4a_4a', 'vct_premium', 'bf527-ezkit', 'axs103', 'atngw100', 'microblaze-generic', '10m50', 'openrisc-generic', 'sandbox', 'gr_ep2s60', 'chromebook_link']
+# arm64 nds32 m68k sh mips blackfin arc avr32 microblaze nios2 openrisc sandbox sparc x86
+# tb.tc_lab_compile_uboot_list_boardlist = ['ls2080a_emu', 'adp-ag101p', 'amcore', 'ap_sh4a_4a', 'vct_premium', 'bf527-ezkit', 'axs103', 'atngw100', 'microblaze-generic', '10m50', 'openrisc-generic', 'sandbox', 'gr_ep2s60', 'chromebook_link']
 
 count = 0
 good = []
@@ -93,14 +93,22 @@ for board in tb.tc_lab_compile_uboot_list_boardlist:
     tb.eof_call_tc("tc_workfd_goto_uboot_code.py")
 
     # get architecture
-    tb.tc_workfd_grep_file = tb.tc_workfd_get_list_of_files_dir + '/' + board + '_defconfig'
+    tmp = "make mrproper"
+    tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+    tmp = "make " + board + "_defconfig"
+    tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+    tb.tc_workfd_grep_file = '.config'
     ret = tb.call_tc("tc_uboot_get_arch.py")
     if ret == False:
         not_checked.append(board)
         tb.statusprint("testing board %s no architecture found" % (board))
+        tmp = "make mrproper"
+        tb.eof_write_lx_cmd_check(tb.workfd, tmp)
         del ctrl
         continue
 
+    tmp = "make mrproper"
+    tb.eof_write_lx_cmd_check(tb.workfd, tmp)
     # call set toolchain
     tb.tc_workfd_set_toolchain_arch = tb.cur_uboot_arch
     ret = tb.call_tc("tc_workfd_set_toolchain.py")
