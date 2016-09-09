@@ -770,7 +770,7 @@ except AttributeError:
 try:
     self.linux_prompt_default
 except AttributeError:
-    self.linux_prompt_default = 'root@generic-armv7a-hf:~#'
+    self.linux_prompt_default = 'root@generic-armv7a-hf:~# '
 
 try:
     self.labprompt
