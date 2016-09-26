@@ -864,6 +864,30 @@ class tbot(object):
             self.end_tc(True)
         return True
 
+    def tbot_rup_error_on_strings(self, c, strings, endtc=False):
+        """
+        read until prompt and check, if a string in list is
+        found, if so, end False
+        """
+        tmp = True
+        notfound = True
+        while tmp == True:
+            ret = self.tbot_read_line_and_check_strings(c, strings)
+            if ret == 'prompt':
+                tmp = False
+            else:
+                try:
+                    nr = int(ret)
+                except:
+                    continue
+                logging.error("found string %d %s", nr, strings[nr])
+                notfound = False
+
+        if endtc == True:
+            self.end_tc(notfound)
+
+        return notfound
+
     def tbot_expect_prompt(self, c):
         """ searches for prompt, endless
         """

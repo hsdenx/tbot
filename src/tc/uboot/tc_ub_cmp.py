@@ -31,13 +31,4 @@ c = tb.c_con
 tb.eof_write(c, tmp)
 
 searchlist = ["!= byte"]
-tmp = True
-same = True
-while tmp == True:
-    ret = tb.tbot_read_line_and_check_strings(c, searchlist)
-    if ret == '0':
-        same = False
-    elif ret == 'prompt':
-        tmp = False
-
-tb.end_tc(same)
+tb.tbot_rup_error_on_strings(c, searchlist, endtc=True)
