@@ -822,6 +822,48 @@ class tbot(object):
         self.buf = c.get_log()
         return ret
 
+    def tbot_fakult(self, n):
+        if n < 0:
+            raise ValueError
+        if n == 0:
+            return 1
+        else:
+            save = 1
+            for i in range(2,n+1):
+                save *= i
+            return save
+
+    def tbot_rup_check_all_strings(self, c, strings, endtc=False):
+        """
+        read until prompt, and check if all strings in list strings
+        are found. returns False, if not all strings in list are
+        found, or end tbot if endtc = True.
+        """
+        tmp = True
+        cnt = len(strings)
+        res = 1
+        target = self.tbot_fakult(cnt)
+        while tmp == True:
+            ret = self.tbot_read_line_and_check_strings(c, strings)
+            if ret == 'prompt':
+                tmp = False
+            else:
+                try:
+                    nr = int(ret)
+                except:
+                    continue
+                res *= (nr + 1)
+
+        if res != target:
+            logging.error("Could not find %d != %d", res, target)
+            if endtc == True:
+                self.end_tc(False)
+            return False
+
+        if endtc == True:
+            self.end_tc(True)
+        return True
+
     def tbot_expect_prompt(self, c):
         """ searches for prompt, endless
         """

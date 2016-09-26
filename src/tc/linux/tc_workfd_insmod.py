@@ -47,35 +47,6 @@ if ret == 'prompt':
 vers = tb.buf.rstrip()
 tb.tbot_expect_prompt(c)
 
-def fakult(n):
-    if n < 0:
-        raise ValueError
-    if n == 0:
-        return 1
-    else:
-        save = 1
-        for i in range(2,n+1):
-            save *= i
-        return save
-
 tmp = 'insmod ' + tb.tc_workfd_insmod_mpath + '/' + vers + '/' + tb.tc_workfd_insmod_module_path + '/' + tb.tc_workfd_insmod_module + '.ko'
 tb.eof_write(c, tmp)
-tmp = True
-cnt = len(tb.tc_workfd_insmod_module_checks)
-res = 1
-target = fakult(cnt)
-while tmp == True:
-    ret = tb.tbot_read_line_and_check_strings(c, tb.tc_workfd_insmod_module_checks)
-    if ret == 'prompt':
-        tmp = False
-    else:
-        try:
-            nr = int(ret)
-        except:
-            continue
-        res *= (nr + 1)
-
-if res != target:
-    tb.end_tc(False)
-
-tb.end_tc(True)
+tb.tbot_rup_check_all_strings(c, tb.tc_workfd_insmod_module_checks, endtc=True)
