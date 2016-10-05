@@ -28,10 +28,7 @@ tb.cur_uboot_arch = 'undef'
 index = 0
 result = False
 for arch in archs:
-    if arch == 'SANDBOX':
-        tb.tc_workfd_grep_string = 'CONFIG_' + arch
-    else:
-        tb.tc_workfd_grep_string = 'CONFIG_' + arch + '=y'
+    tb.tc_workfd_grep_string = 'CONFIG_' + arch + '=y'
     ret = tb.call_tc("tc_workfd_grep.py")
     if ret == False:
         index += 1
