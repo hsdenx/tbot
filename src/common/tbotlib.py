@@ -486,7 +486,7 @@ class tbot(object):
         try:
             c.expect_string('#\$')
         except:
-            loggin.debug("got prompt after passwd")
+            logging.debug("got prompt after passwd")
         
         c.set_timeout(oldt)
         return True
@@ -577,6 +577,7 @@ class tbot(object):
            True: If setting the prompt was successful
            False: If settting the prompt failed
         """
+        ret = True
         if ptype == 'linux':
             header = 'export PS1="\u@\h [\$(date +%k:%M:%S)] ' 
             end = '"'
@@ -671,7 +672,7 @@ class tbot(object):
     def eof_write_cmd(self, c, command):
         """
         write a command to fd, wait for prompt
-        :param fd: filedescriptor
+        :param c: connection
         :param command: commandstring
         :return: True if prompt read
         end testcase with False else
@@ -683,7 +684,7 @@ class tbot(object):
     def eof_write_cmd_list(self, c, cmdlist):
         """
         send a list of cmd to fd and wait for end
-        :param fd: filedescriptor
+        :param c: connection
         :param cmdlist: list of commandstrings
         :return: True if prompt found
         else endtestcase with False
@@ -694,7 +695,7 @@ class tbot(object):
     def write_lx_cmd_check(self, c, command, endTC=True):
         """
         write a linux command to console.
-        :param fd: filedescriptor
+        :param c: connection
         :param command: commandstring
         :param endTC: if True and linux cmd ended False end TC
                with end_tc(False), else return True
@@ -733,7 +734,7 @@ class tbot(object):
             If write_stream returns not True, end tc
             with failure
         """
-        ret = self.write_stream_passwd(self.c_con, user, board)
+        self.write_stream_passwd(self.c_con, user, board)
         return True
 
     def eof_write_ctrl_passwd(self, user, board):
@@ -741,7 +742,7 @@ class tbot(object):
             If write_stream returns not True, end tc
             with failure
         """
-        ret = self.write_stream_passwd(self.c_ctrl, user, board)
+        self.write_stream_passwd(self.c_ctrl, user, board)
         return True
 
     def eof_write_workfd_passwd(self, user, board):
@@ -756,7 +757,7 @@ class tbot(object):
         """
         set terminal line length
         ToDo How could this be set longer and do this correct
-        :param fd: filedescritor
+        :param c: connection
         :return:
         """
         tmp = 'stty cols ' + self.term_line_length
@@ -778,7 +779,7 @@ class tbot(object):
     def write_cmd_check(self, c, cmd, string):
         """
         send a cmd and check if a string is read.
-        :param fd: filedescriptor
+        :param c: connection
         :param cmd: commandstring
         :param string: string which must be read
         :return: True if prompt and string is read
@@ -799,7 +800,7 @@ class tbot(object):
     def eof_write_cmd_check(self, c, cmd, string):
         """
         send a cmd and check if a string is read.
-        :param fd: filedescriptor
+        :param c: connection
         :param cmd: commandstring
         :param string: string which must be read
         :return: True if prompt and string is read
@@ -817,7 +818,7 @@ class tbot(object):
         is a prompt, return 'prompt' if it is a prompt.
         if a string in strings found return index
         else return None
-        :param c: filedescriptor used
+        :param c: connection used
         :param strings: a list of strings
         :return: index of string which is found
                  'prompt' if prompt found
