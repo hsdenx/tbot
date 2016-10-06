@@ -20,8 +20,11 @@
 from tbotlib import tbot
 
 if tb.tc_lab_compile_uboot_export_path != 'none':
-    tmp = "export PATH=" + tb.tc_lab_compile_uboot_export_path + ":$PATH"
-    tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+    tmp = "printenv PATH | grep --color=never " + tb.tc_lab_compile_uboot_export_path
+    ret = tb.write_lx_cmd_check(tb.workfd, tmp)
+    if ret == False:
+        tmp = "export PATH=" + tb.tc_lab_compile_uboot_export_path + ":$PATH"
+        ret = tb.eof_write_lx_cmd_check(tb.workfd, tmp)
 
 tmp = "make mrproper"
 tb.eof_write_lx_cmd_check(tb.workfd, tmp)
