@@ -24,6 +24,8 @@ from tbotlib import tbot
 
 logging.info("args: %s %s", tb.workfd.name, tb.tc_workfd_set_toolchain_arch)
 
+c = tb.workfd
+
 try:
     tb.tc_workfd_set_toolchain_t_p
 except:
@@ -48,17 +50,19 @@ else:
     logging.error("args: %s unknown architecture %s", tb.workfd.name, tb.tc_workfd_set_toolchain_arch)
     tb.end_tc(False)
 
-c = tb.workfd
-
 if tb.tc_workfd_set_toolchain_arch == 'sandbox':
     tmp = 'export PATH=/bin:$PATH'
     tb.event.create_event('main', tb.boardname, "Toolchain", tmp)
     tb.eof_write_cmd(c, tmp)
     tb.end_tc(True)
 
-tmp = 'export PATH=' + path + ':$PATH'
-tb.event.create_event('main', tb.boardname, "Toolchain", path)
-tb.eof_write_cmd(c, tmp)
+tmp = "printenv PATH | grep --color=never " + path
+ret = tb.write_lx_cmd_check(c, tmp)
+if ret == False:
+    tmp = 'export PATH=' + path + ':$PATH'
+    tb.event.create_event('main', tb.boardname, "Toolchain", path)
+    tb.eof_write_cmd(c, tmp)
+
 tmp = 'export CROSS_COMPILE=' + cross
 tb.eof_write_cmd(c, tmp)
 tb.end_tc(True)
