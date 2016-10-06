@@ -23,19 +23,19 @@ savefd = tb.workfd
 tb.workfd = tb.c_ctrl
 if tb.tc_lab_compile_uboot_export_path != 'none':
     tmp = "export PATH=" + tb.tc_lab_compile_uboot_export_path + ":$PATH"
-    tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+    tb.write_lx_cmd_check(tb.workfd, tmp)
 
 tmp = "make mrproper"
-tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+tb.write_lx_cmd_check(tb.workfd, tmp)
 
 defname = tb.tc_lab_compile_uboot_boardname + "_defconfig"
 tmp = "make " + defname
 tb.event.create_event('main', tb.boardname, "UBOOT_DEFCONFIG", defname)
-tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+tb.write_lx_cmd_check(tb.workfd, tmp)
 tb.event.create_event('main', tb.boardname, "UBOOT_SRC_PATH", tb.tc_lab_source_dir + "/u-boot-" + tb.boardlabname)
 
 tmp = "make " + self.tc_lab_compile_uboot_makeoptions + " all"
-tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+tb.write_lx_cmd_check(tb.workfd, tmp)
 
 tb.workfd = savefd
 tb.end_tc(True)

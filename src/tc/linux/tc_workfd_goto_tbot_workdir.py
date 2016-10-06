@@ -28,8 +28,8 @@ ret = tb.tbot_expect_string(tb.workfd, 'Does not exist')
 if ret != 'prompt':
     # directory does not exist, create it
     tmp = "mkdir -p " + tb.tc_workfd_work_dir
-    tb.eof_write_lx_cmd_check(c, tmp)
+    tb.write_lx_cmd_check(c, tmp)
 
 tmp = "cd " + tb.tc_workfd_work_dir
-tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+tb.write_lx_cmd_check(tb.workfd, tmp)
 tb.end_tc(True)

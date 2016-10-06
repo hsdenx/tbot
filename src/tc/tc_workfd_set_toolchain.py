@@ -57,7 +57,7 @@ if tb.tc_workfd_set_toolchain_arch == 'sandbox':
     tb.end_tc(True)
 
 tmp = "printenv PATH | grep --color=never " + path
-ret = tb.write_lx_cmd_check(c, tmp)
+ret = tb.write_lx_cmd_check(c, tmp, endTC=False)
 if ret == False:
     tmp = 'export PATH=' + path + ':$PATH'
     tb.event.create_event('main', tb.boardname, "Toolchain", path)

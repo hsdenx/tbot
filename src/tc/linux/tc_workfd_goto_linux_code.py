@@ -22,6 +22,6 @@ from tbotlib import tbot
 logging.info("args: %s", tb.workfd)
 
 tmp = "cd " + tb.tc_lab_source_dir + "/linux-" + tb.boardlabname
-tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+tb.write_lx_cmd_check(tb.workfd, tmp)
 
 tb.end_tc(True)

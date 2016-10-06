@@ -691,35 +691,24 @@ class tbot(object):
         for tmp_cmd in cmdlist:
             self.eof_write_cmd(c, tmp_cmd)
 
-    def write_lx_cmd_check(self, c, command):
+    def write_lx_cmd_check(self, c, command, endTC=True):
         """
         write a linux command to console.
         :param fd: filedescriptor
         :param command: commandstring
-        :return: True if linux command ended succesful
-                 else False
+        :param endTC: if True and linux cmd ended False end TC
+               with end_tc(False), else return True
+        :return: if linux cmd ended successful True, else False
         """
         self.eof_write_cmd(c, command)
         tmpfd = self.workfd
         self.workfd = c
         ret = self.call_tc("tc_workfd_check_cmd_success.py")
         self.workfd = tmpfd
+        if endTC == True:
+            if ret == False:
+                self.end_tc(False)
         return ret
-
-    def eof_write_lx_cmd_check(self, c, command):
-        """
-        write a linux command to console.
-        :param fd: filedescriptor
-        :param command: commandstring
-        :return: True if linux command ended succesful
-        else testase fails with False
-        """
-        self.eof_write_cmd(c, command)
-        tmpfd = self.workfd
-        self.workfd = c
-        self.eof_call_tc("tc_workfd_check_cmd_success.py")
-        self.workfd = tmpfd
-        return True
 
     def eof_write_con_lx_cmd(self, command):
         """
@@ -728,7 +717,7 @@ class tbot(object):
         :return: True if linux command was successful
         else end testcase with False
         """
-        self.eof_write_lx_cmd_check(self.c_con, command)
+        self.write_lx_cmd_check(self.c_con, command)
         return True
  
     def eof_write_ctrl(self, string):

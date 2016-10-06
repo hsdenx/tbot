@@ -22,5 +22,5 @@ from tbotlib import tbot
 tb.set_board_state("lab")
 
 tmp = "rm -rf " + self.tc_lab_rm_dir
-tb.eof_write_lx_cmd_check(tb.c_ctrl, tmp)
+tb.write_lx_cmd_check(tb.c_ctrl, tmp)
 tb.end_tc(True)

@@ -32,7 +32,7 @@ tb.write_stream_passwd(tb.workfd, "root", "lab")
 
 tb.set_prompt(tb.workfd, tb.linux_prompt, 'linux')
 tmp = "\cp " + tb.tc_workfd_cp_file_a + " " + tb.tc_workfd_cp_file_b
-tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+tb.write_lx_cmd_check(tb.workfd, tmp)
 
 tb.eof_write_cmd(tb.workfd, "exit")
 tb.end_tc(True)

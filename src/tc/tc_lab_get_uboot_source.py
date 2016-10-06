@@ -28,13 +28,13 @@ if ret == False:
     tb.eof_call_tc("tc_workfd_goto_lab_source_dir.py")
     # clone u-boot.git
     tmp = "git clone " + tb.tc_lab_get_uboot_source_git_repo + " " + u_boot_name
-    tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+    tb.write_lx_cmd_check(tb.workfd, tmp)
 
     tmp = "cd " + u_boot_name
-    tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+    tb.write_lx_cmd_check(tb.workfd, tmp)
     #check out a specific branch
     tmp = "git checkout " + tb.tc_lab_get_uboot_source_git_branch
-    tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+    tb.write_lx_cmd_check(tb.workfd, tmp)
 
 # check if there are patches to apply
 tb.eof_call_tc("tc_lab_apply_patches.py")

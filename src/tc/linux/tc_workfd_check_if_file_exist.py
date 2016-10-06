@@ -22,5 +22,5 @@ from tbotlib import tbot
 logging.info("args: workfd %s %s", tb.workfd.name, tb.tc_workfd_check_if_file_exists_name)
 
 tmp = 'test -r ' + tb.tc_workfd_check_if_file_exists_name
-tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+tb.write_lx_cmd_check(tb.workfd, tmp)
 tb.end_tc(True)

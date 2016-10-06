@@ -35,16 +35,16 @@ tb.eof_call_tc("tc_lx_create_dummy_file.py")
 
 # copy dummy file into partition
 tmp = "cp " + tb.tc_lx_dummy_file_tempfile + " " + tb.tc_lx_mount_dir
-tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+tb.write_lx_cmd_check(tb.workfd, tmp)
 
 # umount the partition
 tmp = "umount " + tb.tc_lx_mount_dev
-tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+tb.write_lx_cmd_check(tb.workfd, tmp)
 
 # mount it again
 tb.eof_call_tc("tc_lx_mount.py")
 
 # compare the dummy file with the file in the partition
 tmp = "cmp " + tb.tc_lx_dummy_file_tempfile + " " + tb.tc_lx_mount_dir + "/gnlmpf_partition"
-tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+tb.write_lx_cmd_check(tb.workfd, tmp)
 tb.end_tc(True)

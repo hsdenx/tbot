@@ -21,5 +21,5 @@ from tbotlib import tbot
 logging.info("args: workfd %s %s %s", tb.workfd, tb.tc_workfd_cp_file_a, tb.tc_workfd_cp_file_b)
 
 tmp = "cp " + tb.tc_workfd_cp_file_a + " " + tb.tc_workfd_cp_file_b
-tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+tb.write_lx_cmd_check(tb.workfd, tmp)
 tb.end_tc(True)

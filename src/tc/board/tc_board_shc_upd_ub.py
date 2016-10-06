@@ -54,23 +54,23 @@ tb.eof_call_tc("tc_lab_cp_file.py")
 
 tb.workfd = tb.c_con
 tmp = 'cp ' + rootfsworkdir + '/MLO ' + tb.tc_lx_mount_dir
-tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+tb.write_lx_cmd_check(tb.workfd, tmp)
 tmp = 'cp ' + rootfsworkdir + '/u-boot.img ' + tb.tc_lx_mount_dir
-tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+tb.write_lx_cmd_check(tb.workfd, tmp)
 
 # umount the partition
 tmp = "umount " + tb.tc_lx_mount_dev
-tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+tb.write_lx_cmd_check(tb.workfd, tmp)
 
 tb.workfd = tb.c_ctrl
 # set bootmode
 tmp = 'relais   relsrv-08-01  4  off'
-tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+tb.write_lx_cmd_check(tb.workfd, tmp)
 if tb.tc_board_shc_upd_ub_typ == 'eMMC':
     tmp = 'relais   relsrv-08-01  3  off'
 elif tb.tc_board_shc_upd_ub_typ == 'SD':
     tmp = 'relais   relsrv-08-01  3  on'
-tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+tb.write_lx_cmd_check(tb.workfd, tmp)
 
 # power off
 tb.eof_call_tc("tc_lab_poweroff.py")

@@ -24,5 +24,5 @@ logging.info("args: workfd %s %s", tb.workfd, tb.tc_workfd_cd_name)
 tb.tc_workfd_check_if_dir_exists_name = tb.tc_workfd_cd_name
 tb.eof_call_tc("tc_workfd_check_if_dir_exist.py")
 tmp = "cd " + tb.tc_workfd_cd_name
-tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+tb.write_lx_cmd_check(tb.workfd, tmp)
 tb.end_tc(True)

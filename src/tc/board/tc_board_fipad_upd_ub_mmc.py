@@ -43,8 +43,8 @@ tb.eof_call_tc("tc_lab_cp_file.py")
 tb.workfd = tb.c_con
 dev = '/dev/mmcblk0'
 tmp = 'dd if=' + rootfsworkdir + '/SPL of=' + dev + ' bs=1K seek=1 oflag=sync status=none && sync'
-tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+tb.write_lx_cmd_check(tb.workfd, tmp)
 tmp = 'dd if=' + rootfsworkdir + '/u-boot.img of=' + dev + ' bs=1K seek=69 oflag=sync status=none && sync'
-tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+tb.write_lx_cmd_check(tb.workfd, tmp)
 
 tb.end_tc(True)

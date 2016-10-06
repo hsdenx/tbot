@@ -38,7 +38,7 @@ if tb.tc_board_fipad_upd_ub_typ == 'MMC0':
     tmp = 'relais   relsrv-02-01  1  on'
 elif tb.tc_board_fipad_upd_ub_typ == 'SPI':
     tmp = 'relais   relsrv-02-01  1  off'
-tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+tb.write_lx_cmd_check(tb.workfd, tmp)
 
 # power off
 tb.eof_call_tc("tc_lab_poweroff.py")

@@ -58,11 +58,11 @@ if ret == False:
     tb.eof_call_tc("tc_workfd_check_cmd_success.py")
 
     tmp = "cd " + linux_name
-    tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+    tb.write_lx_cmd_check(tb.workfd, tmp)
 
     # check out a specific branch
     tmp = "git checkout " + tb.tc_lab_get_linux_source_git_branch
-    tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+    tb.write_lx_cmd_check(tb.workfd, tmp)
 
 # check if there are patches to apply
 tb.eof_call_tc("tc_lab_apply_patches.py")

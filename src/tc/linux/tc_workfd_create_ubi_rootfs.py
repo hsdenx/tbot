@@ -28,11 +28,11 @@ logging.info("%s", tb.tc_workfd_create_ubi_rootfs_target)
 tb.eof_call_tc("tc_workfd_switch_su.py")
 
 tmp = "date > " + tb.tc_workfd_create_ubi_rootfs_path + "/creation_time"
-tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+tb.write_lx_cmd_check(tb.workfd, tmp)
 tmp = "cat " + tb.tc_workfd_create_ubi_rootfs_path + "/creation_time"
-tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+tb.write_lx_cmd_check(tb.workfd, tmp)
 
 tmp = "mkfs.ubifs --root=" + tb.tc_workfd_create_ubi_rootfs_path + " -m " + tb.tc_ubi_min_io_size + " -e " + tb.tc_ubi_leb_size + " -c " + tb.tc_ubi_max_leb_cnt + " -F --output=" + tb.tc_workfd_create_ubi_rootfs_target
-tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+tb.write_lx_cmd_check(tb.workfd, tmp)
 tb.eof_write_cmd(tb.workfd, "exit")
 tb.end_tc(True)

@@ -24,9 +24,9 @@ logging.info("args: workfd %s %s %s", tb.workfd.name, tb.tc_workfd_generate_rand
              tb.tc_workfd_generate_random_file_length)
 
 tmp = "dd if=/dev/urandom of=" + tb.tc_workfd_generate_random_file_name + " bs=1 count=" + tb.tc_workfd_generate_random_file_length
-tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+tb.write_lx_cmd_check(tb.workfd, tmp)
 
 tmp = "hexdump -C -n 48 " + tb.tc_workfd_generate_random_file_name
-tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+tb.write_lx_cmd_check(tb.workfd, tmp)
 
 tb.end_tc(True)

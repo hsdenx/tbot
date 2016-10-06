@@ -154,9 +154,9 @@ else:
 
         # get architecture
         tmp = "make mrproper"
-        tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+        tb.write_lx_cmd_check(tb.workfd, tmp)
         tmp = "make " + board + "_defconfig"
-        tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+        tb.write_lx_cmd_check(tb.workfd, tmp)
         tb.tc_workfd_grep_file = '.config'
         ret = tb.call_tc("tc_uboot_get_arch.py")
         if ret == False:
@@ -166,13 +166,13 @@ else:
             oldsplmd5sum.append('none')
             tb.statusprint("testing board %s no architecture found" % (board))
             tmp = "make mrproper"
-            tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+            tb.write_lx_cmd_check(tb.workfd, tmp)
             continue
 
         arch.append(tb.cur_uboot_arch)
 
         tmp = "make mrproper"
-        tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+        tb.write_lx_cmd_check(tb.workfd, tmp)
         # call set toolchain
         tb.tc_workfd_set_toolchain_arch = tb.cur_uboot_arch
         ret = tb.call_tc("tc_workfd_set_toolchain.py")
@@ -241,7 +241,7 @@ for board in tb.tc_lab_compile_uboot_list_boardlist:
     tb.tc_lab_compile_uboot_boardname = board
 
     tmp = "make mrproper"
-    tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+    tb.write_lx_cmd_check(tb.workfd, tmp)
 
     if arch[count - 1] == 'none':
         continue
@@ -262,7 +262,7 @@ for board in tb.tc_lab_compile_uboot_list_boardlist:
         compile_bad.append(board)
         tb.statusprint("testing board %s second compile failed" % (board))
         tmp = "make mrproper"
-        tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+        tb.write_lx_cmd_check(tb.workfd, tmp)
         continue
 
     uboot_patched_md5sum = 'notread'

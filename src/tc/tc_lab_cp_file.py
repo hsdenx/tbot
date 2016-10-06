@@ -20,5 +20,5 @@
 from tbotlib import tbot
 
 tmp = "cp " + self.tc_lab_cp_file_a + " " + self.tc_lab_cp_file_b
-tb.eof_write_lx_cmd_check(tb.c_ctrl, tmp)
+tb.write_lx_cmd_check(tb.c_ctrl, tmp)
 tb.end_tc(True)

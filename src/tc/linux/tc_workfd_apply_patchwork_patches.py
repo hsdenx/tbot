@@ -35,7 +35,7 @@ def apply_one_patch(tb, nr):
     tb.tc_workfd_rm_file_name = 'mbox'
     ret = tb.call_tc("tc_workfd_rm_file.py")
     tmp = 'wget http://patchwork.ozlabs.org/patch/' + nr + '/mbox'
-    tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+    tb.write_lx_cmd_check(tb.workfd, tmp)
     tb.event.create_event('main', 'func', 'PW_NR', nr)
     if tb.tc_workfd_apply_patchwork_patches_checkpatch_cmd != 'none':
         tmp = tb.tc_workfd_apply_patchwork_patches_checkpatch_cmd + ' mbox'
@@ -44,7 +44,7 @@ def apply_one_patch(tb, nr):
         if ret != True:
             logging.warn("checkpatch error")
             tmp = 'cat mbox | grep Subject'
-            tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+            tb.write_lx_cmd_check(tb.workfd, tmp)
             tb.event.create_event('main', 'func', 'PW_CLEAN', 'False')
         else:
             tb.event.create_event('main', 'func', 'PW_CLEAN', 'True')
@@ -67,11 +67,11 @@ def apply_one_patch(tb, nr):
             if ret == False:
                 # restore source
                 tmp = 'git am --abort'
-                tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+                tb.write_lx_cmd_check(tb.workfd, tmp)
 
 # print some infos
 tb.eof_write_cmd(tb.workfd, 'pwd')
-tb.eof_write_lx_cmd_check(tb.workfd, 'git describe')
+tb.write_lx_cmd_check(tb.workfd, 'git describe')
 for nr in tb.tc_workfd_apply_patchwork_patches_list:
     apply_one_patch(tb, nr)
 

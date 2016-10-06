@@ -25,6 +25,6 @@ tb.tc_workfd_check_if_file_exists_name = tb.tc_workfd_rm_file_name
 ret = tb.call_tc("tc_workfd_check_if_file_exist.py")
 if ret == True:
     tmp = "rm " + tb.tc_workfd_rm_file_name
-    tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+    tb.write_lx_cmd_check(tb.workfd, tmp)
 
 tb.end_tc(True)

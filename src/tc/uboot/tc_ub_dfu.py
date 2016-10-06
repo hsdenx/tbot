@@ -66,7 +66,7 @@ if ret != 'prompt':
 # delete tmp file
 logging.info("upload file")
 tmp = "rm -rf " + tb.tc_ub_dfu_dfu_util_downloadfile
-tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+tb.write_lx_cmd_check(tb.workfd, tmp)
 
 tmp = "./src/dfu-util -a " + tb.tc_ub_dfu_dfu_util_alt_setting + " -U " + tb.tc_ub_dfu_dfu_util_downloadfile
 
@@ -110,7 +110,7 @@ tb.tbot_expect_string(c, 'OK')
 logging.info("upload file again")
 # delete tmp file
 tmp = "rm -rf " + tb.tc_ub_dfu_dfu_util_downloadfile + ".new"
-tb.eof_write_lx_cmd_check(tb.workfd, tmp)
+tb.write_lx_cmd_check(tb.workfd, tmp)
 
 tmp = "./src/dfu-util -a " + tb.tc_ub_dfu_dfu_util_alt_setting + " -U " + tb.tc_ub_dfu_dfu_util_downloadfile + ".new"
 tb.eof_write(tb.workfd, tmp)

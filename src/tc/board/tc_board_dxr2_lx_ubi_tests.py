@@ -28,11 +28,11 @@ def create_ubi_cmd(tb, cmd):
     tmp = tb.tc_ubi_cmd_path + '/' + cmd
     return tmp
 
-tb.eof_write_lx_cmd_check(tb.workfd, "ls -al /home/hs/zug/mnt/")
-tb.eof_write_lx_cmd_check(tb.workfd, "mount -t ubifs /dev/ubi0_0 /home/hs/zug/mnt")
-tb.eof_write_lx_cmd_check(tb.workfd, "ls -al /home/hs/zug/mnt/")
-tb.eof_write_lx_cmd_check(tb.workfd, "cat /home/hs/zug/mnt/creation_time ")
-tb.eof_write_lx_cmd_check(tb.workfd, "cmp /home/hs/ubi_random /home/hs/zug/mnt/boot/ubi_random")
-tb.eof_write_lx_cmd_check(tb.workfd, "umount /home/hs/zug/mnt")
+tb.write_lx_cmd_check(tb.workfd, "ls -al /home/hs/zug/mnt/")
+tb.write_lx_cmd_check(tb.workfd, "mount -t ubifs /dev/ubi0_0 /home/hs/zug/mnt")
+tb.write_lx_cmd_check(tb.workfd, "ls -al /home/hs/zug/mnt/")
+tb.write_lx_cmd_check(tb.workfd, "cat /home/hs/zug/mnt/creation_time ")
+tb.write_lx_cmd_check(tb.workfd, "cmp /home/hs/ubi_random /home/hs/zug/mnt/boot/ubi_random")
+tb.write_lx_cmd_check(tb.workfd, "umount /home/hs/zug/mnt")
 
 tb.end_tc(True)

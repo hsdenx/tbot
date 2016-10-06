@@ -52,8 +52,8 @@ tb.eof_call_tc("tc_ub_cmp.py")
 
 tb.set_board_state("linux")
 tb.workfd = tb.c_con
-tb.eof_write_lx_cmd_check(tb.workfd, "cd /home/hs/flea3")
-tb.eof_write_lx_cmd_check(tb.workfd, "./load_can.sh")
+tb.write_lx_cmd_check(tb.workfd, "cd /home/hs/flea3")
+tb.write_lx_cmd_check(tb.workfd, "./load_can.sh")
 
 cmdlist = [
 "./mtd-utils/misc-utils/flash_unlock --version",
@@ -71,7 +71,7 @@ cmdlist = [
 ]
 
 for tmp_cmd in cmdlist:
-    tb.eof_write_lx_cmd_check(tb.workfd, tmp_cmd)
+    tb.write_lx_cmd_check(tb.workfd, tmp_cmd)
 
 # power off board at the end
 tb.eof_call_tc("tc_lab_poweroff.py")
