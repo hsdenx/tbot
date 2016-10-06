@@ -1066,21 +1066,6 @@ $(document).ready(function () {
 </div>
 <!-- end of one testcase src/tc/linux/tc_lx_bonnie_install.py -->
 
-<!-- one testcase src/tc/linux/tc_lx_check_cmd.py -->
-<div class="stream block" id="src_tc_linux_tc_lx_check_cmd_py">
-<div class="stream-header block-header">src/tc/linux/tc_lx_check_cmd.py</div>
-<div class="stream-content block-content">
-<pre>
-# start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t <a href="#src_tc_linux_tc_lx_check_cmd_py">tc_lx_check_cmd.py</a>
-# checks, if a lx cmd, reproduces the correct output
-</pre>
-<div class="stream-trailer block-trailer">End stream: src/tc/linux/tc_lx_check_cmd.py </div>
-<div class="status-pass"></div>
-</div>
-</div>
-<!-- end of one testcase src/tc/linux/tc_lx_check_cmd.py -->
-
 <!-- one testcase src/tc/linux/tc_lx_check_reg_file.py -->
 <div class="stream block" id="src_tc_linux_tc_lx_check_reg_file_py">
 <div class="stream-header block-header">src/tc/linux/tc_lx_check_reg_file.py</div>
@@ -1343,57 +1328,6 @@ $(document).ready(function () {
 </div>
 </div>
 <!-- end of one testcase src/tc/linux/tc_lx_printenv.py -->
-
-<!-- one testcase src/tc/linux/tc_lx_readreg.py -->
-<div class="stream block" id="src_tc_linux_tc_lx_readreg_py">
-<div class="stream-header block-header">src/tc/linux/tc_lx_readreg.py</div>
-<div class="stream-content block-content">
-<pre>
-# start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t <a href="#src_tc_linux_tc_lx_readreg_py">tc_lx_readreg.py</a>
-# read with devmem2 a register in linux
-# readaddr: <a href="#var_tc_lx_readreg_addr">tb.tc_lx_readreg_addr</a>
-# <a href="#var_tc_lx_readreg_type:">tb.tc_lx_readreg_type:</a> access operation type : [b]yte, [h]alfword, [w]ord
-# mask it with <a href="#var_tc_lx_readreg_mask">tb.tc_lx_readreg_mask</a>
-# and compare it with <a href="#var_tc_lx_readreg_value">tb.tc_lx_readreg_value</a>
-# if it is the same tc is True
-# else eof
-#end:
-
-from tbotlib import tbot
-
-logging.info("args: %s %s %s %s", <a href="#var_tc_lx_readreg_addr,">tb.tc_lx_readreg_addr,</a> <a href="#var_tc_lx_readreg_mask,">tb.tc_lx_readreg_mask,</a>
-             <a href="#var_tc_lx_readreg_type,">tb.tc_lx_readreg_type,</a> <a href="#var_tc_lx_readreg_value)">tb.tc_lx_readreg_value)</a>
-
-# set board state for which the tc is valid
-<a href="#var_set_board_state("linux")">tb.set_board_state("linux")</a>
-
-c = <a href="#var_c_con">tb.c_con</a>
-tmp = 'devmem2 ' + <a href="#var_tc_lx_readreg_addr">tb.tc_lx_readreg_addr</a> + " " + <a href="#var_tc_lx_readreg_type">tb.tc_lx_readreg_type</a>
-<a href="#var_eof_write(c,">tb.eof_write(c,</a> tmp)
-
-# read register value
-ret = tb_tbot_expect_string(c, 'opened')
-if ret = 'prompt':
-    <a href="#var_end_tc(False)">tb.end_tc(False)</a>
-ret = tb_tbot_expect_string(c, 'Value at address')
-if ret = 'prompt':
-    <a href="#var_end_tc(False)">tb.end_tc(False)</a>
-tmp = self.buf.split(":")[1]
-tmp = tmp[1:]
-logging.debug("args: readval: %s masked: %x == %x", tmp, int(tmp, 16) & int(tb.tc_lx_readreg_mask, 16), int(tb.tc_lx_readreg_value, 16))
-tb_tbot_expect_prompt(c)
-
-if (int(tmp, 16) & int(tb.tc_lx_readreg_mask, 16)) != int(tb.tc_lx_readreg_value, 16):
-    <a href="#var_end_tc(False)">tb.end_tc(False)</a>
-
-<a href="#var_end_tc(True)">tb.end_tc(True)</a>
-</pre>
-<div class="stream-trailer block-trailer">End stream: src/tc/linux/tc_lx_readreg.py </div>
-<div class="status-pass"></div>
-</div>
-</div>
-<!-- end of one testcase src/tc/linux/tc_lx_readreg.py -->
 
 <!-- one testcase src/tc/linux/tc_lx_regulator.py -->
 <div class="stream block" id="src_tc_linux_tc_lx_regulator_py">
@@ -1954,6 +1888,25 @@ if (int(tmp, 16) & int(tb.tc_lx_readreg_mask, 16)) != int(tb.tc_lx_readreg_value
 </div>
 </div>
 <!-- end of one testcase src/tc/linux/tc_workfd_grep.py -->
+
+<!-- one testcase src/tc/linux/tc_workfd_insmod.py -->
+<div class="stream block" id="src_tc_linux_tc_workfd_insmod_py">
+<div class="stream-header block-header">src/tc/linux/tc_workfd_insmod.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# python2.7 src/common/tbot.py -c tbot.cfg -t <a href="#_tc_workfd_py">tc_workfd.py</a>
+# insmod module <a href="#var_tc_workfd_insmod_module">tb.tc_workfd_insmod_module</a> with
+# module path <a href="#var_tc_workfd_insmod_mpath">tb.tc_workfd_insmod_mpath</a> and
+# <a href="#var_tc_workfd_insmod_module_path">tb.tc_workfd_insmod_module_path</a>
+# check if the strings in list <a href="#var_tc_workfd_insmod_module_checks">tb.tc_workfd_insmod_module_checks</a>
+# come back when inserting the module.
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/linux/tc_workfd_insmod.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/linux/tc_workfd_insmod.py -->
 
 <!-- one testcase src/tc/linux/tc_workfd_iperf.py -->
 <div class="stream block" id="src_tc_linux_tc_workfd_iperf_py">
@@ -2841,15 +2794,29 @@ if (int(tmp, 16) & int(tb.tc_lx_readreg_mask, 16)) != int(tb.tc_lx_readreg_value
 # patch U-Boot with <a href="#var_tc_uboot_check_kconfig_preparepatch">tb.tc_uboot_check_kconfig_preparepatch</a>
 # - rm U-Boot code with <a href="#src_tc_linux_tc_workfd_rm_uboot_code_py">tc_workfd_rm_uboot_code.py</a>
 # - get U-Boot code with <a href="#src_tc_tc_lab_get_uboot_source_py">tc_lab_get_uboot_source.py</a>
-# - create a list of boards (all defconfigs)
+# - set SOURCE_DATE_EPOCH=0 to get reproducible builds
+# - get rid of local version ToDo: find a way to disable CONFIG_LOCALVERSION_AUTO
+# - if <a href="#var_tc_uboot_check_kconfig_read_sumfile">tb.tc_uboot_check_kconfig_read_sumfile</a> is != 'none'
+#     read a list of boards and md5sums from the file in
+#     <a href="#var_tc_uboot_check_kconfig_read_sumfile">tb.tc_uboot_check_kconfig_read_sumfile</a>
+#   else
+#   - create a list of boards (all defconfigs)
+#   - do for all boards:
+#     - get architecture and set toolchain
+#     - compile U-Boot and calculate md5sum
+#       with <a href="#src_tc_tc_workfd_compile_uboot_py">tc_workfd_compile_uboot.py</a> and <a href="#src_tc_linux_tc_workfd_md5sum_py">tc_workfd_md5sum.py</a>
+#     - if <a href="#var_tc_uboot_check_kconfig_create_sumfile">tb.tc_uboot_check_kconfig_create_sumfile</a> != 'none'
+#       save the board md5sum lists in the file
+#       <a href="#var_tc_uboot_check_kconfig_create_sumfile">tb.tc_uboot_check_kconfig_create_sumfile</a>
+#       you can use this now as a reference, so no need
+#       to calculate always for all boards the md5sums
+#       -> saves a lot of time!
+#
+# - apply patch(es) with <a href="#src_tc_tc_workfd_apply_patches_py">tc_workfd_apply_patches.py</a>
 # - do for all boards:
-#   - get architecture and set toolchain
-#   - set SOURCE_DATE_EPOCH=0 to get reproducibl builds
-#   - compile U-Boot and calculate md5sum
-#     with <a href="#src_tc_tc_workfd_compile_uboot_py">tc_workfd_compile_uboot.py</a> and <a href="#src_tc_linux_tc_workfd_md5sum_py">tc_workfd_md5sum.py</a>
-#   - apply patch with <a href="#src_tc_tc_workfd_apply_patches_py">tc_workfd_apply_patches.py</a>
 #   - compile U-Boot again (patched version)
-#   - calculate md5sum
+#   - calculate md5sum again
+#   - calculate md5sums
 #   - check if they are the same
 </pre>
 <div class="stream-trailer block-trailer">End stream: src/tc/uboot/tc_uboot_check_kconfig.py </div>
@@ -5023,7 +4990,7 @@ self.workfd_ssh_cmd_prompt = '$'
 <div class="stream-header block-header">linux_prompt_default</div>
 <div class="stream-content block-content">
 <pre>
-self.linux_prompt_default = 'root@generic-armv7a-hf:~#'
+self.linux_prompt_default = 'root@generic-armv7a-hf:~# '
 </pre>
 <div class="stream-trailer block-trailer">End stream: linux_prompt_default </div>
 <div class="status-pass"></div>
