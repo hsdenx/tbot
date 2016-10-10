@@ -1,26 +1,50 @@
+Note: ToDo entries with "*" are done, "-" are really ToDo
+
+- [simplify] create testcases, specific for a specific SoC, so board
+  testcases can use them. For Example, create a tc_soc_imx6_xxx.py
+  testcases, which contains testcases we want to run on an imx based
+  board.
+
+- [simplify] make it possible to move virtual lab specific config options
+  into lab specific config files, and include them in board
+  config files
+
+- [simplify] make a documentation of "tbot conventions"
+  currently this are my personal conventions, if there are more
+  user try to identify my conventions and discuss and document them
+
+  currently they are hidden in default settings of tbot variables ...
+
+- [simplify] Get Vars for TC from U-Boot Code
+  started with, see TC:
+  src/tc/tc_workfd_get_uboot_config_hex.py
+  src/tc/tc_workfd_get_uboot_config_string.py
+
+- simplify tbot usage ... all ToDo points marked with [simplify]
+  goal: show tbot installation/usage on 2 pages ... (maybe 1 is possible ?)
+  - one for tbot installation and how to setup a virtual lab
+  - one for how to setup a board testcase
+
+  see some ToDo point here ...
+
 - introduce a connection class and use pexpect
   get rid of paramiko
 
-  - instead printing fd (0 or 1) use the connection
+  * instead printing fd (0 or 1) use the connection
     name.
 
 - automatically create a documentation for all testcases
   default_vars and tbotlib functions.
 
   - html (doc/doc_ty.py)
-    - testcase
+    * testcase
       link to other testcases, defaultvars (may show them if
       mouse is over the name)
-    - defaultvars
+    * defaultvars
     - tbotlib
 
 - use a dict() for all the parameters
   instead using src/common/tc_defaults.py
-
-- Get Vars for TC from U-Boot Code
-  started with, see TC:
-  src/tc/tc_workfd_get_uboot_config_hex.py
-  src/tc/tc_workfd_get_uboot_config_string.py
 
 - cleanup tbot code
   - get rid of all retry places
@@ -56,14 +80,11 @@
   - need a mechanism in tbot, how it gets automatically for example
     U-Boot TC from U-Boot source...
 
-- search TC names in src/tc through all subdirs
+* search TC names in src/tc through all subdirs
 
 - simplify tbot log output (seperate a lot of output which is currently
   in INFO logging level, to another logging level)
   - make the timestamp configurable
-
-- Find a way to document all TC and variables they use in an automated
-  way.
 
 - add manpages for the testcases
 
