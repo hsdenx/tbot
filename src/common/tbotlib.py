@@ -846,7 +846,8 @@ class tbot(object):
         """
         tmp = True
         cnt = len(strings)
-        res = 1
+        found = 0
+        res = 0
         target = self.tbot_fakult(cnt)
         while tmp == True:
             ret = self.tbot_read_line_and_check_strings(c, strings)
@@ -857,7 +858,17 @@ class tbot(object):
                     nr = int(ret)
                 except:
                     continue
-                res *= (nr + 1)
+                found += 1
+                if res == 0:
+                    res = (nr + 1)
+                else:
+                    res *= (nr + 1)
+
+        if cnt != found:
+            logging.error("Could not find all strings %d != %d", cnt, found)
+            if endtc == True:
+                self.end_tc(False)
+            return False
 
         if res != target:
             logging.error("Could not find %d != %d", res, target)
