@@ -801,6 +801,109 @@ $(document).ready(function () {
 </div>
 <!-- end of a testcase dir src/tc/debugger -->
 
+<!-- a testcase dir src_tc_demo -->
+<div class="section block" id="src/tc/demo">
+<div class="section-header block-header-dir">src/tc/demo</div>
+<div class="section-content block-content">
+<div class="action">
+<pre>
+</pre>
+</div>
+
+<!-- one testcase src/tc/demo/tc_demo_compile_install_test.py -->
+<div class="stream block" id="src_tc_demo_tc_demo_compile_install_test_py">
+<div class="stream-header block-header">src/tc/demo/tc_demo_compile_install_test.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# python2.7 src/common/tbot.py -c tbot_demo.cfg -t <a href="#src_tc_demo_tc_demo_compile_install_test_py">tc_demo_compile_install_test.py</a>
+# start tc:
+# - compile source tree
+# - install bin on board
+# - call board uboot testcase
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/demo/tc_demo_compile_install_test.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/demo/tc_demo_compile_install_test.py -->
+
+<!-- one testcase src/tc/demo/tc_demo_get_ub_code.py -->
+<div class="stream block" id="src_tc_demo_tc_demo_get_ub_code_py">
+<div class="stream-header block-header">src/tc/demo/tc_demo_get_ub_code.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# python2.7 src/common/tbot.py -c tbot_board.cfg -t <a href="#src_tc_demo_tc_demo_get_ub_code_py">tc_demo_get_ub_code.py</a>
+# start tc:
+# - rm old u-boot tree (if there is one)
+# - <a href="#src_tc_tc_lab_get_uboot_source_py">tc_lab_get_uboot_source.py</a>
+# - 
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/demo/tc_demo_get_ub_code.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/demo/tc_demo_get_ub_code.py -->
+
+<!-- one testcase src/tc/demo/tc_demo_part1.py -->
+<div class="stream block" id="src_tc_demo_tc_demo_part1_py">
+<div class="stream-header block-header">src/tc/demo/tc_demo_part1.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# python2.7 src/common/tbot.py -c tbot_board.cfg -t <a href="#src_tc_demo_tc_demo_part1_py">tc_demo_part1.py</a>
+# start tc:
+# - call <a href="#src_tc_demo_tc_demo_get_ub_code_py">tc_demo_get_ub_code.py</a>
+# - call <a href="#src_tc_demo_tc_demo_compile_install_test_py">tc_demo_compile_install_test.py</a>
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/demo/tc_demo_part1.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/demo/tc_demo_part1.py -->
+
+<!-- one testcase src/tc/demo/tc_demo_part2.py -->
+<div class="stream block" id="src_tc_demo_tc_demo_part2_py">
+<div class="stream-header block-header">src/tc/demo/tc_demo_part2.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# python2.7 src/common/tbot.py -c tbot_board.cfg -t <a href="#src_tc_demo_tc_demo_part2_py">tc_demo_part2.py</a>
+# start tc:
+# - call <a href="#src_tc_demo_tc_demo_get_ub_code_py">tc_demo_get_ub_code.py</a>
+# - call <a href="#src_tc_demo_tc_demo_compile_install_test_py">tc_demo_compile_install_test.py</a>
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/demo/tc_demo_part2.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/demo/tc_demo_part2.py -->
+
+<!-- one testcase src/tc/demo/tc_demo_part3.py -->
+<div class="stream block" id="src_tc_demo_tc_demo_part3_py">
+<div class="stream-header block-header">src/tc/demo/tc_demo_part3.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# python2.7 src/common/tbot.py -c tbot_board.cfg -t <a href="#src_tc_demo_tc_demo_part3_py">tc_demo_part3.py</a>
+# start tc:
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/demo/tc_demo_part3.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/demo/tc_demo_part3.py -->
+
+<div class="section-trailer block-trailer">src/tc/demo</div>
+<div class="status-pass">
+<pre>
+</pre>
+</div>
+</div>
+</div>
+<!-- end of a testcase dir src/tc/demo -->
+
 <!-- a testcase dir src_tc_lab -->
 <div class="section block" id="src/tc/lab">
 <div class="section-header block-header-dir">src/tc/lab</div>
@@ -2512,6 +2615,23 @@ $(document).ready(function () {
 </div>
 </div>
 <!-- end of one testcase src/tc/uboot/tc_ub_get_version.py -->
+
+<!-- one testcase src/tc/uboot/tc_ub_help.py -->
+<div class="stream block" id="src_tc_uboot_tc_ub_help_py">
+<div class="stream-header block-header">src/tc/uboot/tc_ub_help.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# python2.7 src/common/tbot.py -c tbot.cfg -t <a href="#src_tc_uboot_tc_ub_help_py">tc_ub_help.py</a>
+# - test U-Boots help cmd
+#   may we add a list as parameter, so we can adapt it board
+#   specific.
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/uboot/tc_ub_help.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/uboot/tc_ub_help.py -->
 
 <!-- one testcase src/tc/uboot/tc_ub_load_board_env.py -->
 <div class="stream block" id="src_tc_uboot_tc_ub_load_board_env_py">
