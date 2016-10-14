@@ -20,7 +20,11 @@ Submitting patches
 
 You can submit your patches or post questions reagarding the project to the tbot Mailing List:
 
-tbot-devel@googlegroups.com
+tbot@lists.denx.de
+
+General information about the mailing list is at:
+
+http://lists.denx.de/mailman/listinfo/tbot
 
 When creating patches, please use something like:
 
