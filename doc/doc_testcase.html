@@ -810,6 +810,38 @@ $(document).ready(function () {
 </pre>
 </div>
 
+<!-- one testcase src/tc/demo/tc_demo_can_part1.py -->
+<div class="stream block" id="src_tc_demo_tc_demo_can_part1_py">
+<div class="stream-header block-header">src/tc/demo/tc_demo_can_part1.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# python2.7 src/common/tbot.py -c tbot_board.cfg -t <a href="#src_tc_demo_tc_demo_can_part1_py">tc_demo_can_part1.py</a>
+# start tc:
+# starts a can demo
+# For this demo the fipad board in the denx lab is used.
+# To test the CAN bus we have in the DENX lab installed a PC, called
+# CANPC to which a PEAK CAN adapter is attached, which then is connected
+# to the CAN bus the fipad board is also connected.
+#
+# We use <a href="#src_tc_linux_tc_workfd_can_py">tc_workfd_can.py</a> for testing
+#
+# We open a new connection to the LabPC, called canm and then we ssh
+# to the CANPC, from where we then start candump, while on the console
+# connection a cansend was started. So we can read from the canm
+# connection, the bytes we send with cansend on the console connection.
+#
+# If we got the same bytes as we send -> TC True
+# else the TC returns False
+#
+# Only one cansend call is tested ... room for more.
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/demo/tc_demo_can_part1.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/demo/tc_demo_can_part1.py -->
+
 <!-- one testcase src/tc/demo/tc_demo_compile_install_test.py -->
 <div class="stream block" id="src_tc_demo_tc_demo_compile_install_test_py">
 <div class="stream-header block-header">src/tc/demo/tc_demo_compile_install_test.py</div>
@@ -1549,7 +1581,6 @@ $(document).ready(function () {
 # End True if this is the case, False else
 #
 # ToDo:
-# - tb_canm get not displayed in nice log
 # - get rid of <a href="#var_tc_workfd_can_iproute_dir">tb.tc_workfd_can_iproute_dir</a> and <a href="#var_tc_workfd_can_util_dir">tb.tc_workfd_can_util_dir</a>
 #   (add the commands to rootfs ...)
 # - support different can devices on the CAN PC and board
