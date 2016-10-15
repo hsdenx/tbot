@@ -37,7 +37,6 @@
 # End True if this is the case, False else
 #
 # ToDo:
-# - tb_canm get not displayed in nice log
 # - get rid of tb.tc_workfd_can_iproute_dir and tb.tc_workfd_can_util_dir
 #   (add the commands to rootfs ...)
 # - support different can devices on the CAN PC and board

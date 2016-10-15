@@ -149,6 +149,24 @@ class html_log(object):
         self.fd.write('<!-- end of control log of testcase -->\n')
         self.fd.write('\n')
 
+    def write_canm_log_block(self, log):
+        if log == '':
+            return
+        self.htmlid += 1
+        self.fd.write('<!-- canm log of testcase -->\n')
+        self.fd.write('<div class="stream block" id="' + str(self.htmlid) + '">\n')
+        self.fd.write('<div class="stream-header block-header">canm</div>\n')
+        self.fd.write('<div class="stream-content block-content">\n')
+        self.fd.write('<pre>\n')
+        self.fd.write(log)
+        self.fd.write('</pre>\n')
+        self.fd.write('<div class="stream-trailer block-trailer">End stream: control</div>\n')
+        self.fd.write('<div class="status-pass"></div>\n')
+        self.fd.write('</div>\n')
+        self.fd.write('</div>\n')
+        self.fd.write('<!-- end of canm log of testcase -->\n')
+        self.fd.write('\n')
+
     def write_tc_end(self, name, status):
         ststr = 'Failed'
         if status == 'True':
@@ -198,6 +216,7 @@ class html_log(object):
 
         conlog =''
         ctrlog =''
+        canmlog =''
         line = 'start'
         while line != '':
             line = self.get_next_event(el)
@@ -216,9 +235,12 @@ class html_log(object):
                 self.write_con_log_block(conlog)
                 # write ctrl need log
                 self.write_ctrl_log_block(ctrlog)
+                # write canm need log
+                self.write_canm_log_block(canmlog)
                 # write end of tc block (name, status)
                 conlog = ''
                 ctrlog = ''
+                canmlog = ''
                 self.write_testcase(tc_name, el)
 
             # get status (end of TC) parse "End" or "BoardnameEnd" check if name == name !
@@ -230,6 +252,8 @@ class html_log(object):
                 self.write_con_log_block(conlog)
                 # write ctrl need log
                 self.write_ctrl_log_block(ctrlog)
+                # write canm need log
+                self.write_canm_log_block(canmlog)
                 # write end of tc block (name, status)
                 self.write_tc_end(name, status)
                 return
@@ -247,6 +271,9 @@ class html_log(object):
                 ctrlin = line.split("tb_ctrl r ")
                 if len(ctrlin) == 2:
                     ctrlog += ctrlin[1]
+                canmlin = line.split("tb_canm r ")
+                if len(canmlin) == 2:
+                    canmlog += canmlin[1]
                 continue
 
     def write_log(self):
