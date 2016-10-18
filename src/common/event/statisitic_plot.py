@@ -65,7 +65,7 @@ class statistic_plot_backend(object):
     def create_statfile(self):
         el = list(self.tb.event.event_list)
         self.analyse(el)
-        self.print_list()
+        # self.print_list()
         self.write_header()
         self.write_table()
         self.write_bottom()
