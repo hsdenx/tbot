@@ -35,8 +35,7 @@ $
 - If your VL is not yet in tbot source, integrate it
   (This task has only to be done once for your VL):
 
-  A VL has, as described in [2] "necessary tasks for a Lab PC" explained,
-  3 tasks:
+  A VL has basic 3 tasks:
 
   a) power on/off the board
   b) get power state of the board

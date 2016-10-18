@@ -1,0 +1,105 @@
+Theory of operation
+steps executed when calling a testcase:
+
+- connect to lab
+  - a lab must be defined in src/lab_api/lab_name.py
+  - the lab which the board uses, is included in the
+    board.cfg file
+  - a connection must have the possibility to
+    have more than one channel/filedescriptor
+    because we use one for sending/reading strings
+    to the board, another for control functions like
+    powering on/off
+
+- power the board
+  - power on/off the board
+  - get the current power state
+  - in src/lab_api/lab_name.py
+
+- we define in tbot board states. For each testcase
+  must be defined, for which board state it is valid.
+  You cannot run for example a linux tc under u-boot
+  tbot switches the board into the state when starting
+  a testcase. Board states are defined in src/lap_api
+
+  dependent on state (set in testcase through "tb.set_board_state("linux")")
+  - debugger: connect to debugger
+    - ToDo
+
+  - u-boot: src/lab_api/state_uboot.py
+    - connect to serial
+    - try to get U-Boot prompt
+
+      if not, reset board, wait for U-Boot prompt
+
+      if not tc fail
+
+  - linux: src/lab_api/state_linux.py
+    - connect to serial
+    - try to get linux tbot prompt
+
+      if not, boot linux with using testcase:
+
+         src/tc/tc_ub_boot_linux.py
+
+         then get linux prompt, and set tbot linux prompt
+
+         if not tc fail
+
+after this steps, we are ready to execute the testcase.
+
+This sounds complicated, but in the testcase there are
+only 2 lines necessary for setting this up:
+
+```
+1 # start with
+2 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_setenv.py
+3 from tbotlib import tbot
+4 
+5 #here starts the real test
+6 logging.info("u-boot setenv testcase arg: %s %s", tb.setenv_name, tb.setenv_value)
+7 #set board state for which the tc is valid
+8 tb.set_board_state("u-boot")
+```
+
+```
+line 3: include tbot
+line 8: set the state for which the tc is valid
+        (you can switch in a testcase between board states)
+
+line 6 is optional, it adds a line in the log file, here it
+       prints the arguments for the testcase
+```
+
+-------------------------------------------------------------------------
+
+every board needs a board config file. It contains
+the board specific setting (which lab api to use, boardname,
+lab specific settings username/password, ...)
+
+-------------------------------------------------------------------------
+
+As we have usernames and passwords, they are not included
+in the source code. tbot loads them from the tbot work
+directory through the password.py file (denx.api specific)
+Maybe we can get rid of this...
+
+This is a simple text file with python code:
+
+```
+# passwords for the lab
+if (board == 'lab'):
+    if (user == 'hs'):
+        password = 'passwordforuserhs'
+    if (user == 'root'):
+        password = 'passwordforrootuser'
+# passwords for the boards
+elif (board == 'mcx'):
+    if (user == 'root'):
+        password = 'passwordformcxrootfs'
+else:
+    if (user == 'root'):
+        password = ''
+```
+
+

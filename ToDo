@@ -144,3 +144,28 @@ Note: ToDo entries with "*" are done, "-" are really ToDo
      - kernelCI
      - format log output into a readable format
        may something like output from u-boot:/tools/test/py
+
+- end of line detection
+
+  As the end of a line is \n, and tbot checks end of line with
+  \n this maybe leads into errors, if the COLUMNS of the linux
+  terminal is not long enough, and insert a \n ...
+
+  `echo $COLUMNS` must show a value, which can hold the longest
+  command tbot send ...
+
+  I currently set:
+```
+stty cols 155
+export TERM=vt200
+```
+which I think is not the best way to do it ...
+Suggestions welcome
+
+- rename functionnames
+
+  rename functionnames in tbotlib to more meaningful names
+  Oh, yes ... and maybe extract more tbotlib functions
+  into testcases.
+
+- rework tbot completly into a more pythonic style
