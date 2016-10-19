@@ -29,7 +29,9 @@ Usage: tbot.py [options]
 Options:
   -h, --help            show this help message and exit
   -c CFGFILE, --cfgfile=CFGFILE
-                        the tbot common configfilename
+                        the tbot board configfilename
+  -s LABFILE, --slabfile=LABFILE
+                        the tbot lab configfilename
   -l LOGFILE, --logfile=LOGFILE
                         the tbot logfilename, if default, tbot creates a
                         defaultnamelogfile

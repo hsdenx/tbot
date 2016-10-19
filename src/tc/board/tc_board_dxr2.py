@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot_dxr2.cfg -t tc_board_dxr2.py
+# tbot.py -s lab_denx -c dxr2 -t tc_board_dxr2.py
 # start all testcases for the dxr2 board
 # End:
 

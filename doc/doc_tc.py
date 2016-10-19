@@ -133,9 +133,13 @@ class create_doc(object):
         return new
 
     def to_id_var(self, tmp):
+        tmp = tmp.strip()
         new = tmp.replace('/', '_')
         new = new.replace('.', '_')
-        new = 'var_' + new
+        if new.startswith('config_'):
+            new = 'var_' + new
+        else:
+            new = 'var_config_' + new
         return new
 
     def get_file_description(self, filen):
@@ -195,7 +199,6 @@ class create_doc(object):
                 self.fd.write(line)
 
     def write_new_file(self, filen):
-        print ("FILE: ", filen)
         self.fd.write('<!-- one testcase ' + filen + ' -->\n')
         self.fd.write('<div class="stream block" id="' + self.to_id(filen) + '">\n')
         self.fd.write('<div class="stream-header block-header">' + filen + '</div>\n')
@@ -295,26 +298,23 @@ class create_doc(object):
         # write header
         self.write_start_block('Default Variables')
 
-        fdv = open(self.workdir + '/' + dirp + '/tc_default_vars.py', 'r')
+        fdv = open(self.workdir + '/' + dirp + '/default_vars.py', 'r')
         var = ''
         des = []
         for line in fdv:
-            if 'try:' in line:
-                for line in fdv:
-                    tmp = line.split('.')
-                    var = tmp[1].rstrip()
-                    break
-            if ('except' in line) and (var != ''):
-                for line in fdv:
-                    if len(line) == 1:
-                        if line[0] == '\n':
-                            break
-                    else:
-                        des.append(line)
-            if des != []:
-                self.write_var(var, des)
-                var = ''
-                des = []
+            if line[0] == '#':
+                continue
+            if line[0] == '\n':
+                continue
+            if "=" in line:
+                if des != []:
+                    self.write_var(var, des)
+                    var = ''
+                    des = []
+                tmp = line.split('=')
+                var = tmp[0]
+
+            des.append(line)
 
         fdv.close()
         # write end

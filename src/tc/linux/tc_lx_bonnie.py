@@ -16,13 +16,13 @@
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_bonnie.py
 # run a bonnie test, if timer tc_workfd_check_tc_time.py timed out
 # - try to install bonnie if not is installed tc_lx_bonnie_install.py
-# - start bonnie on device tb.tc_lx_bonnie_dev with
-#   size tb.tc_lx_bonnie_sz
+# - start bonnie on device tb.config.tc_lx_bonnie_dev with
+#   size tb.config.tc_lx_bonnie_sz
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: %s %s", tb.tc_lx_bonnie_dev, tb.tc_lx_bonnie_sz)
+logging.info("args: %s %s", tb.config.tc_lx_bonnie_dev, tb.config.tc_lx_bonnie_sz)
 
 # set board state for which the tc is valid
 tb.set_board_state("linux")
@@ -43,7 +43,7 @@ tb.eof_call_tc("tc_lx_bonnie_install.py")
 
 # start test
 # detect tc_lx_bonnie_sz ... should be 2*RAM size
-tmp = "bonnie++ -d " + tb.tc_lx_bonnie_dev + " -s " + tb.tc_lx_bonnie_sz + " -f -b -u root -m " + tb.boardname
+tmp = "bonnie++ -d " + tb.config.tc_lx_bonnie_dev + " -s " + tb.config.tc_lx_bonnie_sz + " -f -b -u root -m " + tb.config.boardname
 
 tb.eof_write(tb.c_con, tmp)
 # bonnie takes loooong

@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_connect_with_connmux.py
+# python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_connect_with_conmux.py
 # connect to console with conmux
 # Never tested !!!
 # End:
@@ -22,7 +22,7 @@ from tbotlib import tbot
 
 logging.info("args: workdfd: %s", tb.workfd)
 
-tmp = "conmux-console " + tb.boardlabname
+tmp = "conmux-console " + tb.config.boardlabname
 ret = tb.write_stream(tb.workfd, tmp)
 if not ret:
     tb.end_tc(False)

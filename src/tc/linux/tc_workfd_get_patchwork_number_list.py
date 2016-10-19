@@ -16,34 +16,34 @@
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_get_patchwork_number_list.py
 # get a list of patchworknumbers
 # which are delegated to specific user
-# tb.workfd_get_patchwork_number_user
+# tb.config.workfd_get_patchwork_number_user
 # currently, this testcase reads "http://patchwork.ozlabs.org/project/uboot/list/"
 # and filters out the patches, which are for
-# tb.workfd_get_patchwork_number_user
+# tb.config.workfd_get_patchwork_number_user
 # It would be better to login and look for the users
 # ToDo list, but I did not find out, how to login ...
 # ignore patches on blacklist:
-# tb.tc_workfd_apply_patchwork_patches_blacklist
+# tb.config.tc_workfd_apply_patchwork_patches_blacklist
 # also you can set the patch order with:
-# tb.tc_workfd_get_patchwork_number_list_order
+# tb.config.tc_workfd_get_patchwork_number_list_order
 # End:
 
 from tbotlib import tbot
 import urllib2  # the lib that handles the url stuff
 import urllib, sys
 
-logging.info("args: workfd: %s %s %s %s", tb.workfd, tb.workfd_get_patchwork_number_user,
-             tb.tc_workfd_apply_patchwork_patches_blacklist,
-             tb.tc_workfd_get_patchwork_number_list_order)
+logging.info("args: workfd: %s %s %s %s", tb.workfd, tb.config.workfd_get_patchwork_number_user,
+             tb.config.tc_workfd_apply_patchwork_patches_blacklist,
+             tb.config.tc_workfd_get_patchwork_number_list_order)
 
-tb.tc_workfd_apply_patchwork_patches_list = []
-tb.tc_workfd_apply_patchwork_patches_list_title = []
+tb.config.tc_workfd_apply_patchwork_patches_list = []
+tb.config.tc_workfd_apply_patchwork_patches_list_title = []
 
 target_url = 'http://patchwork.ozlabs.org/project/uboot/list/'
 
 def analyse_one_page(tb, urll, url, page):
     reg = re.compile("patch_row")
-    target = url + "?order=" + tb.tc_workfd_get_patchwork_number_list_order + "&page=" + page
+    target = url + "?order=" + tb.config.tc_workfd_get_patchwork_number_list_order + "&page=" + page
     data = urll.urlopen(target) # it's a file like object and works just like a file
 
     fd =open('result.txt', 'w')
@@ -85,15 +85,15 @@ def analyse_one_page(tb, urll, url, page):
             fd.write(line)
             line = line.split('>')[1]
             line = line.split('<')[0]
-            if line == tb.workfd_get_patchwork_number_user or tb.workfd_get_patchwork_number_user == 'all':
+            if line == tb.config.workfd_get_patchwork_number_user or tb.config.workfd_get_patchwork_number_user == 'all':
                 applypatch = True
-                for black in tb.tc_workfd_apply_patchwork_patches_blacklist:
+                for black in tb.config.tc_workfd_apply_patchwork_patches_blacklist:
                     if nr == black:
                         logging.info("blacklisted: %s %s\n" % (nr, patchtitle))
                         applypatch = False
                 if applypatch == True:
-                    tb.tc_workfd_apply_patchwork_patches_list.append(nr)
-                    tb.tc_workfd_apply_patchwork_patches_list_title.append(patchtitle)
+                    tb.config.tc_workfd_apply_patchwork_patches_list.append(nr)
+                    tb.config.tc_workfd_apply_patchwork_patches_list_title.append(patchtitle)
 
         line = data.readline()
 
@@ -127,7 +127,7 @@ while page != 'end':
     page = search_next_page(tb)
 
 i = 0
-for j in tb.tc_workfd_apply_patchwork_patches_list:
-    logging.info("nr: %s %s\n" % (tb.tc_workfd_apply_patchwork_patches_list[i], tb.tc_workfd_apply_patchwork_patches_list_title[i]))
+for j in tb.config.tc_workfd_apply_patchwork_patches_list:
+    logging.info("nr: %s %s\n" % (tb.config.tc_workfd_apply_patchwork_patches_list[i], tb.config.tc_workfd_apply_patchwork_patches_list_title[i]))
     i += 1
 tb.end_tc(True)

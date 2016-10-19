@@ -90,32 +90,32 @@ class events(object):
 
         if id == 'BoardnameEnd':
             self.event_flush()
-            if (self.tb.create_webpatch == 'yes'):
+            if (self.tb.config.create_webpatch == 'yes'):
                 self.webpatch = web_patchwork(self.tb, 'webpatch.html')
-            if (self.tb.create_dot == 'yes'):
+            if (self.tb.config.create_dot == 'yes'):
                 self.ignoretclist = ['tc_workfd_check_cmd_success.py',
                  'tc_lab_cp_file.py',
                  'tc_workfd_check_if_file_exist.py',
                  'tc_workfd_rm_file.py']
                 self.dot = dot(self.tb, 'tc.dot', self.ignoretclist)
-            if (self.tb.create_statistic == 'yes'):
+            if (self.tb.config.create_statistic == 'yes'):
                 self.statistic = statistic_plot_backend(self.tb, 'stat.dat', self.ignoretclist)
-            if (self.tb.create_html_log == 'yes'):
+            if (self.tb.config.create_html_log == 'yes'):
                 self.html_log = html_log(self.tb, 'log/html_log.html')
-            if (self.tb.create_dashboard == 'yes'):
+            if (self.tb.config.create_dashboard == 'yes'):
                 from dashboard import dashboard
                 self.dashboard = dashboard(self.tb, 'localhost', 'tbot', 'tbot', 'tbot_root', 'tbot_results')
 
             # execute the event backends
-            if (self.tb.create_webpatch == 'yes'):
+            if (self.tb.config.create_webpatch == 'yes'):
                 self.webpatch.create_webfile()
-            if (self.tb.create_dot == 'yes'):
+            if (self.tb.config.create_dot == 'yes'):
                 self.dot.create_dotfile()
-            if (self.tb.create_statistic == 'yes'):
+            if (self.tb.config.create_statistic == 'yes'):
                 self.statistic.create_statfile()
-            if (self.tb.create_html_log == 'yes'):
+            if (self.tb.config.create_html_log == 'yes'):
                 self.html_log.create_htmlfile()
-            if (self.tb.create_dashboard == 'yes'):
+            if (self.tb.config.create_dashboard == 'yes'):
                 self.dashboard.insert_test_into_db()
 
     def create_event_log(self, c, dir, string):

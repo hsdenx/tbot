@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot_aristainetos2.cfg -t tc_board_aristainetos2.py
+# tbot.py -s lab_denx -c aristainetos2 -t tc_board_aristainetos2.py
 # start all testcases for the aristainetos2 board
 # tc_board_aristainetos2_linux_tests.py
 # tc_workfd_set_toolchain.py
@@ -28,7 +28,7 @@ tb.set_board_state("u-boot")
 #this board needs some time to settle
 time.sleep(10)
 
-self.tc_lab_apply_patches_dir = '/work/hs/tbot/patches/u-boot-aristainetos'
+tb.config.tc_lab_apply_patches_dir = '/work/hs/tbot/patches/u-boot-aristainetos'
 
 tb.workfd = tb.c_ctrl
 #delete old u-boot source tree
@@ -47,30 +47,30 @@ tb.eof_call_tc("tc_workfd_goto_uboot_code.py")
 
 #add patchwork patches
 tb.statusprint("apply patchwork patches")
-tb.tc_workfd_apply_patchwork_patches_list = tb.tc_workfd_apply_patchwork_patches_list_hand
+tb.config.tc_workfd_apply_patchwork_patches_list = tb.config.tc_workfd_apply_patchwork_patches_list_hand
 tb.eof_call_tc("tc_workfd_apply_patchwork_patches.py")
 
 #call compile u-boot
 tb.eof_call_tc("tc_lab_compile_uboot.py")
 
 #copy files to tbot dir
-tb.tc_lab_cp_file_a = "u-boot.bin"
-tb.tc_lab_cp_file_b = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir
+tb.config.tc_lab_cp_file_a = "u-boot.bin"
+tb.config.tc_lab_cp_file_b = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir
 #call cp files
 tb.eof_call_tc("tc_lab_cp_file.py")
 
-tb.tc_lab_cp_file_a = "System.map"
+tb.config.tc_lab_cp_file_a = "System.map"
 tb.eof_call_tc("tc_lab_cp_file.py")
 
-tb.tc_lab_cp_file_a = "u-boot.imx"
+tb.config.tc_lab_cp_file_a = "u-boot.imx"
 tb.eof_call_tc("tc_lab_cp_file.py")
 
 # check U-Boot version
 tb.workfd = tb.c_ctrl
-tb.tc_ub_get_version_file = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir + '/u-boot.bin'
+tb.tc_ub_get_version_file = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + '/u-boot.bin'
 tb.tc_ub_get_version_string = 'U-Boot 20'
 tb.eof_call_tc("tc_ub_get_version.py")
-tb.uboot_vers = tb.tc_return
+tb.uboot_vers = tb.config.tc_return
 
 #call upd_uboot
 tb.eof_call_tc("tc_ub_upd_uboot.py")

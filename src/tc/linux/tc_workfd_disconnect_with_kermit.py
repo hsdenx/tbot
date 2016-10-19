@@ -20,8 +20,8 @@
 from tbotlib import tbot
 
 logging.info("args: workdfd: %s", tb.workfd)
-logging.info("args: ssh: %s", tb.tc_workfd_connect_with_kermit_ssh)
-logging.info("args: kermit: %s %s", tb.kermit_line, tb.kermit_speed)
+logging.info("args: ssh: %s", tb.config.tc_workfd_connect_with_kermit_ssh)
+logging.info("args: kermit: %s %s", tb.config.kermit_line, tb.config.kermit_speed)
 
 string = pack('h', 28)
 string = string[:1]
@@ -31,7 +31,7 @@ tb.workfd.set_prompt('C-Kermit>')
 tb.workfd.expect_prompt()
 
 # set lab pc linux prompt
-tb.workfd.set_prompt(tb.linux_prompt)
+tb.workfd.set_prompt(tb.config.linux_prompt)
 tb.eof_write(tb.workfd, 'exit')
 searchlist = ['OK']
 tmp = True

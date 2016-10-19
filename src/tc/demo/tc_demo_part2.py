@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot_board.cfg -t tc_demo_part2.py
+# tbot.py -s lab_denx -c smartweb -t tc_demo_part2.py
 # start tc:
 # - call tc_demo_get_ub_code.py
 # - call tc_demo_compile_install_test.py
@@ -28,9 +28,9 @@ tb.workfd = tb.c_ctrl
 tb.eof_call_tc("tc_workfd_goto_uboot_code.py")
 
 # set specific settings for this demo
-tb.workfd_get_patchwork_number_user = 'hs'
-tb.tc_workfd_apply_patchwork_patches_blacklist = []
-tb.tc_workfd_get_patchwork_number_list_order = '-delegate'
+tb.config.workfd_get_patchwork_number_user = 'hs'
+tb.config.tc_workfd_apply_patchwork_patches_blacklist = []
+tb.config.tc_workfd_get_patchwork_number_list_order = '-delegate'
 
 # get current list of patches in ToDo list
 tb.statusprint("get patchwork patches")
@@ -38,7 +38,7 @@ tb.eof_call_tc("tc_workfd_get_patchwork_number_list.py")
 
 # add patchwork patches to U-Boot code
 tb.statusprint("apply patchwork patches")
-tb.tc_workfd_apply_patchwork_patches_checkpatch_cmd = 'scripts/checkpatch.pl'
+tb.config.tc_workfd_apply_patchwork_patches_checkpatch_cmd = 'scripts/checkpatch.pl'
 tb.eof_call_tc("tc_workfd_apply_patchwork_patches.py")
 
 # now compile, install and test the new source on the board

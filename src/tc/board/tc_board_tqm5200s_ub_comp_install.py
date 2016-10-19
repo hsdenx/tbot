@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot_tqm5200s.cfg -t tc_board_tqm5200s_ub_comp_install.py
+# tbot.py -s lab_denx -c tqm5200s -t tc_board_tqm5200s_ub_comp_install.py
 # compile and install U-Boot for the tqm5200s board
 # install U-Boot with BDI
 # End:
@@ -34,12 +34,12 @@ tb.eof_call_tc("tc_lab_compile_uboot.py")
 
 #copy files to tbot dir
 tb.statusprint("copy files")
-tb.tc_lab_cp_file_a = "u-boot.bin"
-tb.tc_lab_cp_file_b = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir
+tb.config.tc_lab_cp_file_a = "u-boot.bin"
+tb.config.tc_lab_cp_file_b = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir
 #call cp files
 tb.eof_call_tc("tc_lab_cp_file.py")
 
-tb.tc_lab_cp_file_a = "System.map"
+tb.config.tc_lab_cp_file_a = "System.map"
 #call cp files
 tb.eof_call_tc("tc_lab_cp_file.py")
 
@@ -48,10 +48,10 @@ tb.eof_call_tc("tc_workfd_goto_uboot_code.py")
 
 # check U-Boot version
 tb.workfd = tb.c_ctrl
-tb.tc_ub_get_version_file = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir + '/u-boot.bin'
+tb.tc_ub_get_version_file = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + '/u-boot.bin'
 tb.tc_ub_get_version_string = 'U-Boot 20'
 tb.eof_call_tc("tc_ub_get_version.py")
-tb.uboot_vers = tb.tc_return
+tb.uboot_vers = tb.config.tc_return
 
 #call upd_uboot
 tb.eof_call_tc("tc_lab_bdi_upd_uboot.py")

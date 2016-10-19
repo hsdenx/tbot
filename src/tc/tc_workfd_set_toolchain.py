@@ -52,7 +52,7 @@ else:
 
 if tb.tc_workfd_set_toolchain_arch == 'sandbox':
     tmp = 'export PATH=/bin:$PATH'
-    tb.event.create_event('main', tb.boardname, "Toolchain", tmp)
+    tb.event.create_event('main', tb.config.boardname, "Toolchain", tmp)
     tb.eof_write_cmd(c, tmp)
     tb.end_tc(True)
 
@@ -60,7 +60,7 @@ tmp = "printenv PATH | grep --color=never " + path
 ret = tb.write_lx_cmd_check(c, tmp, endTC=False)
 if ret == False:
     tmp = 'export PATH=' + path + ':$PATH'
-    tb.event.create_event('main', tb.boardname, "Toolchain", path)
+    tb.event.create_event('main', tb.config.boardname, "Toolchain", path)
     tb.eof_write_cmd(c, tmp)
 
 tmp = 'export CROSS_COMPILE=' + cross

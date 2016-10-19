@@ -14,14 +14,14 @@
 # Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_goto_linux_code.py
-# switch into linux source tb.tc_lab_source_dir + "/linux-" + tb.boardlabname
+# switch into linux source tb.config.tc_lab_source_dir + "/linux-" + tb.config.boardlabname
 # End:
 
 from tbotlib import tbot
 
 logging.info("args: %s", tb.workfd)
 
-tmp = "cd " + tb.tc_lab_source_dir + "/linux-" + tb.boardlabname
+tmp = "cd " + tb.config.tc_lab_source_dir + "/linux-" + tb.config.boardlabname
 tb.write_lx_cmd_check(tb.workfd, tmp)
 
 tb.end_tc(True)

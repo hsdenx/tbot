@@ -26,7 +26,7 @@ ret = tb.write_cmd_check(tb.c_con, "help i2c", "Unknown command")
 if ret == True:
     tb.end_tc(True)
 
-if tb.tc_ub_i2c_help_with_bus == 'yes':
+if tb.config.tc_ub_i2c_help_with_bus == 'yes':
     searchlist = ["i2c bus", "crc32", "i2c dev", "i2c loop chip", "i2c md chip address",
               "i2c mm chip address", "i2c mw chip address", "i2c nm chip address",
               "i2c probe", "i2c read chip address", "i2c write memaddress",

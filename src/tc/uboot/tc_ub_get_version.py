@@ -49,10 +49,10 @@ while tmp == True:
         tmp = tmp[2][2:]
         tmp = se + tmp.replace('\r','')
         tmp = tmp.replace('\n','')
-        tb.tc_return = tmp
+        tb.config.tc_return = tmp
         tmp = True
         ret = True
 
-tb.event.create_event('main', tb.boardname, "UBOOT_VERSION", tb.tc_return)
+tb.event.create_event('main', tb.config.boardname, "UBOOT_VERSION", tb.config.tc_return)
 
 tb.end_tc(ret)

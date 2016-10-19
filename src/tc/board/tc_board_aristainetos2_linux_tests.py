@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot_aristainetos2.cfg -t tc_board_aristainetos2_linux_tests.py
+# tbot.py -s lab_denx -c aristainetos2 -t tc_board_aristainetos2_linux_tests.py
 # start all linux testcases for the aristainetos2 board
 # End:
 
@@ -29,17 +29,17 @@ tb.eof_call_tc("tc_workfd_compile_linux.py")
 
 # copy files to tftpdir
 tb.statusprint("copy files")
-tb.tc_lab_cp_file_a = "/work/hs/tbot/linux-aristainetos/arch/arm/boot/uImage"
-tb.tc_lab_cp_file_b = "/tftpboot/aristainetos/tbot/uImage-hs-cur"
+tb.config.tc_lab_cp_file_a = "/work/hs/tbot/linux-aristainetos/arch/arm/boot/uImage"
+tb.config.tc_lab_cp_file_b = "/tftpboot/aristainetos/tbot/uImage-hs-cur"
 tb.eof_call_tc("tc_lab_cp_file.py")
-tb.tc_lab_cp_file_a = "/work/hs/tbot/linux-aristainetos/arch/arm/boot/dts/imx6dl-aristainetos2_4.dtb"
-tb.tc_lab_cp_file_b = "/tftpboot/aristainetos/tbot/imx6dl-aristainetos2_4.dtb"
+tb.config.tc_lab_cp_file_a = "/work/hs/tbot/linux-aristainetos/arch/arm/boot/dts/imx6dl-aristainetos2_4.dtb"
+tb.config.tc_lab_cp_file_b = "/tftpboot/aristainetos/tbot/imx6dl-aristainetos2_4.dtb"
 tb.eof_call_tc("tc_lab_cp_file.py")
-tb.tc_lab_cp_file_a = "/work/hs/tbot/linux-aristainetos/arch/arm/boot/dts/imx6dl-aristainetos2_7.dtb"
-tb.tc_lab_cp_file_b = "/tftpboot/aristainetos/tbot/imx6dl-aristainetos2_7.dtb"
+tb.config.tc_lab_cp_file_a = "/work/hs/tbot/linux-aristainetos/arch/arm/boot/dts/imx6dl-aristainetos2_7.dtb"
+tb.config.tc_lab_cp_file_b = "/tftpboot/aristainetos/tbot/imx6dl-aristainetos2_7.dtb"
 tb.eof_call_tc("tc_lab_cp_file.py")
-tb.tc_lab_cp_file_a = "/work/hs/tbot/linux-aristainetos/aristainetos2.itb"
-tb.tc_lab_cp_file_b = "/tftpboot/aristainetos/tbot/aristainetos2.itb"
+tb.config.tc_lab_cp_file_a = "/work/hs/tbot/linux-aristainetos/aristainetos2.itb"
+tb.config.tc_lab_cp_file_b = "/tftpboot/aristainetos/tbot/aristainetos2.itb"
 tb.eof_call_tc("tc_lab_cp_file.py")
 
 # call uboot tc to go into u-boot, and after that boot new kernel
@@ -78,12 +78,12 @@ checks = ['Machine model: aristainetos2',
 'rtc-ds1307 2-0068: rtc core: registered m41t00 as rtc0'
 ]
 
-for tb.tc_lx_dmesg_grep_name in checks:
+for tb.config.tc_lx_dmesg_grep_name in checks:
     tb.eof_call_tc("tc_lx_dmesg_grep.py")
 
 tb.statusprint("pinmux check")
 files = ['src/files/aristainetos2_pinmux.reg']
-for tb.tc_lx_create_reg_file_name in files:
+for tb.config.tc_lx_create_reg_file_name in files:
     tb.eof_call_tc("tc_lx_check_reg_file.py")
 
 # tb.statusprint("ubi checks")

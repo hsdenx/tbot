@@ -45,6 +45,16 @@ $
   this tasks must be executable through shell commands on your
   Lab PC:
 
+  - prepare a lab config file for your lab:
+
+    Each VL needs a configuration file, passed with the option '-s' to
+    tbot, example:
+
+    https://github.com/hsdenx/tbot/blob/master/config/lab_hs_home.py
+    simple copy this and rename it
+
+    Then you have to setup Testcases for the 3 tasks:
+
   Task a) power on/off board:
     default TC for this task is:
     https://github.com/hsdenx/tbot/blob/master/src/tc/lab/denx/tc_lab_denx_power.py
@@ -56,8 +66,8 @@ $
 
       As this TC powers on the board for all your boards in your VL,
       you can differ between the boards through the tbot class
-      variable "tb.boardlabpowername" (which is in the default case the
-      same as "tb.boardname"), but you may need to name the power target
+      variable "tb.config.boardlabpowername" (which is in the default case the
+      same as "tb.config.boardname"), but you may need to name the power target
       with an other name than boardname, so you can configure this case.
       The power state "tb.power_state" which the TC has to set
       is "on" for power on, or "off" for power off.
@@ -65,8 +75,8 @@ $
       If switching on the power is successful, call "tb.end_tc(True)"
       else "tb.end_tc(False)"
 
-    - set in your board config file:
-      self.tc_lab_denx_power_tc = 'tc_lab_denx_power_XXX.py'
+    - set in your lab config file:
+      tc_lab_denx_power_tc = 'tc_lab_denx_power_XXX.py'
 
   Task b) power on/off board:
     default TC for this task is:
@@ -80,8 +90,8 @@ $
       If the power of the board is on, call "tb.end_tc(True)"
       else "tb.end_tc(False)"
 
-    - set in your board config file:
-      self.tc_lab_denx_get_power_state_tc = 'tc_lab_denx_get_power_state_XXX.py'
+    - set in your lab config file:
+      tc_lab_denx_get_power_state_tc = 'tc_lab_denx_get_power_state_XXX.py'
 
   Task c) connect to the boards console:
     default TC for this task is:
@@ -101,11 +111,11 @@ $
       https://github.com/hsdenx/tbot/blob/master/src/tc/linux/tc_workfd_connect_with_kermit.py
 
       Example for such a board in the VL from denx:
-      self.tc_lab_denx_connect_to_board_tc = 'tc_workfd_connect_with_kermit.py'
-      https://github.com/hsdenx/tbot/blob/master/tbot_dxr2.cfg#L24
+      tc_lab_denx_connect_to_board_tc = 'tc_workfd_connect_with_kermit.py'
+      https://github.com/hsdenx/tbot/blob/master/config/tbot_dxr2.cfg#L20
 
-    - set in your board config file:
-      self.tc_lab_denx_connect_to_board_tc = 'tc_lab_XXX_connect_to_board.py'
+    - set in your lab config file:
+      tc_lab_denx_connect_to_board_tc = 'tc_lab_XXX_connect_to_board.py'
 
   remarks while writting this:
   - Currently there is only the denx VL. Original idea was to include
@@ -116,10 +126,6 @@ $
     above, so we should do:
     - rename the "denx" API to a more general name.
       This is a point on my ToDo list ...
-
-  - the VL specific configuration may moved from the board config files
-    and should be collected in VL specific config files, which boards
-    config file simple include.
 
 - prepare password.py file:
   This file contains all passwords tbot needs (for example for
@@ -147,35 +153,7 @@ $
   in the root dir for them.
 
   board Example (dxr2 board):
-  https://github.com/hsdenx/tbot/blob/master/tbot_dxr2.cfg
-
-  Necessary variables:
-
-  line  3: boardname, here it is the "etamin" board
-             no default value, must be set.
-  line  4: boardlabname: name used for connecting to the board
-             may differ from tb.boardname, default tb.boardname
-  line  5: boardlabpowername: name used for power on/off
-             may differ from tb.boardname, default tb.boardname
-  line  6: tftpboardname: name used for tftp subdir (from where
-             U-Boot loads images for example).
-             may differ from tb.boardname, default tb.boardname
-  line  7: debug: If True, adds debug output on the tbot shell
-  line  8: debugstatus: enable status debug output on the shell
-  line  9: ip: Where tbot finds the Lab PC
-  line 10: user: As which user does tbot logs into the Lab PC
-  line 11: accept_all: passed to paramiko, accept all connections
-  line 12: keepalivetimout: passed to paramiko, timeout for sending
-             keepalive message.
-  line 13: channel_timeout: passed to paramiko
-  line 14: loglevel: tbots loglevel for adding entries into the logfile.
-  line 16: wdt_timeout: timeout in seconds for tbots watchdog.
-             Watchdog gets triggered if prompt get read.
-  line 23: tc_lab_denx_connect_to_board_tc: Which TC is used for
-             connecting to the boards console the TC, here:
-             https://github.com/hsdenx/tbot/blob/master/src/tc/linux/tc_workfd_connect_with_kermit.py
-  line 26: uboot_prompt: boards U-Boot prompt
-  line 27: linux_prompt: boards linux prompt
+  https://github.com/hsdenx/tbot/blob/master/config/dxr2.py
 
   Now comes a list of variables TC needs, this vary from what you
   you want to test...
@@ -203,7 +181,7 @@ v2 2016.04.26
 
 [3] Example for a first U-Boot TC which should always work:
     (with commandline option "-v" for verbose output):
-hs@localhost:tbot  [event-devel] $ python2.7 src/common/tbot.py -c tbot_dxr2.cfg -t tc_ub_setenv.py -v -l log/tbot.log
+hs@localhost:tbot  [event-devel] $ python2.7 src/common/tbot.py -s lab_denx -c dxr2 -t tc_ub_setenv.py -v -l log/tbot.log
 **** option cfg: tbot_dxr2.cfg log: log/tbot.log tc: tc_ub_setenv.py v 1
 ('CUR WORK PATH: ', '/home/hs/data/Entwicklung/tbot')
 ('CFGFILE ', 'tbot_dxr2.cfg')

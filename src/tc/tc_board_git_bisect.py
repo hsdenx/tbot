@@ -14,21 +14,21 @@
 # Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot_tqm5200s.cfg -t tc_board_git_bisect.py
-# get a source code with tc tb.board_git_bisect_get_source_tc
+# get a source code with tc tb.config.board_git_bisect_get_source_tc
 # and start a "git bisect" session
 # current commit is bad
-# good commit id is defined through tb.board_git_bisect_good_commit
-# tc for testing good or bad is tb.board_git_bisect_call_tc
+# good commit id is defined through tb.config.board_git_bisect_good_commit
+# tc for testing good or bad is tb.config.board_git_bisect_call_tc
 # if you have some local patches, which needs to be applied
-# each git bisect step, set tb.board_git_bisect_patches
+# each git bisect step, set tb.config.board_git_bisect_patches
 # End:
 from tbotlib import tbot
 
-logging.info("args: %s %s %s %s", tb.board_git_bisect_get_source_tc, tb.board_git_bisect_call_tc, tb.board_git_bisect_good_commit, tb.board_git_bisect_patches)
+logging.info("args: %s %s %s %s", tb.config.board_git_bisect_get_source_tc, tb.config.board_git_bisect_call_tc, tb.config.board_git_bisect_good_commit, tb.config.board_git_bisect_patches)
 
 #call get u-boot source
 tb.statusprint("get source tree")
-tb.eof_call_tc(tb.board_git_bisect_get_source_tc)
+tb.eof_call_tc(tb.config.board_git_bisect_get_source_tc)
 
 c = tb.c_ctrl
 #git bisect start
@@ -38,7 +38,7 @@ tb.eof_write_cmd(c, 'git bisect start')
 tb.eof_write_cmd(c, 'git bisect bad')
 
 #git bisect good commit
-tmp = 'git bisect good ' + tb.board_git_bisect_good_commit
+tmp = 'git bisect good ' + tb.config.board_git_bisect_good_commit
 tb.eof_write(c, tmp)
 ret = tb.tbot_expect_string(c, 'Bisecting')
 if ret == 'prompt':
@@ -54,12 +54,12 @@ while inwhile:
     tb.statusprint("cycle %s" % (i))
     logging.info("cycle %s", i)
 
-    if tb.board_git_bisect_patches != 'none':
-        tmp = tb.tc_lab_apply_patches_dir
+    if tb.config.board_git_bisect_patches != 'none':
+        tmp = tb.config.tc_lab_apply_patches_dir
         tb.eof_call_tc("tc_lab_apply_patches.py")
-        tb.tc_lab_apply_patches_dir = tb.board_git_bisect_patches
+        tb.config.tc_lab_apply_patches_dir = tb.config.board_git_bisect_patches
 
-    ret = tb.call_tc(tb.board_git_bisect_call_tc)
+    ret = tb.call_tc(tb.config.board_git_bisect_call_tc)
     if ret == True:
         tmp = 'git bisect good'
     else:
@@ -77,11 +77,11 @@ while inwhile:
         if ret == 'prompt':
             tmp2 = False
 
-    if tb.board_git_bisect_patches != 'none':
+    if tb.config.board_git_bisect_patches != 'none':
         tb.eof_write_cmd(c, 'git reset --hard HEAD')
         tb.eof_write_cmd(c, 'git clean -f')
 
-tb.tc_lab_apply_patches_dir = tmp
+tb.config.tc_lab_apply_patches_dir = tmp
 
 if error:
     tb.end_tc(False)

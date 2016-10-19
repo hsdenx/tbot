@@ -14,24 +14,24 @@
 # Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_ubi_format.py
-# ubiformat tb.tc_ubi_mtd_dev with tb.tc_lx_ubi_format_filename
+# ubiformat tb.config.tc_ubi_mtd_dev with tb.config.tc_lx_ubi_format_filename
 # End:
 
 from tbotlib import tbot
 import re
 
 # here starts the real test
-logging.info("args: %s %s %s", tb.tc_ubi_cmd_path, tb.tc_ubi_mtd_dev,
-             tb.tc_lx_ubi_format_filename)
+logging.info("args: %s %s %s", tb.config.tc_ubi_cmd_path, tb.config.tc_ubi_mtd_dev,
+             tb.config.tc_lx_ubi_format_filename)
 
 # set board state for which the tc is valid
 tb.set_board_state("linux")
 
 def create_ubi_cmd(tb, cmd):
-    tmp = tb.tc_ubi_cmd_path + '/' + cmd
+    tmp = tb.config.tc_ubi_cmd_path + '/' + cmd
     return tmp
 
-tmp = create_ubi_cmd(tb, 'ubi-utils/ubiformat ' + tb.tc_ubi_mtd_dev +
-                     ' -y -f ' + tb.tc_lx_ubi_format_filename)
+tmp = create_ubi_cmd(tb, 'ubi-utils/ubiformat ' + tb.config.tc_ubi_mtd_dev +
+                     ' -y -f ' + tb.config.tc_lx_ubi_format_filename)
 tb.eof_write_con_lx_cmd(tmp)
 tb.end_tc(True)

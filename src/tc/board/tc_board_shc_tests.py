@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot_shc.cfg -t tc_board_shc_tests.py
+# tbot.py -s lab_denx -c shc -t tc_board_shc_tests.py
 # start all testcases for the shc board
 # End:
 
@@ -27,19 +27,19 @@ tb.statusprint("tc_shc u-boot setenv")
 tb.eof_call_tc("tc_ub_setenv.py")
 
 tb.statusprint("tc_shc linux dmesg checks")
-tb.tc_lx_dmesg_grep_name = "SHC"
+tb.config.tc_lx_dmesg_grep_name = "SHC"
 tb.eof_call_tc("tc_lx_dmesg_grep.py")
-tb.tc_lx_dmesg_grep_name = "zigbee"
+tb.config.tc_lx_dmesg_grep_name = "zigbee"
 tb.eof_call_tc("tc_lx_dmesg_grep.py")
-tb.tc_lx_dmesg_grep_name = "homematic"
+tb.config.tc_lx_dmesg_grep_name = "homematic"
 tb.eof_call_tc("tc_lx_dmesg_grep.py")
-tb.tc_lx_dmesg_grep_name = "rtc-pcf8563"
+tb.config.tc_lx_dmesg_grep_name = "rtc-pcf8563"
 tb.eof_call_tc("tc_lx_dmesg_grep.py")
-tb.tc_lx_dmesg_grep_name = "tps65217 0-0024"
+tb.config.tc_lx_dmesg_grep_name = "tps65217 0-0024"
 tb.eof_call_tc("tc_lx_dmesg_grep.py")
-tb.tc_lx_dmesg_grep_name = "at24 0-0050"
+tb.config.tc_lx_dmesg_grep_name = "at24 0-0050"
 tb.eof_call_tc("tc_lx_dmesg_grep.py")
-tb.tc_lx_dmesg_grep_name = "Detected MACID"
+tb.config.tc_lx_dmesg_grep_name = "Detected MACID"
 tb.eof_call_tc("tc_lx_dmesg_grep.py")
 
 tb.workfd = tb.c_con
@@ -58,8 +58,8 @@ tb.eof_call_tc("tc_lx_bonnie.py")
 tb.statusprint("tc_shc eeprom check ")
 #gpio 2_5 is eeprom WP
 #low = write protect
-tb.tc_lx_eeprom_wp_gpio='69'
-tb.tc_lx_eeprom_wp_val='0'
+tb.config.tc_lx_eeprom_wp_gpio='69'
+tb.config.tc_lx_eeprom_wp_val='0'
 #call linux tc_lx_eeprom.py
 tb.eof_call_tc("tc_lx_eeprom.py")
 
@@ -67,7 +67,7 @@ tb.eof_call_tc("tc_lx_eeprom.py")
 tb.statusprint("tc_shc cpu frequenc check")
 tb.eof_call_tc("tc_lx_cpufreq.py")
 
-tb.tc_lx_dmesg_grep_name = "MPU Reference"
+tb.config.tc_lx_dmesg_grep_name = "MPU Reference"
 tb.eof_call_tc("tc_lx_dmesg_grep.py")
 
 tb.statusprint("tc_shc u-boot setenv")

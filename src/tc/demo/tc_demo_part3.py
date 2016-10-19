@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot_board.cfg -t tc_demo_part3.py
+# tbot.py -s lab_denx -c smartweb -t tc_demo_part3.py
 # start tc:
 # End:
 
@@ -23,10 +23,10 @@ from tbotlib import tbot
 tb.workfd = tb.c_ctrl
 
 # set specific parameters for this demo
-tb.board_git_bisect_get_source_tc = "tc_workfd_goto_uboot_code.py"
-tb.board_git_bisect_call_tc = "tc_demo_compile_install_test.py"
-tb.board_git_bisect_good_commit = "44afdc4a12b9f6f48338e7975e4f08cfe90dba74"
-tb.board_git_bisect_patches = 'none'
+tb.config.board_git_bisect_get_source_tc = "tc_workfd_goto_uboot_code.py"
+tb.config.board_git_bisect_call_tc = "tc_demo_compile_install_test.py"
+tb.config.board_git_bisect_good_commit = "44afdc4a12b9f6f48338e7975e4f08cfe90dba74"
+tb.config.board_git_bisect_patches = 'none'
 
 # start bisecting now
 tb.eof_call_tc("tc_board_git_bisect.py")

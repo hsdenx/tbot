@@ -14,21 +14,21 @@
 # Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_mount.py
-# mount device tb.tc_lx_mount_dev with fs type tb.tc_lx_mount_fs_type
-# to tb.tc_lx_mount_dir
+# mount device tb.config.tc_lx_mount_dev with fs type tb.config.tc_lx_mount_fs_type
+# to tb.config.tc_lx_mount_dir
 # End:
 
 from tbotlib import tbot
 
 # here starts the real test
-logging.info("dev: %s fs_type: %s dir: %s", tb.tc_lx_mount_dev, tb.tc_lx_mount_fs_type, tb.tc_lx_mount_dir)
+logging.info("dev: %s fs_type: %s dir: %s", tb.config.tc_lx_mount_dev, tb.config.tc_lx_mount_fs_type, tb.config.tc_lx_mount_dir)
 
 # set board state for which the tc is valid
 tb.set_board_state("linux")
 
 c = tb.c_con
 tb.eof_write(c, "mount")
-searchlist = [tb.tc_lx_mount_dev]
+searchlist = [tb.config.tc_lx_mount_dev]
 tmp = True
 found = False
 while tmp == True:
@@ -42,7 +42,7 @@ if found == True:
     tb.end_tc(True)
 
 # mount device
-tmp = "mount -t " + tb.tc_lx_mount_fs_type + " " + tb.tc_lx_mount_dev + " " + tb.tc_lx_mount_dir
+tmp = "mount -t " + tb.config.tc_lx_mount_fs_type + " " + tb.config.tc_lx_mount_dev + " " + tb.config.tc_lx_mount_dir
 tb.eof_write(c, tmp)
 searchlist = ["mounted filesystem"]
 tmp = True

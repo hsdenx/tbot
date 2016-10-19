@@ -20,7 +20,7 @@
 
 from tbotlib import tbot
 
-logging.info("args: %s %s", tb.boardname, tb.boardlabpowername)
+logging.info("args: %s %s", tb.config.boardname, tb.config.boardlabpowername)
 
 #set board state for which the tc is valid
 tb.set_board_state("lab")
@@ -28,7 +28,7 @@ tb.set_board_state("lab")
 c = tb.c_ctrl
 oldt = c.get_timeout()
 c.set_timeout(None)
-tmp = "remote_power " + tb.boardlabpowername + " -l"
+tmp = "remote_power " + tb.config.boardlabpowername + " -l"
 tb.eof_write(c, tmp)
 
 searchlist = ["error", "ON", "off"]

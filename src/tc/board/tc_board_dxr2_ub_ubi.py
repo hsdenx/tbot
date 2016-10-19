@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot_dxr2.cfg -t tc_board_dxr2_ub_ubi.py
+# tbot.py -s lab_denx -c dxr2 -t tc_board_dxr2_ub_ubi.py
 # start all ubi testcases for the dxr2 board
 # End:
 
@@ -47,7 +47,7 @@ tb.eof_call_tc("tc_ub_ubi_info.py")
 ret = tb.call_tc("tc_ub_ubi_check_volume.py")
 if ret == False:
     # if not create it
-    tb.tc_ub_ubi_create_vol_name = tb.tc_ub_ubi_load_name
+    tb.config.tc_ub_ubi_create_vol_name = tb.config.tc_ub_ubi_load_name
     tb.eof_call_tc("tc_ub_ubi_create_volume.py")
     tb.eof_call_tc("tc_ub_ubi_check_volume.py")
 
@@ -57,7 +57,7 @@ tb.eof_call_tc("tc_ub_ubi_info.py")
 tb.workfd = tb.c_ctrl
 tb.eof_call_tc("tc_workfd_generate_random_file.py")
 tb.tc_workfd_cp_file_a = tb.tc_workfd_generate_random_file_name
-tb.tc_workfd_cp_file_b = tb.tc_workfd_create_ubi_rootfs_path + '/boot/ubi_random'
+tb.tc_workfd_cp_file_b = tb.config.tc_workfd_create_ubi_rootfs_path + '/boot/ubi_random'
 tb.eof_call_tc("tc_workfd_sudo_cp_file.py")
 tb.tc_workfd_cp_file_a = tb.tc_workfd_generate_random_file_name
 tb.tc_workfd_cp_file_b = tb.tc_board_dxr2_ub_ubi_rootfs_randomfile_path
@@ -65,23 +65,23 @@ tb.eof_call_tc("tc_workfd_sudo_cp_file.py")
 tb.eof_call_tc("tc_workfd_create_ubi_rootfs.py")
 
 #write new rootfs into it
-tb.tc_ub_ubi_write_vol_name = tb.tc_ub_ubi_load_name
-tb.tc_ub_tftp_file_addr = tb.tc_ub_ubi_write_addr
-tb.tc_ub_tftp_file_name = tb.tc_workfd_create_ubi_rootfs_target
+tb.config.tc_ub_ubi_write_vol_name = tb.config.tc_ub_ubi_load_name
+tb.config.tc_ub_tftp_file_addr = tb.config.tc_ub_ubi_write_addr
+tb.config.tc_ub_tftp_file_name = tb.config.tc_workfd_create_ubi_rootfs_target
 tb.eof_call_tc("tc_ub_tftp_file.py")
 
 tb.eof_call_tc("tc_ub_get_filesize.py")
-tb.tc_ub_ubi_write_len = tb.ub_filesize
+tb.config.tc_ub_ubi_write_len = tb.ub_filesize
 
 tb.eof_call_tc("tc_ub_ubi_write.py")
 
 #compare rootfs
-tb.tc_ub_ubi_read_vol_name = tb.tc_ub_ubi_write_vol_name
-tb.tc_ub_ubi_read_len = tb.tc_ub_ubi_write_len
+tb.tc_ub_ubi_read_vol_name = tb.config.tc_ub_ubi_write_vol_name
+tb.tc_ub_ubi_read_len = tb.config.tc_ub_ubi_write_len
 tb.eof_call_tc("tc_ub_ubi_read.py")
 
-tb.tc_ub_tftp_file_addr = '80000000'
-tb.tc_ub_tftp_file_name = tb.tc_workfd_create_ubi_rootfs_target
+tb.config.tc_ub_tftp_file_addr = '80000000'
+tb.config.tc_ub_tftp_file_name = tb.config.tc_workfd_create_ubi_rootfs_target
 tb.eof_call_tc("tc_ub_tftp_file.py")
 
 if tb.ub_filesize != tb.tc_ub_ubi_read_len:
@@ -89,7 +89,7 @@ if tb.ub_filesize != tb.tc_ub_ubi_read_len:
     tb.end_tc(False)
 
 #compare the both files ...
-tb.tc_ub_cmp_addr1 = tb.tc_ub_tftp_file_addr
+tb.tc_ub_cmp_addr1 = tb.config.tc_ub_tftp_file_addr
 tb.tc_ub_cmp_addr2 = tb.tc_ub_ubi_read_addr
 tb.tc_ub_cmp_len = tb.ub_filesize
 tb.eof_call_tc("tc_ub_cmp.py")
@@ -100,7 +100,7 @@ def tbot_ub_write_cmd_check(tb, cmd):
     tmp = "if " + cmd + "; then; echo OK; else; echo FAIL; fi"
     tb.eof_write_cmd_check(tb.workfd, tmp, "OK")
 
-tmp = "ubifsmount ubi:" + tb.tc_ub_ubi_write_vol_name
+tmp = "ubifsmount ubi:" + tb.config.tc_ub_ubi_write_vol_name
 tbot_ub_write_cmd_check(tb, tmp)
 
 tmp = "ubifsls /"
@@ -114,14 +114,14 @@ tbot_ub_write_cmd_check(tb, tmp)
 tmp = "md " + tb.tc_ub_ubi_read_addr
 tbot_ub_write_cmd_check(tb, tmp)
 
-tb.tc_ub_tftp_file_name = '/tftpboot/dxr2/tbot/ubi_random'
+tb.config.tc_ub_tftp_file_name = '/tftpboot/dxr2/tbot/ubi_random'
 tb.eof_call_tc("tc_ub_tftp_file.py")
 tb.eof_call_tc("tc_ub_get_filesize.py")
 
 tmp = "ubifsload " + tb.tc_ub_ubi_read_addr + " /boot/ubi_random"
 tbot_ub_write_cmd_check(tb, tmp)
 
-tb.tc_ub_cmp_addr1 = tb.tc_ub_tftp_file_addr
+tb.tc_ub_cmp_addr1 = tb.config.tc_ub_tftp_file_addr
 tb.tc_ub_cmp_addr2 = tb.tc_ub_ubi_read_addr
 tb.tc_ub_cmp_len = tb.ub_filesize
 tb.eof_call_tc("tc_ub_cmp.py")

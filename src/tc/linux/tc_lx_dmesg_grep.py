@@ -14,20 +14,20 @@
 # Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_dmesg_grep.py
-# check if string tb.tc_lx_dmesg_grep_name is in dmesg output.
+# check if string tb.config.tc_lx_dmesg_grep_name is in dmesg output.
 # End:
 
 from tbotlib import tbot
 
 # here starts the real test
-logging.info("args: %s", tb.tc_lx_dmesg_grep_name)
+logging.info("args: %s", tb.config.tc_lx_dmesg_grep_name)
 
 # set board state for which the tc is valid
 tb.set_board_state("linux")
 
 c = tb.c_con
-tmp = 'dmesg | grep \'' + tb.tc_lx_dmesg_grep_name + '\''
+tmp = 'dmesg | grep \'' + tb.config.tc_lx_dmesg_grep_name + '\''
 tb.eof_write(c, tmp)
-tb.eof_expect_string(c, tb.tc_lx_dmesg_grep_name)
+tb.eof_expect_string(c, tb.config.tc_lx_dmesg_grep_name)
 
 tb.end_tc(True)

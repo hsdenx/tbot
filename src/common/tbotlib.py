@@ -22,6 +22,7 @@ from struct import *
 import subprocess
 import atexit
 import time
+import imp
 import importlib
 import inspect
 import pexpect
@@ -67,22 +68,17 @@ class tbot(object):
 
     more details follow
     """
-    def __init__(self, workdir, cfgfile, logfilen, verbose):
+    def __init__(self, workdir, labfile, cfgfile, logfilen, verbose):
         """
         :param workdir: workdir for tbot
+        :param labfile: labfile
         :param cfgfile: board config file
         :param logfilen: name of logfile
         :param verbose: be verbose
         :return:
         """
-        ## enable debug output
-        self.debug = False
-        ## enable debugstatus output
-        self.debugstatus = False
         ## enable verbose output
         self.verbose = verbose
-        ## contains return value from a tc
-        self.tc_return = True
         self.cfgfile = cfgfile
         self.workdir = workdir
         self.power_state = 'undef'
@@ -91,6 +87,22 @@ class tbot(object):
 
         print("CUR WORK PATH: ", self.workdir)
         print("CFGFILE ", self.cfgfile)
+        # add config to sys path
+        sys.path.append('config')
+
+        # load board config
+        try:
+            self.config = importlib.import_module(cfgfile)
+        except ImportError:
+            print("board cfg file %s not found" % cfgfile)
+            sys.exit(1)
+
+        # load lab settigs ...
+        self.overwrite_config(labfile)
+
+        # load default settigs ...
+        self.overwrite_config('default_vars')
+
         now = datetime.datetime.now()
         # load config file
         if logfilen == 'default':
@@ -103,29 +115,6 @@ class tbot(object):
         print("LOGFILE ", self.logfilen)
 
         sys.path.append(self.workdir + "/src/lab_api")
-        # open configuration file
-        try:
-            fd = open(self.workdir + '/' + self.cfgfile, 'r')
-        except:
-            # try in 'config'
-            try:
-                fd = open(self.workdir + '/config/' + self.cfgfile, 'r')
-            except:
-                logging.warning("Could not find %s", self.cfgfile)
-                sys.exit(1)
-        exec(fd)
-        fd.close()
-
-        # open defaultsettings for testcase variables
-        self.def_var_file = 'tc_default_vars.py'
-        try:
-            fd = open(self.workdir + '/src/common/' + self.def_var_file, 'r')
-        except:
-            logging.warning("Could not find %s", self.def_var_file)
-            sys.exit(1)
-        exec(fd)
-        fd.close()
-
         try:
             self.tc_dir
         except AttributeError:
@@ -136,14 +125,14 @@ class tbot(object):
 
         self.con_loglevel = 25
         logging.addLevelName(self.con_loglevel, "CON")
-        if (self.loglevel == 'CON'):
+        if (self.config.loglevel == 'CON'):
             logformat = '# %(message)s'
         else:
             logformat = '%(asctime)s:%(levelname)-7s:%(module)-10s# %(message)s'
 
         logging.basicConfig(format=logformat, filename=self.logfilen, filemode='w')
         l = logging.getLogger()
-        l.setLevel(self.loglevel)
+        l.setLevel(self.config.loglevel)
         logging.info("*****************************************")
         logging.info('Started logging @  %s', now.strftime("%Y-%m-%d %H:%M"))
         logging.info('working directory %s', self.workdir)
@@ -155,7 +144,7 @@ class tbot(object):
         self.c_ctrl = Connection(self, "tb_ctrl")
 
         self.event = events(self, 'log/event.log')
-        self.event.create_event('main', self.boardname, "Boardname", True)
+        self.event.create_event('main', self.config.boardname, "Boardname", True)
 
         self.wdtfile = self.workdir + "/" + self.cfgfile + ".wdt"
         self.tbot_start_wdt()
@@ -165,7 +154,7 @@ class tbot(object):
         self.check_open_fd(self.c_con)
 
         # try to get the console of the board
-        ret = self.connect_to_board(self.boardname)
+        ret = self.connect_to_board(self.config.boardname)
         if ret == False:
             sys.exit(1)
 
@@ -175,6 +164,48 @@ class tbot(object):
         :return:
         """
         time.sleep(1)
+
+    def overwrite_config(self, filename):
+        try:
+            overwrite_config = importlib.import_module(filename)
+        except ImportError:
+            print("cfg %s not found" % filename)
+            sys.exit(1)
+
+        # fix 'config.'
+        for ov in overwrite_config.__dict__.items():
+            found = False
+            if not ov[0].startswith('__'):
+                # search ov[0] in config
+                for cf in self.config.__dict__.items():
+                    if cf[0] == ov[0]:
+                        # found, do not overwrite
+                        found = True
+                        break
+            else:
+                continue
+
+            if found:
+                continue
+
+            self.config.__dict__.update({ov[0] : ov[1]})
+
+        for ov in self.config.__dict__.items():
+            tmp = ov[1]
+            if type(ov[1]) is str:
+                if ov[1].startswith('config.'):
+                    tp = tmp.split('.')
+                    fd = False
+                    for cf in self.config.__dict__.items(): 
+                        if cf[0] == tp[1]:
+                            tmp = cf[1]
+                            fd = True
+                            break
+
+                    if fd == False:
+                        print("Error with config %s not found" % tp[1])
+                    else:
+                        self.config.__dict__.update({ov[0] : tmp})
 
     def cleanup(self):
         """
@@ -187,10 +218,10 @@ class tbot(object):
     def get_power_state(self, boardname):
         """ Get powerstate of the board in the lab
         """
-        tmp = "get power state " + boardname + " using tc " + self.tc_lab_denx_get_power_state_tc
+        tmp = "get power state " + boardname + " using tc " + self.config.tc_lab_denx_get_power_state_tc
         logging.info(tmp)
 
-        self.call_tc(self.tc_lab_denx_get_power_state_tc)
+        self.call_tc(self.config.tc_lab_denx_get_power_state_tc)
         if self.power_state == 'on':
             return True
         return False
@@ -198,23 +229,23 @@ class tbot(object):
     def set_power_state(self, boardname, state):
         """ set powerstate for the board in the lab
         """
-        tmp = "get power state " + boardname + " using tc " + self.tc_lab_denx_power_tc
+        tmp = "get power state " + boardname + " using tc " + self.config.tc_lab_denx_power_tc
         logging.info(tmp)
 
         self.power_state = state
-        self.call_tc(self.tc_lab_denx_power_tc)
+        self.call_tc(self.config.tc_lab_denx_power_tc)
         ret = self.get_power_state(boardname)
         return ret
 
     def connect_to_board(self, boardname):
         """ connect to the board
         """
-        if self.do_connect_to_board == False:
+        if self.config.do_connect_to_board == False:
             tmp = "do not connect tot board"
             logging.debug(tmp)
             return True
 
-        tmp = "connect to board " + boardname + " using tc " + self.tc_lab_denx_connect_to_board_tc
+        tmp = "connect to board " + boardname + " using tc " + self.config.tc_lab_denx_connect_to_board_tc
         logging.debug(tmp)
 
         try:
@@ -224,14 +255,14 @@ class tbot(object):
 
         self.workfd = self.c_con
         #self.tbot_expect_prompt(self.workfd)
-        ret = self.call_tc(self.tc_lab_denx_connect_to_board_tc)
+        ret = self.call_tc(self.config.tc_lab_denx_connect_to_board_tc)
         self.workfd = save_workfd
         return ret
 
     def disconnect_from_board(self, boardname):
         """ disconnect from the board
         """
-        tmp = "disconnect from board " + boardname + " using tc " + self.tc_lab_denx_disconnect_from_board_tc
+        tmp = "disconnect from board " + boardname + " using tc " + self.config.tc_lab_denx_disconnect_from_board_tc
         logging.debug(tmp)
 
         try:
@@ -240,7 +271,7 @@ class tbot(object):
             save_workfd = self.c_ctrl
 
         self.workfd = self.c_con
-        ret = self.call_tc(self.tc_lab_denx_disconnect_from_board_tc)
+        ret = self.call_tc(self.config.tc_lab_denx_disconnect_from_board_tc)
         self.workfd = save_workfd
         return ret
 
@@ -313,7 +344,7 @@ class tbot(object):
         filepath = self.workdir + "/src/common/tbot_wdt.py"
         self.own_pid = str(os.getpid())
         self.tbot_trigger_wdt()
-        self.wdt_process = subprocess.Popen(['python2.7', filepath, self.wdtfile, self.own_pid, self.logfilen, self.wdt_timeout], close_fds=True)
+        self.wdt_process = subprocess.Popen(['python2.7', filepath, self.wdtfile, self.own_pid, self.logfilen, self.config.wdt_timeout], close_fds=True)
         atexit.register(self.wdt_process.terminate)
 
     def tbot_trigger_wdt(self):
@@ -338,7 +369,7 @@ class tbot(object):
         is called.
         :return: True
         """
-        if self.board_has_debugger:
+        if self.config.board_has_debugger:
             self.eof_call_tc("tc_lab_bdi_connect.py")
             self.eof_call_tc("tc_lab_bdi_run.py")
             self.eof_call_tc("tc_lab_bdi_disconnect.py")
@@ -360,7 +391,7 @@ class tbot(object):
         """
         self._ret = ret
         if self._main == 0:
-            self.event.create_event('main', self.boardname, "BoardnameEnd", True)
+            self.event.create_event('main', self.config.boardname, "BoardnameEnd", True)
             if self._ret:
                 logging.info('End of TBOT: success')
                 self.statusprint("End of TBOT: success")
@@ -383,16 +414,16 @@ class tbot(object):
 
     def debugprint(self, *args):
         """ print a debug string on stdout.
-            This output can be enabled through self.debug
+            This output can be enabled through self.config.debug
         """
-        if self.debug:
+        if self.config.debug:
             print("%s" % (args))
 
     def statusprint(self, *args):
         """ print a status string on stdout.
-            This output can be enabled through self.debugstatus
+            This output can be enabled through self.config.debugstatus
         """
-        if self.debugstatus:
+        if self.config.debugstatus:
             print("%s" % (args))
 
     def con_log(self, *args):
@@ -417,14 +448,14 @@ class tbot(object):
         else:
             logname = 'log/ssh_tb_ctrl.log'
 
-        passwd = self.tbot_get_password(self.user, self.ip)
+        passwd = self.tbot_get_password(self.config.user, self.config.ip)
         self.donotlog = True
-        ret = c.create('not needed', logname, self.labprompt, self.user, self.ip, passwd)
+        ret = c.create('not needed', logname, self.config.labprompt, self.config.user, self.config.ip, passwd)
         c.set_timeout(None)
-        c.set_prompt(self.labsshprompt)
+        c.set_prompt(self.config.labsshprompt)
         self.tbot_expect_prompt(c)
         self.donotlog = False
-        self.set_prompt(c, self.linux_prompt, 'linux')
+        self.set_prompt(c, self.config.linux_prompt, 'linux')
 
         self.set_term_length(c)
         return True
@@ -760,7 +791,7 @@ class tbot(object):
         :param c: connection
         :return:
         """
-        tmp = 'stty cols ' + self.term_line_length
+        tmp = 'stty cols ' + self.config.term_line_length
         self.eof_write(c, tmp)
         self.tbot_expect_prompt(c)
         self.eof_write(c, "export TERM=vt200")

@@ -15,14 +15,14 @@
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_ubi_prepare.py
 # - ubi prepare
-#   execute "ubi part" ith tb.tc_ub_ubi_prep_partname
-#   if tb.tc_ub_ubi_prep_offset != 'none'
-#   with offset tb.tc_ub_ubi_prep_offset
+#   execute "ubi part" ith tb.config.tc_ub_ubi_prep_partname
+#   if tb.config.tc_ub_ubi_prep_offset != 'none'
+#   with offset tb.config.tc_ub_ubi_prep_offset
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: %s %s", tb.tc_ub_ubi_prep_partname, tb.tc_ub_ubi_prep_offset)
+logging.info("args: %s %s", tb.config.tc_ub_ubi_prep_partname, tb.config.tc_ub_ubi_prep_offset)
 
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
@@ -48,9 +48,9 @@ if attached == True:
     tb.eof_write(c, "ubi detach")
     tb.tbot_expect_prompt(c)
 
-tmp = "ubi part " + tb.tc_ub_ubi_prep_partname
-if tb.tc_ub_ubi_prep_offset != 'none':
-    tmp += " " + tb.tc_ub_ubi_prep_offset
+tmp = "ubi part " + tb.config.tc_ub_ubi_prep_partname
+if tb.config.tc_ub_ubi_prep_offset != 'none':
+    tmp += " " + tb.config.tc_ub_ubi_prep_offset
 
 def ubiprep(tb, tmp):
     tb.eof_write(tb.c_con, tmp)

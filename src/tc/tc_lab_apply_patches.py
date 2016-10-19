@@ -19,16 +19,16 @@
 
 from tbotlib import tbot
 
-logging.info("args: %s", tb.tc_lab_apply_patches_dir)
+logging.info("args: %s", tb.config.tc_lab_apply_patches_dir)
 
-if tb.tc_lab_apply_patches_dir == 'none':
+if tb.config.tc_lab_apply_patches_dir == 'none':
     tb.end_tc(True)
 
 c = tb.c_ctrl
 # apply all patches in tc_lab_apply_patches_dir
 tb.set_term_length(c)
 
-tmp = 'for i in ' + tb.tc_lab_apply_patches_dir + '/*.patch; do patch -p1 < $i; done'
+tmp = 'for i in ' + tb.config.tc_lab_apply_patches_dir + '/*.patch; do patch -p1 < $i; done'
 tb.eof_write(c, tmp)
 
 searchlist = ["No such", "FAILED", "Assume -R?"]

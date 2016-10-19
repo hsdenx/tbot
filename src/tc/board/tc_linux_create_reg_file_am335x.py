@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot_aristainetos2.cfg -t tc_linux_create_reg_file_am335x.py
+# tbot.py -s lab_denx -c aristainetos2 -t tc_linux_create_reg_file_am335x.py
 # create a regfile for am335x SoC registers
 # End:
 
@@ -22,74 +22,74 @@ import time
 
 tb.workfd = tb.c_ctrl
 
-tb.tc_lx_create_reg_file_name = 'am335x_ctrl_module.reg'
-tb.tc_lx_create_reg_file_start = '0x44e10000'
-tb.tc_lx_create_reg_file_stop = '0x44e11448'
-tb.tc_lx_readreg_mask = 0xffffffff
-tb.tc_lx_readreg_type = 'w'
+tb.config.tc_lx_create_reg_file_name = 'am335x_ctrl_module.reg'
+tb.config.tc_lx_create_reg_file_start = '0x44e10000'
+tb.config.tc_lx_create_reg_file_stop = '0x44e11448'
+tb.config.tc_lx_readreg_mask = 0xffffffff
+tb.config.tc_lx_readreg_type = 'w'
 tb.eof_call_tc("tc_lx_create_reg_file.py")
 
-tb.tc_lx_create_reg_file_name = 'am335x_display.reg'
-tb.tc_lx_create_reg_file_start = '0x4830e000'
-tb.tc_lx_create_reg_file_stop = '0x4830e074'
-tb.tc_lx_readreg_mask = 0xffffffff
-tb.tc_lx_readreg_type = 'w'
+tb.config.tc_lx_create_reg_file_name = 'am335x_display.reg'
+tb.config.tc_lx_create_reg_file_start = '0x4830e000'
+tb.config.tc_lx_create_reg_file_stop = '0x4830e074'
+tb.config.tc_lx_readreg_mask = 0xffffffff
+tb.config.tc_lx_readreg_type = 'w'
 tb.eof_call_tc("tc_lx_create_reg_file.py")
 
 # CM_PER
-tb.tc_lx_create_reg_file_name = 'am335x_cm_per.reg'
-tb.tc_lx_create_reg_file_start = '0x44e00000'
-tb.tc_lx_create_reg_file_stop = '0x44e00154'
-tb.tc_lx_readreg_mask = 0xffffffff
-tb.tc_lx_readreg_type = 'w'
+tb.config.tc_lx_create_reg_file_name = 'am335x_cm_per.reg'
+tb.config.tc_lx_create_reg_file_start = '0x44e00000'
+tb.config.tc_lx_create_reg_file_stop = '0x44e00154'
+tb.config.tc_lx_readreg_mask = 0xffffffff
+tb.config.tc_lx_readreg_type = 'w'
 tb.eof_call_tc("tc_lx_create_reg_file.py")
 
 # CM_WKUP
-tb.tc_lx_create_reg_file_name = 'am335x_cm_wkup.reg'
-tb.tc_lx_create_reg_file_start = '0x44e00400'
-tb.tc_lx_create_reg_file_stop = '0x44e004dc'
-tb.tc_lx_readreg_mask = 0xffffffff
-tb.tc_lx_readreg_type = 'w'
+tb.config.tc_lx_create_reg_file_name = 'am335x_cm_wkup.reg'
+tb.config.tc_lx_create_reg_file_start = '0x44e00400'
+tb.config.tc_lx_create_reg_file_stop = '0x44e004dc'
+tb.config.tc_lx_readreg_mask = 0xffffffff
+tb.config.tc_lx_readreg_type = 'w'
 tb.eof_call_tc("tc_lx_create_reg_file.py")
 
 # CM_DPLL
-tb.tc_lx_create_reg_file_name = 'am335x_cm_dpll.reg'
-tb.tc_lx_create_reg_file_start = '0x44e00500'
-tb.tc_lx_create_reg_file_stop = '0x44e00540'
-tb.tc_lx_readreg_mask = 0xffffffff
-tb.tc_lx_readreg_type = 'w'
+tb.config.tc_lx_create_reg_file_name = 'am335x_cm_dpll.reg'
+tb.config.tc_lx_create_reg_file_start = '0x44e00500'
+tb.config.tc_lx_create_reg_file_stop = '0x44e00540'
+tb.config.tc_lx_readreg_mask = 0xffffffff
+tb.config.tc_lx_readreg_type = 'w'
 tb.eof_call_tc("tc_lx_create_reg_file.py")
 
 # CM_MPU
-tb.tc_lx_create_reg_file_name = 'am335x_cm_mpu.reg'
-tb.tc_lx_create_reg_file_start = '0x44e00600'
-tb.tc_lx_create_reg_file_stop = '0x44e00608'
-tb.tc_lx_readreg_mask = 0xffffffff
-tb.tc_lx_readreg_type = 'w'
+tb.config.tc_lx_create_reg_file_name = 'am335x_cm_mpu.reg'
+tb.config.tc_lx_create_reg_file_start = '0x44e00600'
+tb.config.tc_lx_create_reg_file_stop = '0x44e00608'
+tb.config.tc_lx_readreg_mask = 0xffffffff
+tb.config.tc_lx_readreg_type = 'w'
 tb.eof_call_tc("tc_lx_create_reg_file.py")
 
 # CM_DEVICE
-tb.tc_lx_create_reg_file_name = 'am335x_cm_dev.reg'
-tb.tc_lx_create_reg_file_start = '0x44e00700'
-tb.tc_lx_create_reg_file_stop = '0x44e00704'
-tb.tc_lx_readreg_mask = 0xffffffff
-tb.tc_lx_readreg_type = 'w'
+tb.config.tc_lx_create_reg_file_name = 'am335x_cm_dev.reg'
+tb.config.tc_lx_create_reg_file_start = '0x44e00700'
+tb.config.tc_lx_create_reg_file_stop = '0x44e00704'
+tb.config.tc_lx_readreg_mask = 0xffffffff
+tb.config.tc_lx_readreg_type = 'w'
 tb.eof_call_tc("tc_lx_create_reg_file.py")
 
 # CM_RTC
-tb.tc_lx_create_reg_file_name = 'am335x_cm_rtc.reg'
-tb.tc_lx_create_reg_file_start = '0x44e00800'
-tb.tc_lx_create_reg_file_stop = '0x44e00808'
-tb.tc_lx_readreg_mask = 0xffffffff
-tb.tc_lx_readreg_type = 'w'
+tb.config.tc_lx_create_reg_file_name = 'am335x_cm_rtc.reg'
+tb.config.tc_lx_create_reg_file_start = '0x44e00800'
+tb.config.tc_lx_create_reg_file_stop = '0x44e00808'
+tb.config.tc_lx_readreg_mask = 0xffffffff
+tb.config.tc_lx_readreg_type = 'w'
 tb.eof_call_tc("tc_lx_create_reg_file.py")
 
 # CM_GFX
-tb.tc_lx_create_reg_file_name = 'am335x_cm_gfx.reg'
-tb.tc_lx_create_reg_file_start = '0x44e00900'
-tb.tc_lx_create_reg_file_stop = '0x44e00918'
-tb.tc_lx_readreg_mask = 0xffffffff
-tb.tc_lx_readreg_type = 'w'
+tb.config.tc_lx_create_reg_file_name = 'am335x_cm_gfx.reg'
+tb.config.tc_lx_create_reg_file_start = '0x44e00900'
+tb.config.tc_lx_create_reg_file_stop = '0x44e00918'
+tb.config.tc_lx_readreg_mask = 0xffffffff
+tb.config.tc_lx_readreg_type = 'w'
 tb.eof_call_tc("tc_lx_create_reg_file.py")
 
 tb.end_tc(True)

@@ -19,14 +19,14 @@
 
 from tbotlib import tbot
 
-logging.info("args: %s %s", tb.workfd.name, tb.boardlabname)
+logging.info("args: %s %s", tb.workfd.name, tb.config.boardlabname)
 
 # what do we need to send ???
 tmp = ''
 tb.eof_write(tb.workfd, tmp)
 
 # set lab pc linux prompt
-tb.workfd.set_prompt(tb.linux_prompt)
+tb.workfd.set_prompt(tb.config.linux_prompt)
 # check if we get linux prompt
 tb.tbot_expect_prompt(tb.workfd)
 tb.end_tc(True)

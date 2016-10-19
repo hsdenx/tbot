@@ -24,7 +24,10 @@ except:
     parser = OptionParser()
     parser.add_option("-c", "--cfgfile",
            dest="cfgfile", default="none",
-           help="the tbot common configfilename")
+           help="the tbot board configfilename")
+    parser.add_option("-s", "--slabfile",
+           dest="labfile", default="none",
+           help="the tbot lab configfilename")
     parser.add_option("-l", "--logfile",
            dest="logfile", default="default",
            help="the tbot logfilename, if default, tbot creates a defaultnamelogfile")
@@ -38,8 +41,8 @@ except:
            dest="workdir", default=os.getcwd(),
            help="set workdir, default os.getcwd()")
     (options, args) = parser.parse_args()
-    print("**** option cfg: %s log: %s tc: %s v %d" % (options.cfgfile, options.logfile, options.tc, options.verbose))
-    tb = tbot(options.workdir, options.cfgfile, options.logfile, options.verbose)
+    print("**** option lab: %s cfg: %s log: %s tc: %s v %d" % (options.labfile, options.cfgfile, options.logfile, options.tc, options.verbose))
+    tb = tbot(options.workdir, options.labfile, options.cfgfile, options.logfile, options.verbose)
 
 ret = tb.call_tc(options.tc)
 if ret == False:

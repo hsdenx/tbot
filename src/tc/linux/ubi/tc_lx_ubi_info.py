@@ -14,22 +14,22 @@
 # Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_ubi_info.py
-# ubinfo tb.tc_ubi_ubi_dev
+# ubinfo tb.config.tc_ubi_ubi_dev
 # End:
 from tbotlib import tbot
 import re
 
 # here starts the real test
-logging.info("args: %s %s", tb.tc_ubi_cmd_path, tb.tc_ubi_ubi_dev)
+logging.info("args: %s %s", tb.config.tc_ubi_cmd_path, tb.config.tc_ubi_ubi_dev)
 
 # set board state for which the tc is valid
 tb.set_board_state("linux")
 
 def create_ubi_cmd(tb, cmd):
-    tmp = tb.tc_ubi_cmd_path + '/' + cmd
+    tmp = tb.config.tc_ubi_cmd_path + '/' + cmd
     return tmp
 
-tmp = create_ubi_cmd(tb, 'ubi-utils/ubinfo ' + tb.tc_ubi_ubi_dev)
+tmp = create_ubi_cmd(tb, 'ubi-utils/ubinfo ' + tb.config.tc_ubi_ubi_dev)
 c = tb.c_con
 tb.eof_write(c, tmp)
 
@@ -55,7 +55,7 @@ while tmp == True:
 if volume_list != "":
     for vol in volume_list:
         vol = vol.lstrip()
-        tmp = create_ubi_cmd(tb, 'ubi-utils/ubinfo ' + tb.tc_ubi_ubi_dev + '_' + vol)
+        tmp = create_ubi_cmd(tb, 'ubi-utils/ubinfo ' + tb.config.tc_ubi_ubi_dev + '_' + vol)
         tb.eof_write(c, tmp)
         tb.tbot_expect_prompt(c)
 

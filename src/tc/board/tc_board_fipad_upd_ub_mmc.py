@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot_fipad.cfg -t tc_board_fipad_upd_ub_mmc.py
+# tbot.py -s lab_denx -c fipad -t tc_board_fipad_upd_ub_mmc.py
 # update SPL and u-boot.img on the MMC0
 # End:
 
@@ -33,11 +33,11 @@ rootfsworkdir = '/home/hs/fipad'
 tb.workfd = tb.c_ctrl
 # copy files to rootfs dir
 tb.statusprint("copy files")
-tb.tc_lab_cp_file_a = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir + '/u-boot.img'
-tb.tc_lab_cp_file_b = rootfspath + rootfsworkdir + '/u-boot.img'
+tb.config.tc_lab_cp_file_a = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + '/u-boot.img'
+tb.config.tc_lab_cp_file_b = rootfspath + rootfsworkdir + '/u-boot.img'
 tb.eof_call_tc("tc_lab_cp_file.py")
-tb.tc_lab_cp_file_a = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir + '/SPL'
-tb.tc_lab_cp_file_b = rootfspath + rootfsworkdir + '/SPL'
+tb.config.tc_lab_cp_file_a = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + '/SPL'
+tb.config.tc_lab_cp_file_b = rootfspath + rootfsworkdir + '/SPL'
 tb.eof_call_tc("tc_lab_cp_file.py")
 
 tb.workfd = tb.c_con

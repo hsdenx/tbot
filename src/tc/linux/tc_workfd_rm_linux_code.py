@@ -14,14 +14,14 @@
 # Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_rm_linux_code.py
-# rm linux source tb.tc_lab_source_dir + '/linux-' + tb.boardlabname
+# rm linux source tb.config.tc_lab_source_dir + '/linux-' + tb.config.boardlabname
 # End:
 
 from tbotlib import tbot
 
 logging.info("args: %s", tb.workfd)
 
-tb.tc_lab_rm_dir = tb.tc_lab_source_dir + '/linux-' + tb.boardlabname
+tb.tc_lab_rm_dir = tb.config.tc_lab_source_dir + '/linux-' + tb.config.boardlabname
 tb.eof_call_tc("tc_lab_rm_dir.py")
 
 tb.end_tc(True)

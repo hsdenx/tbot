@@ -14,18 +14,18 @@
 # Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_ubi_create_volume.py
-# - create ubi volume tb.tc_ub_ubi_create_vol_name with size
-# tb.tc_ub_ubi_create_vol_sz
+# - create ubi volume tb.config.tc_ub_ubi_create_vol_name with size
+# tb.config.tc_ub_ubi_create_vol_sz
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: %s %s", tb.tc_ub_ubi_create_vol_name, tb.tc_ub_ubi_create_vol_sz)
+logging.info("args: %s %s", tb.config.tc_ub_ubi_create_vol_name, tb.config.tc_ub_ubi_create_vol_sz)
 
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
-tmp = 'ubi create ' + tb.tc_ub_ubi_create_vol_name + ' ' + tb.tc_ub_ubi_create_vol_sz
+tmp = 'ubi create ' + tb.config.tc_ub_ubi_create_vol_name + ' ' + tb.config.tc_ub_ubi_create_vol_sz
 tb.eof_write(tb.c_con, tmp)
 ret = tb.tbot_expect_string(tb.c_con, 'exit not allowed')
 if ret == 'prompt':

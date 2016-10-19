@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot_mcx.cfg -t tc_board_mcx_tests.py
+# tbot.py -s lab_denx -c mcx -t tc_board_mcx_tests.py
 # start all testcases for the mcx board
 # End:
 
@@ -21,8 +21,8 @@ from tbotlib import tbot
 
 tb.workfd = tb.c_ctrl
 
-tb.tc_workfd_apply_local_patches_checkpatch_cmd = 'scripts/checkpatch.pl'
-tb.tc_workfd_apply_local_patches_checkpatch_cmd_strict = "no"
+tb.config.tc_workfd_apply_local_patches_checkpatch_cmd = 'scripts/checkpatch.pl'
+tb.config.tc_workfd_apply_local_patches_checkpatch_cmd_strict = "no"
 
 tb.eof_call_tc("tc_workfd_rm_linux_code.py")
 
@@ -32,25 +32,25 @@ tb.eof_call_tc("tc_workfd_get_linux_source.py")
 tb.eof_call_tc("tc_workfd_goto_linux_code.py")
 
 #compile it
-tb.tc_lab_toolchain_rev = '5.4'
-tb.tc_lab_toolchain_name = 'armv5te'
-tb.tc_workfd_compile_linux_clean = 'no'
-tb.tc_workfd_compile_linux_load_addr = '0x80008000'
-tb.tc_workfd_compile_linux_modules ='yes'
-tb.tc_workfd_compile_linux_modules_path ='/opt/eldk-5.5/armv5te/rootfs-qte-sdk/home/hs/mcx/modules'
-tb.tc_workfd_compile_linux_dt_name = 'am3517-mcx.dtb'
-tb.tc_workfd_compile_linux_fit_its_file = '/work/hs/tbot/files/kernel_fdt_mcx.its'
-tb.tc_workfd_compile_linux_fit_file = 'mcx.itb'
-tb.tc_workfd_compile_linux_append_dt = 'Image-self-mcx'
+tb.config.tc_lab_toolchain_rev = '5.4'
+tb.config.tc_lab_toolchain_name = 'armv5te'
+tb.config.tc_workfd_compile_linux_clean = 'no'
+tb.config.tc_workfd_compile_linux_load_addr = '0x80008000'
+tb.config.tc_workfd_compile_linux_modules ='yes'
+tb.config.tc_workfd_compile_linux_modules_path ='/opt/eldk-5.5/armv5te/rootfs-qte-sdk/home/hs/mcx/modules'
+tb.config.tc_workfd_compile_linux_dt_name = 'am3517-mcx.dtb'
+tb.config.tc_workfd_compile_linux_fit_its_file = '/work/hs/tbot/files/kernel_fdt_mcx.its'
+tb.config.tc_workfd_compile_linux_fit_file = 'mcx.itb'
+tb.config.tc_workfd_compile_linux_append_dt = 'Image-self-mcx'
 tb.eof_call_tc("tc_workfd_compile_linux.py")
 
 # copy files to tftpdir
 tb.statusprint("copy files")
-tb.tc_lab_cp_file_a = "/work/hs/tbot/linux-mcx/arch/arm/boot/uImage"
-tb.tc_lab_cp_file_b = "/tftpboot/mcx/tbot/uImage-hs-cur"
+tb.config.tc_lab_cp_file_a = "/work/hs/tbot/linux-mcx/arch/arm/boot/uImage"
+tb.config.tc_lab_cp_file_b = "/tftpboot/mcx/tbot/uImage-hs-cur"
 tb.eof_call_tc("tc_lab_cp_file.py")
-tb.tc_lab_cp_file_a = "/work/hs/tbot/linux-mcx/arch/arm/boot/dts/am3517-mcx.dtb"
-tb.tc_lab_cp_file_b = "/tftpboot/mcx/tbot/mcx.dtb"
+tb.config.tc_lab_cp_file_a = "/work/hs/tbot/linux-mcx/arch/arm/boot/dts/am3517-mcx.dtb"
+tb.config.tc_lab_cp_file_b = "/tftpboot/mcx/tbot/mcx.dtb"
 tb.eof_call_tc("tc_lab_cp_file.py")
 
 tb.set_board_state("u-boot")
@@ -74,7 +74,7 @@ checks = ['htkw mcx',
 'Initialized drm',
 'Initialized omapdrm']
 
-for tb.tc_lx_dmesg_grep_name in checks:
+for tb.config.tc_lx_dmesg_grep_name in checks:
     tb.eof_call_tc("tc_lx_dmesg_grep.py")
 
 tb.statusprint("tc_mcx pinmux part 1 check")
@@ -84,7 +84,7 @@ files = ['src/files/mcx_pinmux_part1.reg',
 'src/files/mcx_pinmux_part4.reg',
 'src/files/mcx_pinmux_part5.reg',
 'src/files/mcx_pinmux_part6.reg']
-for tb.tc_lx_create_reg_file_name in files:
+for tb.config.tc_lx_create_reg_file_name in files:
     tb.eof_call_tc("tc_lx_check_reg_file.py")
 
 tb.statusprint("tc_mcx regulator check")

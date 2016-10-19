@@ -21,20 +21,20 @@ from tbotlib import tbot
 
 savefd = tb.workfd
 tb.workfd = tb.c_ctrl
-if tb.tc_lab_compile_uboot_export_path != 'none':
-    tmp = "export PATH=" + tb.tc_lab_compile_uboot_export_path + ":$PATH"
+if tb.config.tc_lab_compile_uboot_export_path != 'none':
+    tmp = "export PATH=" + tb.config.tc_lab_compile_uboot_export_path + ":$PATH"
     tb.write_lx_cmd_check(tb.workfd, tmp)
 
 tmp = "make mrproper"
 tb.write_lx_cmd_check(tb.workfd, tmp)
 
-defname = tb.tc_lab_compile_uboot_boardname + "_defconfig"
+defname = tb.config.tc_lab_compile_uboot_boardname + "_defconfig"
 tmp = "make " + defname
-tb.event.create_event('main', tb.boardname, "UBOOT_DEFCONFIG", defname)
+tb.event.create_event('main', tb.config.boardname, "UBOOT_DEFCONFIG", defname)
 tb.write_lx_cmd_check(tb.workfd, tmp)
-tb.event.create_event('main', tb.boardname, "UBOOT_SRC_PATH", tb.tc_lab_source_dir + "/u-boot-" + tb.boardlabname)
+tb.event.create_event('main', tb.config.boardname, "UBOOT_SRC_PATH", tb.config.tc_lab_source_dir + "/u-boot-" + tb.config.boardlabname)
 
-tmp = "make " + self.tc_lab_compile_uboot_makeoptions + " all"
+tmp = "make " + self.config.tc_lab_compile_uboot_makeoptions + " all"
 tb.write_lx_cmd_check(tb.workfd, tmp)
 
 tb.workfd = savefd

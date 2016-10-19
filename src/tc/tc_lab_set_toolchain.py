@@ -20,8 +20,8 @@
 from tbotlib import tbot
 
 c = tb.c_ctrl
-tmp = "eldk-switch -m -r " + tb.tc_lab_toolchain_rev + " " + tb.tc_lab_toolchain_name
-tb.event.create_event('main', tb.boardname, "Toolchain", tmp)
+tmp = "eldk-switch -m -r " + tb.config.tc_lab_toolchain_rev + " " + tb.config.tc_lab_toolchain_name
+tb.event.create_event('main', tb.config.boardname, "Toolchain", tmp)
 tb.eof_write(c, tmp)
 tb.eof_expect_string(c, 'using ELDK')
 tb.end_tc(True)

@@ -64,14 +64,14 @@ tb.eof_call_tc("tc_workfd_rm_uboot_code.py")
 
 result = True
 
-tmp = tb.tc_lab_apply_patches_dir
-tb.tc_lab_apply_patches_dir = 'none'
+tmp = tb.config.tc_lab_apply_patches_dir
+tb.config.tc_lab_apply_patches_dir = 'none'
 
 # call get u-boot source
 tb.statusprint("get u-boot source")
 tb.eof_call_tc("tc_lab_get_uboot_source.py")
 
-tb.tc_lab_apply_patches_dir = tmp
+tb.config.tc_lab_apply_patches_dir = tmp
 
 good = []
 bad = []
@@ -98,13 +98,13 @@ tb.tbot_expect_prompt(ctrl)
 # get rid of differences in U-Boot version string
 # Best would be to disable CONFIG_LOCALVERSION_AUTO
 # we just patch setlocalverion yet ...
-save = tb.tc_lab_apply_patches_dir
-tb.tc_lab_apply_patches_dir = tb.tc_uboot_check_kconfig_preparepatch
+save = tb.config.tc_lab_apply_patches_dir
+tb.config.tc_lab_apply_patches_dir = tb.tc_uboot_check_kconfig_preparepatch
 ret = tb.call_tc("tc_workfd_apply_patches.py")
 if ret == False:
     tb.statusprint("testing board %s apply preparepatch failed" % (board))
     tb.end_tc(False)
-tb.tc_lab_apply_patches_dir = save
+tb.config.tc_lab_apply_patches_dir = save
 
 if tb.tc_uboot_check_kconfig_read_sumfile != 'none':
     fname = tb.workdir + "/" + tb.tc_uboot_check_kconfig_read_sumfile
@@ -126,7 +126,7 @@ if tb.tc_uboot_check_kconfig_read_sumfile != 'none':
 
 else:
     tb.tc_workfd_get_list_of_files_dir = 'configs'
-    tb.tc_workfd_get_list_of_files_mask = '*_defconfig'
+    tb.config.tc_workfd_get_list_of_files_mask = '*_defconfig'
     tb.eof_call_tc("tc_workfd_get_list_of_files_in_dir.py")
 
     # create a list of boards
@@ -150,7 +150,7 @@ else:
         count += 1
         tb.statusprint("testing board %s %d / %d" % (board, count, len(tb.tc_lab_compile_uboot_list_boardlist)))
 
-        tb.tc_lab_compile_uboot_boardname = board
+        tb.config.tc_lab_compile_uboot_boardname = board
 
         # get architecture
         tmp = "make mrproper"
@@ -195,19 +195,19 @@ else:
         uboot_md5sum = 'notread'
         uboot_spl_md5sum = 'notread'
         # check if u-boot-bin
-        tb.tc_workfd_check_if_file_exists_name = 'u-boot.bin'
+        tb.config.tc_workfd_check_if_file_exists_name = 'u-boot.bin'
         ret = tb.call_tc("tc_workfd_check_if_file_exist.py")
         if ret == True:
             # calc md5sum
-            tb.tc_workfd_md5sum_name = tb.tc_workfd_check_if_file_exists_name
+            tb.tc_workfd_md5sum_name = tb.config.tc_workfd_check_if_file_exists_name
             tb.call_tc("tc_workfd_md5sum.py")
             uboot_md5sum = tb.tc_workfd_md5sum_sum
         # check if spl/u-boot-spl.bin
-        tb.tc_workfd_check_if_file_exists_name = 'spl/u-boot-spl.bin'
+        tb.config.tc_workfd_check_if_file_exists_name = 'spl/u-boot-spl.bin'
         ret = tb.call_tc("tc_workfd_check_if_file_exist.py")
         if ret == True:
             # calc md5sum
-            tb.tc_workfd_md5sum_name = tb.tc_workfd_check_if_file_exists_name
+            tb.tc_workfd_md5sum_name = tb.config.tc_workfd_check_if_file_exists_name
             tb.call_tc("tc_workfd_md5sum.py")
             uboot_spl_md5sum = tb.tc_workfd_md5sum_sum
 
@@ -230,7 +230,7 @@ else:
         fd.close()
 
 # now apply patches
-if tb.tc_lab_apply_patches_dir != 'none':
+if tb.config.tc_lab_apply_patches_dir != 'none':
     tb.eof_call_tc("tc_workfd_apply_patches.py")
 
 count = 0
@@ -238,7 +238,7 @@ for board in tb.tc_lab_compile_uboot_list_boardlist:
     count += 1
     tb.statusprint("testing 2 board %s %d / %d" % (board, count, len(tb.tc_lab_compile_uboot_list_boardlist)))
 
-    tb.tc_lab_compile_uboot_boardname = board
+    tb.config.tc_lab_compile_uboot_boardname = board
 
     tmp = "make mrproper"
     tb.write_lx_cmd_check(tb.workfd, tmp)
@@ -268,19 +268,19 @@ for board in tb.tc_lab_compile_uboot_list_boardlist:
     uboot_patched_md5sum = 'notread'
     uboot_spl_patched_md5sum = 'notread'
     # check if u-boot-bin
-    tb.tc_workfd_check_if_file_exists_name = 'u-boot.bin'
+    tb.config.tc_workfd_check_if_file_exists_name = 'u-boot.bin'
     ret = tb.call_tc("tc_workfd_check_if_file_exist.py")
     if ret == True:
         # calc md5sum
-        tb.tc_workfd_md5sum_name = tb.tc_workfd_check_if_file_exists_name
+        tb.tc_workfd_md5sum_name = tb.config.tc_workfd_check_if_file_exists_name
         tb.call_tc("tc_workfd_md5sum.py")
         uboot_patched_md5sum = tb.tc_workfd_md5sum_sum
     # check if spl/u-boot-spl.bin
-    tb.tc_workfd_check_if_file_exists_name = 'spl/u-boot-spl.bin'
+    tb.config.tc_workfd_check_if_file_exists_name = 'spl/u-boot-spl.bin'
     ret = tb.call_tc("tc_workfd_check_if_file_exist.py")
     if ret == True:
         # calc md5sum
-        tb.tc_workfd_md5sum_name = tb.tc_workfd_check_if_file_exists_name
+        tb.tc_workfd_md5sum_name = tb.config.tc_workfd_check_if_file_exists_name
         tb.call_tc("tc_workfd_md5sum.py")
         uboot_spl_patched_md5sum = tb.tc_workfd_md5sum_sum
 

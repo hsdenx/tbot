@@ -18,19 +18,19 @@
 # - send BDI cmd: "res halt"
 # - send BDI cmd: "era"
 # - send BDI cmd:
-#   tb.lab_bdi_upd_uboot_bdi_prog + ' ' + tb.lab_bdi_upd_uboot_bdi_file + ' BIN'
-# - send BDI cmd: tb.lab_bdi_upd_uboot_bdi_run
+#   tb.config.lab_bdi_upd_uboot_bdi_prog + ' ' + tb.config.lab_bdi_upd_uboot_bdi_file + ' BIN'
+# - send BDI cmd: tb.config.lab_bdi_upd_uboot_bdi_run
 # End:
 from tbotlib import tbot
 
-logging.info("args: %s %s %s", tb.boardname, tb.lab_bdi_upd_uboot_bdi_cmd, tb.lab_bdi_upd_uboot_bdi_prompt)
-logging.info("%s %s %s", tb.lab_bdi_upd_uboot_bdi_era, tb.lab_bdi_upd_uboot_bdi_prog, tb.lab_bdi_upd_uboot_bdi_file)
-logging.info("%s", tb.lab_bdi_upd_uboot_bdi_run)
+logging.info("args: %s %s", tb.config.lab_bdi_upd_uboot_bdi_cmd, tb.config.lab_bdi_upd_uboot_bdi_prompt)
+logging.info("%s %s %s", tb.config.lab_bdi_upd_uboot_bdi_era, tb.config.lab_bdi_upd_uboot_bdi_prog, tb.config.lab_bdi_upd_uboot_bdi_file)
+logging.info("%s", tb.config.lab_bdi_upd_uboot_bdi_run)
 
 c = tb.workfd
 
 # check if we are in the BDI
-if c.get_prompt() != tb.lab_bdi_upd_uboot_bdi_prompt:
+if c.get_prompt() != tb.config.lab_bdi_upd_uboot_bdi_prompt:
     ret = tb.call_tc("tc_lab_bdi_connect.py")
     if ret != True:
         tb.end_tc(False)
@@ -50,14 +50,14 @@ while (ret != '0'):
 tb.tbot_expect_prompt(c)
 
 # -> program bin
-tmp = tb.lab_bdi_upd_uboot_bdi_prog + ' ' + tb.lab_bdi_upd_uboot_bdi_file + ' BIN'
+tmp = tb.config.lab_bdi_upd_uboot_bdi_prog + ' ' + tb.config.lab_bdi_upd_uboot_bdi_file + ' BIN'
 tb.write_stream(c, tmp)
 ret = tb.tbot_expect_string(c, 'Programming flash passed')
 while (ret != '0'):
     ret = tb.tbot_expect_string(c, 'Programming flash passed')
 tb.tbot_expect_prompt(c)
 
-tb.write_stream(c, tb.lab_bdi_upd_uboot_bdi_run)
+tb.write_stream(c, tb.config.lab_bdi_upd_uboot_bdi_run)
 ret = tb.tbot_expect_string(c, 'resetting target passed')
 while (ret != '0'):
     ret = tb.tbot_expect_string(c, 'resetting target passed')

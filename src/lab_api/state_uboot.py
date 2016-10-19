@@ -20,7 +20,7 @@ from struct import pack
 
 def u_boot_parse_input(tb, c, retry):
     logging.debug("------------------- parse input")
-    sl = tb.uboot_strings
+    sl = tb.config.uboot_strings
     i = 0
     oldt = c.get_timeout()
     c.set_timeout(1)
@@ -69,13 +69,16 @@ def u_boot_set_board_state(tb, state, retry):
     tmp = "switch state to " + state
     logging.info(tmp)
 
+    # set default values
+    tb.eof_call_tc("tc_def_ub.py")
+
     # set new prompt
     try:
-        tb.uboot_prompt
+        tb.config.uboot_prompt
     except AttributeError:
-        tb.uboot_prompt = 'U-Boot#'
+        tb.config.uboot_prompt = 'U-Boot#'
 
-    tb.c_con.set_prompt(tb.uboot_prompt)
+    tb.c_con.set_prompt(tb.config.uboot_prompt)
     # nothing more in u-boot todo, as prompt is fix
 
     # check, if we get a prompt
@@ -84,10 +87,10 @@ def u_boot_set_board_state(tb, state, retry):
         return True
 
     # switch to u-boot if not ?? repower ??
-    ret = tb.set_power_state(tb.boardlabpowername, "off")
+    ret = tb.set_power_state(tb.config.boardlabpowername, "off")
     if ret == False:
         time.sleep(2)
-        ret = tb.set_power_state(tb.boardlabpowername, "on")
+        ret = tb.set_power_state(tb.config.boardlabpowername, "on")
         if ret != True:
             logging.error("------------------- set board state failure")
             tb.failure()

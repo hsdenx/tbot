@@ -14,13 +14,13 @@
 # Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_regulator.py
-# check if regulators in tb.tc_lx_regulator_nrs exist, and have
+# check if regulators in tb.config.tc_lx_regulator_nrs exist, and have
 # the correct microvolts settings.
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: %s", tb.tc_lx_regulator_nrs)
+logging.info("args: %s", tb.config.tc_lx_regulator_nrs)
 
 tb.set_board_state("linux")
 
@@ -40,7 +40,7 @@ def check_regulator(tb, c, nr, name, volts):
             tb.end_tc(False)
     tb.tbot_expect_prompt(c)
 
-for nr in tb.tc_lx_regulator_nrs:
+for nr in tb.config.tc_lx_regulator_nrs:
     nr_list = nr.split()
     check_regulator(tb, c, nr_list[0], nr_list[1], nr_list[2])
 

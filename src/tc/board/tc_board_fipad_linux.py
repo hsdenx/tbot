@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot_fipad.cfg -t tc_board_fipad_linux.py
+# tbot.py -s lab_denx -c fipad -t tc_board_fipad_linux.py
 # start all linux testcases for the fipad board
 # End:
 
@@ -33,14 +33,14 @@ tb.eof_call_tc("tc_workfd_compile_linux.py")
 
 # copy files to tftpdir
 tb.statusprint("copy files")
-tb.tc_lab_cp_file_a = "/work/hs/tbot/linux-fipad/arch/arm/boot/zImage"
-tb.tc_lab_cp_file_b = "/tftpboot/fipad/tbot/zImage"
+tb.config.tc_lab_cp_file_a = "/work/hs/tbot/linux-fipad/arch/arm/boot/zImage"
+tb.config.tc_lab_cp_file_b = "/tftpboot/fipad/tbot/zImage"
 tb.eof_call_tc("tc_lab_cp_file.py")
-tb.tc_lab_cp_file_a = "/work/hs/tbot/linux-fipad/arch/arm/boot/dts/bosch-mpc1360d.dtb"
-tb.tc_lab_cp_file_b = "/tftpboot/fipad/tbot/fipad.dtb"
+tb.config.tc_lab_cp_file_a = "/work/hs/tbot/linux-fipad/arch/arm/boot/dts/bosch-mpc1360d.dtb"
+tb.config.tc_lab_cp_file_b = "/tftpboot/fipad/tbot/fipad.dtb"
 tb.eof_call_tc("tc_lab_cp_file.py")
-tb.tc_lab_cp_file_a = "/work/hs/tbot/linux-fipad/System.map"
-tb.tc_lab_cp_file_b = "/tftpboot/fipad/tbot/linux-system.map"
+tb.config.tc_lab_cp_file_a = "/work/hs/tbot/linux-fipad/System.map"
+tb.config.tc_lab_cp_file_b = "/tftpboot/fipad/tbot/linux-system.map"
 tb.eof_call_tc("tc_lab_cp_file.py")
 
 # call ubot setenv
@@ -53,9 +53,9 @@ ret = tb.eof_call_tc("tc_lx_get_version.py")
 if ret == False:
     tb.end_tc(False)
 
-tb.statusprint("Linux vers: %s" % (tb.tc_return))
+tb.statusprint("Linux vers: %s" % (tb.config.tc_return))
 
-tmp = tb.tc_return.split()
+tmp = tb.config.tc_return.split()
 if tmp[0][0] == '4':
     lx_vers = '4'
 else:
@@ -108,7 +108,7 @@ else:
 	'da9063-battery da9063-battery: Iset=6000uA, Vset=3100mV'
 	]
 
-for tb.tc_lx_dmesg_grep_name in checks:
+for tb.config.tc_lx_dmesg_grep_name in checks:
     tb.eof_call_tc("tc_lx_dmesg_grep.py")
 
 # register checks
@@ -116,7 +116,7 @@ tb.statusprint("tc_fipad pinmux check")
 files = ['src/files/fipad_lx_pinmux.reg',
          'src/files/fipad_lx_pwm.reg',
          'src/files/fipad_lx_ipu.reg']
-for tb.tc_lx_create_reg_file_name in files:
+for tb.config.tc_lx_create_reg_file_name in files:
     tb.eof_call_tc("tc_lx_check_reg_file.py")
 
 # do some basic tests

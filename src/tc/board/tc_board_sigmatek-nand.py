@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot_sigmatek-nand.cfg -t tc_board_sigmatek-nand.py
+# tbot.py -s lab_denx -c sigmatek-nand -t tc_board_sigmatek-nand.py
 # On the sigmatek-nand board we have problems with a crash in U-boot
 # We do:
 # - wait until linux state is reached

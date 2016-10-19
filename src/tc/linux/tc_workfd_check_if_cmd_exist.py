@@ -20,9 +20,9 @@
 from tbotlib import tbot
 
 logging.info("args: workfd %s %s", tb.workfd,
-             tb.tc_workfd_check_if_cmd_exist_cmdname)
+             tb.config.tc_workfd_check_if_cmd_exist_cmdname)
 
-tmp = 'command -v ' + tb.tc_workfd_check_if_cmd_exist_cmdname + ' >/dev/null 2>&1 || { echo >&2 "not installed.";}'
+tmp = 'command -v ' + tb.config.tc_workfd_check_if_cmd_exist_cmdname + ' >/dev/null 2>&1 || { echo >&2 "not installed.";}'
 tb.eof_write(tb.workfd, tmp)
 searchlist = ["not installed"]
 tmp = True

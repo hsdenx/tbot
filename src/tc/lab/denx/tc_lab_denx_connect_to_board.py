@@ -19,9 +19,9 @@
 
 from tbotlib import tbot
 
-logging.info("args: %s %s", tb.workfd.name, tb.boardlabname)
+logging.info("args: %s %s", tb.workfd.name, tb.config.boardlabname)
 
-tmp = "connect " + tb.boardlabname
+tmp = "connect " + tb.config.boardlabname
 tb.eof_write(tb.workfd, tmp)
 
 searchlist = ["Unknown target", "Connect", "not accessible", "Locked by process", "Connection closed by"]

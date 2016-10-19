@@ -14,17 +14,17 @@
 # Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_trigger_wdt.py
-# simple trigger wdt with command tb.tc_lx_trigger_wdt_cmd
+# simple trigger wdt with command tb.config.tc_lx_trigger_wdt_cmd
 # End:
 
 from tbotlib import tbot
 import re
 
-logging.info("args: %s", tb.tc_lx_trigger_wdt_cmd)
+logging.info("args: %s", tb.config.tc_lx_trigger_wdt_cmd)
 
 # set board state for which the tc is valid
 tb.set_board_state("linux")
 
-tb.eof_write_con_lx_cmd(tb.tc_lx_trigger_wdt_cmd)
+tb.eof_write_con_lx_cmd(tb.config.tc_lx_trigger_wdt_cmd)
 
 tb.end_tc(True)

@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot_taurus.cfg -t tc_board_taurus.py
+# tbot.py -s lab_denx -c taurus -t tc_board_taurus.py
 # start all testcases for the taurus board
 # End:
 
@@ -39,8 +39,8 @@ tb.eof_call_tc("tc_lab_set_toolchain.py")
 tb.statusprint("get patchwork patches")
 tb.eof_call_tc("tc_workfd_get_patchwork_number_list.py")
 
-tb.tc_workfd_apply_patchwork_patches_list_hand += tb.tc_workfd_apply_patchwork_patches_list
-tb.tc_workfd_apply_patchwork_patches_list = tb.tc_workfd_apply_patchwork_patches_list_hand
+tb.config.tc_workfd_apply_patchwork_patches_list_hand += tb.config.tc_workfd_apply_patchwork_patches_list
+tb.config.tc_workfd_apply_patchwork_patches_list = tb.config.tc_workfd_apply_patchwork_patches_list_hand
 
 #apply local patches
 tb.workfd = tb.c_ctrl
@@ -50,7 +50,7 @@ tb.eof_call_tc("tc_workfd_apply_local_patches.py")
 
 #add patchwork patches
 tb.statusprint("apply patchwork patches")
-tb.tc_workfd_apply_patchwork_patches_checkpatch_cmd = 'scripts/checkpatch.pl'
+tb.config.tc_workfd_apply_patchwork_patches_checkpatch_cmd = 'scripts/checkpatch.pl'
 tb.eof_call_tc("tc_workfd_apply_patchwork_patches.py")
 
 #call compile u-boot
@@ -59,17 +59,17 @@ tb.eof_call_tc("tc_lab_compile_uboot.py")
 
 #copy files to tbot dir
 tb.statusprint("copy files")
-tb.tc_lab_cp_file_a = "u-boot.bin"
-tb.tc_lab_cp_file_b = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir
+tb.config.tc_lab_cp_file_a = "u-boot.bin"
+tb.config.tc_lab_cp_file_b = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir
 tb.eof_call_tc("tc_lab_cp_file.py")
-tb.tc_lab_cp_file_a = "System.map"
+tb.config.tc_lab_cp_file_a = "System.map"
 tb.eof_call_tc("tc_lab_cp_file.py")
-tb.tc_lab_cp_file_a = "boot.bin"
+tb.config.tc_lab_cp_file_a = "boot.bin"
 tb.eof_call_tc("tc_lab_cp_file.py")
-tb.tc_lab_cp_file_a = "spl/u-boot-spl.bin"
+tb.config.tc_lab_cp_file_a = "spl/u-boot-spl.bin"
 tb.eof_call_tc("tc_lab_cp_file.py")
-tb.tc_lab_cp_file_a = "spl/u-boot-spl.map"
-tb.tc_lab_cp_file_b = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir + "/u-boot-spl.map"
+tb.config.tc_lab_cp_file_a = "spl/u-boot-spl.map"
+tb.config.tc_lab_cp_file_b = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-spl.map"
 tb.eof_call_tc("tc_lab_cp_file.py")
 
 tb.workfd = tb.c_ctrl
@@ -77,10 +77,10 @@ tb.eof_call_tc("tc_workfd_goto_uboot_code.py")
 
 # check U-Boot version
 tb.workfd = tb.c_ctrl
-tb.tc_ub_get_version_file = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir + '/u-boot.bin'
+tb.tc_ub_get_version_file = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + '/u-boot.bin'
 tb.tc_ub_get_version_string = 'U-Boot 20'
 tb.eof_call_tc("tc_ub_get_version.py")
-tb.uboot_vers = tb.tc_return
+tb.uboot_vers = tb.config.tc_return
 
 #call upd_spl
 tb.eof_call_tc("tc_ub_upd_spl.py")
@@ -101,20 +101,20 @@ tb.statusprint("u-boot dfu random test")
 tb.eof_call_tc("tc_ub_dfu_random.py")
 
 #save working u-boot bin
-tb.tc_lab_cp_file_a = "u-boot.bin"
-tb.tc_lab_cp_file_b = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir + "/u-boot-latestworking.bin"
+tb.config.tc_lab_cp_file_a = "u-boot.bin"
+tb.config.tc_lab_cp_file_b = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-latestworking.bin"
 tb.eof_call_tc("tc_lab_cp_file.py")
-tb.tc_lab_cp_file_a = "System.map"
-tb.tc_lab_cp_file_b = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir + "/u-boot-latestworking.System.map"
+tb.config.tc_lab_cp_file_a = "System.map"
+tb.config.tc_lab_cp_file_b = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-latestworking.System.map"
 tb.eof_call_tc("tc_lab_cp_file.py")
-tb.tc_lab_cp_file_a = "boot.bin"
-tb.tc_lab_cp_file_b = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir + "/u-boot-latestworking-boot.bin"
+tb.config.tc_lab_cp_file_a = "boot.bin"
+tb.config.tc_lab_cp_file_b = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-latestworking-boot.bin"
 tb.eof_call_tc("tc_lab_cp_file.py")
-tb.tc_lab_cp_file_a = "spl/u-boot-spl.bin"
-tb.tc_lab_cp_file_b = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir + "/u-boot-latestworking-spl.bin"
+tb.config.tc_lab_cp_file_a = "spl/u-boot-spl.bin"
+tb.config.tc_lab_cp_file_b = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-latestworking-spl.bin"
 tb.eof_call_tc("tc_lab_cp_file.py")
-tb.tc_lab_cp_file_a = "spl/u-boot-spl.map"
-tb.tc_lab_cp_file_b = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir + "/u-boot-latestworking-spl.System.map"
+tb.config.tc_lab_cp_file_a = "spl/u-boot-spl.map"
+tb.config.tc_lab_cp_file_b = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-latestworking-spl.System.map"
 tb.eof_call_tc("tc_lab_cp_file.py")
 
 # power off board at the end

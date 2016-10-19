@@ -16,19 +16,19 @@
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lab_bdi_upd_uboot.py
 # BDI run
 # - send "res halt" to workfd
-# - send BDI cmd tb.lab_bdi_upd_uboot_bdi_run
+# - send BDI cmd tb.config.lab_bdi_upd_uboot_bdi_run
 # End:
 
 from tbotlib import tbot
 from lab_bdi import bdi_class
 
-logging.info("args: %s %s %s %s", tb.board_has_debugger, tb.workfd.name,
-             tb.lab_bdi_upd_uboot_bdi_prompt, tb.lab_bdi_upd_uboot_bdi_run)
+logging.info("args: %s %s %s %s", tb.config.board_has_debugger, tb.workfd.name,
+             tb.config.lab_bdi_upd_uboot_bdi_prompt, tb.config.lab_bdi_upd_uboot_bdi_run)
 
 c = tb.workfd
 
 # check if we are in the BDI
-if c.get_prompt() != tb.lab_bdi_upd_uboot_bdi_prompt:
+if c.get_prompt() != tb.config.lab_bdi_upd_uboot_bdi_prompt:
     tb.end_tc(False)
 
 # -> res;h
@@ -40,7 +40,7 @@ while (ret != '0'):
 
 tb.tbot_expect_prompt(c)
 
-tb.write_stream(c, tb.lab_bdi_upd_uboot_bdi_run)
+tb.write_stream(c, tb.config.lab_bdi_upd_uboot_bdi_run)
 ret = tb.tbot_expect_string(c, 'resetting target passed')
 while (ret != '0'):
     ret = tb.tbot_expect_string(c, 'resetting target passed')

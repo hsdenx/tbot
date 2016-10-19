@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot_aristainetos2.cfg -t tc_board_aristainetos2_linux.py
+# tbot.py -s lab_denx -c aristainetos2 -t tc_board_aristainetos2_linux.py
 # start all linux testcases for the aristainetos2 board
 # End:
 

@@ -15,7 +15,7 @@
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_apply_patchwork_patches.py
 # apply patchworkpatches from list:
-# tb.tc_workfd_apply_patchwork_patches_list:
+# tb.config.tc_workfd_apply_patchwork_patches_list:
 # to source in current directory.
 # creates event:
 # - PW_NR: which patchwork number used
@@ -27,18 +27,18 @@
 from tbotlib import tbot
 
 logging.info("args: workfd: %s %s %s %s", tb.workfd,
-             tb.tc_workfd_apply_patchwork_patches_list,
-             tb.tc_workfd_apply_patchwork_patches_checkpatch_cmd,
-             tb.tc_workfd_apply_patchwork_patches_eof)
+             tb.config.tc_workfd_apply_patchwork_patches_list,
+             tb.config.tc_workfd_apply_patchwork_patches_checkpatch_cmd,
+             tb.config.tc_workfd_apply_patchwork_patches_eof)
 
 def apply_one_patch(tb, nr):
-    tb.tc_workfd_rm_file_name = 'mbox'
+    tb.config.tc_workfd_rm_file_name = 'mbox'
     ret = tb.call_tc("tc_workfd_rm_file.py")
     tmp = 'wget http://patchwork.ozlabs.org/patch/' + nr + '/mbox'
     tb.write_lx_cmd_check(tb.workfd, tmp)
     tb.event.create_event('main', 'func', 'PW_NR', nr)
-    if tb.tc_workfd_apply_patchwork_patches_checkpatch_cmd != 'none':
-        tmp = tb.tc_workfd_apply_patchwork_patches_checkpatch_cmd + ' mbox'
+    if tb.config.tc_workfd_apply_patchwork_patches_checkpatch_cmd != 'none':
+        tmp = tb.config.tc_workfd_apply_patchwork_patches_checkpatch_cmd + ' mbox'
         tb.eof_write_cmd(tb.workfd, tmp)
         ret = tb.call_tc("tc_workfd_check_cmd_success.py")
         if ret != True:
@@ -60,7 +60,7 @@ def apply_one_patch(tb, nr):
         if tmp == 'prompt':
             ret = tb.call_tc("tc_workfd_check_cmd_success.py")
             tb.event.create_event('main', 'func', 'PW_APPLY', ret)
-            if tb.tc_workfd_apply_patchwork_patches_eof == 'yes':
+            if tb.config.tc_workfd_apply_patchwork_patches_eof == 'yes':
                 if ret == False:
                     tb.end_tc(False)
             loop = False
@@ -72,7 +72,7 @@ def apply_one_patch(tb, nr):
 # print some infos
 tb.eof_write_cmd(tb.workfd, 'pwd')
 tb.write_lx_cmd_check(tb.workfd, 'git describe')
-for nr in tb.tc_workfd_apply_patchwork_patches_list:
+for nr in tb.config.tc_workfd_apply_patchwork_patches_list:
     apply_one_patch(tb, nr)
 
 tb.end_tc(True)

@@ -21,20 +21,20 @@
 
 from tbotlib import tbot
 
-logging.info("args: %s", tb.tc_workfd_work_dir)
+logging.info("args: %s", tb.config.tc_workfd_work_dir)
 
 # set board state for which the tc is valid
 tb.set_board_state("linux")
 
 c = tb.c_con
 # check if mtdinfo exist
-tb.tc_workfd_check_if_cmd_exist_cmdname = 'mtdinfo'
+tb.config.tc_workfd_check_if_cmd_exist_cmdname = 'mtdinfo'
 tb.workfd = tb.c_con
 ret = tb.call_tc("tc_workfd_check_if_cmd_exist.py")
 if ret == True:
     # check if mtdinfo exist
-    tb.tc_workfd_check_if_cmd_exist_cmdname = 'ubinfo'
-    tb.tc_ubi_cmd_path = ''
+    tb.config.tc_workfd_check_if_cmd_exist_cmdname = 'ubinfo'
+    tb.config.tc_ubi_cmd_path = ''
     ret = tb.call_tc("tc_workfd_check_if_cmd_exist.py")
     if ret == True:
         tb.end_tc(True)
@@ -44,7 +44,7 @@ tb.eof_call_tc("tc_workfd_goto_tbot_workdir.py")
 # if not download it
 # git clone git://git.infradead.org/mtd-utils.git mtd-utils
 tb.workfd = tb.c_con
-tb.tc_workfd_check_if_dir_exists_name = "mtd-utils"
+tb.config.tc_workfd_check_if_dir_exists_name = "mtd-utils"
 ret = tb.call_tc("tc_workfd_check_if_dir_exist.py")
 if ret == False:
     tmp = 'git clone git://git.infradead.org/mtd-utils.git mtd-utils'
@@ -56,10 +56,10 @@ if ret == False:
 tb.eof_write_con_lx_cmd('cd mtd-utils')
 
 # if code is compiled, exit
-tb.tc_workfd_check_if_file_exists_name = 'ubi-utils/mtdinfo'
+tb.config.tc_workfd_check_if_file_exists_name = 'ubi-utils/mtdinfo'
 ret = tb.call_tc("tc_workfd_check_if_file_exist.py")
 if ret == True:
-    tb.tc_ubi_cmd_path = tb.tc_workfd_work_dir + '/mtd-utils'
+    tb.config.tc_ubi_cmd_path = tb.config.tc_workfd_work_dir + '/mtd-utils'
     tb.end_tc(True)
 
 # apply patches if any
@@ -73,5 +73,5 @@ tb.eof_write_con_lx_cmd('make')
 # tb.eof_write_con_lx_cmd('cp devmem2 /usr/local/bin')
 # tb.workfd = tb.c_con
 # tb.eof_call_tc("tc_workfd_check_cmd_success.py")
-tb.tc_ubi_cmd_path = tb.tc_workfd_work_dir + '/mtd-utils'
+tb.config.tc_ubi_cmd_path = tb.config.tc_workfd_work_dir + '/mtd-utils'
 tb.end_tc(True)

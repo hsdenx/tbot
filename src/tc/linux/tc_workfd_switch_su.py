@@ -19,7 +19,7 @@
 
 from tbotlib import tbot
 
-logging.info("args: workfd %s %s", tb.workfd.name, tb.switch_su_board)
+logging.info("args: workfd %s %s", tb.workfd.name, tb.config.switch_su_board)
 
 #switch to root
 tb.eof_write(tb.workfd, "su")
@@ -27,10 +27,10 @@ tb.tbot_expect_string(tb.workfd, 'assword')
 if ret == 'prompt':
     tb.end_tc(False)
 
-tb.eof_write_workfd_passwd("root", tb.switch_su_board)
+tb.eof_write_workfd_passwd("root", tb.config.switch_su_board)
 
 # set prompt
-tb.set_prompt(tb.workfd, tb.labprompt, 'linux')
+tb.set_prompt(tb.workfd, tb.config.labprompt, 'linux')
 
 tb.set_term_length(tb.workfd)
 tb.end_tc(True)

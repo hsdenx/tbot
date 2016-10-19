@@ -14,28 +14,28 @@
 # Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_setenv.py
-# set U-Boot Environmentvariable tb.setenv_name with value
-# tb.setenv_value
+# set U-Boot Environmentvariable tb.config.setenv_name with value
+# tb.config.setenv_value
 # End:
 
 from tbotlib import tbot
 
 # here starts the real test
-logging.info("testcase arg: %s %s", tb.setenv_name, tb.setenv_value)
+logging.info("testcase arg: %s %s", tb.config.setenv_name, tb.config.setenv_value)
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
 # set env var
 c = tb.c_con
 
-tmp = 'setenv ' + tb.setenv_name + ' ' + tb.setenv_value
+tmp = 'setenv ' + tb.config.setenv_name + ' ' + tb.config.setenv_value
 tb.eof_write(c, tmp)
 tb.tbot_expect_prompt(c)
 
 # check if it is set with the correct value
-tmp = 'printenv ' + tb.setenv_name
+tmp = 'printenv ' + tb.config.setenv_name
 tb.eof_write(c, tmp)
-str3 = tb.setenv_name + '=' + tb.setenv_value
+str3 = tb.config.setenv_name + '=' + tb.config.setenv_value
 ret = tb.tbot_expect_string(c, str3)
 if ret == 'prompt':
     tb.end_tc(False)

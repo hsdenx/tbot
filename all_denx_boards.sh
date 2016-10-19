@@ -6,20 +6,8 @@ else
 	logfile_end=$1
 fi
 
-python2.7 src/common/tbot.py -c tbot_shc.cfg -l log/shc-$logfile_end -t tc_board_shc.py -v
-
-python2.7 src/common/tbot.py -c tbot_smartweb.cfg -l log/smartweb-$logfile_end -t tc_board_smartweb.py -v
-
-python2.7 src/common/tbot.py -c tbot_aristainetos2.cfg -l log/aristainetos2-$logfile_end -t tc_board_aristainetos2.py -v
-
-python2.7 src/common/tbot.py -c tbot_mcx.cfg -l log/mcx-$logfile_end -t tc_board_mcx.py -v
-
-python2.7 src/common/tbot.py -c tbot_tqm5200s.cfg -t tc_board_tqm5200s_try_cur_ub.py -v -l log/tqm5200s-$logfile_end
-
-python2.7 src/common/tbot.py -c tbot_dxr2.cfg -t tc_board_dxr2_ub.py -v -l log/dxr2-ub-$logfile_end
-
-python2.7 src/common/tbot.py -c tbot_dxr2.cfg -t tc_board_dxr2_linux.py -v -l log/dxr2-linux-$logfile_end
-
-python2.7 src/common/tbot.py -c tbot_dxr2.cfg -t tc_ub_dfu_random.py -v -l log/dxr2-ub-dfu-$logfile_end
-
-#python2.7 src/common/tbot.py -c tbot_sirius_dds.cfg -l log/sirius-dds-$logfile_end -t tc_board_sirius_dds.py
+tbot.py -s lab_denx -c fipad -t tc_board_fipad_linux.py -v log/fipad-$logfile_end
+tbot.py -s lab_denx -c shc -t tc_board_shc_ub_tests.py -v log/shc-$logfile_end
+tbot.py -s lab_denx -c smartweb -t tc_board_smartweb.py -v log/smartweb-$logfile_end
+tbot.py -s lab_denx -c corvus -t tc_board_corvus.py -v log/corvus-$logfile_end
+tbot.py -s lab_denx -c corvus -t tc_board_tqm5200s_try_cur_ub.py -v log/tqm5200-$logfile_end

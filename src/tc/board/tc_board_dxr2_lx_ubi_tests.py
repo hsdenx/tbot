@@ -19,13 +19,13 @@
 from tbotlib import tbot
 
 #here starts the real test
-logging.info("args: %s %s %s", tb.tc_ubi_cmd_path, tb.tc_ubi_mtd_dev, tb.tc_ubi_ubi_dev)
+logging.info("args: %s %s %s", tb.config.tc_ubi_cmd_path, tb.config.tc_ubi_mtd_dev, tb.config.tc_ubi_ubi_dev)
 
 #set board state for which the tc is valid
 tb.set_board_state("linux")
 
 def create_ubi_cmd(tb, cmd):
-    tmp = tb.tc_ubi_cmd_path + '/' + cmd
+    tmp = tb.config.tc_ubi_cmd_path + '/' + cmd
     return tmp
 
 tb.write_lx_cmd_check(tb.workfd, "ls -al /home/hs/zug/mnt/")

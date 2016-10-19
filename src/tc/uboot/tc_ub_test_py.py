@@ -19,17 +19,17 @@
 # - call test/py
 # - connect back to console
 # test/py hookscript directory:
-# tb.tc_ub_test_py_hook_script_path
+# tb.config.tc_ub_test_py_hook_script_path
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: %s %s %s", tb.boardname, tb.boardlabname, tb.tc_ub_test_py_hook_script_path)
+logging.info("args: %s %s %s", tb.config.boardname, tb.config.boardlabname, tb.config.tc_ub_test_py_hook_script_path)
 
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
-tb.disconnect_from_board(tb.boardlabname)
+tb.disconnect_from_board(tb.config.boardlabname)
 
 c = tb.c_con
 savefd = tb.workfd
@@ -37,9 +37,9 @@ tb.workfd = c
 
 tb.eof_call_tc("tc_workfd_goto_uboot_code.py")
 
-tc_ub_test_py_uboot_dir = tb.tc_lab_source_dir + "/u-boot-" + tb.boardlabname
+tc_ub_test_py_uboot_dir = tb.config.tc_lab_source_dir + "/u-boot-" + tb.config.boardlabname
 
-cmd = 'PATH=' + tb.tc_ub_test_py_hook_script_path + ':$PATH;PYTHONPATH=' + tc_ub_test_py_uboot_dir + ';./test/py/test.py --bd ' + tb.boardname + ' -s --build-dir .'
+cmd = 'PATH=' + tb.config.tc_ub_test_py_hook_script_path + ':$PATH;PYTHONPATH=' + tc_ub_test_py_uboot_dir + ';./test/py/test.py --bd ' + tb.config.boardname + ' -s --build-dir .'
 tb.eof_write(c, cmd)
 searchlist = ['INTERNALERROR']
 tmp = True
@@ -53,7 +53,7 @@ while tmp == True:
 
 cmdsuccess = tb.call_tc("tc_workfd_check_cmd_success.py")
 logging.info("test/py: %s", cmdsuccess)
-ret = tb.connect_to_board(tb.boardlabname)
+ret = tb.connect_to_board(tb.config.boardlabname)
 if ret == False:
     tb.workfd = savefd
     tb.end_tc(ret)
@@ -61,5 +61,5 @@ if ret == False:
 tb.set_board_state("u-boot")
 tb.workfd = savefd
 
-tb.event.create_event('main', tb.boardname, "UBOOT_TEST_PY", tc_ub_test_py_uboot_dir)
+tb.event.create_event('main', tb.config.boardname, "UBOOT_TEST_PY", tc_ub_test_py_uboot_dir)
 tb.end_tc(cmdsuccess)

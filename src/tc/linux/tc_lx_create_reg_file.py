@@ -14,9 +14,9 @@
 # Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_create_reg_file.py
-# creates a reg file tb.tc_lx_create_reg_file_name on the tbot host
+# creates a reg file tb.config.tc_lx_create_reg_file_name on the tbot host
 # in tb.workdir
-# read from tb.tc_lx_create_reg_file_start to tb.tc_lx_create_reg_file_stop
+# read from tb.config.tc_lx_create_reg_file_start to tb.config.tc_lx_create_reg_file_stop
 # and writes the results in the regfile
 # format of the regfile:
 # regaddr mask type defval
@@ -28,12 +28,12 @@
 
 from tbotlib import tbot
 
-logging.info("args: %s %s %s %s %s", tb.tc_lx_create_reg_file_name, tb.tc_lx_create_reg_file_start, tb.tc_lx_create_reg_file_stop, tb.tc_lx_readreg_mask, tb.tc_lx_readreg_type)
+logging.info("args: %s %s %s %s %s", tb.config.tc_lx_create_reg_file_name, tb.config.tc_lx_create_reg_file_start, tb.config.tc_lx_create_reg_file_stop, tb.config.tc_lx_readreg_mask, tb.config.tc_lx_readreg_type)
 
 #set board state for which the tc is valid
 tb.set_board_state("linux")
 
-fname = tb.workdir + "/" + tb.tc_lx_create_reg_file_name
+fname = tb.workdir + "/" + tb.config.tc_lx_create_reg_file_name
 try:
     fd = open(fname, 'w')
 except IOError:
@@ -83,20 +83,20 @@ fd.write("# Linux    : %s\n" % vers)
 fd.write("# regaddr mask type defval\n")
 
 #read from - to
-tb.tc_lx_readreg_mask = '0xffffffff'
-start = int(tb.tc_lx_create_reg_file_start, 16)
-stop = int(tb.tc_lx_create_reg_file_stop, 16)
+tb.config.tc_lx_readreg_mask = '0xffffffff'
+start = int(tb.config.tc_lx_create_reg_file_start, 16)
+stop = int(tb.config.tc_lx_create_reg_file_stop, 16)
 
-if tb.tc_lx_readreg_type == 'w':
+if tb.config.tc_lx_readreg_type == 'w':
     step = 4
-if tb.tc_lx_readreg_type == 'h':
+if tb.config.tc_lx_readreg_type == 'h':
     step = 2
-if tb.tc_lx_readreg_type == 'b':
+if tb.config.tc_lx_readreg_type == 'b':
     step = 1
 
 #read register value
 for i in xrange(start, stop, step):
-    tmp = 'devmem2 ' + hex(i) + " " + tb.tc_lx_readreg_type
+    tmp = 'devmem2 ' + hex(i) + " " + tb.config.tc_lx_readreg_type
     tb.eof_write(c, tmp)
     ret = tb.tbot_expect_string(c, 'opened')
     if ret == 'prompt':
@@ -109,7 +109,7 @@ for i in xrange(start, stop, step):
         tb.end_tc(False)
     tmp = tb.buf.split(":")[1]
     tmp = tmp[1:]
-    fd.write('%-10s %10s %10s %10s\n' % (hex(i), tb.tc_lx_readreg_mask, tb.tc_lx_readreg_type, tmp.rstrip()))
+    fd.write('%-10s %10s %10s %10s\n' % (hex(i), tb.config.tc_lx_readreg_mask, tb.config.tc_lx_readreg_type, tmp.rstrip()))
     tb.tbot_expect_prompt(c)
 
 fd.close()

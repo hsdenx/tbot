@@ -14,26 +14,26 @@
 # Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_dfu_random.py
-# test a U-Boot dfu alt setting tb.tc_ub_dfu_dfu_util_alt_setting
-# Therefore write a random file with size tb.tc_ub_dfu_rand_size
+# test a U-Boot dfu alt setting tb.config.tc_ub_dfu_dfu_util_alt_setting
+# Therefore write a random file with size tb.config.tc_ub_dfu_rand_size
 # to it, reread it and compare it. TC fails if files differ
 # (If readen file is longer, this is no error!)
 #
 # If dfu-util is not installed on the lab PC, set
-# tb.tc_ub_dfu_dfu_util_ssh for connecting with ssh to a PC
+# tb.config.tc_ub_dfu_dfu_util_ssh for connecting with ssh to a PC
 # which have it installed, and a USB cable connected to the board.
-# Set tb.tc_ub_dfu_dfu_util_path to the path of dfu-util, if
+# Set tb.config.tc_ub_dfu_dfu_util_path to the path of dfu-util, if
 # you have a self compiled version of it.
-# Set tb.tc_ub_dfu_rand_ubcmd for the executed command on
+# Set tb.config.tc_ub_dfu_rand_ubcmd for the executed command on
 # U-Boot shell for getting into DFU mode
 # End:
 
 from tbotlib import tbot
 
 # here starts the real test
-logging.info("args: %s %s %s %s %s", tb.tc_ub_dfu_dfu_util_path,
-	tb.tc_ub_dfu_dfu_util_ssh, tb.tc_ub_dfu_dfu_util_alt_setting,
-	tb.tc_ub_dfu_rand_size, tb.tc_ub_dfu_rand_ubcmd)
+logging.info("args: %s %s %s %s %s", tb.config.tc_ub_dfu_dfu_util_path,
+	tb.config.tc_ub_dfu_dfu_util_ssh, tb.config.tc_ub_dfu_dfu_util_alt_setting,
+	tb.config.tc_ub_dfu_rand_size, tb.config.tc_ub_dfu_rand_ubcmd)
 
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
@@ -56,7 +56,7 @@ tb.eof_write_cmd(c, "mtdparts")
 tb.eof_write_cmd(c, "printenv dfu_alt_info")
 
 # start dfu on the board
-tb.eof_write(c, tb.tc_ub_dfu_rand_ubcmd)
+tb.eof_write(c, tb.config.tc_ub_dfu_rand_ubcmd)
 
 # read until 'using id'
 #ret = tb.tbot_expect_string(c, 'using id')
@@ -65,14 +65,14 @@ tb.eof_write(c, tb.tc_ub_dfu_rand_ubcmd)
     
 tb.workfd = tb.c_ctrl
 ctrl = tb.workfd
-if tb.tc_ub_dfu_dfu_util_ssh != "none":
-    tb.workfd_ssh_cmd = tb.tc_ub_dfu_dfu_util_ssh
-    tb.workfd_ssh_cmd_prompt = '#'
+if tb.config.tc_ub_dfu_dfu_util_ssh != "none":
+    tb.workfd_ssh_cmd = tb.config.tc_ub_dfu_dfu_util_ssh
+    tb.config.workfd_ssh_cmd_prompt = '#'
     tb.eof_call_tc("tc_workfd_ssh.py")
 
-if tb.tc_ub_dfu_dfu_util_path != 'none':
+if tb.config.tc_ub_dfu_dfu_util_path != 'none':
     # cd into dfu-util source
-    tmp = "cd " + tb.tc_ub_dfu_dfu_util_path
+    tmp = "cd " + tb.config.tc_ub_dfu_dfu_util_path
     dfu_cmd = './src/dfu-util'
 else:
     dfu_cmd = 'dfu-util'
@@ -86,14 +86,14 @@ if ret != 'prompt':
     tb.end_tc(False)
 
 # create random file
-tb.tc_workfd_generate_random_file_name = tb.lab_tmp_dir + 'random'
-tb.tc_workfd_generate_random_file_length = tb.tc_ub_dfu_rand_size
+tb.tc_workfd_generate_random_file_name = tb.config.lab_tmp_dir + 'random'
+tb.tc_workfd_generate_random_file_length = tb.config.tc_ub_dfu_rand_size
 tb.eof_call_tc("tc_workfd_generate_random_file.py");
 
 ###########################################
 # download it to the board
 logging.info("download file")
-tmp = dfu_cmd + " -a " + tb.tc_ub_dfu_dfu_util_alt_setting + " -D " + tb.tc_workfd_generate_random_file_name
+tmp = dfu_cmd + " -a " + tb.config.tc_ub_dfu_dfu_util_alt_setting + " -D " + tb.tc_workfd_generate_random_file_name
 tb.eof_write(ctrl, tmp)
 
 dfu_check_one(tb, ctrl, 'Claiming')
@@ -112,9 +112,9 @@ if ret == 'prompt':
     tb.tbot_expect_prompt(ctrl)
     tb.end_tc(False)
 
-ret = tb.eof_write_cmd(ctrl, 'rm -f ' + tb.lab_tmp_dir + 'gnlmpf')
+ret = tb.eof_write_cmd(ctrl, 'rm -f ' + tb.config.lab_tmp_dir + 'gnlmpf')
 # upload it back
-tmp = dfu_cmd + " -a " + tb.tc_ub_dfu_dfu_util_alt_setting + " -U " + tb.lab_tmp_dir + 'gnlmpf'
+tmp = dfu_cmd + " -a " + tb.config.tc_ub_dfu_dfu_util_alt_setting + " -U " + tb.config.lab_tmp_dir + 'gnlmpf'
 tb.eof_write(ctrl, tmp)
 
 dfu_check_one(tb, ctrl, 'Claiming')
@@ -138,7 +138,7 @@ tb.tbot_expect_prompt(c)
 #############################
 # now diff the files
 logging.info("diff files")
-tmp = "cmp " + tb.tc_workfd_generate_random_file_name + " " + tb.lab_tmp_dir + "gnlmpf"
+tmp = "cmp " + tb.tc_workfd_generate_random_file_name + " " + tb.config.lab_tmp_dir + "gnlmpf"
 tb.eof_write(ctrl, tmp)
 searchlist = ["EOF", "differ"]
 tmp = True
@@ -156,8 +156,8 @@ while tmp == True:
 if differ and not differ_at_end:
     tb.end_tc(False)
 
-tb.eof_write_cmd(tb.workfd, "rm -f " + tb.lab_tmp_dir + "gnlmpf")
-tb.eof_write_cmd(tb.workfd, "rm -f " + tb.lab_tmp_dir + "random")
+tb.eof_write_cmd(tb.workfd, "rm -f " + tb.config.lab_tmp_dir + "gnlmpf")
+tb.eof_write_cmd(tb.workfd, "rm -f " + tb.config.lab_tmp_dir + "random")
 
 #############################
 # exit from root

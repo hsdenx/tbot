@@ -15,9 +15,9 @@
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_dfu.py
 # test dfu
-# - use dfu-util in tb.tc_ub_dfu_dfu_util_path
-# - upload file tb.tc_ub_dfu_dfu_util_alt_setting to
-#   tb.tc_ub_dfu_dfu_util_downloadfile
+# - use dfu-util in tb.config.tc_ub_dfu_dfu_util_path
+# - upload file tb.config.tc_ub_dfu_dfu_util_alt_setting to
+#   tb.config.tc_ub_dfu_dfu_util_downloadfile
 # - download it back to the board
 # - upload it again
 # - and compare the two files
@@ -26,9 +26,9 @@
 from tbotlib import tbot
 
 # here starts the real test
-logging.info("args: %s %s %s", tb.tc_ub_dfu_dfu_util_path,
-             tb.tc_ub_dfu_dfu_util_alt_setting,
-             tb.tc_ub_dfu_dfu_util_downloadfile)
+logging.info("args: %s %s %s", tb.config.tc_ub_dfu_dfu_util_path,
+             tb.config.tc_ub_dfu_dfu_util_alt_setting,
+             tb.config.tc_ub_dfu_dfu_util_downloadfile)
 
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
@@ -51,8 +51,8 @@ tb.workfd = tb.c_ctrl
 tb.eof_call_tc("tc_workfd_switch_su.py")
 
 # cd /home/hs/zug/dfu-util/
-tb.tc_ub_dfu_dfu_util_path = "/home/hs/zug/dfu-util"
-tb.tc_workfd_cd_name = tb.tc_ub_dfu_dfu_util_path
+tb.config.tc_ub_dfu_dfu_util_path = "/home/hs/zug/dfu-util"
+tb.config.tc_workfd_cd_name = tb.config.tc_ub_dfu_dfu_util_path
 tb.eof_call_tc("tc_workfd_cd_to_dir.py")
 
 # ./src/dfu-util -l
@@ -65,10 +65,10 @@ if ret != 'prompt':
 # upload to lab
 # delete tmp file
 logging.info("upload file")
-tmp = "rm -rf " + tb.tc_ub_dfu_dfu_util_downloadfile
+tmp = "rm -rf " + tb.config.tc_ub_dfu_dfu_util_downloadfile
 tb.write_lx_cmd_check(tb.workfd, tmp)
 
-tmp = "./src/dfu-util -a " + tb.tc_ub_dfu_dfu_util_alt_setting + " -U " + tb.tc_ub_dfu_dfu_util_downloadfile
+tmp = "./src/dfu-util -a " + tb.config.tc_ub_dfu_dfu_util_alt_setting + " -U " + tb.config.tc_ub_dfu_dfu_util_downloadfile
 
 tb.eof_write(tb.workfd, tmp)
 searchlist = ["Claiming", "Copying data from DFU device to PC", "finished"]
@@ -90,7 +90,7 @@ tb.tbot_expect_string(c, 'done')
 ###########################################
 # download it back to the board
 logging.info("download file")
-tmp = "./src/dfu-util -a " + tb.tc_ub_dfu_dfu_util_alt_setting + " -D " + tb.tc_ub_dfu_dfu_util_downloadfile
+tmp = "./src/dfu-util -a " + tb.config.tc_ub_dfu_dfu_util_alt_setting + " -D " + tb.config.tc_ub_dfu_dfu_util_downloadfile
 tb.eof_write(tb.workfd, tmp)
 ret = tb.tbot_expect_string(tb.workfd, 'finished')
 if ret == 'prompt':
@@ -109,10 +109,10 @@ tb.tbot_expect_string(c, 'OK')
 # upload to lab again
 logging.info("upload file again")
 # delete tmp file
-tmp = "rm -rf " + tb.tc_ub_dfu_dfu_util_downloadfile + ".new"
+tmp = "rm -rf " + tb.config.tc_ub_dfu_dfu_util_downloadfile + ".new"
 tb.write_lx_cmd_check(tb.workfd, tmp)
 
-tmp = "./src/dfu-util -a " + tb.tc_ub_dfu_dfu_util_alt_setting + " -U " + tb.tc_ub_dfu_dfu_util_downloadfile + ".new"
+tmp = "./src/dfu-util -a " + tb.config.tc_ub_dfu_dfu_util_alt_setting + " -U " + tb.config.tc_ub_dfu_dfu_util_downloadfile + ".new"
 tb.eof_write(tb.workfd, tmp)
 ret = tb.tbot_expect_string(tb.workfd, 'Claiming')
 if ret == 'prompt':
@@ -133,7 +133,7 @@ tb.tbot_expect_string(c, 'done')
 #############################
 # now diff the files
 logging.info("diff files")
-tmp = "diff " + tb.tc_ub_dfu_dfu_util_downloadfile + " " + tb.tc_ub_dfu_dfu_util_downloadfile + ".new"
+tmp = "diff " + tb.config.tc_ub_dfu_dfu_util_downloadfile + " " + tb.config.tc_ub_dfu_dfu_util_downloadfile + ".new"
 tb.eof_write(tb.workfd, tmp)
 ret = tb.tbot_expect_string(tb.workfd, 'diff')
 if ret != 'prompt':

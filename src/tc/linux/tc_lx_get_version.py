@@ -15,7 +15,7 @@
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_get_version.py
 # get the linux version and create event LINUX_VERSION
-# save the linux version in tb.tc_return
+# save the linux version in tb.config.tc_return
 # End:
 
 from tbotlib import tbot
@@ -34,8 +34,8 @@ if ret == 'prompt':
 ret = tb.tbot_expect_string(c, '\n')
 if ret == 'prompt':
     tb.end_tc(False)
-tb.tc_return = tb.buf.rstrip()
-tb.event.create_event('main', tb.boardname, "LINUX_VERSION", tb.tc_return)
+tb.config.tc_return = tb.buf.rstrip()
+tb.event.create_event('main', tb.config.boardname, "LINUX_VERSION", tb.config.tc_return)
 tb.tbot_expect_prompt(c)
 
 tb.end_tc(True)

@@ -21,7 +21,7 @@ def state_lx_parse_input(tb, c, retry, sl):
     # print("PPPPPPPPPPPP START", sl, c.data, c.logbuf)
     ctrlc_send = 0
     oldt = c.get_timeout()
-    c.set_timeout(tb.state_linux_timeout)
+    c.set_timeout(tb.config.state_linux_timeout)
     while(i < retry):
         ret = tb.tbot_read_line_and_check_strings(c, sl)
         # print("PPPPPPPPPPPP", i, retry, ret, sl, c.data, c.logbuf)
@@ -33,10 +33,10 @@ def state_lx_parse_input(tb, c, retry, sl):
                 i = 0
             else:
                 # we get nothing -> power off / on the board
-                ret = tb.set_power_state(tb.boardlabpowername, "off")
+                ret = tb.set_power_state(tb.config.boardlabpowername, "off")
                 if ret == False:
                     time.sleep(2)
-                    ret = tb.set_power_state(tb.boardlabpowername, "on")
+                    ret = tb.set_power_state(tb.config.boardlabpowername, "on")
                     # set old timeout (wait endless)
                     # if after a power on not comes at least U-Boot
                     # prompt, wait endless until tbot WDT triggers ...
@@ -49,12 +49,12 @@ def state_lx_parse_input(tb, c, retry, sl):
             return True
 
         if ret == '0':
-            c.set_prompt(tb.linux_prompt)
+            c.set_prompt(tb.config.linux_prompt)
             c.set_timeout(oldt)
             return True
 
         if ret == '1':
-            tb.set_prompt(c, tb.linux_prompt, 'linux')
+            tb.set_prompt(c, tb.config.linux_prompt, 'linux')
             c.set_timeout(oldt)
             return True
 
@@ -90,8 +90,8 @@ def linux_set_board_state(tb, state, retry):
 
     # set new prompt
     tb.send_ctrl_c(c)
-    sl = [tb.linux_prompt, tb.linux_prompt_default, tb.uboot_prompt, 'login', 'Password']
-    sl = sl + tb.uboot_strings
+    sl = [tb.config.linux_prompt, tb.config.linux_prompt_default, tb.config.uboot_prompt, 'login', 'Password']
+    sl = sl + tb.config.uboot_strings
     state_lx_parse_input(tb, c, retry, sl)
 
     #terminal line length

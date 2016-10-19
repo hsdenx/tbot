@@ -15,12 +15,12 @@
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_boot_linux.py
 # - load u-boot environment with testcase "tc_ub_load_board_env.py"
-# - execute u-boot cmd tb.ub_boot_linux_cmd
+# - execute u-boot cmd tb.config.ub_boot_linux_cmd
 # End:
 from tbotlib import tbot
 
 # here starts the real test
-logging.info("args: %s", tb.ub_boot_linux_cmd)
+logging.info("args: %s", tb.config.ub_boot_linux_cmd)
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
@@ -28,7 +28,7 @@ tb.set_board_state("u-boot")
 tb.eof_call_tc("tc_ub_load_board_env.py")
 
 # run tbot_boot_linux
-tb.eof_write_con(tb.ub_boot_linux_cmd)
+tb.eof_write_con(tb.config.ub_boot_linux_cmd)
 
 # read until 'login:'
 ret = tb.tbot_expect_string(tb.c_con, 'login:')
@@ -38,9 +38,9 @@ if ret == 'prompt':
 tmp = 'root'
 tb.eof_write(tb.c_con, tmp)
 
-tb.c_con.set_prompt(tb.linux_prompt_default)
+tb.c_con.set_prompt(tb.config.linux_prompt_default)
 tb.tbot_expect_prompt(tb.c_con)
 
-tb.set_prompt(tb.c_con, tb.linux_prompt, 'linux')
+tb.set_prompt(tb.c_con, tb.config.linux_prompt, 'linux')
 
 tb.end_tc(True)

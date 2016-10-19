@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot_fipad.cfg -t tc_board_fipad.py
+# tbot.py -s lab_denx -c fipad -t tc_board_fipad.py
 # start all U-Boot/linux testcases for the fipad board
 # End:
 

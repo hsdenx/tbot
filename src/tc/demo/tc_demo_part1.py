@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot_board.cfg -t tc_demo_part1.py
+# tbot.py -s lab_denx -c smartweb -t tc_demo_part1.py
 # start tc:
 # - call tc_demo_get_ub_code.py
 # - call tc_demo_compile_install_test.py

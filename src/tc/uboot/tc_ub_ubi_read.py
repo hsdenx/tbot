@@ -14,7 +14,7 @@
 # Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_ubi_read.py
-# - read ubi volume tb.tc_ub_ubi_prep_offset to tb.tc_ub_ubi_read_addr
+# - read ubi volume tb.config.tc_ub_ubi_prep_offset to tb.tc_ub_ubi_read_addr
 # with len tb.tc_ub_ubi_read_len
 # End:
 

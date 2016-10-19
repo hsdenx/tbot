@@ -123,28 +123,28 @@ class dashboard(object):
         # catch errors
         newdir = self.webdir + '/tbot/id_' + str(self.iddb)
         os.system("mkdir " + newdir)
-        if (self.tb.create_dot == 'yes'):
+        if (self.tb.config.create_dot == 'yes'):
             os.system("dot -Tpng tc.dot > tc.png")
             tmp = "cp tc.png " + newdir + "/graph.png"
             os.system(tmp)
-        if (self.tb.create_statistic == 'yes'):
+        if (self.tb.config.create_statistic == 'yes'):
             os.system("gnuplot src/files/balkenplot.sem")
             tmp = "cp output.jpg " + newdir + "/statistic.jpg"
             os.system(tmp)
-        if (self.tb.create_html_log == 'yes'):
+        if (self.tb.config.create_html_log == 'yes'):
             tmp = "cp log/html_log.html " + newdir + "/html_log.html"
             os.system(tmp)
             tmp = "cp log/multiplexed_tbotlog.css " + newdir + "/multiplexed_tbotlog.css"
             os.system(tmp)
         if self.testpypatch != '':
-            passwd = self.tb.tbot_get_password(self.tb.user, 'lab')
-            tmp = "sshpass -p '" + passwd + "' scp " + self.tb.user + "@" +  self.tb.ip +  ":" + self.testpypatch + "/test-log.html " + newdir
+            passwd = self.tb.tbot_get_password(self.tb.config.user, 'lab')
+            tmp = "sshpass -p '" + passwd + "' scp " + self.tb.config.user + "@" +  self.tb.config.ip +  ":" + self.testpypatch + "/test-log.html " + newdir
             os.system(tmp)
-            tmp = "sshpass -p '" + passwd + "' scp " + self.tb.user + "@" +  self.tb.ip +  ":" + self.testpypatch + "/multiplexed_log.css " + newdir
+            tmp = "sshpass -p '" + passwd + "' scp " + self.tb.config.user + "@" +  self.tb.config.ip +  ":" + self.testpypatch + "/multiplexed_log.css " + newdir
             os.system(tmp)
         if self.uboot_src_path != '':
-            passwd = self.tb.tbot_get_password(self.tb.user, 'lab')
-            tmp = "sshpass -p '" + passwd + "' scp " + self.tb.user + "@" +  self.tb.ip +  ":" + self.uboot_src_path + "/.config " + newdir
+            passwd = self.tb.tbot_get_password(self.tb.config.user, 'lab')
+            tmp = "sshpass -p '" + passwd + "' scp " + self.tb.config.user + "@" +  self.tb.config.ip +  ":" + self.uboot_src_path + "/.config " + newdir
             os.system(tmp)
 
         tmp = "cp " + self.tb.logfilen + " " + newdir + "/tbot.log"

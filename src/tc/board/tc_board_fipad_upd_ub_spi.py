@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot_fipad.cfg -t tc_board_fipad_upd_ub_spi.py
+# tbot.py -s lab_denx -c fipad -t tc_board_fipad_upd_ub_spi.py
 # update SPL and u-boot.img on the SPI NOR
 # End:
 

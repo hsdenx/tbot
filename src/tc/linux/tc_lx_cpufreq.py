@@ -14,13 +14,13 @@
 # Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_cpufreq.py
-# check if frequencies in tb.tc_lx_cpufreq_frequences
+# check if frequencies in tb.config.tc_lx_cpufreq_frequences
 # are possible to set with cpufreq-info
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: %s", tb.tc_lx_cpufreq_frequences)
+logging.info("args: %s", tb.config.tc_lx_cpufreq_frequences)
 
 def change_freq(tb, c, freq):
     # cpufreq-set -g performance
@@ -38,7 +38,7 @@ tb.set_board_state("linux")
 # check if cpufreq-info is installed
 tb.eof_write_con_lx_cmd("cpufreq-info")
 
-for freq in tb.tc_lx_cpufreq_frequences:
+for freq in tb.config.tc_lx_cpufreq_frequences:
     change_freq(tb, tb.workfd, freq)
 
 tb.end_tc(True)

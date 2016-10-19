@@ -19,7 +19,7 @@
 # End:
 from tbotlib import tbot
 
-logging.info("args: %s", tb.tc_workfd_work_dir)
+logging.info("args: %s", tb.config.tc_workfd_work_dir)
 
 # set board state for which the tc is valid
 tb.set_board_state("linux")
@@ -30,14 +30,14 @@ tb.eof_call_tc("tc_workfd_goto_tbot_workdir.py")
 save = tb.workfd
 tb.workfd = tb.c_con
 c = tb.c_con
-tb.tc_workfd_check_if_cmd_exist_cmdname = 'devmem2'
+tb.config.tc_workfd_check_if_cmd_exist_cmdname = 'devmem2'
 tb.eof_call_tc("tc_workfd_check_if_cmd_exist.py")
-if tb.tc_return == True:
+if tb.config.tc_return == True:
     tb.workfd = save
     tb.end_tc(True)
 
 # if not download it
-tb.tc_workfd_check_if_file_exists_name = "devmem2.c"
+tb.config.tc_workfd_check_if_file_exists_name = "devmem2.c"
 ret = tb.call_tc("tc_workfd_check_if_file_exist.py")
 if ret == False:
     # wget www.lartmaker.nl/lartware/port/devmem2.c

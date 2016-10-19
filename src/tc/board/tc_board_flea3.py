@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot_flea3.cfg -t tc_board_flea3.py
+# tbot.py -s lab_denx -c flea3 -t tc_board_flea3.py
 # start all testcases for the flea3 board
 # currently only test the nor unprotect with linux
 # End:

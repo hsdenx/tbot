@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot_tqm5200s.cfg -t tc_board_tqm5200s_try_cur_ub.py
+# tbot.py -s lab_denx -c tqm5200s -t tc_board_tqm5200s_try_cur_ub.py
 # remove current u-boot code on the lab PC
 # then call tc tc_board_tqm5200s_ub_comp_install.py
 # End:
@@ -30,8 +30,8 @@ tb.statusprint("start all DUTS testcases")
 tb.eof_call_tc("uboot/duts/tc_ub_start_all_duts.py")
 
 #save working u-boot bin
-tb.tc_lab_cp_file_a = "u-boot.bin"
-tb.tc_lab_cp_file_b = "/tftpboot/" + tb.tftpboardname + "/" + tb.ub_load_board_env_subdir + "/u-boot-latestworking.bin"
+tb.config.tc_lab_cp_file_a = "u-boot.bin"
+tb.config.tc_lab_cp_file_b = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-latestworking.bin"
 #call cp files
 tb.eof_call_tc("tc_lab_cp_file.py")
 

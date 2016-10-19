@@ -14,28 +14,28 @@
 # Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_get_linux_source.py
-# get Linux source tb.tc_lab_get_linux_source_git_repo with "git clone"
+# get Linux source tb.config.tc_lab_get_linux_source_git_repo with "git clone"
 # and go into the source tree. Apply patches if needed with:
 # tc_lab_apply_patches.py and tc_workfd_apply_local_patches.py
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: workdfd: %s %s %s %s", tb.workfd.name, tb.tc_lab_get_linux_source_git_repo,
-             tb.tc_lab_get_linux_source_git_branch, tb.tc_lab_apply_patches_dir)
-logging.info("args: %s %s ", tb.tc_lab_get_linux_source_git_reference,
-             tb.tc_lab_get_linux_source_git_repo_user)
+logging.info("args: workdfd: %s %s %s %s", tb.workfd.name, tb.config.tc_lab_get_linux_source_git_repo,
+             tb.config.tc_lab_get_linux_source_git_branch, tb.config.tc_lab_apply_patches_dir)
+logging.info("args: %s %s ", tb.config.tc_lab_get_linux_source_git_reference,
+             tb.config.tc_lab_get_linux_source_git_repo_user)
 
 ret = tb.call_tc("tc_workfd_goto_linux_code.py")
 if ret == False:
-    linux_name = "linux-" + tb.boardlabname
+    linux_name = "linux-" + tb.config.boardlabname
     tb.eof_call_tc("tc_workfd_goto_lab_source_dir.py")
     # clone linux git
-    if tb.tc_lab_get_linux_source_git_reference != 'none':
-        opt = '--reference=' + tb.tc_lab_get_linux_source_git_reference + ' '
+    if tb.config.tc_lab_get_linux_source_git_reference != 'none':
+        opt = '--reference=' + tb.config.tc_lab_get_linux_source_git_reference + ' '
     else:
         opt = ''
-    tmp = "git clone " + opt + tb.tc_lab_get_linux_source_git_repo + " " + linux_name
+    tmp = "git clone " + opt + tb.config.tc_lab_get_linux_source_git_repo + " " + linux_name
     tb.eof_write(tb.workfd, tmp)
     searchlist = ["Username", "Password", "Authentication failed"] # add here error cases
     tmp = True
@@ -43,10 +43,10 @@ if ret == False:
     while tmp == True:
         ret = tb.tbot_read_line_and_check_strings(tb.workfd, searchlist)
         if ret == '0':
-            tb.write_stream(tb.workfd, tb.tc_lab_get_linux_source_git_repo_user)
+            tb.write_stream(tb.workfd, tb.config.tc_lab_get_linux_source_git_repo_user)
         if ret == '1':
-            tb.write_stream_passwd(tb.workfd, tb.tc_lab_get_linux_source_git_repo_user,
-                                   tb.tc_lab_get_linux_source_git_repo)
+            tb.write_stream_passwd(tb.workfd, tb.config.tc_lab_get_linux_source_git_repo_user,
+                                   tb.config.tc_lab_get_linux_source_git_repo)
         if ret == '2':
             clone_ok = False
         elif ret == 'prompt':
@@ -61,7 +61,7 @@ if ret == False:
     tb.write_lx_cmd_check(tb.workfd, tmp)
 
     # check out a specific branch
-    tmp = "git checkout " + tb.tc_lab_get_linux_source_git_branch
+    tmp = "git checkout " + tb.config.tc_lab_get_linux_source_git_branch
     tb.write_lx_cmd_check(tb.workfd, tmp)
 
 # check if there are patches to apply

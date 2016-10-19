@@ -24,16 +24,16 @@ save = tb.workfd
 tb.workfd = tb.c_ctrl
 ret = tb.call_tc("tc_workfd_goto_uboot_code.py")
 if ret == False:
-    u_boot_name = "u-boot-" + tb.boardlabname
+    u_boot_name = "u-boot-" + tb.config.boardlabname
     tb.eof_call_tc("tc_workfd_goto_lab_source_dir.py")
     # clone u-boot.git
-    tmp = "git clone " + tb.tc_lab_get_uboot_source_git_repo + " " + u_boot_name
+    tmp = "git clone " + tb.config.tc_lab_get_uboot_source_git_repo + " " + u_boot_name
     tb.write_lx_cmd_check(tb.workfd, tmp)
 
     tmp = "cd " + u_boot_name
     tb.write_lx_cmd_check(tb.workfd, tmp)
     #check out a specific branch
-    tmp = "git checkout " + tb.tc_lab_get_uboot_source_git_branch
+    tmp = "git checkout " + tb.config.tc_lab_get_uboot_source_git_branch
     tb.write_lx_cmd_check(tb.workfd, tmp)
 
 # check if there are patches to apply

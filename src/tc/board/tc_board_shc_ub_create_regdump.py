@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot_shc.cfg -t tc_board_shc_ub_create_regdump.py
+# tbot.py -s lab_denx -c shc -t tc_board_shc_ub_create_regdump.py
 # create a uboot regdump for all interesting registers
 # on the shc board
 # End:

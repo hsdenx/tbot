@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot_ccu1.cfg -t tc_board_ccu1_tests.py
+# tbot.py -s lab_denx -c ccu1 -t tc_board_ccu1_tests.py
 # start all testcases for the ccu1 board
 # End:
 
@@ -27,20 +27,20 @@ tb.statusprint("tc_ccu1 u-boot setenv")
 tb.eof_call_tc("tc_ub_setenv.py")
 
 tb.statusprint("tc_ccu1 linux dmesg checks")
-tb.tc_lx_dmesg_grep_name = "CCU1"
+tb.config.tc_lx_dmesg_grep_name = "CCU1"
 tb.eof_call_tc("tc_lx_dmesg_grep.py")
-tb.tc_lx_dmesg_grep_name = "nand: ST Micro NAND 256MiB 1,8V 8-bit"
+tb.config.tc_lx_dmesg_grep_name = "nand: ST Micro NAND 256MiB 1,8V 8-bit"
 tb.eof_call_tc("tc_lx_dmesg_grep.py")
-tb.tc_lx_dmesg_grep_name = "smsc911x 2c000000.ethernet eth0: attached PHY driver"
+tb.config.tc_lx_dmesg_grep_name = "smsc911x 2c000000.ethernet eth0: attached PHY driver"
 tb.eof_call_tc("tc_lx_dmesg_grep.py")
-tb.tc_lx_dmesg_grep_name = "smsc911x 2c000000.ethernet eth0: SMSC911x/921x identified at 0xd0942000, IRQ: 288"
+tb.config.tc_lx_dmesg_grep_name = "smsc911x 2c000000.ethernet eth0: SMSC911x/921x identified at 0xd0942000, IRQ: 288"
 tb.eof_call_tc("tc_lx_dmesg_grep.py")
-tb.tc_lx_dmesg_grep_name = "twl_rtc 48070000.i2c"
+tb.config.tc_lx_dmesg_grep_name = "twl_rtc 48070000.i2c"
 tb.eof_call_tc("tc_lx_dmesg_grep.py")
 
 tb.statusprint("tc_ccu1 pinmux check")
 tb.eof_call_tc("tc_lx_check_reg_file.py")
-tb.tc_lx_create_reg_file_name = 'src/files/ccu1_pinmux_gpmc.reg'
+tb.config.tc_lx_create_reg_file_name = 'src/files/ccu1_pinmux_gpmc.reg'
 tb.eof_call_tc("tc_lx_check_reg_file.py")
 
 tb.statusprint("tc_ccu1 ubi check")

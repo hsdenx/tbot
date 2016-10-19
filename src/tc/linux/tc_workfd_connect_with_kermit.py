@@ -15,25 +15,25 @@
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_connect_with_kermit.py
 # connect with kermit to serials board console
-# - if tb.tc_workfd_connect_with_kermit_ssh != 'none'
+# - if tb.config.tc_workfd_connect_with_kermit_ssh != 'none'
 #   connect first with ssh to another PC (where kermit is started)
 # - start kermit
-# - if tb.tc_workfd_connect_with_kermit_rlogin == 'none'
-#   connect with command in tb.tc_workfd_connect_with_kermit_rlogin
+# - if tb.config.tc_workfd_connect_with_kermit_rlogin == 'none'
+#   connect with command in tb.config.tc_workfd_connect_with_kermit_rlogin
 #   else
-#   set line tb.kermit_line and speed tb.kermit_speed and
+#   set line tb.config.kermit_line and speed tb.config.kermit_speed and
 #   connect to serial line.
 # End:
 
 from tbotlib import tbot
 
 logging.info("args: workdfd: %s", tb.workfd)
-logging.info("args: ssh: %s", tb.tc_workfd_connect_with_kermit_ssh)
-logging.info("args: kermit: %s %s", tb.kermit_line, tb.kermit_speed)
+logging.info("args: ssh: %s", tb.config.tc_workfd_connect_with_kermit_ssh)
+logging.info("args: kermit: %s %s", tb.config.kermit_line, tb.config.kermit_speed)
 
-if tb.tc_workfd_connect_with_kermit_ssh != 'none':
-    tb.workfd_ssh_cmd = tb.tc_workfd_connect_with_kermit_ssh
-    tb.workfd_ssh_cmd_prompt = '$'
+if tb.config.tc_workfd_connect_with_kermit_ssh != 'none':
+    tb.workfd_ssh_cmd = tb.config.tc_workfd_connect_with_kermit_ssh
+    tb.config.workfd_ssh_cmd_prompt = '$'
     tb.eof_call_tc("tc_workfd_ssh.py")
 
 tb.eof_write(tb.workfd, 'kermit')
@@ -41,9 +41,9 @@ oldprompt = tb.workfd.get_prompt()
 tb.workfd.set_prompt('C-Kermit>')
 tb.workfd.expect_prompt()
 
-if tb.tc_workfd_connect_with_kermit_rlogin == 'none':
+if tb.config.tc_workfd_connect_with_kermit_rlogin == 'none':
     # check for "no effect", "Sorry, write access"
-    tb.eof_write(tb.workfd, "set line " + tb.kermit_line)
+    tb.eof_write(tb.workfd, "set line " + tb.config.kermit_line)
     searchlist = ["no effect", "Sorry, write access"]
     tmp = True
     retu = False
@@ -60,7 +60,7 @@ if tb.tc_workfd_connect_with_kermit_rlogin == 'none':
         tb.workfd.set_prompt(oldprompt)
         tb.end_tc(False)
 
-    tb.eof_write_cmd(tb.workfd, "set speed " + tb.kermit_speed)
+    tb.eof_write_cmd(tb.workfd, "set speed " + tb.config.kermit_speed)
     tb.eof_write_cmd(tb.workfd, "set flow-control none")
     tb.eof_write_cmd(tb.workfd, "set carrier-watch off")
     tb.eof_write(tb.workfd, "connect")
@@ -70,14 +70,14 @@ if tb.tc_workfd_connect_with_kermit_rlogin == 'none':
     if ret != '0':
         tb.end_tc(False)
 else:
-    tb.eof_write(tb.workfd, tb.tc_workfd_connect_with_kermit_rlogin)
+    tb.eof_write(tb.workfd, tb.config.tc_workfd_connect_with_kermit_rlogin)
 
 searchlist = ['----------------------------------------------------']
 ret = tb.tbot_read_line_and_check_strings(tb.workfd, searchlist)
 if ret != '0':
     tb.end_tc(False)
 
-if tb.tc_workfd_connect_with_kermit_rlogin != 'none':
+if tb.config.tc_workfd_connect_with_kermit_rlogin != 'none':
     searchlist = ['----------------------------------------------------']
     oldt = tb.workfd.get_timeout()
     tb.workfd.set_timeout(5)
@@ -95,5 +95,5 @@ if tb.tc_workfd_connect_with_kermit_rlogin != 'none':
     tb.workfd.set_timeout(oldt)
 
 # set now U-Boot prompt ?
-tb.workfd.set_prompt(tb.uboot_prompt)
+tb.workfd.set_prompt(tb.config.uboot_prompt)
 tb.end_tc(True)

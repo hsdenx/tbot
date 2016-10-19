@@ -14,11 +14,12 @@
 # Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lab_cp_file.py
-# simple copy  file from a to b
+# simple copy  file from tb.config.tc_lab_cp_file_a
+# to tb.config.tc_lab_cp_file_b on the ctrl channel
 # End:
 
 from tbotlib import tbot
 
-tmp = "cp " + self.tc_lab_cp_file_a + " " + self.tc_lab_cp_file_b
+tmp = "cp " + tb.config.tc_lab_cp_file_a + " " + tb.config.tc_lab_cp_file_b
 tb.write_lx_cmd_check(tb.c_ctrl, tmp)
 tb.end_tc(True)

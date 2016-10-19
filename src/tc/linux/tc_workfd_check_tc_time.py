@@ -25,12 +25,12 @@
 from tbotlib import tbot
 import time
 
-logging.info("args: workdfd: %s %s", tb.workfd, tb.tc_workfd_tbotfiles_dir)
-logging.info("args: %s %s %s", tb.boardname, tb.tc_workfd_check_tc_time_tcname,
+logging.info("args: workdfd: %s %s", tb.workfd, tb.config.tc_workfd_tbotfiles_dir)
+logging.info("args: %s %s %s", tb.config.boardname, tb.tc_workfd_check_tc_time_tcname,
              tb.tc_workfd_check_tc_time_timeout)
 
 # set board state for which the tc is valid
-timefile = tb.tc_workfd_tbotfiles_dir + "/" + "workfd_check_tc_time_" + tb.boardname + "_" + tb.tc_workfd_check_tc_time_tcname
+timefile = tb.config.tc_workfd_tbotfiles_dir + "/" + "workfd_check_tc_time_" + tb.config.boardname + "_" + tb.tc_workfd_check_tc_time_tcname
 
 c = tb.workfd
 tb.set_term_length(c)

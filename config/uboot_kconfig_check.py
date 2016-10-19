@@ -5,50 +5,40 @@
 
 # some default settings, not really needed, as we
 # do not connect to a boards console
-self.boardname = 'none'
+boardname = 'none'
 # disable debug output
-self.debug=False
-self.debugstatus=True
-# change ip and user here to your setup
-# do not forget to add password.py in tbot rootdir
-# test if connect to your lab PC works with "ssh user@ip"
-# if you do not have a lab PC use your PC, where you start
-# tbot ...
-self.ip='pollux.denx.org'
-self.user='hs'
-self.accept_all=True
-self.keepalivetimeout=1
-self.channel_timeout=0.5
+debug = False
+debugstatus = True
 # may you set here another loglevel for the logfile
-self.loglevel='INFO'
+loglevel='INFO'
 # may tc_uboot_check_kconfig.py takes long...
 # depends on your machine where you compile
 # so adapt this value here
-self.wdt_timeout = '120'
+wdt_timeout = '120'
 # we do not need to connect to a board, so disable this step
-self.do_connect_to_board=False
+do_connect_to_board = False
 
-self.uboot_prompt = 'U-Boot# '
-self.linux_prompt = 'ttbott> '
+uboot_prompt = 'U-Boot# '
+linux_prompt = 'ttbott> '
 
 # disable event backends
-#self.create_dot = 'yes'
-#self.create_statistic = 'yes'
-#self.create_dashboard = 'yes'
-#self.create_html_log = 'yes'
+#create_dot = 'yes'
+#create_statistic = 'yes'
+#create_dashboard = 'yes'
+#create_html_log = 'yes'
 
 # variables used in testcases, adapt to your local settings
-self.tc_workfd_work_dir = '/work/hs/tbot'
-self.tc_lab_source_dir = '/work/hs/tbot'
-self.tc_lab_get_uboot_source_git_repo = "/home/git/u-boot.git"
-self.tc_lab_get_uboot_source_git_branch = "master"
-self.tc_lab_compile_uboot_export_path = '/home/hs/dtc'
+tc_workfd_work_dir = '/work/hs/tbot'
+tc_lab_source_dir = '/work/hs/tbot'
+tc_lab_get_uboot_source_git_repo = "/home/git/u-boot.git"
+tc_lab_get_uboot_source_git_branch = "master"
+tc_lab_compile_uboot_export_path = '/home/hs/dtc'
 # adapt here to your local setting, where you have the patch(es)
 # on your lab PC you want to test
-self.tc_lab_apply_patches_dir = '/work/hs/tbot/patches/kconfig_move'
-self.tc_workfd_apply_local_patches_checkpatch_cmd_strict = "no"
-self.tc_workfd_apply_local_patches_checkpatch_cmd = 'scripts/checkpatch.pl'
-self.tc_lab_compile_uboot_makeoptions = '-s -j8'
+tc_lab_apply_patches_dir = '/work/hs/tbot/patches/kconfig_move'
+tc_workfd_apply_local_patches_checkpatch_cmd_strict = "no"
+tc_workfd_apply_local_patches_checkpatch_cmd = 'scripts/checkpatch.pl'
+tc_lab_compile_uboot_makeoptions = '-s -j8'
 
 # to get a fix U-Boot version string, we need a patch ...
 # may we import in U-Boot from linux the "scripts/config" script
@@ -57,14 +47,14 @@ self.tc_lab_compile_uboot_makeoptions = '-s -j8'
 # ToDo
 # ... you find this patch in tbot:/src/patches/check_kconfig
 # move it to your lab PC and say tbot here, where it will find it
-self.tc_uboot_check_kconfig_preparepatch = '/work/hs/tbot/patches/check_kconfig'
+tc_uboot_check_kconfig_preparepatch = '/work/hs/tbot/patches/check_kconfig'
 
 # setup here, where you have your toolchains
 # if you do not have a toolchain for an architecture
 # remove the line for it, but the boards from this arch get
 # then not tested ... the name of the not tested boards are
 # printed at the end of tbot on stdout
-self.tc_workfd_set_toolchain_t_p = {
+tc_workfd_set_toolchain_t_p = {
 'arc' : '/home/hs/toolchain/arc_gnu_2015.12_prebuilt_uclibc_le_archs_linux_install/bin',
 'arm64' : '/home/hs/.buildman-toolchains/gcc-4.9.0-nolibc/aarch64-linux/bin',
 'arm' : '/opt/eldk-5.4/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-linux-gnueabi',
@@ -84,7 +74,7 @@ self.tc_workfd_set_toolchain_t_p = {
 'xtensa' : '/home/hs/.buildman-toolchains/gcc-4.9.0-nolibc/xtensa-linux/bin',
 }
 
-self.tc_workfd_set_toolchain_cr_co = {
+tc_workfd_set_toolchain_cr_co = {
 'arc' : 'arc-linux-uclibc-',
 'arm' : 'arm-linux-gnueabi-',
 'arm64' : 'aarch64-linux-',

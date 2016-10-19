@@ -14,19 +14,19 @@
 # Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_tftp_file.py
-# load file tb.tc_ub_tftp_file_name to tb.tc_ub_tftp_file_addr
+# load file tb.config.tc_ub_tftp_file_name to tb.config.tc_ub_tftp_file_addr
 # with tftp command in uboot
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: %s %s %s", tb.boardname, tb.tc_ub_tftp_file_addr, tb.tc_ub_tftp_file_name)
+logging.info("args: %s %s %s", tb.config.boardname, tb.config.tc_ub_tftp_file_addr, tb.config.tc_ub_tftp_file_name)
 
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
 c = tb.c_con
-tmp = 'tftp ' + tb.tc_ub_tftp_file_addr + ' ' + tb.tc_ub_tftp_file_name
+tmp = 'tftp ' + tb.config.tc_ub_tftp_file_addr + ' ' + tb.config.tc_ub_tftp_file_name
 tb.eof_write(c, tmp)
 searchlist = ["Bytes transferred", "error", "Retry count exceeded", "ERROR", "0 Bytes/s"]
 tmp = True

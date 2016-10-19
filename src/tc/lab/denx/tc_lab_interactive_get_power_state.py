@@ -20,7 +20,7 @@
 
 from tbotlib import tbot
 
-logging.info("args: %s %s", tb.boardname, tb.boardlabpowername)
+logging.info("args: %s %s", tb.config.boardname, tb.config.boardlabpowername)
 
 #set board state for which the tc is valid
 tb.set_board_state("lab")

@@ -15,13 +15,13 @@
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_ssh.py
 # login with ssh to tb.workfd_ssh_cmd and set new ssh prompt
-# tb.workfd_ssh_cmd_prompt
+# tb.config.workfd_ssh_cmd_prompt
 # End:
 
 from tbotlib import tbot
 
 logging.info("args: workfd %s %s %s", tb.workfd.name, tb.workfd_ssh_cmd,
-             tb.workfd_ssh_cmd_prompt)
+             tb.config.workfd_ssh_cmd_prompt)
 
 # switch to root
 tb.eof_write(tb.workfd, "ssh " + tb.workfd_ssh_cmd)
@@ -32,13 +32,13 @@ if ret == 'prompt':
 
 string = tb.tbot_get_password(tb.workfd_ssh_cmd, 'lab')
 tb.write_stream(tb.workfd, string)
-ret = tb.tbot_expect_string(tb.workfd, tb.workfd_ssh_cmd_prompt)
+ret = tb.tbot_expect_string(tb.workfd, tb.config.workfd_ssh_cmd_prompt)
 if ret == 'prompt':
     logging.error("No login to %s", tb.workfd_ssh_cmd)
     tb.end_tc(False)
 
 # set prompt
-tb.set_prompt(tb.workfd, tb.labprompt, 'linux')
+tb.set_prompt(tb.workfd, tb.config.labprompt, 'linux')
 
 tb.set_term_length(tb.workfd)
 tb.end_tc(True)

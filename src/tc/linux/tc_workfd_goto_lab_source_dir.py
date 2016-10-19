@@ -14,14 +14,14 @@
 # Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_goto_lab_source_dir.py
-# switch into lab PC source directory tb.tc_lab_source_dir
+# switch into lab PC source directory tb.config.tc_lab_source_dir
 # End:
 
 from tbotlib import tbot
 
 logging.info("args: %s", tb.workfd)
 
-tmp = "cd " + tb.tc_lab_source_dir
+tmp = "cd " + tb.config.tc_lab_source_dir
 tb.write_lx_cmd_check(tb.workfd, tmp)
 
 tb.end_tc(True)

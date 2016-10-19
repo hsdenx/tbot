@@ -25,7 +25,7 @@
 
 from tbotlib import tbot
 
-logging.info("args: %s %s %s", tb.boardname, tb.ub_load_board_env_addr, tb.ub_load_board_env_subdir)
+logging.info("args: %s %s", tb.config.ub_load_board_env_addr, tb.config.ub_load_board_env_subdir)
 
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
