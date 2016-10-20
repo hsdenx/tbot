@@ -45,12 +45,13 @@ rootfsworkdir = '/home/hs'
 tb.workfd = tb.c_ctrl
 #copy files to rootfs dir
 tb.statusprint("copy files")
-tb.config.tc_lab_cp_file_a = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + '/u-boot.img'
-tb.config.tc_lab_cp_file_b = rootfspath + rootfsworkdir + '/u-boot.img'
-tb.eof_call_tc("tc_lab_cp_file.py")
-tb.config.tc_lab_cp_file_a = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + '/MLO'
-tb.config.tc_lab_cp_file_b = rootfspath + rootfsworkdir + '/MLO'
-tb.eof_call_tc("tc_lab_cp_file.py")
+c = tb.workfd
+so = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + '/u-boot.img'
+ta = rootfspath + rootfsworkdir + '/u-boot.img'
+tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
+so = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + '/MLO'
+ta = rootfspath + rootfsworkdir + '/MLO'
+tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
 
 tb.workfd = tb.c_con
 tmp = 'cp ' + rootfsworkdir + '/MLO ' + tb.config.tc_lx_mount_dir

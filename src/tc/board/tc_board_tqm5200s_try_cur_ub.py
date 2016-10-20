@@ -30,9 +30,8 @@ tb.statusprint("start all DUTS testcases")
 tb.eof_call_tc("uboot/duts/tc_ub_start_all_duts.py")
 
 #save working u-boot bin
-tb.config.tc_lab_cp_file_a = "u-boot.bin"
-tb.config.tc_lab_cp_file_b = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-latestworking.bin"
-#call cp files
-tb.eof_call_tc("tc_lab_cp_file.py")
+c = tb.workfd
+ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-latestworking.bin"
+tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s="u-boot.bin", t=ta)
 
 tb.end_tc(True)

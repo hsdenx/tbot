@@ -29,18 +29,19 @@ tb.eof_call_tc("tc_workfd_compile_linux.py")
 
 # copy files to tftpdir
 tb.statusprint("copy files")
-tb.config.tc_lab_cp_file_a = "/work/hs/tbot/linux-aristainetos/arch/arm/boot/uImage"
-tb.config.tc_lab_cp_file_b = "/tftpboot/aristainetos/tbot/uImage-hs-cur"
-tb.eof_call_tc("tc_lab_cp_file.py")
-tb.config.tc_lab_cp_file_a = "/work/hs/tbot/linux-aristainetos/arch/arm/boot/dts/imx6dl-aristainetos2_4.dtb"
-tb.config.tc_lab_cp_file_b = "/tftpboot/aristainetos/tbot/imx6dl-aristainetos2_4.dtb"
-tb.eof_call_tc("tc_lab_cp_file.py")
-tb.config.tc_lab_cp_file_a = "/work/hs/tbot/linux-aristainetos/arch/arm/boot/dts/imx6dl-aristainetos2_7.dtb"
-tb.config.tc_lab_cp_file_b = "/tftpboot/aristainetos/tbot/imx6dl-aristainetos2_7.dtb"
-tb.eof_call_tc("tc_lab_cp_file.py")
-tb.config.tc_lab_cp_file_a = "/work/hs/tbot/linux-aristainetos/aristainetos2.itb"
-tb.config.tc_lab_cp_file_b = "/tftpboot/aristainetos/tbot/aristainetos2.itb"
-tb.eof_call_tc("tc_lab_cp_file.py")
+c = tb.workfd
+so = "/work/hs/tbot/linux-aristainetos/arch/arm/boot/uImage"
+ta = "/tftpboot/aristainetos/tbot/uImage-hs-cur"
+tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
+so = "/work/hs/tbot/linux-aristainetos/arch/arm/boot/dts/imx6dl-aristainetos2_4.dtb"
+ta = "/tftpboot/aristainetos/tbot/imx6dl-aristainetos2_4.dtb"
+tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
+so = "/work/hs/tbot/linux-aristainetos/arch/arm/boot/dts/imx6dl-aristainetos2_7.dtb"
+ta = "/tftpboot/aristainetos/tbot/imx6dl-aristainetos2_7.dtb"
+tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
+so = "/work/hs/tbot/linux-aristainetos/aristainetos2.itb"
+ta = "/tftpboot/aristainetos/tbot/aristainetos2.itb"
+tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
 
 # call uboot tc to go into u-boot, and after that boot new kernel
 tb.set_board_state("u-boot")

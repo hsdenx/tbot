@@ -26,18 +26,6 @@ except AttributeError:
     tb.config.__dict__.update({'tc_lab_source_dir' : tmp})
 
 try:
-    tb.config.tc_lab_cp_file_a
-except AttributeError:
-    tmp = tb.config.lab_tmp_dir + "gnlmpf"
-    tb.config.__dict__.update({'tc_lab_cp_file_a' : tmp})
-
-try:
-    tb.config.tc_lab_cp_file_b
-except AttributeError:
-    tmp = tb.config.lab_tmp_dir + "gnlmpf2"
-    tb.config.__dict__.update({'tc_lab_cp_file_b' : tmp})
-
-try:
     tb.config.tc_workfd_tbotfiles_dir
 except AttributeError:
     tmp = tb.config.tc_workfd_work_dir + "/tmpfiles"

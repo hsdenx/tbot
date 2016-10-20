@@ -44,12 +44,13 @@ tb.eof_call_tc("tc_workfd_compile_linux.py")
 
 # copy files to tftpdir
 tb.statusprint("copy files")
-tb.config.tc_lab_cp_file_a = "/work/hs/tbot/linux-dxr2/arch/arm/boot/uImage"
-tb.config.tc_lab_cp_file_b = "/tftpboot/dxr2/tbot/uImage-hs-cur"
-tb.eof_call_tc("tc_lab_cp_file.py")
-tb.config.tc_lab_cp_file_a = "/work/hs/tbot/linux-dxr2/arch/arm/boot/dts/" + tb.config.tc_workfd_compile_linux_dt_name
-tb.config.tc_lab_cp_file_b = "/tftpboot/dxr2/tbot/dxr2.dtb"
-tb.eof_call_tc("tc_lab_cp_file.py")
+c = tb.workfd
+so = "/work/hs/tbot/linux-dxr2/arch/arm/boot/uImage"
+ta = "/tftpboot/dxr2/tbot/uImage-hs-cur"
+tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
+so = "/work/hs/tbot/linux-dxr2/arch/arm/boot/dts/" + tb.config.tc_workfd_compile_linux_dt_name
+ta = "/tftpboot/dxr2/tbot/dxr2.dtb"
+tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
 
 #call ubot setenv
 tb.set_board_state("u-boot")

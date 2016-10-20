@@ -83,6 +83,7 @@ class tbot(object):
         self.workdir = workdir
         self.power_state = 'undef'
         self.tc_stack = []
+        self.tc_stack_arg = []
         self.donotlog = False
 
         print("CUR WORK PATH: ", self.workdir)
@@ -400,6 +401,7 @@ class tbot(object):
             else:
                 self.failure()
         else:
+            self.tc_stack_arg.pop()
             name = self.tc_stack.pop()
             if self._ret:
                 logging.info('End of TC: %s success', name)
@@ -628,7 +630,25 @@ class tbot(object):
         c.expect_prompt()
         return ret
 
-    def call_tc(self, name):
+    def check_args(self, args):
+        """Check if the args are in current argumentstack
+        """
+        arg = self.tc_stack_arg[-1]
+        name = self.tc_stack[-1]
+        ok = True
+        if arg is not None:
+            for key in args:
+                if arg.get(key) == None:
+                    ok = False
+                    print("%s arg %s not found" % (name, key))
+                    logging.error("%s arg %s not found" % (name, key))
+
+        if not ok:
+            self.end_tc(False)
+
+        return arg
+
+    def call_tc(self, name, **kwargs):
         """Call another testcase. Search for the TC name
            through all subdirs in 'src/tc'.
            return:
@@ -661,6 +681,12 @@ class tbot(object):
         logging.info("*****************************************")
         logging.info("Starting with tc %s", filepath)
         self.tc_stack.append(filepath)
+        args = {}
+        if kwargs is not None:
+            for key, value in kwargs.iteritems():
+                args.update({key : value})
+
+        self.tc_stack_arg.append(args)
         self._main += 1
         pfname = inspect.getouterframes( inspect.currentframe() )[1][3]
 
@@ -799,10 +825,10 @@ class tbot(object):
         self.eof_write(c, "echo $COLUMNS")
         self.tbot_expect_prompt(c)
 
-    def eof_call_tc(self, name):
+    def eof_call_tc(self, name, **kwargs):
         """ call tc name, end testcase on failure
         """
-        ret = self.call_tc(name)
+        ret = self.call_tc(name, **kwargs)
         if ret == True:
             return True
         self.end_tc(False)

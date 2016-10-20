@@ -89,6 +89,7 @@ Note: ToDo entries with "*" are done, "-" are really ToDo
 - add manpages for the testcases
 
 - call testcases with arguments
+  - now possible, but have to convert all testcases
 
 - if tbot fails, start a git biscect section
   and find out, which commit did it

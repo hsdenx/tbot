@@ -14,12 +14,15 @@
 # Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lab_cp_file.py
-# simple copy  file from tb.config.tc_lab_cp_file_a
-# to tb.config.tc_lab_cp_file_b on the ctrl channel
+# simple copy  file from arg.get('s')
+# to arg.get('t') on the channel arg.get('ch')
 # End:
 
 from tbotlib import tbot
 
-tmp = "cp " + tb.config.tc_lab_cp_file_a + " " + tb.config.tc_lab_cp_file_b
-tb.write_lx_cmd_check(tb.c_ctrl, tmp)
+args = ['ch', 's', 't']
+arg = tb.check_args(args)
+
+tmp = "cp " + arg.get('s') + " " + arg.get('t')
+tb.write_lx_cmd_check(arg.get('ch'), tmp)
 tb.end_tc(True)

@@ -32,16 +32,17 @@ tb.eof_call_tc("tc_workfd_goto_linux_code.py")
 tb.eof_call_tc("tc_workfd_compile_linux.py")
 
 # copy files to tftpdir
+c = tb.workfd
 tb.statusprint("copy files")
-tb.config.tc_lab_cp_file_a = "/work/hs/tbot/linux-fipad/arch/arm/boot/zImage"
-tb.config.tc_lab_cp_file_b = "/tftpboot/fipad/tbot/zImage"
-tb.eof_call_tc("tc_lab_cp_file.py")
-tb.config.tc_lab_cp_file_a = "/work/hs/tbot/linux-fipad/arch/arm/boot/dts/bosch-mpc1360d.dtb"
-tb.config.tc_lab_cp_file_b = "/tftpboot/fipad/tbot/fipad.dtb"
-tb.eof_call_tc("tc_lab_cp_file.py")
-tb.config.tc_lab_cp_file_a = "/work/hs/tbot/linux-fipad/System.map"
-tb.config.tc_lab_cp_file_b = "/tftpboot/fipad/tbot/linux-system.map"
-tb.eof_call_tc("tc_lab_cp_file.py")
+so = "/work/hs/tbot/linux-fipad/arch/arm/boot/zImage"
+ta = "/tftpboot/fipad/tbot/zImage"
+tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
+so = "/work/hs/tbot/linux-fipad/arch/arm/boot/dts/bosch-mpc1360d.dtb"
+ta = "/tftpboot/fipad/tbot/fipad.dtb"
+tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
+so = "/work/hs/tbot/linux-fipad/System.map"
+ta = "/tftpboot/fipad/tbot/linux-system.map"
+tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
 
 # call ubot setenv
 tb.set_board_state("u-boot")

@@ -20,28 +20,26 @@
 
 from tbotlib import tbot
 
-#call get u-boot source
+# call get u-boot source
 tb.statusprint("get u-boot source")
 tb.eof_call_tc("tc_lab_get_uboot_source.py")
 
-#call set toolchain
+# call set toolchain
 tb.statusprint("set toolchain")
 tb.eof_call_tc("tc_lab_set_toolchain.py")
 
-#call compile u-boot
+# call compile u-boot
 tb.statusprint("compile u-boot")
 tb.eof_call_tc("tc_lab_compile_uboot.py")
 
-#copy files to tbot dir
+# copy files to tbot dir
 tb.statusprint("copy files")
-tb.config.tc_lab_cp_file_a = "u-boot.bin"
-tb.config.tc_lab_cp_file_b = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir
-#call cp files
-tb.eof_call_tc("tc_lab_cp_file.py")
-
-tb.config.tc_lab_cp_file_a = "System.map"
-#call cp files
-tb.eof_call_tc("tc_lab_cp_file.py")
+c = tb.workfd
+so = "u-boot.bin"
+ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir
+tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
+ta = "System.map"
+tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
 
 tb.workfd = tb.c_ctrl
 tb.eof_call_tc("tc_workfd_goto_uboot_code.py")
