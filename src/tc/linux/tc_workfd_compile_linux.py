@@ -88,11 +88,13 @@ if tb.config.tc_workfd_compile_linux_modules != 'none':
 # compile DT (if wanted)
 if tb.config.tc_workfd_compile_linux_dt_name != 'none':
     x=[]
-    for i in tb.config.tc_workfd_compile_linux_dt_name:
-        if isinstance(i, str):
-            x.append(i)
-        else:
-            x += list(i)
+    if isinstance(tb.config.tc_workfd_compile_linux_dt_name, (list, tuple)):
+        for i in tb.config.tc_workfd_compile_linux_dt_name:
+            if isinstance(i, str):
+                x.append(i)
+    else:
+        x.append(tb.config.tc_workfd_compile_linux_dt_name)
+
     for i in x:
         tmp = "make " + i
         tb.write_lx_cmd_check(tb.workfd, tmp)
