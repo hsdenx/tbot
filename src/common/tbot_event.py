@@ -129,6 +129,9 @@ class events(object):
         self.event_list.append(tmp)
         tmp += '\n'
         self.fd.write(tmp)
+        # flush, so we have written all log data in error case
+        self.fd.flush()
+        os.fsync(self.fd)
         if dir == 'r' or dir == 're' or dir == 'ig' or dir == 'er':
             se = string.rstrip()
             se = se.lstrip()
