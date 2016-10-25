@@ -31,11 +31,11 @@ if tb.config.board_has_debugger == 0:
 c = tb.workfd
 tb.write_stream(c, tb.config.lab_bdi_upd_uboot_bdi_cmd)
 c.set_prompt(tb.config.lab_bdi_upd_uboot_bdi_prompt)
-searchlist = ["Connection refused"]
+searchlist = ["Connection refused", "No route"]
 tmp = True
 while tmp == True:
     ret = tb.tbot_read_line_and_check_strings(c, searchlist)
-    if ret == '0':
+    if ret == '0' or ret == '1':
         # back to linux
         c.set_prompt(tb.config.linux_prompt)
         tb.tbot_expect_prompt(c)
