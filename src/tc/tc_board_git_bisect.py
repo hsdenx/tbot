@@ -56,8 +56,9 @@ while inwhile:
 
     if tb.config.board_git_bisect_patches != 'none':
         tmp = tb.config.tc_lab_apply_patches_dir
-        tb.eof_call_tc("tc_lab_apply_patches.py")
         tb.config.tc_lab_apply_patches_dir = tb.config.board_git_bisect_patches
+        tb.eof_call_tc("tc_lab_apply_patches.py")
+        tb.config.tc_lab_apply_patches_dir = tmp
 
     ret = tb.call_tc(tb.config.board_git_bisect_call_tc)
     if ret == True:
@@ -80,8 +81,6 @@ while inwhile:
     if tb.config.board_git_bisect_patches != 'none':
         tb.eof_write_cmd(c, 'git reset --hard HEAD')
         tb.eof_write_cmd(c, 'git clean -f')
-
-tb.config.tc_lab_apply_patches_dir = tmp
 
 if error:
     tb.end_tc(False)
