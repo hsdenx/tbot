@@ -1,7 +1,29 @@
-Important rule:
+write a testcase
+================
+
+A TC is written in python, so you can use python as usual. For accessing
+the boards console, use functions from the tbotlib, therefore
+
+First import the tbotlib with the line:
+
+  from tbotlib import tbot
+
+If your TC uses variables, please add a line which adds them to
+the log file (for debugging purposes):
+
+  logging.info("args: %s ...", tb.varname, ...)
+
+Say tbot, for which board state your TC is valid with:
+
+  tb.set_board_state("u-boot")
+
+Then you are ready ... and you can use the tbotlib functions
+for writting/reading to connection handles.
+
+* Big fat warning *
 
 Only return from a TC, if you have read the prompt from
-a command. Returning without readen the prompt, will end
+a command. Returning without readden the prompt, will end
 in complete confusion of tbot, as the next TC gets the
 prompt from the previous command ...
 
@@ -50,7 +72,7 @@ Therefore a "normal" TC should use the following functions:
 
   - open a new connection:
 
-    con_handle= Connection(tb, name)
+    con_handle = Connection(tb, name)
 
     example: src/tc/linux/tc_workfd_can.py
 
@@ -61,6 +83,3 @@ Therefore a "normal" TC should use the following functions:
   - statusprint(string)
     If you want to make some statusoutput on the tbot console
     printed if debugstatus=True is set.
-
-  - set_board_state(state)
-    Set the board state

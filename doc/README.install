@@ -47,21 +47,25 @@ $
 
   - prepare a lab config file for your lab:
 
+    - create a new folder in src/tc/lab/XXX
+      replace XXX to a proper value
+
     Each VL needs a configuration file, passed with the option '-s' to
     tbot, example:
 
     https://github.com/hsdenx/tbot/blob/master/config/lab_hs_home.py
-    simple copy this and rename it
+    simple copy this and rename it to
+    https://github.com/hsdenx/tbot/blob/master/config/lab_XXX_home.py
+    and adapt the settings to your specific needs.
 
-    Then you have to setup Testcases for the 3 tasks:
+    Then you have to setup Testcases for the 3 VL tasks:
 
   Task a) power on/off board:
     default TC for this task is:
     https://github.com/hsdenx/tbot/blob/master/src/tc/lab/denx/tc_lab_denx_power.py
 
     - now copy this file to for example
-      cp src/tc/lab/denx/tc_lab_denx_power.py src/tc/lab/denx/tc_lab_denx_power_XXX.py
-      (replace XXX to a proper value, and/or make a subdirectory in src/tc/lab)
+      cp src/tc/lab/denx/tc_lab_denx_power.py src/tc/lab/XXX/tc_lab_XXX_power_onoff.py
       and adapt the "remote_power" command from the denx lab to your needs.
 
       As this TC powers on the board for all your boards in your VL,
@@ -76,7 +80,7 @@ $
       else "tb.end_tc(False)"
 
     - set in your lab config file:
-      tc_lab_denx_power_tc = 'tc_lab_denx_power_XXX.py'
+      tc_lab_denx_power_tc = 'tc_lab_XXX_power_onoff.py'
 
   Task b) power on/off board:
     default TC for this task is:
@@ -84,22 +88,21 @@ $
 
     - now copy this file to for example
       (replace XXX to a proper value)
-      cp src/tc/lab/denx/tc_lab_denx_get_power_state.py src/tc/lab/denx/tc_lab_denx_get_power_state_XXX.py
+      cp src/tc/lab/denx/tc_lab_denx_get_power_state.py src/tc/lab/XXX/tc_lab_XXX_get_power_state.py
       and adapt the commands to your needs.
 
       If the power of the board is on, call "tb.end_tc(True)"
       else "tb.end_tc(False)"
 
     - set in your lab config file:
-      tc_lab_denx_get_power_state_tc = 'tc_lab_denx_get_power_state_XXX.py'
+      tc_lab_denx_get_power_state_tc = 'tc_lab_XXX_get_power_state.py'
 
   Task c) connect to the boards console:
     default TC for this task is:
     https://github.com/hsdenx/tbot/blob/master/src/tc/lab/denx/tc_lab_denx_connect_to_board.py
 
     - now copy this file to for example
-      (replace XXX to a proper value)
-      cp src/tc/lab/denx/tc_lab_denx_connect_to_board.py src/tc/lab/denx/tc_lab_XXX_connect_to_board.py
+      cp src/tc/lab/denx/tc_lab_denx_connect_to_board.py src/tc/lab/XXX/tc_lab_XXX_connect_to_board.py
       and adapt the commands to your needs.
 
       If connect fails end this TC with "tb.end_tc(False)"
@@ -123,9 +126,7 @@ $
     https://github.com/hsdenx/tbot/tree/master/src/lab_api
     but it turned out, that if we say "ssh" is the standard way to connect
     to a VL, we can integrate the VL specific tasks through testcases, see
-    above, so we should do:
-    - rename the "denx" API to a more general name.
-      This is a point on my ToDo list ...
+    above.
 
 - prepare password.py file:
   This file contains all passwords tbot needs (for example for
@@ -147,10 +148,12 @@ $
       if (user == 'root'):
           password = ''
 
+  tbot searches in the root folder for this file.
+
 - prepare board config file
   Each board which is found in the VL needs a tbot configuration file
   pass the config file name with the option '-c' to tbot, tbot searches
-  in the root dir for them.
+  in the "config" folder for them.
 
   board Example (dxr2 board):
   https://github.com/hsdenx/tbot/blob/master/config/dxr2.py
@@ -167,10 +170,10 @@ If you have problems in settings up tbot, please contact me
 
 If you have running your first TC [3], you may want to write now your own
 TC (and hopefully share them), so continue with:
-u-boot:tools/tbot/README.create_a_new_testcase
+doc/README.write_a_TC
 
 Heiko Schocher <hs@denx.de>
-v2 2016.04.26
+v2 2016.11.02
 
 --------------
 
