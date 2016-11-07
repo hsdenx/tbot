@@ -45,7 +45,7 @@ Options:
 
 click on the gif to see the full video on youtube
 
-[![Demo tbot](https://github.com/hsdenx/tbot/blob/master/demo.gif)](https://www.youtube.com/watch?v=PhaYfqOrQOg)
+[![Demo tbot](https://github.com/hsdenx/tbot/blob/master/demo.gif)](https://youtu.be/zfjpj3DLsx4)
 
 demo video for a CAN bus testcase:
 
