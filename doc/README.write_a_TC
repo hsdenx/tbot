@@ -1,0 +1,66 @@
+Important rule:
+
+Only return from a TC, if you have read the prompt from
+a command. Returning without readen the prompt, will end
+in complete confusion of tbot, as the next TC gets the
+prompt from the previous command ...
+
+Therefore a "normal" TC should use the following functions:
+
+- sending commands
+
+  - eof_write_cmd(con_handle, command_string)
+  - eof_write_cmd_list(con_handle, list_of_commands)
+  - write_lx_cmd_check(con_handle, cmd_string, endTC)
+    write a linux command to con_handle, and check at the
+    end, if command was successfull
+  - write_cmd_check(con_handle, cmd, string)
+    write a cmd to con_handle, and check, if a string
+    is read
+  - eof_write_cmd_check(con_handle, cmd, string)
+    write a cmd to con_handle, and check, if a string
+    is read. If string is not read end tbot with failure.
+
+- analysing commandoutput
+
+  - tbot_read_line_and_check_strings(con_handle, list_of_strings)
+    read from con_handle, and return list index (! string), if
+    a string from list_of_strings is found. If prompt found
+    return 'prompt'
+  - tbot_rup_check_all_strings(con_handle, list_of_strings, endTC)
+    read until prompt from on_handle, and check if all
+    strings from list_of_strings are found. If endTC = True
+    end tbot with failure, if not all strings are found.
+  - tbot_rup_error_on_strings(con_handle, strings, endTC)
+    read until prompt, and check if a string in strings is
+    found. If so, return false. If endTC = True end tbot with
+    failure.
+
+- misc functions:
+
+  - call another TC:
+
+    - eof_call_tc(name, **args)
+      use this functions, if you want to call TC name and
+      if it fails, end tbot
+
+    - return = call_tc(name, **args)
+      use this function, if you want to call TC name and
+      get the TC return value.
+
+  - open a new connection:
+
+    con_handle= Connection(tb, name)
+
+    example: src/tc/linux/tc_workfd_can.py
+
+  - close a connection:
+
+    del con_handle
+
+  - statusprint(string)
+    If you want to make some statusoutput on the tbot console
+    printed if debugstatus=True is set.
+
+  - set_board_state(state)
+    Set the board state

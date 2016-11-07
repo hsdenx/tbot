@@ -1,5 +1,7 @@
 Note: ToDo entries with "*" are done, "-" are really ToDo
 
+- add a check, if a TC ends if prompt is read.
+
 - [simplify] create testcases, specific for a specific SoC, so board
   testcases can use them. For Example, create a tc_soc_imx6_xxx.py
   testcases, which contains testcases we want to run on an imx based
