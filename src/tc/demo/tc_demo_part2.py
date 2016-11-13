@@ -28,7 +28,7 @@ tb.workfd = tb.c_ctrl
 tb.eof_call_tc("tc_workfd_goto_uboot_code.py")
 
 # set specific settings for this demo
-tb.config.workfd_get_patchwork_number_user = 'hs'
+tb.config.workfd_get_patchwork_number_user = 'tbot'
 tb.config.tc_workfd_apply_patchwork_patches_blacklist = []
 tb.config.tc_workfd_get_patchwork_number_list_order = '-delegate'
 
