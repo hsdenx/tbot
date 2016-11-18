@@ -29,7 +29,8 @@ tc_lab_get_uboot_source_git_repo = '/home/hs/bosch/u-boot-secure/u-boot.git'
 tc_lab_get_uboot_source_git_branch = 'shc-devel-20160620'
 
 tc_lab_toolchain_rev = '5.4'
-tc_lab_toolchain_name = 'armv7a'
+tc_lab_toolchain_name = 'armv5te'
+tc_workfd_compile_linux_clean = 'no'
 
 tc_lab_compile_uboot_boardname = 'am335x_shc'
 tc_board_shc_upd_ub_typ = 'eMMC'
@@ -52,6 +53,14 @@ tc_lx_create_reg_file_name = 'src/files/shc_pinmux.reg'
 
 linux_prompt_default = 'root@generic-armv5te:~# '
 
+tc_workfd_compile_linux_boardname = 'shc'
+tc_workfd_compile_linux_load_addr = '0x80008000'
+tc_workfd_compile_linux_modules_path ='/opt/eldk-5.5/armv5te/rootfs-qte-sdk/home/hs/shc/modules'
+tc_workfd_compile_linux_dt_name = 'am335x-shc.dtb'
+tc_workfd_compile_linux_fit_its_file = 'no'
+tc_workfd_compile_linux_fit_file = 'shc.itb'
+tc_workfd_compile_linux_append_dt = 'no'
+
 # Mainline kernel
 tc_lab_get_linux_source_git_repo = '/home/hs/bosch/linux'
 tc_lab_get_linux_source_git_repo_user = 'hsdenx'
@@ -71,8 +80,19 @@ tc_workfd_apply_local_patches_dir = 'none'
 # Stable kernel 4.4
 tc_lab_get_linux_source_git_repo = '/home/hs/bosch/linux-stable'
 tc_lab_get_linux_source_git_repo_user = 'hsdenx'
-tc_lab_get_linux_source_git_branch = 'shc-linux-4.4.y-devel'
+tc_lab_get_linux_source_git_branch = 'shc-linux-4.4.19-devel'
 tc_lab_get_linux_source_git_reference = '/home/git/linux.git'
 tc_lab_apply_patches_dir = 'none'
+tc_workfd_compile_linux_modules = 'none'
+tc_workfd_apply_local_patches_dir = 'none'
+tc_workfd_compile_linux_makeoptions = '-j8'
+
+# kernel 4.9-rc6
+tc_lab_get_linux_source_git_repo = '/home/hs/bosch/linux'
+tc_lab_get_linux_source_git_repo_user = 'hsdenx'
+tc_lab_get_linux_source_git_branch = 'linux-v4.9-rc6-shc-20161121-3'
+tc_lab_get_linux_source_git_reference = '/home/git/linux.git'
+tc_lab_apply_patches_dir = 'none'
+tc_workfd_compile_linux_modules = 'none'
 tc_workfd_apply_local_patches_dir = 'none'
 tc_workfd_compile_linux_makeoptions = '-j8'

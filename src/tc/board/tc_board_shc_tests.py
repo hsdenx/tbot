@@ -27,20 +27,16 @@ tb.statusprint("tc_shc u-boot setenv")
 tb.eof_call_tc("tc_ub_setenv.py")
 
 tb.statusprint("tc_shc linux dmesg checks")
-tb.config.tc_lx_dmesg_grep_name = "SHC"
-tb.eof_call_tc("tc_lx_dmesg_grep.py")
-tb.config.tc_lx_dmesg_grep_name = "zigbee"
-tb.eof_call_tc("tc_lx_dmesg_grep.py")
-tb.config.tc_lx_dmesg_grep_name = "homematic"
-tb.eof_call_tc("tc_lx_dmesg_grep.py")
-tb.config.tc_lx_dmesg_grep_name = "rtc-pcf8563"
-tb.eof_call_tc("tc_lx_dmesg_grep.py")
-tb.config.tc_lx_dmesg_grep_name = "tps65217 0-0024"
-tb.eof_call_tc("tc_lx_dmesg_grep.py")
-tb.config.tc_lx_dmesg_grep_name = "at24 0-0050"
-tb.eof_call_tc("tc_lx_dmesg_grep.py")
-tb.config.tc_lx_dmesg_grep_name = "Detected MACID"
-tb.eof_call_tc("tc_lx_dmesg_grep.py")
+checks = ['SHC',
+	'input: gpio_keys',
+	'rtc-pcf8563',
+	'tps65217 0-0024',
+	'at24 0-0050',
+	'Detected MACID',
+	'mmc1: new high speed MMC card at address 0001']
+
+for tb.config.tc_lx_dmesg_grep_name in checks:
+    tb.eof_call_tc("tc_lx_dmesg_grep.py")
 
 tb.workfd = tb.c_con
 tb.statusprint("tc_shc pinmux check")

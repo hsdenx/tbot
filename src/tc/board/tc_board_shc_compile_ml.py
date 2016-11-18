@@ -28,19 +28,6 @@ tb.eof_call_tc("tc_workfd_get_linux_source.py")
 
 tb.eof_call_tc("tc_workfd_goto_linux_code.py")
 
-#compile it
-tb.config.tc_lab_toolchain_rev = '5.4'
-tb.config.tc_lab_toolchain_name = 'armv5te'
-tb.config.tc_workfd_compile_linux_clean = 'no'
-tb.config.tc_workfd_compile_linux_boardname = 'shc'
-tb.config.tc_workfd_compile_linux_load_addr = '0x80008000'
-tb.config.tc_workfd_compile_linux_modules ='yes'
-tb.config.tc_workfd_compile_linux_modules_path ='/opt/eldk-5.5/armv5te/rootfs-qte-sdk/home/hs/shc/modules'
-tb.config.tc_workfd_compile_linux_dt_name = 'am335x-shc.dtb'
-tb.config.tc_workfd_compile_linux_fit_its_file = 'no'
-tb.config.tc_workfd_compile_linux_fit_file = 'shc.itb'
-tb.config.tc_workfd_compile_linux_append_dt = 'no'
-
 tb.eof_call_tc("tc_workfd_compile_linux.py")
 
 # copy files to tftpdir
