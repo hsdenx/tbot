@@ -72,6 +72,8 @@ else:
 
 tmp = "make " + tb.config.tc_workfd_compile_linux_boardname + "_defconfig"
 tb.write_lx_cmd_check(tb.workfd, tmp)
+tb.event.create_event('main', tb.config.boardname, "LINUX_DEFCONFIG", tb.config.tc_workfd_compile_linux_boardname)
+tb.event.create_event('main', tb.config.boardname, "LINUX_SRC_PATH", tb.config.tc_lab_source_dir + "/linux-" + tb.config.boardlabname)
 
 tmp = "make" + ld + " " + tb.config.tc_workfd_compile_linux_makeoptions + " " + tb.config.tc_workfd_compile_linux_make_target
 tb.write_lx_cmd_check(tb.workfd, tmp)

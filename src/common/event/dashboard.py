@@ -71,9 +71,11 @@ class dashboard(object):
         self.tool = 'unknown'
         self.bina = 'unknown'
         self.defname = 'unknown'
+        self.lx_defname = 'unknown'
         self.tcname = ''
         self.testpypatch = ''
         self.uboot_src_path = ''
+        self.linux_src_path = ''
         self.suc = '1'
         line = 'start'
         while line != '':
@@ -99,6 +101,10 @@ class dashboard(object):
                 self.defname = tmp[self.ev.value]
             if tmp[self.ev.id] == 'UBOOT_SRC_PATH':
                 self.uboot_src_path = tmp[self.ev.value]
+            if tmp[self.ev.id] == 'LINUX_DEFCONFIG':
+                self.lx_defname = tmp[self.ev.value]
+            if tmp[self.ev.id] == 'LINUX_SRC_PATH':
+                self.linux_src_path = tmp[self.ev.value]
             if tmp[self.ev.id] == 'UBOOT_TEST_PY':
                 self.testpypatch = tmp[self.ev.value]
             if tmp[self.ev.id] == 'UBOOT_VERSION':
@@ -112,10 +118,17 @@ class dashboard(object):
             if tmp[self.ev.id] == 'Toolchain':
                 self.tool = ' '.join(tmp[self.ev.value:])
 
+        defn = self.defname
+        if (self.lx_defname != 'unknown'):
+            if (defn == 'unknown'):
+                defn = self.lx_defname
+            else:
+                defn += ' ' + self.lx_defname
+
         # Data Insert into the table
         # `stats_img`, `dot_img` missing yet
         # also we need to save the logfile
-        query = "INSERT INTO " +  self.tname + " (`test_date`, `toolchain`, `binaryversion`, `defname`, `testcase`, `success`) VALUES ('" + self.dt + "', '" + self.tool + "', '" + self.bina + "', '" + self.defname + "', '" + self.tcname + "', '" + self.suc + "')"
+        query = "INSERT INTO " +  self.tname + " (`test_date`, `toolchain`, `binaryversion`, `defname`, `testcase`, `success`) VALUES ('" + self.dt + "', '" + self.tool + "', '" + self.bina + "', '" + defn + "', '" + self.tcname + "', '" + self.suc + "')"
         logging.debug("DB query %s", query)
         self.insert(query)
         # now create the images, and move them to the webserverdirectory
@@ -145,6 +158,10 @@ class dashboard(object):
         if self.uboot_src_path != '':
             passwd = self.tb.tbot_get_password(self.tb.config.user, 'lab')
             tmp = "sshpass -p '" + passwd + "' scp " + self.tb.config.user + "@" +  self.tb.config.ip +  ":" + self.uboot_src_path + "/.config " + newdir
+            os.system(tmp)
+        if self.linux_src_path != '':
+            passwd = self.tb.tbot_get_password(self.tb.config.user, 'lab')
+            tmp = "sshpass -p '" + passwd + "' scp " + self.tb.config.user + "@" +  self.tb.config.ip +  ":" + self.linux_src_path + "/.config " + newdir
             os.system(tmp)
 
         tmp = "cp " + self.tb.logfilen + " " + newdir + "/tbot.log"

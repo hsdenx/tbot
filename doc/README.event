@@ -37,6 +37,11 @@ UBOOT_VERSION   U-Boot/SPL version
 src/tc/linux/tc_lx_get_version.py
 LINUX_VERSION	Linux version
 
+src/tc/linux/tc_workfd_compile_linux.py
+LINUX_DEFCONFIG used Linux configuration
+LINUX_SRC_PATH  path, where Linux source is located
+
+
 planned Event backends:
 =======================
 
