@@ -31,14 +31,15 @@ from documentation import doc_backend
 class events(object):
     """ The event class
 
-    more details follow
     """
     def __init__(self, tb, logfile):
-        """
-        :param workdir: workdir for tbot
-        :param cfgfile: board config file
-        :param logfilen: name of logfile
-        :param verbose: be verbose
+        """innit the event subsystem
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: workdir for tbot
+        :param arg2: board config file
+        :param arg3: name of logfile
+        :param arg4: be verbose
         :return:
         """
         self.event_list = []
@@ -68,13 +69,13 @@ class events(object):
         self.fd.flush()
 
     def create_event(self, pname, name, id, value):
-        """
-        call it, to create an stat event
+        """create an event
 
-	:param id: event id
-	:param pname: parent name
-	:param name: function name
-	:param value: value for event ID
+        - **parameters**, **types**, **return** and **return types**::
+	:param arg1: parent name
+	:param arg2: function name
+	:param arg3: Event ID
+	:param arg4: value for event ID
         """
         if id == 'Start':
             self.stack.append(name)
@@ -125,6 +126,14 @@ class events(object):
                 self.doc.create_docfiles()
 
     def create_event_log(self, c, dir, string):
+        """create a log event
+
+        - **parameters**, **types**, **return** and **return types**::
+	:param arg1: connection
+	:param arg2: direction (r or w)
+	:param arg3: log string
+        """
+
         if self.tb.donotlog == True:
             return
         try:
@@ -144,11 +153,13 @@ class events(object):
             self.tb.con_log("%s: %s", c.name, se)
 
     def register_backend(self):
-        """
-        register a backend.
+        """register a backend.
+
+        ToDo
         """
 
     def list_backend(self):
-        """
-        lit all registered backends.
+        """list all registered backends.
+
+        ToDo
         """

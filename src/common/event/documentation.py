@@ -16,16 +16,18 @@ import sys
 import os
 
 class doc_backend(object):
-    """
-    extract from all executed testcases the logs from
-    tbots connection.
+    """extract from all executed testcases the logs from tbots connection.
 
     Format of the created filenames:
 
     testcasename_connectionname_index_incnumber.txt
+
       testcasename:   Name of TC
+
       connectionname: Name of the tbot connection
+
       index: counts, how often the TC was called, starts with 1
+
       incnumber: each switch to another connection increments this number
                  starts with 1
  
@@ -34,7 +36,18 @@ class doc_backend(object):
 
     enable this backend with "create_documentation = 'yes'"
 
+    created files are stored in tb.workdir + '/logfiles/
+    so, be sure you have created this directory.
+
     Problem: First prompt is not visible
+
+    see https://github.com/hsdenx/tbot/blob/testing/scripts/demo/documentation_backend/README
+    for a demo, how you can create a html/pdf/man page, which
+    contains content of tbot logfiles and text around it.
+
+    - **parameters**, **types**, **return** and **return types**::
+    :param arg1: tb
+    :param arg2: list of strings, containing testcasesnames, which get ignored
     """
     def __init__(self, tb, ignorelist):
         self.dotnr = 0
@@ -43,17 +56,13 @@ class doc_backend(object):
         self.tc_list = []
         self.ignoretclist = ignorelist
 
-    def close(self):
-        print("End")
-
-    def __del__(self):
-        self.close()
-
     def create_docfiles(self):
+        """create the files
+        """
         el = list(self.tb.event.event_list)
-        self.analyse(el, 'main')
+        self._analyse(el, 'main')
  
-    def get_event_id(self, tmp):
+    def _get_event_id(self, tmp):
         if tmp[self.ev.id] == 'Start':
             return tmp[self.ev.id]
         if tmp[self.ev.id] == 'End':
@@ -62,10 +71,10 @@ class doc_backend(object):
             return tmp[self.ev.id]
         return 'none'
 
-    def get_event_name(self, tmp):
+    def _get_event_name(self, tmp):
         return tmp[self.ev.name]
 
-    def get_next_event(self, el):
+    def _get_next_event(self, el):
         if el == None:
             return ''
 
@@ -76,7 +85,7 @@ class doc_backend(object):
         el.pop(0)
         return ret
 
-    def check_ignore_list(self, typ, name, evl):
+    def _check_ignore_list(self, typ, name, evl):
         if typ != 'Start':
             return 'ok'
 
@@ -85,60 +94,61 @@ class doc_backend(object):
                 # search until End event
                 line = 'start'
                 while line != '':
-                    line = self.get_next_event(evl)
+                    line = self._get_next_event(evl)
                     tmp = line.split()
                     if tmp == []:
                         continue
                     if tmp[self.ev.typ] != 'EVENT':
                         continue
-                    ntyp = self.get_event_typ(tmp)
-                    if typ == 'none':
+                    eid = self._get_event_id(tmp)
+                    if eid == 'none':
                         continue
-                    newname = self.get_event_name(tmp)
-                    if newname == name and ntyp == 'End':
+                    newname = self._get_event_name(tmp)
+                    if newname == name and eid == 'End':
                         return 'ignore'
 
         return 'ok'
 
-    def search_in_list(self, name):
+    def _search_in_list(self, name):
         for el in self.tc_list:
             if el[0] == name:
                 # tuples are immutable ...
                 nr = el[1]
                 nr = nr + 1
                 # delete element
-                self.rm_from_list(name)
+                self._rm_from_list(name)
                 # add element
-                self.add_to_list(name, nr)
+                self._add_to_list(name, nr)
                 return nr
 
         return 0
 
-    def add_to_list(self, name, value):
+    def _add_to_list(self, name, value):
         newel = name, value
         self.tc_list.append(newel)
 
-    def rm_from_list(self, name):
+    def _rm_from_list(self, name):
         new_list = []
         for s in self.tc_list:
             if not s[0] == name:
                 new_list.append(s)
         self.tc_list = new_list
 
-    def create_fn(self, filename, conname, index, lnr):
-        return self.tb.workdir + '/logfiles/' + filename + '_' + conname + '_' + str(index) + '_' + str(lnr) + '.txt'
+    def _create_fn(self, filename, conname, index, lnr):
+        fn = filename.replace("/", "_")
+        return self.tb.workdir + '/logfiles/' + fn + '_' + conname + '_' + str(index) + '_' + str(lnr) + '.txt'
 
-    def analyse(self, evl, name):
+    def _analyse(self, evl, name):
         filename = name
-        index = self.search_in_list(name)
+        index = self._search_in_list(name)
         if index == 0:
-            self.add_to_list(name, 1)
+            self._add_to_list(name, 1)
             index = 1
         lnr = 1
         oldname = 'none'
 	end = False
         while end != True:
-            line = self.get_next_event(evl)
+            line = self._get_next_event(evl)
             tmp = line.split()
             if line == '':
                 end = True
@@ -146,15 +156,15 @@ class doc_backend(object):
                 continue
             if tmp[self.ev.typ] != 'EVENT':
                 continue
-            eid = self.get_event_id(tmp)
+            eid = self._get_event_id(tmp)
             if eid == 'none':
                 continue
-            newname = self.get_event_name(tmp)
-            ret = self.check_ignore_list(typ, newname, evl)
+            newname = self._get_event_name(tmp)
+            ret = self._check_ignore_list(eid, newname, evl)
             if ret == 'ignore':
                 continue
             if eid == 'Start':
-                self.analyse(evl, newname)
+                self._analyse(evl, newname)
             if eid == 'End':
                 try:
                     fd.close()
@@ -172,12 +182,12 @@ class doc_backend(object):
  
                 if oldname == 'none':
                     oldname = newname
-                    fd = open(self.create_fn(filename, newname, index, lnr), 'w')
+                    fd = open(self._create_fn(filename, newname, index, lnr), 'w')
                     fd.write(logline)
                 elif oldname == newname:
                     fd.write(logline)
                 else:
                     fd.close()
                     lnr = lnr + 1
-                    fd = open(self.create_fn(filename, newname, index, lnr), 'w')
+                    fd = open(self._create_fn(filename, newname, index, lnr), 'w')
                     oldname = newname

@@ -1,0 +1,22 @@
+some hints for sphinx:
+
+yum install python-sphinx
+
+http://www.sphinx-doc.org/en/stable/index.html
+http://www.sphinx-doc.org/en/stable/tutorial.html
+http://www.sphinx-doc.org/en/stable/markup/inline.html#ref-role
+
+may "ifconfig module" is interessting for selecting, which
+parts we add.
+
+sphinx-quickstart
+
+set PYTHONPATH for creating tbotlib function documentation
+export PYTHONPATH=/home/hs/data/Entwicklung/tbot/src/common:/home/hs/data/Entwicklung/tbot/src/common/event:/home/hs/data/Entwicklung/tbot/src/lab_api
+
+create HTML:
+make html;firefox build/html/main.html
+
+create pdf:
+https://www.quora.com/How-to-create-a-PDF-out-of-Sphinx-documentation-tool
+sphinx-build -b pdf source build/pdf;okular build/pdf/tbot_doc.pdf

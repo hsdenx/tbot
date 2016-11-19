@@ -16,36 +16,22 @@ import sys
 import os
 
 class statistic_plot_backend(object):
-    """
+    """create a statistic of called testcases
+
     create a stat.dat file for creating a TC statistic image
     with gnuplot
 
     call "gnuplot balkenplot.sem" in tbot workdir after
-    a TBot is finsihed
+    tbot finsihed, so you need gnuplot installed on your system.
 
-    balkenplot.sem file:
-    # set terminal png transparent nocrop enhanced size 450,320 font "arial,8" 
-    # set output 'histograms.4.png'
+    used balkenplot.sem file:
 
-    set boxwidth 0.75 absolute
-    set style fill   solid 1.00 border lt -1
-    set key outside right top vertical Left reverse noenhanced autotitles columnhead nobox
-    set key invert samplen 4 spacing 1 width 0 height 0
-    set style histogram rowstacked title  offset character 0, 0, 0
-    set datafile missing '-'
-    set style data histograms
-    set xtics border in scale 0,0 nomirror rotate by -45  offset character 0, 0, 0 autojustify
-    set xtics  norangelimit font ",8"
-    set xtics   ()
-    set title "TC statistic"
+    https://github.com/hsdenx/tbot/blob/master/src/files/balkenplot.sem
 
-    set grid ytics
-    set terminal jpeg enhanced size 2048,768
-    set output "output.jpg"
-
-    i = 2
-    plot 'stat.dat' using 2:xtic(1), for [i=3:3] '' using i
-
+    - **parameters**, **types**, **return** and **return types**::
+    :param arg1: tb
+    :param arg2: filename which gets created
+    :param arg3: list of strings, containing testcasesnames, which get ignored
     """
     def __init__(self, tb, fdfile, ignorelist):
         self.dotnr = 0
@@ -56,38 +42,40 @@ class statistic_plot_backend(object):
         self.tc_list = []
         self.ignoretclist = ignorelist
 
-    def close(self):
+    def _close(self):
         self.fd.close()
 
     def __del__(self):
-        self.close()
+        self._close()
 
     def create_statfile(self):
+        """create the statistic file
+        """
         el = list(self.tb.event.event_list)
-        self.analyse(el)
-        # self.print_list()
-        self.write_header()
-        self.write_table()
-        self.write_bottom()
-        self.close()
+        self._analyse(el)
+        # self._print_list()
+        self._write_header()
+        self._write_table()
+        self._write_bottom()
+        self._close()
  
-    def write_header(self):
+    def _write_header(self):
         self.fd.write('Name\tFail\tOk\n')
  
-    def write_bottom(self):
+    def _write_bottom(self):
         self.fd.write('\n')
 
-    def get_event_typ(self, tmp):
+    def _get_event_typ(self, tmp):
         if tmp[self.ev.id] == 'Start':
             return tmp[self.ev.id]
         if tmp[self.ev.id] == 'End':
             return tmp[self.ev.id]
         return 'none'
 
-    def get_event_name(self, tmp):
+    def _get_event_name(self, tmp):
         return tmp[self.ev.name]
 
-    def get_next_event(self, el):
+    def _get_next_event(self, el):
         if el == None:
             return ''
 
@@ -98,7 +86,7 @@ class statistic_plot_backend(object):
         el.pop(0)
         return ret
 
-    def check_ignore_list(self, typ, name, evl):
+    def _check_ignore_list(self, typ, name, evl):
         if typ != 'Start':
             return 'ok'
 
@@ -107,66 +95,66 @@ class statistic_plot_backend(object):
                 # search until End event
                 line = 'start'
                 while line != '':
-                    line = self.get_next_event(evl)
+                    line = self._get_next_event(evl)
                     tmp = line.split()
                     if tmp == []:
                         continue
                     if tmp[self.ev.typ] != 'EVENT':
                         continue
-                    ntyp = self.get_event_typ(tmp)
+                    ntyp = self._get_event_typ(tmp)
                     if typ == 'none':
                         continue
-                    newname = self.get_event_name(tmp)
+                    newname = self._get_event_name(tmp)
                     if newname == name and ntyp == 'End':
                         return 'ignore'
 
         return 'ok'
 
-    def delete_in_list(self, val):
+    def _delete_in_list(self, val):
         self.tc_list.remove(val)
 
-    def search_in_list(self, name):
+    def _search_in_list(self, name):
         for el in self.tc_list:
             if el[0] == name:
                 return el
 
         return None
 
-    def add_to_list(self, name):
+    def _add_to_list(self, name):
         newel = name, 0, 0
         self.tc_list.append(newel)
 
-    def print_list(self):
+    def _print_list(self):
         print(self.tc_list)
 
-    def write_table(self):
+    def _write_table(self):
         for el in self.tc_list:
             tmp = el[0] + '\t' + str(el[2]) + '\t' + str(el[1]) + '\n'
             self.fd.write(tmp)
 
-    def analyse(self, evl):
+    def _analyse(self, evl):
         line = 'start'
         while line != '':
-            line = self.get_next_event(evl)
+            line = self._get_next_event(evl)
             tmp = line.split()
             if tmp == []:
                 continue
             if tmp[self.ev.typ] != 'EVENT':
                 continue
-            typ = self.get_event_typ(tmp)
+            typ = self._get_event_typ(tmp)
             if typ == 'none':
                 continue
-            newname = self.get_event_name(tmp)
+            newname = self._get_event_name(tmp)
             result = tmp[self.ev.value]
-            ret = self.check_ignore_list(typ, newname, evl)
+            ret = self._check_ignore_list(typ, newname, evl)
             if ret == 'ignore':
                 continue
             if typ == 'Start':
-                el = self.search_in_list(newname)
+                el = self._search_in_list(newname)
                 if el == None:
-                    self.add_to_list(newname)
+                    self._add_to_list(newname)
             if typ == 'End':
-                el = self.search_in_list(newname)
+                el = self._search_in_list(newname)
                 if el == None:
                     print("Error End not found", newname)
                     continue
@@ -176,5 +164,5 @@ class statistic_plot_backend(object):
                 if result == 'False':
                     new = el[2] + 1
                     newel = el[0], el[1], new
-                self.delete_in_list(el)
+                self._delete_in_list(el)
                 self.tc_list.append(newel)

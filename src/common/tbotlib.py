@@ -66,17 +66,17 @@ def raw(text):
 class tbot(object):
     """ The tbot class
 
-    more details follow
+    all begins here ...
+
+
+    - **parameters**, **types**, **return** and **return types**::
+    :param arg1: workdir for tbot
+    :param arg2: labfile
+    :param arg3: board config file
+    :param arg4: name of logfile
+    :param arg5: be verbose
     """
     def __init__(self, workdir, labfile, cfgfile, logfilen, verbose):
-        """
-        :param workdir: workdir for tbot
-        :param labfile: labfile
-        :param cfgfile: board config file
-        :param logfilen: name of logfile
-        :param verbose: be verbose
-        :return:
-        """
         ## enable verbose output
         self.verbose = verbose
         self.cfgfile = cfgfile
@@ -160,10 +160,6 @@ class tbot(object):
             sys.exit(1)
 
     def __del__(self):
-        """
-        cleanup
-        :return:
-        """
         time.sleep(1)
 
     def overwrite_config(self, filename):
@@ -209,15 +205,15 @@ class tbot(object):
                         self.config.__dict__.update({ov[0] : tmp})
 
     def cleanup(self):
-        """
-        cleanup
-        :return:
-        """
         self.c_ctrl.cleanup()
         self.c_con.cleanup()
 
     def get_power_state(self, boardname):
         """ Get powerstate of the board in the lab
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: boardname
+        :return: True if power state is on, else False
         """
         tmp = "get power state " + boardname + " using tc " + self.config.tc_lab_denx_get_power_state_tc
         logging.info(tmp)
@@ -229,6 +225,12 @@ class tbot(object):
 
     def set_power_state(self, boardname, state):
         """ set powerstate for the board in the lab
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: boardname
+        :param arg1: state on/off
+        :type arg1: string
+        :return: True if setting state was successful, else False
         """
         tmp = "get power state " + boardname + " using tc " + self.config.tc_lab_denx_power_tc
         logging.info(tmp)
@@ -240,6 +242,9 @@ class tbot(object):
 
     def connect_to_board(self, boardname):
         """ connect to the board
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: boardname
         """
         if self.config.do_connect_to_board == False:
             tmp = "do not connect tot board"
@@ -262,6 +267,9 @@ class tbot(object):
 
     def disconnect_from_board(self, boardname):
         """ disconnect from the board
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: boardname
         """
         tmp = "disconnect from board " + boardname + " using tc " + self.config.tc_lab_denx_disconnect_from_board_tc
         logging.debug(tmp)
@@ -277,15 +285,22 @@ class tbot(object):
         return ret
 
     def get_board_state(self, name):
-        """ Get boardstate of the board in the lab
-            if it send a response if return is pressed
-        """
         tmp = "get board state " + name
         logging.info(tmp)
         return True
 
     def set_board_state(self, state):
         """ set the board to a state
+
+        currrent states supported:
+        'lab'
+        'u-boot'
+        'linux'
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: state string
+        :return: True if switching to state had success
+        else testcase fails.
         """
         tmp = "set board to state " + state
         logging.debug(tmp)
@@ -310,15 +325,21 @@ class tbot(object):
         return True
 
     def tbot_get_password(self, user, board):
-        """ get the password for the user
-            return password if found
-            end tc if not
+        """get the password for the user/board
+
             The passwords are in the password.py file
             in the working directory. For example:
             if (user == 'passwordforuserone'):
                 password = 'gnlmpf'
             if (user == 'anotheruser'):
                 password = 'passwordforanotheruser'
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: user
+        :param arg2: board
+        :return:
+            return password if found
+            end tc if not
         """
         filename = self.workdir + "/password.py"
         try:
@@ -339,9 +360,8 @@ class tbot(object):
         return password
 
     def tbot_start_wdt(self):
-        """
-        start the WDT process
-        :return:
+        """start the WDT process
+
         """
         filepath = self.workdir + "/src/common/tbot_wdt.py"
         self.own_pid = str(os.getpid())
@@ -350,9 +370,8 @@ class tbot(object):
         atexit.register(self.wdt_process.terminate)
 
     def tbot_trigger_wdt(self):
-        """
-        trigger the WDT
-        :return:
+        """trigger the WDT
+
         """
         try:
             fd = open(self.wdtfile, 'w')
@@ -365,10 +384,12 @@ class tbot(object):
         fd.close()
 
     def check_debugger(self):
-        """
-        checks if a debugger is attached, and if so,
-        run the target. For this tc "tc_lab_bdi_run.py"
+        """checks if a debugger is attached
+
+        If so, run the target. For this tc "tc_lab_bdi_run.py"
         is called.
+
+        - **parameters**, **types**, **return** and **return types**::
         :return: True
         """
         if self.config.board_has_debugger:
@@ -387,9 +408,15 @@ class tbot(object):
 
     def end_tc(self, ret):
         """ end testcase.
-            ret contains True if testcase
-            ended successfully, False if not.
-            Return: calls sys.exit(0 if ret == True 1 else)
+
+        simple end a testcase.
+
+        ret contains True if testcase
+        ended successfully, False if not.
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: return value True/False
+        :return: calls sys.exit(0 if ret == True 1 else)
         """
         self._ret = ret
         if self._main == 0:
@@ -412,34 +439,53 @@ class tbot(object):
             sys.exit(1)
 
     def verboseprint(self, *args):
+        """ print a verbose string on stdout.
+
+            This output can be enabled through self.config.debug
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: argument list
+        """
         if self.verbose:
             print("%s" % (args))
 
     def debugprint(self, *args):
         """ print a debug string on stdout.
+
             This output can be enabled through self.config.debug
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: argument list
         """
         if self.config.debug:
             print("%s" % (args))
 
     def statusprint(self, *args):
         """ print a status string on stdout.
+
             This output can be enabled through self.config.debugstatus
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: argument list
         """
         if self.config.debugstatus:
             print("%s" % (args))
 
     def con_log(self, *args):
-        """
-        logs a console string
-        :param args: console string
+        """logs a console string
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: console string
         :return:
         """
         logging.log(self.con_loglevel, *args)
 
     def check_open_fd(self, c):
         """check, if stream is open.
-           return:
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: connection
+        :return:
            True: If open
            False: If stream open failed
         """
@@ -465,7 +511,10 @@ class tbot(object):
 
     def read_line(self, c):
         """read a line. line end detected through '\n'
-           return:
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: connection
+        :return:
            True: if a line is read
                  self.buf contains the line
            False :if prompt read
@@ -478,14 +527,22 @@ class tbot(object):
 
     def flush(self, c):
         """ read out all bytes from connection
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: connection
         """
         c.flush()
         log = c.get_log()
 
     def write_stream(self, c, string):
-        """write a string to the opened stream
+        """write a string to connection
+
            If stream is not open, try to open it
-           return:
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: connection
+        :param arg2: string
+        :return:
            True: if write was successful
            None: not able to open the stream
         """
@@ -494,9 +551,16 @@ class tbot(object):
         return True
 
     def write_stream_passwd(self, c, user, board):
-        """write a passwd for user to the opened stream
+        """write a passwd for user to connection
+
            If stream is not open, try to open it
            Do not log it.
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: connection
+        :param arg2: user
+        :param arg3: board
+        :return:
            return:
            True: if write was successful
            None: not able to open the stream
@@ -526,9 +590,13 @@ class tbot(object):
         return True
 
     def write_stream_con(self, string):
-        """write a string to the opened stream
+        """write a string to console connection
+
            If stream is not open, try to open it
-           return:
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: string
+        :return:
            True: if write was successful
            None: not able to open the stream
         """
@@ -536,9 +604,13 @@ class tbot(object):
         return ret
 
     def write_stream_ctrl(self, string):
-        """write a string to the opened stream
+        """write a string to the ctrl connection
+
            If stream is not open, try to open it
-           return:
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: string
+        :return:
            True: if write was successful
            None: not able to open the stream
         """
@@ -547,8 +619,12 @@ class tbot(object):
 
     def send_console_end(self, c):
         """write Ctrl-C to the opened stream
+
            If stream is not open, try to open it
-           return:
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: connection
+        :return:
            True: if write was successful
            None: not able to open the stream
         """
@@ -564,8 +640,13 @@ class tbot(object):
 
     def send_ctrl_c(self, c):
         """write Ctrl-C to the opened stream
+
            If stream is not open, try to open it
-           return:
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: connection
+        :return:
+        :return:
            True: if write was successful
            None: not able to open the stream
         """
@@ -581,8 +662,12 @@ class tbot(object):
 
     def send_ctrl_c_con(self):
         """write Ctrl-C to the opened stream
+
            If stream is not open, try to open it
-           return:
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: connection
+        :return:
            True: if write was successful
            None: not able to open the stream
         """
@@ -591,8 +676,12 @@ class tbot(object):
  
     def send_ctrl_m(self, c):
         """write Ctrl-M to the opened stream
+
            If stream is not open, try to open it
-           return:
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: connection
+        :return:
            True: if write was successful
            None: not able to open the stream
         """
@@ -607,9 +696,17 @@ class tbot(object):
         return True
 
     def set_prompt(self, c, prompt, ptype):
-        """set the prompt on the target.
-           True: If setting the prompt was successful
-           False: If settting the prompt failed
+        """set the prompt for the connection c.
+
+        If ptype = 'linux' add some special settings to the prompt.
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: connection
+        :param arg2: new promt string
+        :param arg3: prompt type 'linux'
+        :type arg3: string
+        :return: True: If setting the prompt was successful
+        False: If settting the prompt failed
         """
         ret = True
         if ptype == 'linux':
@@ -633,6 +730,11 @@ class tbot(object):
 
     def check_args(self, args):
         """Check if the args are in current argumentstack
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: args
+        :return: If args no found, end testcase with False
+        else return args argument
         """
         arg = self.tc_stack_arg[-1]
         name = self.tc_stack[-1]
@@ -650,9 +752,15 @@ class tbot(object):
         return arg
 
     def call_tc(self, name, **kwargs):
-        """Call another testcase. Search for the TC name
+        """Call another testcase.
+
+           Search for the TC name
            through all subdirs in 'src/tc'.
-           return:
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: name of testcase
+        :param arg2: optional testcase argumentlist
+        :return:
            False: If testcase was not found
                   or testcase raised an execption
            ! called testcase sets the ret variable, which
@@ -710,8 +818,12 @@ class tbot(object):
 
     def eof_write(self, c, string):
         """ write a string to connection c
-            If write_stream returns not True, end tc
-            with failure
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: connection
+        :param arg2: string
+        :return: If write_stream returns not True, end tc
+        with failure
         """
         ret = c.sendcmd(string)
         self.tbot_trigger_wdt()
@@ -721,41 +833,44 @@ class tbot(object):
 
     def eof_write_con(self, string):
         """ write a string to console.
-            If write_stream returns not True, end tc
-            with failure
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: commandstring
+        :return: True if write_stream returns True, else end testcase with False
         """
         ret = self.eof_write(self.c_con, string)
         return True
   
     def eof_write_cmd(self, c, command):
-        """
-        write a command to fd, wait for prompt
-        :param c: connection
-        :param command: commandstring
-        :return: True if prompt read
-        end testcase with False else
+        """write a command to fd, wait for prompt
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: connection
+        :param arg2: commandstring
+        :return: True if prompt read, else end testcase with False
         """
         self.eof_write(c, command)
         self.tbot_expect_prompt(c)
         return True
 
     def eof_write_cmd_list(self, c, cmdlist):
-        """
-        send a list of cmd to fd and wait for end
-        :param c: connection
-        :param cmdlist: list of commandstrings
-        :return: True if prompt found
-        else endtestcase with False
+        """send a list of cmd to fd and wait for end
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: connection
+        :param arg2: list of commandstrings
+        :return: True if prompt found else endtestcase with False
         """
         for tmp_cmd in cmdlist:
             self.eof_write_cmd(c, tmp_cmd)
 
     def write_lx_cmd_check(self, c, command, endTC=True):
-        """
-        write a linux command to console.
-        :param c: connection
-        :param command: commandstring
-        :param endTC: if True and linux cmd ended False end TC
+        """write a linux command to console.
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: connection
+        :param arg2: commandstring
+        :param arg3: if True and linux cmd ended False end TC
                with end_tc(False), else return True
         :return: if linux cmd ended successful True, else False
         """
@@ -770,9 +885,10 @@ class tbot(object):
         return ret
 
     def eof_write_con_lx_cmd(self, command):
-        """
-        write a linux command to console.
-        :param command: commandstring
+        """write a linux command to console.
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: commandstring
         :return: True if linux command was successful
         else end testcase with False
         """
@@ -780,43 +896,55 @@ class tbot(object):
         return True
  
     def eof_write_ctrl(self, string):
-        """ write a string to control.
-            If write_stream returns not True, end tc
-            with failure
+        """ write a string to control connection.
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: commandstring
+        :return: If write_stream returns not True, end tc with failure
         """
         ret = self.eof_write(self.c_ctrl, string)
         return True
 
     def eof_write_con_passwd(self, user, board):
         """ write a passwd to console. Do not log it.
-            If write_stream returns not True, end tc
-            with failure
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: username
+        :param arg2: board
+        :return: If write_stream returns not True, end tc with failure
         """
         self.write_stream_passwd(self.c_con, user, board)
         return True
 
     def eof_write_ctrl_passwd(self, user, board):
         """ write a password to control. Do not log it.
-            If write_stream returns not True, end tc
-            with failure
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: username
+        :param arg2: board
+        :return: If write_stream returns not True, end tc with failure
         """
         self.write_stream_passwd(self.c_ctrl, user, board)
         return True
 
     def eof_write_workfd_passwd(self, user, board):
         """ write a password to workfd. Do not log it.
-            If write_stream returns not True, end tc
-            with failure
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: username
+        :param arg2: board
+        :return: If write_stream returns not True, end tc with failure
         """
         ret = self.write_stream_passwd(self.workfd, user, board)
         return True
 
     def set_term_length(self, c):
-        """
-        set terminal line length
+        """set terminal line length
+
         ToDo How could this be set longer and do this correct
-        :param c: connection
-        :return:
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: connection
+        :return: no return value
         """
         tmp = 'stty cols ' + self.config.term_line_length
         self.eof_write(c, tmp)
@@ -828,6 +956,11 @@ class tbot(object):
 
     def eof_call_tc(self, name, **kwargs):
         """ call tc name, end testcase on failure
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: name of Testcase
+        :param arg2: optional argument list
+        :return: True if called testcase ends True, als call end_tc(False)
         """
         ret = self.call_tc(name, **kwargs)
         if ret == True:
@@ -835,11 +968,12 @@ class tbot(object):
         self.end_tc(False)
 
     def write_cmd_check(self, c, cmd, string):
-        """
-        send a cmd and check if a string is read.
-        :param c: connection
-        :param cmd: commandstring
-        :param string: string which must be read
+        """send a cmd and check if a string is read.
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: connection
+        :param arg2: command send over connection
+        :param arg3: string which must be read
         :return: True if prompt and string is read
         else False
         """
@@ -856,11 +990,12 @@ class tbot(object):
         return cmd_ok
 
     def eof_write_cmd_check(self, c, cmd, string):
-        """
-        send a cmd and check if a string is read.
-        :param c: connection
-        :param cmd: commandstring
-        :param string: string which must be read
+        """send a cmd and check if a string is read.
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: connection
+        :param arg2: commandstring
+        :param arg3: string which must be read
         :return: True if prompt and string is read
         else end Testcase with False
         """
@@ -869,15 +1004,16 @@ class tbot(object):
             self.end_tc(False)
 
     def tbot_read_line_and_check_strings(self, c, strings):
-        """
-        read a line and search, if it contains a string
-        in strings. If found, return index
-        if read some chars, but no line, check if it
-        is a prompt, return 'prompt' if it is a prompt.
+        """read a line and search, if it contains a string in strings.
+
+        If found, return index if read some chars, but no line,
+        check if it is a prompt, return 'prompt' if it is a prompt.
         if a string in strings found return index
         else return None
-        :param c: connection used
-        :param strings: a list of strings
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: connection
+        :param arg2: a list of strings
         :return: index of string which is found
                  'prompt' if prompt found
         """
@@ -897,9 +1033,12 @@ class tbot(object):
             return save
 
     def tbot_rup_check_all_strings(self, c, strings, endtc=False):
-        """
-        read until prompt, and check if all strings in list strings
-        are found. returns False, if not all strings in list are
+        """read until prompt, and check if all strings in list strings are found
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: connection
+        :param arg2: a list of strings
+        :return: returns False, if not all strings in list are
         found, or end tbot if endtc = True.
         """
         tmp = True
@@ -939,9 +1078,15 @@ class tbot(object):
         return True
 
     def tbot_rup_error_on_strings(self, c, strings, endtc=False):
-        """
-        read until prompt and check, if a string in list is
-        found, if so, end False
+        """read until prompt and check, if a string in list is found.
+
+        If a string is found, end False.
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: connection
+        :param arg2: list of strings
+        :param arg3: if endtc = True end with calling end_tc(True/False)
+        :return: True if prompt and no string is found.
         """
         tmp = True
         notfound = True
@@ -964,6 +1109,9 @@ class tbot(object):
 
     def tbot_expect_prompt(self, c):
         """ searches for prompt, endless
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: connection
         """
         c.expect_prompt()
         self.buf = c.get_log()
@@ -972,15 +1120,21 @@ class tbot(object):
     def tbot_expect_string(self, c, string):
         """ expect a string
 
-        :return : 'prompt' if prompt found
-                  string index which string is found
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: connection
+        :param arg2: string expected
+        :return: 'prompt' if prompt found, True if string is found, else False
         """
         ret = c.expect_string(string)
         self.buf = c.get_log()
         return ret
 
     def eof_expect_string(self, c, string):
-        """ expet a string, if prompt read end tc False
+        """ expect a string, if prompt read end tc False
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: connection
+        :param arg2: string expected
         """
         ret = self.tbot_expect_string(c, string)
         if ret == 'prompt':

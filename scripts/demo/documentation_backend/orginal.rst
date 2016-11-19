@@ -2,6 +2,12 @@
 tbot documentation backend demo
 ###############################
 
+hd param testing
+
+tbot_ref:tc_workfd_hdparm.py_tb_con_1_1.txt
+
+bl bla
+
 | Here is some text before 2 logs from testcase **tc_lab_cp_file.py**.
 | Simple copy images from a kernel build into tftpdirectory
 

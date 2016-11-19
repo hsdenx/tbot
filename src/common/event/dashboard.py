@@ -11,22 +11,51 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# MySQLdb python module is needed, install it for
-# example on the raspberry pi with:
-# apt-get install python-mysqldb
-# apt-get install sshpass
-# passing password to scp
 import logging
 import sys
 import os
 import MySQLdb
 
 class dashboard(object):
+    """extract tbot results to a mysql database
+    after tbot has finished
+
+    Prerequisites:
+
+    MySQLdb python module is needed, install it for
+    example on the raspberry pi with:
+
+    apt-get install python-mysqldb
+    apt-get install sshpass
+      (needed fpr passing the password to scp)
+
+    If tb.config.create_dot == 'yes' then you need the dot
+
+    command, please install this, see for example:
+
+    http://askubuntu.com/questions/97552/how-to-install-dot-provided-by-graphviz
+
+    If tb.config.create_statistic == 'yes' you need the gnuplot
+
+    command. See an example for installing gnuplot here:
+
+    http://askubuntu.com/questions/340579/how-to-install-gnuplot-in-ubuntu
+
+    The dashboard backend also collects information from other backends
+    (if they are enabled) and stores them in "webdir".
+    Currently this is a fix place, need here some work to make this
+    configurable. Currently it is placed at "/var/www/html", and subdir
+    "tbot" plus current MYSQL ID "id_%d" ... 
+
+    - **parameters**, **types**, **return** and **return types**::
+    :param arg1: tb
+    :param arg2: host
+    :param arg3: username
+    :param arg4: pw
+    :param arg5: dbname
+    :param arg5: tname
+    """
     def __init__(self, tb, host, user, pw, dbname, tname):
-        """
-        push tbot results to a mysql database
-        after tbot has finished
-        """
         self.tb = tb
         self.ev = self.tb.event
         self.host = host
@@ -45,7 +74,7 @@ class dashboard(object):
         except:
             logging.warn("Could not connect to DB %s", self.dbname)
 
-    def insert(self, query):
+    def _insert(self, query):
         try:
             self.cursor.execute(query)
         except:
@@ -57,7 +86,7 @@ class dashboard(object):
     def __del__(self):
         self.connection.close()
 
-    def get_next_event(self, el):
+    def _get_next_event(self, el):
         if len(el) == 0:
             return ''
 
@@ -66,6 +95,8 @@ class dashboard(object):
         return ret
 
     def insert_test_into_db(self):
+        """starts with filling the DB
+        """
         evl = list(self.tb.event.event_list)
         self.dt = ''
         self.tool = 'unknown'
@@ -79,7 +110,7 @@ class dashboard(object):
         self.suc = '1'
         line = 'start'
         while line != '':
-            line = self.get_next_event(evl)
+            line = self._get_next_event(evl)
             tmp = line.split()
             if tmp == []:
                 continue
@@ -130,7 +161,7 @@ class dashboard(object):
         # also we need to save the logfile
         query = "INSERT INTO " +  self.tname + " (`test_date`, `toolchain`, `binaryversion`, `defname`, `testcase`, `success`) VALUES ('" + self.dt + "', '" + self.tool + "', '" + self.bina + "', '" + defn + "', '" + self.tcname + "', '" + self.suc + "')"
         logging.debug("DB query %s", query)
-        self.insert(query)
+        self._insert(query)
         # now create the images, and move them to the webserverdirectory
         # ToDo:
         # catch errors

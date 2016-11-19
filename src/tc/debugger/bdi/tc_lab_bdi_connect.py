@@ -15,7 +15,7 @@
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lab_bdi_connect.py
 # connect to the BDI if tb.config.board_has_debugger != 0
-# - send to workfd tb.tb.config.lab_bdi_upd_uboot_bdi_cmd
+# - send to workfd tb.config.lab_bdi_upd_uboot_bdi_cmd
 # - set BDI prompt tb.config.lab_bdi_upd_uboot_bdi_prompt
 # - wait for BDI prompt
 # End:

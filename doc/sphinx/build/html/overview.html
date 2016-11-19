@@ -1,0 +1,325 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>tbot overview &mdash; tbot 2016.12 documentation</title>
+    
+    <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2016.12',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="tbot 2016.12 documentation" href="index.html" />
+    <link rel="next" title="Principles" href="principles.html" />
+    <link rel="prev" title="Welcome to tbot’s documentation!" href="main.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+        <div class="headertitle"><a
+          href="main.html">tbot 2016.12 documentation</a></div>
+        <div class="rel">
+          <a href="main.html" title="Welcome to tbot’s documentation!"
+             accesskey="P">previous</a> |
+          <a href="principles.html" title="Principles"
+             accesskey="N">next</a> |
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="tbot-overview">
+<h1>tbot overview<a class="headerlink" href="#tbot-overview" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="short-description">
+<h2>Short description<a class="headerlink" href="#short-description" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>execute testcases on real hw</li>
+<li>testcases written in python</li>
+<li>call testcases from another testcase</li>
+<li>Based on ideas from:
+<a class="reference external" href="http://www.denx.de/wiki/DUTS/DUTSDocs">http://www.denx.de/wiki/DUTS/DUTSDocs</a></li>
+</ul>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre>$ tbot.py --help
+Usage: tbot.py [options]
+
+Options:
+  -h, --help            show this help message and exit
+  -c CFGFILE, --cfgfile=CFGFILE
+                        the tbot board configfilename
+  -s LABFILE, --slabfile=LABFILE
+                        the tbot lab configfilename
+  -l LOGFILE, --logfile=LOGFILE
+                        the tbot logfilename, if default, tbot creates a
+                        defaultnamelogfile
+  -t TC, --testcase=TC  the testcase which should be run
+  -v, --verbose         be verbose, print all read/write to stdout
+  -w WORKDIR, --workdir=WORKDIR
+                        set workdir, default os.getcwd()
+</pre></div>
+</div>
+</div>
+<div class="section" id="demo">
+<h2>Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h2>
+<p>click on the gif to see the full video on youtube</p>
+<img alt="_images/demo.gif" src="_images/demo.gif" />
+<p><a class="reference external" href="https://youtu.be/zfjpj3DLsx4">https://youtu.be/zfjpj3DLsx4</a></p>
+<p>demo video for a CAN bus testcase:</p>
+<p><a class="reference external" href="https://youtu.be/hl7gI4b9CG8">https://youtu.be/hl7gI4b9CG8</a></p>
+<p>demo for a buildbot integration:</p>
+<p><a class="reference external" href="http://xeidos.ddns.net/buildbot/tgrid">http://xeidos.ddns.net/buildbot/tgrid</a></p>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="install-tbot-on-your-pc-linux-only-tested">
+<h3>install tbot on your PC (linux only tested):<a class="headerlink" href="#install-tbot-on-your-pc-linux-only-tested" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>get the source code:</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre>$ git clone https://github.com/hsdenx/tbot.git
+[...]
+$
+</pre></div>
+</div>
+<p>cd into the tbot directory.</p>
+<ul>
+<li><p class="first">you need the for running tbot the python paramiko module, see:
+<a class="reference external" href="http://www.paramiko.org/installing.html">http://www.paramiko.org/installing.html</a></p>
+<p>paramiko is used for handling ssh sessions, and open filedescriptors
+on a ssh connection. Tbot open a ssh connection to a &#8220;lab PC&#8221; and
+opens on that connection 2 filehandles, one for control functions
+and one for the connection to the boards console. May it is worth
+to think about to open more filehandles and use them in tbot, but
+thats a point in the Todo list ...</p>
+<p>See [1] for more infos about tbot principles.</p>
+</li>
+<li><p class="first">prepare a directory for storing the logfiles
+and pass it with the commandline option &#8220;-l&#8221;
+to tbot. Default is the directory &#8220;log&#8221; in the tbot
+root (don;t forget to create it, if you want to use it)</p>
+</li>
+<li><p class="first">If your VL is not yet in tbot source, integrate it
+(This task has only to be done once for your VL):</p>
+<p>A VL has basic 3 tasks:</p>
+<ol class="loweralpha simple">
+<li>power on/off the board</li>
+<li>get power state of the board</li>
+<li>connect to the boards console</li>
+</ol>
+<p>As tbot sends only shell commands (also to the Lab PC)
+this tasks must be executable through shell commands on your
+Lab PC:</p>
+</li>
+<li><p class="first">prepare a lab config file for your lab:</p>
+<ul class="simple">
+<li>create a new folder in src/tc/lab/XXX
+replace XXX to a proper value</li>
+</ul>
+<p>Each VL needs a configuration file, passed with the option &#8216;-s&#8217; to
+tbot, example:</p>
+<p><a class="reference external" href="https://github.com/hsdenx/tbot/blob/master/config/lab_hs_home.py">https://github.com/hsdenx/tbot/blob/master/config/lab_hs_home.py</a>
+simple copy this and rename it to
+<a class="reference external" href="https://github.com/hsdenx/tbot/blob/master/config/lab_XXX.py">https://github.com/hsdenx/tbot/blob/master/config/lab_XXX.py</a>
+and adapt the settings to your specific needs.</p>
+</li>
+<li><p class="first">Then you have to setup Testcases for the 3 VL tasks:</p>
+<ul>
+<li><p class="first">Task a) power on/off board:</p>
+<p>default TC for this task is:</p>
+<p><a class="reference external" href="https://github.com/hsdenx/tbot/blob/master/src/tc/lab/denx/tc_lab_denx_power.py">https://github.com/hsdenx/tbot/blob/master/src/tc/lab/denx/tc_lab_denx_power.py</a></p>
+<ul>
+<li><p class="first">now copy this file to for example
+cp src/tc/lab/denx/tc_lab_denx_power.py src/tc/lab/XXX/tc_lab_XXX_power_onoff.py
+and adapt the &#8220;remote_power&#8221; command from the denx lab to your needs.</p>
+<p>As this TC powers on the board for all your boards in your VL,
+you can differ between the boards through the tbot class
+variable &#8220;tb.config.boardlabpowername&#8221; (which is in the default case the
+same as &#8220;tb.config.boardname&#8221;), but you may need to name the power target
+with an other name than boardname, so you can configure this case.
+The power state &#8220;tb.power_state&#8221; which the TC has to set
+is &#8220;on&#8221; for power on, or &#8220;off&#8221; for power off.</p>
+<p>If switching on the power is successful, call &#8220;tb.end_tc(True)&#8221;
+else &#8220;tb.end_tc(False)&#8221;</p>
+</li>
+<li><p class="first">set in your lab config file:
+tc_lab_denx_power_tc = &#8216;tc_lab_XXX_power_onoff.py&#8217;</p>
+</li>
+</ul>
+</li>
+<li><p class="first">Task b) get power state of a board:</p>
+<p>default TC for this task is:</p>
+<p><a class="reference external" href="https://github.com/hsdenx/tbot/blob/master/src/tc/lab/denx/tc_lab_denx_get_power_state.py">https://github.com/hsdenx/tbot/blob/master/src/tc/lab/denx/tc_lab_denx_get_power_state.py</a></p>
+<ul>
+<li><p class="first">now copy this file to for example
+(replace XXX to a proper value)
+cp src/tc/lab/denx/tc_lab_denx_get_power_state.py src/tc/lab/XXX/tc_lab_XXX_get_power_state.py
+and adapt the commands to your needs.</p>
+<p>If the power of the board is on, call &#8220;tb.end_tc(True)&#8221;
+else &#8220;tb.end_tc(False)&#8221;</p>
+</li>
+<li><p class="first">set in your lab config file:
+tc_lab_denx_get_power_state_tc = &#8216;tc_lab_XXX_get_power_state.py&#8217;</p>
+</li>
+</ul>
+</li>
+<li><p class="first">Task c) connect to the boards console:</p>
+<p>default TC for this task is:</p>
+<p><a class="reference external" href="https://github.com/hsdenx/tbot/blob/master/src/tc/lab/denx/tc_lab_denx_connect_to_board.py">https://github.com/hsdenx/tbot/blob/master/src/tc/lab/denx/tc_lab_denx_connect_to_board.py</a></p>
+<ul>
+<li><p class="first">now copy this file to for example
+cp src/tc/lab/denx/tc_lab_denx_connect_to_board.py src/tc/lab/XXX/tc_lab_XXX_connect_to_board.py
+and adapt the commands to your needs.</p>
+<p>If connect fails end this TC with &#8220;tb.end_tc(False)&#8221;
+else call &#8220;tb.end_tc(True)&#8221;</p>
+<p>If you want to use kermit for connecting to the boards console, you
+can use:</p>
+<p><a class="reference external" href="https://github.com/hsdenx/tbot/blob/master/src/tc/linux/tc_workfd_connect_with_kermit.py">https://github.com/hsdenx/tbot/blob/master/src/tc/linux/tc_workfd_connect_with_kermit.py</a></p>
+<p>Example for such a board in the VL from denx:
+tc_lab_denx_connect_to_board_tc = &#8216;tc_workfd_connect_with_kermit.py&#8217;</p>
+<p><a class="reference external" href="https://github.com/hsdenx/tbot/blob/master/config/tbot_dxr2.cfg#L20">https://github.com/hsdenx/tbot/blob/master/config/tbot_dxr2.cfg#L20</a></p>
+</li>
+<li><p class="first">set in your lab config file:
+tc_lab_denx_connect_to_board_tc = &#8216;tc_lab_XXX_connect_to_board.py&#8217;</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p class="first">prepare password.py file:
+This file contains all passwords tbot needs (for example for
+linux login on the boards)
+tbot searches this file in the tbot root directory.
+It is a simple python file, for example:</p>
+</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># passwords for the lab</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">board</span> <span class="o">==</span> <span class="s">&#39;lab&#39;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">user</span> <span class="o">==</span> <span class="s">&#39;hs&#39;</span><span class="p">):</span>
+        <span class="n">password</span> <span class="o">=</span> <span class="s">&#39;passwordforuserhs&#39;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">user</span> <span class="o">==</span> <span class="s">&#39;root&#39;</span><span class="p">):</span>
+        <span class="n">password</span> <span class="o">=</span> <span class="s">&#39;passwordforrootuser&#39;</span>
+<span class="c"># passwords for the boards</span>
+<span class="k">elif</span> <span class="p">(</span><span class="n">board</span> <span class="o">==</span> <span class="s">&#39;mcx&#39;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">user</span> <span class="o">==</span> <span class="s">&#39;root&#39;</span><span class="p">):</span>
+        <span class="n">password</span> <span class="o">=</span> <span class="s">&#39;passwordformcxrootfs&#39;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">user</span> <span class="o">==</span> <span class="s">&#39;root&#39;</span><span class="p">):</span>
+        <span class="n">password</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+</pre></div>
+</div>
+<p>tbot searches in the root folder for this file.</p>
+<ul>
+<li><p class="first">prepare board config file</p>
+<p>Each board which is found in the VL needs a tbot configuration file
+pass the config file name with the option &#8216;-c&#8217; to tbot, tbot searches
+in the &#8220;config&#8221; folder for them.</p>
+<p>board Example (dxr2 board):
+<a class="reference external" href="https://github.com/hsdenx/tbot/blob/master/config/dxr2.py">https://github.com/hsdenx/tbot/blob/master/config/dxr2.py</a></p>
+<p>Now comes a list of variables TC needs, this vary from what you
+you want to test...</p>
+</li>
+</ul>
+<p>Thats it ... you now can call tbot and hopefully, it works ;-)</p>
+<p>If you have problems in settings up tbot, please contact me
+(and may give me ssh access to your Lab PC ;-)</p>
+<p>Heiko Schocher &lt;<a class="reference external" href="mailto:hs&#37;&#52;&#48;denx&#46;de">hs<span>&#64;</span>denx<span>&#46;</span>de</a>&gt;
+v2 2016.11.02</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          <h3>Table Of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">tbot overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#short-description">Short description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#demo">Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="principles.html">Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="event.html">Events</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="roadmap.html">Project&#8217;s road-map</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tbotlib.html">Documentation of tbotlib functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="event_backends.html">Documentation of tbot event backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testcases.html">Documentation of all Testcases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variables.html">Documentation of all Variables</a></li>
+</ul>
+
+          <h3 style="margin-top: 1.5em;">Search</h3>
+          <form class="search" action="search.html" method="get">
+            <input type="text" name="q" />
+            <input type="submit" value="Go" />
+            <input type="hidden" name="check_keywords" value="yes" />
+            <input type="hidden" name="area" value="default" />
+          </form>
+          <p class="searchtip" style="font-size: 90%">
+            Enter search terms or a module, class or function name.
+          </p>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <a href="main.html" title="Welcome to tbot’s documentation!"
+             >previous</a> |
+          <a href="principles.html" title="Principles"
+             >next</a> |
+          <a href="genindex.html" title="General Index"
+             >index</a>
+            <br/>
+            <a href="_sources/overview.txt"
+               rel="nofollow">Show Source</a>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer">
+        &copy; Copyright 2016, Heiko Schocher.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

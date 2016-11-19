@@ -16,10 +16,21 @@ import sys
 import os
 
 class html_log(object):
+    """create a html log file after tbot hs finished
+
+    create a nicer log ... see for an example:
+
+    http://xeidos.ddns.net/tbot/id_189/html_log.html
+
+    the created html file needs the css file:
+
+    https://github.com/hsdenx/tbot/blob/testing/log/multiplexed_tbotlog.css
+
+    - **parameters**, **types**, **return** and **return types**::
+    :param arg1: tb
+    :param arg2: filename which gets created, place tb.workdir
+    """
     def __init__(self, tb, htmlfile):
-        """
-        create a html log file after tbot hs finsihed
-        """
         self.tb = tb
         self.ev = self.tb.event
         self.htmlfile = htmlfile
@@ -28,12 +39,14 @@ class html_log(object):
         self.htmlid = 0
 
     def create_htmlfile(self):
-        self.write_html_header()
-        self.write_log()
-        self.write_html_bottom()
+        """create the html file
+        """
+        self._write_html_header()
+        self._write_log()
+        self._write_html_bottom()
         self.fd.close()
  
-    def write_html_header(self):
+    def _write_html_header(self):
         self.fd.write('<html>\n')
         self.fd.write('<head>\n')
         self.fd.write('<link rel="stylesheet" type="text/css" href="multiplexed_tbotlog.css">\n')
@@ -95,13 +108,13 @@ class html_log(object):
         self.fd.write('\n')
         self.fd.write('<tt>\n')
  
-    def write_html_bottom(self):
+    def _write_html_bottom(self):
         self.fd.write('</tt>\n')
         self.fd.write('</body>\n')
         self.fd.write('</html>\n')
         self.fd.write('\n')
 
-    def write_tc_start_block(self, name):
+    def _write_tc_start_block(self, name):
         self.htmlid += 1
         self.fd.write('<!-- a testcase -->\n')
         self.fd.write('<div class="section block" id="' + str(self.htmlid) + '">\n')
@@ -113,7 +126,7 @@ class html_log(object):
         self.fd.write('</div>\n')
         self.fd.write('\n')
 
-    def write_con_log_block(self, log):
+    def _write_con_log_block(self, log):
         if log == '':
             return
         self.htmlid += 1
@@ -131,7 +144,7 @@ class html_log(object):
         self.fd.write('<!-- end of console log of testcase -->\n')
         self.fd.write('\n')
 
-    def write_ctrl_log_block(self, log):
+    def _write_ctrl_log_block(self, log):
         if log == '':
             return
         self.htmlid += 1
@@ -149,7 +162,7 @@ class html_log(object):
         self.fd.write('<!-- end of control log of testcase -->\n')
         self.fd.write('\n')
 
-    def write_canm_log_block(self, log):
+    def _write_canm_log_block(self, log):
         if log == '':
             return
         self.htmlid += 1
@@ -167,7 +180,7 @@ class html_log(object):
         self.fd.write('<!-- end of canm log of testcase -->\n')
         self.fd.write('\n')
 
-    def write_tc_end(self, name, status):
+    def _write_tc_end(self, name, status):
         ststr = 'Failed'
         if status == 'True':
             ststr = 'OK'
@@ -185,7 +198,7 @@ class html_log(object):
         self.fd.write('<!-- end of a testcase -->\n')
         self.fd.write('\n')
 
-    def get_event_typ(self, tmp):
+    def _get_event_typ(self, tmp):
         if tmp[self.ev.id] == 'Boardname':
             return tmp[self.ev.id]
         if tmp[self.ev.id] == 'BoardnameEnd':
@@ -198,10 +211,10 @@ class html_log(object):
             return tmp[self.ev.id]
         return 'none'
 
-    def get_event_name(self, tmp):
+    def _get_event_name(self, tmp):
         return tmp[self.ev.name]
 
-    def get_next_event(self, el):
+    def _get_next_event(self, el):
         if len(el) == 0:
             return ''
 
@@ -209,39 +222,39 @@ class html_log(object):
         el.pop(0)
         return ret
 
-    def write_testcase(self, name, el):
+    def _write_testcase(self, name, el):
         # write start of tc block need name
         if name != 'StartHTML':
-            self.write_tc_start_block(name)
+            self._write_tc_start_block(name)
 
         conlog =''
         ctrlog =''
         canmlog =''
         line = 'start'
         while line != '':
-            line = self.get_next_event(el)
+            line = self._get_next_event(el)
             tmp = line.split()
             if tmp == []:
                 continue
             if tmp[self.ev.typ] != 'EVENT':
                 continue
-            typ = self.get_event_typ(tmp)
+            typ = self._get_event_typ(tmp)
             if typ == 'none':
                 continue
-            tc_name = self.get_event_name(tmp)
+            tc_name = self._get_event_name(tmp)
 
             if typ == 'Start' or typ == 'Boardname':
                 # write con block need log
-                self.write_con_log_block(conlog)
+                self._write_con_log_block(conlog)
                 # write ctrl need log
-                self.write_ctrl_log_block(ctrlog)
+                self._write_ctrl_log_block(ctrlog)
                 # write canm need log
-                self.write_canm_log_block(canmlog)
+                self._write_canm_log_block(canmlog)
                 # write end of tc block (name, status)
                 conlog = ''
                 ctrlog = ''
                 canmlog = ''
-                self.write_testcase(tc_name, el)
+                self._write_testcase(tc_name, el)
 
             # get status (end of TC) parse "End" or "BoardnameEnd" check if name == name !
             if typ == 'End' or typ == 'BoardnameEnd':
@@ -249,13 +262,13 @@ class html_log(object):
                     print("not sync with tc name\n", tc_name, name)
                 status = tmp[self.ev.value]
                 # write con block need log
-                self.write_con_log_block(conlog)
+                self._write_con_log_block(conlog)
                 # write ctrl need log
-                self.write_ctrl_log_block(ctrlog)
+                self._write_ctrl_log_block(ctrlog)
                 # write canm need log
-                self.write_canm_log_block(canmlog)
+                self._write_canm_log_block(canmlog)
                 # write end of tc block (name, status)
-                self.write_tc_end(name, status)
+                self._write_tc_end(name, status)
                 return
                 
             if typ == 'log':
@@ -276,6 +289,6 @@ class html_log(object):
                     canmlog += canmlin[1]
                 continue
 
-    def write_log(self):
+    def _write_log(self):
         el = list(self.tb.event.event_list)
-        self.write_testcase('StartHTML', el)
+        self._write_testcase('StartHTML', el)

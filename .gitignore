@@ -5,3 +5,7 @@ log
 *.3
 *.png
 *.wdt
+*idea
+doc/sphinx/build/doctrees
+doc/sphinx/build/html
+doc/sphinx/build/pdf
