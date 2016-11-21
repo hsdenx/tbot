@@ -33,6 +33,9 @@ checks = ['SHC',
 	'tps65217 0-0024',
 	'at24 0-0050',
 	'Detected MACID',
+	'usb 1-1: Device is not authorized for usage',
+	'input: gpio_keys as',
+	'mmc0: new SDHC card at address aaaa',
 	'mmc1: new high speed MMC card at address 0001']
 
 for tb.config.tc_lx_dmesg_grep_name in checks:
@@ -41,12 +44,43 @@ for tb.config.tc_lx_dmesg_grep_name in checks:
 tb.workfd = tb.c_con
 tb.statusprint("tc_shc pinmux check")
 tb.eof_call_tc("tc_lx_check_reg_file.py")
+
+tb.set_board_state("linux")
+# do some basic tests
+tb.statusprint("tc_fipad basic checks")
+basiclist = [
+	{"cmd":"cat /sys/class/leds/shc\:cloud\:bl/trigger", "val":"[none] mmc0 mmc1 timer timer-sync oneshot heartbeat backlight gpio cpu0 default-on"},
+	{"cmd":"cat /sys/class/leds/shc\:cloud\:red/trigger", "val":"[none] mmc0 mmc1 timer timer-sync oneshot heartbeat backlight gpio cpu0 default-on"},
+	{"cmd":"cat /sys/class/leds/shc\:lan\:bl/trigger", "val":"[none] mmc0 mmc1 timer timer-sync oneshot heartbeat backlight gpio cpu0 default-on"},
+	{"cmd":"cat /sys/class/leds/shc\:lan\:red/trigger", "val":"[none] mmc0 mmc1 timer timer-sync oneshot heartbeat backlight gpio cpu0 default-on"},
+	{"cmd":"cat /sys/class/leds/shc\:power\:bl/trigger", "val":"none mmc0 mmc1 [timer] timer-sync oneshot heartbeat backlight gpio cpu0 default-on"},
+	{"cmd":"cat /sys/class/leds/shc\:power\:red/trigger", "val":"[none] mmc0 mmc1 timer timer-sync oneshot heartbeat backlight gpio cpu0 default-on"},
+	{"cmd":"export PATH=$PATH:/home/hs/shc", "val":"undef"},
+	{"cmd":"/home//hs/shc/all_led.sh", "val":"shc:power:red  state  trigger"},
+	{"cmd":"cat /sys/class/leds/shc\:cloud\:bl/trigger", "val":"none mmc0 mmc1 timer [timer-sync] oneshot heartbeat backlight gpio cpu0 default-on"},
+	{"cmd":"cat /sys/class/leds/shc\:cloud\:red/trigger", "val":"none mmc0 mmc1 timer [timer-sync] oneshot heartbeat backlight gpio cpu0 default-on"},
+	{"cmd":"cat /sys/class/leds/shc\:lan\:bl/trigger", "val":"none mmc0 mmc1 timer [timer-sync] oneshot heartbeat backlight gpio cpu0 default-on"},
+	{"cmd":"cat /sys/class/leds/shc\:lan\:red/trigger", "val":"none mmc0 mmc1 timer [timer-sync] oneshot heartbeat backlight gpio cpu0 default-on"},
+	{"cmd":"cat /sys/class/leds/shc\:power\:bl/trigger", "val":"none mmc0 mmc1 timer [timer-sync] oneshot heartbeat backlight gpio cpu0 default-on"},
+	{"cmd":"cat /sys/class/leds/shc\:power\:red/trigger", "val":"none mmc0 mmc1 timer [timer-sync] oneshot heartbeat backlight gpio cpu0 default-on"},
+	]
+
+for bl in basiclist:
+    if bl["val"] == 'undef':
+        tb.eof_write_cmd(tb.c_con, bl["cmd"])
+    else:
+        tb.eof_write_cmd_check(tb.c_con, bl["cmd"], bl["val"])
+
+tb.statusprint("tc_shc eMMC speed check")
+tb.eof_call_tc("tc_workfd_hdparm.py")
+
 tb.statusprint("tc_shc partition check")
 #call linux tc_lx_partition_check.py
 #for testing usb memstick
 #check if usb stick is authorized
 tb.eof_call_tc("tc_lx_check_usb_authorized.py")
 tb.eof_call_tc("tc_lx_partition_check.py")
+
 # only all 60 days
 tb.tc_workfd_check_tc_time_timeout = 60 * 24 * 60 * 60
 tb.eof_call_tc("tc_lx_bonnie.py")
