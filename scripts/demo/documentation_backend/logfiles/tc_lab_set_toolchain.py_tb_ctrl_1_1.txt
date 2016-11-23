@@ -1,0 +1,3 @@
+ eldk-switch -m -r 5.4 armv5te 
+Setup for armv5te (using ELDK  5.4)
+hs@pollux [21:28:34] ttbott>

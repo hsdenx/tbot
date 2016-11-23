@@ -1,0 +1,6 @@
+ 
+hs@pollux [21:28:07] ttbott> stty cols 200 
+hs@pollux [21:28:07] ttbott> export TERM=vt200 
+hs@pollux [21:28:07] ttbott> echo $COLUMNS 
+200
+hs@pollux [21:28:08] ttbott>

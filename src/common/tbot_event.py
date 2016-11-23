@@ -26,6 +26,7 @@ from web_patchwork import web_patchwork
 from dot import dot
 from html_log import html_log
 from statisitic_plot import statistic_plot_backend
+from documentation import doc_backend
 
 class events(object):
     """ The event class
@@ -102,6 +103,9 @@ class events(object):
                 self.statistic = statistic_plot_backend(self.tb, 'stat.dat', self.ignoretclist)
             if (self.tb.config.create_html_log == 'yes'):
                 self.html_log = html_log(self.tb, 'log/html_log.html')
+            if (self.tb.config.create_documentation == 'yes'):
+                self.ignoretclist = ['tc_workfd_check_cmd_success.py']
+                self.doc = doc_backend(self.tb, self.ignoretclist)
             if (self.tb.config.create_dashboard == 'yes'):
                 from dashboard import dashboard
                 self.dashboard = dashboard(self.tb, 'localhost', 'tbot', 'tbot', 'tbot_root', 'tbot_results')
@@ -117,6 +121,8 @@ class events(object):
                 self.html_log.create_htmlfile()
             if (self.tb.config.create_dashboard == 'yes'):
                 self.dashboard.insert_test_into_db()
+            if (self.tb.config.create_documentation == 'yes'):
+                self.doc.create_docfiles()
 
     def create_event_log(self, c, dir, string):
         if self.tb.donotlog == True:

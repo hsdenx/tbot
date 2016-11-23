@@ -1,0 +1,2 @@
+ cd /work/hs/tbot/linux-shc 
+hs@pollux [21:28:33] ttbott>

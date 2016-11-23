@@ -1,0 +1,2 @@
+ cd /work/hs/tbot 
+hs@pollux [21:28:16] ttbott>

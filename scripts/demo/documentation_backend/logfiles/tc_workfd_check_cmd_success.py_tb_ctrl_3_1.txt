@@ -1,0 +1,2 @@
+ if [ $? -ne 0 ]; then echo 'FAILED'; fi 
+hs@pollux [21:28:16] ttbott>

@@ -1,0 +1,2 @@
+ rm -rf /work/hs/tbot/linux-shc 
+hs@pollux [21:28:15] ttbott>

@@ -1,0 +1,42 @@
+################################################################################
+This is a demo, how to use the src/common//event/documentation.py event backend.
+################################################################################
+
+Files:
+======
+
+scripts/demo/documentation_backend/orginal.rst
+----------------------------------------------
+
+Contains a file with text and "tbot_ref:filename"
+markers, which the script
+"scripts/demo/documentation_backend/replace_tbot_marker.py"
+removes and replaces with the file content from filename.
+
+scripts/demo/documentation_backend/replace_tbot_marker.py
+---------------------------------------------------------
+
+scans the input file for "tbot_ref:filename" markers,
+and replaces the markers with the content of filename.
+Writes the newfile to outfile
+
+scripts/demo/documentation_backend/logfiles/
+--------------------------------------------
+
+an output from t run of the "src/common//event/documentation.py"
+event backend.
+
+orginal_converted.rst
+---------------------
+
+generated file with the command:
+python2.7 scripts/demo/documentation_backend/replace_tbot_marker.py -i scripts/demo/documentation_backend/orginal.rst -o scripts/demo/documentation_backend/orginal_converted.rst -t scripts/demo/documentation_backend/logfiles/
+
+orginal_converted.pdf
+---------------------
+
+generated pdf file, with command:
+rst2pdf scripts/demo/documentation_backend/orginal_converted.rst scripts/demo/documentation_backend/orginal_converted.pdf
+
+open the pdf for example with okular:
+okular scripts/demo/documentation_backend/orginal_converted.pdf
