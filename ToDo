@@ -2,6 +2,9 @@ Note: ToDo entries with "*" are done, "-" are really ToDo
 
 - add a check, if a TC ends if prompt is read.
 
+- [simplify] create a "setup" script, which simplify setup after
+  tbot is installed.
+
 - [simplify] create testcases, specific for a specific SoC, so board
   testcases can use them. For Example, create a tc_soc_imx6_xxx.py
   testcases, which contains testcases we want to run on an imx based
@@ -38,14 +41,16 @@ Note: ToDo entries with "*" are done, "-" are really ToDo
 - automatically create a documentation for all testcases
   default_vars and tbotlib functions.
 
-  - html (doc/doc_ty.py)
+  - use sphinx for this task, see doc_sphinx
     * testcase
       link to other testcases, defaultvars (may show them if
       mouse is over the name)
     * defaultvars
     - tbotlib
+    * add manpages for the testcases / variables
+    * create a pdf
 
-- use a dict() for all the parameters
+* use a dict() for all the parameters
   instead using src/common/tc_defaults.py
 
 - cleanup tbot code
@@ -87,8 +92,6 @@ Note: ToDo entries with "*" are done, "-" are really ToDo
 - simplify tbot log output (seperate a lot of output which is currently
   in INFO logging level, to another logging level)
   - make the timestamp configurable
-
-- add manpages for the testcases
 
 - call testcases with arguments
   - now possible, but have to convert all testcases
