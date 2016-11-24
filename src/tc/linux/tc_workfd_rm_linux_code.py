@@ -21,7 +21,7 @@ from tbotlib import tbot
 
 logging.info("args: %s", tb.workfd)
 
-tb.tc_lab_rm_dir = tb.config.tc_lab_source_dir + '/linux-' + tb.config.boardlabname
+tb.config.tc_lab_rm_dir = tb.config.tc_lab_source_dir + '/linux-' + tb.config.boardlabname
 tb.eof_call_tc("tc_lab_rm_dir.py")
 
 tb.end_tc(True)
