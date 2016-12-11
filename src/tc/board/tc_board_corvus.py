@@ -81,12 +81,15 @@ tb.tc_ub_get_version_file = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.co
 tb.tc_ub_get_version_string = 'U-Boot 20'
 tb.eof_call_tc("tc_ub_get_version.py")
 tb.uboot_vers = tb.config.tc_return
+tb.spl_vers = ''
 
 # call upd_spl
 tb.eof_call_tc("tc_ub_upd_spl.py")
 
 # call upd_uboot
 tb.eof_call_tc("tc_ub_upd_uboot.py")
+
+tb.eof_call_tc("tc_ub_check_version.py")
 
 tb.workfd = tb.c_ctrl
 tb.statusprint("start all DUTS testcases")
