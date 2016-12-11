@@ -191,3 +191,4 @@ class doc_backend(object):
                     lnr = lnr + 1
                     fd = open(self._create_fn(filename, newname, index, lnr), 'w')
                     oldname = newname
+                    fd.write(logline)
