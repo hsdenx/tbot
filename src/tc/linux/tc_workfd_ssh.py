@@ -30,8 +30,7 @@ if ret == 'prompt':
     logging.error("No ssh to %s", tb.workfd_ssh_cmd)
     tb.end_tc(False)
 
-string = tb.tbot_get_password(tb.workfd_ssh_cmd, 'lab')
-tb.write_stream(tb.workfd, string)
+tb.write_stream_passwd(tb.workfd, tb.workfd_ssh_cmd, 'lab')
 ret = tb.tbot_expect_string(tb.workfd, tb.config.workfd_ssh_cmd_prompt)
 if ret == 'prompt':
     logging.error("No login to %s", tb.workfd_ssh_cmd)

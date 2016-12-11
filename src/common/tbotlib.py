@@ -547,6 +547,7 @@ class tbot(object):
            None: not able to open the stream
         """
         self.tbot_trigger_wdt()
+        self.send_console_start(c)
         c.send(string)
         return True
 
@@ -570,14 +571,6 @@ class tbot(object):
         string = self.tbot_get_password(user, board)
         c.send(string)
         self.event.create_event_log(c, "w", "password ********")
-        try:
-            c.expect_string(string)
-        except:
-            print("Exception was thrown")
-            print("debug information:")
-            print(str(self.h))
-            return False
-
         # read until timeout
         oldt = c.get_timeout()
         c.set_timeout(2)
@@ -585,7 +578,7 @@ class tbot(object):
             c.expect_string('#\$')
         except:
             logging.debug("got prompt after passwd")
-        
+
         c.set_timeout(oldt)
         return True
 
@@ -617,10 +610,10 @@ class tbot(object):
         ret = self.write_stream(self.c_ctrl, string)
         return ret
 
-    def send_console_end(self, c):
-        """write Ctrl-C to the opened stream
+    def send_console_start(self, c):
+        """task before starting a tc
 
-           If stream is not open, try to open it
+           send Ctrl-C besfore starting a Testcase
 
         - **parameters**, **types**, **return** and **return types**::
         :param arg1: connection
@@ -628,14 +621,8 @@ class tbot(object):
            True: if write was successful
            None: not able to open the stream
         """
-        ret = self.check_open_fd(c)
-        if not ret:
-            logging.debug("send_Ctrl_console_end: not open")
-            return None
-        string = pack('h', 29)
-        string = string[:1]
-        logging.debug("send Ctrl-console_end %s", string)
-        self.write_stream(c, string)
+        self.send_ctrl_c(c)
+        c.expect_prompt()
         return True
 
     def send_ctrl_c(self, c):
@@ -816,55 +803,65 @@ class tbot(object):
         logging.debug("End of tc %s with ret: %s", name, ret)
         return ret
 
-    def eof_write(self, c, string):
+    def eof_write(self, c, string, start=True):
         """ write a string to connection c
 
         - **parameters**, **types**, **return** and **return types**::
         :param arg1: connection
         :param arg2: string
+        :param arg3: start boolean, True, send console start before the
+        cmdstring.
         :return: If write_stream returns not True, end tc
         with failure
         """
+        if start:
+            self.send_console_start(c)
         ret = c.sendcmd(string)
         self.tbot_trigger_wdt()
         if ret == True:
             return True
         self.end_tc(False)
 
-    def eof_write_con(self, string):
+    def eof_write_con(self, string, start=True):
         """ write a string to console.
 
         - **parameters**, **types**, **return** and **return types**::
         :param arg1: commandstring
+        :param arg2: start boolean, True, send console start before the
+        cmdstring.
         :return: True if write_stream returns True, else end testcase with False
         """
-        ret = self.eof_write(self.c_con, string)
+        ret = self.eof_write(self.c_con, string, start)
         return True
   
-    def eof_write_cmd(self, c, command):
+    def eof_write_cmd(self, c, command, start=True):
         """write a command to fd, wait for prompt
 
         - **parameters**, **types**, **return** and **return types**::
         :param arg1: connection
         :param arg2: commandstring
+        :param arg3: start boolean, True, send console start before the
+        cmdstring.
         :return: True if prompt read, else end testcase with False
         """
         self.eof_write(c, command)
         self.tbot_expect_prompt(c)
         return True
 
-    def eof_write_cmd_list(self, c, cmdlist):
+    def eof_write_cmd_list(self, c, cmdlist, start=True):
         """send a list of cmd to fd and wait for end
 
         - **parameters**, **types**, **return** and **return types**::
         :param arg1: connection
         :param arg2: list of commandstrings
+        :param arg3: start boolean, True, send console start before the
+        cmdstring.
         :return: True if prompt found else endtestcase with False
         """
         for tmp_cmd in cmdlist:
-            self.eof_write_cmd(c, tmp_cmd)
+            self.eof_write_cmd(c, tmp_cmd, start)
 
-    def write_lx_cmd_check(self, c, command, endTC=True):
+    def write_lx_cmd_check(self, c, command, endTC=True, start=True):
         """write a linux command to console.
 
         - **parameters**, **types**, **return** and **return types**::
@@ -872,9 +869,11 @@ class tbot(object):
         :param arg2: commandstring
         :param arg3: if True and linux cmd ended False end TC
                with end_tc(False), else return True
+        :param arg4: start boolean, True, send console start before the
+        cmdstring.
         :return: if linux cmd ended successful True, else False
         """
-        self.eof_write_cmd(c, command)
+        self.eof_write_cmd(c, command, start)
         tmpfd = self.workfd
         self.workfd = c
         ret = self.call_tc("tc_workfd_check_cmd_success.py")
@@ -884,47 +883,29 @@ class tbot(object):
                 self.end_tc(False)
         return ret
 
-    def eof_write_con_lx_cmd(self, command):
+    def eof_write_con_lx_cmd(self, command, start=True):
         """write a linux command to console.
 
         - **parameters**, **types**, **return** and **return types**::
         :param arg1: commandstring
         :return: True if linux command was successful
         else end testcase with False
+        :param arg2: start boolean, True, send console start before the
+        cmdstring.
         """
-        self.write_lx_cmd_check(self.c_con, command)
+        self.write_lx_cmd_check(self.c_con, command, start)
         return True
  
-    def eof_write_ctrl(self, string):
+    def eof_write_ctrl(self, string, start=True):
         """ write a string to control connection.
 
         - **parameters**, **types**, **return** and **return types**::
         :param arg1: commandstring
         :return: If write_stream returns not True, end tc with failure
+        :param arg2: start boolean, True, send console start before the
+        cmdstring.
         """
-        ret = self.eof_write(self.c_ctrl, string)
-        return True
-
-    def eof_write_con_passwd(self, user, board):
-        """ write a passwd to console. Do not log it.
-
-        - **parameters**, **types**, **return** and **return types**::
-        :param arg1: username
-        :param arg2: board
-        :return: If write_stream returns not True, end tc with failure
-        """
-        self.write_stream_passwd(self.c_con, user, board)
-        return True
-
-    def eof_write_ctrl_passwd(self, user, board):
-        """ write a password to control. Do not log it.
-
-        - **parameters**, **types**, **return** and **return types**::
-        :param arg1: username
-        :param arg2: board
-        :return: If write_stream returns not True, end tc with failure
-        """
-        self.write_stream_passwd(self.c_ctrl, user, board)
+        ret = self.eof_write(self.c_ctrl, string, start)
         return True
 
     def eof_write_workfd_passwd(self, user, board):
@@ -947,11 +928,11 @@ class tbot(object):
         :return: no return value
         """
         tmp = 'stty cols ' + self.config.term_line_length
-        self.eof_write(c, tmp)
+        self.eof_write(c, tmp, False)
         self.tbot_expect_prompt(c)
-        self.eof_write(c, "export TERM=vt200")
+        self.eof_write(c, "export TERM=vt200", False)
         self.tbot_expect_prompt(c)
-        self.eof_write(c, "echo $COLUMNS")
+        self.eof_write(c, "echo $COLUMNS", False)
         self.tbot_expect_prompt(c)
 
     def eof_call_tc(self, name, **kwargs):
@@ -967,17 +948,19 @@ class tbot(object):
             return True
         self.end_tc(False)
 
-    def write_cmd_check(self, c, cmd, string):
+    def write_cmd_check(self, c, cmd, string, start=True):
         """send a cmd and check if a string is read.
 
         - **parameters**, **types**, **return** and **return types**::
         :param arg1: connection
         :param arg2: command send over connection
         :param arg3: string which must be read
+        :param arg4: start boolean, True, send console start before the
+        cmdstring.
         :return: True if prompt and string is read
         else False
         """
-        self.eof_write(c, cmd)
+        self.eof_write(c, cmd, start)
         searchlist = [string]
         tmp = True
         cmd_ok = False
@@ -989,17 +972,19 @@ class tbot(object):
                 tmp = False
         return cmd_ok
 
-    def eof_write_cmd_check(self, c, cmd, string):
+    def eof_write_cmd_check(self, c, cmd, string, start=True):
         """send a cmd and check if a string is read.
 
         - **parameters**, **types**, **return** and **return types**::
         :param arg1: connection
         :param arg2: commandstring
         :param arg3: string which must be read
+        :param arg4: start boolean, True, send console start before the
+        cmdstring.
         :return: True if prompt and string is read
         else end Testcase with False
         """
-        ret = self.write_cmd_check(c, cmd, string)
+        ret = self.write_cmd_check(c, cmd, string, start)
         if ret == False:
             self.end_tc(False)
 

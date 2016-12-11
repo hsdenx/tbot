@@ -160,7 +160,7 @@ def tbot_read_write(tb, string, cmd):
     while tmp == True:
         ret = tb.tbot_read_line_and_check_strings(tb.c_con, searchlist)
         if ret == '0':
-            tb.eof_write_con(cmd)
+            tb.eof_write_con(cmd, False)
             cmd_ok = True
         elif ret == 'prompt':
             tmp = False
@@ -173,7 +173,7 @@ def tbot_send_list(tb, mm_list):
         tmp = True
         ret = tb.tbot_read_line_and_check_strings(tb.c_con, searchlist)
         if ret == '0':
-            tb.eof_write_con(cmd)
+            tb.eof_write_con(cmd, False)
         elif ret == 'prompt':
             tb.send_ctrl_c(tb.c_con)
             tb.c_con.expect_prompt()

@@ -32,7 +32,7 @@ tb.workfd.expect_prompt()
 
 # set lab pc linux prompt
 tb.workfd.set_prompt(tb.config.linux_prompt)
-tb.eof_write(tb.workfd, 'exit')
+tb.eof_write(tb.workfd, 'exit', False)
 searchlist = ['OK']
 tmp = True
 once = 0
@@ -40,7 +40,7 @@ while tmp == True:
     ret = tb.tbot_read_line_and_check_strings(tb.workfd, searchlist)
     if ret == '0':
         if once == 0:
-            tb.eof_write(tb.workfd, 'OK')
+            tb.eof_write(tb.workfd, 'OK', False)
             once = 1
     if ret == 'prompt':
         tmp = False
