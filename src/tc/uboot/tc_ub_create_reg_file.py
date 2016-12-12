@@ -29,18 +29,18 @@
 import datetime
 from tbotlib import tbot
 
-logging.info("args: %s %s %s %s %s %s %s", tb.tc_ub_create_reg_file_name,
-             tb.tc_ub_create_reg_file_start,
-             tb.tc_ub_create_reg_file_stop,
-             tb.tc_ub_readreg_mask, tb.tc_ub_readreg_type,
-             tb.tc_ub_create_reg_file_mode, tb.tc_ub_create_reg_file_comment)
+logging.info("args: %s %s %s %s %s %s %s", tb.config.tc_ub_create_reg_file_name,
+             tb.config.tc_ub_create_reg_file_start,
+             tb.config.tc_ub_create_reg_file_stop,
+             tb.config.tc_ub_readreg_mask, tb.config.tc_ub_readreg_type,
+             tb.config.tc_ub_create_reg_file_mode, tb.config.tc_ub_create_reg_file_comment)
 
 #set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
-fname = tb.workdir + "/" + tb.tc_ub_create_reg_file_name
+fname = tb.workdir + "/" + tb.config.tc_ub_create_reg_file_name
 try:
-    fd = open(fname, tb.tc_ub_create_reg_file_mode)
+    fd = open(fname, tb.config.tc_ub_create_reg_file_mode)
 except IOError:
     logging.warning("Could not open: %s", fname)
     tb.end_tc(False)
@@ -59,29 +59,29 @@ tmp = tmp.replace('\n','')
 vers = tmp.lstrip()
 tb.tbot_expect_prompt(c)
 
-if tb.tc_ub_create_reg_file_comment != '':
-    fd.write('# ' + tb.tc_ub_create_reg_file_comment + '\n')
+if tb.config.tc_ub_create_reg_file_comment != '':
+    fd.write('# ' + tb.config.tc_ub_create_reg_file_comment + '\n')
 fd.write("# Date: " + datetime.datetime.now().ctime() + "\n")
 fd.write("# U-Boot    : %s\n" % vers)
 fd.write("# regaddr mask type defval\n")
 
 
 #read from - to
-tb.tc_ub_readreg_mask = '0xffffffff'
-start = int(tb.tc_ub_create_reg_file_start, 16)
-stop = int(tb.tc_ub_create_reg_file_stop, 16)
+tb.config.tc_ub_readreg_mask = '0xffffffff'
+start = int(tb.config.tc_ub_create_reg_file_start, 16)
+stop = int(tb.config.tc_ub_create_reg_file_stop, 16)
 
-if tb.tc_ub_readreg_type == 'l':
+if tb.config.tc_ub_readreg_type == 'l':
     step = 4
-if tb.tc_ub_readreg_type == 'w':
+if tb.config.tc_ub_readreg_type == 'w':
     step = 2
-if tb.tc_ub_readreg_type == 'b':
+if tb.config.tc_ub_readreg_type == 'b':
     step = 1
 
 #read register value
 for i in xrange(start, stop, step):
     val = str(hex(i))
-    tmp = 'md.' + tb.tc_ub_readreg_type + " " + val + ' 1'
+    tmp = 'md.' + tb.config.tc_ub_readreg_type + " " + val + ' 1'
     tb.eof_write(c, tmp)
     val = val.replace('0x','')
     ret = tb.tbot_expect_string(c, val)
@@ -95,7 +95,7 @@ for i in xrange(start, stop, step):
         val = '0x0'
     else:
         val = '0x' + val
-    fd.write('%-10s %10s %10s %10s\n' % (hex(i), tb.tc_ub_readreg_mask, tb.tc_ub_readreg_type, val))
+    fd.write('%-10s %10s %10s %10s\n' % (hex(i), tb.config.tc_ub_readreg_mask, tb.config.tc_ub_readreg_type, val))
 
 fd.close()
 tb.end_tc(True)
