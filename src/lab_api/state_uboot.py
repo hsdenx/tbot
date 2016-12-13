@@ -37,7 +37,10 @@ def u_boot_parse_input(tb, c, retry):
             ret = tb.write_stream(c, "noautoboot")
             i = 0
         if ret == '2':
-            tb.send_ctrl_m(c)
+            if tb.config.uboot_autoboot_key != '':
+		c.send_raw(tb.config.uboot_autoboot_key)
+            else:
+                tb.send_ctrl_m(c)
             i = 0
         if ret == '3' or ret == 'exception':
             tb.send_ctrl_c(c)
