@@ -14,7 +14,7 @@
 # Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_check_reg_file.py
-# checks if the default values in reg file tb.tc_ub_create_reg_file_name
+# checks if the default values in reg file tb.config.tc_ub_create_reg_file_name
 # on the tbot host in tb.workdir have the same values, as the
 # registers on the board
 # format of the regfile:
@@ -24,13 +24,13 @@
 
 from tbotlib import tbot
 
-logging.info("args: %s", tb.tc_ub_create_reg_file_name)
+logging.info("args: %s", tb.config.tc_ub_create_reg_file_name)
 
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
 c = tb.c_con
-fname = tb.workdir + "/" + tb.tc_ub_create_reg_file_name
+fname = tb.workdir + "/" + tb.config.tc_ub_create_reg_file_name
 try:
     fd = open(fname, 'r')
 except IOError:
@@ -59,7 +59,7 @@ for line in fd.readlines():
         val = '0x' + val
 
     if (int(val, 16) & int(cols[1], 16)) != (int(cols[3], 16) & int(cols[1], 16)):
-        logging.info("args: %s %s %s & %s != %s", tb.tc_ub_create_reg_file_name, cols[0], val, cols[1], cols[3])
+        logging.info("args: %s %s %s & %s != %s", tb.config.tc_ub_create_reg_file_name, cols[0], val, cols[1], cols[3])
         retval = False
 
 tb.end_tc(retval)
