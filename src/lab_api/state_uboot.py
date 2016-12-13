@@ -82,14 +82,15 @@ def u_boot_set_board_state(tb, state, retry):
         tb.config.uboot_prompt = 'U-Boot#'
 
     tb.c_con.set_prompt(tb.config.uboot_prompt)
-    # nothing more in u-boot todo, as prompt is fix
 
-    # check, if we get a prompt
-    ret = u_boot_login(tb, state, retry)
-    if ret == True:
-        return True
+    ret = tb.get_power_state(tb.config.boardlabpowername)
+    if ret:
+        # check, if we get a correct prompt
+        ret = u_boot_login(tb, state, retry)
+        if ret == True:
+            return True
 
-    # switch to u-boot if not ?? repower ??
+    # now the easiest way ... simple power off/on
     ret = tb.set_power_state(tb.config.boardlabpowername, "off")
     if ret == False:
         time.sleep(2)
