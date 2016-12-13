@@ -57,10 +57,13 @@ while (ret != '0'):
     ret = tb.tbot_expect_string(c, 'Programming flash passed')
 tb.tbot_expect_prompt(c)
 
-tb.write_stream(c, tb.config.lab_bdi_upd_uboot_bdi_run)
-ret = tb.tbot_expect_string(c, 'resetting target passed')
-while (ret != '0'):
-    ret = tb.tbot_expect_string(c, 'resetting target passed')
+cmdlist = tb.config.lab_bdi_upd_uboot_bdi_run
+for bl in cmdlist:
+    tb.write_stream(c, bl['cmd'])
+    ret = tb.tbot_expect_string(c, bl['val'])
+    while (ret != '0'):
+        ret = tb.tbot_expect_string(c, bl['val'])
+
 tb.tbot_expect_prompt(c)
 
 tb.eof_call_tc("tc_lab_bdi_disconnect.py")

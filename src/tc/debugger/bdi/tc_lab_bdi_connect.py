@@ -22,8 +22,8 @@
 
 from tbotlib import tbot
 
-logging.info("args: %s %s %s %s", tb.config.board_has_debugger, tb.workfd.name,
-             tb.config.lab_bdi_upd_uboot_bdi_prompt, tb.config.lab_bdi_upd_uboot_bdi_run)
+logging.info("args: %s %s %s", tb.config.board_has_debugger, tb.workfd.name,
+             tb.config.lab_bdi_upd_uboot_bdi_prompt)
 
 if tb.config.board_has_debugger == 0:
     tb.end_tc(False)
