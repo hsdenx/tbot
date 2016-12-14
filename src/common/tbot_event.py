@@ -101,6 +101,14 @@ class events(object):
                  'tc_workfd_rm_file.py']
                 self.dot = dot(self.tb, 'tc.dot', self.ignoretclist)
             if (self.tb.config.create_statistic == 'yes'):
+		self.ignoretclist = ['tc_workfd_check_cmd_success.py',
+                 'tc_lab_cp_file.py',
+                 'tc_def_ub.py',
+                 'tc_def_tbot.py',
+                 'tc_workfd_check_if_file_exist.py',
+                 'tc_lab_denx_get_power_state.py',
+                 'tc_workfd_rm_file.py']
+
                 self.statistic = statistic_plot_backend(self.tb, 'stat.dat', self.ignoretclist)
             if (self.tb.config.create_html_log == 'yes'):
                 self.html_log = html_log(self.tb, 'log/html_log.html')
