@@ -13,5 +13,5 @@ elif (board == 'pollux.denx.org'):
 # passwords for the boards
 elif (board == 'smartweb'):
     if (user == 'root'):
-        password = 'putherethepasswd'
+        password = '\n'
         print("Please change %s password for user %s\n" % (board, user))
