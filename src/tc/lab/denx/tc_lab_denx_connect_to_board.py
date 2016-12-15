@@ -65,4 +65,5 @@ tb.workfd.set_timeout(None)
 
 tb.workfd.ign = tmp_ign
 tb.workfd.cnt_ign = len(tb.workfd.ign)
+tb.send_ctrl_c(tb.workfd)
 tb.end_tc(ret)
