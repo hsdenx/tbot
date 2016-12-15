@@ -64,11 +64,11 @@ def state_lx_parse_input(tb, c, retry, sl):
             return True
 
         if ret == '3':
-            tb.write_stream(c, 'root')
+            tb.write_stream(c, tb.config.linux_user)
             i = 0
 
         if ret == '4':
-            tb.write_stream(c, '\n')
+	    tb.write_stream_passwd(c, tb.config.linux_user, tb.config.boardname)
             i = 0
 
         if (ret == '5') or (ret == '6') or (ret == '7'):

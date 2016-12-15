@@ -30,17 +30,21 @@ tb.eof_call_tc("tc_ub_load_board_env.py")
 # run tbot_boot_linux
 tb.eof_write_con(tb.config.ub_boot_linux_cmd)
 
-# read until 'login:'
-ret = tb.tbot_expect_string(tb.c_con, 'login:')
-if ret == 'prompt':
-    tb.end_tc(False)
+c = tb.c_con
+c.set_prompt(tb.config.linux_prompt_default)
 
-tmp = 'root'
-tb.eof_write(tb.c_con, tmp)
-
-tb.c_con.set_prompt(tb.config.linux_prompt_default)
-tb.tbot_expect_prompt(tb.c_con)
-
-tb.set_prompt(tb.c_con, tb.config.linux_prompt, 'linux')
+tmp = True
+sl = ['login:', 'assword']
+while (tmp):
+    ret = tb.tbot_read_line_and_check_strings(c, sl)
+    if ret == '0':
+        # login
+        tb.write_stream(c, tb.config.linux_user)
+    if ret == '1':
+	tb.write_stream_passwd(c, tb.config.linux_user, tb.config.boardname)
+    if ret == 'prompt':
+        # we are in linux
+        tb.set_prompt(c, tb.config.linux_prompt, 'linux')
+        tmp = False
 
 tb.end_tc(True)
