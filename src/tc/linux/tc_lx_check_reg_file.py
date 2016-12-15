@@ -46,7 +46,8 @@ for line in fd.readlines():
     ret = tb.tbot_expect_string(c, 'opened')
     if ret == 'prompt':
         tb.end_tc(False)
-    ret = tb.tbot_expect_string(c, 'Value at address')
+    sl = ['Value at address', 'Read at address']
+    ret = tb.tbot_read_line_and_check_strings(c, sl)
     if ret == 'prompt':
         tb.end_tc(False)
     ret = tb.tbot_expect_string(c, '\n')
