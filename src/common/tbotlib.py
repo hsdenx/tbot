@@ -534,7 +534,7 @@ class tbot(object):
         c.flush()
         log = c.get_log()
 
-    def write_stream(self, c, string):
+    def write_stream(self, c, string, send_console_start=True):
         """write a string to connection
 
            If stream is not open, try to open it
@@ -542,12 +542,14 @@ class tbot(object):
         - **parameters**, **types**, **return** and **return types**::
         :param arg1: connection
         :param arg2: string
+        :param arg3: call send_console_start before sending string, default True
         :return:
            True: if write was successful
            None: not able to open the stream
         """
         self.tbot_trigger_wdt()
-        self.send_console_start(c)
+        if send_console_start:
+            self.send_console_start(c)
         c.send(string)
         return True
 
