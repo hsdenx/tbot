@@ -39,7 +39,7 @@ while (tmp):
     ret = tb.tbot_read_line_and_check_strings(c, sl)
     if ret == '0':
         # login
-        tb.write_stream(c, tb.config.linux_user)
+        tb.write_stream(c, tb.config.linux_user, send_console_start=False)
     if ret == '1':
 	tb.write_stream_passwd(c, tb.config.linux_user, tb.config.boardname)
     if ret == 'prompt':
