@@ -307,7 +307,7 @@ class tbot(object):
         ret = None
 
         if state == 'u-boot':
-            ret = u_boot_set_board_state(self, state, 8)
+            ret = u_boot_set_board_state(self, state, 5)
 
         if state == 'lab':
             return True
