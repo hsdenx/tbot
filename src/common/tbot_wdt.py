@@ -22,6 +22,10 @@ wdtfile = sys.argv[1]
 master_pid = int(sys.argv[2])
 logfilename = sys.argv[3]
 timeout = int(sys.argv[4])
+
+if timeout == 0:
+    sys.exit(0)
+
 try:
     fd = open(wdtfile, 'r')
 except IOError:
