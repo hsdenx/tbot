@@ -55,6 +55,8 @@ class doc_backend(object):
         self.ev = self.tb.event
         self.tc_list = []
         self.ignoretclist = ignorelist
+        # ignore lines which contain the follwoing strings
+        self.striplist = ['Resolving deltas', 'Compressing objects', 'Receiving objects', 'remote: Counting objects']
 
     def create_docfiles(self):
         """create the files
@@ -140,6 +142,7 @@ class doc_backend(object):
 
     def _analyse(self, evl, name):
         filename = name
+        stripped = 'yes'
         index = self._search_in_list(name)
         if index == 0:
             self._add_to_list(name, 1)
@@ -147,6 +150,7 @@ class doc_backend(object):
         lnr = 1
         oldname = 'none'
 	end = False
+        interrupted = False
         while end != True:
             line = self._get_next_event(evl)
             tmp = line.split()
@@ -164,19 +168,38 @@ class doc_backend(object):
             if ret == 'ignore':
                 continue
             if eid == 'Start':
+                interrupted = True
                 self._analyse(evl, newname)
+                continue
             if eid == 'End':
                 try:
                     fd.close()
                 except:
-                    print("filename no entry")
+                    print("filename no entry ", name, index)
                 return
             if eid == 'log':
                 logline = line.split(newname)
                 logline = logline[1]
                 logline = logline.strip()
                 if logline[:1] == 'r':
-            	    logline = logline[1:]
+                    logline = logline[1:]
+                    log = logline.split('\r\n')
+                    logline = ''
+                    for l in log:
+                        add = True
+                        for sl in self.striplist:
+                            if sl in l:
+                                add = False
+                                if stripped == 'no':
+                                    logline += '[...]\n'
+                                    stripped = 'yes'
+                                else:
+                                    break
+                        if add:
+                            if l != log[-1]:
+                                logline += l + '\n'
+                            else:
+                                logline += l
                 else:
                     continue
  
@@ -184,11 +207,14 @@ class doc_backend(object):
                     oldname = newname
                     fd = open(self._create_fn(filename, newname, index, lnr), 'w')
                     fd.write(logline)
-                elif oldname == newname:
+                    stripped = 'no'
+                elif oldname == newname and interrupted == False:
                     fd.write(logline)
                 else:
+                    interrupted = False
                     fd.close()
                     lnr = lnr + 1
                     fd = open(self._create_fn(filename, newname, index, lnr), 'w')
                     oldname = newname
                     fd.write(logline)
+                    stripped = 'no'
