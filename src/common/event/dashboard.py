@@ -25,9 +25,12 @@ class dashboard(object):
     MySQLdb python module is needed, install it for
     example on the raspberry pi with:
 
-    apt-get install python-mysqldb
-    apt-get install sshpass
+    ::
+
+      apt-get install python-mysqldb
+      apt-get install sshpass
       (needed fpr passing the password to scp)
+
 
     If tb.config.create_dot == 'yes' then you need the dot
 
