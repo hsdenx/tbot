@@ -56,6 +56,9 @@ while line:
         # write line by line + 2 ' ' before the original line
         ln = fl.readline()
         while ln:
+            if '^C' in ln:
+                ln = fl.readline()
+                continue
             ln = ln.replace('\r\n','\n')
             ln = ln.replace('\r','\n  ')
             fo.write('  ' + ln)
