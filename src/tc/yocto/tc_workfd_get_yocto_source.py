@@ -105,4 +105,9 @@ for f in files:
     tb.write_lx_cmd_check(tb.workfd, tmp)
 
 tb.eof_call_tc("tc_workfd_goto_yocto_code.py")
+
+# replace TBOT_YOCTO_PATH in bblayers.conf with tb.config.yocto_fulldir_name
+tmp = "sed -i -- 's+TBOT_YOCTO_PATH+" + tb.config.yocto_fulldir_name + "+g' build/conf/bblayers.conf"
+tb.write_lx_cmd_check(tb.workfd, tmp)
+
 tb.end_tc(True)
