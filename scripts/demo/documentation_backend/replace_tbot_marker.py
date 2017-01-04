@@ -43,7 +43,8 @@ line = fi.readline()
 while line:
     found = line.find(searchstring)
     if found != -1:
-        fo.write("\n::\n\n")
+        fo.write("\n.. code-block:: bash\n\n")
+        # fo.write("\n::\n\n")
         # get filename
         logfile = line.split(searchstring)
         logfile = logfile[1]
@@ -54,11 +55,28 @@ while line:
             print("Error: %s not found\n" %(options.tcpath + logfile))
             sys.exit(1)
         # write line by line + 2 ' ' before the original line
+        # also remove all lines with '^C'
+        # and replace 'ttbott>' with '$'
         ln = fl.readline()
+        pr_str = 'ttbott>'
+        # replace col_str with ':redtext:`'
+        col_str = '\x1b[01;31m\x1b[K'
+        # and replace end_str with '`'
+        end_str = ' \x1b[m\x1b[K'
         while ln:
             if '^C' in ln:
                 ln = fl.readline()
                 continue
+            if pr_str in ln:
+                pos = ln.find(pr_str)
+                pos += len(pr_str)
+                tmp = ln[pos:]
+                ln = '$' + tmp
+            if col_str in ln:
+                #ln = ln.replace(col_str, ':redtext:`')
+                #ln = ln.replace(end_str, '`')
+                ln = ln.replace(col_str, "'")
+                ln = ln.replace(end_str, "'")
             ln = ln.replace('\r\n','\n')
             ln = ln.replace('\r','\n  ')
             fo.write('  ' + ln)
