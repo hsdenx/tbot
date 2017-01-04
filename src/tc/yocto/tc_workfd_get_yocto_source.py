@@ -29,6 +29,16 @@
 #
 # get other layers defined in the list:
 # tb.config.tc_workfd_get_yocto_source_layers
+# one element contains the follwoing list element:
+# ['git repo',
+#  'git branch',
+#  'git commit id',
+#  'apply_patches_dir'
+#  'apply_patches_git_am_dir',
+#  'source_git_reference',
+#  'source_git_repo_user',
+#  'source_git_repo_name'
+# ]
 #
 # at the end overwrite yocto configuration found in
 # tb.config.tc_workfd_get_yocto_source_conf_dir
