@@ -39,7 +39,12 @@ class doc_backend(object):
     created files are stored in tb.workdir + '/logfiles/
     so, be sure you have created this directory.
 
-    Problem: First prompt is not visible
+    Configuration Variable:
+    tb.config.event_documentation_strip_list
+      list of strings. If a line in the logfile is found, which contains
+      a string of this list. This line is deleted, and replaced by a
+      "[...]". If more lines are found in a row, only one "[...]"
+      is inserted.
 
     see https://github.com/hsdenx/tbot/blob/testing/scripts/demo/documentation_backend/README
     for a demo, how you can create a html/pdf/man page, which
@@ -56,7 +61,7 @@ class doc_backend(object):
         self.tc_list = []
         self.ignoretclist = ignorelist
         # ignore lines which contain the follwoing strings
-        self.striplist = ['Resolving deltas', 'Compressing objects', 'Receiving objects', 'remote: Counting objects']
+        self.striplist = tb.config.event_documentation_strip_list
 
     def create_docfiles(self):
         """create the files

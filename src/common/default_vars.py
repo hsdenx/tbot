@@ -165,6 +165,7 @@ create_dashboard = 'no'
 create_webpatch = 'no'
 create_html_log = 'no'
 create_documentation = 'no'
+event_documentation_strip_list = []
 tc_ub_test_py_hook_script_path = '$HOME/testframework/hook-scripts'
 switch_su_board = 'lab'
 tc_workfd_can_ssh = 'no'
