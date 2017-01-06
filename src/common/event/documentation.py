@@ -46,6 +46,29 @@ class doc_backend(object):
       "[...]". If more lines are found in a row, only one "[...]"
       is inserted.
 
+    tools/scripts:
+
+    replace_tbot_marker.py searches for tbot markers "tbot_ref:[filename]"
+    in textfiles, and replaces them with the content of the file [filename]
+
+    ::
+
+     $ python2.7 ../scripts/demo/documentation_backend/replace_tbot_marker.py --help
+       Usage: replace_tbot_marker.py [options]
+       Options:
+         -h, --help            show this help message and exit
+         -i IFILE, --inputfile=IFILE
+                               input file
+         -o OFILE, --outputfile=OFILE
+                               output file
+         -t TCPATH, --tcpatch=TCPATH
+                               path to logfiles.
+         -r REPLACE, --replace=REPLACE
+                               replace some tbot paths
+         -l LITERAL, --literal=LITERAL
+                               type of literal block (bash or rst)
+
+
     see https://github.com/hsdenx/tbot/blob/testing/scripts/demo/documentation_backend/README
     for a demo, how you can create a html/pdf/man page, which
     contains content of tbot logfiles and text around it.

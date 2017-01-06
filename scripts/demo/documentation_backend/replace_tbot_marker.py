@@ -32,6 +32,12 @@ parser.add_option("-o", "--outputfile",
 parser.add_option("-t", "--tcpatch",
        dest="tcpath", default="none",
        help="path to logfiles.")
+parser.add_option("-r", "--replace",
+       dest="replace", default="False",
+       help="replace some tbot paths")
+parser.add_option("-l", "--literal",
+       dest="literal", default="bash",
+       help="type of literal block (bash or rst)")
 (options, args) = parser.parse_args()
  
 searchstring = 'tbot_ref:'
@@ -40,11 +46,20 @@ fi = open(options.ifile, 'r')
 fo = open(options.ofile, 'w')
 line = fi.readline()
 
+# remove yocto workdir
+if options.replace:
+    yoc_wdir = '/work/hs/tbot/yocto-cuby'
+    yoc_first = False
+    tbot_wdir = '/work/hs/tbot'
+    tbot_first = False
+
 while line:
     found = line.find(searchstring)
     if found != -1:
-        fo.write("\n.. code-block:: bash\n\n")
-        # fo.write("\n::\n\n")
+        if options.literal == 'rst':
+            fo.write("\n::\n\n")
+        else:
+            fo.write('\n.. code-block:: ' + options.literal + '\n\n')
         # get filename
         logfile = line.split(searchstring)
         logfile = logfile[1]
@@ -77,6 +92,15 @@ while line:
                 #ln = ln.replace(end_str, '`')
                 ln = ln.replace(col_str, "'")
                 ln = ln.replace(end_str, "'")
+            if options.replace:
+                if yoc_wdir in ln:
+                    if yoc_first:
+                         ln = ln.replace(yoc_wdir, '$TBOT_YOCTO_WORKDIR')
+                    yoc_first = True
+                if tbot_wdir in ln:
+                    if tbot_first:
+                        ln = ln.replace(tbot_wdir, '$TBOT_WORKDIR')
+                    tbot_first = True
             ln = ln.replace('\r\n','\n')
             ln = ln.replace('\r','\n  ')
             fo.write('  ' + ln)
