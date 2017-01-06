@@ -48,8 +48,6 @@ line = fi.readline()
 
 # remove yocto workdir
 if options.replace:
-    yoc_wdir = '/work/hs/tbot/yocto-cuby'
-    yoc_first = False
     tbot_wdir = '/work/hs/tbot'
     tbot_first = False
 
@@ -93,10 +91,6 @@ while line:
                 ln = ln.replace(col_str, "'")
                 ln = ln.replace(end_str, "'")
             if options.replace:
-                if yoc_wdir in ln:
-                    if yoc_first:
-                         ln = ln.replace(yoc_wdir, '$TBOT_YOCTO_WORKDIR')
-                    yoc_first = True
                 if tbot_wdir in ln:
                     if tbot_first:
                         ln = ln.replace(tbot_wdir, '$TBOT_WORKDIR')
