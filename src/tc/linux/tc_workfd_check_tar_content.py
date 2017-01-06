@@ -28,11 +28,6 @@ logging.info("args: workfd %s %s %s %s", tb.workfd.name, tb.config.tc_workfd_che
 	tb.config.tc_workfd_check_tar_content_elements,
 	tb.config.tc_workfd_check_tar_content_endtc_onerror)
 
-# go to hercules ...
-tb.workfd_ssh_cmd = 'hercules'
-tb.config.workfd_ssh_cmd_prompt = '$'
-tb.eof_call_tc("tc_workfd_ssh.py")
-
 filen = tb.config.tc_workfd_check_tar_content_path
 for el in tb.config.tc_workfd_check_tar_content_elements:
     tmp = 'tar tfv ' + filen + ' | grep ' + el
