@@ -32,7 +32,7 @@ except:
 if tb.workfd.tc_workfd_goto_yocto_code_checked == False:
     # set some global config variables
     tb.config.yocto_name = "yocto-" + tb.config.boardlabname
-    tb.config.yocto_fulldir_name = tb.config.tc_lab_source_dir + "/" + tb.config.yocto_name
+    tb.config.yocto_fulldir_name = "$TBOT_WORKDIR/" + tb.config.yocto_name
 
     tmp = 'export TBOT_YOCTO_WORKDIR=' + tb.config.yocto_fulldir_name
     tb.write_lx_cmd_check(tb.workfd, tmp)
