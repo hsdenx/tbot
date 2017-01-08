@@ -67,6 +67,7 @@ class doc_backend(object):
                                replace some tbot paths
          -l LITERAL, --literal=LITERAL
                                type of literal block (bash or rst)
+         -w WRAP, --wrap=WRAP  wrap lines after n characters
 
 
     see https://github.com/hsdenx/tbot/blob/testing/scripts/demo/documentation_backend/README

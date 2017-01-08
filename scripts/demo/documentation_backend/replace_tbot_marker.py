@@ -21,6 +21,7 @@
 # 
 import os, sys
 from optparse import OptionParser
+import textwrap
 
 parser = OptionParser()
 parser.add_option("-i", "--inputfile",
@@ -38,6 +39,9 @@ parser.add_option("-r", "--replace",
 parser.add_option("-l", "--literal",
        dest="literal", default="bash",
        help="type of literal block (bash or rst)")
+parser.add_option("-w", "--wrap",
+       dest="wrap", default=70,
+       help="wrap lines after n characters")
 (options, args) = parser.parse_args()
  
 searchstring = 'tbot_ref:'
@@ -50,6 +54,26 @@ line = fi.readline()
 if options.replace:
     tbot_wdir = '/work/hs/tbot'
     tbot_first = False
+
+def write_line(fo, wl):
+    cur = len(wl)
+    maxlen = int(options.wrap)
+    if cur < maxlen:
+        fo.write('  ' + wl)
+    else:
+        tmp = textwrap.wrap(wl, width=maxlen)
+        cur = len(tmp)
+        first = True
+        for ln in tmp:
+            if first:
+                fo.write('  ' + ln + '\\\n')
+                first = False
+            else:
+                if cur > 1:
+                    fo.write('    ' + ln + '\\\n')
+                else:
+                    fo.write('    ' + ln + '\n')
+            cur -= 1
 
 while line:
     found = line.find(searchstring)
@@ -97,7 +121,7 @@ while line:
                     tbot_first = True
             ln = ln.replace('\r\n','\n')
             ln = ln.replace('\r','\n  ')
-            fo.write('  ' + ln)
+            write_line(fo, ln)
             ln = fl.readline()
 
         fo.write("\n")
