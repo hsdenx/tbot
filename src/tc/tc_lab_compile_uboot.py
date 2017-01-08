@@ -19,6 +19,8 @@
 
 from tbotlib import tbot
 
+tb.eof_call_tc("tc_workfd_goto_uboot_code.py")
+
 savefd = tb.workfd
 tb.workfd = tb.c_ctrl
 if tb.config.tc_lab_compile_uboot_export_path != 'none':
