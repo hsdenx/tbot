@@ -846,7 +846,7 @@ class tbot(object):
         cmdstring.
         :return: True if prompt read, else end testcase with False
         """
-        self.eof_write(c, command)
+        self.eof_write(c, command, start)
         self.tbot_expect_prompt(c)
         return True
 

@@ -88,7 +88,7 @@ if tb.config.tc_workfd_connect_with_kermit_rlogin != 'none':
             # some Error with connect, leave kermit
             tb.workfd.set_timeout(oldt)
             tb.workfd.set_prompt(oldprompt)
-            tb.eof_write_cmd(tb.workfd, 'exit')
+            tb.eof_write_cmd(tb.workfd, 'exit', start=False)
             tb.end_tc(False)
         else:
             tmp = False
