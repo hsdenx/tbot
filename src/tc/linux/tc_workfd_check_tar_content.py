@@ -28,9 +28,12 @@ logging.info("args: workfd %s %s %s %s", tb.workfd.name, tb.config.tc_workfd_che
 	tb.config.tc_workfd_check_tar_content_elements,
 	tb.config.tc_workfd_check_tar_content_endtc_onerror)
 
+tmp = 'tar tfv ' + tb.config.tc_workfd_check_tar_content_path + ' > gnlmpf'
+tb.write_lx_cmd_check(tb.workfd, tmp)
+
 filen = tb.config.tc_workfd_check_tar_content_path
 for el in tb.config.tc_workfd_check_tar_content_elements:
-    tmp = 'tar tfv ' + filen + ' | grep ' + el
+    tmp = 'grep ' + el + ' gnlmpf'
     tb.eof_write(tb.workfd, tmp)
     loop = True
     res = False
