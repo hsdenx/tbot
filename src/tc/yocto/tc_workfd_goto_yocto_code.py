@@ -17,7 +17,7 @@
 # switch into yocto source tb.config.tc_lab_source_dir + "/yocto-" + tb.config.boardlabname
 # set tb.config.yocto_name to "yocto-" + tb.config.boardlabname
 # and tb.config.yocto_fulldir_name to tb.config.tc_lab_source_dir + "/" + tb.config.yocto_name
-# and set $TBOT_YOCTO_WORKDIR to tb.config.yocto_fulldir_name
+# and set $TBOT_BASEDIR_YOCTO to tb.config.yocto_fulldir_name
 # End:
 
 from tbotlib import tbot
@@ -32,19 +32,19 @@ except:
 if tb.workfd.tc_workfd_goto_yocto_code_checked == False:
     # set some global config variables
     tb.config.yocto_name = "yocto-" + tb.config.boardlabname
-    tb.config.yocto_fulldir_name = "$TBOT_WORKDIR/" + tb.config.yocto_name
+    tb.config.yocto_fulldir_name = "$TBOT_BASEDIR/" + tb.config.yocto_name
 
-    tmp = 'export TBOT_YOCTO_WORKDIR=' + tb.config.yocto_fulldir_name
+    tmp = 'export TBOT_BASEDIR_YOCTO=' + tb.config.yocto_fulldir_name
     tb.write_lx_cmd_check(tb.workfd, tmp)
 
-    tb.config.tc_workfd_check_if_dir_exists_name = '$TBOT_YOCTO_WORKDIR'
+    tb.config.tc_workfd_check_if_dir_exists_name = '$TBOT_BASEDIR_YOCTO'
     ret = tb.call_tc("tc_workfd_check_if_dir_exist.py")
     if ret == 'False':
         tb.workfd.tc_workfd_goto_yocto_code_checked = True
         tb.end_tc(False)
  
 # cd into yocto code
-tmp = "cd $TBOT_YOCTO_WORKDIR"
+tmp = "cd $TBOT_BASEDIR_YOCTO"
 tb.write_lx_cmd_check(tb.workfd, tmp)
 
 tb.end_tc(True)

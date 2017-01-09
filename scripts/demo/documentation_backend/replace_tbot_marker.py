@@ -113,7 +113,7 @@ while line:
             if options.replace:
                 if tbot_wdir in ln:
                     if tbot_first:
-                        ln = ln.replace(tbot_wdir, '$TBOT_WORKDIR')
+                        ln = ln.replace(tbot_wdir, '$TBOT_BASEDIR')
                     tbot_first = True
             ln = ln.replace('\r\n','\n')
             ln = ln.replace('\r','\n  ')

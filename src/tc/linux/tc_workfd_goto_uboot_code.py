@@ -33,7 +33,7 @@ except:
 if tb.workfd.tc_workfd_goto_uboot_code_checked == False:
     # set some global config variables
     tb.config.uboot_name = "u-boot-" + tb.config.boardlabname
-    tb.config.uboot_fulldir_name = "$TBOT_WORKDIR/" + tb.config.uboot_name
+    tb.config.uboot_fulldir_name = "$TBOT_BASEDIR/" + tb.config.uboot_name
 
     tmp = 'export TBOT_UBOOT_WORKDIR=' + tb.config.uboot_fulldir_name
     tb.write_lx_cmd_check(tb.workfd, tmp)

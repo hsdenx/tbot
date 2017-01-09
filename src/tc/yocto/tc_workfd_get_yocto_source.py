@@ -98,7 +98,7 @@ for l in tb.config.tc_workfd_get_yocto_source_layers:
     tb.config.tc_lab_git_clone_source_git_repo_user = l[6]
     tb.config.tc_lab_git_clone_source_git_repo_name = l[7]
     tb.eof_call_tc("tc_workfd_git_clone_source.py")
-    tb.write_lx_cmd_check(tb.workfd, 'cd $TBOT_YOCTO_WORKDIR')
+    tb.write_lx_cmd_check(tb.workfd, 'cd $TBOT_BASEDIR_YOCTO')
 
 tb.write_lx_cmd_check(tb.workfd, 'source oe-init-build-env build')
 
@@ -113,7 +113,7 @@ for f in files:
 tb.eof_call_tc("tc_workfd_goto_yocto_code.py")
 
 # replace TBOT_YOCTO_PATH in bblayers.conf with tb.config.yocto_fulldir_name
-tmp = "sed -i -- 's+TBOT_YOCTO_PATH+'\"$TBOT_YOCTO_WORKDIR\"'+g' build/conf/bblayers.conf"
+tmp = "sed -i -- 's+TBOT_YOCTO_PATH+'\"$TBOT_BASEDIR_YOCTO\"'+g' build/conf/bblayers.conf"
 tb.write_lx_cmd_check(tb.workfd, tmp)
 
 tb.end_tc(True)
