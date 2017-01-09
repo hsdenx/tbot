@@ -46,6 +46,8 @@ parser.add_option("-w", "--wrap",
  
 searchstring = 'tbot_ref:'
 
+delete_list = ['\x1b[01;31m\x1b[K', ' \x1b[m\x1b[K']
+
 fi = open(options.ifile, 'r')
 fo = open(options.ofile, 'w')
 line = fi.readline()
@@ -96,10 +98,6 @@ while line:
         # and replace 'ttbott>' with '$'
         ln = fl.readline()
         pr_str = 'ttbott>'
-        # replace col_str with ':redtext:`'
-        col_str = '\x1b[01;31m\x1b[K'
-        # and replace end_str with '`'
-        end_str = ' \x1b[m\x1b[K'
         while ln:
             if '^C' in ln:
                 ln = fl.readline()
@@ -109,11 +107,9 @@ while line:
                 pos += len(pr_str)
                 tmp = ln[pos:]
                 ln = '$' + tmp
-            if col_str in ln:
-                #ln = ln.replace(col_str, ':redtext:`')
-                #ln = ln.replace(end_str, '`')
-                ln = ln.replace(col_str, "'")
-                ln = ln.replace(end_str, "'")
+            for ds in delete_list:
+                if ds in ln:
+                    ln = ln.replace(ds, "")
             if options.replace:
                 if tbot_wdir in ln:
                     if tbot_first:
