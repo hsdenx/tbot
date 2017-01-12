@@ -24,7 +24,6 @@ from tbotlib import tbot
 
 logging.info("args: workfd %s %s", tb.workfd, tb.config.tc_workfd_check_if_dir_exists_name)
 
-tb.eof_call_tc("tc_workfd_goto_tbot_workdir.py")
 tmp = 'test -d ' + tb.config.tc_workfd_check_if_dir_exists_name
 tb.write_lx_cmd_check(tb.workfd, tmp)
 tb.end_tc(True)

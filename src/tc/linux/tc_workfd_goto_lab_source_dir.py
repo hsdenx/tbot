@@ -33,7 +33,7 @@ if tb.workfd.tc_lab_source_dir_checked == False:
 
     tb.config.tc_workfd_check_if_dir_exists_name = '$TBOT_BASEDIR'
     ret = tb.call_tc("tc_workfd_check_if_dir_exist.py")
-    if ret == 'False':
+    if ret == False:
         tmp = 'mkdir $TBOT_BASEDIR'
         tb.write_lx_cmd_check(tb.workfd, tmp)
 

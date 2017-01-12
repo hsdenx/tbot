@@ -40,7 +40,7 @@ if tb.workfd.tc_workfd_goto_uboot_code_checked == False:
 
     tb.config.tc_workfd_check_if_dir_exists_name = '$TBOT_BASEDIR_UBOOT'
     ret = tb.call_tc("tc_workfd_check_if_dir_exist.py")
-    if ret == 'False':
+    if ret == False:
         tb.workfd.tc_workfd_goto_uboot_code_checked = True
         tb.end_tc(False)
 
