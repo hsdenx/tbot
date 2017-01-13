@@ -77,21 +77,27 @@ def write_line(fo, wl):
                     fo.write('    ' + ln + '\n')
             cur -= 1
 
+lastline_has_tbotmarker = False
+linenr = 0
 while line:
+    linenr += 1
     found = line.find(searchstring)
     if found != -1:
-        if options.literal == 'rst':
-            fo.write("\n::\n\n")
-        else:
-            fo.write('\n.. code-block:: ' + options.literal + '\n\n')
+        if lastline_has_tbotmarker == False:
+            if options.literal == 'rst':
+                fo.write("\n::\n\n")
+            else:
+                fo.write('\n.. code-block:: ' + options.literal + '\n\n')
+
         # get filename
         logfile = line.split(searchstring)
         logfile = logfile[1]
         logfile = logfile.replace('\n', '')
         # open filename
-        fl = open(options.tcpath + logfile, 'r')
-        if not fl:
-            print("Error: %s not found\n" %(options.tcpath + logfile))
+        try:
+            fl = open(options.tcpath + logfile, 'r')
+        except:
+            print("Error: %s in line %d not found\n" %(options.tcpath + logfile, linenr))
             sys.exit(1)
         # write line by line + 2 ' ' before the original line
         # also remove all lines with '^C'
@@ -122,7 +128,9 @@ while line:
 
         fo.write("\n")
         fl.close()
+        lastline_has_tbotmarker = True
     else:
+        lastline_has_tbotmarker = False
         fo.write(line)
     line = fi.readline()
 
