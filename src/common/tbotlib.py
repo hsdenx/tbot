@@ -715,6 +715,12 @@ class tbot(object):
                 logging.info("set prompt:%s", cmd)
 
         c.expect_prompt()
+        try:
+            c.termlength_set
+        except:
+            c.termlength_set = False
+        c.termlength_set = False
+
         return ret
 
     def check_args(self, args):
@@ -929,13 +935,19 @@ class tbot(object):
         :param arg1: connection
         :return: no return value
         """
-        tmp = 'stty cols ' + self.config.term_line_length
-        self.eof_write(c, tmp, False)
-        self.tbot_expect_prompt(c)
-        self.eof_write(c, "export TERM=vt200", False)
-        self.tbot_expect_prompt(c)
-        self.eof_write(c, "echo $COLUMNS", False)
-        self.tbot_expect_prompt(c)
+        try:
+            c.termlength_set
+        except:
+            c.termlength_set = False
+        if c.termlength_set == False:
+            tmp = 'stty cols ' + self.config.term_line_length
+            self.eof_write(c, tmp, False)
+            self.tbot_expect_prompt(c)
+            self.eof_write(c, "export TERM=vt200", False)
+            self.tbot_expect_prompt(c)
+            self.eof_write(c, "echo $COLUMNS", False)
+            self.tbot_expect_prompt(c)
+            c.termlength_set = True
 
     def eof_call_tc(self, name, **kwargs):
         """ call tc name, end testcase on failure
@@ -1116,15 +1128,17 @@ class tbot(object):
         self.buf = c.get_log()
         return ret
 
-    def eof_expect_string(self, c, string):
+    def eof_expect_string(self, c, string, wait_prompt=True):
         """ expect a string, if prompt read end tc False
 
         - **parameters**, **types**, **return** and **return types**::
         :param arg1: connection
         :param arg2: string expected
+        :param arg3: boot If True wait after string is found for prompt
         """
         ret = self.tbot_expect_string(c, string)
         if ret == 'prompt':
             self.end_tc(False)
-        self.tbot_expect_prompt(c)
+        if wait_prompt:
+            self.tbot_expect_prompt(c)
         return True
