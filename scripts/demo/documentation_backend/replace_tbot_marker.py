@@ -46,7 +46,10 @@ parser.add_option("-w", "--wrap",
  
 searchstring = 'tbot_ref:'
 
-delete_list = ['\x1b[01;31m\x1b[K', ' \x1b[m\x1b[K']
+delete_list = ['\x1b[01;31m\x1b[K',
+	' \x1b[m\x1b[K',
+	'\x1b[1A\x1b[J'
+]
 
 fi = open(options.ifile, 'r')
 fo = open(options.ofile, 'w')
