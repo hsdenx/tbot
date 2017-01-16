@@ -64,7 +64,7 @@ def state_lx_parse_input(tb, c, retry, sl):
             return True
 
         if ret == '3':
-            tb.write_stream(c, tb.config.linux_user)
+            tb.write_stream(c, tb.config.linux_user, send_console_start=False)
             i = 0
 
         if ret == '4':
