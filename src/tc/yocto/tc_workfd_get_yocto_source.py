@@ -116,4 +116,20 @@ tb.eof_call_tc("tc_workfd_goto_yocto_code.py")
 tmp = "sed -i -- 's+TBOT_YOCTO_PATH+'\"$TBOT_BASEDIR_YOCTO\"'+g' build/conf/bblayers.conf"
 tb.write_lx_cmd_check(tb.workfd, tmp)
 
+# setup yocto DL_DIR
+if tb.config.tc_workfd_get_yocto_source_conf_dl_dir != 'none':
+    tb.config.tc_workfd_linux_mkdir_dir = tb.config.tc_workfd_get_yocto_source_conf_dl_dir
+    tb.eof_call_tc("tc_workfd_linux_mkdir.py")
+
+    tmp = "sed -i -- 's+TBOT_YOCTO_DLDIR+'" + tb.config.tc_workfd_get_yocto_source_conf_dl_dir + "'+g' build/conf/local.conf"
+    tb.write_lx_cmd_check(tb.workfd, tmp)
+
+# setup yocto SSTATE_DIR
+if tb.config.tc_workfd_get_yocto_source_conf_sstate_dir != 'none':
+    tb.config.tc_workfd_linux_mkdir_dir = tb.config.tc_workfd_get_yocto_source_conf_sstate_dir
+    tb.eof_call_tc("tc_workfd_linux_mkdir.py")
+
+    tmp = "sed -i -- 's+TBOT_YOCTO_SSTATEDIR+'" + tb.config.tc_workfd_get_yocto_source_conf_sstate_dir + "'+g' build/conf/local.conf"
+    tb.write_lx_cmd_check(tb.workfd, tmp)
+
 tb.end_tc(True)

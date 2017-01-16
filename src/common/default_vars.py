@@ -192,3 +192,5 @@ tc_workfd_get_yocto_source_layers = [
 ['https://github.com/sbabic/meta-swupdate.git', 'master', 'b3abfa78d04b88b88bcef6f5be9f2adff1293544', 'none', 'none', 'none', '', 'meta-swupdate'],
 ['git@gitlab.denx.de:ssi/meta-cuby.git', '20161220', 'none', 'none', 'none', 'none', '', 'meta-cuby'],
 ]
+tc_workfd_get_yocto_source_conf_dl_dir = 'none'
+tc_workfd_get_yocto_source_conf_sstate_dir = 'none'
