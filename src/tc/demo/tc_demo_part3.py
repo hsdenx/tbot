@@ -25,7 +25,7 @@ tb.workfd = tb.c_ctrl
 # set specific parameters for this demo
 tb.config.board_git_bisect_get_source_tc = "tc_workfd_goto_uboot_code.py"
 tb.config.board_git_bisect_call_tc = "tc_demo_compile_install_test.py"
-tb.config.board_git_bisect_good_commit = "44afdc4a12b9f6f48338e7975e4f08cfe90dba74"
+tb.config.board_git_bisect_good_commit = "035ebf85b09cf11c820ae9eec414097420741abd"
 tb.config.board_git_bisect_patches = 'none'
 
 # start bisecting now
