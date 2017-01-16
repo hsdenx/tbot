@@ -42,7 +42,11 @@ c = tb.workfd
 ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir
 tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s="u-boot.bin", t=ta)
 tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s="System.map", t=ta)
-tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s="boot.bin", t=ta)
+if tb.config.boardname == 'wandboard':
+    tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s="u-boot.img", t=ta)
+    tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s="SPL", t=ta)
+else:
+    tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s="boot.bin", t=ta)
 tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s="spl/u-boot-spl.bin", t=ta)
 ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-spl.map"
 tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s="spl/u-boot-spl.map", t=ta)
@@ -72,9 +76,16 @@ tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
 so = "System.map"
 ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-latestworking.System.map"
 tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
-so = "boot.bin"
-ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-latestworking-boot.bin"
-tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
+if tb.config.boardname == 'wandboard':
+    ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-latestworking.img"
+    tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s="u-boot.img", t=ta)
+    ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-latestworking-SPL"
+    tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s="SPL", t=ta)
+else:
+    so = "boot.bin"
+    ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-latestworking-boot.bin"
+    tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
+
 so = "spl/u-boot-spl.bin"
 ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-latestworking-spl.bin"
 tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
