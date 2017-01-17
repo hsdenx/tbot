@@ -574,14 +574,14 @@ class tbot(object):
         c.send(string)
         self.event.create_event_log(c, "w", "password ********")
         # read until timeout
-        oldt = c.get_timeout()
-        c.set_timeout(2)
-        try:
-            c.expect_string('#\$')
-        except:
-            logging.debug("got prompt after passwd")
+        #oldt = c.get_timeout()
+        #c.set_timeout(2)
+        #try:
+        #    c.expect_string('#\$')
+        #except:
+        #    logging.debug("got prompt after passwd")
 
-        c.set_timeout(oldt)
+        #c.set_timeout(oldt)
         return True
 
     def write_stream_con(self, string):
