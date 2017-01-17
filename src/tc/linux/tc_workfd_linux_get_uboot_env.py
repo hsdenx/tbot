@@ -25,7 +25,7 @@ tb.set_board_state("linux")
 logging.info("args: workfd %s %s", tb.workfd.name, tb.config.linux_get_uboot_env_name)
 
 tb.config.linux_get_uboot_env_value = 'undef'
-cmd = 'fw_printenv bootpart'
+cmd = 'fw_printenv ' + tb.config.linux_get_uboot_env_name
 tb.eof_write(tb.workfd, cmd)
 ret = True
 suc = False
