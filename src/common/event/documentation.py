@@ -206,31 +206,30 @@ class doc_backend(object):
                 except:
                     print("filename no entry ", name, index)
                 return
+            if tmp[self.ev.value] != 'r':
+                continue
             if eid == 'log':
                 logline = line.split(newname)
                 logline = logline[1]
-                logline = logline.strip()
-                if logline[:1] == 'r':
-                    logline = logline[1:]
-                    log = logline.split('\r\n')
-                    logline = ''
-                    for l in log:
-                        add = True
-                        for sl in self.striplist:
-                            if sl in l:
-                                add = False
-                                if stripped == 'no':
-                                    logline += '[...]\n'
-                                    stripped = 'yes'
-                                else:
-                                    break
-                        if add:
-                            if l != log[-1]:
-                                logline += l + '\n'
+                logline = logline[2:]
+                log = logline.split('\r\n')
+                logline = ''
+                for l in log:
+                    add = True
+                    for sl in self.striplist:
+                        if sl in l:
+                            add = False
+                            if stripped == 'no':
+                                logline += '[...]\n'
+                                stripped = 'yes'
                             else:
+                                break
+                    if add:
+                        if l != log[-1]:
+                            logline += l + '\n'
+                        else:
+                            if l != '':
                                 logline += l
-                else:
-                    continue
  
                 if oldname == 'none':
                     oldname = newname
