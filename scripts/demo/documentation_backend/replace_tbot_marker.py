@@ -48,6 +48,8 @@ searchstring = 'tbot_ref:'
 
 delete_list = ['\x1b[01;31m\x1b[K',
 	' \x1b[m\x1b[K',
+	'\x1b[1;34m[\x1b[1;32m',
+	'\x1b[1;34m]\x1b[0;39m',
 	'\x1b[1A\x1b[J'
 ]
 
