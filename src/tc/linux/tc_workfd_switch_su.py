@@ -21,13 +21,25 @@ from tbotlib import tbot
 
 logging.info("args: workfd %s %s", tb.workfd.name, tb.config.switch_su_board)
 
+c = tb.workfd
 #switch to root
 tb.eof_write(tb.workfd, "su")
-tb.tbot_expect_string(tb.workfd, 'assword')
+ret = tb.tbot_expect_string(tb.workfd, 'assword')
 if ret == 'prompt':
     tb.end_tc(False)
 
 tb.eof_write_workfd_passwd("root", tb.config.switch_su_board)
+
+# read until timeout
+oldt = c.get_timeout()
+c.set_timeout(2)
+try:
+    c.expect_string('#\$')
+except:
+    logging.debug("did not get prompt after passwd")
+    tb.end_tc(False)
+
+c.set_timeout(oldt)
 
 # set prompt
 tb.set_prompt(tb.workfd, tb.config.labprompt, 'linux')
