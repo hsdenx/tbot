@@ -38,3 +38,12 @@ tc_workfd_apply_patchwork_patches_list_hand = [
 tc_workfd_apply_patchwork_patches_blacklist = ['204183', '561384']
 
 uboot_get_parameter_file_list = ['.config', 'include/configs/smartweb.h', 'arch/arm/mach-at91/include/mach/at91sam9260.h']
+
+tc_workfd_set_toolchain_arch = 'arm'
+tc_workfd_set_toolchain_t_p = {
+'arm' : '/opt/eldk-5.4/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-linux-gnueabi',
+}
+
+tc_workfd_set_toolchain_cr_co = {
+'arm' : 'arm-linux-gnueabi-',
+}
