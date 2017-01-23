@@ -174,7 +174,7 @@ else:
         tmp = "make mrproper"
         tb.write_lx_cmd_check(tb.workfd, tmp)
         # call set toolchain
-        tb.tc_workfd_set_toolchain_arch = tb.cur_uboot_arch
+        tb.config.tc_workfd_set_toolchain_arch = tb.cur_uboot_arch
         ret = tb.call_tc("tc_workfd_set_toolchain.py")
         if ret == False:
             not_checked.append(board)
@@ -250,7 +250,7 @@ for board in tb.tc_lab_compile_uboot_list_boardlist:
         continue
 
     # call set toolchain
-    tb.tc_workfd_set_toolchain_arch = arch[count - 1]
+    tb.config.tc_workfd_set_toolchain_arch = arch[count - 1]
     ret = tb.call_tc("tc_workfd_set_toolchain.py")
     if ret == False:
         tb.statusprint("testing board %s setting toolchain failed" % (board))

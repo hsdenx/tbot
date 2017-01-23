@@ -15,42 +15,42 @@
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_set_toolchain.py
 # set the toolchain, dependend on the architecture setting in
-# tb.tc_workfd_set_toolchain_arch
+# tb.config.tc_workfd_set_toolchain_arch
 # supported toolchains defined in
-# tb.tc_workfd_set_toolchain_t_p and tb.tc_workfd_set_toolchain_cr_co
+# tb.config.tc_workfd_set_toolchain_t_p and tb.config.tc_workfd_set_toolchain_cr_co
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: %s %s", tb.workfd.name, tb.tc_workfd_set_toolchain_arch)
+logging.info("args: %s %s", tb.workfd.name, tb.config.tc_workfd_set_toolchain_arch)
 
 c = tb.workfd
 
 try:
-    tb.tc_workfd_set_toolchain_t_p
+    tb.config.tc_workfd_set_toolchain_t_p
 except:
-    logging.error("tb.tc_workfd_set_toolchain_t_p not set")
+    logging.error("tb.config.tc_workfd_set_toolchain_t_p not set")
     tb.end_tc(False)
 
 try:
-    tb.tc_workfd_set_toolchain_cr_co
+    tb.config.tc_workfd_set_toolchain_cr_co
 except:
-    logging.error("tb.tc_workfd_set_toolchain_cr_co not set")
+    logging.error("tb.config.tc_workfd_set_toolchain_cr_co not set")
     tb.end_tc(False)
 
-if tb.tc_workfd_set_toolchain_arch in tb.tc_workfd_set_toolchain_t_p:
-    path = tb.tc_workfd_set_toolchain_t_p[tb.tc_workfd_set_toolchain_arch]
+if tb.config.tc_workfd_set_toolchain_arch in tb.config.tc_workfd_set_toolchain_t_p:
+    path = tb.config.tc_workfd_set_toolchain_t_p[tb.config.tc_workfd_set_toolchain_arch]
 else:
-    logging.error("args: %s unknown architecture %s", tb.workfd.name, tb.tc_workfd_set_toolchain_arch)
+    logging.error("args: %s unknown architecture %s", tb.workfd.name, tb.config.tc_workfd_set_toolchain_arch)
     tb.end_tc(False)
 
-if tb.tc_workfd_set_toolchain_arch in tb.tc_workfd_set_toolchain_cr_co:
-    cross = tb.tc_workfd_set_toolchain_cr_co[tb.tc_workfd_set_toolchain_arch]
+if tb.config.tc_workfd_set_toolchain_arch in tb.config.tc_workfd_set_toolchain_cr_co:
+    cross = tb.config.tc_workfd_set_toolchain_cr_co[tb.config.tc_workfd_set_toolchain_arch]
 else:
-    logging.error("args: %s unknown architecture %s", tb.workfd.name, tb.tc_workfd_set_toolchain_arch)
+    logging.error("args: %s unknown architecture %s", tb.workfd.name, tb.config.tc_workfd_set_toolchain_arch)
     tb.end_tc(False)
 
-if tb.tc_workfd_set_toolchain_arch == 'sandbox':
+if tb.config.tc_workfd_set_toolchain_arch == 'sandbox':
     tmp = 'export PATH=/bin:$PATH'
     tb.event.create_event('main', tb.config.boardname, "Toolchain", tmp)
     tb.eof_write_cmd(c, tmp)
