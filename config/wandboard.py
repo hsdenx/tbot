@@ -19,6 +19,16 @@ tc_lab_denx_connect_to_board_tc = 'tc_workfd_connect_with_kermit.py'
 tc_workfd_connect_with_kermit_rlogin = 'rlogin ts3 wandboard_dl'
 tc_lab_denx_disconnect_from_board_tc = 'tc_workfd_disconnect_with_kermit.py'
 
+# Toolchain
+tc_workfd_set_toolchain_arch = 'arm'
+tc_workfd_set_toolchain_t_p = {
+'arm' : '/opt/eldk-5.4/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-linux-gnueabi',
+}
+
+tc_workfd_set_toolchain_cr_co = {
+'arm' : 'arm-linux-gnueabi-',
+}
+
 # variables used in testcases
 tc_ub_boot_linux_load_env = 0
 setenv_name = 'Heiko'
