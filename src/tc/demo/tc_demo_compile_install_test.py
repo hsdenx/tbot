@@ -30,7 +30,7 @@ tb.eof_call_tc("tc_workfd_goto_uboot_code.py")
 
 # call set toolchain
 tb.statusprint("set toolchain")
-tb.eof_call_tc("tc_lab_set_toolchain.py")
+tb.eof_call_tc("tc_workfd_set_toolchain.py")
 
 # call compile u-boot
 tb.statusprint("compile u-boot")
