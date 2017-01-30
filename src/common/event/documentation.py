@@ -34,6 +34,9 @@ class doc_backend(object):
     This files could be used to create documentation
     files, which contains logs.
 
+    You can set a own "testcasename" if you create the event:
+    SET_DOC_FILENAME. 
+
     enable this backend with "create_documentation = 'yes'"
 
     created files are stored in tb.workdir + '/logfiles/
@@ -99,6 +102,8 @@ class doc_backend(object):
         if tmp[self.ev.id] == 'End':
             return tmp[self.ev.id]
         if tmp[self.ev.id] == 'log':
+            return tmp[self.ev.id]
+        if tmp[self.ev.id] == 'SET_DOC_FILENAME':
             return tmp[self.ev.id]
         return 'none'
 
@@ -199,6 +204,10 @@ class doc_backend(object):
             if eid == 'Start':
                 interrupted = True
                 self._analyse(evl, newname)
+                continue
+            if eid == 'SET_DOC_FILENAME':
+                interrupted = True
+                self._analyse(evl, tmp[self.ev.value])
                 continue
             if eid == 'End':
                 try:

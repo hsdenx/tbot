@@ -100,6 +100,16 @@ LINUX_DEFCONFIG  used Linux configuration
 LINUX_SRC_PATH   path, where Linux source is located
 ===============  ============================
 
+  documentation.py_
+.. _documentation.py: https://github.com/hsdenx/tbot/src/common/event/documentation.py
+
+================  ============================
+  Event-ID           content
+================  ============================
+SET_DOC_FILENAME  set a name for the logfile
+================  ============================
+
+
 demos
 =====
 
