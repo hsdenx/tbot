@@ -50,7 +50,7 @@ def apply_one_patch(tb, filename):
 
 # print some infos
 tb.eof_write_cmd(tb.workfd, 'pwd')
-tb.write_lx_cmd_check(tb.workfd, 'git describe')
+tb.write_lx_cmd_check(tb.workfd, 'git describe --all')
 
 tb.tc_workfd_get_list_of_files_dir = tb.config.tc_workfd_apply_local_patches_dir
 tb.config.tc_workfd_get_list_of_files_mask = '*.patch'
