@@ -18,6 +18,9 @@
 # - compile source tree
 # - install bin on board
 # - call board uboot testcase
+# tb.config.tc_demo_compile_install_test_files contains a list of files,
+# which are copied to
+# tb.config.tftprootdir + tb.config.tftpboardname + '/' + tb.config.ub_load_board_env_subdir
 # End:
 
 from tbotlib import tbot
@@ -39,24 +42,18 @@ tb.eof_call_tc("tc_lab_compile_uboot.py")
 # copy files to tbot dir
 tb.statusprint("copy files")
 c = tb.workfd
-ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir
-tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s="u-boot.bin", t=ta)
-tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s="System.map", t=ta)
-if tb.config.boardname == 'wandboard':
-    tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s="u-boot.img", t=ta)
-    tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s="SPL", t=ta)
-else:
-    tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s="boot.bin", t=ta)
-tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s="spl/u-boot-spl.bin", t=ta)
-ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-spl.map"
-tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s="spl/u-boot-spl.map", t=ta)
+
+r = tb.config.tftprootdir
+for f in tb.config.tc_demo_compile_install_test_files:
+    ta = r + tb.config.tftpboardname + '/' + tb.config.ub_load_board_env_subdir
+    tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=f, t=ta)
 
 # set workfd to the connection we want to work on
 tb.workfd = tb.c_ctrl
 tb.eof_call_tc("tc_workfd_goto_uboot_code.py")
 
 # check U-Boot version
-tb.tc_ub_get_version_file = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + '/u-boot.bin'
+tb.tc_ub_get_version_file = r + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + '/u-boot.bin'
 tb.tc_ub_get_version_string = 'U-Boot 20'
 tb.eof_call_tc("tc_ub_get_version.py")
 tb.uboot_vers = tb.config.tc_return
@@ -70,28 +67,10 @@ tb.eof_call_tc("tc_ub_help.py")
 
 # save working u-boot bin
 c = tb.workfd
-so = "u-boot.bin"
-ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-latestworking.bin"
-tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
-so = "System.map"
-ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-latestworking.System.map"
-tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
-if tb.config.boardname == 'wandboard':
-    ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-latestworking.img"
-    tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s="u-boot.img", t=ta)
-    ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-latestworking-SPL"
-    tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s="SPL", t=ta)
-else:
-    so = "boot.bin"
-    ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-latestworking-boot.bin"
-    tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
-
-so = "spl/u-boot-spl.bin"
-ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-latestworking-spl.bin"
-tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
-so = "spl/u-boot-spl.map"
-ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-latestworking-spl.System.map"
-tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
+for f in tb.config.tc_demo_compile_install_test_files:
+    tmp = f.replace('/', "_")
+    ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/latestworking-" + tmp
+    tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=f, t=ta)
 
 # power off board at the end
 tb.eof_call_tc("tc_lab_poweroff.py")

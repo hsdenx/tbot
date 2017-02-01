@@ -10,3 +10,4 @@ wdt_timeout = '900'
 
 tc_workfd_work_dir = '/work/hs/tbot'
 lab_tmp_dir = '/var/tmp/'
+tftprootdir = '/tftpboot/'

@@ -37,3 +37,4 @@ ub_load_board_env_addr = '0x10000000'
 tc_lab_get_uboot_source_git_repo = "/home/git/u-boot.git"
 tc_lab_get_uboot_source_git_branch = "master"
 tc_lab_compile_uboot_export_path = '/home/hs/dtc'
+tc_demo_compile_install_test_files = ['u-boot.bin', 'u-boot.img', 'SPL', 'spl/u-boot-spl.bin', 'spl/u-boot-spl.map']
