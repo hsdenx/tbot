@@ -36,14 +36,14 @@ if tb.config.tc_workfd_connect_with_kermit_ssh != 'none':
     tb.config.workfd_ssh_cmd_prompt = '$'
     tb.eof_call_tc("tc_workfd_ssh.py")
 
-tb.eof_write(tb.workfd, 'kermit')
+tb.eof_write(tb.workfd, 'kermit', start=False)
 oldprompt = tb.workfd.get_prompt()
 tb.workfd.set_prompt('C-Kermit>')
 tb.workfd.expect_prompt()
 
 if tb.config.tc_workfd_connect_with_kermit_rlogin == 'none':
     # check for "no effect", "Sorry, write access"
-    tb.eof_write(tb.workfd, "set line " + tb.config.kermit_line)
+    tb.eof_write(tb.workfd, "set line " + tb.config.kermit_line, start=False)
     searchlist = ["no effect", "Sorry, write access"]
     tmp = True
     retu = False
@@ -60,9 +60,9 @@ if tb.config.tc_workfd_connect_with_kermit_rlogin == 'none':
         tb.workfd.set_prompt(oldprompt)
         tb.end_tc(False)
 
-    tb.eof_write_cmd(tb.workfd, "set speed " + tb.config.kermit_speed)
-    tb.eof_write_cmd(tb.workfd, "set flow-control none")
-    tb.eof_write_cmd(tb.workfd, "set carrier-watch off")
+    tb.eof_write_cmd(tb.workfd, "set speed " + tb.config.kermit_speed, start=False)
+    tb.eof_write_cmd(tb.workfd, "set flow-control none", start=False)
+    tb.eof_write_cmd(tb.workfd, "set carrier-watch off", start=False)
     tb.eof_write(tb.workfd, "connect")
     searchlist = ["Connecting"]
     tmp = True
@@ -70,7 +70,7 @@ if tb.config.tc_workfd_connect_with_kermit_rlogin == 'none':
     if ret != '0':
         tb.end_tc(False)
 else:
-    tb.eof_write(tb.workfd, tb.config.tc_workfd_connect_with_kermit_rlogin)
+    tb.eof_write(tb.workfd, tb.config.tc_workfd_connect_with_kermit_rlogin, start=False)
 
 searchlist = ['----------------------------------------------------']
 ret = tb.tbot_read_line_and_check_strings(tb.workfd, searchlist)
