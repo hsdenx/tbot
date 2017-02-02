@@ -30,7 +30,7 @@ tc_workfd_set_toolchain_cr_co = {
 }
 
 # variables used in testcases
-tc_ub_boot_linux_load_env = 0
+tc_ub_boot_linux_load_env = 'no'
 setenv_name = 'Heiko'
 setenv_value = 'Schocher'
 ub_load_board_env_addr = '0x10000000'

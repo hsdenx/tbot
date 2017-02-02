@@ -12,7 +12,7 @@ linux_prompt = 'ttbott> '
 setenv_name = 'Heiko'
 setenv_value = 'Schocher'
 ub_load_board_env_addr = '0x81000000'
-tc_ub_boot_linux_load_env = 0
+tc_ub_boot_linux_load_env = 'no'
 ub_boot_linux_cmd='run net_nfs_self'
 
 tc_lx_mount_dev = '/dev/mmcblk0p2'

@@ -21,18 +21,27 @@
 from tbotlib import tbot
 
 logging.info("args: %s %s %s", tb.config.tftpboardname, tb.config.ub_load_board_env_addr, tb.config.ub_load_board_env_subdir)
+logging.info("args: %s", tb.config.tc_ub_boot_linux_load_env)
+logging.info("args: %s", tb.config.tftpboardrootdir)
+logging.info("args: %s", tb.config.ub_load_board_env_set)
 
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
 # load U-Boot Env only if allowed
-if tb.config.tc_ub_boot_linux_load_env != 1:
+if tb.config.tc_ub_boot_linux_load_env == 'no':
     tb.end_tc(True)
 
-tb.config.tc_ub_tftp_file_addr = tb.config.ub_load_board_env_addr
-tb.config.tc_ub_tftp_file_name = '/tftpboot/' + tb.config.tftpboardname + '/' + tb.config.ub_load_board_env_subdir + '/env.txt'
-
 c = tb.c_con
+if tb.config.tc_ub_boot_linux_load_env == 'set':
+    for cmd in tb.config.ub_load_board_env_set:
+        tb.eof_write(c, cmd)
+        tb.tbot_expect_prompt(c)
+
+r = tb.config.tftpboardrootdir
+tb.config.tc_ub_tftp_file_addr = tb.config.ub_load_board_env_addr
+tb.config.tc_ub_tftp_file_name = r + tb.config.tftpboardname + '/' + tb.config.ub_load_board_env_subdir + '/env.txt'
+
 i = 0
 retry = 2
 load_fail = False
