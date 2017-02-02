@@ -61,6 +61,9 @@ tb.uboot_vers = tb.config.tc_return
 # call upd_uboot
 tb.eof_call_tc("tc_ub_upd_uboot.py")
 
+# call upd_spl
+tb.eof_call_tc("tc_ub_upd_spl.py")
+
 # call tc_help
 tb.statusprint("u-boot help test")
 tb.eof_call_tc("tc_ub_help.py")
