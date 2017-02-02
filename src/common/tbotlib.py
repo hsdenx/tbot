@@ -218,7 +218,7 @@ class tbot(object):
         tmp = "get power state " + boardname + " using tc " + self.config.tc_lab_denx_get_power_state_tc
         logging.info(tmp)
 
-        self.call_tc(self.config.tc_lab_denx_get_power_state_tc)
+        self.eof_call_tc(self.config.tc_lab_denx_get_power_state_tc)
         if self.power_state == 'on':
             return True
         return False
@@ -236,7 +236,7 @@ class tbot(object):
         logging.info(tmp)
 
         self.power_state = state
-        self.call_tc(self.config.tc_lab_denx_power_tc)
+        self.eof_call_tc(self.config.tc_lab_denx_power_tc)
         ret = self.get_power_state(boardname)
         return ret
 
