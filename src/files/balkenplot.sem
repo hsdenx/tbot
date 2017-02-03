@@ -9,12 +9,13 @@ set style histogram rowstacked title  offset character 0, 0, 0
 set datafile missing '-'
 set style data histograms
 set xtics border in scale 0,0 nomirror rotate by -45  offset character 0, 0, 0 autojustify
-set xtics  norangelimit font ",8"
+set xtics  norangelimit font "arial,20"
 set xtics   ()
 set title "TC statistic" 
 
 set grid ytics
 set terminal jpeg enhanced size 2048,768
+set termoption noenhanced
 set output "output.jpg"
 
 i = 2
