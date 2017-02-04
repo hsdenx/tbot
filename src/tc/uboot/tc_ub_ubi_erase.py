@@ -31,7 +31,7 @@ searchlist = ["!= byte at", "error", "Retry count exceeded", "not defined"]
 tmp = True
 cmd_nok = False
 while tmp == True:
-    ret = tb.tbot_read_line_and_check_strings(c, searchlist)
+    ret = tb.tbot_rup_and_check_strings(c, searchlist)
     if ret == '0':
         cmd_nok = True
     elif ret == '1':

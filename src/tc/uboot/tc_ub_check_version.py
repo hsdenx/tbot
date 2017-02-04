@@ -34,11 +34,11 @@ searchlist = ['U-Boot 20']
 tmp = True
 ret = False
 while tmp == True:
-    retu = tb.tbot_read_line_and_check_strings(c, searchlist)
+    retu = tb.tbot_rup_and_check_strings(c, searchlist)
     if retu == 'prompt':
         tmp = False
     if retu == '0':
-        ret = tb.tbot_read_line_and_check_strings(c, '\n')
+        ret = tb.tbot_rup_and_check_strings(c, '\n')
         if ret == 'prompt':
             tb.enc_tc(False)
         tmp = 'U-Boot 20' + tb.buf.replace('\r','')
@@ -59,11 +59,11 @@ searchlist = ['U-Boot SPL 20']
 tmp = True
 ret = False
 while tmp == True:
-    retu = tb.tbot_read_line_and_check_strings(c, searchlist)
+    retu = tb.tbot_rup_and_check_strings(c, searchlist)
     if retu == 'prompt':
         tmp = False
     if retu == '0':
-        ret = tb.tbot_read_line_and_check_strings(c, '\n')
+        ret = tb.tbot_rup_and_check_strings(c, '\n')
         if ret == 'prompt':
             tb.enc_tc(False)
         tmp = 'U-Boot SPL 20' + tb.buf.replace('\r','')

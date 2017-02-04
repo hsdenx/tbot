@@ -40,7 +40,7 @@ searchlist = ["MB/sec"]
 tmp = True
 result = False
 while tmp == True:
-    ret = tb.tbot_read_line_and_check_strings(c, searchlist)
+    ret = tb.tbot_rup_and_check_strings(c, searchlist)
     if ret == '0':
         # extract value from line
         str1 = tb.buf.split('=')

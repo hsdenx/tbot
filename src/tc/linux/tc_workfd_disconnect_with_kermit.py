@@ -37,7 +37,7 @@ searchlist = ['OK']
 tmp = True
 once = 0
 while tmp == True:
-    ret = tb.tbot_read_line_and_check_strings(tb.workfd, searchlist)
+    ret = tb.tbot_rup_and_check_strings(tb.workfd, searchlist)
     if ret == '0':
         if once == 0:
             tb.eof_write(tb.workfd, 'OK', False)

@@ -69,7 +69,7 @@ while inwhile:
     tmp2 = True
     se = ['the first bad commit', 'Aborting']
     while tmp2 == True:
-        ret = tb.tbot_read_line_and_check_strings(c, se)
+        ret = tb.tbot_rup_and_check_strings(c, se)
         if ret == '0':
             inwhile = False
         if ret == '1':

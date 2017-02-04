@@ -38,7 +38,7 @@ searchlist = ["OK"]
 tmp = True
 attached = False
 while tmp == True:
-    ret = tb.tbot_read_line_and_check_strings(c, searchlist)
+    ret = tb.tbot_rup_and_check_strings(c, searchlist)
     if ret == 0:
         attached = True
     elif ret == 'prompt':
@@ -59,7 +59,7 @@ def ubiprep(tb, tmp):
     tmp = True
     cmd_ok = False
     while tmp:
-        ret = tb.tbot_read_line_and_check_strings(tb.c_con, searchlist)
+        ret = tb.tbot_rup_and_check_strings(tb.c_con, searchlist)
         if ret == '1':
             cmd_ok = True
         elif ret == 'prompt':

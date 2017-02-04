@@ -28,7 +28,7 @@ searchlist = ["not installed"]
 tmp = True
 cmd_installed = True
 while tmp == True:
-    ret = tb.tbot_read_line_and_check_strings(tb.workfd, searchlist)
+    ret = tb.tbot_rup_and_check_strings(tb.workfd, searchlist)
     if ret == '0':
         cmd_installed = False
     elif ret == 'prompt':

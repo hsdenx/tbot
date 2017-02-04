@@ -51,7 +51,7 @@ def search_define(tb, c):
         searchlist = [tb.uboot_config_option]
         tmp = True
         while tmp == True:
-            ret = tb.tbot_read_line_and_check_strings(c, searchlist)
+            ret = tb.tbot_rup_and_check_strings(c, searchlist)
             if ret == 'prompt':
                 tmp = False
             if ret == '0' and tb.config_found == False:
@@ -59,7 +59,7 @@ def search_define(tb, c):
                 p = re.search(string, tb.buf)
                 if p == None:
                     continue
-                ret = tb.tbot_read_line_and_check_strings(c, '\n')
+                ret = tb.tbot_rup_and_check_strings(c, '\n')
                 if ret == 'prompt':
                     tb.enc_tc(False)
                 string = tb.buf

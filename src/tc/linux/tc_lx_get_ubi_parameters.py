@@ -48,7 +48,7 @@ tb.eof_write(c, tmp)
 searchlist = ["Amount of eraseblocks", "Minimum input/output unit size", "error"]
 tmp = True
 while tmp == True:
-    ret = tb.tbot_read_line_and_check_strings(c, searchlist)
+    ret = tb.tbot_rup_and_check_strings(c, searchlist)
     if ret == '0':
         tb.config.tc_ubi_max_leb_cnt = get_value(tb, c)
         tmp = True

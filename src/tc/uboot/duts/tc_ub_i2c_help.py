@@ -46,7 +46,7 @@ tb.eof_write(tb.c_con, tmp)
 tmp = True
 cmd_ok = True
 while tmp == True:
-    ret = tb.tbot_read_line_and_check_strings(tb.c_con, searchlist)
+    ret = tb.tbot_rup_and_check_strings(tb.c_con, searchlist)
     if ret == 'prompt':
         tmp = False
     else:

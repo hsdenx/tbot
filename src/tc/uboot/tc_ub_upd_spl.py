@@ -54,7 +54,7 @@ while upd_fail == True:
     tmp = True
     upd_fail = False
     while tmp == True:
-        ret = tb.tbot_read_line_and_check_strings(c, searchlist)
+        ret = tb.tbot_rup_and_check_strings(c, searchlist)
         if ret == '0':
             upd_fail = True
         elif ret == '1':

@@ -27,7 +27,7 @@ searchlist = ["FAILED"]
 tmp = True
 cmd_ok = True
 while tmp == True:
-    ret = tb.tbot_read_line_and_check_strings(tb.workfd, searchlist)
+    ret = tb.tbot_rup_and_check_strings(tb.workfd, searchlist)
     if ret == '0':
         cmd_ok = False
     elif ret == 'prompt':

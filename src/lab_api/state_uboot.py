@@ -25,7 +25,7 @@ def u_boot_parse_input(tb, c, retry):
     oldt = c.get_timeout()
     c.set_timeout(1)
     while(i < retry):
-        ret = tb.tbot_read_line_and_check_strings(c, sl)
+        ret = tb.tbot_rup_and_check_strings(c, sl)
         if ret == '0':
             # send ESC ESC
             string = pack('h', 27)

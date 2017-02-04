@@ -30,7 +30,7 @@ tb.eof_write(tb.workfd, cmd)
 ret = True
 suc = False
 while ret:
-    tmp = tb.tbot_read_line_and_check_strings(tb.workfd, '\n')
+    tmp = tb.tbot_rup_and_check_strings(tb.workfd, '\n')
     if tmp == '0':
         tmp = tb.buf.lstrip('\r\n')
         tmp = tmp.split('\r\n')

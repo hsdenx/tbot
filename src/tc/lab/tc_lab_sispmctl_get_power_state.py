@@ -50,7 +50,7 @@ tmp = True
 power_get = True
 tb.power_state = 'undef'
 while tmp == True:
-    ret = tb.tbot_read_line_and_check_strings(c, searchlist)
+    ret = tb.tbot_rup_and_check_strings(c, searchlist)
     if ret == '0':
         power_get = False
     elif ret == '1':
@@ -68,7 +68,7 @@ tmp = True
 power_get = True
 tb.power_state = 'undef'
 while tmp == True:
-    ret = tb.tbot_read_line_and_check_strings(c, searchlist)
+    ret = tb.tbot_rup_and_check_strings(c, searchlist)
     if ret == '0':
         power_get = False
     elif ret == '1':

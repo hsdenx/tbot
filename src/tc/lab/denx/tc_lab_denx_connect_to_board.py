@@ -28,7 +28,7 @@ searchlist = ["Unknown target", "Connect", "not accessible", "Locked by process"
 tmp = True
 connected = True
 while tmp == True:
-    ret = tb.tbot_read_line_and_check_strings(tb.workfd, searchlist)
+    ret = tb.tbot_rup_and_check_strings(tb.workfd, searchlist)
     if ret == '0':
         connected = False
     elif ret == '1':
@@ -49,7 +49,7 @@ tmp_ign = tb.workfd.ign
 tb.workfd.ign = ['==>', 'rlogin']
 tb.workfd.cnt_ign = len(tb.workfd.ign)
 
-tmp = tb.tbot_read_line_and_check_strings(tb.workfd, searchlist)
+tmp = tb.tbot_rup_and_check_strings(tb.workfd, searchlist)
 ret = True
 if tmp == '2':
     logging.error("not accessible")

@@ -40,7 +40,7 @@ searchlist = ["Server listening", "TCP window size"]
 s_st = False
 tmp = True
 while tmp == True:
-    ret = tb.tbot_read_line_and_check_strings(c_s, searchlist)
+    ret = tb.tbot_rup_and_check_strings(c_s, searchlist)
     if ret == '1':
         tmp = False
         s_st = True
@@ -56,7 +56,7 @@ got_line = False
 result = False
 tmp = True
 while tmp == True:
-    ret = tb.tbot_read_line_and_check_strings(c_t, searchlist)
+    ret = tb.tbot_rup_and_check_strings(c_t, searchlist)
     if ret == '1':
         got_line = True
     if ret == '2':

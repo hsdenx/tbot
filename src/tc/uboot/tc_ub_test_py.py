@@ -45,7 +45,7 @@ searchlist = ['INTERNALERROR']
 tmp = True
 cmdsuccess = True
 while tmp == True:
-    ret = tb.tbot_read_line_and_check_strings(tb.workfd, searchlist)
+    ret = tb.tbot_rup_and_check_strings(tb.workfd, searchlist)
     if ret == '0':
         cmdsuccess = False
     if ret == 'prompt':

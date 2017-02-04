@@ -32,7 +32,7 @@ searchlist = ["Bytes transferred", "error", "Retry count exceeded", "ERROR", "0 
 tmp = True
 load_fail = True
 while tmp == True:
-    ret = tb.tbot_read_line_and_check_strings(c, searchlist)
+    ret = tb.tbot_rup_and_check_strings(c, searchlist)
     if ret == '0':
         load_fail = False
     elif ret == '1':

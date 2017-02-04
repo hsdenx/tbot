@@ -158,7 +158,7 @@ def tbot_read_write(tb, string, cmd):
     tmp = True
     cmd_ok = False
     while tmp == True:
-        ret = tb.tbot_read_line_and_check_strings(tb.c_con, searchlist)
+        ret = tb.tbot_rup_and_check_strings(tb.c_con, searchlist)
         if ret == '0':
             tb.eof_write_con(cmd, False)
             cmd_ok = True
@@ -171,7 +171,7 @@ def tbot_send_list(tb, mm_list):
         string = '?'
         searchlist = [string]
         tmp = True
-        ret = tb.tbot_read_line_and_check_strings(tb.c_con, searchlist)
+        ret = tb.tbot_rup_and_check_strings(tb.c_con, searchlist)
         if ret == '0':
             tb.eof_write_con(cmd, False)
         elif ret == 'prompt':

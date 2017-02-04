@@ -34,7 +34,7 @@ c.set_prompt(tb.config.lab_bdi_upd_uboot_bdi_prompt)
 searchlist = ["Connection refused", "No route"]
 tmp = True
 while tmp == True:
-    ret = tb.tbot_read_line_and_check_strings(c, searchlist)
+    ret = tb.tbot_rup_and_check_strings(c, searchlist)
     if ret == '0' or ret == '1':
         # back to linux
         c.set_prompt(tb.config.linux_prompt)

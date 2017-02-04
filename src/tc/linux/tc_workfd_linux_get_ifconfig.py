@@ -36,7 +36,7 @@ tb.eof_write(c, cmd)
 ret = True
 suc = False
 while ret:
-    tmp = tb.tbot_read_line_and_check_strings(c, '\n')
+    tmp = tb.tbot_rup_and_check_strings(c, '\n')
     if tmp == '0':
         # analyse string
         # inet addr:192.168.20.102  Bcast:192.168.255.255  Mask:255.255.0.0

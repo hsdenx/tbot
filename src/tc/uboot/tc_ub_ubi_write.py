@@ -37,7 +37,7 @@ searchlist = ["written to volume"]
 tmp = True
 found = False
 while tmp == True:
-    ret = tb.tbot_read_line_and_check_strings(c, searchlist)
+    ret = tb.tbot_rup_and_check_strings(c, searchlist)
     if ret == '0':
         found = True
     elif ret == 'prompt':

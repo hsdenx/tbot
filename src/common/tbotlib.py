@@ -979,7 +979,7 @@ class tbot(object):
         tmp = True
         cmd_ok = False
         while tmp == True:
-            ret = self.tbot_read_line_and_check_strings(c, searchlist)
+            ret = self.tbot_rup_and_check_strings(c, searchlist)
             if ret == '0':
                 cmd_ok = True
             elif ret == 'prompt':
@@ -1002,8 +1002,8 @@ class tbot(object):
         if ret == False:
             self.end_tc(False)
 
-    def tbot_read_line_and_check_strings(self, c, strings):
-        """read a line and search, if it contains a string in strings.
+    def tbot_rup_and_check_strings(self, c, strings):
+        """read until prompt and search, if a string in strings is found.
 
         If found, return index if read some chars, but no line,
         check if it is a prompt, return 'prompt' if it is a prompt.
@@ -1046,7 +1046,7 @@ class tbot(object):
         res = 0
         target = self.tbot_fakult(cnt)
         while tmp == True:
-            ret = self.tbot_read_line_and_check_strings(c, strings)
+            ret = self.tbot_rup_and_check_strings(c, strings)
             if ret == 'prompt':
                 tmp = False
             else:
@@ -1090,7 +1090,7 @@ class tbot(object):
         tmp = True
         notfound = True
         while tmp == True:
-            ret = self.tbot_read_line_and_check_strings(c, strings)
+            ret = self.tbot_rup_and_check_strings(c, strings)
             if ret == 'prompt':
                 tmp = False
             else:

@@ -35,7 +35,7 @@ searchlist = ["No such", "FAILED", "Assume -R?"]
 tmp = True
 apply_ok = True
 while tmp == True:
-    tmp = tb.tbot_read_line_and_check_strings(c, searchlist)
+    tmp = tb.tbot_rup_and_check_strings(c, searchlist)
     if tmp == '0':
         apply_ok = False
         tmp = True

@@ -23,7 +23,7 @@ def state_lx_parse_input(tb, c, retry, sl):
     oldt = c.get_timeout()
     c.set_timeout(tb.config.state_linux_timeout)
     while(i < retry):
-        ret = tb.tbot_read_line_and_check_strings(c, sl)
+        ret = tb.tbot_rup_and_check_strings(c, sl)
         # print("PPPPPPPPPPPP", i, retry, ret, sl, c.data, c.logbuf)
         if ret == 'exception':
             if ctrlc_send == 0:

@@ -38,7 +38,7 @@ for el in tb.config.tc_workfd_check_tar_content_elements:
     loop = True
     res = False
     while loop:
-        ret = tb.tbot_read_line_and_check_strings(tb.workfd, el)
+        ret = tb.tbot_rup_and_check_strings(tb.workfd, el)
         if ret == 'prompt':
             loop = False
         if ret == '0':

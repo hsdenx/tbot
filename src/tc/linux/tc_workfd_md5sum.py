@@ -29,7 +29,7 @@ searchlist = ["\n"]
 tmp = True
 tb.tc_workfd_md5sum_sum = 'undef'
 while tmp == True:
-    ret = tb.tbot_read_line_and_check_strings(c, searchlist)
+    ret = tb.tbot_rup_and_check_strings(c, searchlist)
     if ret == '0':
         tmp2 = tb.buf.split(" ")
         tb.tc_workfd_md5sum_sum = tmp2[0]

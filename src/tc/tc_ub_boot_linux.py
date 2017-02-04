@@ -36,7 +36,7 @@ c.set_prompt(tb.config.linux_prompt_default)
 tmp = True
 sl = ['login:', 'assword']
 while (tmp):
-    ret = tb.tbot_read_line_and_check_strings(c, sl)
+    ret = tb.tbot_rup_and_check_strings(c, sl)
     if ret == '0':
         # login
         tb.write_stream(c, tb.config.linux_user, send_console_start=False)

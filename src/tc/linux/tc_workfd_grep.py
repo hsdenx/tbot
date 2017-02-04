@@ -30,7 +30,7 @@ tb.eof_write(c, tmp)
 searchlist = [tb.tc_workfd_grep_string]
 tmp = True
 while tmp == True:
-    ret = tb.tbot_read_line_and_check_strings(c, searchlist)
+    ret = tb.tbot_rup_and_check_strings(c, searchlist)
     if ret == 'prompt':
         tmp = False
     if ret == '0':

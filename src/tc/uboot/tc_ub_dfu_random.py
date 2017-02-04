@@ -145,7 +145,7 @@ tmp = True
 differ = False
 differ_at_end = False
 while tmp == True:
-    ret = tb.tbot_read_line_and_check_strings(ctrl, searchlist)
+    ret = tb.tbot_rup_and_check_strings(ctrl, searchlist)
     if ret == '0':
         differ_at_end = True
     if ret == '1':

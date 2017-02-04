@@ -48,7 +48,7 @@ if tb.config.tc_workfd_connect_with_kermit_rlogin == 'none':
     tmp = True
     retu = False
     while tmp == True:
-        ret = tb.tbot_read_line_and_check_strings(tb.workfd, searchlist)
+        ret = tb.tbot_rup_and_check_strings(tb.workfd, searchlist)
         if ret == '0':
             retu = True
         if ret == '1':
@@ -66,14 +66,14 @@ if tb.config.tc_workfd_connect_with_kermit_rlogin == 'none':
     tb.eof_write(tb.workfd, "connect")
     searchlist = ["Connecting"]
     tmp = True
-    ret = tb.tbot_read_line_and_check_strings(tb.workfd, searchlist)
+    ret = tb.tbot_rup_and_check_strings(tb.workfd, searchlist)
     if ret != '0':
         tb.end_tc(False)
 else:
     tb.eof_write(tb.workfd, tb.config.tc_workfd_connect_with_kermit_rlogin, start=False)
 
 searchlist = ['----------------------------------------------------']
-ret = tb.tbot_read_line_and_check_strings(tb.workfd, searchlist)
+ret = tb.tbot_rup_and_check_strings(tb.workfd, searchlist)
 if ret != '0':
     tb.end_tc(False)
 
@@ -83,7 +83,7 @@ if tb.config.tc_workfd_connect_with_kermit_rlogin != 'none':
     tb.workfd.set_timeout(5)
     tmp = True
     while tmp == True:
-        ret = tb.tbot_read_line_and_check_strings(tb.workfd, searchlist)
+        ret = tb.tbot_rup_and_check_strings(tb.workfd, searchlist)
         if ret == '0':
             # some Error with connect, leave kermit
             tb.workfd.set_timeout(oldt)

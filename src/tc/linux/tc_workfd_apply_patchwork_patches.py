@@ -54,7 +54,7 @@ def apply_one_patch(tb, nr):
     se = ['Patch already applied']
     tb.eof_write(tb.workfd, tmp)
     while loop == True:
-        tmp = tb.tbot_read_line_and_check_strings(tb.workfd, se)
+        tmp = tb.tbot_rup_and_check_strings(tb.workfd, se)
         if tmp == '0':
             tb.event.create_event('main', 'func', 'PW_AA', 'True')
         if tmp == 'prompt':

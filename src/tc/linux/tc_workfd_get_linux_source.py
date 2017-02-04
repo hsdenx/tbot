@@ -41,7 +41,7 @@ if ret == False:
     tmp = True
     clone_ok = True
     while tmp == True:
-        ret = tb.tbot_read_line_and_check_strings(tb.workfd, searchlist)
+        ret = tb.tbot_rup_and_check_strings(tb.workfd, searchlist)
         if ret == '0':
             tb.write_stream(tb.workfd, tb.config.tc_lab_get_linux_source_git_repo_user)
         if ret == '1':
