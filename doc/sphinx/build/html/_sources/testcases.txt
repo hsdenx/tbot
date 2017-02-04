@@ -557,6 +557,27 @@ used Testcases:
 https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_shc_ub_tests.py
 
 
+.. _src_tc_board_tc_board_shc_uboot_git_bisect_py:
+
+src/tc/board/tc_board_shc_uboot_git_bisect.py
+---------------------------------------------
+
+::
+
+  # start with
+  # tbot.py -s lab_denx -c shc -t tc_board_shc_uboot_git_bisect.py
+  # start tc:
+
+used Testcases:
+
+:ref:`src_tc_board_tc_board_shc_uboot_git_bisect_py`.
+
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_shc_uboot_git_bisect.py
+
+
 .. _src_tc_board_tc_board_shc_upd_ub_py:
 
 src/tc/board/tc_board_shc_upd_ub.py
@@ -732,7 +753,7 @@ src/tc/board/tc_linux_create_reg_file_am335x.py
 ::
 
   # start with
-  # tbot.py -s lab_denx -c aristainetos2 -t tc_linux_create_reg_file_am335x.py
+  # tbot.py -s lab_denx -c cuby -t tc_linux_create_reg_file_am335x.py
   # create a regfile for am335x SoC registers
 
 used Testcases:
@@ -993,11 +1014,20 @@ src/tc/demo/tc_demo_compile_install_test.py
   # - compile source tree
   # - install bin on board
   # - call board uboot testcase
+  # tb.config.tc_demo_compile_install_test_files contains a list of files,
+  # which are copied to
+  # tb.config.tftprootdir + tb.config.tftpboardname + '/' + tb.config.ub_load_board_env_subdir
 
 used Testcases:
 
 :ref:`src_tc_demo_tc_demo_compile_install_test_py`.
 
+used config variables:
+
+:ref:`tb_config_tc_demo_compile_install_test_files`.
+:ref:`tb_config_tftprootdir`.
+:ref:`tb_config_tftpboardname`.
+:ref:`tb_config_ub_load_board_env_subdir`.
 
 
 
@@ -1232,6 +1262,113 @@ used Testcases:
 
 
 https://github.com/hsdenx/tbot/tree/master/src/tc/lab/denx/tc_lab_interactive_power.py
+
+
+.. _src_tc_lab_tc_lab_sispmctl_get_power_state_py:
+
+src/tc/lab/tc_lab_sispmctl_get_power_state.py
+---------------------------------------------
+
+::
+
+  # start with
+  # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lab_sispmctl_get_power_state.py
+  # get the power state of the board through sispmctl
+  # and save it in tb.power_state
+  # find more information for the Gembird Silver Shield PM power controller:
+  # http://sispmctl.sourceforge.net/
+  #
+  # use testcase "tc_lab_sispmctl_get_variables.py" for setting
+  # the serial and the index you need for the specific board.
+  #
+  # This file is an example for a setup, you need to adapt
+  # this to your needs.
+  #
+
+used Testcases:
+
+:ref:`src_tc_lab_tc_lab_sispmctl_get_power_state_py`.
+
+used config variables:
+
+:ref:`tb_power_state`.
+
+links:
+
+http://sispmctl.sourceforge.net/
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/lab/tc_lab_sispmctl_get_power_state.py
+
+
+.. _src_tc_lab_tc_lab_sispmctl_get_variables_py:
+
+src/tc/lab/tc_lab_sispmctl_get_variables.py
+-------------------------------------------
+
+::
+
+  # start with
+  # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lab_sispmctl_get_variables.py
+  # get serial and index for tb.config.boardlabpowername for
+  # controlling the Gembird Silver Shield PM power controller
+  # and save it in tb.config.gembird_serial and tb.config.gembird_index
+  #
+
+used Testcases:
+
+:ref:`src_tc_lab_tc_lab_sispmctl_get_variables_py`.
+
+used config variables:
+
+:ref:`tb_config_boardlabpowername`.
+:ref:`tb_config_gembird_serial`.
+:ref:`tb_config_gembird_index`.
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/lab/tc_lab_sispmctl_get_variables.py
+
+
+.. _src_tc_lab_tc_lab_sispmctl_set_power_state_py:
+
+src/tc/lab/tc_lab_sispmctl_set_power_state.py
+---------------------------------------------
+
+::
+
+  # start with
+  # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lab_sispmctl_set_power_state.py
+  # power on/off the board
+  #
+  # get the power state of the board through sispmctl
+  # and save it in tb.power_state
+  # find more information for the Gembird Silver Shield PM power controller:
+  # http://sispmctl.sourceforge.net/
+  #
+  # use testcase "tc_lab_sispmctl_get_variables.py" for setting
+  # the serial and the index you need for the specific board.
+  #
+  # This file is an example for a setup, you need to adapt
+  # this to your needs.
+  #
+
+used Testcases:
+
+:ref:`src_tc_lab_tc_lab_sispmctl_set_power_state_py`.
+
+used config variables:
+
+:ref:`tb_power_state`.
+
+links:
+
+http://sispmctl.sourceforge.net/
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/lab/tc_lab_sispmctl_set_power_state.py
 
 
 .. _src_tc_linux_ubi_tc_lx_ubi_attach_py:
@@ -2112,6 +2249,39 @@ used Testcases:
 https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_check_if_file_exist.py
 
 
+.. _src_tc_linux_tc_workfd_check_tar_content_py:
+
+src/tc/linux/tc_workfd_check_tar_content.py
+-------------------------------------------
+
+::
+
+  # start with
+  # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_check_tar_content.py
+  # check if the strings in the tb.config.tc_workfd_check_tar_content_elements
+  # list are in the tar file tb.config.tc_workfd_check_tar_content_path
+  #
+  # tb.config.tc_workfd_check_tar_content_path path and file name
+  # tb.config.tc_workfd_check_tar_content_elements list of elements in the tar file
+  # tb.config.tc_workfd_check_tar_content_endtc_onerror end TC when element is not found
+
+used Testcases:
+
+:ref:`src_tc_linux_tc_workfd_check_tar_content_py`.
+
+used config variables:
+
+:ref:`tb_config_tc_workfd_check_tar_content_elements`.
+:ref:`tb_config_tc_workfd_check_tar_content_path`.
+:ref:`tb_config_tc_workfd_check_tar_content_path`.
+:ref:`tb_config_tc_workfd_check_tar_content_elements`.
+:ref:`tb_config_tc_workfd_check_tar_content_endtc_onerror`.
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_check_tar_content.py
+
+
 .. _src_tc_linux_tc_workfd_check_tc_time_py:
 
 src/tc/linux/tc_workfd_check_tc_time.py
@@ -2527,6 +2697,7 @@ src/tc/linux/tc_workfd_goto_lab_source_dir.py
   # start with
   # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_goto_lab_source_dir.py
   # switch into lab PC source directory tb.config.tc_lab_source_dir
+  # set TBOT_BASEDIR to tb.config.tc_lab_source_dir
 
 used Testcases:
 
@@ -2534,6 +2705,7 @@ used Testcases:
 
 used config variables:
 
+:ref:`tb_config_tc_lab_source_dir`.
 :ref:`tb_config_tc_lab_source_dir`.
 
 
@@ -2551,6 +2723,9 @@ src/tc/linux/tc_workfd_goto_linux_code.py
   # start with
   # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_goto_linux_code.py
   # switch into linux source tb.config.tc_lab_source_dir + "/linux-" + tb.config.boardlabname
+  # set tb.config.linux_name to "linux-" + tb.config.boardlabname
+  # and tb.config.linux_fulldir_name to tb.config.tc_lab_source_dir + "/" + tb.config.linux_name
+  # and set $TBOT_BASEDIR_LINUX to tb.config.linux_fulldir_name
 
 used Testcases:
 
@@ -2560,6 +2735,12 @@ used config variables:
 
 :ref:`tb_config_tc_lab_source_dir`.
 :ref:`tb_config_boardlabname`.
+:ref:`tb_config_linux_name`.
+:ref:`tb_config_boardlabname`.
+:ref:`tb_config_linux_fulldir_name`.
+:ref:`tb_config_tc_lab_source_dir`.
+:ref:`tb_config_linux_name`.
+:ref:`tb_config_linux_fulldir_name`.
 
 
 
@@ -2601,6 +2782,10 @@ src/tc/linux/tc_workfd_goto_uboot_code.py
   # start with
   # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_goto_uboot_code.py
   # switch into U-Boot source tb.config.tc_lab_source_dir + "/u-boot-" + tb.config.boardlabname
+  # set tb.config.uboot_name to "u-boot-" + tb.config.boardlabname
+  # and tb.config.uboot_fulldir_name to tb.config.tc_lab_source_dir + "/" + tb.config.uboot_name
+  # and set $TBOT_BASEDIR_UBOOT to tb.config.uboot_fulldir_name
+  #
 
 used Testcases:
 
@@ -2610,6 +2795,12 @@ used config variables:
 
 :ref:`tb_config_tc_lab_source_dir`.
 :ref:`tb_config_boardlabname`.
+:ref:`tb_config_uboot_name`.
+:ref:`tb_config_boardlabname`.
+:ref:`tb_config_uboot_fulldir_name`.
+:ref:`tb_config_tc_lab_source_dir`.
+:ref:`tb_config_uboot_name`.
+:ref:`tb_config_uboot_fulldir_name`.
 
 
 
@@ -2735,6 +2926,87 @@ used config variables:
 
 
 https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_iperf.py
+
+
+.. _src_tc_linux_tc_workfd_linux_get_ifconfig_py:
+
+src/tc/linux/tc_workfd_linux_get_ifconfig.py
+--------------------------------------------
+
+::
+
+  # start with
+  # tbot.py -s lab_denx -c cuby -t tc_workfd_linux_get_ifconfig.py
+  # read from tb.config.linux_get_ifconfig_dev the current
+  # ip addr and save it in tb.config.linux_get_ifconfig_ip
+  # broadcast and save it in tb.config.linux_get_ifconfig_broadcast
+  # mask and save it in tb.config.linux_get_ifconfig_mask
+
+used Testcases:
+
+:ref:`src_tc_linux_tc_workfd_linux_get_ifconfig_py`.
+
+used config variables:
+
+:ref:`tb_config_linux_get_ifconfig_dev`.
+:ref:`tb_config_linux_get_ifconfig_ip`.
+:ref:`tb_config_linux_get_ifconfig_broadcast`.
+:ref:`tb_config_linux_get_ifconfig_mask`.
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_linux_get_ifconfig.py
+
+
+.. _src_tc_linux_tc_workfd_linux_get_uboot_env_py:
+
+src/tc/linux/tc_workfd_linux_get_uboot_env.py
+---------------------------------------------
+
+::
+
+  # start with
+  # tbot.py -s lab_denx -c cuby -t tc_workfd_linux_get_uboot_env.py
+  # read U-Boot Environment variable from tb.config.linux_get_uboot_env_name
+  # from linux with fw_printenv, and save the value in tb.config.linux_get_uboot_env_value
+
+used Testcases:
+
+:ref:`src_tc_linux_tc_workfd_linux_get_uboot_env_py`.
+
+used config variables:
+
+:ref:`tb_config_linux_get_uboot_env_name`.
+:ref:`tb_config_linux_get_uboot_env_value`.
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_linux_get_uboot_env.py
+
+
+.. _src_tc_linux_tc_workfd_linux_mkdir_py:
+
+src/tc/linux/tc_workfd_linux_mkdir.py
+-------------------------------------
+
+::
+
+  # start with
+  # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_linux_mkdir.py
+  # check if the directory tb.config.tc_workfd_linux_mkdir_dir exists.
+  # if not, create it
+
+used Testcases:
+
+:ref:`src_tc_linux_tc_workfd_linux_mkdir_py`.
+
+used config variables:
+
+:ref:`tb_config_tc_workfd_linux_mkdir_dir`.
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_linux_mkdir.py
 
 
 .. _src_tc_linux_tc_workfd_md5sum_py:
@@ -3346,7 +3618,7 @@ src/tc/uboot/tc_ub_check_reg_file.py
 
   # start with
   # python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_check_reg_file.py
-  # checks if the default values in reg file tb.tc_ub_create_reg_file_name
+  # checks if the default values in reg file tb.config.tc_ub_create_reg_file_name
   # on the tbot host in tb.workdir have the same values, as the
   # registers on the board
   # format of the regfile:
@@ -3359,7 +3631,7 @@ used Testcases:
 
 used config variables:
 
-:ref:`tb_tc_ub_create_reg_file_name`.
+:ref:`tb_config_tc_ub_create_reg_file_name`.
 :ref:`tb_workdir`.
 
 
@@ -4119,6 +4391,128 @@ used Testcases:
 https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_uboot_get_arch.py
 
 
+.. _src_tc_yocto_tc_workfd_bitbake_py:
+
+src/tc/yocto/tc_workfd_bitbake.py
+---------------------------------
+
+::
+
+  # start with
+  # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_bitbake.py
+  # simple call bitbake with tb.config.tc_workfd_bitbake_args
+
+used Testcases:
+
+:ref:`src_tc_yocto_tc_workfd_bitbake_py`.
+
+used config variables:
+
+:ref:`tb_config_tc_workfd_bitbake_args`.
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/yocto/tc_workfd_bitbake.py
+
+
+.. _src_tc_yocto_tc_workfd_get_yocto_source_py:
+
+src/tc/yocto/tc_workfd_get_yocto_source.py
+------------------------------------------
+
+::
+
+  # start with
+  # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_get_yocto_source.py
+  # get yocto source tb.config.tc_workfd_get_yocto_patches_git_repo with "git clone"
+  # check out branch:
+  # tb.config.tc_workfd_get_yocto_patches_git_branch
+  # check out commit ID:
+  # tb.config.tc_workfd_get_yocto_git_commit_id
+  # apply patches with "git am" from directory:
+  # tb.config.tc_workfd_get_yocto_clone_apply_patches_git_am_dir
+  # additionally define a reference for cloning:
+  # tb.config.tc_workfd_get_yocto_source_git_reference
+  # if a user/password for cloning is needed, define the user:
+  # tb.config.tc_workfd_get_yocto_source_git_repo_user
+  # and set the password in password.py
+  #
+  # get other layers defined in the list:
+  # tb.config.tc_workfd_get_yocto_source_layers
+  # one element contains the follwoing list element:
+  # ['git repo',
+  #  'git branch',
+  #  'git commit id',
+  #  'apply_patches_dir'
+  #  'apply_patches_git_am_dir',
+  #  'source_git_reference',
+  #  'source_git_repo_user',
+  #  'source_git_repo_name'
+  # ]
+  #
+  # at the end overwrite yocto configuration found in
+  # tb.config.tc_workfd_get_yocto_source_conf_dir
+  #
+  # clones into directory tb.config.yocto_name
+  # created with tc_workfd_goto_yocto_code.py
+  #
+
+used Testcases:
+
+:ref:`src_tc_yocto_tc_workfd_get_yocto_source_py`.
+:ref:`src_tc_yocto_tc_workfd_goto_yocto_code_py`.
+
+used config variables:
+
+:ref:`tb_config_tc_workfd_get_yocto_patches_git_repo`.
+:ref:`tb_config_tc_workfd_get_yocto_patches_git_branch`.
+:ref:`tb_config_tc_workfd_get_yocto_git_commit_id`.
+:ref:`tb_config_tc_workfd_get_yocto_clone_apply_patches_git_am_dir`.
+:ref:`tb_config_tc_workfd_get_yocto_source_git_reference`.
+:ref:`tb_config_tc_workfd_get_yocto_source_git_repo_user`.
+:ref:`tb_config_tc_workfd_get_yocto_source_layers`.
+:ref:`tb_config_tc_workfd_get_yocto_source_conf_dir`.
+:ref:`tb_config_yocto_name`.
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/yocto/tc_workfd_get_yocto_source.py
+
+
+.. _src_tc_yocto_tc_workfd_goto_yocto_code_py:
+
+src/tc/yocto/tc_workfd_goto_yocto_code.py
+-----------------------------------------
+
+::
+
+  # start with
+  # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_goto_yocto_code.py
+  # switch into yocto source tb.config.tc_lab_source_dir + "/yocto-" + tb.config.boardlabname
+  # set tb.config.yocto_name to "yocto-" + tb.config.boardlabname
+  # and tb.config.yocto_fulldir_name to tb.config.tc_lab_source_dir + "/" + tb.config.yocto_name
+  # and set $TBOT_BASEDIR_YOCTO to tb.config.yocto_fulldir_name
+
+used Testcases:
+
+:ref:`src_tc_yocto_tc_workfd_goto_yocto_code_py`.
+
+used config variables:
+
+:ref:`tb_config_tc_lab_source_dir`.
+:ref:`tb_config_boardlabname`.
+:ref:`tb_config_yocto_name`.
+:ref:`tb_config_boardlabname`.
+:ref:`tb_config_yocto_fulldir_name`.
+:ref:`tb_config_tc_lab_source_dir`.
+:ref:`tb_config_yocto_name`.
+:ref:`tb_config_yocto_fulldir_name`.
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/yocto/tc_workfd_goto_yocto_code.py
+
+
 .. _src_tc_tc_board_git_bisect_py:
 
 src/tc/tc_board_git_bisect.py
@@ -4259,6 +4653,27 @@ used Testcases:
 https://github.com/hsdenx/tbot/tree/master/src/tc/tc_lab_poweroff.py
 
 
+.. _src_tc_tc_lab_poweron_py:
+
+src/tc/tc_lab_poweron.py
+------------------------
+
+::
+
+  # start with
+  # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lab_poweron.py
+  # simple power on the board
+
+used Testcases:
+
+:ref:`src_tc_tc_lab_poweron_py`.
+
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/tc_lab_poweron.py
+
+
 .. _src_tc_tc_lab_rm_dir_py:
 
 src/tc/tc_lab_rm_dir.py
@@ -4368,6 +4783,52 @@ used Testcases:
 https://github.com/hsdenx/tbot/tree/master/src/tc/tc_workfd_compile_uboot.py
 
 
+.. _src_tc_tc_workfd_git_clone_source_py:
+
+src/tc/tc_workfd_git_clone_source.py
+------------------------------------
+
+::
+
+  # start with
+  # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_git_clone_source.py
+  # get source from git repo tb.config.tc_lab_git_clone_source_git_repo with "git clone"
+  # and go into the source tree. 
+  # check out branch tb.config.tc_lab_git_clone_source_git_branch
+  # and Apply patches if needed with:
+  # tc_lab_apply_patches.py and patches from directory
+  # tb.config.tc_lab_git_clone_apply_patches_dir
+  # use as reference tb.config.tc_lab_git_clone_source_git_reference
+  # if != 'none'
+  # You can give the repo a name with setting
+  # tb.config.tc_lab_git_clone_source_git_repo_name
+  # != 'none'
+  # If you need a user/password for clining, you can define
+  # the username through:
+  # tb.config.tc_lab_git_clone_source_git_repo_user
+  # define the password for this in password.py
+  # boardname in password.py is used as tb.config.tc_lab_git_clone_source_git_repo
+
+used Testcases:
+
+:ref:`src_tc_tc_workfd_git_clone_source_py`.
+:ref:`src_tc_tc_lab_apply_patches_py`.
+
+used config variables:
+
+:ref:`tb_config_tc_lab_git_clone_source_git_repo`.
+:ref:`tb_config_tc_lab_git_clone_source_git_branch`.
+:ref:`tb_config_tc_lab_git_clone_apply_patches_dir`.
+:ref:`tb_config_tc_lab_git_clone_source_git_reference`.
+:ref:`tb_config_tc_lab_git_clone_source_git_repo_name`.
+:ref:`tb_config_tc_lab_git_clone_source_git_repo_user`.
+:ref:`tb_config_tc_lab_git_clone_source_git_repo`.
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/tc_workfd_git_clone_source.py
+
+
 .. _src_tc_tc_workfd_set_toolchain_py:
 
 src/tc/tc_workfd_set_toolchain.py
@@ -4378,9 +4839,9 @@ src/tc/tc_workfd_set_toolchain.py
   # start with
   # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_set_toolchain.py
   # set the toolchain, dependend on the architecture setting in
-  # tb.tc_workfd_set_toolchain_arch
+  # tb.config.tc_workfd_set_toolchain_arch
   # supported toolchains defined in
-  # tb.tc_workfd_set_toolchain_t_p and tb.tc_workfd_set_toolchain_cr_co
+  # tb.config.tc_workfd_set_toolchain_t_p and tb.config.tc_workfd_set_toolchain_cr_co
 
 used Testcases:
 
@@ -4388,9 +4849,9 @@ used Testcases:
 
 used config variables:
 
-:ref:`tb_tc_workfd_set_toolchain_arch`.
-:ref:`tb_tc_workfd_set_toolchain_t_p`.
-:ref:`tb_tc_workfd_set_toolchain_cr_co`.
+:ref:`tb_config_tc_workfd_set_toolchain_arch`.
+:ref:`tb_config_tc_workfd_set_toolchain_t_p`.
+:ref:`tb_config_tc_workfd_set_toolchain_cr_co`.
 
 
 

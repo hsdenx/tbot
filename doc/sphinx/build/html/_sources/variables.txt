@@ -32,6 +32,26 @@ uboot_strings
   uboot_strings = ['Autobooting in', 'noautoboot',  'autoboot', 'EOF', 'RomBOOT']
 
 
+.. _tb_config_uboot_autoboot_key:
+
+uboot_autoboot_key 
+-------------------
+
+::
+
+  uboot_autoboot_key = ''
+
+
+.. _tb_power_state:
+
+tb_power_state 
+---------------
+
+::
+
+  tb_power_state = 'undef'
+
+
 .. _tb_config_term_line_length:
 
 term_line_length 
@@ -119,7 +139,7 @@ tc_ub_boot_linux_load_env
 
 ::
 
-  tc_ub_boot_linux_load_env = 1
+  tc_ub_boot_linux_load_env = 'load'
 
 
 .. _tb_config_tc_lx_mount_dev:
@@ -190,6 +210,16 @@ ub_load_board_env_subdir
 ::
 
   ub_load_board_env_subdir = 'tbot'
+
+
+.. _tb_config_ub_load_board_env_set:
+
+ub_load_board_env_set 
+----------------------
+
+::
+
+  ub_load_board_env_set = []
 
 
 .. _tb_config_ub_boot_linux_cmd:
@@ -270,6 +300,26 @@ boardlabpowername
 ::
 
   boardlabpowername = 'config.boardname'
+
+
+.. _tb_config_tftprootdir:
+
+tftprootdir
+-----------
+
+::
+
+  tftprootdir='/tftpboot/'
+
+
+.. _tb_config_tftpboardrootdir:
+
+tftpboardrootdir
+----------------
+
+::
+
+  tftpboardrootdir=''
 
 
 .. _tb_config_tc_ub_dfu_dfu_util_path:
@@ -742,7 +792,7 @@ lab_bdi_upd_uboot_bdi_run
 
 ::
 
-  lab_bdi_upd_uboot_bdi_run = 'res run'
+  lab_bdi_upd_uboot_bdi_run = [{'cmd':'res run', 'val':'resetting target passed'}]
 
 
 .. _tb_config_board_git_bisect_get_source_tc:
@@ -1391,6 +1441,16 @@ labprompt
   labprompt = 'config.linux_prompt'
 
 
+.. _tb_config_linux_user:
+
+linux_user 
+-----------
+
+::
+
+  linux_user = 'root'
+
+
 .. _tb_config_create_dot:
 
 create_dot 
@@ -1449,6 +1509,16 @@ create_documentation
 ::
 
   create_documentation = 'no'
+
+
+.. _tb_config_event_documentation_strip_list:
+
+event_documentation_strip_list 
+-------------------------------
+
+::
+
+  event_documentation_strip_list = []
 
 
 .. _tb_config_tc_ub_test_py_hook_script_path:
@@ -1559,5 +1629,120 @@ tc_workfd_hdparm_dev
 ::
 
   tc_workfd_hdparm_dev = '/dev/mmcblk1'
+
+
+.. _tb_config_tc_workfd_hdparm_min:
+
+tc_workfd_hdparm_min 
+---------------------
+
+::
+
+  tc_workfd_hdparm_min = '12.0'
+
+
+.. _tb_config_tc_lab_git_clone_source_git_repo:
+
+tc_lab_git_clone_source_git_repo 
+---------------------------------
+
+::
+
+  tc_lab_git_clone_source_git_repo = 'git://git.yoctoproject.org/poky.git'
+
+
+.. _tb_config_tc_lab_git_clone_source_git_branch:
+
+tc_lab_git_clone_source_git_branch 
+-----------------------------------
+
+::
+
+  tc_lab_git_clone_source_git_branch = 'morty'
+
+
+.. _tb_config_tc_lab_git_clone_source_git_commit_id:
+
+tc_lab_git_clone_source_git_commit_id 
+--------------------------------------
+
+::
+
+  tc_lab_git_clone_source_git_commit_id = '73454473d7c286c41ee697f74052fed03c79f9f5'
+
+
+.. _tb_config_tc_lab_git_clone_apply_patches_dir:
+
+tc_lab_git_clone_apply_patches_dir 
+-----------------------------------
+
+::
+
+  tc_lab_git_clone_apply_patches_dir = 'none'
+
+
+.. _tb_config_tc_lab_git_clone_apply_patches_git_am_dir:
+
+tc_lab_git_clone_apply_patches_git_am_dir 
+------------------------------------------
+
+::
+
+  tc_lab_git_clone_apply_patches_git_am_dir = '/work/hs/ssi/patches/20161220/morty'
+
+
+.. _tb_config_tc_lab_git_clone_source_git_reference:
+
+tc_lab_git_clone_source_git_reference 
+--------------------------------------
+
+::
+
+  tc_lab_git_clone_source_git_reference = 'none'
+
+
+.. _tb_config_tc_lab_git_clone_source_git_repo_user:
+
+tc_lab_git_clone_source_git_repo_user 
+--------------------------------------
+
+::
+
+  tc_lab_git_clone_source_git_repo_user = ''
+
+
+.. _tb_config_tc_lab_git_clone_source_git_repo_name:
+
+tc_lab_git_clone_source_git_repo_name 
+--------------------------------------
+
+::
+
+  tc_lab_git_clone_source_git_repo_name = 'none'
+
+
+.. _tb_config_tc_workfd_get_yocto_source_layers:
+
+tc_workfd_get_yocto_source_layers 
+----------------------------------
+
+::
+
+  tc_workfd_get_yocto_source_layers = [
+  ['git://git.openembedded.org/meta-openembedded', 'morty', '659d9d3f52bad33d7aa1c63e25681d193416d76e', 'none', 'none', 'none', '', 'meta-openembedded'],
+  ['https://github.com/meta-qt5/meta-qt5.git', 'morty', '9aa870eecf6dc7a87678393bd55b97e21033ab48', 'none', '/work/hs/ssi/patches/20161220/qt5', 'none', '', 'meta-qt5'],
+  ['https://github.com/sbabic/meta-swupdate.git', 'master', 'b3abfa78d04b88b88bcef6f5be9f2adff1293544', 'none', 'none', 'none', '', 'meta-swupdate'],
+  ['git@gitlab.denx.de:ssi/meta-cuby.git', '20161220', 'none', 'none', 'none', 'none', '', 'meta-cuby'],
+  ]
+
+
+.. _tb_config_tc_workfd_get_yocto_source_conf_dl_dir:
+
+tc_workfd_get_yocto_source_conf_dl_dir 
+---------------------------------------
+
+::
+
+  tc_workfd_get_yocto_source_conf_dl_dir = 'none'
 
 

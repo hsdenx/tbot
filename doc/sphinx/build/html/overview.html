@@ -98,18 +98,19 @@ Options:
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="install-tbot-on-your-pc-linux-only-tested">
 <h3>install tbot on your PC (linux only tested):<a class="headerlink" href="#install-tbot-on-your-pc-linux-only-tested" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>get the source code:</li>
-</ul>
+<div class="section" id="get-the-source-code">
+<h4>get the source code:<a class="headerlink" href="#get-the-source-code" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python"><div class="highlight"><pre>$ git clone https://github.com/hsdenx/tbot.git
 [...]
 $
 </pre></div>
 </div>
 <p>cd into the tbot directory.</p>
-<ul>
-<li><p class="first">you need the for running tbot the python paramiko module, see:
-<a class="reference external" href="http://www.paramiko.org/installing.html">http://www.paramiko.org/installing.html</a></p>
+</div>
+<div class="section" id="install-paramiko">
+<h4>install paramiko<a class="headerlink" href="#install-paramiko" title="Permalink to this headline">¶</a></h4>
+<p>you need the for running tbot the python paramiko module, see:</p>
+<p><a class="reference external" href="http://www.paramiko.org/installing.html">http://www.paramiko.org/installing.html</a></p>
 <p>paramiko is used for handling ssh sessions, and open filedescriptors
 on a ssh connection. Tbot open a ssh connection to a &#8220;lab PC&#8221; and
 opens on that connection 2 filehandles, one for control functions
@@ -117,106 +118,120 @@ and one for the connection to the boards console. May it is worth
 to think about to open more filehandles and use them in tbot, but
 thats a point in the Todo list ...</p>
 <p>See [1] for more infos about tbot principles.</p>
-</li>
-<li><p class="first">prepare a directory for storing the logfiles
+</div>
+<div class="section" id="create-logfile-directory">
+<h4>create logfile directory<a class="headerlink" href="#create-logfile-directory" title="Permalink to this headline">¶</a></h4>
+<p>prepare a directory for storing the logfiles
 and pass it with the commandline option &#8220;-l&#8221;
 to tbot. Default is the directory &#8220;log&#8221; in the tbot
 root (don;t forget to create it, if you want to use it)</p>
-</li>
-<li><p class="first">If your VL is not yet in tbot source, integrate it
+</div>
+<div class="section" id="create-vlab">
+<h4>create VLAB<a class="headerlink" href="#create-vlab" title="Permalink to this headline">¶</a></h4>
+<p>If your VL is not yet in tbot source, integrate it
 (This task has only to be done once for your VL):</p>
-<p>A VL has basic 3 tasks:</p>
-<ol class="loweralpha simple">
-<li>power on/off the board</li>
-<li>get power state of the board</li>
-<li>connect to the boards console</li>
-</ol>
-<p>As tbot sends only shell commands (also to the Lab PC)
-this tasks must be executable through shell commands on your
-Lab PC:</p>
-</li>
-<li><p class="first">prepare a lab config file for your lab:</p>
-<ul class="simple">
-<li>create a new folder in src/tc/lab/XXX
-replace XXX to a proper value</li>
-</ul>
+<div class="section" id="prepare-a-lab-config-file-for-your-lab">
+<h5>prepare a lab config file for your lab:<a class="headerlink" href="#prepare-a-lab-config-file-for-your-lab" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="special-case">
+<h6>special case<a class="headerlink" href="#special-case" title="Permalink to this headline">¶</a></h6>
+<p>if you own a &#8220;Gembird Silver Shield PM power controller&#8221;
+and use &#8220;kermit&#8221; for accessing the serial console:</p>
+<p><em>gratulation, you are finished with setting up virtual Lab!</em></p>
+<p>use:</p>
+<p><a class="reference external" href="https://github.com/hsdenx/tbot/blob/master/config/lab_home.py">https://github.com/hsdenx/tbot/blob/master/config/lab_home.py</a></p>
+<p>and adapt the variables:</p>
+<p>&#8220;ip&#8221;, &#8220;user&#8221;, &#8220;labsshprompt&#8221;, &#8220;tc_workfd_work_dir&#8221;,
+&#8220;lab_tmp_dir&#8221; and &#8220;tftprootdir&#8221; for your needs.</p>
+<p>setup in:</p>
+<p><a class="reference external" href="https://github.com/hsdenx/tbot/blob/master/src/tc/lab/tc_lab_sispmctl_get_variables.py">https://github.com/hsdenx/tbot/blob/master/src/tc/lab/tc_lab_sispmctl_get_variables.py</a></p>
+<p>your special settings, where tbot finds through
+&#8220;tb.config.boardlabpowername&#8221; the boards settings for the
+&#8220;Gembird Silver Shield PM power controller&#8221;</p>
+<p>go to step <a class="reference internal" href="#prepare-password-file">prepare password file</a></p>
+</div>
+<div class="section" id="setup-tasks">
+<h6>setup tasks<a class="headerlink" href="#setup-tasks" title="Permalink to this headline">¶</a></h6>
+<ul>
+<li><p class="first">create a new folder in src/tc/lab/XXX
+replace XXX to a proper value</p>
 <p>Each VL needs a configuration file, passed with the option &#8216;-s&#8217; to
 tbot, example:</p>
-<p><a class="reference external" href="https://github.com/hsdenx/tbot/blob/master/config/lab_hs_home.py">https://github.com/hsdenx/tbot/blob/master/config/lab_hs_home.py</a>
-simple copy this and rename it to
-<a class="reference external" href="https://github.com/hsdenx/tbot/blob/master/config/lab_XXX.py">https://github.com/hsdenx/tbot/blob/master/config/lab_XXX.py</a>
-and adapt the settings to your specific needs.</p>
+<p><a class="reference external" href="https://github.com/hsdenx/tbot/blob/master/config/lab_hs_home.py">https://github.com/hsdenx/tbot/blob/master/config/lab_hs_home.py</a></p>
+<p>simple copy this and rename it to</p>
+<p><a class="reference external" href="https://github.com/hsdenx/tbot/blob/master/config/lab_XXX.py">https://github.com/hsdenx/tbot/blob/master/config/lab_XXX.py</a></p>
+<p>and adapt the settings to your specific needs.</p>
 </li>
 <li><p class="first">Then you have to setup Testcases for the 3 VL tasks:</p>
 <ul>
 <li><p class="first">Task a) power on/off board:</p>
 <p>default TC for this task is:</p>
 <p><a class="reference external" href="https://github.com/hsdenx/tbot/blob/master/src/tc/lab/denx/tc_lab_denx_power.py">https://github.com/hsdenx/tbot/blob/master/src/tc/lab/denx/tc_lab_denx_power.py</a></p>
-<ul>
-<li><p class="first">now copy this file to for example
-cp src/tc/lab/denx/tc_lab_denx_power.py src/tc/lab/XXX/tc_lab_XXX_power_onoff.py
-and adapt the &#8220;remote_power&#8221; command from the denx lab to your needs.</p>
+<p>now copy this file to for example</p>
+<div class="highlight-python"><div class="highlight"><pre>cp src/tc/lab/denx/tc_lab_denx_power.py src/tc/lab/XXX/tc_lab_XXX_power_onoff.py
+</pre></div>
+</div>
+<p>and adapt the &#8220;remote_power&#8221; command from the denx lab to your needs.</p>
 <p>As this TC powers on the board for all your boards in your VL,
 you can differ between the boards through the tbot class
-variable &#8220;tb.config.boardlabpowername&#8221; (which is in the default case the
-same as &#8220;tb.config.boardname&#8221;), but you may need to name the power target
+variable</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">tb</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">boardlabpowername</span>
+</pre></div>
+</div>
+<p>(which is in the default case the same as &#8220;tb.config.boardname&#8221;),
+but you may need to name the power target
 with an other name than boardname, so you can configure this case.
 The power state &#8220;tb.power_state&#8221; which the TC has to set
 is &#8220;on&#8221; for power on, or &#8220;off&#8221; for power off.</p>
 <p>If switching on the power is successful, call &#8220;tb.end_tc(True)&#8221;
 else &#8220;tb.end_tc(False)&#8221;</p>
-</li>
-<li><p class="first">set in your lab config file:
-tc_lab_denx_power_tc = &#8216;tc_lab_XXX_power_onoff.py&#8217;</p>
-</li>
-</ul>
+<p>set in your lab config file:</p>
+<p>tc_lab_denx_power_tc = &#8216;tc_lab_XXX_power_onoff.py&#8217;</p>
 </li>
 <li><p class="first">Task b) get power state of a board:</p>
 <p>default TC for this task is:</p>
 <p><a class="reference external" href="https://github.com/hsdenx/tbot/blob/master/src/tc/lab/denx/tc_lab_denx_get_power_state.py">https://github.com/hsdenx/tbot/blob/master/src/tc/lab/denx/tc_lab_denx_get_power_state.py</a></p>
-<ul>
-<li><p class="first">now copy this file to for example
-(replace XXX to a proper value)
-cp src/tc/lab/denx/tc_lab_denx_get_power_state.py src/tc/lab/XXX/tc_lab_XXX_get_power_state.py
-and adapt the commands to your needs.</p>
+<p>now copy this file to for example
+(replace XXX to a proper value)</p>
+<div class="highlight-python"><div class="highlight"><pre>cp src/tc/lab/denx/tc_lab_denx_get_power_state.py src/tc/lab/XXX/tc_lab_XXX_get_power_state.py
+</pre></div>
+</div>
+<p>and adapt the commands to your needs.</p>
 <p>If the power of the board is on, call &#8220;tb.end_tc(True)&#8221;
 else &#8220;tb.end_tc(False)&#8221;</p>
-</li>
-<li><p class="first">set in your lab config file:
-tc_lab_denx_get_power_state_tc = &#8216;tc_lab_XXX_get_power_state.py&#8217;</p>
-</li>
-</ul>
+<p>set in your lab config file:</p>
+<p>tc_lab_denx_get_power_state_tc = &#8216;tc_lab_XXX_get_power_state.py&#8217;</p>
 </li>
 <li><p class="first">Task c) connect to the boards console:</p>
 <p>default TC for this task is:</p>
 <p><a class="reference external" href="https://github.com/hsdenx/tbot/blob/master/src/tc/lab/denx/tc_lab_denx_connect_to_board.py">https://github.com/hsdenx/tbot/blob/master/src/tc/lab/denx/tc_lab_denx_connect_to_board.py</a></p>
-<ul>
-<li><p class="first">now copy this file to for example
-cp src/tc/lab/denx/tc_lab_denx_connect_to_board.py src/tc/lab/XXX/tc_lab_XXX_connect_to_board.py
-and adapt the commands to your needs.</p>
+<p>now copy this file to for example</p>
+<div class="highlight-python"><div class="highlight"><pre>cp src/tc/lab/denx/tc_lab_denx_connect_to_board.py src/tc/lab/XXX/tc_lab_XXX_connect_to_board.py
+</pre></div>
+</div>
+<p>and adapt the commands to your needs.</p>
 <p>If connect fails end this TC with &#8220;tb.end_tc(False)&#8221;
 else call &#8220;tb.end_tc(True)&#8221;</p>
 <p>If you want to use kermit for connecting to the boards console, you
 can use:</p>
 <p><a class="reference external" href="https://github.com/hsdenx/tbot/blob/master/src/tc/linux/tc_workfd_connect_with_kermit.py">https://github.com/hsdenx/tbot/blob/master/src/tc/linux/tc_workfd_connect_with_kermit.py</a></p>
-<p>Example for such a board in the VL from denx:
-tc_lab_denx_connect_to_board_tc = &#8216;tc_workfd_connect_with_kermit.py&#8217;</p>
+<p>Example for such a board in the VL from denx:</p>
+<p>tc_lab_denx_connect_to_board_tc = &#8216;tc_workfd_connect_with_kermit.py&#8217;</p>
 <p><a class="reference external" href="https://github.com/hsdenx/tbot/blob/master/config/tbot_dxr2.cfg#L20">https://github.com/hsdenx/tbot/blob/master/config/tbot_dxr2.cfg#L20</a></p>
-</li>
-<li><p class="first">set in your lab config file:
-tc_lab_denx_connect_to_board_tc = &#8216;tc_lab_XXX_connect_to_board.py&#8217;</p>
-</li>
-</ul>
+<p>set in your lab config file:</p>
+<p>tc_lab_denx_connect_to_board_tc = &#8216;tc_lab_XXX_connect_to_board.py&#8217;</p>
 </li>
 </ul>
 </li>
-<li><p class="first">prepare password.py file:
-This file contains all passwords tbot needs (for example for
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="prepare-password-file">
+<h4>prepare password file<a class="headerlink" href="#prepare-password-file" title="Permalink to this headline">¶</a></h4>
+<p>This file contains all passwords tbot needs (for example for
 linux login on the boards)
 tbot searches this file in the tbot root directory.
 It is a simple python file, for example:</p>
-</li>
-</ul>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># passwords for the lab</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">board</span> <span class="o">==</span> <span class="s">&#39;lab&#39;</span><span class="p">):</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">user</span> <span class="o">==</span> <span class="s">&#39;hs&#39;</span><span class="p">):</span>
@@ -233,8 +248,9 @@ It is a simple python file, for example:</p>
 </pre></div>
 </div>
 <p>tbot searches in the root folder for this file.</p>
-<ul>
-<li><p class="first">prepare board config file</p>
+</div>
+<div class="section" id="prepare-board-config-file">
+<h4>prepare board config file<a class="headerlink" href="#prepare-board-config-file" title="Permalink to this headline">¶</a></h4>
 <p>Each board which is found in the VL needs a tbot configuration file
 pass the config file name with the option &#8216;-c&#8217; to tbot, tbot searches
 in the &#8220;config&#8221; folder for them.</p>
@@ -242,13 +258,12 @@ in the &#8220;config&#8221; folder for them.</p>
 <a class="reference external" href="https://github.com/hsdenx/tbot/blob/master/config/dxr2.py">https://github.com/hsdenx/tbot/blob/master/config/dxr2.py</a></p>
 <p>Now comes a list of variables TC needs, this vary from what you
 you want to test...</p>
-</li>
-</ul>
 <p>Thats it ... you now can call tbot and hopefully, it works ;-)</p>
 <p>If you have problems in settings up tbot, please contact me
 (and may give me ssh access to your Lab PC ;-)</p>
 <p>Heiko Schocher &lt;<a class="reference external" href="mailto:hs&#37;&#52;&#48;denx&#46;de">hs<span>&#64;</span>denx<span>&#46;</span>de</a>&gt;
 v2 2016.11.02</p>
+</div>
 </div>
 </div>
 </div>

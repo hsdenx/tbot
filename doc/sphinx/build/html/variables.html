@@ -68,6 +68,18 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="uboot-autoboot-key">
+<span id="tb-config-uboot-autoboot-key"></span><h2>uboot_autoboot_key<a class="headerlink" href="#uboot-autoboot-key" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">uboot_autoboot_key</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tb-power-state">
+<span id="id1"></span><h2>tb_power_state<a class="headerlink" href="#tb-power-state" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">tb_power_state</span> <span class="o">=</span> <span class="s">&#39;undef&#39;</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="term-line-length">
 <span id="tb-config-term-line-length"></span><h2>term_line_length<a class="headerlink" href="#term-line-length" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">term_line_length</span> <span class="o">=</span> <span class="s">&#39;200&#39;</span>
@@ -118,7 +130,7 @@
 </div>
 <div class="section" id="tc-ub-boot-linux-load-env">
 <span id="tb-config-tc-ub-boot-linux-load-env"></span><h2>tc_ub_boot_linux_load_env<a class="headerlink" href="#tc-ub-boot-linux-load-env" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">tc_ub_boot_linux_load_env</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">tc_ub_boot_linux_load_env</span> <span class="o">=</span> <span class="s">&#39;load&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -161,6 +173,12 @@
 <div class="section" id="ub-load-board-env-subdir">
 <span id="tb-config-ub-load-board-env-subdir"></span><h2>ub_load_board_env_subdir<a class="headerlink" href="#ub-load-board-env-subdir" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">ub_load_board_env_subdir</span> <span class="o">=</span> <span class="s">&#39;tbot&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ub-load-board-env-set">
+<span id="tb-config-ub-load-board-env-set"></span><h2>ub_load_board_env_set<a class="headerlink" href="#ub-load-board-env-set" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">ub_load_board_env_set</span> <span class="o">=</span> <span class="p">[]</span>
 </pre></div>
 </div>
 </div>
@@ -209,6 +227,18 @@
 <div class="section" id="boardlabpowername">
 <span id="tb-config-boardlabpowername"></span><h2>boardlabpowername<a class="headerlink" href="#boardlabpowername" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">boardlabpowername</span> <span class="o">=</span> <span class="s">&#39;config.boardname&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tftprootdir">
+<span id="tb-config-tftprootdir"></span><h2>tftprootdir<a class="headerlink" href="#tftprootdir" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">tftprootdir</span><span class="o">=</span><span class="s">&#39;/tftpboot/&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tftpboardrootdir">
+<span id="tb-config-tftpboardrootdir"></span><h2>tftpboardrootdir<a class="headerlink" href="#tftpboardrootdir" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">tftpboardrootdir</span><span class="o">=</span><span class="s">&#39;&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -493,7 +523,7 @@
 </div>
 <div class="section" id="lab-bdi-upd-uboot-bdi-run">
 <span id="tb-config-lab-bdi-upd-uboot-bdi-run"></span><h2>lab_bdi_upd_uboot_bdi_run<a class="headerlink" href="#lab-bdi-upd-uboot-bdi-run" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">lab_bdi_upd_uboot_bdi_run</span> <span class="o">=</span> <span class="s">&#39;res run&#39;</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">lab_bdi_upd_uboot_bdi_run</span> <span class="o">=</span> <span class="p">[{</span><span class="s">&#39;cmd&#39;</span><span class="p">:</span><span class="s">&#39;res run&#39;</span><span class="p">,</span> <span class="s">&#39;val&#39;</span><span class="p">:</span><span class="s">&#39;resetting target passed&#39;</span><span class="p">}]</span>
 </pre></div>
 </div>
 </div>
@@ -891,6 +921,12 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="linux-user">
+<span id="tb-config-linux-user"></span><h2>linux_user<a class="headerlink" href="#linux-user" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">linux_user</span> <span class="o">=</span> <span class="s">&#39;root&#39;</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="create-dot">
 <span id="tb-config-create-dot"></span><h2>create_dot<a class="headerlink" href="#create-dot" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">create_dot</span> <span class="o">=</span> <span class="s">&#39;no&#39;</span>
@@ -924,6 +960,12 @@
 <div class="section" id="create-documentation">
 <span id="tb-config-create-documentation"></span><h2>create_documentation<a class="headerlink" href="#create-documentation" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">create_documentation</span> <span class="o">=</span> <span class="s">&#39;no&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="event-documentation-strip-list">
+<span id="tb-config-event-documentation-strip-list"></span><h2>event_documentation_strip_list<a class="headerlink" href="#event-documentation-strip-list" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">event_documentation_strip_list</span> <span class="o">=</span> <span class="p">[]</span>
 </pre></div>
 </div>
 </div>
@@ -993,6 +1035,77 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="tc-workfd-hdparm-min">
+<span id="tb-config-tc-workfd-hdparm-min"></span><h2>tc_workfd_hdparm_min<a class="headerlink" href="#tc-workfd-hdparm-min" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">tc_workfd_hdparm_min</span> <span class="o">=</span> <span class="s">&#39;12.0&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tc-lab-git-clone-source-git-repo">
+<span id="tb-config-tc-lab-git-clone-source-git-repo"></span><h2>tc_lab_git_clone_source_git_repo<a class="headerlink" href="#tc-lab-git-clone-source-git-repo" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">tc_lab_git_clone_source_git_repo</span> <span class="o">=</span> <span class="s">&#39;git://git.yoctoproject.org/poky.git&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tc-lab-git-clone-source-git-branch">
+<span id="tb-config-tc-lab-git-clone-source-git-branch"></span><h2>tc_lab_git_clone_source_git_branch<a class="headerlink" href="#tc-lab-git-clone-source-git-branch" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">tc_lab_git_clone_source_git_branch</span> <span class="o">=</span> <span class="s">&#39;morty&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tc-lab-git-clone-source-git-commit-id">
+<span id="tb-config-tc-lab-git-clone-source-git-commit-id"></span><h2>tc_lab_git_clone_source_git_commit_id<a class="headerlink" href="#tc-lab-git-clone-source-git-commit-id" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">tc_lab_git_clone_source_git_commit_id</span> <span class="o">=</span> <span class="s">&#39;73454473d7c286c41ee697f74052fed03c79f9f5&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tc-lab-git-clone-apply-patches-dir">
+<span id="tb-config-tc-lab-git-clone-apply-patches-dir"></span><h2>tc_lab_git_clone_apply_patches_dir<a class="headerlink" href="#tc-lab-git-clone-apply-patches-dir" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">tc_lab_git_clone_apply_patches_dir</span> <span class="o">=</span> <span class="s">&#39;none&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tc-lab-git-clone-apply-patches-git-am-dir">
+<span id="tb-config-tc-lab-git-clone-apply-patches-git-am-dir"></span><h2>tc_lab_git_clone_apply_patches_git_am_dir<a class="headerlink" href="#tc-lab-git-clone-apply-patches-git-am-dir" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">tc_lab_git_clone_apply_patches_git_am_dir</span> <span class="o">=</span> <span class="s">&#39;/work/hs/ssi/patches/20161220/morty&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tc-lab-git-clone-source-git-reference">
+<span id="tb-config-tc-lab-git-clone-source-git-reference"></span><h2>tc_lab_git_clone_source_git_reference<a class="headerlink" href="#tc-lab-git-clone-source-git-reference" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">tc_lab_git_clone_source_git_reference</span> <span class="o">=</span> <span class="s">&#39;none&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tc-lab-git-clone-source-git-repo-user">
+<span id="tb-config-tc-lab-git-clone-source-git-repo-user"></span><h2>tc_lab_git_clone_source_git_repo_user<a class="headerlink" href="#tc-lab-git-clone-source-git-repo-user" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">tc_lab_git_clone_source_git_repo_user</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tc-lab-git-clone-source-git-repo-name">
+<span id="tb-config-tc-lab-git-clone-source-git-repo-name"></span><h2>tc_lab_git_clone_source_git_repo_name<a class="headerlink" href="#tc-lab-git-clone-source-git-repo-name" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">tc_lab_git_clone_source_git_repo_name</span> <span class="o">=</span> <span class="s">&#39;none&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tc-workfd-get-yocto-source-layers">
+<span id="tb-config-tc-workfd-get-yocto-source-layers"></span><h2>tc_workfd_get_yocto_source_layers<a class="headerlink" href="#tc-workfd-get-yocto-source-layers" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">tc_workfd_get_yocto_source_layers</span> <span class="o">=</span> <span class="p">[</span>
+<span class="p">[</span><span class="s">&#39;git://git.openembedded.org/meta-openembedded&#39;</span><span class="p">,</span> <span class="s">&#39;morty&#39;</span><span class="p">,</span> <span class="s">&#39;659d9d3f52bad33d7aa1c63e25681d193416d76e&#39;</span><span class="p">,</span> <span class="s">&#39;none&#39;</span><span class="p">,</span> <span class="s">&#39;none&#39;</span><span class="p">,</span> <span class="s">&#39;none&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;meta-openembedded&#39;</span><span class="p">],</span>
+<span class="p">[</span><span class="s">&#39;https://github.com/meta-qt5/meta-qt5.git&#39;</span><span class="p">,</span> <span class="s">&#39;morty&#39;</span><span class="p">,</span> <span class="s">&#39;9aa870eecf6dc7a87678393bd55b97e21033ab48&#39;</span><span class="p">,</span> <span class="s">&#39;none&#39;</span><span class="p">,</span> <span class="s">&#39;/work/hs/ssi/patches/20161220/qt5&#39;</span><span class="p">,</span> <span class="s">&#39;none&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;meta-qt5&#39;</span><span class="p">],</span>
+<span class="p">[</span><span class="s">&#39;https://github.com/sbabic/meta-swupdate.git&#39;</span><span class="p">,</span> <span class="s">&#39;master&#39;</span><span class="p">,</span> <span class="s">&#39;b3abfa78d04b88b88bcef6f5be9f2adff1293544&#39;</span><span class="p">,</span> <span class="s">&#39;none&#39;</span><span class="p">,</span> <span class="s">&#39;none&#39;</span><span class="p">,</span> <span class="s">&#39;none&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;meta-swupdate&#39;</span><span class="p">],</span>
+<span class="p">[</span><span class="s">&#39;git@gitlab.denx.de:ssi/meta-cuby.git&#39;</span><span class="p">,</span> <span class="s">&#39;20161220&#39;</span><span class="p">,</span> <span class="s">&#39;none&#39;</span><span class="p">,</span> <span class="s">&#39;none&#39;</span><span class="p">,</span> <span class="s">&#39;none&#39;</span><span class="p">,</span> <span class="s">&#39;none&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;meta-cuby&#39;</span><span class="p">],</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tc-workfd-get-yocto-source-conf-dl-dir">
+<span id="tb-config-tc-workfd-get-yocto-source-conf-dl-dir"></span><h2>tc_workfd_get_yocto_source_conf_dl_dir<a class="headerlink" href="#tc-workfd-get-yocto-source-conf-dl-dir" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">tc_workfd_get_yocto_source_conf_dl_dir</span> <span class="o">=</span> <span class="s">&#39;none&#39;</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -1018,6 +1131,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#debug">debug</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#debugstatus">debugstatus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#uboot-strings">uboot_strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#uboot-autoboot-key">uboot_autoboot_key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tb-power-state">tb_power_state</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#term-line-length">term_line_length</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#wdt-timeout">wdt_timeout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#state-linux-timeout">state_linux_timeout</a></li>
@@ -1034,6 +1149,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#tc-lx-bonnie-sz">tc_lx_bonnie_sz</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ub-load-board-env-addr">ub_load_board_env_addr</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ub-load-board-env-subdir">ub_load_board_env_subdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ub-load-board-env-set">ub_load_board_env_set</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ub-boot-linux-cmd">ub_boot_linux_cmd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tc-lab-compile-uboot-boardname">tc_lab_compile_uboot_boardname</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tc-lab-compile-uboot-makeoptions">tc_lab_compile_uboot_makeoptions</a></li>
@@ -1042,6 +1158,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#tftpboardname">tftpboardname</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#boardlabname">boardlabname</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#boardlabpowername">boardlabpowername</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tftprootdir">tftprootdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tftpboardrootdir">tftpboardrootdir</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tc-ub-dfu-dfu-util-path">tc_ub_dfu_dfu_util_path</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tc-ub-dfu-dfu-util-alt-setting">tc_ub_dfu_dfu_util_alt_setting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tc-lab-source-dir">tc_lab_source_dir</a></li>
@@ -1152,12 +1270,14 @@
 <li class="toctree-l2"><a class="reference internal" href="#workfd-ssh-cmd-prompt">workfd_ssh_cmd_prompt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#linux-prompt-default">linux_prompt_default</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#labprompt">labprompt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#linux-user">linux_user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#create-dot">create_dot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#create-statistic">create_statistic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#create-dashboard">create_dashboard</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#create-webpatch">create_webpatch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#create-html-log">create_html_log</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#create-documentation">create_documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#event-documentation-strip-list">event_documentation_strip_list</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tc-ub-test-py-hook-script-path">tc_ub_test_py_hook_script_path</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#switch-su-board">switch_su_board</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tc-workfd-can-ssh">tc_workfd_can_ssh</a></li>
@@ -1169,6 +1289,17 @@
 <li class="toctree-l2"><a class="reference internal" href="#tc-workfd-can-util-dir">tc_workfd_can_util_dir</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tc-workfd-hdparm-path">tc_workfd_hdparm_path</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tc-workfd-hdparm-dev">tc_workfd_hdparm_dev</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tc-workfd-hdparm-min">tc_workfd_hdparm_min</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tc-lab-git-clone-source-git-repo">tc_lab_git_clone_source_git_repo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tc-lab-git-clone-source-git-branch">tc_lab_git_clone_source_git_branch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tc-lab-git-clone-source-git-commit-id">tc_lab_git_clone_source_git_commit_id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tc-lab-git-clone-apply-patches-dir">tc_lab_git_clone_apply_patches_dir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tc-lab-git-clone-apply-patches-git-am-dir">tc_lab_git_clone_apply_patches_git_am_dir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tc-lab-git-clone-source-git-reference">tc_lab_git_clone_source_git_reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tc-lab-git-clone-source-git-repo-user">tc_lab_git_clone_source_git_repo_user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tc-lab-git-clone-source-git-repo-name">tc_lab_git_clone_source_git_repo_name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tc-workfd-get-yocto-source-layers">tc_workfd_get_yocto_source_layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tc-workfd-get-yocto-source-conf-dl-dir">tc_workfd_get_yocto_source_conf_dl_dir</a></li>
 </ul>
 </li>
 </ul>
