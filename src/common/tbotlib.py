@@ -28,9 +28,6 @@ import inspect
 import pexpect
 from tbot_event import events
 from tbot_connection_paramiko import Connection
-sys.path.append("src/lab_api/")
-from state_uboot import u_boot_set_board_state
-from state_linux import linux_set_board_state
 
 escape_dict={'\a':r'\a',
            '\"':r'\"',
@@ -89,7 +86,7 @@ class tbot(object):
         print("CUR WORK PATH: ", self.workdir)
         print("CFGFILE ", self.cfgfile)
         # add config to sys path
-        sys.path.append('config')
+        sys.path.append(self.workdir + '/config')
 
         # load board config
         try:
@@ -116,6 +113,10 @@ class tbot(object):
         print("LOGFILE ", self.logfilen)
 
         sys.path.append(self.workdir + "/src/lab_api")
+        from state_uboot import u_boot_set_board_state
+        from state_linux import linux_set_board_state
+        self.setboardstate_uboot = locals()['u_boot_set_board_state']
+        self.setboardstate_linux = locals()['linux_set_board_state']
         try:
             self.tc_dir
         except AttributeError:
@@ -307,13 +308,13 @@ class tbot(object):
         ret = None
 
         if state == 'u-boot':
-            ret = u_boot_set_board_state(self, state, 5)
+            ret = self.setboardstate_uboot(self, state, 5)
 
         if state == 'lab':
             return True
 
         if state == 'linux':
-            ret = linux_set_board_state(self, state, 5)
+            ret = self.setboardstate_linux(self, state, 5)
 
         if ret == None:
             logging.info("Unknown boardstate: %s", state)

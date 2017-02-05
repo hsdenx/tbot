@@ -21,12 +21,6 @@ from struct import *
 import time
 from time import gmtime, strftime
 import importlib
-sys.path.append("src/common/event/")
-from web_patchwork import web_patchwork
-from dot import dot
-from html_log import html_log
-from statisitic_plot import statistic_plot_backend
-from documentation import doc_backend
 
 class events(object):
     """ The event class
@@ -53,6 +47,9 @@ class events(object):
         self.pname = 4
         self.name = 5
         self.value = 6
+
+        sys.path.append(tb.workdir +  "/src/common/event")
+
         try:
             self.fd = open(tb.workdir + '/' + logfile, 'w')
         except:
@@ -93,14 +90,17 @@ class events(object):
         if id == 'BoardnameEnd':
             self.event_flush()
             if (self.tb.config.create_webpatch == 'yes'):
-                self.webpatch = web_patchwork(self.tb, 'webpatch.html')
+                from web_patchwork import web_patchwork
+                self.webpatch = self.web_patchwork(self.tb, 'webpatch.html')
             if (self.tb.config.create_dot == 'yes'):
+                from dot import dot
                 self.ignoretclist = ['tc_workfd_check_cmd_success.py',
                  'tc_lab_cp_file.py',
                  'tc_workfd_check_if_file_exist.py',
                  'tc_workfd_rm_file.py']
                 self.dot = dot(self.tb, 'tc.dot', self.ignoretclist)
             if (self.tb.config.create_statistic == 'yes'):
+                from statisitic_plot import statistic_plot_backend
 		self.ignoretclist = ['tc_workfd_check_cmd_success.py',
                  'tc_lab_cp_file.py',
                  'tc_def_ub.py',
@@ -111,8 +111,10 @@ class events(object):
 
                 self.statistic = statistic_plot_backend(self.tb, 'stat.dat', self.ignoretclist)
             if (self.tb.config.create_html_log == 'yes'):
+                from html_log import html_log
                 self.html_log = html_log(self.tb, 'log/html_log.html')
             if (self.tb.config.create_documentation == 'yes'):
+                from documentation import doc_backend
                 self.ignoretclist = ['tc_workfd_check_cmd_success.py']
                 self.doc = doc_backend(self.tb, self.ignoretclist)
             if (self.tb.config.create_dashboard == 'yes'):
