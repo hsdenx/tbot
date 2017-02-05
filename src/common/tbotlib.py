@@ -148,7 +148,11 @@ class tbot(object):
         self.event = events(self, 'log/event.log')
         self.event.create_event('main', self.config.boardname, "Boardname", True)
 
-        self.wdtfile = self.workdir + "/" + self.cfgfile + ".wdt"
+        self.wdtdir = self.workdir + "/wdt"
+        if not os.path.exists(self.wdtdir):
+            os.makedirs(self.wdtdir)
+
+        self.wdtfile = self.wdtdir + "/" + self.cfgfile + ".wdt"
         self.tbot_start_wdt()
 
         # try to connect with ssh
