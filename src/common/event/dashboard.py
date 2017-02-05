@@ -170,18 +170,19 @@ class dashboard(object):
         # catch errors
         newdir = self.webdir + '/tbot/id_' + str(self.iddb)
         os.system("mkdir " + newdir)
+        os.system("chmod 755 " + newdir)
         if (self.tb.config.create_dot == 'yes'):
-            os.system("dot -Tpng tc.dot > tc.png")
-            tmp = "cp tc.png " + newdir + "/graph.png"
+            os.system("dot -Tpng " + self.tb.workdir + "/tc.dot > " + self.tb.workdir + "/tc.png")
+            tmp = "cp " + self.tb.workdir + "/tc.png " + newdir + "/graph.png"
             os.system(tmp)
         if (self.tb.config.create_statistic == 'yes'):
-            os.system("gnuplot src/files/balkenplot.sem")
-            tmp = "cp output.jpg " + newdir + "/statistic.jpg"
+            os.system("gnuplot " + self.tb.workdir + "/src/files/balkenplot.sem")
+            tmp = "cp " + self.tb.workdir + "/output.jpg " + newdir + "/statistic.jpg"
             os.system(tmp)
         if (self.tb.config.create_html_log == 'yes'):
-            tmp = "cp log/html_log.html " + newdir + "/html_log.html"
+            tmp = "cp " + self.tb.workdir + "/log/html_log.html " + newdir + "/html_log.html"
             os.system(tmp)
-            tmp = "cp log/multiplexed_tbotlog.css " + newdir + "/multiplexed_tbotlog.css"
+            tmp = "cp " + self.tb.workdir + "/log/multiplexed_tbotlog.css " + newdir + "/multiplexed_tbotlog.css"
             os.system(tmp)
         if self.testpypatch != '':
             passwd = self.tb.tbot_get_password(self.tb.config.user, 'lab')
@@ -200,3 +201,5 @@ class dashboard(object):
 
         tmp = "cp " + self.tb.logfilen + " " + newdir + "/tbot.log"
         os.system(tmp)
+        os.system("chmod 744 " + newdir + "/.config")
+        os.system("chmod 744 " + newdir + "/*")
