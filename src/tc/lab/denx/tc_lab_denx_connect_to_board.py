@@ -22,7 +22,7 @@ from tbotlib import tbot
 logging.info("args: %s %s", tb.workfd.name, tb.config.boardlabname)
 
 tmp = "connect " + tb.config.boardlabname
-tb.eof_write(tb.workfd, tmp)
+tb.eof_write(tb.workfd, tmp, start=False)
 
 searchlist = ["Unknown target", "Connect", "not accessible", "Locked by process", "Connection closed by"]
 tmp = True
@@ -66,4 +66,5 @@ tb.workfd.set_timeout(None)
 tb.workfd.ign = tmp_ign
 tb.workfd.cnt_ign = len(tb.workfd.ign)
 tb.send_ctrl_c(tb.workfd)
+tb.workfd.flush()
 tb.end_tc(ret)
