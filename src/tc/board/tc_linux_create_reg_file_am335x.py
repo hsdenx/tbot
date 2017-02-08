@@ -143,4 +143,54 @@ tb.config.tc_lx_readreg_mask = 0xffffffff
 tb.config.tc_lx_readreg_type = 'w'
 tb.eof_call_tc("tc_lx_create_reg_file.py")
 
+# CPSW_SS
+tb.config.tc_lx_create_reg_file_name = 'am335x_cpsw_ss.reg'
+tb.config.tc_lx_create_reg_file_start = '4a100000'
+tb.config.tc_lx_create_reg_file_stop = '4a100034'
+tb.config.tc_lx_readreg_mask = 0xffffffff
+tb.config.tc_lx_readreg_type = 'w'
+tb.eof_call_tc("tc_lx_create_reg_file.py")
+
+# CPSW_PORT
+tb.config.tc_lx_create_reg_file_name = 'am335x_cpsw_port.reg'
+tb.config.tc_lx_create_reg_file_start = '4a100100'
+tb.config.tc_lx_create_reg_file_stop  = '4a100250'
+tb.config.tc_lx_readreg_mask = 0xffffffff
+tb.config.tc_lx_readreg_type = 'w'
+tb.eof_call_tc("tc_lx_create_reg_file.py")
+
+# CPSW_ALE
+tb.config.tc_lx_create_reg_file_name = 'am335x_cpsw_ale.reg'
+tb.config.tc_lx_create_reg_file_start = '4a100d00'
+tb.config.tc_lx_create_reg_file_stop  = '4a100d58'
+tb.config.tc_lx_readreg_mask = 0xffffffff
+tb.config.tc_lx_readreg_type = 'w'
+tb.eof_call_tc("tc_lx_create_reg_file.py")
+
+
+# CPSW_SL1
+tb.config.tc_lx_create_reg_file_name = 'am335x_cpsw_sl1.reg'
+tb.config.tc_lx_create_reg_file_start = '4a100d80'
+tb.config.tc_lx_create_reg_file_stop  = '4a100dac'
+tb.config.tc_lx_readreg_mask = 0xffffffff
+tb.config.tc_lx_readreg_type = 'w'
+tb.eof_call_tc("tc_lx_create_reg_file.py")
+
+# CPSW_SL2
+tb.config.tc_lx_create_reg_file_name = 'am335x_cpsw_sl2.reg'
+tb.config.tc_lx_create_reg_file_start = '4a100dc0'
+tb.config.tc_lx_create_reg_file_stop  = '4a100dec'
+tb.config.tc_lx_readreg_mask = 0xffffffff
+tb.config.tc_lx_readreg_type = 'w'
+tb.eof_call_tc("tc_lx_create_reg_file.py")
+
+# MDIO
+tb.config.tc_lx_create_reg_file_name = 'am335x_cpsw_mdio.reg'
+tb.config.tc_lx_create_reg_file_start = '4a101000'
+tb.config.tc_lx_create_reg_file_stop  = '4a101090'
+tb.config.tc_lx_readreg_mask = 0xffffffff
+tb.config.tc_lx_readreg_type = 'w'
+tb.eof_call_tc("tc_lx_create_reg_file.py")
+
+
 tb.end_tc(True)
