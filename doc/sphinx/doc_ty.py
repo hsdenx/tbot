@@ -32,6 +32,16 @@ class create_doc(object):
         self.fdt.write('Documentation of all Testcases\n')
         self.fdt.write('==============================\n')
         self.fdt.write('\n')
+
+    def write_tc_subheader(self, name, level):
+        self.fdt.write('\n')
+        self.fdt.write(name)
+        self.fdt.write('\n')
+	for c in name:
+            self.write_level(level)
+
+        self.fdt.write('\n')
+        self.fdt.write('\n')
  
     def write_tc_bottom(self):
         self.fdt.write('\n')
@@ -137,7 +147,15 @@ class create_doc(object):
         self.fdt.write('\n')
         # add link to testcase on github
 
-    def analyse_tc(self, filen):
+    def write_level(self, level):
+        if level == 0:
+            self.fdt.write('-')
+        elif level == 1:
+            self.fdt.write(',')
+        else:
+            self.fdt.write('.')
+
+    def analyse_tc(self, filen, level):
         # write reference
         self.fdt.write('\n')
         tmp = '.. ' + self.to_id(filen) + ':\n'
@@ -146,7 +164,7 @@ class create_doc(object):
         # write TC name
         self.fdt.write(filen + '\n')
         for x in filen:
-            self.fdt.write('-')
+            self.write_level(level - 1)
         self.fdt.write('\n')
         self.fdt.write('\n')
         self.fdt.write('::\n')
@@ -155,7 +173,7 @@ class create_doc(object):
         self.get_tc_description(filen)
         self.fdt.write('\n')
 
-    def write_onedocdir(self, dirp):
+    def write_onedocdir(self, dirp, level):
         # write header
         # self.write_start_block(dirp)
         files = []
@@ -174,17 +192,18 @@ class create_doc(object):
 
         if len(subdirs) > 0:
             for s in sorted(subdirs):
-                self.write_onedocdir(s)
+		self.write_tc_subheader(s, level)
+                self.write_onedocdir(s, level + 1)
 
         if len(files) > 0:
             for f in sorted(files):
-                self.analyse_tc(f)
+                self.analyse_tc(f, level + 1)
 
         # write end
         # self.write_end_block(dirp)
 
     def write_doc(self):
-        self.write_onedocdir(self.subdir)
+        self.write_onedocdir(self.subdir, 0)
 
     def write_var(self, name, des):
         # write reference
