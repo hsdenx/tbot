@@ -45,9 +45,10 @@ class Connection(object):
         self.error = ['Resetting CPU']
         self.cnt_error = len(self.error)
 
-    def open_paramiko(self, user, ip, passwd):
+    def open_paramiko(self, user, ip, passwd, port='22'):
         # look in paramiko/demos/demo_simple.py
         # for more infos how to use host keys ToDo
+        po = int(port)
         logging.debug("try to open ssh connection")
         if not self.ssh:
             self.ssh = paramiko.SSHClient()
@@ -57,11 +58,11 @@ class Connection(object):
             logging.debug("AutoAddPolicy")
             self.ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
-        logging.debug("try connection for %s@%s", user, ip)
+        logging.debug("try connection for %s@%s port: %d", user, ip, po)
         try:
-            self.ssh.connect(ip, username=user, password=passwd)
-        except:
-            logging.warning("no connection for %s@%s", user, ip)
+            self.ssh.connect(ip, port=po, username=user, password=passwd)
+        except BaseException as e:
+            logging.warning("no connection for %s@%s string: %s", user, ip, str(e))
             self.ssh.close()
             return None
 
@@ -111,14 +112,14 @@ class Connection(object):
         self.channel.send(string)
         return True
 
-    def create(self, cmd, logfilename, prompt, user, ip, passwd):
+    def create(self, cmd, logfilename, prompt, user, ip, passwd, port='22'):
         """create a new connection
 
         :param cmd: cmd which is spawned
         :param logfilename: name of the logfile
         :return:
         """
-        ret = self.open_paramiko(user, ip, passwd)
+        ret = self.open_paramiko(user, ip, passwd, port)
         if ret != True:
             return False
 

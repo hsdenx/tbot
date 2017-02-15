@@ -504,7 +504,12 @@ class tbot(object):
 
         passwd = self.tbot_get_password(self.config.user, self.config.ip)
         self.donotlog = True
-        ret = c.create('not needed', logname, self.config.labprompt, self.config.user, self.config.ip, passwd)
+        try:
+            self.config.port
+        except:
+            self.config.port = '22'
+
+        ret = c.create('not needed', logname, self.config.labprompt, self.config.user, self.config.ip, passwd, self.config.port)
         c.set_timeout(None)
         c.set_prompt(self.config.labsshprompt)
         self.tbot_expect_prompt(c)
