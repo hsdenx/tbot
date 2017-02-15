@@ -28,9 +28,6 @@ class dashboard(object):
     ::
 
       apt-get install python-mysqldb
-      apt-get install sshpass
-      (needed fpr passing the password to scp)
-
 
     If tb.config.create_dot == 'yes' then you need the dot
 
@@ -185,19 +182,20 @@ class dashboard(object):
             tmp = "cp " + self.tb.workdir + "/log/multiplexed_tbotlog.css " + newdir + "/multiplexed_tbotlog.css"
             os.system(tmp)
         if self.testpypatch != '':
-            passwd = self.tb.tbot_get_password(self.tb.config.user, 'lab')
-            tmp = "sshpass -p '" + passwd + "' scp " + self.tb.config.user + "@" +  self.tb.config.ip +  ":" + self.testpypatch + "/test-log.html " + newdir
-            os.system(tmp)
-            tmp = "sshpass -p '" + passwd + "' scp " + self.tb.config.user + "@" +  self.tb.config.ip +  ":" + self.testpypatch + "/multiplexed_log.css " + newdir
-            os.system(tmp)
+            rem = self.testpypatch + '/test-log.html'
+            loc = newdir + '/test-log.html'
+            self.tb.c_ctrl.copy_file(rem, loc)
+            rem = self.testpypatch + '/multiplexed_log.css'
+            loc = newdir + '/multiplexed_log.css'
+            self.tb.c_ctrl.copy_file(rem, loc)
         if self.uboot_src_path != '':
-            passwd = self.tb.tbot_get_password(self.tb.config.user, 'lab')
-            tmp = "sshpass -p '" + passwd + "' scp " + self.tb.config.user + "@" +  self.tb.config.ip +  ":" + self.uboot_src_path + "/.config " + newdir
-            os.system(tmp)
+            rem = self.uboot_src_path + '/.config'
+            loc = newdir + '/.config'
+            self.tb.c_ctrl.copy_file(rem, loc)
         if self.linux_src_path != '':
-            passwd = self.tb.tbot_get_password(self.tb.config.user, 'lab')
-            tmp = "sshpass -p '" + passwd + "' scp " + self.tb.config.user + "@" +  self.tb.config.ip +  ":" + self.linux_src_path + "/.config " + newdir
-            os.system(tmp)
+            rem = self.linux_src_path + '/.config'
+            loc = newdir + '/.config'
+            self.tb.c_ctrl.copy_file(rem, loc)
 
         tmp = "cp " + self.tb.logfilen + " " + newdir + "/tbot.log"
         os.system(tmp)
