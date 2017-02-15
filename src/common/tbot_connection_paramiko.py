@@ -463,3 +463,18 @@ class Connection(object):
         self.tb.event.create_event_log(self, "rf", self.data)
         self.data = ''
         return True
+
+    def copy_file(self, remotepath, localpath):
+        try:
+            ### Copy remote file to server        
+            logging.debug("sftp rem: %s loc: %s", remotepath, localpath)
+            sftp = self.ssh.open_sftp()
+            sftp.get(remotepath, localpath)
+            sftp.close()
+            return True
+        except IOError as e:
+            logging.error("sftp IOError rem: %s loc: %s %s", remotepath, localpath, str(e))
+            return False
+        except Exception as e:
+            logging.error("sftp Exception rem: %s loc: %s %s", remotepath, localpath, str(e))
+            return False
