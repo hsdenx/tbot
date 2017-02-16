@@ -322,10 +322,10 @@ class tbot(object):
 
         if ret == None:
             logging.info("Unknown boardstate: %s", state)
-            self.failure()
+            self.end_tc(False)
 
         if ret == False:
-            self.failure()
+            self.end_tc(False)
 
         return True
 
@@ -404,6 +404,7 @@ class tbot(object):
         return True
 
     def failure(self):
+        self.event.create_event('main', self.config.boardname, "BoardnameEnd", False)
         logging.info('End of TBOT: failure')
         self.statusprint("End of TBOT: failure")
         # traceback.print_stack()
@@ -425,8 +426,8 @@ class tbot(object):
         """
         self._ret = ret
         if self._main == 0:
-            self.event.create_event('main', self.config.boardname, "BoardnameEnd", True)
             if self._ret:
+                self.event.create_event('main', self.config.boardname, "BoardnameEnd", True)
                 logging.info('End of TBOT: success')
                 self.statusprint("End of TBOT: success")
                 self.cleanup()

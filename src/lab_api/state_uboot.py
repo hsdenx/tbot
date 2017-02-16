@@ -97,7 +97,7 @@ def u_boot_set_board_state(tb, state, retry):
         ret = tb.set_power_state(tb.config.boardlabpowername, "on")
         if ret != True:
             logging.error("------------------- set board state failure")
-            tb.failure()
+            tb.end_tc(False)
             return False
         tb.check_debugger()
 
@@ -108,5 +108,5 @@ def u_boot_set_board_state(tb, state, retry):
     logging.error("------------------- set board state failure end")
     # maybe connect to a BDI ?
     # currently failure
-    tb.failure()
+    tb.end_tc(False)
     return False
