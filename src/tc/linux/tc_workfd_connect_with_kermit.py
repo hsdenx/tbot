@@ -44,7 +44,7 @@ tb.workfd.expect_prompt()
 if tb.config.tc_workfd_connect_with_kermit_rlogin == 'none':
     # check for "no effect", "Sorry, write access"
     tb.eof_write(tb.workfd, "set line " + tb.config.kermit_line, start=False)
-    searchlist = ["no effect", "Sorry, write access"]
+    searchlist = ["no effect", "Sorry, write access", "Sorry, device is in use"]
     tmp = True
     retu = False
     while tmp == True:
@@ -52,6 +52,8 @@ if tb.config.tc_workfd_connect_with_kermit_rlogin == 'none':
         if ret == '0':
             retu = True
         if ret == '1':
+            retu = True
+        if ret == '2':
             retu = True
         elif ret == 'prompt':
             tmp = False
