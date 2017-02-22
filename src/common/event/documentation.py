@@ -239,12 +239,13 @@ class doc_backend(object):
                         else:
                             if l != '':
                                 logline += l
- 
+
                 if oldname == 'none':
                     oldname = newname
                     fd = open(self._create_fn(filename, newname, index, lnr), 'w')
                     fd.write(logline)
                     stripped = 'no'
+                    interrupted = False
                 elif oldname == newname and interrupted == False:
                     fd.write(logline)
                 else:
