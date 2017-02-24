@@ -1170,3 +1170,30 @@ class tbot(object):
         if wait_prompt:
             self.tbot_expect_prompt(c)
         return True
+
+    def eof_write_cmd_get_line(self, c, cmd, start=True):
+        """ write command and get one line back in variable ret_write_cmd_get_line
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: connection
+        :param arg2: cmd
+        :param arg3: start boolean, True, send console start before the
+        """
+        self.eof_write(c, cmd, start)
+        searchlist = ["\n"]
+        tmp = True
+        result = False
+        self.ret_write_cmd_get_line = 'error'
+        while tmp == True:
+            ret = self.tbot_rup_and_check_strings(c, searchlist)
+            if ret == '0':
+                line = self.buf
+                self.ret_write_cmd_get_line = line
+                result = True
+            elif ret == 'prompt':
+                tmp = False
+
+        if ret == False:
+            self.end_tc(False)
+
+        return True
