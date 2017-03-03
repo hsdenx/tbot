@@ -31,6 +31,16 @@ Roadmap
    roadmap.rst
 
 ############################################
+flyer / presentations
+############################################
+
+.. toctree::
+   :maxdepth: 2
+
+   flyer.rst
+
+
+############################################
 tbot documentation
 ############################################
 
@@ -41,6 +51,15 @@ tbot documentation
    event_backends
    testcases
    variables
+
+############################################
+older versions of documentation
+############################################
+
+.. toctree::
+   :maxdepth: 2
+
+   old_doc.rst
 
 Indices and tables
 ==================
