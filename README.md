@@ -73,7 +73,7 @@ tbot@lists.denx.de
 
 General information about the mailing list is at:
 
-http://lists.denx.de/mailman/listinfo/tbot
+http://lists.denx.de/listinfo/tbot
 
 When creating patches, please use something like:
 
