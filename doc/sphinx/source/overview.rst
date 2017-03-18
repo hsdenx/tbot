@@ -49,6 +49,23 @@ demo for a buildbot integration:
 
 http://xeidos.ddns.net/buildbot/tgrid
 
+Contributing
+============
+
+You can submit your patches or post questions reagarding the project to the tbot Mailing List:
+
+tbot@lists.denx.de
+
+General information about the mailing list is at:
+
+http://lists.denx.de/listinfo/tbot
+
+When creating patches, please use something like:
+
+git format-patch -s <revision range>
+
+Please use 'git send- email' to send the generated patches to the ML to bypass changes from your mailer.
+
 Installation
 ============
 
