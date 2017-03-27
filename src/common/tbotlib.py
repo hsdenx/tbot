@@ -101,6 +101,23 @@ class tbot(object):
         # load default settigs ...
         self.overwrite_config('default_vars')
 
+        # test if we have a lab specific board setup
+        call_specific = False
+        try:
+            self.config.set_labspecific
+            call_specific = True
+        except:
+            logging.debug("no set_labspecfic")
+
+	if call_specific:
+            try:
+                self.config.set_labspecific(self)
+            except:
+                type, value, traceback = sys.exc_info()
+                print("type ", type)
+                print("value ", value)
+                sys.exit(1)
+
         now = datetime.datetime.now()
         # load config file
         if logfilen == 'default':

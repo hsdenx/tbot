@@ -297,8 +297,27 @@ in the "config" folder for them.
 board Example (dxr2 board):
 https://github.com/hsdenx/tbot/blob/master/config/dxr2.py
 
-Now comes a list of variables TC needs, this vary from what you
-you want to test...
+The board config file contains TC specific settings, which are
+dependend on the board you want to test.
+
+tbot parses first the board config file, than the lab config file
+and at last default settings for TC variables, which are
+set in
+
+https://github.com/hsdenx/tbot/blob/master/src/common/default.py
+
+If a variable is already set, its value is not overwritten.
+
+You may need to overwrite board config variables for different
+labs, so you can define in the lab config file the function:
+
+::
+
+  def set_labspecific(tb)
+
+in which you can overwrite tb.config settings dependend on
+
+tb.config.boardname or tb.config.boardlapowername
 
 
 
