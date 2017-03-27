@@ -20,6 +20,7 @@ def state_lx_parse_input(tb, c, retry, sl):
     i = 0
     # print("PPPPPPPPPPPP START", sl, c.name, c.data, c.logbuf)
     ctrlc_send = 0
+    ctrlm_send = 0
     oldt = c.get_timeout()
     c.set_timeout(tb.config.state_linux_timeout)
     while(i < retry):
@@ -27,9 +28,14 @@ def state_lx_parse_input(tb, c, retry, sl):
         # print("PPPPPPPPPPPP", i, retry, ret, sl, c.data, c.logbuf, ctrlc_send)
         if ret == 'exception':
             if ctrlc_send == 0:
-                # try first to get the linux prompt
+                # try to get the linux prompt via ctrl-c
                 tb.send_ctrl_c(c)
                 ctrlc_send = 1
+                i = 0
+            if ctrlm_send == 0:
+                #try to get the linux prompt via ctrl-m
+                tb.send_ctrl_m(c)
+                ctrlm_send = 1
                 i = 0
             else:
                 # we get nothing -> power off / on the board
