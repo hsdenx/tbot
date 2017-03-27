@@ -47,7 +47,6 @@ class Connection(object):
 
     def open_paramiko(self, user, ip, passwd, port='22'):
         # look in paramiko/demos/demo_simple.py
-        # for more infos how to use host keys ToDo
         po = int(port)
         logging.debug("try to open ssh connection")
         if not self.ssh:
@@ -60,7 +59,12 @@ class Connection(object):
 
         logging.debug("try connection for %s@%s port: %d", user, ip, po)
         try:
-            self.ssh.connect(ip, port=po, username=user, password=passwd)
+            tmp = passwd[:4]
+            if tmp == 'key:':
+                k = paramiko.RSAKey.from_private_key_file(passwd[4:])
+                self.ssh.connect(ip, port=po, username=user, pkey=k)
+            else:
+                self.ssh.connect(ip, port=po, username=user, password=passwd)
         except BaseException as e:
             logging.warning("no connection for %s@%s string: %s", user, ip, str(e))
             self.ssh.close()

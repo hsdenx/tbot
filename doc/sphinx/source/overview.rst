@@ -262,11 +262,14 @@ It is a simple python file, for example:
 ::
 
   # passwords for the lab
-  if (board == 'lab'):
+  if (board == 'labip'):
       if (user == 'hs'):
           password = 'passwordforuserhs'
       if (user == 'root'):
           password = 'passwordforrootuser'
+  elif (board == 'lab_withpublickey'):
+      if (user == 'usernamelab'):
+          password = 'key:<path_to_publickeyfile>'
   # passwords for the boards
   elif (board == 'mcx'):
       if (user == 'root'):
@@ -276,6 +279,13 @@ It is a simple python file, for example:
           password = ''
 
 tbot searches in the root folder for this file.
+
+It contains also the password for logging into your
+vlab. If you log into your vlab with username/password,
+see example 'labip'
+
+If you want to use a public key for logging into your
+vlab, see example 'lab_withpublickey'
 
 prepare board config file
 +++++++++++++++++++++++++
