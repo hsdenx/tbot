@@ -107,7 +107,7 @@ class tbot(object):
             self.config.set_labspecific
             call_specific = True
         except:
-            logging.debug("no set_labspecfic")
+            print("no set_labspecfic")
 
 	if call_specific:
             try:
