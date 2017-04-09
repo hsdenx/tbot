@@ -47,3 +47,6 @@ tc_workfd_set_toolchain_t_p = {
 tc_workfd_set_toolchain_cr_co = {
 'arm' : 'arm-linux-gnueabi-',
 }
+
+tc_demo_compile_install_test_files = ['u-boot.bin', 'boot.bin',
+	'System.map', 'spl/u-boot-spl.bin', 'spl/u-boot-spl.map']

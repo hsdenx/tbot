@@ -42,3 +42,6 @@ tc_ub_dfu_rand_ubcmd = 'dfu 0 nand 0'
 tc_ub_dfu_dfu_util_alt_setting = 'Linux_SetB'
 tc_ub_dfu_dfu_util_path = "none"
 tc_ub_dfu_dfu_util_ssh = "root@ts8"
+
+tc_demo_compile_install_test_files = ['u-boot.bin', 'boot.bin',
+	'System.map', 'spl/u-boot-spl.bin', 'spl/u-boot-spl.map']
