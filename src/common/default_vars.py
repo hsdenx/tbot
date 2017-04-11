@@ -199,3 +199,4 @@ tc_workfd_get_yocto_source_layers = [
 ]
 tc_workfd_get_yocto_source_conf_dl_dir = 'none'
 tc_workfd_get_yocto_source_conf_sstate_dir = 'none'
+tc_demo_compile_install_test_name = 'tc_ub_help.py'

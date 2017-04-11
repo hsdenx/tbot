@@ -17,7 +17,7 @@
 # start tc:
 # - compile source tree
 # - install bin on board
-# - call board uboot testcase
+# - call board uboot testcase tb.config.tc_demo_compile_install_test_name
 # tb.config.tc_demo_compile_install_test_files contains a list of files,
 # which are copied to
 # tb.config.tftprootdir + tb.config.tftpboardname + '/' + tb.config.ub_load_board_env_subdir
@@ -65,8 +65,8 @@ tb.eof_call_tc("tc_ub_upd_uboot.py")
 tb.eof_call_tc("tc_ub_upd_spl.py")
 
 # call tc_help
-tb.statusprint("u-boot help test")
-tb.eof_call_tc("tc_ub_help.py")
+tb.statusprint("start u-boot tests")
+tb.eof_call_tc(tb.config.tc_demo_compile_install_test_name)
 
 # save working u-boot bin
 c = tb.workfd
