@@ -11,3 +11,19 @@ wdt_timeout = '900'
 tc_workfd_work_dir = '/work/hs/tbot'
 lab_tmp_dir = '/var/tmp/'
 tftprootdir = '/tftpboot/'
+
+# lab specific changes for the mbconnect lab
+def set_labspecific(tb):
+    if tb.config.boardname == 'am335x_evm':
+	tb.config.ub_load_board_env_set = [
+		'setenv serverip 192.168.1.1',
+		'setenv netmask 255.255.0.0',
+		'setenv ipaddr 192.168.20.95',
+		]
+	tb.config.boardlabname = 'bbb'
+	tb.config.tc_lab_get_uboot_source_git_repo = "/home/git/u-boot.git"
+	tb.config.tftpboardname = 'bbb'
+	tb.config.boardlabpowername = 'bbb'
+        # older u-boot version have this prompt
+        # tb.config.uboot_prompt = 'U-Boot# '
+        # after updating to newer version uncomment this
