@@ -16,6 +16,10 @@
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_memory.py
 # convert duts tests from:
 # http://git.denx.de/?p=duts.git;a=blob;f=testsystems/dulg/testcases/10_UBootMemory.tc;h=f5fb055499db17c322859215ab489cefb063ac47;hb=101ddd5dbd547d5046363358d560149d873b238a
+#
+# disable "base" only command with
+# tb.config.tc_ub_memory_base = 'no'
+# default: 'yes'
 # End:
 
 from tbotlib import tbot
@@ -64,9 +68,11 @@ basecmdlist2 = [
 ]
 
 tb.eof_write_cmd(tb.c_con, "help base")
-tb.c_con.set_check_error(False)
-tb.eof_write_cmd_list(tb.c_con, basecmdlist)
-tb.c_con.set_check_error(True)
+if tb.config.tc_ub_memory_base == 'yes':
+    tb.c_con.set_check_error(False)
+    tb.eof_write_cmd_list(tb.c_con, basecmdlist)
+    tb.c_con.set_check_error(True)
+
 tb.eof_write_cmd_list(tb.c_con, basecmdlist2)
 
 tmp = int(tb.config.tc_ub_memory_ram_ws_base, 16)
