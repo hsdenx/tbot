@@ -19,6 +19,11 @@ state_uboot_timeout = 0.5
 #create_html_log = 'yes'
 # create_documentation = 'yes'
 
+# for DUTS
+uboot_get_parameter_file_list = ['.config', 'include/configs/am335x_evm.h', 'include/configs/ti_armv7_common.h']
+tc_ub_i2c_help_with_bus = 'yes'
+tc_ub_memory_base = 'no'
+
 kermit_line = '/dev/ttyUSB0'
 
 # Toolchain
