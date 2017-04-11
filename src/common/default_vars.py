@@ -5,6 +5,7 @@ debug = False
 debugstatus = False
 uboot_strings = ['Autobooting in', 'noautoboot',  'autoboot', 'EOF', 'RomBOOT']
 uboot_autoboot_key = ''
+state_uboot_timeout = 1
 tb_power_state = 'undef'
 term_line_length = '200'
 wdt_timeout = '120' # wdt timeout after 2 minutes
