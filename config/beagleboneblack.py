@@ -8,6 +8,7 @@ debugstatus = True
 
 uboot_prompt = '=> '
 linux_prompt = 'ttbott> '
+uboot_autoboot_key = ' '
 
 #create_dot = 'yes'
 #create_statistic = 'yes'
