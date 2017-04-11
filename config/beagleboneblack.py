@@ -9,6 +9,9 @@ debugstatus = True
 uboot_prompt = '=> '
 linux_prompt = 'ttbott> '
 uboot_autoboot_key = ' '
+# set timeout to 0.5 seconds
+# as bootdelay is 1 second
+state_uboot_timeout = 0.5
 
 #create_dot = 'yes'
 #create_statistic = 'yes'
