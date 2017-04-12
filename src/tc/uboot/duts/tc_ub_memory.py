@@ -57,13 +57,13 @@ tb.set_board_state("u-boot")
 
 basecmdlist = [
 "base",
-"md 0 0xc",
+"md " + tb.config.tc_ub_memory_ram_ws_base + " 0xc",
 ]
 
 basecmdlist2 = [
-"base " + tb.config.tc_ub_memory_ram_ws_base,
-"md 0 0xc",
-"md 0 0x40",
+"base 100000",
+"md " + tb.config.tc_ub_memory_ram_ws_base + " 0xc",
+"md " + tb.config.tc_ub_memory_ram_ws_base + " 0x40",
 "base 0",
 ]
 
