@@ -22,6 +22,9 @@ from tbotlib import tbot
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
+# call tc tc_ub_load_board_env.py
+tb.eof_call_tc("tc_ub_load_board_env.py")
+
 tb.workfd = tb.c_ctrl
 tb.statusprint("start all DUTS testcases")
 tb.eof_call_tc("uboot/duts/tc_ub_start_all_duts.py")
