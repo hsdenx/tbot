@@ -20,11 +20,16 @@
 # - connect back to console
 # test/py hookscript directory:
 # tb.config.tc_ub_test_py_hook_script_path
+#
+# you can disable this testcase with tb.config.tc_ub_test_py_start = 'no'
 # End:
 
 from tbotlib import tbot
 
 logging.info("args: %s %s %s", tb.config.boardname, tb.config.boardlabname, tb.config.tc_ub_test_py_hook_script_path)
+
+if tb.config.tc_ub_test_py_start == 'no':
+    tb.end_tc(True)
 
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
