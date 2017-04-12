@@ -49,3 +49,4 @@ tc_lab_get_uboot_source_git_repo = "/home/hs/git/u-boot"
 tc_lab_get_uboot_source_git_branch = "master"
 tc_lab_compile_uboot_export_path = '/work/hs/tbot/dtc'
 tc_demo_compile_install_test_files = ['u-boot.bin', 'u-boot.img', 'MLO']
+tc_ub_test_py_start = 'no'
