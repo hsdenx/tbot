@@ -248,11 +248,14 @@ linux login on the boards)
 tbot searches this file in the tbot root directory.
 It is a simple python file, for example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># passwords for the lab</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">board</span> <span class="o">==</span> <span class="s">&#39;lab&#39;</span><span class="p">):</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">board</span> <span class="o">==</span> <span class="s">&#39;labip&#39;</span><span class="p">):</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">user</span> <span class="o">==</span> <span class="s">&#39;hs&#39;</span><span class="p">):</span>
         <span class="n">password</span> <span class="o">=</span> <span class="s">&#39;passwordforuserhs&#39;</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">user</span> <span class="o">==</span> <span class="s">&#39;root&#39;</span><span class="p">):</span>
         <span class="n">password</span> <span class="o">=</span> <span class="s">&#39;passwordforrootuser&#39;</span>
+<span class="k">elif</span> <span class="p">(</span><span class="n">board</span> <span class="o">==</span> <span class="s">&#39;lab_withpublickey&#39;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">user</span> <span class="o">==</span> <span class="s">&#39;usernamelab&#39;</span><span class="p">):</span>
+        <span class="n">password</span> <span class="o">=</span> <span class="s">&#39;key:&lt;path_to_publickeyfile&gt;&#39;</span>
 <span class="c"># passwords for the boards</span>
 <span class="k">elif</span> <span class="p">(</span><span class="n">board</span> <span class="o">==</span> <span class="s">&#39;mcx&#39;</span><span class="p">):</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">user</span> <span class="o">==</span> <span class="s">&#39;root&#39;</span><span class="p">):</span>
@@ -263,6 +266,11 @@ It is a simple python file, for example:</p>
 </pre></div>
 </div>
 <p>tbot searches in the root folder for this file.</p>
+<p>It contains also the password for logging into your
+vlab. If you log into your vlab with username/password,
+see example &#8216;labip&#8217;</p>
+<p>If you want to use a public key for logging into your
+vlab, see example &#8216;lab_withpublickey&#8217;</p>
 </div>
 <div class="section" id="prepare-board-config-file">
 <h4>prepare board config file<a class="headerlink" href="#prepare-board-config-file" title="Permalink to this headline">¶</a></h4>
@@ -271,8 +279,20 @@ pass the config file name with the option &#8216;-c&#8217; to tbot, tbot searche
 in the &#8220;config&#8221; folder for them.</p>
 <p>board Example (dxr2 board):
 <a class="reference external" href="https://github.com/hsdenx/tbot/blob/master/config/dxr2.py">https://github.com/hsdenx/tbot/blob/master/config/dxr2.py</a></p>
-<p>Now comes a list of variables TC needs, this vary from what you
-you want to test...</p>
+<p>The board config file contains TC specific settings, which are
+dependend on the board you want to test.</p>
+<p>tbot parses first the board config file, than the lab config file
+and at last default settings for TC variables, which are
+set in</p>
+<p><a class="reference external" href="https://github.com/hsdenx/tbot/blob/master/src/common/default.py">https://github.com/hsdenx/tbot/blob/master/src/common/default.py</a></p>
+<p>If a variable is already set, its value is not overwritten.</p>
+<p>You may need to overwrite board config variables for different
+labs, so you can define in the lab config file the function:</p>
+<div class="highlight-python"><div class="highlight"><pre>def set_labspecific(tb)
+</pre></div>
+</div>
+<p>in which you can overwrite tb.config settings dependend on</p>
+<p>tb.config.boardname or tb.config.boardlapowername</p>
 <p>Thats it ... you now can call tbot and hopefully, it works ;-)</p>
 <p>If you have problems in settings up tbot, please contact me
 (and may give me ssh access to your Lab PC ;-)</p>
