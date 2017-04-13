@@ -840,6 +840,30 @@ $(document).ready(function () {
 </div>
 <!-- end of one testcase src/tc/debugger/bdi/tc_lab_bdi_connect.py -->
 
+<!-- one testcase src/tc/debugger/bdi/tc_lab_bdi_create_dump.py -->
+<div class="stream block" id="src_tc_debugger_bdi_tc_lab_bdi_create_dump_py">
+<div class="stream-header block-header">src/tc/debugger/bdi/tc_lab_bdi_create_dump.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# python2.7 src/common/tbot.py -c tbot.cfg -t <a href="#src_tc_debugger_bdi_tc_lab_bdi_create_dump_py">tc_lab_bdi_create_dump.py</a>
+#
+# check if we are on the BDI already, if not switch to it
+# with <a href="#src_tc_debugger_bdi_tc_lab_bdi_connect_py">tc_lab_bdi_connect.py</a>
+#
+# - send "halt"
+# - dump registers from <a href="#var_config_tc_lab_bdi_create_dump_start">tb.config.tc_lab_bdi_create_dump_start</a>
+#   to <a href="#var_config_tc_lab_bdi_create_dump_stop">tb.config.tc_lab_bdi_create_dump_stop</a> with mask
+#   <a href="#var_config_tc_lab_bdi_create_dump_mask">tb.config.tc_lab_bdi_create_dump_mask</a> and stepsize
+#   <a href="#var_config_tc_lab_bdi_create_dump_type">tb.config.tc_lab_bdi_create_dump_type</a> into the file
+#   <a href="#var_config_tc_lab_bdi_create_dump_filename">tb.config.tc_lab_bdi_create_dump_filename</a>
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/debugger/bdi/tc_lab_bdi_create_dump.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/debugger/bdi/tc_lab_bdi_create_dump.py -->
+
 <!-- one testcase src/tc/debugger/bdi/tc_lab_bdi_disconnect.py -->
 <div class="stream block" id="src_tc_debugger_bdi_tc_lab_bdi_disconnect_py">
 <div class="stream-header block-header">src/tc/debugger/bdi/tc_lab_bdi_disconnect.py</div>
@@ -1011,7 +1035,7 @@ $(document).ready(function () {
 # start tc:
 # - compile source tree
 # - install bin on board
-# - call board uboot testcase
+# - call board uboot testcase <a href="#var_config_tc_demo_compile_install_test_name">tb.config.tc_demo_compile_install_test_name</a>
 # <a href="#var_config_tc_demo_compile_install_test_files">tb.config.tc_demo_compile_install_test_files</a> contains a list of files,
 # which are copied to
 # <a href="#var_config_tftprootdir">tb.config.tftprootdir</a> + <a href="#var_config_tftpboardname">tb.config.tftpboardname</a> + '/' + <a href="#var_config_ub_load_board_env_subdir">tb.config.ub_load_board_env_subdir</a>
@@ -1088,6 +1112,21 @@ $(document).ready(function () {
 </div>
 </div>
 <!-- end of one testcase src/tc/demo/tc_demo_part3.py -->
+
+<!-- one testcase src/tc/demo/tc_demo_uboot_tests.py -->
+<div class="stream block" id="src_tc_demo_tc_demo_uboot_tests_py">
+<div class="stream-header block-header">src/tc/demo/tc_demo_uboot_tests.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# tbot.py -s lab_denx -c smartweb -t <a href="#src_tc_demo_tc_demo_uboot_tests_py">tc_demo_uboot_tests.py</a>
+# start all "standard" u-boot testcases
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/demo/tc_demo_uboot_tests.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/demo/tc_demo_uboot_tests.py -->
 
 <div class="section-trailer block-trailer">src/tc/demo</div>
 <div class="status-pass">
@@ -2805,6 +2844,10 @@ $(document).ready(function () {
 # python2.7 src/common/tbot.py -c tbot.cfg -t <a href="#src_tc_uboot_duts_tc_ub_memory_py">tc_ub_memory.py</a>
 # convert duts tests from:
 # <a href="http://git.denx.de/?p=duts.git;a=blob;f=testsystems/dulg/testcases/10_UBootMemory.tc;h=f5fb055499db17c322859215ab489cefb063ac47;hb=101ddd5dbd547d5046363358d560149d873b238a">http://git.denx.de/?p=duts.git;a=blob;f=testsystems/dulg/testcases/10_UBootMemory.tc;h=f5fb055499db17c322859215ab489cefb063ac47;hb=101ddd5dbd547d5046363358d560149d873b238a</a>
+#
+# disable "base" only command with
+# <a href="#var_config_tc_ub_memory_base">tb.config.tc_ub_memory_base</a> = 'no'
+# default: 'yes'
 </pre>
 <div class="stream-trailer block-trailer">End stream: src/tc/uboot/duts/tc_ub_memory.py </div>
 <div class="status-pass"></div>
@@ -3115,6 +3158,8 @@ $(document).ready(function () {
 # - connect back to console
 # test/py hookscript directory:
 # <a href="#var_config_tc_ub_test_py_hook_script_path">tb.config.tc_ub_test_py_hook_script_path</a>
+#
+# you can disable this testcase with <a href="#var_config_tc_ub_test_py_start">tb.config.tc_ub_test_py_start</a> = 'no'
 </pre>
 <div class="stream-trailer block-trailer">End stream: src/tc/uboot/tc_ub_test_py.py </div>
 <div class="status-pass"></div>
@@ -3381,6 +3426,36 @@ $(document).ready(function () {
 </div>
 </div>
 <!-- end of one testcase src/tc/uboot/tc_uboot_get_arch.py -->
+
+<!-- one testcase src/tc/uboot/tc_uboot_load_bin_with_kermit.py -->
+<div class="stream block" id="src_tc_uboot_tc_uboot_load_bin_with_kermit_py">
+<div class="stream-header block-header">src/tc/uboot/tc_uboot_load_bin_with_kermit.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# tbot.py -c -s lab_denx -c nero -t <a href="#src_tc_uboot_tc_uboot_load_bin_with_kermit_py">tc_uboot_load_bin_with_kermit.py</a>
+# start tc:
+# load binary into ram with loadb
+#
+# precondition:
+# kermit must be used
+#
+# steps:
+# - loadb <a href="#var_config_tc_uboot_load_bin_ram_addr">tb.config.tc_uboot_load_bin_ram_addr</a>
+# - leave kermit
+# - send <a href="#var_config_tc_uboot_load_bin_file">tb.config.tc_uboot_load_bin_file</a>
+#   protocol: kermit_protocol='kermit'
+# wait for "C-Kermit>"
+# connect
+# you must get back something like this:
+# ## Total Size      = 0x00050bc0 = 330688 Bytes
+# ## Start Addr      = 0x81000000
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/uboot/tc_uboot_load_bin_with_kermit.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/uboot/tc_uboot_load_bin_with_kermit.py -->
 
 <div class="section-trailer block-trailer">src/tc/uboot</div>
 <div class="status-pass">
@@ -3794,6 +3869,19 @@ uboot_autoboot_key = ''
 </div>
 </div>
 <!-- end of one default var uboot_autoboot_key  -->
+
+<!-- one default var state_uboot_timeout  -->
+<div class="stream block" id="var_config_state_uboot_timeout">
+<div class="stream-header block-header">state_uboot_timeout </div>
+<div class="stream-content block-content">
+<pre>
+state_uboot_timeout = 1
+</pre>
+<div class="stream-trailer block-trailer">End stream: state_uboot_timeout  </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one default var state_uboot_timeout  -->
 
 <!-- one default var tb_power_state  -->
 <div class="stream block" id="var_config_tb_power_state">
@@ -6002,6 +6090,45 @@ tc_workfd_get_yocto_source_conf_dl_dir = 'none'
 </div>
 </div>
 <!-- end of one default var tc_workfd_get_yocto_source_conf_dl_dir  -->
+
+<!-- one default var tc_workfd_get_yocto_source_conf_sstate_dir  -->
+<div class="stream block" id="var_config_tc_workfd_get_yocto_source_conf_sstate_dir">
+<div class="stream-header block-header">tc_workfd_get_yocto_source_conf_sstate_dir </div>
+<div class="stream-content block-content">
+<pre>
+tc_workfd_get_yocto_source_conf_sstate_dir = 'none'
+</pre>
+<div class="stream-trailer block-trailer">End stream: tc_workfd_get_yocto_source_conf_sstate_dir  </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one default var tc_workfd_get_yocto_source_conf_sstate_dir  -->
+
+<!-- one default var tc_demo_compile_install_test_name  -->
+<div class="stream block" id="var_config_tc_demo_compile_install_test_name">
+<div class="stream-header block-header">tc_demo_compile_install_test_name </div>
+<div class="stream-content block-content">
+<pre>
+tc_demo_compile_install_test_name = 'tc_ub_help.py'
+</pre>
+<div class="stream-trailer block-trailer">End stream: tc_demo_compile_install_test_name  </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one default var tc_demo_compile_install_test_name  -->
+
+<!-- one default var tc_ub_memory_base  -->
+<div class="stream block" id="var_config_tc_ub_memory_base">
+<div class="stream-header block-header">tc_ub_memory_base </div>
+<div class="stream-content block-content">
+<pre>
+tc_ub_memory_base = 'yes'
+</pre>
+<div class="stream-trailer block-trailer">End stream: tc_ub_memory_base  </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one default var tc_ub_memory_base  -->
 
 <div class="section-trailer block-trailer">Default Variables</div>
 <div class="status-pass">
