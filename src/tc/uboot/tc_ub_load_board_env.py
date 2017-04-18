@@ -14,8 +14,23 @@
 # Description:
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_load_board_env.py
-# load U-Boot Environment for the board tb.config.tftpboardname
-# tb.config.ub_load_board_env_addr and tb.config.ub_load_board_env_subdir
+#
+# task: load U-Boot Environment env.txt file with tftp for the
+# board tb.config.tftpboardname to the addr tb.config.ub_load_board_env_addr
+# from subdir tb.config.ub_load_board_env_subdir
+# and imports the the textfile with 'env import'
+#
+# options:
+# if tb.config.tc_ub_boot_linux_load_env == 'no' than TC does nothing
+#
+# if tb.config.tc_ub_boot_linux_load_env == 'set' or == 'setend'
+# than TC executes the cmds in list tb.config.ub_load_board_env_set
+#
+# if tb.config.tc_ub_boot_linux_load_env == 'setend' TC returns
+# after executing the commands with True
+#
+# else TC executes the steps described in 'task'
+#
 # End:
 
 from tbotlib import tbot
@@ -33,10 +48,12 @@ if tb.config.tc_ub_boot_linux_load_env == 'no':
     tb.end_tc(True)
 
 c = tb.c_con
-if tb.config.tc_ub_boot_linux_load_env == 'set':
+if (tb.config.tc_ub_boot_linux_load_env == 'set') or (tb.config.tc_ub_boot_linux_load_env == 'setend'):
     for cmd in tb.config.ub_load_board_env_set:
         tb.eof_write(c, cmd)
         tb.tbot_expect_prompt(c)
+    if tb.config.tc_ub_boot_linux_load_env == 'setend':
+        tb.end_tc(True)
 
 r = tb.config.tftpboardrootdir
 tb.config.tc_ub_tftp_file_addr = tb.config.ub_load_board_env_addr
