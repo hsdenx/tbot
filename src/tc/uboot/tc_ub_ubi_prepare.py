@@ -74,11 +74,11 @@ def ubiprep(tb, tmp):
 # This is currently a bug in U-Boot ...
 cmd_ok = ubiprep(tb, tmp)
 # detach it
-tb.eof_write(c, "ubi dettach")
+tb.eof_write(c, "ubi detach")
 tb.tbot_expect_prompt(c)
 cmd_ok = ubiprep(tb, tmp)
 # detach it
-tb.eof_write(c, "ubi dettach")
+tb.eof_write(c, "ubi detach")
 tb.tbot_expect_prompt(c)
 cmd_ok = ubiprep(tb, tmp)
 
