@@ -60,6 +60,8 @@ tb.eof_write(tb.workfd, "./src/dfu-util -l")
 ret = tb.tbot_expect_string(tb.workfd, 'UNDEFINED')
 if ret != 'prompt':
     tb.tbot_expect_prompt(tb.workfd)
+    tb.eof_write(tb.workfd, "exit")
+    tb.tbot_expect_prompt(tb.workfd)
     tb.end_tc(False)
 
 # upload to lab
@@ -94,9 +96,13 @@ tmp = "./src/dfu-util -a " + tb.config.tc_ub_dfu_dfu_util_alt_setting + " -D " +
 tb.eof_write(tb.workfd, tmp)
 ret = tb.tbot_expect_string(tb.workfd, 'finished')
 if ret == 'prompt':
+    tb.eof_write(tb.workfd, "exit")
+    tb.tbot_expect_prompt(tb.workfd)
     tb.end_tc(False)
 ret = tb.tbot_expect_string(tb.workfd, 'Done')
 if ret == 'prompt':
+    tb.eof_write(tb.workfd, "exit")
+    tb.tbot_expect_prompt(tb.workfd)
     tb.end_tc(False)
 tb.tbot_expect_prompt(tb.workfd)
 
@@ -116,12 +122,18 @@ tmp = "./src/dfu-util -a " + tb.config.tc_ub_dfu_dfu_util_alt_setting + " -U " +
 tb.eof_write(tb.workfd, tmp)
 ret = tb.tbot_expect_string(tb.workfd, 'Claiming')
 if ret == 'prompt':
+    tb.eof_write(tb.workfd, "exit")
+    tb.tbot_expect_prompt(tb.workfd)
     tb.end_tc(False)
 ret = tb.tbot_expect_string(tb.workfd, 'Copying data from DFU device to PC')
 if ret == 'prompt':
+    tb.eof_write(tb.workfd, "exit")
+    tb.tbot_expect_prompt(tb.workfd)
     tb.end_tc(False)
 ret = tb.tbot_expect_string(tb.workfd, 'finished')
 if ret == 'prompt':
+    tb.eof_write(tb.workfd, "exit")
+    tb.tbot_expect_prompt(tb.workfd)
     tb.end_tc(False)
 tb.tbot_expect_prompt(tb.workfd)
 
