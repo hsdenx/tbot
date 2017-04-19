@@ -50,3 +50,9 @@ tc_workfd_set_toolchain_cr_co = {
 
 tc_demo_compile_install_test_files = ['u-boot.bin', 'boot.bin',
 	'System.map', 'spl/u-boot-spl.bin', 'spl/u-boot-spl.map']
+
+
+board_git_bisect_get_source_tc = 'tc_workfd_goto_uboot_code.py'
+board_git_bisect_call_tc = 'tc_board_smartweb_test_ub.py'
+board_git_bisect_good_commit = '9963890b8be1d208035945abc5ba9f77637b6542'
+board_git_bisect_patches = '/work/hs/tbot/patches/smartweb_uboot_patches'
