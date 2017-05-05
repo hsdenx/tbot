@@ -24,6 +24,8 @@ from tbotlib import tbot
 
 logging.info("args: %s", tb.workfd)
 
+tb.eof_call_tc("tc_workfd_goto_lab_source_dir.py")
+
 try:
     tb.workfd.tc_workfd_goto_linux_code_checked
 except:
