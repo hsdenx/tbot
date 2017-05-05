@@ -15,3 +15,6 @@ elif (board == 'smartweb'):
     if (user == 'root'):
         password = '\n'
         print("Please change %s password for user %s\n" % (board, user))
+elif (board == 'am335x_evm'):
+    if (user == 'debian'):
+        password = 'temppwd'

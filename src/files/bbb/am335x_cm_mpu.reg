@@ -1,0 +1,7 @@
+# pinmux
+# processor:  ARMv7 Processor rev 2 (v7l)
+# hardware :  Generic AM33XX (Flattened Device Tree)
+# Linux    :  4.9.25 (hs@pollux.denx.de) (gcc version 4.9.2 (GCC) ) #1 SMP PREEMPT Fri May 5 08:36:24 CEST 2017
+# regaddr mask type defval
+0x44e00600 0xffffffff          w        0x6
+0x44e00604 0xffffffff          w        0x2

@@ -50,3 +50,52 @@ tc_lab_get_uboot_source_git_branch = "master"
 tc_lab_compile_uboot_export_path = '/work/hs/tbot/dtc'
 tc_demo_compile_install_test_files = ['u-boot.bin', 'u-boot.img', 'MLO']
 tc_ub_test_py_start = 'no'
+
+# Linux
+tc_lab_toolchain_rev = '5.8'
+tc_lab_toolchain_name = 'armv7a-hf'
+tc_workfd_compile_linux_clean = 'yes'
+tc_workfd_compile_linux_modules ='no'
+tc_workfd_compile_linux_boardname = 'bb.org'
+tc_workfd_compile_linux_dt_name = ['am335x-boneblack.dtb', 'am335x-bone.dtb']
+tc_workfd_compile_linux_fit_its_file = 'no'
+tc_workfd_compile_linux_append_dt = 'no'
+tc_workfd_compile_linux_makeoptions = '-j8'
+tc_workfd_compile_linux_make_target = 'zImage'
+tc_workfd_compile_linux_modules_path = '/opt/eldk-5.8/armv7a-hf/rootfs-qte-sdk/home/hs/bbb/modules'
+tc_lab_get_linux_source_git_reference = '/home/git/linux.git'
+tc_lab_get_linux_source_git_repo = 'git@github.com:beagleboard/linux.git'
+tc_lab_get_linux_source_git_branch = '4.9'
+tc_lab_apply_patches_dir = 'none'
+tc_workfd_apply_local_patches_dir = 'none'
+
+ub_boot_linux_cmd='run netmmcboot'
+
+linux_prompt_default = 'debian@beaglebone:~$ '
+linux_user = 'debian'
+devmem2_pre = 'sudo /home/debian/'
+
+tc_demo_linux_test_dmesg = [
+	'CPU: ARMv7 Processor \[413fc082\] revision 2 (ARMv7), cr=10c5387d',
+	'OF: fdt:Machine model: TI AM335x BeagleBone Black',
+	'OMAP clockevent source: timer2 at 24000000 Hz',
+	'sched_clock: 32 bits at 24MHz',
+	'omap_rtc 44e3e000.rtc: rtc core: registered 44e3e000.rtc as rtc0',
+	'omap_wdt: OMAP Watchdog Timer Rev 0x01: initial timeout 60 sec',
+	'omap_i2c 4819c000.i2c: bus 2 rev0.11 at 100 kHz',
+	'net eth0: initializing cpsw version 1.12',
+]
+
+tc_demo_linux_test_reg_files = [
+	'src/files/bbb/am335x_pinmux.reg',
+	'src/files/bbb/am335x_cm_dpll.reg',
+	'src/files/bbb/am335x_cm_mpu.reg',
+	'src/files/bbb/am335x_cm_per.reg',
+	'src/files/bbb/am335x_cm_wkup.reg',
+	'src/files/bbb/am335x_ctrl_module.reg',
+]
+
+tc_demo_linux_test_basic_cmd = [
+              {"cmd":"cat /proc/cpuinfo", "val":"undef"},
+              {"cmd":"cat /proc/meminfo", "val":"497592"},
+]
