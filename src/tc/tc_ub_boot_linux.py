@@ -33,6 +33,7 @@ tb.eof_write_con(tb.config.ub_boot_linux_cmd)
 c = tb.c_con
 c.set_prompt(tb.config.linux_prompt_default)
 
+got_login = 0
 tmp = True
 sl = ['login:', 'assword']
 while (tmp):
@@ -40,8 +41,10 @@ while (tmp):
     if ret == '0':
         # login
         tb.write_stream(c, tb.config.linux_user, send_console_start=False)
+        got_login = 1
     if ret == '1':
-	tb.write_stream_passwd(c, tb.config.linux_user, tb.config.boardname)
+        if got_login:
+	    tb.write_stream_passwd(c, tb.config.linux_user, tb.config.boardname)
     if ret == 'prompt':
         # we are in linux
         tb.set_prompt(c, tb.config.linux_prompt, 'linux')
