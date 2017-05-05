@@ -19,16 +19,29 @@
 # registers on the board. Needs devmem2 installed.
 # format of the regfile:
 # regaddr mask type defval
+#
+# If you have to call devmem2 with a "header"
+# set it through tb.config.devmem2_pre
+# so on the bbb with original rootfs -> no devmem2 installed
+# so to use tc which use devmem2 you have to copy devmem2
+# bin to the rootfs, and start it with 'sudo ...'
+#
 # ToDo: use the file from the lab host, not the tbot host
 # End:
 
 from tbotlib import tbot
+
+try:
+    tb.config.devmem2_pre
+except:
+    tb.config.devmem2_pre = ''
 
 logging.info("args: %s", tb.config.tc_lx_create_reg_file_name)
 
 # set board state for which the tc is valid
 tb.set_board_state("linux")
 
+pre = tb.config.devmem2_pre
 c = tb.c_con
 fname = tb.workdir + "/" + tb.config.tc_lx_create_reg_file_name
 try:
@@ -41,7 +54,7 @@ for line in fd.readlines():
     cols = line.split()
     if cols[0] == '#':
         continue
-    tmp = 'devmem2 ' + cols[0] + " " + cols[2]
+    tmp = pre + 'devmem2 ' + cols[0] + " " + cols[2]
     tb.eof_write(c, tmp)
     ret = tb.tbot_expect_string(c, 'opened')
     if ret == 'prompt':
