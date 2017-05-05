@@ -22,12 +22,14 @@ from tbotlib import tbot
 # here starts the real test
 logging.info("args: %s", tb.config.tc_lx_dmesg_grep_name)
 
+tb.workfd = tb.c_con
+c = tb.workfd
 # set board state for which the tc is valid
 tb.set_board_state("linux")
 
-c = tb.c_con
 tmp = 'dmesg | grep \'' + tb.config.tc_lx_dmesg_grep_name + '\''
 tb.eof_write(c, tmp)
-tb.eof_expect_string(c, tb.config.tc_lx_dmesg_grep_name)
-
+tb.tbot_expect_prompt(c)
+#tb.eof_expect_string(c, tb.config.tc_lx_dmesg_grep_name)
+tb.eof_call_tc("tc_workfd_check_cmd_success.py")
 tb.end_tc(True)
