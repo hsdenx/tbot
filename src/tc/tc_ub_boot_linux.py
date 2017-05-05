@@ -35,14 +35,16 @@ c.set_prompt(tb.config.linux_prompt_default)
 
 got_login = 0
 tmp = True
-sl = ['login:', 'assword']
+sl = ['Last login:', 'login:', 'assword']
 while (tmp):
     ret = tb.tbot_rup_and_check_strings(c, sl)
     if ret == '0':
+        tmp = True
+    if ret == '1':
         # login
         tb.write_stream(c, tb.config.linux_user, send_console_start=False)
         got_login = 1
-    if ret == '1':
+    if ret == '2':
         if got_login:
 	    tb.write_stream_passwd(c, tb.config.linux_user, tb.config.boardname)
     if ret == 'prompt':
