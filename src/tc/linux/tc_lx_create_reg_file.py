@@ -23,14 +23,28 @@
 # This reg file can be used as a default file, how the
 # registers must be setup, check it with testcase
 # tc_lx_check_reg_file.py
+#
+# If you have to call devmem2 with a "header"
+# set it through tb.config.devmem2_pre
+# so on the bbb with original rootfs -> no devmem2 installed
+# so to use tc which use devmem2 you have to copy devmem2
+# bin to the rootfs, and start it with 'sudo ...'
+#
 # ToDo: use the file from the lab host, not the tbot host
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: %s %s %s %s %s", tb.config.tc_lx_create_reg_file_name, tb.config.tc_lx_create_reg_file_start, tb.config.tc_lx_create_reg_file_stop, tb.config.tc_lx_readreg_mask, tb.config.tc_lx_readreg_type)
+tb.workfd = tb.c_con
 
-#set board state for which the tc is valid
+try:
+    tb.config.devmem2_pre
+except:
+    tb.config.devmem2_pre = ''
+
+logging.info("args: %s %s %s %s %s %s", tb.config.tc_lx_create_reg_file_name, tb.config.tc_lx_create_reg_file_start, tb.config.tc_lx_create_reg_file_stop, tb.config.tc_lx_readreg_mask, tb.config.tc_lx_readreg_type, tb.config.devmem2_pre)
+
+# set board state for which the tc is valid
 tb.set_board_state("linux")
 
 fname = tb.workdir + "/" + tb.config.tc_lx_create_reg_file_name
@@ -40,7 +54,7 @@ except IOError:
     logging.warning("Could not open: %s", fname)
     tb.end_tc(False)
 
-c = tb.c_con
+c = tb.workfd
 #write comment
 # get Processor, Hardware
 tmp='cat /proc/cpuinfo'
@@ -95,8 +109,9 @@ if tb.config.tc_lx_readreg_type == 'b':
     step = 1
 
 #read register value
+pre = tb.config.devmem2_pre
 for i in xrange(start, stop, step):
-    tmp = 'devmem2 ' + hex(i) + " " + tb.config.tc_lx_readreg_type
+    tmp = pre + 'devmem2 ' + hex(i) + " " + tb.config.tc_lx_readreg_type
     tb.eof_write(c, tmp)
     ret = tb.tbot_expect_string(c, 'opened')
     if ret == 'prompt':
