@@ -1,0 +1,27 @@
+From 256162f1f2f81993729a42e7ddff449d2b8765dd Mon Sep 17 00:00:00 2001
+From: Heiko Schocher <hs@denx.de>
+Date: Mon, 13 Jun 2016 19:02:34 +0200
+Subject: [PATCH] U-Boot version fix
+
+Signed-off-by: Heiko Schocher <hs@denx.de>
+---
+ scripts/setlocalversion | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/scripts/setlocalversion b/scripts/setlocalversion
+index 63d91e2..688e42a 100755
+--- a/scripts/setlocalversion
++++ b/scripts/setlocalversion
+@@ -147,6 +147,9 @@ else
+ 	exit 1
+ fi
+ 
++echo "-fix"
++exit 0
++
+ # localversion* files in the build and source directory
+ res="$(collect_files localversion*)"
+ if test ! "$srctree" -ef .; then
+-- 
+2.5.5
+

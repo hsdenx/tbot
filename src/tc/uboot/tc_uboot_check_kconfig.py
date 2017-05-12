@@ -13,28 +13,35 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c config/tbot_uboot_kconfig_check.cfg -t tc_uboot_check_kconfig.py
+# python2.7 src/common/tbot.py -s lab_denx -c uboot_kconfig_check -t tc_uboot_check_kconfig.py
+#
 # check for all boards, if a patch changes the u-boot binary
 # If U-boot binary changed by the patch this testcase fails.
 # use this testcase, if you for example move a config option
 # into Kconfig. As we need reproducable builds, we need to
-# patch U-Boot with tb.tc_uboot_check_kconfig_preparepatch
+# patch U-Boot with tb.config.tc_uboot_check_kconfig_preparepatch
+# find this patch here: src/files/ub-patches/0001-U-Boot-version-fix.patch
+# copy it to the lab pc and adapt tb.config.tc_uboot_check_kconfig_preparepatch
+#
+# Steps from this testcase:
 # - rm U-Boot code with tc_workfd_rm_uboot_code.py
 # - get U-Boot code with tc_lab_get_uboot_source.py
 # - set SOURCE_DATE_EPOCH=0 to get reproducible builds
-# - get rid of local version ToDo: find a way to disable CONFIG_LOCALVERSION_AUTO
-# - if tb.tc_uboot_check_kconfig_read_sumfile is != 'none'
+# - apply patch from tb.config.tc_uboot_check_kconfig_preparepatch
+#   get rid of local version ToDo: find a way to disable CONFIG_LOCALVERSION_AUTO
+#   so this patch is not longer needed.
+# - if tb.config.tc_uboot_check_kconfig_read_sumfile is != 'none'
 #     read a list of boards and md5sums from the file in
-#     tb.tc_uboot_check_kconfig_read_sumfile
+#     tb.config.tc_uboot_check_kconfig_read_sumfile
 #   else
 #   - create a list of boards (all defconfigs)
 #   - do for all boards:
 #     - get architecture and set toolchain
 #     - compile U-Boot and calculate md5sum
 #       with tc_workfd_compile_uboot.py and tc_workfd_md5sum.py
-#     - if tb.tc_uboot_check_kconfig_create_sumfile != 'none'
+#     - if tb.config.tc_uboot_check_kconfig_create_sumfile != 'none'
 #       save the board md5sum lists in the file
-#       tb.tc_uboot_check_kconfig_create_sumfile
+#       tb.config.tc_uboot_check_kconfig_create_sumfile
 #       you can use this now as a reference, so no need
 #       to calculate always for all boards the md5sums
 #       -> saves a lot of time!
@@ -50,10 +57,10 @@
 import os
 from tbotlib import tbot
 
-tb.tc_uboot_check_kconfig_create_sumfile = 'md5sum.txt'
-tb.tc_uboot_check_kconfig_read_sumfile = 'none'
+tb.config.tc_uboot_check_kconfig_create_sumfile = 'md5sum.txt'
+tb.config.tc_uboot_check_kconfig_read_sumfile = 'none'
 
-logging.info("args: %s", tb.tc_uboot_check_kconfig_preparepatch)
+logging.info("args: %s", tb.config.tc_uboot_check_kconfig_preparepatch)
 
 #set board state for which the tc is valid
 tb.set_board_state("lab")
@@ -99,15 +106,15 @@ tb.tbot_expect_prompt(ctrl)
 # Best would be to disable CONFIG_LOCALVERSION_AUTO
 # we just patch setlocalverion yet ...
 save = tb.config.tc_lab_apply_patches_dir
-tb.config.tc_lab_apply_patches_dir = tb.tc_uboot_check_kconfig_preparepatch
+tb.config.tc_lab_apply_patches_dir = tb.config.tc_uboot_check_kconfig_preparepatch
 ret = tb.call_tc("tc_workfd_apply_patches.py")
 if ret == False:
     tb.statusprint("testing board %s apply preparepatch failed" % (board))
     tb.end_tc(False)
 tb.config.tc_lab_apply_patches_dir = save
 
-if tb.tc_uboot_check_kconfig_read_sumfile != 'none':
-    fname = tb.workdir + "/" + tb.tc_uboot_check_kconfig_read_sumfile
+if tb.config.tc_uboot_check_kconfig_read_sumfile != 'none':
+    fname = tb.workdir + "/" + tb.config.tc_uboot_check_kconfig_read_sumfile
     tb.statusprint("reading boardlist and md5sums from file %s" % (fname))
     try:
         fd = open(fname, 'r')
@@ -214,8 +221,8 @@ else:
         oldmd5sum.append(uboot_md5sum)
         oldsplmd5sum.append(uboot_spl_md5sum)
 
-    if tb.tc_uboot_check_kconfig_create_sumfile != 'none':
-        fname = tb.workdir + "/" + tb.tc_uboot_check_kconfig_create_sumfile
+    if tb.config.tc_uboot_check_kconfig_create_sumfile != 'none':
+        fname = tb.workdir + "/" + tb.config.tc_uboot_check_kconfig_create_sumfile
         print("FILE : ", fname)
         try:
             fd = open(fname, 'w')
