@@ -99,8 +99,8 @@ tb.eof_call_tc("tc_workfd_goto_uboot_code.py")
 
 # prepare U-Boot code
 # set SOURCE_DATE_EPOCH to get reproducable builds
-tb.eof_write(ctrl, "export SOURCE_DATE_EPOCH=0")
-tb.tbot_expect_prompt(ctrl)
+tb.eof_write(tb.workfd, "export SOURCE_DATE_EPOCH=0")
+tb.tbot_expect_prompt(tb.workfd)
 
 # get rid of differences in U-Boot version string
 # Best would be to disable CONFIG_LOCALVERSION_AUTO
@@ -240,24 +240,25 @@ else:
 if tb.config.tc_lab_apply_patches_dir != 'none':
     tb.eof_call_tc("tc_workfd_apply_patches.py")
 
-count = 0
-for board in tb.tc_lab_compile_uboot_list_boardlist:
-    count += 1
-    tb.statusprint("testing 2 board %s %d / %d" % (board, count, len(tb.tc_lab_compile_uboot_list_boardlist)))
+tb.tc_lab_check_uboot_list_boardlist = tb.tc_lab_compile_uboot_list_boardlist
+
+for board in tb.tc_lab_check_uboot_list_boardlist:
+    count = tb.tc_lab_compile_uboot_list_boardlist.index(board)
+    tb.statusprint("testing round 2 board %s %d / %d" % (board, count, len(tb.tc_lab_compile_uboot_list_boardlist)))
 
     tb.config.tc_lab_compile_uboot_boardname = board
 
     tmp = "make mrproper"
     tb.write_lx_cmd_check(tb.workfd, tmp)
 
-    if arch[count - 1] == 'none':
+    if arch[count] == 'none':
         continue
 
-    if oldmd5sum[count - 1] == 'notread':
+    if oldmd5sum[count] == 'notread':
         continue
 
     # call set toolchain
-    tb.config.tc_workfd_set_toolchain_arch = arch[count - 1]
+    tb.config.tc_workfd_set_toolchain_arch = arch[count]
     ret = tb.call_tc("tc_workfd_set_toolchain.py")
     if ret == False:
         tb.statusprint("testing board %s setting toolchain failed" % (board))
@@ -292,22 +293,22 @@ for board in tb.tc_lab_compile_uboot_list_boardlist:
         uboot_spl_patched_md5sum = tb.tc_workfd_md5sum_sum
 
     # check md5sums
-    if oldmd5sum[count - 1] != uboot_patched_md5sum:
-        logging.error("%s u-boot bin diff %s != %s", board, oldmd5sum[count - 1], uboot_patched_md5sum)
-        tb.statusprint("%s u-boot bin diff %s != %s" % (board, oldmd5sum[count - 1], uboot_patched_md5sum))
+    if oldmd5sum[count] != uboot_patched_md5sum:
+        logging.error("%s u-boot bin diff %s != %s", board, oldmd5sum[count], uboot_patched_md5sum)
+        tb.statusprint("%s u-boot bin diff %s != %s" % (board, oldmd5sum[count], uboot_patched_md5sum))
         result = False
         bad.append(board)
     else:
-        logging.info("%s u-boot bin  same %s == %s", board, oldmd5sum[count - 1], uboot_patched_md5sum)
+        logging.info("%s u-boot bin  same %s == %s", board, oldmd5sum[count], uboot_patched_md5sum)
         good.append(board)
 
-    if oldsplmd5sum[count - 1] != uboot_spl_patched_md5sum:
-        logging.error("%s u-boot spl bin diff %s != %s", board, oldsplmd5sum[count - 1], uboot_spl_patched_md5sum)
-        tb.statusprint("%s u-boot spl bin diff %s != %s" % (board, oldsplmd5sum[count - 1], uboot_spl_patched_md5sum))
+    if oldsplmd5sum[count] != uboot_spl_patched_md5sum:
+        logging.error("%s u-boot spl bin diff %s != %s", board, oldsplmd5sum[count], uboot_spl_patched_md5sum)
+        tb.statusprint("%s u-boot spl bin diff %s != %s" % (board, oldsplmd5sum[count], uboot_spl_patched_md5sum))
         result = False
         bad_spl.append(board)
     else:
-        logging.info("%s u-boot spl bin same %s == %s", board, oldsplmd5sum[count - 1], uboot_spl_patched_md5sum)
+        logging.info("%s u-boot spl bin same %s == %s", board, oldsplmd5sum[count], uboot_spl_patched_md5sum)
         good_spl.append(board)
 
 # print some statistics
