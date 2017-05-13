@@ -72,7 +72,6 @@ for line in fd.readlines():
             # to adapt register length marker
             isuboot = 1
         continue
-    tmp = pre + 'devmem2 ' + cols[0] + " " + cols[2]
     tmp = pre + 'devmem2 ' + cols[0] + " " + get_type(cols[2], isuboot)
     tb.eof_write(c, tmp)
     ret = tb.tbot_expect_string(c, 'opened')
