@@ -50,11 +50,30 @@ except IOError:
     logging.warning("Could not open: %s", fname)
     tb.end_tc(False)
 
+isuboot = 0
+
+def get_type(t, ub):
+    if ub == 0:
+        return t
+    if t == 'l':
+        return 'w'
+    if t == 'w':
+        return 'h'
+    if t == 'b':
+        return 'b'
+    logging.error("U-Boot Type %s not implemented.", t)
+    tb.end_tc(False)
+
 for line in fd.readlines():
     cols = line.split()
     if cols[0] == '#':
+        if 'U-Boot' in line:
+            # we have a register dump from U-Boot, so we have
+            # to adapt register length marker
+            isuboot = 1
         continue
     tmp = pre + 'devmem2 ' + cols[0] + " " + cols[2]
+    tmp = pre + 'devmem2 ' + cols[0] + " " + get_type(cols[2], isuboot)
     tb.eof_write(c, tmp)
     ret = tb.tbot_expect_string(c, 'opened')
     if ret == 'prompt':
