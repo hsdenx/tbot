@@ -156,6 +156,14 @@ class tbot(object):
         logging.info('Started logging @  %s', now.strftime("%Y-%m-%d %H:%M"))
         logging.info('working directory %s', self.workdir)
         logging.info('testcase directory %s', self.tc_dir)
+
+	self.logroot = logging.getLogger()
+	self.logstdout = logging.StreamHandler(sys.stdout)
+	self.logstdout.setLevel(logging.WARNING)
+	formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+	self.logstdout.setFormatter(formatter)
+	self.logroot.addHandler(self.logstdout)
+
         sys.path.append(self.workdir)
 
         # create connection handles
