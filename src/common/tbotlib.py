@@ -25,7 +25,6 @@ import time
 import imp
 import importlib
 import inspect
-import pexpect
 from tbot_event import events
 from tbot_connection_paramiko import Connection
 

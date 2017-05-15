@@ -15,7 +15,6 @@ import sys
 import re
 import logging
 import time
-import pexpect
 from struct import pack
 
 def u_boot_parse_input(tb, c, retry):
