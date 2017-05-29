@@ -23,12 +23,19 @@
 #   else
 #   set line tb.config.kermit_line and speed tb.config.kermit_speed and
 #   connect to serial line.
+# - if you need sudo rights set tb.config.tc_workfd_connect_with_kermit_sudo = 'yes'
+#   and a sudo is preceded to kermit.
+#   the sudo password is searched with
+#   user:  tb.config.user + '_kermit'
+#   board: tb.config.boardname
+#
 # End:
 
 from tbotlib import tbot
 
 logging.info("args: workdfd: %s", tb.workfd)
 logging.info("args: ssh: %s", tb.config.tc_workfd_connect_with_kermit_ssh)
+logging.info("args: sudo: %s", tb.config.tc_workfd_connect_with_kermit_sudo)
 logging.info("args: kermit: %s %s", tb.config.kermit_line, tb.config.kermit_speed)
 
 if tb.config.tc_workfd_connect_with_kermit_ssh != 'none':
@@ -36,10 +43,24 @@ if tb.config.tc_workfd_connect_with_kermit_ssh != 'none':
     tb.config.workfd_ssh_cmd_prompt = '$'
     tb.eof_call_tc("tc_workfd_ssh.py")
 
-tb.eof_write(tb.workfd, 'kermit', start=False)
+if tb.config.tc_workfd_connect_with_kermit_sudo != 'none':
+    pre = 'sudo '
+else:
+    pre = ''
+
+tb.eof_write(tb.workfd, pre + 'kermit', start=False)
 oldprompt = tb.workfd.get_prompt()
 tb.workfd.set_prompt('C-Kermit>')
-tb.workfd.expect_prompt()
+
+searchlist = ["assword"]
+tmp = True
+retu = False
+while tmp == True:
+    ret = tb.tbot_rup_and_check_strings(tb.workfd, searchlist)
+    if ret == '0':
+       tb.write_stream_passwd(tb.workfd, tb.config.user + '_kermit', tb.config.boardname)
+    elif ret == 'prompt':
+       tmp = False
 
 if tb.config.tc_workfd_connect_with_kermit_rlogin == 'none':
     # check for "no effect", "Sorry, write access"

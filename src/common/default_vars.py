@@ -128,6 +128,7 @@ tc_workfd_compile_linux_makeoptions = ''
 workfd_get_patchwork_number_user = 'hs'
 workfd_get_patchwork_number_list_order = '-delegate'
 tc_workfd_connect_with_kermit_ssh = "none"
+tc_workfd_connect_with_kermit_sudo = "none"
 tc_workfd_connect_with_kermit_rlogin = "none"
 kermit_line = '/dev/ttyUSB0'
 kermit_speed = '115200'
