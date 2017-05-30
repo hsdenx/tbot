@@ -31,28 +31,9 @@ c = tb.workfd
 sf = tb.tc_ub_get_version_file
 se = tb.tc_ub_get_version_string
 
-tmp = 'strings -a ' + sf + ' | grep "' + se + '"'
-tb.eof_write(c, tmp)
-
-searchlist = [se]
-tmp = True
-ret = False
-while tmp == True:
-    retu = tb.tbot_rup_and_check_strings(c, searchlist)
-    if retu == 'prompt':
-        tmp = False
-    if retu == '0':
-        ret = tb.tbot_rup_and_check_strings(c, '\n')
-        if ret == 'prompt':
-            tb.enc_tc(False)
-        tmp = tb.buf.split('\x1b')
-        tmp = tmp[2][2:]
-        tmp = se + tmp.replace('\r','')
-        tmp = tmp.replace('\n','')
-        tb.config.tc_return = tmp
-        tmp = True
-        ret = True
-
+cmd = 'strings -a ' + sf + ' | grep "' + se + '" --color=never'
+tb.eof_write_cmd_get_line(c, cmd)
+tb.config.tc_return = tb.ret_write_cmd_get_line.strip()
 tb.event.create_event('main', tb.config.boardname, "UBOOT_VERSION", tb.config.tc_return)
 
-tb.end_tc(ret)
+tb.end_tc(True)
