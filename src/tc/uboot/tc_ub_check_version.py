@@ -33,6 +33,7 @@ tb.eof_write(c, tmp)
 searchlist = ['U-Boot 20']
 tmp = True
 ret = False
+uvers = 'undef'
 while tmp == True:
     retu = tb.tbot_rup_and_check_strings(c, searchlist)
     if retu == 'prompt':
@@ -42,12 +43,13 @@ while tmp == True:
         if ret == 'prompt':
             tb.enc_tc(False)
         tmp = 'U-Boot 20' + tb.buf.replace('\r','')
-        tmp = tmp.replace('\n','')
-        if tmp == tb.uboot_vers:
+        uvers = tmp.replace('\n','')
+        if uvers == tb.uboot_vers:
             ret = True
         tmp = True
 
 if ret != True:
+    logging.warn("UB Vers differ %s != %s", uvers, tb.uboot_vers)
     tb.end_tc(False)
 
 if tb.spl_vers == '':
@@ -58,6 +60,7 @@ tb.eof_write(c, tmp)
 searchlist = ['U-Boot SPL 20']
 tmp = True
 ret = False
+splvers = 'undef'
 while tmp == True:
     retu = tb.tbot_rup_and_check_strings(c, searchlist)
     if retu == 'prompt':
@@ -67,9 +70,12 @@ while tmp == True:
         if ret == 'prompt':
             tb.enc_tc(False)
         tmp = 'U-Boot SPL 20' + tb.buf.replace('\r','')
-        tmp = tmp.replace('\n','')
-        if tmp == tb.spl_vers:
+        splvers = tmp.replace('\n','')
+        if splvers == tb.spl_vers:
             ret = True
         tmp = True
+
+if ret == False:
+    logging.warn("UB SPL Vers differ %s != %s", splvers, tb.spl_vers)
 
 tb.end_tc(ret)
