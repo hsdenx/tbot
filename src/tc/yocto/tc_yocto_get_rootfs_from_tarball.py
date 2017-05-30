@@ -25,7 +25,12 @@ from tbotlib import tbot
 
 tb.workfd = tb.c_ctrl
 
-cmd = 'tar zxvf ' + tb.config.tc_yocto_get_rootfs_from_tarball + ' ./etc/version'
+if 'tar.bz2' in tb.config.tc_yocto_get_rootfs_from_tarball:
+    opt = 'xfvj '
+else:
+    opt = 'zxvf '
+
+cmd = 'tar ' + opt + tb.config.tc_yocto_get_rootfs_from_tarball + ' ./etc/version'
 tb.write_lx_cmd_check(tb.c_ctrl, cmd)
 cmd = 'cat etc/version'
 tb.eof_write_cmd_get_line(tb.c_ctrl, cmd)
