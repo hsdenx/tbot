@@ -31,7 +31,13 @@ except:
 
 if tb.workfd.tc_workfd_goto_yocto_code_checked == False:
     # set some global config variables
-    tb.config.yocto_name = "yocto-" + tb.config.boardlabname
+    try:
+        tb.config.yocto_name
+    except:
+        tb.config.yocto_name = "yocto-" + tb.config.boardlabname
+
+    # first check, that we are in our base dir
+    tb.eof_call_tc("tc_workfd_goto_lab_source_dir.py")
     tb.config.yocto_fulldir_name = "$TBOT_BASEDIR/" + tb.config.yocto_name
 
     tmp = 'export TBOT_BASEDIR_YOCTO=' + tb.config.yocto_fulldir_name
