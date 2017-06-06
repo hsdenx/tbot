@@ -1204,3 +1204,32 @@ class tbot(object):
             self.end_tc(False)
 
         return True
+
+    def eof_write_cmd_get_all_lines(self, c, cmd, start=True):
+        """ write command and get back all readden lines in list
+            eof_write_cmd_get_all_lines.
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: connection
+        :param arg2: cmd
+        :param arg3: start boolean, True, send console start before the
+        :return: True if one or more lines read, else false
+        """
+        self.eof_write(c, cmd, start)
+        searchlist = ["\n"]
+        tmp = True
+        result = False
+        self.ret_write_cmd_get_all_lines = []
+        while tmp == True:
+            ret = self.tbot_rup_and_check_strings(c, searchlist)
+            if ret == '0':
+                line = self.buf
+                self.ret_write_cmd_get_line.append(line)
+                result = True
+            elif ret == 'prompt':
+                tmp = False
+
+        if result == False:
+            self.end_tc(False)
+
+        return True
