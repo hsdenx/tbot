@@ -32,9 +32,13 @@ if ret == False:
 
     tmp = "cd " + u_boot_name
     tb.write_lx_cmd_check(tb.workfd, tmp)
-    #check out a specific branch
+    # check out a specific branch
     tmp = "git checkout " + tb.config.tc_lab_get_uboot_source_git_branch
     tb.write_lx_cmd_check(tb.workfd, tmp)
+    # print some info
+    tmp = "git describe --tags"
+    tb.write_lx_cmd_check(tb.workfd, tmp)
+
 
 # check if there are patches to apply
 tb.eof_call_tc("tc_lab_apply_patches.py")
