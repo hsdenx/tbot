@@ -682,6 +682,7 @@ class tbot(object):
         string = string[:1]
         logging.debug("send Ctrl-C %s", string)
         c.send_raw(string)
+        self.gotprompt = True
         return True
 
     def send_ctrl_c_con(self):
@@ -717,6 +718,7 @@ class tbot(object):
         string = string[:1]
         logging.debug("send Ctrl-M %s", string)
         self.write_stream(c, string)
+        self.gotprompt = True
         return True
 
     def set_prompt(self, c, prompt, ptype):
@@ -844,6 +846,9 @@ class tbot(object):
         self._main -= 1
         self.event.create_event(pfname, name, "End", ret)
         logging.debug("End of tc %s with ret: %s", name, ret)
+        if self.gotprompt == False:
+            logging.error("TC ends without prompt read -> may a problem in your TC !")
+            self.gotprompt = True
         return ret
 
     def eof_write(self, c, string, start=True):
@@ -861,6 +866,7 @@ class tbot(object):
             self.send_console_start(c)
         ret = c.sendcmd(string)
         self.tbot_trigger_wdt()
+        self.gotprompt = False
         if ret == True:
             return True
         self.end_tc(False)

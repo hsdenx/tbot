@@ -233,6 +233,7 @@ class Connection(object):
            false if not
         """
         ret = self.expect_string(self.prompt, promptonly = True)
+        self.tb.gotprompt = True
         return ret
 
     def _tolist(self, *args):
@@ -384,6 +385,7 @@ class Connection(object):
         # print("CCCCCCCCCCCCCCCCCCCCCCCCC search for prompt end", tmp, self.lastpos)
         if tmp == '0':
             self.copy_data(self.lastpos)
+            self.tb.gotprompt = True
             return 'prompt'
 
         return 'none'
@@ -433,6 +435,7 @@ class Connection(object):
                 self.tb.event.create_event_log(self, "er", self.data)
                 self.tb.end_tc(False)
             elif ret == 'prompt':
+                self.tb.gotprompt = True
                 # look if it is really a prompt
                 if self.data != '':
                     # not at the end, is it in first chars ?

@@ -83,6 +83,7 @@ if tb.config.tc_workfd_connect_with_kermit_rlogin == 'none':
 
     if retu == True:
         tb.workfd.set_prompt(oldprompt)
+        tb.gotprompt = True
         tb.end_tc(False)
 
     tb.eof_write_cmd(tb.workfd, "set speed " + tb.config.kermit_speed, start=False)
@@ -93,6 +94,7 @@ if tb.config.tc_workfd_connect_with_kermit_rlogin == 'none':
     tmp = True
     ret = tb.tbot_rup_and_check_strings(tb.workfd, searchlist)
     if ret != '0':
+        tb.gotprompt = True
         tb.end_tc(False)
 else:
     tb.eof_write(tb.workfd, tb.config.tc_workfd_connect_with_kermit_rlogin, start=False)
@@ -100,6 +102,7 @@ else:
 searchlist = ['----------------------------------------------------']
 ret = tb.tbot_rup_and_check_strings(tb.workfd, searchlist)
 if ret != '0':
+    tb.gotprompt = True
     tb.end_tc(False)
 
 if tb.config.tc_workfd_connect_with_kermit_rlogin != 'none':
@@ -114,11 +117,13 @@ if tb.config.tc_workfd_connect_with_kermit_rlogin != 'none':
             tb.workfd.set_timeout(oldt)
             tb.workfd.set_prompt(oldprompt)
             tb.eof_write_cmd(tb.workfd, 'exit', start=False)
+            tb.gotprompt = True
             tb.end_tc(False)
         else:
             tmp = False
     tb.workfd.set_timeout(oldt)
 
+tb.gotprompt = True
 # set now U-Boot prompt ?
 tb.workfd.set_prompt(tb.config.uboot_prompt)
 tb.end_tc(True)
