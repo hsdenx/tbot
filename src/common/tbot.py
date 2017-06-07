@@ -28,6 +28,9 @@ except:
     parser.add_option("-s", "--slabfile",
            dest="labfile", default="none",
            help="the tbot lab configfilename")
+    parser.add_option("-a", "--arguments",
+           dest="arguments", default="",
+           help="arguments for the testcase")
     parser.add_option("-l", "--logfile",
            dest="logfile", default="default",
            help="the tbot logfilename, if default, tbot creates a defaultnamelogfile")
@@ -41,9 +44,10 @@ except:
            dest="workdir", default=os.getcwd(),
            help="set workdir, default os.getcwd()")
     (options, args) = parser.parse_args()
-    print("**** option lab: %s cfg: %s log: %s tc: %s v %d" % (options.labfile, options.cfgfile, options.logfile, options.tc, options.verbose))
-    tb = tbot(options.workdir, options.labfile, options.cfgfile, options.logfile, options.verbose)
+    print("**** option lab: %s cfg: %s log: %s tc: %s v %d a %s" % (options.labfile, options.cfgfile, options.logfile, options.tc, options.verbose, options.arguments))
+    tb = tbot(options.workdir, options.labfile, options.cfgfile, options.logfile, options.verbose, options.arguments)
 
+tb.starttestcase = options.tc
 ret = tb.call_tc(options.tc)
 if ret == False:
     tb.end_tc(False)

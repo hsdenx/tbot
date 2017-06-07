@@ -83,3 +83,37 @@ Therefore a "normal" TC should use the following functions:
   - statusprint(string)
     If you want to make some statusoutput on the tbot console
     printed if debugstatus=True is set.
+
+- Now it is possible to define functions in testcases, and import
+  them in other testcases and call them. Historically the idea was
+  to write a testcase in a format near to a linux shell script,
+  and don;t use to much python in it ... but why not using
+  functions?
+
+  For a demo how to use python functions in testcases, see
+  [1] src/tc/uboot/tc_ub_testfkt.py
+
+  This testcase defines 2 functions, which can be used from other
+  testcases, for example used in
+
+  [2] src/tc/uboot/tc_ub_setenv_fkt.py
+
+  Testcase [1] can still called from the cmdline, see therefore
+  the comment in the testcases. You need only to add now on such a
+  testcase at the end, the lines after:
+
+  'if __name__ == "tbotlib":'
+
+  There you must setup the vars, the testcase need. Here you can
+  now pass to a testcase through the tbot cmdlineparameter "-a"
+  an argumentlist to the testcase, and you can pass them to the
+  functions. You only should use the passed arguments when
+
+  if tb.arguments and (tb.starttestcase == tb.calltestcase):
+
+  checks if we have arguments *and* if the testcase is called
+  from the cmdline and not from another testcase (which may
+  set through 'tb.config' variables ...)
+
+  If another testcases uses the functions, this part is
+  not executed, as 'if __name__ == "tbotlib":' is not true.

@@ -72,11 +72,12 @@ class tbot(object):
     :param arg4: name of logfile
     :param arg5: be verbose
     """
-    def __init__(self, workdir, labfile, cfgfile, logfilen, verbose):
+    def __init__(self, workdir, labfile, cfgfile, logfilen, verbose, arguments):
         ## enable verbose output
         self.verbose = verbose
         self.cfgfile = cfgfile
         self.workdir = workdir
+        self.arguments = arguments
         self.power_state = 'undef'
         self.tc_stack = []
         self.tc_stack_arg = []
@@ -84,6 +85,12 @@ class tbot(object):
 
         print("CUR WORK PATH: ", self.workdir)
         print("CFGFILE ", self.cfgfile)
+
+        # append all testcase directories
+        for root, dirs, files in os.walk(self.workdir + '/' + 'src/tc'):
+            if root:
+                sys.path.append(root)
+
         # add config to sys path
         sys.path.append(self.workdir + '/config')
 
@@ -833,6 +840,7 @@ class tbot(object):
 
         self.event.create_event(pfname, name, "Start", True)
         try:
+            tb.calltestcase = name
             exec(fd)
         except SystemExit:
             ret = self._ret
