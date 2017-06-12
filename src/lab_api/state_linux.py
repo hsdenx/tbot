@@ -101,7 +101,8 @@ def linux_set_board_state(tb, state, retry):
     tb.set_term_length(c)
 
     if tb.config.tb_set_after_linux != '':
-        tb.in_state_linux = 1
-        tb.eof_call_tc(tb.config.tb_set_after_linux)
-        tb.in_state_linux = 0
+        if tb.in_state_linux == 0:
+            tb.in_state_linux = 1
+            tb.eof_call_tc(tb.config.tb_set_after_linux)
+            tb.in_state_linux = 2
     return True

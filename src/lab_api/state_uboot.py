@@ -71,6 +71,7 @@ def u_boot_set_board_state(tb, state, retry):
     tmp = "switch state to " + state
     logging.info(tmp)
 
+    tb.in_state_linux = 0
     # set default values
     tb.eof_call_tc("tc_def_ub.py")
 
