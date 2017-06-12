@@ -18,13 +18,13 @@ import time
 
 def state_lx_parse_input(tb, c, retry, sl):
     i = 0
-    # print("PPPPPPPPPPPP START", sl, c.data, c.logbuf)
+    # print("PPPPPPPPPPPP START", sl, c.name, c.data, c.logbuf)
     ctrlc_send = 0
     oldt = c.get_timeout()
     c.set_timeout(tb.config.state_linux_timeout)
     while(i < retry):
         ret = tb.tbot_rup_and_check_strings(c, sl)
-        # print("PPPPPPPPPPPP", i, retry, ret, sl, c.data, c.logbuf)
+        # print("PPPPPPPPPPPP", i, retry, ret, sl, c.data, c.logbuf, ctrlc_send)
         if ret == 'exception':
             if ctrlc_send == 0:
                 # try first to get the linux prompt
@@ -83,6 +83,9 @@ def state_lx_parse_input(tb, c, retry, sl):
 def linux_set_board_state(tb, state, retry):
     """ set the connection state to the board
     """
+    if tb.in_state_linux:
+        return True
+
     ret = False
     tmp = "switch state to " + state
     logging.info(tmp)
@@ -97,4 +100,8 @@ def linux_set_board_state(tb, state, retry):
     #terminal line length
     tb.set_term_length(c)
 
+    if tb.config.tb_set_after_linux != '':
+        tb.in_state_linux = 1
+        tb.eof_call_tc(tb.config.tb_set_after_linux)
+        tb.in_state_linux = 0
     return True

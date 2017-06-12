@@ -82,6 +82,7 @@ class tbot(object):
         self.tc_stack = []
         self.tc_stack_arg = []
         self.donotlog = False
+        self.in_state_linux = 0
 
         print("CUR WORK PATH: ", self.workdir)
         print("CFGFILE ", self.cfgfile)
