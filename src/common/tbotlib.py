@@ -1238,7 +1238,7 @@ class tbot(object):
             ret = self.tbot_rup_and_check_strings(c, searchlist)
             if ret == '0':
                 line = self.buf
-                self.ret_write_cmd_get_line.append(line)
+                self.ret_write_cmd_get_all_lines.append(line)
                 result = True
             elif ret == 'prompt':
                 tmp = False
