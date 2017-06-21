@@ -26,6 +26,7 @@ log              log content
 Boardname        Name of board
 BoardnameEnd     End of tests for Boardname
 Start            Start of TC
+StartFkt         Start of TC function
 End              End of TC
 ===============  ============================
 

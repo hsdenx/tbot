@@ -76,6 +76,8 @@ class events(object):
         """
         if id == 'Start':
             self.stack.append(name)
+        if id == 'StartFkt':
+            self.stack.append(name)
         if id == 'End':
             self.stack.pop()
 

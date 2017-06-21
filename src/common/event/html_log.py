@@ -207,6 +207,8 @@ class html_log(object):
             return tmp[self.ev.id]
         if tmp[self.ev.id] == 'Start':
             return tmp[self.ev.id]
+        if tmp[self.ev.id] == 'StartFkt':
+            return tmp[self.ev.id]
         if tmp[self.ev.id] == 'End':
             return tmp[self.ev.id]
         return 'none'
@@ -243,7 +245,7 @@ class html_log(object):
                 continue
             tc_name = self._get_event_name(tmp)
 
-            if typ == 'Start' or typ == 'Boardname':
+            if typ == 'Start' or typ == 'Boardname' or typ == 'StartFkt':
                 # write con block need log
                 self._write_con_log_block(conlog)
                 # write ctrl need log

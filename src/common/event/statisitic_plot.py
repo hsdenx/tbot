@@ -68,6 +68,8 @@ class statistic_plot_backend(object):
     def _get_event_typ(self, tmp):
         if tmp[self.ev.id] == 'Start':
             return tmp[self.ev.id]
+        if tmp[self.ev.id] == 'StartFkt':
+            return tmp[self.ev.id]
         if tmp[self.ev.id] == 'End':
             return tmp[self.ev.id]
         return 'none'
@@ -87,7 +89,7 @@ class statistic_plot_backend(object):
         return ret
 
     def _check_ignore_list(self, typ, name, evl):
-        if typ != 'Start':
+        if not 'Start' in typ:
             return 'ok'
 
         for ign in self.ignoretclist:
@@ -149,7 +151,7 @@ class statistic_plot_backend(object):
             ret = self._check_ignore_list(typ, newname, evl)
             if ret == 'ignore':
                 continue
-            if typ == 'Start':
+            if typ == 'Start' or typ == 'StartFkt':
                 el = self._search_in_list(newname)
                 if el == None:
                     self._add_to_list(newname)

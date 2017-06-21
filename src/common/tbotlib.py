@@ -73,7 +73,7 @@ def tb_call_tc(func):
         tb.tc_stack.append('callfkt_' + fname)
         targs = {}
         tb.tc_stack_arg.append(targs)
-        tb.event.create_event(pfname, fname, "Start", True)
+        tb.event.create_event(pfname, fname, "StartFkt", True)
         logging.info("*****************************************")
         logging.info("Starting with calling fkt %s", fname)
         tb._main += 1

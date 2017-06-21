@@ -50,10 +50,10 @@ class dot(object):
     def _write_bottom(self):
         self.fd.write('}\n')
 
-    def _create_knoten(self, name):
+    def _create_knoten(self, name, col='black'):
         self.dotnr = self.dotnr + 1
         nr = self.dotnr
-        tmp = str(nr) + ' [shape=record, label="' + name + '"];\n'
+        tmp = str(nr) + ' [shape=record, label="' + name + '" color=' + col+ '];\n'
         self.fd.write(tmp)
         return nr
 
@@ -63,6 +63,8 @@ class dot(object):
 
     def _get_event_typ(self, tmp):
         if tmp[self.ev.id] == 'Start':
+            return tmp[self.ev.id]
+        if tmp[self.ev.id] == 'StartFkt':
             return tmp[self.ev.id]
         if tmp[self.ev.id] == 'End':
             return tmp[self.ev.id]
@@ -80,7 +82,7 @@ class dot(object):
         return ret
 
     def _check_ignore_list(self, typ, name, el):
-        if typ != 'Start':
+        if not 'Start' in typ:
             return 'ok'
 
         for ign in self.ignoretclist:
@@ -125,6 +127,13 @@ class dot(object):
                 self._write_knotenline(current, nr, 'black')
                 color = self._call_anal(newname, nr, el)
                 self._write_knotenline(nr, current, color)
+
+            if typ == 'StartFkt':
+                nr = self._create_knoten(newname, col='blue')
+                self._write_knotenline(current, nr, 'blue')
+                color = self._call_anal(newname, nr, el)
+                self._write_knotenline(nr, current, color)
+
 
             if typ == 'End':
                 if result == 'True':
