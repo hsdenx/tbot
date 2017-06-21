@@ -791,14 +791,14 @@ class tbot(object):
 
         return arg
 
-    def call_tc(self, name, **kwargs):
+    def call_tc(self, tcname, **kwargs):
         """Call another testcase.
 
-           Search for the TC name
+           Search for the TC tcname
            through all subdirs in 'src/tc'.
 
         - **parameters**, **types**, **return** and **return types**::
-        :param arg1: name of testcase
+        :param arg1: tcname of testcase
         :param arg2: optional testcase argumentlist
         :return:
            False: If testcase was not found
@@ -808,7 +808,7 @@ class tbot(object):
              not set the ret variable default is false!
         """
         for root, dirs, files in os.walk(self.tc_dir):
-            filepath = root + "/" + name
+            filepath = root + "/" + tcname
             logging.debug("call_tc filepath %s", filepath)
             try:
                 fd = open(filepath, 'r')
@@ -819,10 +819,10 @@ class tbot(object):
 
         try:
             if not fd:
-                logging.warning("Could not find tc name: %s", name)
+                logging.warning("Could not find tc name: %s", tcname)
                 return False
         except:
-            logging.warning("Could not find tc name: %s", name)
+            logging.warning("Could not find tc name: %s", tcname)
             return False
 
         tb = self
@@ -839,22 +839,22 @@ class tbot(object):
         self._main += 1
         pfname = inspect.getouterframes( inspect.currentframe() )[1][3]
 
-        self.event.create_event(pfname, name, "Start", True)
+        self.event.create_event(pfname, tcname, "Start", True)
         try:
-            tb.calltestcase = name
+            tb.calltestcase = tcname
             exec(fd)
         except SystemExit:
             ret = self._ret
-            logging.debug("tc %s SystemExit exception ret: %s", name, ret)
+            logging.debug("tc %s SystemExit exception ret: %s", tcname, ret)
         except:
-            logging.debug("tc %s exception", name)
+            logging.debug("tc %s exception", tcname)
             traceback.print_exc(file=sys.stdout)
             ret = False
 
         fd.close()
         self._main -= 1
-        self.event.create_event(pfname, name, "End", ret)
-        logging.debug("End of tc %s with ret: %s", name, ret)
+        self.event.create_event(pfname, tcname, "End", ret)
+        logging.debug("End of tc %s with ret: %s", tcname, ret)
         if self.gotprompt == False:
             logging.error("TC ends without prompt read -> may a problem in your TC !")
             self.gotprompt = True
