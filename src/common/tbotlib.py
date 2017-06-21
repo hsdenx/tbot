@@ -55,6 +55,50 @@ escape_dict={'\a':r'\a',
            '\8':r'\8',
            '\9':r'\9'}
 
+def tb_call_tc(func):
+    """This decorator does tasks, which are necessary before starting
+    and after end of a testcase.
+
+    Tips:
+    https://pythonconquerstheuniverse.wordpress.com/2012/04/29/python-decorators/
+    https://wiki.python.org/moin/PythonDecoratorLibrary#Counting_function_calls
+    """
+    argnames = func.func_code.co_varnames[:func.func_code.co_argcount]
+    fname = func.func_name
+
+    def echo_func(*args,**kwargs):
+        import inspect
+        tb = args[0]
+        pfname = inspect.getouterframes( inspect.currentframe() )[1][3]
+        tb.tc_stack.append('callfkt_' + fname)
+        targs = {}
+        tb.tc_stack_arg.append(targs)
+        tb.event.create_event(pfname, fname, "Start", True)
+        logging.info("*****************************************")
+        logging.info("Starting with calling fkt %s", fname)
+        tb._main += 1
+        #print fname, ":", ', '.join (
+        #        '%s=%r' % entry
+        #       for entry in zip(argnames,args) + kwargs.items())
+        try:
+            ret = func(*args, **kwargs)
+            ret = tb._ret
+        except Exception as error:
+            l = logging.getLogger()
+            l.exception(error)
+            logging.info("End with exception calling fkt %s ret: %d", fname, tb._ret)
+            ret = tb._ret
+            name = tb.tc_stack.pop()
+            #traceback.print_stack()
+            #sys.exit(1)
+        tb._main -= 1
+        tb.event.create_event(pfname, fname, "End", ret)
+        logging.info("*****************************************")
+        logging.info("End with calling fkt %s ret: %d", fname, ret)
+        return ret
+
+    return echo_func
+
 def raw(text):
     """Returns a raw string representation of text"""
     return "".join([escape_dict.get(char,char) for char in text])
@@ -437,8 +481,7 @@ class tbot(object):
 
     def failure(self):
         self.event.create_event('main', self.config.boardname, "BoardnameEnd", False)
-        logging.info('End of TBOT: failure')
-        self.statusprint("End of TBOT: failure")
+        logging.warn('End of TBOT: failure')
         # traceback.print_stack()
         self._ret = False
         self.cleanup()
@@ -469,6 +512,10 @@ class tbot(object):
         else:
             self.tc_stack_arg.pop()
             name = self.tc_stack.pop()
+            if 'callfkt_' in name:
+                logging.info('End of Fkt: %s %d', name, self._ret)
+                return self._ret
+
             if self._ret:
                 logging.info('End of TC: %s success', name)
                 logging.info('-----------------------------------------')
@@ -841,7 +888,7 @@ class tbot(object):
 
         self.event.create_event(pfname, tcname, "Start", True)
         try:
-            tb.calltestcase = tcname
+            self.calltestcase = tcname
             exec(fd)
         except SystemExit:
             ret = self._ret

@@ -45,14 +45,19 @@
 #      val = tb.config.setenv_value
 #
 # End:
+from tbotlib import tbot
+from tbotlib import tb_call_tc
 
+@tb_call_tc
 def ub_setenv(tb, c, name, val):
     tb.set_board_state("u-boot")
     cmd = 'setenv ' + name + ' ' + val
     tb.eof_write(c, cmd)
     tb.tbot_expect_prompt(c)
     tb.eof_call_tc("tc_ub_help.py")
+    tb.end_tc(True)
 
+@tb_call_tc
 def ub_checkenv(tb, c, name ,val):
     tb.set_board_state("u-boot")
     tmp = 'printenv ' + name
@@ -63,6 +68,7 @@ def ub_checkenv(tb, c, name ,val):
         tb.end_tc(False)
 
     tb.tbot_expect_prompt(c)
+    tb.end_tc(True)
 
 # If called from cmdline, we need to do testcase specific
 # setup here.
@@ -83,5 +89,7 @@ if __name__ == "tbotlib":
     logging.info("testcase arg: %s %s", name, val)
 
     ub_setenv(tb, tb.c_con, name, val)
+    logging.warn("nach ub_setenv fkt call testcase arg: %s %s", name, val)
     ub_checkenv(tb, tb.c_con, name, val)
+    logging.warn("nach ub_checkenv fkt call testcase arg: %s %s", name, val)
     tb.end_tc(True)

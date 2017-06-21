@@ -78,10 +78,6 @@ class events(object):
             self.stack.append(name)
         if id == 'End':
             self.stack.pop()
-            try:
-                nametest = self.stack[-1]
-            except:
-                nametest = 'main'
 
         tmp = "EVENT " + strftime("%Y-%m-%d %H:%M:%S", gmtime()) + " " + str(id) + " " + str(pname) + " " + str(name) + " " + str(value) + "\n"
         self.fd.write(tmp)

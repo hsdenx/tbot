@@ -117,3 +117,9 @@ Therefore a "normal" TC should use the following functions:
 
   If another testcases uses the functions, this part is
   not executed, as 'if __name__ == "tbotlib":' is not true.
+
+  also you must add before each function python decorator:
+  @tb_call_tc
+
+  Here we do necessary tasks we need to do before end after
+  calling a tbot function.
