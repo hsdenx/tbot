@@ -61,17 +61,17 @@ class dot(object):
         tmp = str(last) + ' ->  ' + str(new) + ' [color=' + color +']\n'
         self.fd.write(tmp)
 
-    def _get_event_typ(self, tmp):
-        if tmp[self.ev.id] == 'Start':
-            return tmp[self.ev.id]
-        if tmp[self.ev.id] == 'StartFkt':
-            return tmp[self.ev.id]
-        if tmp[self.ev.id] == 'End':
-            return tmp[self.ev.id]
+    def _get_event_id(self, el):
+        if el['id'] == 'Start':
+            return el['id']
+        if el['id'] == 'StartFkt':
+            return el['id']
+        if el['id'] == 'End':
+            return el['id']
         return 'none'
 
-    def _get_event_name(self, tmp):
-        return tmp[self.ev.name]
+    def _get_event_name(self, el):
+        return el['fname']
 
     def _get_next_event(self, el):
         if len(el) == 0:
@@ -81,22 +81,21 @@ class dot(object):
         el.pop(0)
         return ret
 
-    def _check_ignore_list(self, typ, name, el):
+    def _check_ignore_list(self, typ, name, evl):
         if not 'Start' in typ:
             return 'ok'
 
         for ign in self.ignoretclist:
             if ign == name:
                 # search until End event
-                line = 'start'
-                while line != '':
-                    line = self._get_next_event(el)
-                    tmp = line.split()
-                    if tmp == []:
+                el = 'start'
+                while el != '':
+                    el = self._get_next_event(evl)
+                    if el == '':
                         continue
-                    if tmp[self.ev.typ] != 'EVENT':
+                    if el['typ'] != 'EVENT':
                         continue
-                    ntyp = self._get_event_typ(tmp)
+                    ntyp = self._get_event_id(el)
                     if typ == 'none':
                         continue
                     newname = self._get_event_name(tmp)
@@ -105,33 +104,32 @@ class dot(object):
 
         return 'ok'
 
-    def _call_anal(self, name, current, el):
-        line = 'start'
-        while line != '':
-            line = self._get_next_event(el)
-            tmp = line.split()
-            if tmp == []:
+    def _call_anal(self, name, current, evl):
+        el = 'start'
+        while el != '':
+            el = self._get_next_event(evl)
+            if el == '':
                 continue
-            if tmp[self.ev.typ] != 'EVENT':
+            if el['typ'] != 'EVENT':
                 continue
-            typ = self._get_event_typ(tmp)
+            typ = self._get_event_id(el)
             if typ == 'none':
                 continue
-            newname = self._get_event_name(tmp)
-            result = tmp[self.ev.value]
+            newname = self._get_event_name(el)
+            result = el['val']
             ret = self._check_ignore_list(typ, newname, el)
             if ret == 'ignore':
                 continue
             if typ == 'Start':
                 nr = self._create_knoten(newname)
                 self._write_knotenline(current, nr, 'black')
-                color = self._call_anal(newname, nr, el)
+                color = self._call_anal(newname, nr, evl)
                 self._write_knotenline(nr, current, color)
 
             if typ == 'StartFkt':
                 nr = self._create_knoten(newname, col='blue')
                 self._write_knotenline(current, nr, 'blue')
-                color = self._call_anal(newname, nr, el)
+                color = self._call_anal(newname, nr, evl)
                 self._write_knotenline(nr, current, color)
 
 
@@ -144,8 +142,8 @@ class dot(object):
         return 'end'
     
     def _write_table(self):
-        el = list(self.tb.event.event_list)
+        evl = list(self.tb.event.event_list)
         nr = self._create_knoten('main')
         end = 'go'
         while end != 'end':
-            end = self._call_anal('main', nr, el)
+            end = self._call_anal('main', nr, evl)

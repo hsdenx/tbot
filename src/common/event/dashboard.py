@@ -108,46 +108,45 @@ class dashboard(object):
         self.uboot_src_path = ''
         self.linux_src_path = ''
         self.suc = '1'
-        line = 'start'
-        while line != '':
-            line = self._get_next_event(evl)
-            tmp = line.split()
-            if tmp == []:
+        el = 'start'
+        while el != '':
+            el = self._get_next_event(evl)
+            if el == '':
                 continue
-            if tmp[self.ev.typ] != 'EVENT':
+            if el['typ'] != 'EVENT':
                 continue
-            if tmp[self.ev.id] == 'none':
+            if el['id'] == 'none':
                 continue
-            if tmp[self.ev.id] == 'Start':
-                if tmp[self.ev.pname] == '<module>':
+            if el['id'] == 'Start':
+                if el['pname'] == '<module>':
                     if  self.tcname == '':
-                        self.tcname = tmp[self.ev.name]
-            if tmp[self.ev.id] == 'End':
-                if tmp[self.ev.name] == self.tcname:
-                    if tmp[self.ev.value] == 'False':
+                        self.tcname = el['fname']
+            if el['id'] == 'End':
+                if el['fname'] == self.tcname:
+                    if el['val'] == 'False':
                         self.suc = '0'
-            if tmp[self.ev.id] == 'Boardname':
-                self.dt = tmp[self.ev.date] + " " + tmp[self.ev.time]
-            if tmp[self.ev.id] == 'UBOOT_DEFCONFIG':
-                self.defname = tmp[self.ev.value]
-            if tmp[self.ev.id] == 'UBOOT_SRC_PATH':
-                self.uboot_src_path = tmp[self.ev.value]
-            if tmp[self.ev.id] == 'LINUX_DEFCONFIG':
-                self.lx_defname = tmp[self.ev.value]
-            if tmp[self.ev.id] == 'LINUX_SRC_PATH':
-                self.linux_src_path = tmp[self.ev.value]
-            if tmp[self.ev.id] == 'UBOOT_TEST_PY':
-                self.testpypatch = tmp[self.ev.value]
-            if tmp[self.ev.id] == 'UBOOT_VERSION':
+            if el['id'] == 'Boardname':
+                self.dt = el['time']
+            if el['id'] == 'UBOOT_DEFCONFIG':
+                self.defname = el['val']
+            if el['id'] == 'UBOOT_SRC_PATH':
+                self.uboot_src_path = el['val']
+            if el['id'] == 'LINUX_DEFCONFIG':
+                self.lx_defname = el['val']
+            if el['id'] == 'LINUX_SRC_PATH':
+                self.linux_src_path = el['val']
+            if el['id'] == 'UBOOT_TEST_PY':
+                self.testpypatch = el['val']
+            if el['id'] == 'UBOOT_VERSION':
                 if self.bina == 'unknown':
-                    self.bina = ' '.join(tmp[self.ev.value:])
+                    self.bina = ' '.join(el['val'])
                 else:
-                    vers = ' '.join(tmp[self.ev.value:])
+                    vers = ' '.join(el['val'])
                     if vers not in self.bina:
                         self.bina += ' <br> '
                         self.bina += vers
-            if tmp[self.ev.id] == 'Toolchain':
-                self.tool = ' '.join(tmp[self.ev.value:])
+            if el['id'] == 'Toolchain':
+                self.tool = ' '.join(el['val'])
 
         defn = self.defname
         if (self.lx_defname != 'unknown'):

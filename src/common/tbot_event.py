@@ -40,13 +40,6 @@ class events(object):
         self.stack = []
         self.tb = tb
         self.logfile = logfile
-        self.typ = 0
-        self.date = 1
-        self.time = 2
-        self.id = 3
-        self.pname = 4
-        self.name = 5
-        self.value = 6
 
         sys.path.append(tb.workdir +  "/src/common/event")
 
@@ -81,9 +74,11 @@ class events(object):
         if id == 'End':
             self.stack.pop()
 
-        tmp = "EVENT " + strftime("%Y-%m-%d %H:%M:%S", gmtime()) + " " + str(id) + " " + str(pname) + " " + str(name) + " " + str(value) + "\n"
+        time = strftime("%Y-%m-%d %H:%M:%S", gmtime())
+        tmp = "EVENT " + time + " " + str(id) + " " + str(pname) + " " + str(name) + " " + str(value) + "\n"
         self.fd.write(tmp)
-        self.event_list.append(tmp)
+        event = {'typ' : 'EVENT', 'time': time, 'id': str(id), 'pname' : str(pname), 'fname' : str(name), 'val' : str(value)}
+        self.event_list.append(event)
 
         if id == 'BoardnameEnd':
             self.event_flush()
@@ -148,10 +143,13 @@ class events(object):
             name = self.stack[-1]
         except:
             name = 'main'
-        tmp = "EVENT " + strftime("%Y-%m-%d %H:%M:%S", gmtime()) + " log " + name + " " + str(c.name) + " " + str(dir) + " " + string
-        self.event_list.append(tmp)
-        tmp += '\n'
+
+        time = strftime("%Y-%m-%d %H:%M:%S", gmtime())
+        tmp = "EVENT " + time + " log " + name + " " + str(c.name) + " " + str(dir) + " " + string + "\n"
         self.fd.write(tmp)
+        event = {'typ' : 'EVENT', 'time': time, 'id': 'log', 'pname' : str(name), 'fname' : str(c.name), 'val' : str(dir) + " " + string}
+        self.event_list.append(event)
+
         # flush, so we have written all log data in error case
         self.fd.flush()
         os.fsync(self.fd)

@@ -65,17 +65,17 @@ class statistic_plot_backend(object):
     def _write_bottom(self):
         self.fd.write('\n')
 
-    def _get_event_typ(self, tmp):
-        if tmp[self.ev.id] == 'Start':
-            return tmp[self.ev.id]
-        if tmp[self.ev.id] == 'StartFkt':
-            return tmp[self.ev.id]
-        if tmp[self.ev.id] == 'End':
-            return tmp[self.ev.id]
+    def _get_event_id(self, el):
+        if el['id'] == 'Start':
+            return el['id']
+        if el['id'] == 'StartFkt':
+            return el['id']
+        if el['id'] == 'End':
+            return el['id']
         return 'none'
 
-    def _get_event_name(self, tmp):
-        return tmp[self.ev.name]
+    def _get_event_name(self, el):
+        return el['fname']
 
     def _get_next_event(self, el):
         if el == None:
@@ -95,18 +95,17 @@ class statistic_plot_backend(object):
         for ign in self.ignoretclist:
             if ign == name:
                 # search until End event
-                line = 'start'
-                while line != '':
-                    line = self._get_next_event(evl)
-                    tmp = line.split()
-                    if tmp == []:
+                el = 'start'
+                while el != '':
+                    el = self._get_next_event(evl)
+                    if el == '':
                         continue
-                    if tmp[self.ev.typ] != 'EVENT':
+                    if el['typ'] != 'EVENT':
                         continue
-                    ntyp = self._get_event_typ(tmp)
+                    ntyp = self._get_event_id(el)
                     if typ == 'none':
                         continue
-                    newname = self._get_event_name(tmp)
+                    newname = self._get_event_name(el)
                     if newname == name and ntyp == 'End':
                         return 'ignore'
 
@@ -135,36 +134,35 @@ class statistic_plot_backend(object):
             self.fd.write(tmp)
 
     def _analyse(self, evl):
-        line = 'start'
-        while line != '':
-            line = self._get_next_event(evl)
-            tmp = line.split()
-            if tmp == []:
+        el = 'start'
+        while el != '':
+            el = self._get_next_event(evl)
+            if el == '':
                 continue
-            if tmp[self.ev.typ] != 'EVENT':
+            if el['typ'] != 'EVENT':
                 continue
-            typ = self._get_event_typ(tmp)
+            typ = self._get_event_id(el)
             if typ == 'none':
                 continue
-            newname = self._get_event_name(tmp)
-            result = tmp[self.ev.value]
+            newname = self._get_event_name(el)
+            result = el['val']
             ret = self._check_ignore_list(typ, newname, evl)
             if ret == 'ignore':
                 continue
             if typ == 'Start' or typ == 'StartFkt':
-                el = self._search_in_list(newname)
-                if el == None:
+                eln = self._search_in_list(newname)
+                if eln == None:
                     self._add_to_list(newname)
             if typ == 'End':
-                el = self._search_in_list(newname)
-                if el == None:
+                eln = self._search_in_list(newname)
+                if eln == None:
                     print("Error End not found", newname)
                     continue
                 if result == 'True':
-                    new = el[1] + 1
-                    newel = el[0], new, el[2]
+                    new = eln[1] + 1
+                    newel = eln[0], new, eln[2]
                 if result == 'False':
-                    new = el[2] + 1
-                    newel = el[0], el[1], new
-                self._delete_in_list(el)
+                    new = eln[2] + 1
+                    newel = eln[0], eln[1], new
+                self._delete_in_list(eln)
                 self.tc_list.append(newel)

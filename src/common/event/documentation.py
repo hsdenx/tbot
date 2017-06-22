@@ -93,22 +93,24 @@ class doc_backend(object):
     def create_docfiles(self):
         """create the files
         """
-        el = list(self.tb.event.event_list)
-        self._analyse(el, 'main')
- 
-    def _get_event_id(self, tmp):
-        if tmp[self.ev.id] == 'Start':
-            return tmp[self.ev.id]
-        if tmp[self.ev.id] == 'End':
-            return tmp[self.ev.id]
-        if tmp[self.ev.id] == 'log':
-            return tmp[self.ev.id]
-        if tmp[self.ev.id] == 'SET_DOC_FILENAME':
-            return tmp[self.ev.id]
+        evl = list(self.tb.event.event_list)
+        self._analyse(evl, 'main')
+
+    def _get_event_id(self, el):
+        if el['id'] == 'Start':
+            return el['id']
+        if el['id'] == 'StartFkt':
+            return el['id']
+        if el['id'] == 'End':
+            return el['id']
+        if el['id'] == 'log':
+            return el['id']
+        if el['id'] == 'SET_DOC_FILENAME':
+            return el['id']
         return 'none'
 
-    def _get_event_name(self, tmp):
-        return tmp[self.ev.name]
+    def _get_event_name(self, el):
+        return el['fname']
 
     def _get_next_event(self, el):
         if el == None:
@@ -122,24 +124,23 @@ class doc_backend(object):
         return ret
 
     def _check_ignore_list(self, typ, name, evl):
-        if typ != 'Start':
+        if not 'Start' in typ:
             return 'ok'
 
         for ign in self.ignoretclist:
             if ign == name:
                 # search until End event
-                line = 'start'
-                while line != '':
-                    line = self._get_next_event(evl)
-                    tmp = line.split()
-                    if tmp == []:
+                el = 'start'
+                while el != '':
+                    el = self._get_next_event(evl)
+                    if el == '':
                         continue
-                    if tmp[self.ev.typ] != 'EVENT':
+                    if el['typ'] != 'EVENT':
                         continue
-                    eid = self._get_event_id(tmp)
+                    eid = self._get_event_id(el)
                     if eid == 'none':
                         continue
-                    newname = self._get_event_name(tmp)
+                    newname = self._get_event_name(el)
                     if newname == name and eid == 'End':
                         return 'ignore'
 
@@ -186,18 +187,15 @@ class doc_backend(object):
 	end = False
         interrupted = False
         while end != True:
-            line = self._get_next_event(evl)
-            tmp = line.split()
-            if line == '':
+            el = self._get_next_event(evl)
+            if el == '':
                 end = True
-            if tmp == []:
+            if el['typ'] != 'EVENT':
                 continue
-            if tmp[self.ev.typ] != 'EVENT':
-                continue
-            eid = self._get_event_id(tmp)
+            eid = self._get_event_id(el)
             if eid == 'none':
                 continue
-            newname = self._get_event_name(tmp)
+            newname = self._get_event_name(el)
             ret = self._check_ignore_list(eid, newname, evl)
             if ret == 'ignore':
                 continue
@@ -207,7 +205,7 @@ class doc_backend(object):
                 continue
             if eid == 'SET_DOC_FILENAME':
                 interrupted = True
-                self._analyse(evl, tmp[self.ev.value])
+                self._analyse(evl, el['val'])
                 continue
             if eid == 'End':
                 try:
@@ -215,11 +213,11 @@ class doc_backend(object):
                 except:
                     print("filename no entry ", name, index)
                 return
-            if tmp[self.ev.value] != 'r':
+            tmp = el['val'].split()
+            if tmp[0] != 'r':
                 continue
             if eid == 'log':
-                logline = line.split(newname)
-                logline = logline[1]
+                logline = el['val']
                 logline = logline[2:]
                 log = logline.split('\r\n')
                 logline = ''

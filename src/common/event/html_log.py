@@ -198,23 +198,23 @@ class html_log(object):
         self.fd.write('<!-- end of a testcase -->\n')
         self.fd.write('\n')
 
-    def _get_event_typ(self, tmp):
-        if tmp[self.ev.id] == 'Boardname':
-            return tmp[self.ev.id]
-        if tmp[self.ev.id] == 'BoardnameEnd':
-            return tmp[self.ev.id]
-        if tmp[self.ev.id] == 'log':
-            return tmp[self.ev.id]
-        if tmp[self.ev.id] == 'Start':
-            return tmp[self.ev.id]
-        if tmp[self.ev.id] == 'StartFkt':
-            return tmp[self.ev.id]
-        if tmp[self.ev.id] == 'End':
-            return tmp[self.ev.id]
+    def _get_event_id(self, el):
+        if el['id'] == 'Boardname':
+            return el['id']
+        if el['id'] == 'BoardnameEnd':
+            return el['id']
+        if el['id'] == 'log':
+            return el['id']
+        if el['id'] == 'Start':
+            return el['id']
+        if el['id'] == 'StartFkt':
+            return el['id']
+        if el['id'] == 'End':
+            return el['id']
         return 'none'
 
-    def _get_event_name(self, tmp):
-        return tmp[self.ev.name]
+    def _get_event_name(self, el):
+        return el['fname']
 
     def _get_next_event(self, el):
         if len(el) == 0:
@@ -224,7 +224,7 @@ class html_log(object):
         el.pop(0)
         return ret
 
-    def _write_testcase(self, name, el):
+    def _write_testcase(self, name, evl):
         # write start of tc block need name
         if name != 'StartHTML':
             self._write_tc_start_block(name)
@@ -232,18 +232,17 @@ class html_log(object):
         conlog =''
         ctrlog =''
         canmlog =''
-        line = 'start'
-        while line != '':
-            line = self._get_next_event(el)
-            tmp = line.split()
-            if tmp == []:
+        el = 'start'
+        while el != '':
+            el = self._get_next_event(evl)
+            if el == '':
                 continue
-            if tmp[self.ev.typ] != 'EVENT':
+            if el['typ'] != 'EVENT':
                 continue
-            typ = self._get_event_typ(tmp)
+            typ = self._get_event_id(el)
             if typ == 'none':
                 continue
-            tc_name = self._get_event_name(tmp)
+            tc_name = self._get_event_name(el)
 
             if typ == 'Start' or typ == 'Boardname' or typ == 'StartFkt':
                 # write con block need log
@@ -256,13 +255,13 @@ class html_log(object):
                 conlog = ''
                 ctrlog = ''
                 canmlog = ''
-                self._write_testcase(tc_name, el)
+                self._write_testcase(tc_name, evl)
 
             # get status (end of TC) parse "End" or "BoardnameEnd" check if name == name !
             if typ == 'End' or typ == 'BoardnameEnd':
                 if tc_name != name:
                     print("not sync with tc name\n", tc_name, name)
-                status = tmp[self.ev.value]
+                status = el['val']
                 # write con block need log
                 self._write_con_log_block(conlog)
                 # write ctrl need log
@@ -276,19 +275,21 @@ class html_log(object):
             if typ == 'log':
                 # get list of tb_con log
                 # get list of tb_ctrl log
-                # print("** ", line)
-                loglin = line.split("tb_con r ")
-                if len(loglin) == 2:
-                    conlog += loglin[1]
-                loglin = line.split("tb_con re ")
-                if len(loglin) == 2:
-                    conlog += loglin[1]
-                ctrlin = line.split("tb_ctrl r ")
-                if len(ctrlin) == 2:
-                    ctrlog += ctrlin[1]
-                canmlin = line.split("tb_canm r ")
-                if len(canmlin) == 2:
-                    canmlog += canmlin[1]
+                # print("** ", el['fname'])
+                if el['fname'] == 'tb_con':
+                    loglin = el['val']
+                    if loglin.startswith("r "):
+                        conlog += loglin[2:]
+                    if loglin.startswith("re "):
+                        conlog += loglin[3:]
+                if el['fname'] == 'tb_ctrl':
+                    loglin = el['val']
+                    if loglin.startswith("r "):
+                        ctrlog += loglin[2:]
+                if el['fname'] == 'tb_canm':
+                    loglin = el['val']
+                    if loglin.startswith("r "):
+                        canmlog += loglin[2:]
                 continue
 
     def _write_log(self):
