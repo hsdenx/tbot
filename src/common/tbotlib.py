@@ -76,6 +76,7 @@ def tb_call_tc(func):
         tb.event.create_event(pfname, fname, "StartFkt", True)
         logging.info("*****************************************")
         logging.info("Starting with calling fkt %s", fname)
+        logging.info("args %s", args)
         tb._main += 1
         #print fname, ":", ', '.join (
         #        '%s=%r' % entry
