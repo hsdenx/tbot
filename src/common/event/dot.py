@@ -74,6 +74,9 @@ class dot(object):
         return el['fname']
 
     def _get_next_event(self, el):
+        if el == None:
+            return ''
+
         if len(el) == 0:
             return ''
 
@@ -96,9 +99,9 @@ class dot(object):
                     if el['typ'] != 'EVENT':
                         continue
                     ntyp = self._get_event_id(el)
-                    if typ == 'none':
+                    if ntyp == 'none':
                         continue
-                    newname = self._get_event_name(tmp)
+                    newname = self._get_event_name(el)
                     if newname == name and ntyp == 'End':
                         return 'ignore'
 
@@ -117,7 +120,7 @@ class dot(object):
                 continue
             newname = self._get_event_name(el)
             result = el['val']
-            ret = self._check_ignore_list(typ, newname, el)
+            ret = self._check_ignore_list(typ, newname, evl)
             if ret == 'ignore':
                 continue
             if typ == 'Start':
@@ -131,7 +134,6 @@ class dot(object):
                 self._write_knotenline(current, nr, 'blue')
                 color = self._call_anal(newname, nr, evl)
                 self._write_knotenline(nr, current, color)
-
 
             if typ == 'End':
                 if result == 'True':
