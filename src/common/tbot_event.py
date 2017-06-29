@@ -100,6 +100,7 @@ class events(object):
                  'tc_def_tbot.py',
                  'tc_workfd_check_if_file_exist.py',
                  'tc_lab_denx_get_power_state.py',
+                 'tc_lab_interactive_get_power_state.py',
                  'tc_workfd_rm_file.py']
 
                 self.statistic = statistic_plot_backend(self.tb, 'stat.dat', self.ignoretclist)
