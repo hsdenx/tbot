@@ -190,6 +190,7 @@ class doc_backend(object):
             el = self._get_next_event(evl)
             if el == '':
                 end = True
+                continue
             if el['typ'] != 'EVENT':
                 continue
             eid = self._get_event_id(el)
