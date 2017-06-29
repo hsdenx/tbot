@@ -481,6 +481,8 @@ class tbot(object):
         return True
 
     def failure(self):
+        self.flush(self.c_con)
+        self.flush(self.c_ctrl)
         self.event.create_event('main', self.config.boardname, "BoardnameEnd", False)
         logging.warn('End of TBOT: failure')
         # traceback.print_stack()
