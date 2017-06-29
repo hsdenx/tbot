@@ -139,14 +139,14 @@ class dashboard(object):
                 self.testpypatch = el['val']
             if el['id'] == 'UBOOT_VERSION':
                 if self.bina == 'unknown':
-                    self.bina = ' '.join(el['val'])
+                    self.bina = el['val']
                 else:
-                    vers = ' '.join(el['val'])
+                    vers = el['val']
                     if vers not in self.bina:
                         self.bina += ' <br> '
                         self.bina += vers
             if el['id'] == 'Toolchain':
-                self.tool = ' '.join(el['val'])
+                self.tool = el['val']
 
         defn = self.defname
         if (self.lx_defname != 'unknown'):
