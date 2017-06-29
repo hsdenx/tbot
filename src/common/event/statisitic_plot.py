@@ -103,7 +103,7 @@ class statistic_plot_backend(object):
                     if el['typ'] != 'EVENT':
                         continue
                     ntyp = self._get_event_id(el)
-                    if typ == 'none':
+                    if ntyp == 'none':
                         continue
                     newname = self._get_event_name(el)
                     if newname == name and ntyp == 'End':
@@ -141,19 +141,19 @@ class statistic_plot_backend(object):
                 continue
             if el['typ'] != 'EVENT':
                 continue
-            typ = self._get_event_id(el)
-            if typ == 'none':
+            eid = self._get_event_id(el)
+            if eid == 'none':
                 continue
             newname = self._get_event_name(el)
             result = el['val']
-            ret = self._check_ignore_list(typ, newname, evl)
+            ret = self._check_ignore_list(eid, newname, evl)
             if ret == 'ignore':
                 continue
-            if typ == 'Start' or typ == 'StartFkt':
+            if eid == 'Start' or eid == 'StartFkt':
                 eln = self._search_in_list(newname)
                 if eln == None:
                     self._add_to_list(newname)
-            if typ == 'End':
+            if eid == 'End':
                 eln = self._search_in_list(newname)
                 if eln == None:
                     print("Error End not found", newname)
