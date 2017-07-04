@@ -33,7 +33,7 @@ tb.eof_call_tc("tc_lab_get_uboot_source.py")
 
 #call set toolchain
 tb.statusprint("set toolchain")
-tb.eof_call_tc("tc_lab_set_toolchain.py")
+tb.eof_call_tc("tc_workfd_set_toolchain.py")
 
 #get current list of patches in ToDo list
 tb.statusprint("get patchwork patches")

@@ -31,6 +31,15 @@ tc_lab_get_uboot_source_git_repo = "/home/git/u-boot.git"
 tc_lab_get_uboot_source_git_branch = "master"
 tc_lab_compile_uboot_export_path = '/home/hs/dtc'
 
+tc_workfd_set_toolchain_arch = 'arm'
+tc_workfd_set_toolchain_t_p = {
+'arm' : '/opt/eldk-5.4/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-linux-gnueabi',
+}
+
+tc_workfd_set_toolchain_cr_co = {
+'arm' : 'arm-linux-gnueabi-',
+}
+
 tc_workfd_apply_local_patches_dir = "/work/hs/tbot/patches/taurus_uboot_patches"
 tc_workfd_apply_local_patches_checkpatch_cmd_strict = "no"
 tc_workfd_apply_local_patches_checkpatch_cmd = 'scripts/checkpatch.pl'
