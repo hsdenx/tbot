@@ -25,13 +25,14 @@
 
 from tbotlib import tbot
 
-logging.info("args: %s %s", tb.config.ub_load_board_env_addr, tb.config.ub_load_board_env_subdir)
+logging.info("args: %s %s %s", tb.config.ub_load_board_env_addr, tb.config.ub_load_board_env_subdir, tb.config.tc_ub_upd_spl_latest)
 
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
-# call tc tc_ub_load_board_env.py
-tb.eof_call_tc("tc_ub_load_board_env.py")
+if tb.config.tc_ub_upd_spl_latest == 'no':
+    # call tc tc_ub_load_board_env.py
+    tb.eof_call_tc("tc_ub_load_board_env.py")
 
 c = tb.c_con
 # start tbot_upd_uboot
@@ -77,10 +78,11 @@ ret = tb.tbot_expect_string(c, '!=')
 if ret != 'prompt':
     tb.end_tc(False)
 
-# reset the board
-tb.eof_write(c, "res")
+if tb.config.tc_ub_upd_spl_latest == 'no':
+    # reset the board
+    tb.eof_write(c, "res")
 
-# get u-boot login
-tb.set_board_state("u-boot")
+    # get u-boot login
+    tb.set_board_state("u-boot")
 
 tb.end_tc(True)
