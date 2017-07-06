@@ -21,10 +21,15 @@
 # tc for testing good or bad is tb.config.board_git_bisect_call_tc
 # if you have some local patches, which needs to be applied
 # each git bisect step, set tb.config.board_git_bisect_patches
+#
+# if you need to restore your board after a failure, set the
+# variable tb.config.board_git_bisect_restore to the tc name
+# which restores the board.
 # End:
 from tbotlib import tbot
 
 logging.info("args: %s %s %s %s", tb.config.board_git_bisect_get_source_tc, tb.config.board_git_bisect_call_tc, tb.config.board_git_bisect_good_commit, tb.config.board_git_bisect_patches)
+logging.info("restore: %s", tb.config.board_git_bisect_restore)
 
 #call get u-boot source
 tb.statusprint("get source tree")
@@ -81,6 +86,9 @@ while inwhile:
     if tb.config.board_git_bisect_patches != 'none':
         tb.eof_write_cmd(c, 'git reset --hard HEAD')
         tb.eof_write_cmd(c, 'git clean -f')
+
+    if tb.config.board_git_bisect_restore != 'none':
+        tb.eof_call_tc(tb.config.board_git_bisect_restore)
 
 if error:
     tb.end_tc(False)
