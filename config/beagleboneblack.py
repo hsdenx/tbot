@@ -95,5 +95,5 @@ tc_demo_linux_test_reg_files = [
 
 tc_demo_linux_test_basic_cmd = [
               {"cmd":"cat /proc/cpuinfo", "val":"undef"},
-              {"cmd":"cat /proc/meminfo", "val":"497592"},
+              {"cmd":"cat /proc/meminfo", "val":"undef"},
 ]
