@@ -239,7 +239,7 @@ class tbot(object):
         # try to get the console of the board
         ret = self.connect_to_board(self.config.boardname)
         if ret == False:
-            sys.exit(1)
+            self.failure()
 
     def __del__(self):
         time.sleep(1)
