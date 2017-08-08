@@ -103,6 +103,86 @@ $(document).ready(function () {
 </pre>
 </div>
 
+<!-- a testcase dir src_tc_board_bbb -->
+<div class="section block" id="src/tc/board/bbb">
+<div class="section-header block-header-dir">src/tc/board/bbb</div>
+<div class="section-content block-content">
+<div class="action">
+<pre>
+</pre>
+</div>
+
+<!-- one testcase src/tc/board/bbb/tc_board_bbb_restore_uboot.py -->
+<div class="stream block" id="src_tc_board_bbb_tc_board_bbb_restore_uboot_py">
+<div class="stream-header block-header">src/tc/board/bbb/tc_board_bbb_restore_uboot.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# tbot.py -s lab_denx -c beagleboneblack -t <a href="#src_tc_demo_tc_demo_part1_py">tc_demo_part1.py</a> -l log/tbot_demo_part1.log -v
+#
+# we boot from sd card, if it is broken, we boot
+# from emmc and restore a known working uboot on
+# the sdcard.
+#
+# To switch between botmodes we can use the PIN P8_43
+# attached to GND -> boot from emmc, floating -> boot
+# from sd card.
+
+import time
+from tbotlib import tbot
+
+# switch to bootmode emmc
+<a href="#var_config_write_lx_cmd_check(tb_c_ctrl,">tb.write_lx_cmd_check(tb.c_ctrl,</a> 'relais   relsrv-02-02  1  on')
+<a href="#var_config_eof_call_tc("tc_lab_poweroff_py")">tb.eof_call_tc("tc_lab_poweroff.py")</a>
+time.sleep(2)
+<a href="#var_config_eof_call_tc("tc_lab_poweron_py")">tb.eof_call_tc("tc_lab_poweron.py")</a>
+<a href="#var_config_set_board_state("u-boot")">tb.set_board_state("u-boot")</a>
+
+# set latest, so we do not load uboot env, nor do we reset
+# in <a href="#src_tc_uboot_tc_ub_upd_uboot_py">tc_ub_upd_uboot.py</a> and <a href="#src_tc_uboot_tc_ub_upd_spl_py">tc_ub_upd_spl.py</a>
+<a href="#var_config_tc_ub_upd_uboot_latest">tb.config.tc_ub_upd_uboot_latest</a> = 'yes'
+<a href="#var_config_tc_ub_upd_spl_latest">tb.config.tc_ub_upd_spl_latest</a> = 'yes'
+
+# call tc <a href="#src_tc_uboot_tc_ub_load_board_env_py">tc_ub_load_board_env.py</a>
+<a href="#var_config_eof_call_tc("tc_ub_load_board_env_py")">tb.eof_call_tc("tc_ub_load_board_env.py")</a>
+
+# set latest images
+import <a href="#_tc_ub_testfkt">tc_ub_testfkt</a>
+
+<a href="#_tc_ub_testfkt_ub_setenv(tb,">tc_ub_testfkt.ub_setenv(tb,</a> <a href="#var_config_c_con,">tb.c_con,</a> 'ubfile', 'bbb/tbot/latestworking-u-boot.img')
+<a href="#_tc_ub_testfkt_ub_setenv(tb,">tc_ub_testfkt.ub_setenv(tb,</a> <a href="#var_config_c_con,">tb.c_con,</a> 'mlofile', 'bbb/tbot/latestworking-MLO')
+
+# call upd_uboot
+<a href="#var_config_eof_call_tc("tc_ub_upd_uboot_py")">tb.eof_call_tc("tc_ub_upd_uboot.py")</a>
+
+# call upd_spl
+<a href="#var_config_eof_call_tc("tc_ub_upd_spl_py")">tb.eof_call_tc("tc_ub_upd_spl.py")</a>
+
+
+# switch to bootmode sdcard
+<a href="#var_config_write_lx_cmd_check(tb_c_ctrl,">tb.write_lx_cmd_check(tb.c_ctrl,</a> 'relais   relsrv-02-02  1  off')
+<a href="#var_config_eof_call_tc("tc_lab_poweroff_py")">tb.eof_call_tc("tc_lab_poweroff.py")</a>
+time.sleep(2)
+<a href="#var_config_eof_call_tc("tc_lab_poweron_py")">tb.eof_call_tc("tc_lab_poweron.py")</a>
+<a href="#var_config_set_board_state("u-boot")">tb.set_board_state("u-boot")</a>
+
+<a href="#var_config_end_tc(True)">tb.end_tc(True)</a>
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/board/bbb/tc_board_bbb_restore_uboot.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/board/bbb/tc_board_bbb_restore_uboot.py -->
+
+<div class="section-trailer block-trailer">src/tc/board/bbb</div>
+<div class="status-pass">
+<pre>
+</pre>
+</div>
+</div>
+</div>
+<!-- end of a testcase dir src/tc/board/bbb -->
+
 <!-- a testcase dir src_tc_board_cuby -->
 <div class="section block" id="src/tc/board/cuby">
 <div class="section-header block-header-dir">src/tc/board/cuby</div>
@@ -695,13 +775,30 @@ $(document).ready(function () {
 <pre>
 # start with
 # tbot.py -s lab_denx -c smartweb -t <a href="#src_tc_board_tc_board_smartweb_py">tc_board_smartweb.py</a>
-# start all testcases for the smartweb board
+#
+# remove, clone current mainline U-Boot, then
+# start <a href="#src_tc_board_tc_board_smartweb_test_ub_py">tc_board_smartweb_test_ub.py</a>
 </pre>
 <div class="stream-trailer block-trailer">End stream: src/tc/board/tc_board_smartweb.py </div>
 <div class="status-pass"></div>
 </div>
 </div>
 <!-- end of one testcase src/tc/board/tc_board_smartweb.py -->
+
+<!-- one testcase src/tc/board/tc_board_smartweb_test_ub.py -->
+<div class="stream block" id="src_tc_board_tc_board_smartweb_test_ub_py">
+<div class="stream-header block-header">src/tc/board/tc_board_smartweb_test_ub.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# tbot.py -s lab_denx -c smartweb -t <a href="#src_tc_board_tc_board_smartweb_py">tc_board_smartweb.py</a>
+# start all ub testcases for the smartweb board
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/board/tc_board_smartweb_test_ub.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/board/tc_board_smartweb_test_ub.py -->
 
 <!-- one testcase src/tc/board/tc_board_taurus.py -->
 <div class="stream block" id="src_tc_board_tc_board_taurus_py">
@@ -1063,6 +1160,31 @@ $(document).ready(function () {
 </div>
 </div>
 <!-- end of one testcase src/tc/demo/tc_demo_get_ub_code.py -->
+
+<!-- one testcase src/tc/demo/tc_demo_linux_test.py -->
+<div class="stream block" id="src_tc_demo_tc_demo_linux_test_py">
+<div class="stream-header block-header">src/tc/demo/tc_demo_linux_test.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# tbot.py -s lab_denx -c beagleboneblack -t <a href="#src_tc_demo_tc_demo_linux_test_py">tc_demo_linux_test.py</a>
+# get linux code and compile it for a board, and boot the
+# resulting kernel, and do some basic tests:
+#
+# - grep through dmesg and check if strings in
+#   <a href="#var_config_tc_demo_linux_test_dmesg">tb.config.tc_demo_linux_test_dmesg</a> exist
+# - check with devmem2 if the register values defined
+#   in the register files <a href="#var_config_tc_demo_linux_test_reg_files">tb.config.tc_demo_linux_test_reg_files</a>
+#   are identical with the values defined in the files
+# - start cmd defined in <a href="#var_config_tc_demo_linux_test_basic_cmd">tb.config.tc_demo_linux_test_basic_cmd</a>
+#   and check the returning strings.
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/demo/tc_demo_linux_test.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/demo/tc_demo_linux_test.py -->
 
 <!-- one testcase src/tc/demo/tc_demo_part1.py -->
 <div class="stream block" id="src_tc_demo_tc_demo_part1_py">
@@ -1548,6 +1670,22 @@ $(document).ready(function () {
 </div>
 <!-- end of one testcase src/tc/linux/tc_lx_bonnie_install.py -->
 
+<!-- one testcase src/tc/linux/tc_lx_check_devmem2.py -->
+<div class="stream block" id="src_tc_linux_tc_lx_check_devmem2_py">
+<div class="stream-header block-header">src/tc/linux/tc_lx_check_devmem2.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# python2.7 src/common/tbot.py -c tbot.cfg -t <a href="#src_tc_linux_tc_lx_check_devmem2_py">tc_lx_check_devmem2.py</a>
+# simply check, if we have the devmem2 cmd
+# if not, try to find it
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/linux/tc_lx_check_devmem2.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/linux/tc_lx_check_devmem2.py -->
+
 <!-- one testcase src/tc/linux/tc_lx_check_reg_file.py -->
 <div class="stream block" id="src_tc_linux_tc_lx_check_reg_file_py">
 <div class="stream-header block-header">src/tc/linux/tc_lx_check_reg_file.py</div>
@@ -1560,6 +1698,13 @@ $(document).ready(function () {
 # registers on the board. Needs devmem2 installed.
 # format of the regfile:
 # regaddr mask type defval
+#
+# If you have to call devmem2 with a "header"
+# set it through <a href="#var_config_devmem2_pre">tb.config.devmem2_pre</a>
+# so on the bbb with original rootfs -> no devmem2 installed
+# so to use tc which use devmem2 you have to copy devmem2
+# bin to the rootfs, and start it with 'sudo ...'
+#
 # ToDo: use the file from the lab host, not the tbot host
 </pre>
 <div class="stream-trailer block-trailer">End stream: src/tc/linux/tc_lx_check_reg_file.py </div>
@@ -1632,6 +1777,13 @@ $(document).ready(function () {
 # This reg file can be used as a default file, how the
 # registers must be setup, check it with testcase
 # <a href="#src_tc_linux_tc_lx_check_reg_file_py">tc_lx_check_reg_file.py</a>
+#
+# If you have to call devmem2 with a "header"
+# set it through <a href="#var_config_devmem2_pre">tb.config.devmem2_pre</a>
+# so on the bbb with original rootfs -> no devmem2 installed
+# so to use tc which use devmem2 you have to copy devmem2
+# bin to the rootfs, and start it with 'sudo ...'
+#
 # ToDo: use the file from the lab host, not the tbot host
 </pre>
 <div class="stream-trailer block-trailer">End stream: src/tc/linux/tc_lx_create_reg_file.py </div>
@@ -1983,6 +2135,24 @@ $(document).ready(function () {
 </div>
 <!-- end of one testcase src/tc/linux/tc_workfd_check_if_cmd_exist.py -->
 
+<!-- one testcase src/tc/linux/tc_workfd_check_if_device_exist.py -->
+<div class="stream block" id="src_tc_linux_tc_workfd_check_if_device_exist_py">
+<div class="stream-header block-header">src/tc/linux/tc_workfd_check_if_device_exist.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# python2.7 src/common/tbot.py -c tbot.cfg -t <a href="#src_tc_linux_tc_workfd_check_if_device_exist_py">tc_workfd_check_if_device_exist.py</a>
+# check if a device <a href="#var_config_tc_workfd_check_if_device_exists_name">tb.config.tc_workfd_check_if_device_exists_name</a> exist
+# this tc returns always true, but sets
+# <a href="#var_config_tc_return">tb.config.tc_return</a> True or False, because we may not
+# want to end testcase failed, if device not exists.
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/linux/tc_workfd_check_if_device_exist.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/linux/tc_workfd_check_if_device_exist.py -->
+
 <!-- one testcase src/tc/linux/tc_workfd_check_if_dir_exist.py -->
 <div class="stream block" id="src_tc_linux_tc_workfd_check_if_dir_exist_py">
 <div class="stream-header block-header">src/tc/linux/tc_workfd_check_if_dir_exist.py</div>
@@ -2122,6 +2292,12 @@ $(document).ready(function () {
 #   else
 #   set line <a href="#var_config_kermit_line">tb.config.kermit_line</a> and speed <a href="#var_config_kermit_speed">tb.config.kermit_speed</a> and
 #   connect to serial line.
+# - if you need sudo rights set <a href="#var_config_tc_workfd_connect_with_kermit_sudo">tb.config.tc_workfd_connect_with_kermit_sudo</a> = 'yes'
+#   and a sudo is preceded to kermit.
+#   the sudo password is searched with
+#   user:  <a href="#var_config_user">tb.config.user</a> + '_kermit'
+#   board: <a href="#var_config_boardname">tb.config.boardname</a>
+#
 </pre>
 <div class="stream-trailer block-trailer">End stream: src/tc/linux/tc_workfd_connect_with_kermit.py </div>
 <div class="status-pass"></div>
@@ -2554,6 +2730,26 @@ $(document).ready(function () {
 </div>
 <!-- end of one testcase src/tc/linux/tc_workfd_rm_uboot_code.py -->
 
+<!-- one testcase src/tc/linux/tc_workfd_scp.py -->
+<div class="stream block" id="src_tc_linux_tc_workfd_scp_py">
+<div class="stream-header block-header">src/tc/linux/tc_workfd_scp.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# python2.7 src/common/tbot.py -s lab_denx -c exceet -t <a href="#src_tc_linux_tc_workfd_scp_py">tc_workfd_scp.py</a>
+#
+# start an scp transfer
+# <a href="#var_config_tc_workfd_scp_opt:">tb.config.tc_workfd_scp_opt:</a> scp options
+# <a href="#var_config_tc_workfd_scp_from:">tb.config.tc_workfd_scp_from:</a> from where
+# <a href="#var_config_tc_workfd_scp_to">tb.config.tc_workfd_scp_to</a>
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/linux/tc_workfd_scp.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/linux/tc_workfd_scp.py -->
+
 <!-- one testcase src/tc/linux/tc_workfd_ssh.py -->
 <div class="stream block" id="src_tc_linux_tc_workfd_ssh_py">
 <div class="stream-header block-header">src/tc/linux/tc_workfd_ssh.py</div>
@@ -2962,6 +3158,100 @@ $(document).ready(function () {
 </div>
 <!-- end of one testcase src/tc/uboot/tc_ub_cmp.py -->
 
+<!-- one testcase src/tc/uboot/tc_ub_create_am335x_reg_file.py -->
+<div class="stream block" id="src_tc_uboot_tc_ub_create_am335x_reg_file_py">
+<div class="stream-header block-header">src/tc/uboot/tc_ub_create_am335x_reg_file.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# python2.7 src/common/tbot.py -s lab_denx -c tbot.cfg -t <a href="#src_tc_uboot_tc_ub_create_am335x_reg_file_py">tc_ub_create_am335x_reg_file.py</a>
+#
+# creates U-Boot register dump files for an am335x based board.
+# using testcase <a href="#src_tc_uboot_tc_ub_create_reg_file_py">tc_ub_create_reg_file.py</a>
+#
+# dumps:
+# - pinmux  44e10000 - 44e10004
+# - pinmux  44e10010 - 44e10010 
+# - pinmux  44e10040 - 44e10040
+# - pinmux  44e10110 - 44e10110
+# - pinmux  44e10428 - 44e11440
+# - cm per  44e00000 - 44e00150
+# - cm wkup 44e00400 - 44e004d0
+# - cm dpll 44e00500 - 44e0053c
+# - cm mpu  44e00600 - 44e00604
+# - cm device 44e00700 - 44e00700
+# - emif    4c000000 - 4c000120
+# - ddr     44e12000 - 44e121dc
+#
+# into files found in src/files/
+# create for your board a subdir in the directory,
+# and move the new created files into it, so you have
+# them as a base for comparing further use.
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/uboot/tc_ub_create_am335x_reg_file.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/uboot/tc_ub_create_am335x_reg_file.py -->
+
+<!-- one testcase src/tc/uboot/tc_ub_create_imx28_reg_file.py -->
+<div class="stream block" id="src_tc_uboot_tc_ub_create_imx28_reg_file_py">
+<div class="stream-header block-header">src/tc/uboot/tc_ub_create_imx28_reg_file.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# python2.7 src/common/tbot.py -s lab_denx -c tbot.cfg -t <a href="#src_tc_uboot_tc_ub_create_imx28_reg_file_py">tc_ub_create_imx28_reg_file.py</a>
+#
+# creates U-Boot register dump files for an imx28 based board.
+# using testcase <a href="#src_tc_uboot_tc_ub_create_reg_file_py">tc_ub_create_reg_file.py</a>
+#
+# dumps:
+# - pinmux  80018000 - 80018b40
+# - clkctrl 80044000 - 80044170
+# - emi     800e0000 - 800e02ec
+# - gpmi    8000c000 - 8000c0d4
+# - enet 0  800f0000 - 800f0684
+# - enet 1  800f4000 - 800f4684
+#
+# into files found in src/files/
+# create for your board a subdir in the directory,
+# and move the new created files into it, so you have
+# them as a base for comparing further use.
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/uboot/tc_ub_create_imx28_reg_file.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/uboot/tc_ub_create_imx28_reg_file.py -->
+
+<!-- one testcase src/tc/uboot/tc_ub_create_imx6_reg_file.py -->
+<div class="stream block" id="src_tc_uboot_tc_ub_create_imx6_reg_file_py">
+<div class="stream-header block-header">src/tc/uboot/tc_ub_create_imx6_reg_file.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# python2.7 src/common/tbot.py -s lab_denx -c tbot.cfg -t <a href="#src_tc_uboot_tc_ub_create_imx6_reg_file_py">tc_ub_create_imx6_reg_file.py</a>
+#
+# creates U-Boot register dump files for an imx6 based board.
+# using testcase <a href="#src_tc_uboot_tc_ub_create_reg_file_py">tc_ub_create_reg_file.py</a>
+#
+# dumps:
+# - pinmux  20e0000 - 20e0950
+#
+# into files found in src/files/
+# create for your board a subdir in the directory,
+# and move the new created files into it, so you have
+# them as a base for comparing further use.
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/uboot/tc_ub_create_imx6_reg_file.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/uboot/tc_ub_create_imx6_reg_file.py -->
+
 <!-- one testcase src/tc/uboot/tc_ub_create_reg_file.py -->
 <div class="stream block" id="src_tc_uboot_tc_ub_create_reg_file_py">
 <div class="stream-header block-header">src/tc/uboot/tc_ub_create_reg_file.py</div>
@@ -3105,8 +3395,23 @@ $(document).ready(function () {
 <pre>
 # start with
 # python2.7 src/common/tbot.py -c tbot.cfg -t <a href="#src_tc_uboot_tc_ub_load_board_env_py">tc_ub_load_board_env.py</a>
-# load U-Boot Environment for the board <a href="#var_config_tftpboardname">tb.config.tftpboardname</a>
-# <a href="#var_config_ub_load_board_env_addr">tb.config.ub_load_board_env_addr</a> and <a href="#var_config_ub_load_board_env_subdir">tb.config.ub_load_board_env_subdir</a>
+#
+# task: load U-Boot Environment env.txt file with tftp for the
+# board <a href="#var_config_tftpboardname">tb.config.tftpboardname</a> to the addr <a href="#var_config_ub_load_board_env_addr">tb.config.ub_load_board_env_addr</a>
+# from subdir <a href="#var_config_ub_load_board_env_subdir">tb.config.ub_load_board_env_subdir</a>
+# and imports the the textfile with 'env import'
+#
+# options:
+# if <a href="#var_config_tc_ub_boot_linux_load_env">tb.config.tc_ub_boot_linux_load_env</a> == 'no' than TC does nothing
+#
+# if <a href="#var_config_tc_ub_boot_linux_load_env">tb.config.tc_ub_boot_linux_load_env</a> == 'set' or == 'setend'
+# than TC executes the cmds in list <a href="#var_config_ub_load_board_env_set">tb.config.ub_load_board_env_set</a>
+#
+# if <a href="#var_config_tc_ub_boot_linux_load_env">tb.config.tc_ub_boot_linux_load_env</a> == 'setend' TC returns
+# after executing the commands with True
+#
+# else TC executes the steps described in 'task'
+#
 </pre>
 <div class="stream-trailer block-trailer">End stream: src/tc/uboot/tc_ub_load_board_env.py </div>
 <div class="status-pass"></div>
@@ -3145,6 +3450,31 @@ $(document).ready(function () {
 </div>
 <!-- end of one testcase src/tc/uboot/tc_ub_setenv.py -->
 
+<!-- one testcase src/tc/uboot/tc_ub_setenv_fkt.py -->
+<div class="stream block" id="src_tc_uboot_tc_ub_setenv_fkt_py">
+<div class="stream-header block-header">src/tc/uboot/tc_ub_setenv_fkt.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# python2.7 src/common/tbot.py -s lab_denx -c beagleboneblack -t <a href="#src_tc_uboot_tc_ub_setenv_fkt_py">tc_ub_setenv_fkt.py</a>
+# set U-Boot Environmentvariable <a href="#var_config_setenv_name">tb.config.setenv_name</a> with value
+# <a href="#var_config_setenv_value">tb.config.setenv_value</a>
+#
+# This is for demonstration how to use functions in tbot only.
+# So, this testcase sets 3 times the U-Boot Envvariable:
+# - The new way with importing the functions from testcase
+#   src/tc/uboot/tc_ub_testfkt.py
+# - The oldstyled way with calling the testcase <a href="#src_tc_uboot_tc_ub_testfkt_py">tc_ub_testfkt.py</a>
+#   with <a href="#var_config_eof_call_tc()">tb.eof_call_tc()</a>
+# - The oldstyled way with calling the testcase <a href="#src_tc_uboot_tc_ub_testfkt_py">tc_ub_testfkt.py</a>
+#   with <a href="#var_config_call_tc()">tb.call_tc()</a> and getting the return value.
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/uboot/tc_ub_setenv_fkt.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/uboot/tc_ub_setenv_fkt.py -->
+
 <!-- one testcase src/tc/uboot/tc_ub_test_py.py -->
 <div class="stream block" id="src_tc_uboot_tc_ub_test_py_py">
 <div class="stream-header block-header">src/tc/uboot/tc_ub_test_py.py</div>
@@ -3166,6 +3496,50 @@ $(document).ready(function () {
 </div>
 </div>
 <!-- end of one testcase src/tc/uboot/tc_ub_test_py.py -->
+
+<!-- one testcase src/tc/uboot/tc_ub_testfkt.py -->
+<div class="stream block" id="src_tc_uboot_tc_ub_testfkt_py">
+<div class="stream-header block-header">src/tc/uboot/tc_ub_testfkt.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# python2.7 src/common/tbot.py -c tbot.cfg -t <a href="#src_tc_uboot_tc_ub_testfkt_py">tc_ub_testfkt.py</a>
+#
+# This testcase is for demonstration of using functions in
+# testcases, and use them from other testcases.
+#
+# testcase which calls this function for demo:
+# src/tc/uboot/tc_ub_setenv_fkt.py
+#
+# defines 2 functions:
+# - ub_setenv(tb, c, name, val)
+#   set Environment variable name with value val
+# - ub_checkenv(tb, c, name, val)
+#   checks, if U-Boot Environmentvariable name
+#   has the value val.
+#
+# there are 2 ways from calling this testcase directly
+# from the cmdline:
+#
+# - with arguments:
+#   tbot.py -s lab_denx -c beagleboneblack -t <a href="#src_tc_uboot_tc_ub_testfkt_py">tc_ub_testfkt.py</a> -a "Heiko Schochernew"
+#
+#      name = <a href="#var_config_arguments_split()[0]">tb.arguments.split()[0]</a>
+#      val = <a href="#var_config_arguments_split()[1]">tb.arguments.split()[1]</a>
+#
+# - without arguments:
+#   tbot.py -s lab_denx -c beagleboneblack -t <a href="#src_tc_uboot_tc_ub_testfkt_py">tc_ub_testfkt.py</a>
+#
+#   in this case 
+#      name = <a href="#var_config_setenv_name">tb.config.setenv_name</a>
+#      val = <a href="#var_config_setenv_value">tb.config.setenv_value</a>
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/uboot/tc_ub_testfkt.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/uboot/tc_ub_testfkt.py -->
 
 <!-- one testcase src/tc/uboot/tc_ub_tftp_file.py -->
 <div class="stream block" id="src_tc_uboot_tc_ub_tftp_file_py">
@@ -3373,28 +3747,35 @@ $(document).ready(function () {
 <div class="stream-content block-content">
 <pre>
 # start with
-# python2.7 src/common/tbot.py -c config/tbot_uboot_kconfig_check.cfg -t <a href="#src_tc_uboot_tc_uboot_check_kconfig_py">tc_uboot_check_kconfig.py</a>
+# python2.7 src/common/tbot.py -s lab_denx -c uboot_kconfig_check -t <a href="#src_tc_uboot_tc_uboot_check_kconfig_py">tc_uboot_check_kconfig.py</a>
+#
 # check for all boards, if a patch changes the u-boot binary
 # If U-boot binary changed by the patch this testcase fails.
 # use this testcase, if you for example move a config option
 # into Kconfig. As we need reproducable builds, we need to
-# patch U-Boot with <a href="#var_config_tc_uboot_check_kconfig_preparepatch">tb.tc_uboot_check_kconfig_preparepatch</a>
+# patch U-Boot with <a href="#var_config_tc_uboot_check_kconfig_preparepatch">tb.config.tc_uboot_check_kconfig_preparepatch</a>
+# find this patch here: src/files/ub-patches/0001-U-Boot-version-fix.patch
+# copy it to the lab pc and adapt <a href="#var_config_tc_uboot_check_kconfig_preparepatch">tb.config.tc_uboot_check_kconfig_preparepatch</a>
+#
+# Steps from this testcase:
 # - rm U-Boot code with <a href="#src_tc_linux_tc_workfd_rm_uboot_code_py">tc_workfd_rm_uboot_code.py</a>
 # - get U-Boot code with <a href="#src_tc_tc_lab_get_uboot_source_py">tc_lab_get_uboot_source.py</a>
 # - set SOURCE_DATE_EPOCH=0 to get reproducible builds
-# - get rid of local version ToDo: find a way to disable CONFIG_LOCALVERSION_AUTO
-# - if <a href="#var_config_tc_uboot_check_kconfig_read_sumfile">tb.tc_uboot_check_kconfig_read_sumfile</a> is != 'none'
+# - apply patch from <a href="#var_config_tc_uboot_check_kconfig_preparepatch">tb.config.tc_uboot_check_kconfig_preparepatch</a>
+#   get rid of local version ToDo: find a way to disable CONFIG_LOCALVERSION_AUTO
+#   so this patch is not longer needed.
+# - if <a href="#var_config_tc_uboot_check_kconfig_read_sumfile">tb.config.tc_uboot_check_kconfig_read_sumfile</a> is != 'none'
 #     read a list of boards and md5sums from the file in
-#     <a href="#var_config_tc_uboot_check_kconfig_read_sumfile">tb.tc_uboot_check_kconfig_read_sumfile</a>
+#     <a href="#var_config_tc_uboot_check_kconfig_read_sumfile">tb.config.tc_uboot_check_kconfig_read_sumfile</a>
 #   else
 #   - create a list of boards (all defconfigs)
 #   - do for all boards:
 #     - get architecture and set toolchain
 #     - compile U-Boot and calculate md5sum
 #       with <a href="#src_tc_tc_workfd_compile_uboot_py">tc_workfd_compile_uboot.py</a> and <a href="#src_tc_linux_tc_workfd_md5sum_py">tc_workfd_md5sum.py</a>
-#     - if <a href="#var_config_tc_uboot_check_kconfig_create_sumfile">tb.tc_uboot_check_kconfig_create_sumfile</a> != 'none'
+#     - if <a href="#var_config_tc_uboot_check_kconfig_create_sumfile">tb.config.tc_uboot_check_kconfig_create_sumfile</a> != 'none'
 #       save the board md5sum lists in the file
-#       <a href="#var_config_tc_uboot_check_kconfig_create_sumfile">tb.tc_uboot_check_kconfig_create_sumfile</a>
+#       <a href="#var_config_tc_uboot_check_kconfig_create_sumfile">tb.config.tc_uboot_check_kconfig_create_sumfile</a>
 #       you can use this now as a reference, so no need
 #       to calculate always for all boards the md5sums
 #       -> saves a lot of time!
@@ -3554,6 +3935,66 @@ $(document).ready(function () {
 </div>
 <!-- end of one testcase src/tc/yocto/tc_workfd_goto_yocto_code.py -->
 
+<!-- one testcase src/tc/yocto/tc_workfd_yocto_basic_check.py -->
+<div class="stream block" id="src_tc_yocto_tc_workfd_yocto_basic_check_py">
+<div class="stream-header block-header">src/tc/yocto/tc_workfd_yocto_basic_check.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# tbot.py -s lab_denx -c cuby -t <a href="#src_tc_yocto_tc_workfd_yocto_basic_check_py">tc_workfd_yocto_basic_check.py</a>
+#
+# do basic yocto checks
+#
+# - check rootfs version
+# - check dmesg output
+#   check if strings defined in <a href="#var_config_tc_demo_yocto_test_checks">tb.config.tc_demo_yocto_test_checks</a>
+#   are found in dmesg output
+# - check if devmem2 tool is in rootfs, if so, do register checks
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/yocto/tc_workfd_yocto_basic_check.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/yocto/tc_workfd_yocto_basic_check.py -->
+
+<!-- one testcase src/tc/yocto/tc_workfd_yocto_check_rootfs_version.py -->
+<div class="stream block" id="src_tc_yocto_tc_workfd_yocto_check_rootfs_version_py">
+<div class="stream-header block-header">src/tc/yocto/tc_workfd_yocto_check_rootfs_version.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# tbot.py -s lab_denx -c cuby -t <a href="#src_tc_yocto_tc_workfd_yocto_check_rootfs_version_py">tc_workfd_yocto_check_rootfs_version.py</a>
+#
+# check if the current /etc/version on the target rootfs is the
+# same as in <a href="#var_config_onfig_tc_yocto_get_rootfs_from_tarball">tb.onfig.tc_yocto_get_rootfs_from_tarball</a>
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/yocto/tc_workfd_yocto_check_rootfs_version.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/yocto/tc_workfd_yocto_check_rootfs_version.py -->
+
+<!-- one testcase src/tc/yocto/tc_yocto_get_rootfs_from_tarball.py -->
+<div class="stream block" id="src_tc_yocto_tc_yocto_get_rootfs_from_tarball_py">
+<div class="stream-header block-header">src/tc/yocto/tc_yocto_get_rootfs_from_tarball.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# tbot.py -s lab_denx -c cuby -t <a href="#src_tc_yocto_tc_yocto_get_rootfs_from_tarball_py">tc_yocto_get_rootfs_from_tarball.py</a>
+#
+# get rootfs version from rootfs tar ball filepath and name stored in
+# <a href="#var_config_tc_yocto_get_rootfs_from_tarball">tb.config.tc_yocto_get_rootfs_from_tarball</a>
+# and store versionstring in variable:
+# <a href="#var_config_tc_yocto_get_rootfs_from_tarball_rootfs_version">tb.config.tc_yocto_get_rootfs_from_tarball_rootfs_version</a>
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/yocto/tc_yocto_get_rootfs_from_tarball.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/yocto/tc_yocto_get_rootfs_from_tarball.py -->
+
 <div class="section-trailer block-trailer">src/tc/yocto</div>
 <div class="status-pass">
 <pre>
@@ -3577,6 +4018,10 @@ $(document).ready(function () {
 # tc for testing good or bad is <a href="#var_config_board_git_bisect_call_tc">tb.config.board_git_bisect_call_tc</a>
 # if you have some local patches, which needs to be applied
 # each git bisect step, set <a href="#var_config_board_git_bisect_patches">tb.config.board_git_bisect_patches</a>
+#
+# if you need to restore your board after a failure, set the
+# variable <a href="#var_config_board_git_bisect_restore">tb.config.board_git_bisect_restore</a> to the tc name
+# which restores the board.
 </pre>
 <div class="stream-trailer block-trailer">End stream: src/tc/tc_board_git_bisect.py </div>
 <div class="status-pass"></div>
@@ -5433,6 +5878,19 @@ tc_workfd_connect_with_kermit_ssh = "none"
 </div>
 <!-- end of one default var tc_workfd_connect_with_kermit_ssh  -->
 
+<!-- one default var tc_workfd_connect_with_kermit_sudo  -->
+<div class="stream block" id="var_config_tc_workfd_connect_with_kermit_sudo">
+<div class="stream-header block-header">tc_workfd_connect_with_kermit_sudo </div>
+<div class="stream-content block-content">
+<pre>
+tc_workfd_connect_with_kermit_sudo = "none"
+</pre>
+<div class="stream-trailer block-trailer">End stream: tc_workfd_connect_with_kermit_sudo  </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one default var tc_workfd_connect_with_kermit_sudo  -->
+
 <!-- one default var tc_workfd_connect_with_kermit_rlogin  -->
 <div class="stream block" id="var_config_tc_workfd_connect_with_kermit_rlogin">
 <div class="stream-header block-header">tc_workfd_connect_with_kermit_rlogin </div>
@@ -6129,6 +6587,58 @@ tc_ub_memory_base = 'yes'
 </div>
 </div>
 <!-- end of one default var tc_ub_memory_base  -->
+
+<!-- one default var tc_ub_test_py_start  -->
+<div class="stream block" id="var_config_tc_ub_test_py_start">
+<div class="stream-header block-header">tc_ub_test_py_start </div>
+<div class="stream-content block-content">
+<pre>
+tc_ub_test_py_start = 'yes'
+</pre>
+<div class="stream-trailer block-trailer">End stream: tc_ub_test_py_start  </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one default var tc_ub_test_py_start  -->
+
+<!-- one default var tb_set_after_linux  -->
+<div class="stream block" id="var_config_tb_set_after_linux">
+<div class="stream-header block-header">tb_set_after_linux </div>
+<div class="stream-content block-content">
+<pre>
+tb_set_after_linux = ''
+</pre>
+<div class="stream-trailer block-trailer">End stream: tb_set_after_linux  </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one default var tb_set_after_linux  -->
+
+<!-- one default var tc_ub_upd_uboot_latest  -->
+<div class="stream block" id="var_config_tc_ub_upd_uboot_latest">
+<div class="stream-header block-header">tc_ub_upd_uboot_latest </div>
+<div class="stream-content block-content">
+<pre>
+tc_ub_upd_uboot_latest = 'no'
+</pre>
+<div class="stream-trailer block-trailer">End stream: tc_ub_upd_uboot_latest  </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one default var tc_ub_upd_uboot_latest  -->
+
+<!-- one default var tc_ub_upd_spl_latest  -->
+<div class="stream block" id="var_config_tc_ub_upd_spl_latest">
+<div class="stream-header block-header">tc_ub_upd_spl_latest </div>
+<div class="stream-content block-content">
+<pre>
+tc_ub_upd_spl_latest = 'no'
+</pre>
+<div class="stream-trailer block-trailer">End stream: tc_ub_upd_spl_latest  </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one default var tc_ub_upd_spl_latest  -->
 
 <div class="section-trailer block-trailer">Default Variables</div>
 <div class="status-pass">

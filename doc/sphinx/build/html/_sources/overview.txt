@@ -25,6 +25,8 @@ Usage
                           the tbot board configfilename
     -s LABFILE, --slabfile=LABFILE
                           the tbot lab configfilename
+    -a ARGUMENTS, --arguments=ARGUMENTS
+                          arguments for the testcase
     -l LOGFILE, --logfile=LOGFILE
                           the tbot logfilename, if default, tbot creates a
                           defaultnamelogfile
