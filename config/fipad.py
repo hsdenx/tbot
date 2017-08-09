@@ -29,11 +29,17 @@ setenv_name = 'Heiko'
 setenv_value = 'Schocher'
 ub_load_board_env_addr = '0x81000000'
 
-tc_lab_get_uboot_source_git_repo = '/home/hs/bosch_st/u-boot'
-tc_lab_get_uboot_source_git_branch = 'fipad-20160901-4'
+tc_lab_get_uboot_source_git_repo = "/home/git/u-boot.git"
+tc_lab_get_uboot_source_git_branch = "master"
+tc_lab_compile_uboot_export_path = '/home/hs/dtc'
 
-tc_lab_toolchain_rev = '5.4'
-tc_lab_toolchain_name = 'armv7a'
+tc_workfd_set_toolchain_arch = 'arm'
+tc_workfd_set_toolchain_t_p = {
+'arm' : '/opt/eldk-5.4/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-linux-gnueabi',
+}
+tc_workfd_set_toolchain_cr_co = {
+'arm' : 'arm-linux-gnueabi-',
+}
 
 ub_load_board_env_addr = '0x12000000'
 ub_load_board_env_subdir = 'tbot'

@@ -19,27 +19,33 @@
 
 from tbotlib import tbot
 
-#set board state for which the tc is valid
+# set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
-#delete old u-boot source tree
+# delete old u-boot source tree
 tb.eof_call_tc("tc_workfd_rm_uboot_code.py")
 
-#call get u-boot source
+# call get u-boot source
 tb.statusprint("get u-boot source")
 tb.eof_call_tc("tc_lab_get_uboot_source.py")
 
 tb.workfd = tb.c_ctrl
+tb.eof_call_tc("tc_workfd_goto_uboot_code.py")
+if tb.config.tc_lab_get_uboot_source_git_repo == '/home/git/u-boot.git':
+    tb.config.tc_workfd_apply_local_patches_dir = "/work/hs/tbot/patches/fipad_uboot_patches"
+    tb.config.tc_workfd_apply_local_patches_checkpatch_cmd_strict = "no"
+    tb.config.tc_workfd_apply_local_patches_checkpatch_cmd = 'scripts/checkpatch.pl'
+    tb.eof_call_tc("tc_workfd_apply_local_patches.py")
 
-#call set toolchain
+# call set toolchain
 tb.statusprint("set toolchain")
-tb.eof_call_tc("tc_lab_set_toolchain.py")
+tb.eof_call_tc("tc_workfd_set_toolchain.py")
 
-#call compile u-boot
+# call compile u-boot
 tb.statusprint("compile u-boot")
 tb.eof_call_tc("tc_lab_compile_uboot.py")
 
-#copy files to tbot dir
+# copy files to tbot dir
 tb.statusprint("copy files")
 c = tb.workfd
 so = "u-boot.bin"
@@ -89,7 +95,7 @@ tb.statusprint("u-boot test/py test")
 tb.eof_call_tc("tc_ub_test_py.py")
 """
 
-#save working u-boot bin
+# save working u-boot bin
 c = tb.workfd
 so = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot.bin"
 ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-latestworking.bin"
@@ -110,4 +116,6 @@ so = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_
 ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-latestworking-spl.System.map"
 tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
 
+# power off board at the end
+tb.eof_call_tc("tc_lab_poweroff.py")
 tb.end_tc(True)
