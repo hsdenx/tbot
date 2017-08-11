@@ -97,3 +97,18 @@ tc_lx_regulator_nrs = ['0 regulator-dummy -', '1 vdd1p1 1100000',
 
 tc_workfd_can_ssh = 'metis'
 tc_workfd_can_su = 'metis'
+
+# this is for the uboot usb tests
+# adapt this settings, as tehy fit for the usb stick
+# attached to the fipad board in the denx lab
+tc_uboot_usb_info_expect = [
+    'Hub,  USB Revision 2.0',
+    'Mass Storage,  USB Revision 2.0',
+    'SMI Corporation USB DISK AA04012900007453',
+    'Vendor: 0x090c  Product 0x1000 Version 17.0'
+]
+tc_board_fipad_uboot_ext2load_files = [
+    'test.bin',
+    'ub_usb_test1.bin',
+    'ub_usb_test2.bin'
+]

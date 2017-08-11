@@ -95,6 +95,9 @@ tb.statusprint("u-boot test/py test")
 tb.eof_call_tc("tc_ub_test_py.py")
 """
 
+# start usb tests
+tb.eof_call_tc("tc_board_fipad_ub_usb.py")
+
 # save working u-boot bin
 c = tb.workfd
 so = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot.bin"
