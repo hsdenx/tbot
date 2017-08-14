@@ -71,6 +71,8 @@ Please use 'git send- email' to send the generated patches to the ML to bypass c
 Installation
 ============
 
+For a more detailed guide (with special hw), see `Guide to use tbot`.
+
 install tbot on your PC (linux only tested):
 --------------------------------------------
 
