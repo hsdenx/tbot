@@ -281,15 +281,26 @@ or a ps file with
 
   $ dot -Tps tc.dot > tc.ps
 
+tbot install html backend
+-------------------------
+
+Enable the html backend in tbot
+
+.. image:: image/guide/guide_backend_html_enable.png
+
+start tbot and at the end, you have the new file "log/html_log.html"
+
+Simply open this html file with a broswer, and you should see the "nice log".
+
+! The html file nees the css style sheet file "log/multiplexed_tbotlog.css" file
 
 
-
-ToDo:
+tbot guide backend ToDo
+-----------------------
 
 - guide for setting up event backends
 
   - dashboard
-  - nice log
   - documentation
 
 - guide for using demo1 testcase
