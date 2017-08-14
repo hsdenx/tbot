@@ -205,6 +205,8 @@ Try a first small U-Boot testcase. Simply set an U-Boots Environment variable.
 .. image:: image/guide/guide_first_run.png
 
 If you want to see, what tbot is doing, enable the verbose "-v" option from tbot.
+See also hint `more readable verbose output`_.
+
 Also you can look into the logfile log/tbot.log (filename passed with tbots option "-l")
 
 If you get "set board state failure end" message
@@ -224,12 +226,68 @@ The default value is the new "=> " one ... so, edit the board config
 Now you can start with writting testcases for the beagleboneblack board,
 see `tbot write a testcase`_.
 
+tbot install statistic backend
+------------------------------
+
+install gnuplot on your labPC [5]. Installation see
+
+http://www.gnuplot.info/
+
+Used version in for this guide:
+
+.. image:: image/guide/guide_backend_statistic_gnuplotversion.png
+
+Enable the statistic backend in tbot
+
+.. image:: image/guide/guide_backend_statistic_enable.png
+
+run tbot and after tbot finsihed you got in tbot source dir the file
+"stat.dat". Simply call now gnuplot:
+
+::
+
+  hs@localhost:tbot  [master] $ gnuplot src/files/balkenplot.sem
+  hs@localhost:tbot  [master] $
+
+and find the output.jpg in tbot source dir.
+
+tbot install dot backend
+------------------------
+
+install dot on your labPC [5]. Installation see
+
+http://www.graphviz.org/Download..php
+
+Used version in for this guide:
+
+.. image:: image/guide/guide_backend_dot_version.png
+
+Enable the dot backend in tbot
+
+.. image:: image/guide/guide_backend_dot_enable.png
+
+Simply run now tbot and after tbot finshed you see the file
+"tc.dot" in tbot source directory.
+
+Create a png Image with
+
+::
+
+   $ dot -Tpng tc.dot > tc.png
+
+or a ps file with
+
+::
+
+  $ dot -Tps tc.dot > tc.ps
+
+
+
+
 ToDo:
 
 - guide for setting up event backends
 
-  - statistic
-  - dot
   - dashboard
   - nice log
   - documentation
@@ -265,3 +323,43 @@ rup_= read until prompt
 
 This functions reads until prompt. You do not need to
 wait for a prompt after this function finished.
+
+tbot Tips/Tricks/Hints
+======================
+
+more readable verbose output
+----------------------------
+
+tbot prints as fast the incoming characters in verbose mode as possible.
+
+This leads in more or less unreadable verbose output, if you want to
+follow what tbot does ... So add the following patch:
+
+::
+
+  hs@localhost:tbot  [master] $ git diff
+  diff --git a/src/common/tbot_connection_paramiko.py b/src/common/tbot_connection_paramiko.py
+  index b5bdd33..423d8f6 100644
+  --- a/src/common/tbot_connection_paramiko.py
+  +++ b/src/common/tbot_connection_paramiko.py
+  @@ -7,6 +7,7 @@ import logging
+   import paramiko
+   import socket
+   import traceback
+  +from time import sleep
+   
+   class Connection(object):
+     """ The connection class
+  @@ -83,6 +84,7 @@ class Connection(object):
+           """ get bytes from connection
+           """
+           try:
+  +            sleep(0.2)
+               tmp = self.channel.recv(self.maxread)
+           except socket.timeout:
+               logging.debug("read_bytes: Timeout")
+  hs@localhost:tbot  [master] $
+
+!! This slows down tbot !! Do not use it in "normal" test environment.
+
+
