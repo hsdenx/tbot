@@ -523,6 +523,38 @@ time.sleep(2)
 </div>
 <!-- end of one testcase src/tc/board/tc_board_fipad_ub_tests.py -->
 
+<!-- one testcase src/tc/board/tc_board_fipad_ub_usb.py -->
+<div class="stream block" id="src_tc_board_tc_board_fipad_ub_usb_py">
+<div class="stream-header block-header">src/tc/board/tc_board_fipad_ub_usb.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# python2.7 src/common/tbot.py -s lab_denx -c fipad -t <a href="#src_tc_board_tc_board_fipad_ub_usb_py">tc_board_fipad_ub_usb.py</a>
+#
+# do some simple usb test
+# - usb start
+# - usb info (check some output)
+# - list root dir on the stick
+#   (ext2 formatted stick)
+# - load test.bin from this partition with ext2load
+# - check if test.bin has the crc32 sum 0x2144df1c
+#
+# used vars:
+# <a href="#var_config_tc_uboot_usb_info_expect">tb.config.tc_uboot_usb_info_expect</a> = [
+#    'Hub,  USB Revision 2.0',
+#    'Mass Storage,  USB Revision 2.0',
+#    'SMI Corporation USB DISK AA04012900007453',
+#    'Vendor: 0x090c  Product 0x1000 Version 17.0'
+# ]
+# <a href="#var_config_tc_board_fipad_uboot_ext2load_files">tb.config.tc_board_fipad_uboot_ext2load_files</a> = ['test.bin']
+#   list of files which get load and crc32 tested
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/board/tc_board_fipad_ub_usb.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/board/tc_board_fipad_ub_usb.py -->
+
 <!-- one testcase src/tc/board/tc_board_fipad_upd_ub.py -->
 <div class="stream block" id="src_tc_board_tc_board_fipad_upd_ub_py">
 <div class="stream-header block-header">src/tc/board/tc_board_fipad_upd_ub.py</div>
@@ -3793,6 +3825,68 @@ time.sleep(2)
 </div>
 <!-- end of one testcase src/tc/uboot/tc_uboot_check_kconfig.py -->
 
+<!-- one testcase src/tc/uboot/tc_uboot_ext2load.py -->
+<div class="stream block" id="src_tc_uboot_tc_uboot_ext2load_py">
+<div class="stream-header block-header">src/tc/uboot/tc_uboot_ext2load.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# python2.7 src/common/tbot.py -s lab_denx -c fipad -t <a href="#src_tc_uboot_tc_uboot_ext2load_py">tc_uboot_ext2load.py</a>
+#
+# load a file from ext2 into ram with ext2ls cmd.
+# check if the file has crc32 checksum 0x2144df1c
+#
+# How to create such a file, which has crc32 checksum of 0x2144df1c ?
+#
+# $ dd if=/dev/urandom of=test.bin bs=1M count=1
+# $ crc32 test.bin
+# 4f3fef33
+# $ perl -e 'print pack "H*", "33ef3f4f"' >> test.bin
+# $ crc32 test.bin
+# 2144df1c
+#
+# <a href="https://stackoverflow.com/questions/28591991/crc32-of-already-crc32-treated-data-with-the-crc-data-appended">https://stackoverflow.com/questions/28591991/crc32-of-already-crc32-treated-data-with-the-crc-data-appended</a>
+#
+# !! Don;t forget Big into little endian conversion
+#
+# used vars:
+# <a href="#_tc_uboot_ext2load_interface">tc_uboot_ext2load_interface</a> = 'usb'
+# <a href="#_tc_uboot_ext2load_dev">tc_uboot_ext2load_dev</a> = '0:1'
+# <a href="#_tc_uboot_ext2load_addr">tc_uboot_ext2load_addr</a> = '10000000'
+# <a href="#_tc_uboot_ext2load_file">tc_uboot_ext2load_file</a> = '/test.bin'
+# <a href="#_tc_uboot_ext2load_check">tc_uboot_ext2load_check</a> = 'no'
+#   if 'yes' check if the file <a href="#_tc_uboot_ext2load_file">tc_uboot_ext2load_file</a>
+#   has the checksum 0x2144df1c
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/uboot/tc_uboot_ext2load.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/uboot/tc_uboot_ext2load.py -->
+
+<!-- one testcase src/tc/uboot/tc_uboot_ext2ls.py -->
+<div class="stream block" id="src_tc_uboot_tc_uboot_ext2ls_py">
+<div class="stream-header block-header">src/tc/uboot/tc_uboot_ext2ls.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# python2.7 src/common/tbot.py -s lab_denx -c fipad -t <a href="#src_tc_uboot_tc_uboot_ext2ls_py">tc_uboot_ext2ls.py</a>
+#
+# simply call ext2ls
+#
+# used vars:
+# <a href="#var_config_tc_uboot_ext2ls_expect">tb.config.tc_uboot_ext2ls_expect</a> = ['lost+found']
+#   strings we expect from the ext2ls command
+# <a href="#var_config_tc_uboot_ext2ls_interface">tb.config.tc_uboot_ext2ls_interface</a> = 'usb'
+# <a href="#var_config_tc_uboot_ext2ls_dev">tb.config.tc_uboot_ext2ls_dev</a> = '0:1'
+# <a href="#var_config_tc_uboot_ext2ls_dir">tb.config.tc_uboot_ext2ls_dir</a> = '/'
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/uboot/tc_uboot_ext2ls.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/uboot/tc_uboot_ext2ls.py -->
+
 <!-- one testcase src/tc/uboot/tc_uboot_get_arch.py -->
 <div class="stream block" id="src_tc_uboot_tc_uboot_get_arch_py">
 <div class="stream-header block-header">src/tc/uboot/tc_uboot_get_arch.py</div>
@@ -3837,6 +3931,45 @@ time.sleep(2)
 </div>
 </div>
 <!-- end of one testcase src/tc/uboot/tc_uboot_load_bin_with_kermit.py -->
+
+<!-- one testcase src/tc/uboot/tc_uboot_usb_info.py -->
+<div class="stream block" id="src_tc_uboot_tc_uboot_usb_info_py">
+<div class="stream-header block-header">src/tc/uboot/tc_uboot_usb_info.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# python2.7 src/common/tbot.py -s lab_denx -c fipad -t <a href="#src_tc_uboot_tc_uboot_usb_info_py">tc_uboot_usb_info.py</a>
+#
+# call "usb info" command
+#
+# used vars:
+# <a href="#var_config_tc_uboot_usb_info_expect">tb.config.tc_uboot_usb_info_expect</a> = ['Hub,  USB Revision 2.0',
+#    'Mass Storage,  USB Revision 2.0']
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/uboot/tc_uboot_usb_info.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/uboot/tc_uboot_usb_info.py -->
+
+<!-- one testcase src/tc/uboot/tc_uboot_usb_start.py -->
+<div class="stream block" id="src_tc_uboot_tc_uboot_usb_start_py">
+<div class="stream-header block-header">src/tc/uboot/tc_uboot_usb_start.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# python2.7 src/common/tbot.py -s lab_denx -c fipad -t <a href="#src_tc_uboot_tc_uboot_usb_start_py">tc_uboot_usb_start.py</a>
+#
+# call "usb start" command
+#
+# used vars:
+# <a href="#var_config_tc_uboot_usb_start_expect">tb.config.tc_uboot_usb_start_expect</a> = ['Storage Device(s) found']
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/uboot/tc_uboot_usb_start.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/uboot/tc_uboot_usb_start.py -->
 
 <div class="section-trailer block-trailer">src/tc/uboot</div>
 <div class="status-pass">
