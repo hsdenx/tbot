@@ -497,6 +497,8 @@ testcase. You need to setup your specific relay settings in
 
 https://github.com/hsdenx/tbot/blob/master/src/tc/linux/relay/tc_linux_relay_get_config.py
 
+.. image:: image/guide/guide_relais_get_config_explained.png
+
 input is state/port, so all your usb relays you use in your vlab, must
 have unique port numbers ! No problem, as you can define them in this file.
 
