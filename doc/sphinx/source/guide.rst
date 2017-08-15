@@ -55,6 +55,13 @@ install gembird software
 
 http://sispmctl.sourceforge.net/
 
+install kermit
+--------------
+
+use a package manager for this jog, or download source from here:
+
+http://www.columbia.edu/kermit/ckuins.html
+
 
 get the tbot source code:
 -------------------------
@@ -165,8 +172,8 @@ and start tbot:
 .. image:: image/guide/guide_sispmctl_fasttest.png
 
 
-Setup the console
------------------
+You should see on the Gembird controller the respective port going
+on and off.
 
 Now, we want to setup the console, so remove the line
 
@@ -175,6 +182,10 @@ Now, we want to setup the console, so remove the line
   do_connect_to_board = False
 
 in "config/lab_hs_laptop.py"
+
+
+Setup the console
+-----------------
 
 attach the USB2serial [3] cable to your USB port on [5]
 
