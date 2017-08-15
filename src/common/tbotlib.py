@@ -87,8 +87,7 @@ def tb_call_tc(func):
             logging.info("End with calling fkt %s ret: %d", fname, tb._ret)
         except Exception as error:
             ret = tb._ret
-            l = logging.getLogger()
-            l.exception(error)
+            tb.log.exception(error)
             logging.info("End with exception calling fkt %s ret: %d", fname, tb._ret)
             name = tb.tc_stack.pop()
             #traceback.print_stack()
@@ -202,19 +201,18 @@ class tbot(object):
             logformat = '%(asctime)s:%(levelname)-7s:%(module)-10s# %(message)s'
 
         logging.basicConfig(format=logformat, filename=self.logfilen, filemode='w')
-        l = logging.getLogger()
-        l.setLevel(self.config.loglevel)
+        self.log = logging.getLogger()
+        self.log.setLevel(self.config.loglevel)
         logging.info("*****************************************")
         logging.info('Started logging @  %s', now.strftime("%Y-%m-%d %H:%M"))
         logging.info('working directory %s', self.workdir)
         logging.info('testcase directory %s', self.tc_dir)
 
-	self.logroot = logging.getLogger()
 	self.logstdout = logging.StreamHandler(sys.stdout)
 	self.logstdout.setLevel(logging.WARNING)
 	formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 	self.logstdout.setFormatter(formatter)
-	self.logroot.addHandler(self.logstdout)
+	self.log.addHandler(self.logstdout)
 
         sys.path.append(self.workdir)
 
