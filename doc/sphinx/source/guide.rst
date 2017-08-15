@@ -2,8 +2,6 @@
 Guide to use tbot
 =================
 
-A
-
 This is a small guide of how to use tbot when starting from scratch.
 
 When reading this section, you get a step by step introduction how to use tbot with a beagleboneblack and a
@@ -58,7 +56,7 @@ http://sispmctl.sourceforge.net/
 install kermit
 --------------
 
-use a package manager for this jog, or download source from here:
+use a package manager for this job, or download source from here:
 
 http://www.columbia.edu/kermit/ckuins.html
 
