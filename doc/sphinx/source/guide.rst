@@ -421,7 +421,7 @@ I connected the bootmode selection pins from the bbb to port 1 of the usb relay
 
 Now testing the bootmode with
 
-USB relay off -> boot from SD card
+USB relay off -> boot from internal emmc
 
 ::
 
@@ -430,7 +430,7 @@ USB relay off -> boot from SD card
   state: 0 mask: 15
   [root@localhost simple]#
 
-USB relay on -> boot from internal emmc
+USB relay on -> boot from SD card
 
 ::
 
@@ -461,6 +461,7 @@ Off
 
 .. image:: image/guide/guide_relais_set_off.png
 
+On the console you should see how U-Boot boots from different boot media.
 
 tbot write a testcase
 =====================
