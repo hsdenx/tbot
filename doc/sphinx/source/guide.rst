@@ -70,6 +70,10 @@ cd into the tbot directory.
 try ssh access to your LabPC
 ----------------------------
 
+first we test, if we can ssh to our PC [5]. As we use [5] as Host and LabPC
+this should work, but we test it. Find out the ip or host name of your machine
+and ssh to it, for me this looked like:
+
 .. image:: image/guide/ssh_shell.png
 
 copy some existing lab config to your new config
@@ -194,7 +198,7 @@ In our case the USB cable is on /dev/ttyUSB0, so add this value in
 
 .. image:: image/guide/guide_serial_setup_edit.png
 
-Be sure you have installeed kermit and have the correct access rights
+Be sure you have installed kermit and have the correct access rights
 to access the serial port!
 
 You can test this with:
@@ -298,7 +302,7 @@ start tbot and at the end, you have the new file "log/html_log.html"
 
 Simply open this html file with a broswer, and you should see the "nice log".
 
-! The html file nees the css style sheet file "log/multiplexed_tbotlog.css" file
+! The html file needs the css style sheet file "log/multiplexed_tbotlog.css" file
 
 
 tbot guide backend ToDo
@@ -316,9 +320,9 @@ tbot guide backend ToDo
 tbot switch bootmodes on the beagleboneblack
 --------------------------------------------
 
-Buy a relais, for this guide I use [4]
+Buy a relay, for this guide I use [4]
 
-connect the USB relais to your LabPC and check dmesg
+connect the USB relay to your LabPC and check dmesg
 
 ::
 
@@ -338,7 +342,7 @@ connect the USB relais to your LabPC and check dmesg
 
 install drivers:
 
-Ok, this relais is very bad. It comes with no documentation at all :-(
+Ok, this relay is very bad. It comes with no documentation at all :-(
 
 First I had to install pyusb:
 
@@ -348,46 +352,48 @@ than the pyrelayctl tool from
 
 https://github.com/xypron/pyrelayctl/tree/master
 
-and I can access the relais
+and I can access the relay
 
-list all usb relais devices
+list all usb relay devices
 
 .. image:: image/guide/guide_relais_list_devices.png
 
-switch usb relais off
+switch usb relay off
 
 .. image:: image/guide/guide_relais_off.png
 
-switch usb relais on
+switch usb relay on
 
 .. image:: image/guide/guide_relais_on.png
 
 
 but this does works only with python3
-some reasons on my laptop this will not work ...
+for some reasons on my laptop this will not work ... :-(
 
-Ok, next try ... using libftdi:
-
-For some reason, there is a jumper on the board, but not connected when I got my relais card.
+Also, there is a jumper on the board, but not connected when I got my relay card.
 After attaching a cable
 
 .. image:: image/guide/guide_relais_jumper_small.jpg
 
 the LED is now working, which indicates the state of the
-relais ... I can see the led going on/off when issuing the
-cmd, but the relais is not really working ... damn ...
+relays ... I can see the led going on/off when issuing the
+cmd, but the relays is not really working ... damn ...
 
 Okay, after one more frustrating day, I found the issue ... I have the 12V
 one, not the 5V one ... the relays on my board need an external 12V power unit.
 
 After connecting such a 12V power unit it works :-D
 
+Ok, as python3 does not really work on my laptop, try libftdi:
+
 You find my (not very nice) source code for using this relay under linux
 
-needs libftdi installed:
+https://github.com/hsdenx/tbot/blob/master/src/files/relay/simple.c
+
+This needs libftdi installed:
 http://www.ftdichip.com/Drivers/D2XX.htm
 
-https://github.com/hsdenx/tbot/blob/master/src/files/relay/simple.c
+and the simple.c code is based on the examples which comes with libftdi.
 
 compile it with:
 
