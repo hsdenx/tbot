@@ -313,13 +313,63 @@ Simply open this html file with a broswer, and you should see the "nice log".
 
 ! The html file needs the css style sheet file "log/multiplexed_tbotlog.css" file
 
+tbot install dashboard
+----------------------
+
+Enable dashboard for the bbb:
+
+.. image:: image/guide/guide_backend_dashboard_enable.png
+
+create in database tbot_root a table for tbot with
+
+::
+
+  $ mysql tbot_root -u tbot -p  < src/files/mysql/tbot_root.sql
+  Enter password: 
+  $
+
+If you want to use another name for the database, replace "tbot_root"
+with the name you use. In this case, also edit
+
+https://github.com/hsdenx/tbot/blob/master/src/common/tbot_event.py
+
+the line:
+
+::
+
+  self.dashboard = dashboard(self.tb, 'localhost', 'tbot', 'tbot', 'tbot_root', 'tbot_results')
+
+replace "tbot_root" with the name you use. Also, if you have other user / password
+settings adapt them in this line.
+
+Now you should see after tbot finished a new entry in your database.
+
+A simple php script, which you can open in a webbroser:
+
+https://github.com/hsdenx/tbot/blob/master/src/dashboard/read_db.php
+
+edit your database settings in the file:
+
+https://github.com/hsdenx/tbot/blob/master/src/dashboard/konfiguration.php
+
+The dashboard event backend expect the webservers root dir in
+
+"/var/www/html"
+
+If this is not the case for you, edit
+
+https://github.com/hsdenx/tbot/blob/master/src/common/event/dashboard.py
+
+the variable "self.webdir" (and send a patch, which makes this configurable)
+
+Copy the read_db.php and konfiguration.php script into your webservers
+root dir (the setting from self.webdir)
+
 
 tbot guide backend ToDo
 -----------------------
 
 - guide for setting up event backends
-
-  - dashboard
   - documentation
 
 - guide for using demo1 testcase
