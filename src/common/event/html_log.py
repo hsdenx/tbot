@@ -286,6 +286,8 @@ class html_log(object):
                     loglin = el['val']
                     if loglin.startswith("r "):
                         ctrlog += loglin[2:]
+                    if loglin.startswith("re "):
+                        ctrlog += loglin[3:]
                 if el['fname'] == 'tb_canm':
                     loglin = el['val']
                     if loglin.startswith("r "):
