@@ -83,19 +83,19 @@ def tb_call_tc(func):
         #       for entry in zip(argnames,args) + kwargs.items())
         try:
             ret = func(*args, **kwargs)
-            ret = tb._ret
+            tb._ret = ret
+            logging.info("End with calling fkt %s ret: %d", fname, tb._ret)
         except Exception as error:
+            ret = tb._ret
             l = logging.getLogger()
             l.exception(error)
             logging.info("End with exception calling fkt %s ret: %d", fname, tb._ret)
-            ret = tb._ret
             name = tb.tc_stack.pop()
             #traceback.print_stack()
             #sys.exit(1)
         tb._main -= 1
         tb.event.create_event(pfname, fname, "End", ret)
         logging.info("*****************************************")
-        logging.info("End with calling fkt %s ret: %d", fname, ret)
         return ret
 
     return echo_func
@@ -517,6 +517,7 @@ class tbot(object):
             name = self.tc_stack.pop()
             if 'callfkt_' in name:
                 logging.info('End of Fkt: %s %d', name, self._ret)
+                # sys.exit(0)
                 return self._ret
 
             if self._ret:
