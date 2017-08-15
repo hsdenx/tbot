@@ -15,7 +15,7 @@ and execute testcases on the new bootet images.
 Sources are hosted at https://github.com/hsdenx/tbot
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    overview.rst
    principles.rst
@@ -26,7 +26,7 @@ Guide
 ############################################
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    guide.rst
 
@@ -35,7 +35,7 @@ Roadmap
 ############################################
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    roadmap.rst
 
@@ -44,7 +44,7 @@ flyer / presentations
 ############################################
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    flyer.rst
 
@@ -54,7 +54,7 @@ tbot documentation
 ############################################
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    tbotlib
    event_backends
@@ -66,7 +66,7 @@ older versions of documentation
 ############################################
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    old_doc.rst
 

@@ -2,6 +2,8 @@
 Guide to use tbot
 =================
 
+A
+
 This is a small guide of how to use tbot when starting from scratch.
 
 When reading this section, you get a step by step introduction how to use tbot with a beagleboneblack and a
@@ -24,7 +26,11 @@ Buy the following hw
 
 If you want to switch bootmodes, buy an USB relais
 
-[4]
+[4] USB Relais
+    https://www.sainsmart.com/sainsmart-4-channel-5v-usb-relay-board-module-controller-for-automation-robotics.html
+
+    be sure you get the 5V one, not as I the 12V one. With the 12V one you need
+    12V external power ...
 
 Remark: you do not need to use/buy this specific hw, for getting tbot running, but it is used in this example.
 
@@ -307,6 +313,140 @@ tbot guide backend ToDo
 
   https://github.com/hsdenx/tbot/blob/master/src/tc/demo/tc_demo_part1.py
 
+tbot switch bootmodes on the beagleboneblack
+--------------------------------------------
+
+Buy a relais, for this guide I use [4]
+
+connect the USB relais to your LabPC and check dmesg
+
+::
+
+  [18797.469787] usb 1-4.3: new full-speed USB device number 12 using xhci_hcd
+  [18797.549695] usb 1-4.3: New USB device found, idVendor=0403, idProduct=6001
+  [18797.549700] usb 1-4.3: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+  [18797.549703] usb 1-4.3: Product: FT245R USB FIFO
+  [18797.549705] usb 1-4.3: Manufacturer: FTDI
+  [18797.549707] usb 1-4.3: SerialNumber: AI0537VO
+  [18798.736452] usbcore: registered new interface driver ftdi_sio
+  [18798.736501] usbserial: USB Serial support registered for FTDI USB Serial Device
+  [18798.736622] ftdi_sio 1-4.3:1.0: FTDI USB Serial Device converter detected
+  [18798.736722] usb 1-4.3: Detected FT232RL
+  [18798.738260] usb 1-4.3: FTDI USB Serial Device converter now attached to ttyUSB1
+  hs@localhost:tbot  [master] $
+
+
+install drivers:
+
+Ok, this relais is very bad. It comes with no documentation at all :-(
+
+First I had to install pyusb:
+
+https://github.com/walac/pyusb
+
+than the pyrelayctl tool from
+
+https://github.com/xypron/pyrelayctl/tree/master
+
+and I can access the relais
+
+list all usb relais devices
+
+.. image:: image/guide/guide_relais_list_devices.png
+
+switch usb relais off
+
+.. image:: image/guide/guide_relais_off.png
+
+switch usb relais on
+
+.. image:: image/guide/guide_relais_on.png
+
+
+but this does works only with python3
+some reasons on my laptop this will not work ...
+
+Ok, next try ... using libftdi:
+
+For some reason, there is a jumper on the board, but not connected when I got my relais card.
+After attaching a cable
+
+.. image:: image/guide/guide_relais_jumper_small.jpg
+
+the LED is now working, which indicates the state of the
+relais ... I can see the led going on/off when issuing the
+cmd, but the relais is not really working ... damn ...
+
+Okay, after one more frustrating day, I found the issue ... I have the 12V
+one, not the 5V one ... the relays on my board need an external 12V power unit.
+
+After connecting such a 12V power unit it works :-D
+
+You find my (not very nice) source code for using this relay under linux
+
+needs libftdi installed:
+http://www.ftdichip.com/Drivers/D2XX.htm
+
+https://github.com/hsdenx/tbot/blob/master/src/files/relay/simple.c
+
+compile it with:
+
+::
+
+  $ gcc -o simple simple.c -L. -lftd2xx -Wl,-rpath /usr/local/lib
+  $
+
+usage:
+
+./simple [state] [mask]
+
+I connected the bootmode selection pins from the bbb to port 1 of the usb relay
+
+.. image:: image/guide/guide_relais_bbb.jpg
+
+Now testing the bootmode with
+
+USB relay off -> boot from SD card
+
+::
+
+  [root@localhost simple]# /home/hs/Software/usbrelais/src/simple 0 15
+  Device 0 Serial Number - AI0537VO
+  state: 0 mask: 15
+  [root@localhost simple]#
+
+USB relay on -> boot from internal emmc
+
+::
+
+  [root@localhost simple]# /home/hs/Software/usbrelais/src/simple 1 15
+  Device 0 Serial Number - AI0537VO
+  state: 1 mask: 15
+  [root@localhost simple]#
+
+Now we can try this with the 
+
+https://github.com/hsdenx/tbot/blob/master/src/tc/linux/relay/tc_linux_relay_set.py
+
+testcase. You need to setup your specific relay settings in
+
+https://github.com/hsdenx/tbot/blob/master/src/tc/linux/relay/tc_linux_relay_get_config.py
+
+input is state/port, so all your usb relays you use in your vlab, must
+have unique port numbers ! No problem, as you can define them in this file.
+
+In my setting above, I have connected port 1, so I can switch port state
+with tbot:
+
+On
+
+.. image:: image/guide/guide_relais_set_on.png
+
+Off
+
+.. image:: image/guide/guide_relais_set_off.png
+
+
 tbot write a testcase
 =====================
 
@@ -372,5 +512,68 @@ follow what tbot does ... So add the following patch:
   hs@localhost:tbot  [master] $
 
 !! This slows down tbot !! Do not use it in "normal" test environment.
+
+usb serial adapter fix device names
+-----------------------------------
+
+If you have more than one serial adapter you have the problem, that the
+ttyUSB* device names change from boot to boot ...
+
+To solve this problem use a udev rule.
+
+Check the Vendor/Product ID with lsusb:
+
+::
+
+  [root@localhost]# lsusb
+  Bus 003 Device 002: ID 8087:8000 Intel Corp. 
+  Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+  Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+  Bus 001 Device 004: ID 1bcf:2c6e Sunplus Innovation Technology Inc. 
+  Bus 001 Device 005: ID 0489:e078 Foxconn / Hon Hai 
+  Bus 001 Device 014: ID 0403:6001 Future Technology Devices International, Ltd FT232 USB-Serial (UART) IC
+  Bus 001 Device 009: ID 04b4:fd13 Cypress Semiconductor Corp. Programmable power socket
+  Bus 001 Device 015: ID 067b:2303 Prolific Technology, Inc. PL2303 Serial Port
+  Bus 001 Device 007: ID 05e3:0610 Genesys Logic, Inc. 4-port hub
+  Bus 001 Device 006: ID 046d:c52b Logitech, Inc. Unifying Receiver
+  Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+  [root@localhost]# 
+
+The serial adapter in my system has the Vendor/Product ID "067b:2303".
+
+For distingushing between more than one adapter, we need an unique number
+for each adapter ... hopefully your adapters have such a number, in my
+example I use the serial number.
+
+read the number for each /dev/ttyUSB* device with the help of the udevadm cmd:
+
+::
+
+  [root@localhost]# udevadm info -a -n /dev/ttyUSB1 | grep '{serial}' | head -n1
+      ATTRS{serial}=="A6008isP"
+  [root@localhost]# 
+
+Now we can create an udev rules for it, so each serial dapter can get his
+own device.
+
+create a "/etc/udev/rules.d/99-usb-serial.rules" and put the follwoing line there:
+
+::
+
+  SUBSYSTEM=="tty", ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", ATTRS{serial}=="A6008isP", SYMLINK+="ttybbb"
+
+
+Test the new rule with
+
+::
+
+  $ udevadm test $(udevadm info -q path -n /dev/ttyUSB1) 2>&1
+
+You should see now a new device "/dev/ttybbb" ...
+
+More to udev rules:
+
+https://wiki.archlinux.org/index.php/udev
+
 
 
