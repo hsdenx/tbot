@@ -33,7 +33,7 @@ from tbotlib import tb_call_tc
 @tb_call_tc
 def tc_linux_relay_get_config(tb, port, state):
     tb.log.info("setup port %s state %s." % (port, state))
-    if port == '1':
+    if port == 'bbb_bootmode':
         tb.config.tc_linux_relay_set_tc = 'tc_linux_relay_simple_set.py'
         tb.config.tc_linux_relay_simple_set_sudo = 'yes'
         tb.config.tc_linux_relay_simple_set_cmd = '/home/hs/Software/usbrelais/src/simple '
