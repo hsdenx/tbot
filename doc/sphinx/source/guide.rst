@@ -500,7 +500,7 @@ https://github.com/hsdenx/tbot/blob/master/src/tc/linux/relay/tc_linux_relay_get
 .. image:: image/guide/guide_relais_get_config_explained.png
 
 input is state/port, so all your usb relays you use in your vlab, must
-have unique port numbers ! No problem, as you can define them in this file.
+have unique port strings! No problem, as you can define them in this file.
 
 In my setting above, I have connected port 1, so I can switch port state
 with tbot:
