@@ -505,11 +505,11 @@ have unique port numbers ! No problem, as you can define them in this file.
 In my setting above, I have connected port 1, so I can switch port state
 with tbot:
 
-On
+SD
 
 .. image:: image/guide/guide_relais_set_on.png
 
-Off
+emmc
 
 .. image:: image/guide/guide_relais_set_off.png
 

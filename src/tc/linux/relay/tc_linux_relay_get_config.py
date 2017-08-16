@@ -37,7 +37,7 @@ def tc_linux_relay_get_config(tb, port, state):
         tb.config.tc_linux_relay_set_tc = 'tc_linux_relay_simple_set.py'
         tb.config.tc_linux_relay_simple_set_sudo = 'yes'
         tb.config.tc_linux_relay_simple_set_cmd = '/home/hs/Software/usbrelais/src/simple '
-        if state == 'on':
+        if state == 'sd':
             tb.config.tc_linux_relay_simple_set_cmd += '1 1'
         else:
             tb.config.tc_linux_relay_simple_set_cmd += '0 1'
