@@ -89,18 +89,22 @@ h2 {
 
 h3 {
   font-size: 200%;
+  text-decoration: underline;
 }
 
 h4 {
   font-size: 180%;
+  text-decoration: underline;
 }
 
 h5 {
   font-size: 170%;
+  text-decoration: underline;
 }
 
 h6 {
   font-size: 150%;
+  text-decoration: underline;
 }
 
 a.headerlink {
