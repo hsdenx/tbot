@@ -536,7 +536,6 @@ I connected the bootmode selection pins from the bbb to port 1 of the usb relay
 
 .. image:: image/guide/guide_relais_bbb.jpg
 
-In off state the
 Now testing the bootmode with
 
 USB relay off -> boot from internal emmc
