@@ -370,11 +370,78 @@ tbot guide backend ToDo
 -----------------------
 
 - guide for setting up event backends
+
   - documentation
 
-- guide for using demo1 testcase
+tbot compile, install U-Boot on the bbb
+---------------------------------------
 
-  https://github.com/hsdenx/tbot/blob/master/src/tc/demo/tc_demo_part1.py
+This section describes, what you must do, for setting up to start testcase:
+
+https://github.com/hsdenx/tbot/blob/master/src/tc/demo/tc_demo_part1.py
+
+which does:
+
+- get current mainline u-boot code
+- configure, compile it for the bbb
+- install the resulting binary on the bbb
+- do a small u-boot help command test
+
+prerequisite:
+
+- git must be installed on your LabPC
+- you need an installed cross toolchain on your LabPC
+- running tftp server on your LabPC
+
+setup working directory for tbot on the LabPC:
+
+edit in config/lab_hs_laptop.py
+
+.. image:: image/guide/guide_demo1_lab_config.png
+
+I hope the names are self explaining. Simple set here, which
+directories tbot uses on your LabPC.
+
+Edit in this file also the settings for your tftp server and
+the ip config in U-Boot for your beagleboneblack:
+
+.. image:: image/guide/guide_demo1_lab_config_tftpserver.png
+
+set the toolchain you want to use for compiling U-Boot.
+
+Edit config/beagleboneblack.py
+
+.. image:: image/guide/guide_demo1_toolchain.png
+
+create in your tftpdirectory a subdirectory "beagleboneblack/tbot"
+
+copy the U-Boot Environment file from 
+
+https://github.com/hsdenx/tbot/blob/master/src/files/uboot_env/beagleboneblack.env
+
+into your tftp directory "beagleboneblack/tbot". May you need to adapt
+the values mlofile and ubfile:
+
+.. image:: image/guide/guide_demo1_uboot_env_comment.png
+
+
+tbot copies the results from the build into it. After a successfull
+tbot run, this looks for me:
+
+.. image:: image/guide/guide_demo1_lab_tftpdir_result.png
+
+Now you are ready to start tbot:
+
+.. image:: image/guide/guide_demo1_tbot_run.png
+
+You see the status output, which is default enabled for the
+beagleboneblack. If you do not want to see this messages you
+can disable them in the file config/beagleboneblack.py
+
+.. image:: image/guide/guide_demo1_disable_statusprintf.png
+
+The messages "ERROR - TC ends without prompt read" you can ignore,
+as we issue 2 times a reset to the board. If I find time, I fix this.
 
 tbot switch bootmodes on the beagleboneblack
 --------------------------------------------
@@ -469,6 +536,7 @@ I connected the bootmode selection pins from the bbb to port 1 of the usb relay
 
 .. image:: image/guide/guide_relais_bbb.jpg
 
+In off state the
 Now testing the bootmode with
 
 USB relay off -> boot from internal emmc
