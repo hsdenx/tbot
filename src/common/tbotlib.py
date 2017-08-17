@@ -941,7 +941,7 @@ class tbot(object):
         ret = self.eof_write(self.c_con, string, start)
         return True
   
-    def eof_write_cmd(self, c, command, start=True):
+    def eof_write_cmd(self, c, command, start=True, create_doc_event=False):
         """write a command to fd, wait for prompt
 
         - **parameters**, **types**, **return** and **return types**::
@@ -951,11 +951,13 @@ class tbot(object):
         cmdstring.
         :return: True if prompt read, else end testcase with False
         """
+        if create_doc_event == True:
+            self.event.create_event('main', 'eof_write_cmd', 'SET_DOC_FILENAME', command.replace(" ", "_"))
         self.eof_write(c, command, start)
         self.tbot_expect_prompt(c)
         return True
 
-    def eof_write_cmd_list(self, c, cmdlist, start=True):
+    def eof_write_cmd_list(self, c, cmdlist, start=True, create_doc_event=False):
         """send a list of cmd to fd and wait for end
 
         - **parameters**, **types**, **return** and **return types**::
@@ -966,7 +968,7 @@ class tbot(object):
         :return: True if prompt found else endtestcase with False
         """
         for tmp_cmd in cmdlist:
-            self.eof_write_cmd(c, tmp_cmd, start)
+            self.eof_write_cmd(c, tmp_cmd, start, create_doc_event)
 
     def write_lx_cmd_check(self, c, command, endTC=True, start=True):
         """write a linux command to console.
@@ -1061,7 +1063,7 @@ class tbot(object):
             return True
         self.end_tc(False)
 
-    def write_cmd_check(self, c, cmd, string, start=True):
+    def write_cmd_check(self, c, cmd, string, start=True, create_doc_event=False):
         """send a cmd and check if a string is read.
 
         - **parameters**, **types**, **return** and **return types**::
@@ -1073,6 +1075,8 @@ class tbot(object):
         :return: True if prompt and string is read
         else False
         """
+        if create_doc_event == True:
+            self.event.create_event('main', 'write_cmd_check', 'SET_DOC_FILENAME', cmd.replace(" ", "_"))
         self.eof_write(c, cmd, start)
         searchlist = [string]
         tmp = True

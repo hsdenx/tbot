@@ -37,7 +37,7 @@ cmdlist = [
 ]
 
 c = tb.c_con
-tb.eof_write_cmd_list(c, cmdlist)
+tb.eof_write_cmd_list(c, cmdlist, create_doc_event=True)
 
 cmd = "version"
 tb.eof_write(c, cmd)

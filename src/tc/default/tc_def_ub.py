@@ -30,7 +30,7 @@ except AttributeError:
 try:
     tb.config.tc_ub_tftp_path
 except AttributeError:
-    tmp = '/tftpboot/' + tb.config.tftpboardname + '/' + tb.config.ub_load_board_env_subdir
+    tmp = tb.config.tftpboardname + '/' + tb.config.ub_load_board_env_subdir
     tb.config.__dict__.update({'tc_ub_tftp_path' : tmp})
 
 try:

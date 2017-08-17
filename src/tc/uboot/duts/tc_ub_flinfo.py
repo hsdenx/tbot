@@ -28,5 +28,5 @@ cmdlist = [
 "flinfo",
 ]
 
-tb.eof_write_cmd_list(tb.c_con, cmdlist)
+tb.eof_write_cmd_list(tb.c_con, cmdlist, create_doc_event=True)
 tb.end_tc(True)
