@@ -1574,6 +1574,90 @@ time.sleep(2)
 </pre>
 </div>
 
+<!-- a testcase dir src_tc_linux_relay -->
+<div class="section block" id="src/tc/linux/relay">
+<div class="section-header block-header-dir">src/tc/linux/relay</div>
+<div class="section-content block-content">
+<div class="action">
+<pre>
+</pre>
+</div>
+
+<!-- one testcase src/tc/linux/relay/tc_linux_relay_get_config.py -->
+<div class="stream block" id="src_tc_linux_relay_tc_linux_relay_get_config_py">
+<div class="stream-header block-header">src/tc/linux/relay/tc_linux_relay_get_config.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# python2.7 src/common/tbot.py -c tbot.cfg -t <a href="#src_tc_linux_relay_tc_linux_relay_get_config_py">tc_linux_relay_get_config.py</a>
+# get relay tbot configuration
+#
+# input:
+# <a href="#var_config_tc_linux_relay_set_port">tb.config.tc_linux_relay_set_port</a>
+# <a href="#var_config_tc_linux_relay_set_state">tb.config.tc_linux_relay_set_state</a>
+#
+# output:
+# <a href="#var_config_tc_linux_relay_set_tc">tb.config.tc_linux_relay_set_tc</a>
+#   testcase which gets called for setting relay port  with state state
+# also set the config variables for <a href="#var_config_tc_linux_relay_set_tc">tb.config.tc_linux_relay_set_tc</a>
+# accordingly.
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/linux/relay/tc_linux_relay_get_config.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/linux/relay/tc_linux_relay_get_config.py -->
+
+<!-- one testcase src/tc/linux/relay/tc_linux_relay_set.py -->
+<div class="stream block" id="src_tc_linux_relay_tc_linux_relay_set_py">
+<div class="stream-header block-header">src/tc/linux/relay/tc_linux_relay_set.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# python2.7 src/common/tbot.py -c tbot.cfg -t <a href="#src_tc_linux_relay_tc_linux_relay_set_py">tc_linux_relay_set.py</a>
+# set relay port <a href="#var_config_tc_linux_relay_set_port">tb.config.tc_linux_relay_set_port</a> to state
+# <a href="#var_config_tc_linux_relay_set_state_">tb.config.tc_linux_relay_set_state.</a>
+#
+# you need to adapt <a href="#_tc_linux_relay_get_config_py,">tc_linux_relay_get_config.py,</a> which does
+# the mapping from port/state to your specific lab settings.
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/linux/relay/tc_linux_relay_set.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/linux/relay/tc_linux_relay_set.py -->
+
+<!-- one testcase src/tc/linux/relay/tc_linux_relay_simple_set.py -->
+<div class="stream block" id="src_tc_linux_relay_tc_linux_relay_simple_set_py">
+<div class="stream-header block-header">src/tc/linux/relay/tc_linux_relay_simple_set.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# python2.7 src/common/tbot.py -c tbot.cfg -t <a href="#src_tc_linux_relay_tc_linux_relay_set_py">tc_linux_relay_set.py</a>
+# set relay port with the simple cmd to state
+# find the c source code for the simple cmd in src/files/relay/simple.c
+#
+# <a href="#var_config_tc_linux_relay_simple_set_sudo">tb.config.tc_linux_relay_simple_set_sudo</a> if 'yes' "sudo" is perpended to
+# <a href="#var_config_tc_linux_relay_simple_set_cmd">tb.config.tc_linux_relay_simple_set_cmd</a> and if password is needed, password
+# is searched in password.py with board = <a href="#var_config_ip">tb.config.ip</a> and user = <a href="#var_config_user">tb.config.user</a> + '_sudo'
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/linux/relay/tc_linux_relay_simple_set.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/linux/relay/tc_linux_relay_simple_set.py -->
+
+<div class="section-trailer block-trailer">src/tc/linux/relay</div>
+<div class="status-pass">
+<pre>
+</pre>
+</div>
+</div>
+</div>
+<!-- end of a testcase dir src/tc/linux/relay -->
+
 <!-- a testcase dir src_tc_linux_ubi -->
 <div class="section block" id="src/tc/linux/ubi">
 <div class="section-header block-header-dir">src/tc/linux/ubi</div>

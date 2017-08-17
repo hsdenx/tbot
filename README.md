@@ -65,6 +65,10 @@ http://www.tbot.tools/main.html
 
 http://www.tbot.tools/overview.html#installation
 
+Guide for installing tbot with the BeagleBoneBlack
+
+http://www.tbot.tools/guide.html
+
 ## Contributing
 
 You can submit your patches or post questions reagarding the project to the tbot Mailing List:
@@ -87,19 +91,12 @@ Please use 'git send- email' to send the generated patches to the ML to bypass c
 ```sh
 $ python2.7 doc/doc_tc.py
 ```
-Documentation of Testcases:
-https://cdn.rawgit.com/hsdenx/tbot/master/doc/doc_testcase.html
-
-best view when opening it from local clone ...
-
 Building html docs with sphinx:
 
 see info about sphinx installation:
 http://www.sphinx-doc.org/en/stable/install.html
 
-create from all testcases new sources for sphinx
 ```sh
-$ python2.7 doc/sphinx/doc_ty.py
 $ make html
 ```
 
@@ -115,7 +112,7 @@ $ firefox doc/sphinx/build/html/main.html
 
 Documentation of Testcases:
 
-https://cdn.rawgit.com/hsdenx/tbot/testing/doc/sphinx/build/html/main.html
+http://www.tbot.tools/_static/doc_testcases.html
 
 PDF version:
 

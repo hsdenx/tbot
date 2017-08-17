@@ -2,10 +2,223 @@ Documentation of all Testcases
 ==============================
 
 
+src/tc/board
+------------
+
+
+src/tc/board/bbb
+,,,,,,,,,,,,,,,,
+
+
+.. _src_tc_board_bbb_tc_board_bbb_restore_uboot_py:
+
+src/tc/board/bbb/tc_board_bbb_restore_uboot.py
+..............................................
+
+::
+
+  # start with
+  # tbot.py -s lab_denx -c beagleboneblack -t tc_demo_part1.py -l log/tbot_demo_part1.log -v
+  #
+  # we boot from sd card, if it is broken, we boot
+  # from emmc and restore a known working uboot on
+  # the sdcard.
+  #
+  # To switch between botmodes we can use the PIN P8_43
+  # attached to GND -> boot from emmc, floating -> boot
+  # from sd card.
+  
+  import time
+  from tbotlib import tbot
+  
+  # switch to bootmode emmc
+  tb.write_lx_cmd_check(tb.c_ctrl, 'relais   relsrv-02-02  1  on')
+  tb.eof_call_tc("tc_lab_poweroff.py")
+  time.sleep(2)
+  tb.eof_call_tc("tc_lab_poweron.py")
+  tb.set_board_state("u-boot")
+  
+  # set latest, so we do not load uboot env, nor do we reset
+  # in tc_ub_upd_uboot.py and tc_ub_upd_spl.py
+  tb.config.tc_ub_upd_uboot_latest = 'yes'
+  tb.config.tc_ub_upd_spl_latest = 'yes'
+  
+  # call tc tc_ub_load_board_env.py
+  tb.eof_call_tc("tc_ub_load_board_env.py")
+  
+  # set latest images
+  import tc_ub_testfkt
+  
+  tc_ub_testfkt.ub_setenv(tb, tb.c_con, 'ubfile', 'bbb/tbot/latestworking-u-boot.img')
+  tc_ub_testfkt.ub_setenv(tb, tb.c_con, 'mlofile', 'bbb/tbot/latestworking-MLO')
+  
+  # call upd_uboot
+  tb.eof_call_tc("tc_ub_upd_uboot.py")
+  
+  # call upd_spl
+  tb.eof_call_tc("tc_ub_upd_spl.py")
+  
+  
+  # switch to bootmode sdcard
+  tb.write_lx_cmd_check(tb.c_ctrl, 'relais   relsrv-02-02  1  off')
+  tb.eof_call_tc("tc_lab_poweroff.py")
+  time.sleep(2)
+  tb.eof_call_tc("tc_lab_poweron.py")
+  tb.set_board_state("u-boot")
+  
+  tb.end_tc(True)
+
+used Testcases:
+
+:ref:`src_tc_demo_tc_demo_part1_py`.
+:ref:`src_tc_uboot_tc_ub_upd_uboot_py`.
+:ref:`src_tc_uboot_tc_ub_upd_spl_py`.
+:ref:`src_tc_uboot_tc_ub_load_board_env_py`.
+:ref:`_tc_ub_testfkt`.
+:ref:`_tc_ub_testfkt_ub_setenv(tb,`.
+:ref:`_tc_ub_testfkt_ub_setenv(tb,`.
+
+used config variables:
+
+:ref:`tb_write_lx_cmd_check(tb_c_ctrl,`.
+:ref:`tb_eof_call_tc("tc_lab_poweroff_py")`.
+:ref:`tb_eof_call_tc("tc_lab_poweron_py")`.
+:ref:`tb_set_board_state("u-boot")`.
+:ref:`tb_config_tc_ub_upd_uboot_latest`.
+:ref:`tb_config_tc_ub_upd_spl_latest`.
+:ref:`tb_eof_call_tc("tc_ub_load_board_env_py")`.
+:ref:`tb_c_con,`.
+:ref:`tb_c_con,`.
+:ref:`tb_eof_call_tc("tc_ub_upd_uboot_py")`.
+:ref:`tb_eof_call_tc("tc_ub_upd_spl_py")`.
+:ref:`tb_write_lx_cmd_check(tb_c_ctrl,`.
+:ref:`tb_eof_call_tc("tc_lab_poweroff_py")`.
+:ref:`tb_eof_call_tc("tc_lab_poweron_py")`.
+:ref:`tb_set_board_state("u-boot")`.
+:ref:`tb_end_tc(True)`.
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/board/bbb/tc_board_bbb_restore_uboot.py
+
+
+src/tc/board/cuby
+,,,,,,,,,,,,,,,,,
+
+
+src/tc/board/cuby-temp
+,,,,,,,,,,,,,,,,,,,,,,
+
+
+.. _src_tc_board_cuby-temp_tc_board_cuby_lx_pru_py:
+
+src/tc/board/cuby-temp/tc_board_cuby_lx_pru.py
+..............................................
+
+::
+
+  # start with
+  # tbot.py -s lab_denx -c cuby -t tc_board_cuby_lx_pru.py
+  # test linux pruss
+
+used Testcases:
+
+:ref:`src_tc_board_cuby-temp_tc_board_cuby_lx_pru_py`.
+
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/board/cuby-temp/tc_board_cuby_lx_pru.py
+
+
+.. _src_tc_board_cuby-temp_tc_board_cuby_lx_tests_py:
+
+src/tc/board/cuby-temp/tc_board_cuby_lx_tests.py
+................................................
+
+::
+
+  # start with
+  # tbot.py -s lab_denx -c cuby -t tc_board_cuby_lx_tests.py
+  # start all linux testcases for the cuby board
+
+used Testcases:
+
+:ref:`src_tc_board_cuby-temp_tc_board_cuby_lx_tests_py`.
+
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/board/cuby-temp/tc_board_cuby_lx_tests.py
+
+
+.. _src_tc_board_cuby-temp_tc_board_cuby_sd_image_tests_py:
+
+src/tc/board/cuby-temp/tc_board_cuby_sd_image_tests.py
+......................................................
+
+::
+
+  # start with
+  # tbot.py -s lab_denx -c cuby -t tc_board_cuby_sd_image_tests.py
+  # test the sd image, which is created from yocto build
+
+used Testcases:
+
+:ref:`src_tc_board_cuby-temp_tc_board_cuby_sd_image_tests_py`.
+
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/board/cuby-temp/tc_board_cuby_sd_image_tests.py
+
+
+.. _src_tc_board_cuby-temp_tc_board_cuby_yocto_install_py:
+
+src/tc/board/cuby-temp/tc_board_cuby_yocto_install.py
+.....................................................
+
+::
+
+  # start with
+  # tbot.py -s lab_denx -c cuby -t tc_board_cuby_yocto_install.py
+  # install yocto for the cuby board, and bitbake.
+
+used Testcases:
+
+:ref:`src_tc_board_cuby-temp_tc_board_cuby_yocto_install_py`.
+
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/board/cuby-temp/tc_board_cuby_yocto_install.py
+
+
+.. _src_tc_board_cuby-temp_tc_board_cuby_yocto_test_py:
+
+src/tc/board/cuby-temp/tc_board_cuby_yocto_test.py
+..................................................
+
+::
+
+  # start with
+  # tbot.py -s lab_denx -c cuby -t tc_board_cuby_yocto_test.py
+  # do tests with the resulting images from a yocto buil
+
+used Testcases:
+
+:ref:`src_tc_board_cuby-temp_tc_board_cuby_yocto_test_py`.
+
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/board/cuby-temp/tc_board_cuby_yocto_test.py
+
+
 .. _src_tc_board_tc_board_aristainetos2_py:
 
 src/tc/board/tc_board_aristainetos2.py
---------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -30,7 +243,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_aristainetos2.p
 .. _src_tc_board_tc_board_aristainetos2_linux_py:
 
 src/tc/board/tc_board_aristainetos2_linux.py
---------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -51,7 +264,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_aristainetos2_l
 .. _src_tc_board_tc_board_aristainetos2_linux_bisect_py:
 
 src/tc/board/tc_board_aristainetos2_linux_bisect.py
----------------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -72,7 +285,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_aristainetos2_l
 .. _src_tc_board_tc_board_aristainetos2_linux_tests_py:
 
 src/tc/board/tc_board_aristainetos2_linux_tests.py
---------------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -93,7 +306,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_aristainetos2_l
 .. _src_tc_board_tc_board_ccu1_tests_py:
 
 src/tc/board/tc_board_ccu1_tests.py
------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -114,7 +327,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_ccu1_tests.py
 .. _src_tc_board_tc_board_corvus_py:
 
 src/tc/board/tc_board_corvus.py
--------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -135,7 +348,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_corvus.py
 .. _src_tc_board_tc_board_dxr2_py:
 
 src/tc/board/tc_board_dxr2.py
------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -156,7 +369,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_dxr2.py
 .. _src_tc_board_tc_board_dxr2_linux_py:
 
 src/tc/board/tc_board_dxr2_linux.py
------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -177,7 +390,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_dxr2_linux.py
 .. _src_tc_board_tc_board_dxr2_lx_ubi_tests_py:
 
 src/tc/board/tc_board_dxr2_lx_ubi_tests.py
-------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -198,7 +411,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_dxr2_lx_ubi_tes
 .. _src_tc_board_tc_board_dxr2_ub_py:
 
 src/tc/board/tc_board_dxr2_ub.py
---------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -219,7 +432,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_dxr2_ub.py
 .. _src_tc_board_tc_board_dxr2_ub_ubi_py:
 
 src/tc/board/tc_board_dxr2_ub_ubi.py
-------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -240,7 +453,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_dxr2_ub_ubi.py
 .. _src_tc_board_tc_board_dxr2_uboot_patchwork_py:
 
 src/tc/board/tc_board_dxr2_uboot_patchwork.py
----------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -263,7 +476,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_dxr2_uboot_patc
 .. _src_tc_board_tc_board_fipad_py:
 
 src/tc/board/tc_board_fipad.py
-------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -284,7 +497,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_fipad.py
 .. _src_tc_board_tc_board_fipad_linux_py:
 
 src/tc/board/tc_board_fipad_linux.py
-------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -305,7 +518,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_fipad_linux.py
 .. _src_tc_board_tc_board_fipad_ub_tests_py:
 
 src/tc/board/tc_board_fipad_ub_tests.py
----------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -323,10 +536,52 @@ used Testcases:
 https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_fipad_ub_tests.py
 
 
+.. _src_tc_board_tc_board_fipad_ub_usb_py:
+
+src/tc/board/tc_board_fipad_ub_usb.py
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+::
+
+  # start with
+  # python2.7 src/common/tbot.py -s lab_denx -c fipad -t tc_board_fipad_ub_usb.py
+  #
+  # do some simple usb test
+  # - usb start
+  # - usb info (check some output)
+  # - list root dir on the stick
+  #   (ext2 formatted stick)
+  # - load test.bin from this partition with ext2load
+  # - check if test.bin has the crc32 sum 0x2144df1c
+  #
+  # used vars:
+  # tb.config.tc_uboot_usb_info_expect = [
+  #    'Hub,  USB Revision 2.0',
+  #    'Mass Storage,  USB Revision 2.0',
+  #    'SMI Corporation USB DISK AA04012900007453',
+  #    'Vendor: 0x090c  Product 0x1000 Version 17.0'
+  # ]
+  # tb.config.tc_board_fipad_uboot_ext2load_files = ['test.bin']
+  #   list of files which get load and crc32 tested
+
+used Testcases:
+
+:ref:`src_tc_board_tc_board_fipad_ub_usb_py`.
+
+used config variables:
+
+:ref:`tb_config_tc_uboot_usb_info_expect`.
+:ref:`tb_config_tc_board_fipad_uboot_ext2load_files`.
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_fipad_ub_usb.py
+
+
 .. _src_tc_board_tc_board_fipad_upd_ub_py:
 
 src/tc/board/tc_board_fipad_upd_ub.py
--------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -348,7 +603,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_fipad_upd_ub.py
 .. _src_tc_board_tc_board_fipad_upd_ub_mmc_py:
 
 src/tc/board/tc_board_fipad_upd_ub_mmc.py
------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -369,7 +624,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_fipad_upd_ub_mm
 .. _src_tc_board_tc_board_fipad_upd_ub_spi_py:
 
 src/tc/board/tc_board_fipad_upd_ub_spi.py
------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -390,7 +645,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_fipad_upd_ub_sp
 .. _src_tc_board_tc_board_flea3_py:
 
 src/tc/board/tc_board_flea3.py
-------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -412,7 +667,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_flea3.py
 .. _src_tc_board_tc_board_mcx_py:
 
 src/tc/board/tc_board_mcx.py
-----------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -433,7 +688,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_mcx.py
 .. _src_tc_board_tc_board_mcx_tests_py:
 
 src/tc/board/tc_board_mcx_tests.py
-----------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -454,7 +709,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_mcx_tests.py
 .. _src_tc_board_tc_board_shc_py:
 
 src/tc/board/tc_board_shc.py
-----------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -475,7 +730,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_shc.py
 .. _src_tc_board_tc_board_shc_compile_ml_py:
 
 src/tc/board/tc_board_shc_compile_ml.py
----------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -496,7 +751,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_shc_compile_ml.
 .. _src_tc_board_tc_board_shc_tests_py:
 
 src/tc/board/tc_board_shc_tests.py
-----------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -517,7 +772,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_shc_tests.py
 .. _src_tc_board_tc_board_shc_ub_create_regdump_py:
 
 src/tc/board/tc_board_shc_ub_create_regdump.py
-----------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -539,7 +794,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_shc_ub_create_r
 .. _src_tc_board_tc_board_shc_ub_tests_py:
 
 src/tc/board/tc_board_shc_ub_tests.py
--------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -560,7 +815,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_shc_ub_tests.py
 .. _src_tc_board_tc_board_shc_uboot_git_bisect_py:
 
 src/tc/board/tc_board_shc_uboot_git_bisect.py
----------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -581,7 +836,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_shc_uboot_git_b
 .. _src_tc_board_tc_board_shc_upd_ub_py:
 
 src/tc/board/tc_board_shc_upd_ub.py
------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -603,7 +858,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_shc_upd_ub.py
 .. _src_tc_board_tc_board_sigmatek-nand_py:
 
 src/tc/board/tc_board_sigmatek-nand.py
---------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -630,7 +885,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_sigmatek-nand.p
 .. _src_tc_board_tc_board_sirius_dds_py:
 
 src/tc/board/tc_board_sirius_dds.py
------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -661,13 +916,37 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_sirius_dds.py
 .. _src_tc_board_tc_board_smartweb_py:
 
 src/tc/board/tc_board_smartweb.py
----------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
   # start with
   # tbot.py -s lab_denx -c smartweb -t tc_board_smartweb.py
-  # start all testcases for the smartweb board
+  #
+  # remove, clone current mainline U-Boot, then
+  # start tc_board_smartweb_test_ub.py
+
+used Testcases:
+
+:ref:`src_tc_board_tc_board_smartweb_py`.
+:ref:`src_tc_board_tc_board_smartweb_test_ub_py`.
+
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_smartweb.py
+
+
+.. _src_tc_board_tc_board_smartweb_test_ub_py:
+
+src/tc/board/tc_board_smartweb_test_ub.py
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+::
+
+  # start with
+  # tbot.py -s lab_denx -c smartweb -t tc_board_smartweb.py
+  # start all ub testcases for the smartweb board
 
 used Testcases:
 
@@ -676,13 +955,13 @@ used Testcases:
 
 
 
-https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_smartweb.py
+https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_smartweb_test_ub.py
 
 
 .. _src_tc_board_tc_board_taurus_py:
 
 src/tc/board/tc_board_taurus.py
--------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -703,7 +982,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_taurus.py
 .. _src_tc_board_tc_board_tqm5200s_try_cur_ub_py:
 
 src/tc/board/tc_board_tqm5200s_try_cur_ub.py
---------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -726,7 +1005,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_tqm5200s_try_cu
 .. _src_tc_board_tc_board_tqm5200s_ub_comp_install_py:
 
 src/tc/board/tc_board_tqm5200s_ub_comp_install.py
--------------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -748,7 +1027,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_board_tqm5200s_ub_com
 .. _src_tc_board_tc_linux_create_reg_file_am335x_py:
 
 src/tc/board/tc_linux_create_reg_file_am335x.py
------------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -769,7 +1048,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_linux_create_reg_file
 .. _src_tc_board_tc_linux_create_reg_file_at91sam9g15_py:
 
 src/tc/board/tc_linux_create_reg_file_at91sam9g15.py
-----------------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -790,7 +1069,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_linux_create_reg_file
 .. _src_tc_board_tc_linux_create_reg_file_imx6qdl_py:
 
 src/tc/board/tc_linux_create_reg_file_imx6qdl.py
-------------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -808,10 +1087,18 @@ used Testcases:
 https://github.com/hsdenx/tbot/tree/master/src/tc/board/tc_linux_create_reg_file_imx6qdl.py
 
 
+src/tc/debugger
+---------------
+
+
+src/tc/debugger/bdi
+,,,,,,,,,,,,,,,,,,,
+
+
 .. _src_tc_debugger_bdi_tc_lab_bdi_connect_py:
 
 src/tc/debugger/bdi/tc_lab_bdi_connect.py
------------------------------------------
+.........................................
 
 ::
 
@@ -837,10 +1124,48 @@ used config variables:
 https://github.com/hsdenx/tbot/tree/master/src/tc/debugger/bdi/tc_lab_bdi_connect.py
 
 
+.. _src_tc_debugger_bdi_tc_lab_bdi_create_dump_py:
+
+src/tc/debugger/bdi/tc_lab_bdi_create_dump.py
+.............................................
+
+::
+
+  # start with
+  # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lab_bdi_create_dump.py
+  #
+  # check if we are on the BDI already, if not switch to it
+  # with tc_lab_bdi_connect.py
+  #
+  # - send "halt"
+  # - dump registers from tb.config.tc_lab_bdi_create_dump_start
+  #   to tb.config.tc_lab_bdi_create_dump_stop with mask
+  #   tb.config.tc_lab_bdi_create_dump_mask and stepsize
+  #   tb.config.tc_lab_bdi_create_dump_type into the file
+  #   tb.config.tc_lab_bdi_create_dump_filename
+
+used Testcases:
+
+:ref:`src_tc_debugger_bdi_tc_lab_bdi_create_dump_py`.
+:ref:`src_tc_debugger_bdi_tc_lab_bdi_connect_py`.
+
+used config variables:
+
+:ref:`tb_config_tc_lab_bdi_create_dump_start`.
+:ref:`tb_config_tc_lab_bdi_create_dump_stop`.
+:ref:`tb_config_tc_lab_bdi_create_dump_mask`.
+:ref:`tb_config_tc_lab_bdi_create_dump_type`.
+:ref:`tb_config_tc_lab_bdi_create_dump_filename`.
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/debugger/bdi/tc_lab_bdi_create_dump.py
+
+
 .. _src_tc_debugger_bdi_tc_lab_bdi_disconnect_py:
 
 src/tc/debugger/bdi/tc_lab_bdi_disconnect.py
---------------------------------------------
+............................................
 
 ::
 
@@ -866,7 +1191,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/debugger/bdi/tc_lab_bdi_discon
 .. _src_tc_debugger_bdi_tc_lab_bdi_run_py:
 
 src/tc/debugger/bdi/tc_lab_bdi_run.py
--------------------------------------
+.....................................
 
 ::
 
@@ -892,7 +1217,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/debugger/bdi/tc_lab_bdi_run.py
 .. _src_tc_debugger_bdi_tc_lab_bdi_upd_uboot_py:
 
 src/tc/debugger/bdi/tc_lab_bdi_upd_uboot.py
--------------------------------------------
+...........................................
 
 ::
 
@@ -920,10 +1245,14 @@ used config variables:
 https://github.com/hsdenx/tbot/tree/master/src/tc/debugger/bdi/tc_lab_bdi_upd_uboot.py
 
 
+src/tc/default
+--------------
+
+
 .. _src_tc_default_tc_def_tbot_py:
 
 src/tc/default/tc_def_tbot.py
------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -944,7 +1273,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/default/tc_def_tbot.py
 .. _src_tc_default_tc_def_ub_py:
 
 src/tc/default/tc_def_ub.py
----------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -962,10 +1291,14 @@ used Testcases:
 https://github.com/hsdenx/tbot/tree/master/src/tc/default/tc_def_ub.py
 
 
+src/tc/demo
+-----------
+
+
 .. _src_tc_demo_tc_demo_can_part1_py:
 
 src/tc/demo/tc_demo_can_part1.py
---------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -1004,7 +1337,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/demo/tc_demo_can_part1.py
 .. _src_tc_demo_tc_demo_compile_install_test_py:
 
 src/tc/demo/tc_demo_compile_install_test.py
--------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -1013,7 +1346,7 @@ src/tc/demo/tc_demo_compile_install_test.py
   # start tc:
   # - compile source tree
   # - install bin on board
-  # - call board uboot testcase
+  # - call board uboot testcase tb.config.tc_demo_compile_install_test_name
   # tb.config.tc_demo_compile_install_test_files contains a list of files,
   # which are copied to
   # tb.config.tftprootdir + tb.config.tftpboardname + '/' + tb.config.ub_load_board_env_subdir
@@ -1024,6 +1357,7 @@ used Testcases:
 
 used config variables:
 
+:ref:`tb_config_tc_demo_compile_install_test_name`.
 :ref:`tb_config_tc_demo_compile_install_test_files`.
 :ref:`tb_config_tftprootdir`.
 :ref:`tb_config_tftpboardname`.
@@ -1037,7 +1371,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/demo/tc_demo_compile_install_t
 .. _src_tc_demo_tc_demo_get_ub_code_py:
 
 src/tc/demo/tc_demo_get_ub_code.py
-----------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -1059,10 +1393,46 @@ used Testcases:
 https://github.com/hsdenx/tbot/tree/master/src/tc/demo/tc_demo_get_ub_code.py
 
 
+.. _src_tc_demo_tc_demo_linux_test_py:
+
+src/tc/demo/tc_demo_linux_test.py
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+::
+
+  # start with
+  # tbot.py -s lab_denx -c beagleboneblack -t tc_demo_linux_test.py
+  # get linux code and compile it for a board, and boot the
+  # resulting kernel, and do some basic tests:
+  #
+  # - grep through dmesg and check if strings in
+  #   tb.config.tc_demo_linux_test_dmesg exist
+  # - check with devmem2 if the register values defined
+  #   in the register files tb.config.tc_demo_linux_test_reg_files
+  #   are identical with the values defined in the files
+  # - start cmd defined in tb.config.tc_demo_linux_test_basic_cmd
+  #   and check the returning strings.
+  #
+
+used Testcases:
+
+:ref:`src_tc_demo_tc_demo_linux_test_py`.
+
+used config variables:
+
+:ref:`tb_config_tc_demo_linux_test_dmesg`.
+:ref:`tb_config_tc_demo_linux_test_reg_files`.
+:ref:`tb_config_tc_demo_linux_test_basic_cmd`.
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/demo/tc_demo_linux_test.py
+
+
 .. _src_tc_demo_tc_demo_part1_py:
 
 src/tc/demo/tc_demo_part1.py
-----------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -1087,7 +1457,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/demo/tc_demo_part1.py
 .. _src_tc_demo_tc_demo_part2_py:
 
 src/tc/demo/tc_demo_part2.py
-----------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -1112,7 +1482,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/demo/tc_demo_part2.py
 .. _src_tc_demo_tc_demo_part3_py:
 
 src/tc/demo/tc_demo_part3.py
-----------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -1130,10 +1500,39 @@ used Testcases:
 https://github.com/hsdenx/tbot/tree/master/src/tc/demo/tc_demo_part3.py
 
 
+.. _src_tc_demo_tc_demo_uboot_tests_py:
+
+src/tc/demo/tc_demo_uboot_tests.py
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+::
+
+  # start with
+  # tbot.py -s lab_denx -c smartweb -t tc_demo_uboot_tests.py
+  # start all "standard" u-boot testcases
+
+used Testcases:
+
+:ref:`src_tc_demo_tc_demo_uboot_tests_py`.
+
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/demo/tc_demo_uboot_tests.py
+
+
+src/tc/lab
+----------
+
+
+src/tc/lab/denx
+,,,,,,,,,,,,,,,
+
+
 .. _src_tc_lab_denx_tc_lab_denx_connect_to_board_py:
 
 src/tc/lab/denx/tc_lab_denx_connect_to_board.py
------------------------------------------------
+...............................................
 
 ::
 
@@ -1154,7 +1553,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/lab/denx/tc_lab_denx_connect_t
 .. _src_tc_lab_denx_tc_lab_denx_disconnect_from_board_py:
 
 src/tc/lab/denx/tc_lab_denx_disconnect_from_board.py
-----------------------------------------------------
+....................................................
 
 ::
 
@@ -1175,7 +1574,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/lab/denx/tc_lab_denx_disconnec
 .. _src_tc_lab_denx_tc_lab_denx_get_power_state_py:
 
 src/tc/lab/denx/tc_lab_denx_get_power_state.py
-----------------------------------------------
+..............................................
 
 ::
 
@@ -1200,7 +1599,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/lab/denx/tc_lab_denx_get_power
 .. _src_tc_lab_denx_tc_lab_denx_power_py:
 
 src/tc/lab/denx/tc_lab_denx_power.py
-------------------------------------
+....................................
 
 ::
 
@@ -1221,7 +1620,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/lab/denx/tc_lab_denx_power.py
 .. _src_tc_lab_denx_tc_lab_interactive_get_power_state_py:
 
 src/tc/lab/denx/tc_lab_interactive_get_power_state.py
------------------------------------------------------
+.....................................................
 
 ::
 
@@ -1246,7 +1645,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/lab/denx/tc_lab_interactive_ge
 .. _src_tc_lab_denx_tc_lab_interactive_power_py:
 
 src/tc/lab/denx/tc_lab_interactive_power.py
--------------------------------------------
+...........................................
 
 ::
 
@@ -1264,10 +1663,126 @@ used Testcases:
 https://github.com/hsdenx/tbot/tree/master/src/tc/lab/denx/tc_lab_interactive_power.py
 
 
+.. _src_tc_lab_tc_lab_kmtronic_get_power_state_py:
+
+src/tc/lab/tc_lab_kmtronic_get_power_state.py
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+::
+
+  # start with
+  # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lab_kmtronic_get_power_state.py
+  # power on/off the board
+  #
+  # get the power state of the board attached to a kmtronic usb relay:
+  # 
+  # http://info.kmtronic.com/kmtronic-usb-relay-test-software.html
+  # 
+  # and save it in tb.power_state
+  #
+  # use testcase "tc_lab_kmtronic_get_variables.py" for setting
+  # the serial and the index you need for the specific board.
+  #
+  # This file is an example for a setup, you need to adapt
+  # this to your needs.
+  #
+
+used Testcases:
+
+:ref:`src_tc_lab_tc_lab_kmtronic_get_power_state_py`.
+
+used config variables:
+
+:ref:`tb_power_state`.
+
+links:
+
+http://info.kmtronic.com/kmtronic-usb-relay-test-software.html
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/lab/tc_lab_kmtronic_get_power_state.py
+
+
+.. _src_tc_lab_tc_lab_kmtronic_get_variables_py:
+
+src/tc/lab/tc_lab_kmtronic_get_variables.py
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+::
+
+  # start with
+  # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lab_kmtronic_get_variables.py
+  # get tty device tb.config.kmtronic_dev and
+  # tb.config.kmtronic_addr
+  # for the kmtronic usb relay, see:
+  # 
+  # http://info.kmtronic.com/kmtronic-usb-relay-test-software.html
+  #
+
+used Testcases:
+
+:ref:`src_tc_lab_tc_lab_kmtronic_get_variables_py`.
+
+used config variables:
+
+:ref:`tb_config_kmtronic_dev`.
+:ref:`tb_config_kmtronic_addr`.
+
+links:
+
+http://info.kmtronic.com/kmtronic-usb-relay-test-software.html
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/lab/tc_lab_kmtronic_get_variables.py
+
+
+.. _src_tc_lab_tc_lab_kmtronic_set_power_state_py:
+
+src/tc/lab/tc_lab_kmtronic_set_power_state.py
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+::
+
+  # start with
+  # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lab_kmtronic_set_power_state.py
+  # power on/off the board
+  #
+  # get the power state of the board attached to a kmtronic usb relay:
+  # 
+  # http://info.kmtronic.com/kmtronic-usb-relay-test-software.html
+  # 
+  # and save it in tb.power_state
+  #
+  # use testcase "tc_lab_kmtronic_get_variables.py" for setting
+  # the serial and the index you need for the specific board.
+  #
+  # This file is an example for a setup, you need to adapt
+  # this to your needs.
+  #
+
+used Testcases:
+
+:ref:`src_tc_lab_tc_lab_kmtronic_set_power_state_py`.
+
+used config variables:
+
+:ref:`tb_power_state`.
+
+links:
+
+http://info.kmtronic.com/kmtronic-usb-relay-test-software.html
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/lab/tc_lab_kmtronic_set_power_state.py
+
+
 .. _src_tc_lab_tc_lab_sispmctl_get_power_state_py:
 
 src/tc/lab/tc_lab_sispmctl_get_power_state.py
----------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -1305,7 +1820,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/lab/tc_lab_sispmctl_get_power_
 .. _src_tc_lab_tc_lab_sispmctl_get_variables_py:
 
 src/tc/lab/tc_lab_sispmctl_get_variables.py
--------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -1334,7 +1849,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/lab/tc_lab_sispmctl_get_variab
 .. _src_tc_lab_tc_lab_sispmctl_set_power_state_py:
 
 src/tc/lab/tc_lab_sispmctl_set_power_state.py
----------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -1371,10 +1886,123 @@ http://sispmctl.sourceforge.net/
 https://github.com/hsdenx/tbot/tree/master/src/tc/lab/tc_lab_sispmctl_set_power_state.py
 
 
+src/tc/linux
+------------
+
+
+src/tc/linux/relay
+,,,,,,,,,,,,,,,,,,
+
+
+.. _src_tc_linux_relay_tc_linux_relay_get_config_py:
+
+src/tc/linux/relay/tc_linux_relay_get_config.py
+...............................................
+
+::
+
+  # start with
+  # python2.7 src/common/tbot.py -c tbot.cfg -t tc_linux_relay_get_config.py
+  # get relay tbot configuration
+  #
+  # input:
+  # tb.config.tc_linux_relay_set_port
+  # tb.config.tc_linux_relay_set_state
+  #
+  # output:
+  # tb.config.tc_linux_relay_set_tc
+  #   testcase which gets called for setting relay port  with state state
+  # also set the config variables for tb.config.tc_linux_relay_set_tc
+  # accordingly.
+
+used Testcases:
+
+:ref:`src_tc_linux_relay_tc_linux_relay_get_config_py`.
+
+used config variables:
+
+:ref:`tb_config_tc_linux_relay_set_port`.
+:ref:`tb_config_tc_linux_relay_set_state`.
+:ref:`tb_config_tc_linux_relay_set_tc`.
+:ref:`tb_config_tc_linux_relay_set_tc`.
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/linux/relay/tc_linux_relay_get_config.py
+
+
+.. _src_tc_linux_relay_tc_linux_relay_set_py:
+
+src/tc/linux/relay/tc_linux_relay_set.py
+........................................
+
+::
+
+  # start with
+  # python2.7 src/common/tbot.py -c tbot.cfg -t tc_linux_relay_set.py
+  # set relay port tb.config.tc_linux_relay_set_port to state
+  # tb.config.tc_linux_relay_set_state.
+  #
+  # you need to adapt tc_linux_relay_get_config.py, which does
+  # the mapping from port/state to your specific lab settings.
+  #
+
+used Testcases:
+
+:ref:`src_tc_linux_relay_tc_linux_relay_set_py`.
+:ref:`_tc_linux_relay_get_config_py,`.
+
+used config variables:
+
+:ref:`tb_config_tc_linux_relay_set_port`.
+:ref:`tb_config_tc_linux_relay_set_state_`.
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/linux/relay/tc_linux_relay_set.py
+
+
+.. _src_tc_linux_relay_tc_linux_relay_simple_set_py:
+
+src/tc/linux/relay/tc_linux_relay_simple_set.py
+...............................................
+
+::
+
+  # start with
+  # python2.7 src/common/tbot.py -c tbot.cfg -t tc_linux_relay_set.py
+  # set relay port with the simple cmd to state
+  # find the c source code for the simple cmd in src/files/relay/simple.c
+  #
+  # tb.config.tc_linux_relay_simple_set_sudo if 'yes' "sudo" is perpended to
+  # tb.config.tc_linux_relay_simple_set_cmd and if password is needed, password
+  # is searched in password.py with board = tb.config.ip and user = tb.config.user + '_sudo'
+  #
+
+used Testcases:
+
+:ref:`src_tc_linux_relay_tc_linux_relay_set_py`.
+
+used config variables:
+
+:ref:`tb_config_tc_linux_relay_simple_set_sudo`.
+:ref:`tb_config_tc_linux_relay_simple_set_cmd`.
+:ref:`tb_config_ip`.
+:ref:`tb_config_user`.
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/linux/relay/tc_linux_relay_simple_set.py
+
+
+src/tc/linux/ubi
+,,,,,,,,,,,,,,,,
+
+
 .. _src_tc_linux_ubi_tc_lx_ubi_attach_py:
 
 src/tc/linux/ubi/tc_lx_ubi_attach.py
-------------------------------------
+....................................
 
 ::
 
@@ -1394,7 +2022,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/ubi/tc_lx_ubi_attach.py
 .. _src_tc_linux_ubi_tc_lx_ubi_detach_py:
 
 src/tc/linux/ubi/tc_lx_ubi_detach.py
-------------------------------------
+....................................
 
 ::
 
@@ -1418,7 +2046,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/ubi/tc_lx_ubi_detach.py
 .. _src_tc_linux_ubi_tc_lx_ubi_format_py:
 
 src/tc/linux/ubi/tc_lx_ubi_format.py
-------------------------------------
+....................................
 
 ::
 
@@ -1443,7 +2071,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/ubi/tc_lx_ubi_format.py
 .. _src_tc_linux_ubi_tc_lx_ubi_info_py:
 
 src/tc/linux/ubi/tc_lx_ubi_info.py
-----------------------------------
+..................................
 
 ::
 
@@ -1467,7 +2095,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/ubi/tc_lx_ubi_info.py
 .. _src_tc_linux_ubi_tc_lx_ubi_tests_py:
 
 src/tc/linux/ubi/tc_lx_ubi_tests.py
------------------------------------
+...................................
 
 ::
 
@@ -1495,7 +2123,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/ubi/tc_lx_ubi_tests.py
 .. _src_tc_linux_tc_lx_bonnie_py:
 
 src/tc/linux/tc_lx_bonnie.py
-----------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -1525,7 +2153,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_lx_bonnie.py
 .. _src_tc_linux_tc_lx_bonnie_install_py:
 
 src/tc/linux/tc_lx_bonnie_install.py
-------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -1543,10 +2171,32 @@ used Testcases:
 https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_lx_bonnie_install.py
 
 
+.. _src_tc_linux_tc_lx_check_devmem2_py:
+
+src/tc/linux/tc_lx_check_devmem2.py
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+::
+
+  # start with
+  # python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_check_devmem2.py
+  # simply check, if we have the devmem2 cmd
+  # if not, try to find it
+
+used Testcases:
+
+:ref:`src_tc_linux_tc_lx_check_devmem2_py`.
+
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_lx_check_devmem2.py
+
+
 .. _src_tc_linux_tc_lx_check_reg_file_py:
 
 src/tc/linux/tc_lx_check_reg_file.py
-------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -1557,6 +2207,13 @@ src/tc/linux/tc_lx_check_reg_file.py
   # registers on the board. Needs devmem2 installed.
   # format of the regfile:
   # regaddr mask type defval
+  #
+  # If you have to call devmem2 with a "header"
+  # set it through tb.config.devmem2_pre
+  # so on the bbb with original rootfs -> no devmem2 installed
+  # so to use tc which use devmem2 you have to copy devmem2
+  # bin to the rootfs, and start it with 'sudo ...'
+  #
   # ToDo: use the file from the lab host, not the tbot host
 
 used Testcases:
@@ -1567,6 +2224,7 @@ used config variables:
 
 :ref:`tb_config_tc_lx_create_reg_file_name`.
 :ref:`tb_workdir`.
+:ref:`tb_config_devmem2_pre`.
 
 
 
@@ -1576,7 +2234,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_lx_check_reg_file.py
 .. _src_tc_linux_tc_lx_check_usb_authorized_py:
 
 src/tc/linux/tc_lx_check_usb_authorized.py
-------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -1600,7 +2258,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_lx_check_usb_authoriz
 .. _src_tc_linux_tc_lx_cpufreq_py:
 
 src/tc/linux/tc_lx_cpufreq.py
------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -1625,7 +2283,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_lx_cpufreq.py
 .. _src_tc_linux_tc_lx_create_dummy_file_py:
 
 src/tc/linux/tc_lx_create_dummy_file.py
----------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -1654,7 +2312,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_lx_create_dummy_file.
 .. _src_tc_linux_tc_lx_create_reg_file_py:
 
 src/tc/linux/tc_lx_create_reg_file.py
--------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -1669,6 +2327,13 @@ src/tc/linux/tc_lx_create_reg_file.py
   # This reg file can be used as a default file, how the
   # registers must be setup, check it with testcase
   # tc_lx_check_reg_file.py
+  #
+  # If you have to call devmem2 with a "header"
+  # set it through tb.config.devmem2_pre
+  # so on the bbb with original rootfs -> no devmem2 installed
+  # so to use tc which use devmem2 you have to copy devmem2
+  # bin to the rootfs, and start it with 'sudo ...'
+  #
   # ToDo: use the file from the lab host, not the tbot host
 
 used Testcases:
@@ -1682,6 +2347,7 @@ used config variables:
 :ref:`tb_workdir`.
 :ref:`tb_config_tc_lx_create_reg_file_start`.
 :ref:`tb_config_tc_lx_create_reg_file_stop`.
+:ref:`tb_config_devmem2_pre`.
 
 
 
@@ -1691,7 +2357,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_lx_create_reg_file.py
 .. _src_tc_linux_tc_lx_devmem2_install_py:
 
 src/tc/linux/tc_lx_devmem2_install.py
--------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -1713,7 +2379,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_lx_devmem2_install.py
 .. _src_tc_linux_tc_lx_dmesg_grep_py:
 
 src/tc/linux/tc_lx_dmesg_grep.py
---------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -1737,7 +2403,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_lx_dmesg_grep.py
 .. _src_tc_linux_tc_lx_eeprom_py:
 
 src/tc/linux/tc_lx_eeprom.py
-----------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -1772,7 +2438,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_lx_eeprom.py
 .. _src_tc_linux_tc_lx_get_ubi_parameters_py:
 
 src/tc/linux/tc_lx_get_ubi_parameters.py
-----------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -1803,7 +2469,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_lx_get_ubi_parameters
 .. _src_tc_linux_tc_lx_get_version_py:
 
 src/tc/linux/tc_lx_get_version.py
----------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -1828,7 +2494,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_lx_get_version.py
 .. _src_tc_linux_tc_lx_gpio_py:
 
 src/tc/linux/tc_lx_gpio.py
---------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -1855,7 +2521,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_lx_gpio.py
 .. _src_tc_linux_tc_lx_mount_py:
 
 src/tc/linux/tc_lx_mount.py
----------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -1882,7 +2548,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_lx_mount.py
 .. _src_tc_linux_tc_lx_mtdutils_install_py:
 
 src/tc/linux/tc_lx_mtdutils_install.py
---------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -1905,7 +2571,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_lx_mtdutils_install.p
 .. _src_tc_linux_tc_lx_partition_check_py:
 
 src/tc/linux/tc_lx_partition_check.py
--------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -1932,7 +2598,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_lx_partition_check.py
 .. _src_tc_linux_tc_lx_printenv_py:
 
 src/tc/linux/tc_lx_printenv.py
-------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -1953,7 +2619,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_lx_printenv.py
 .. _src_tc_linux_tc_lx_regulator_py:
 
 src/tc/linux/tc_lx_regulator.py
--------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -1978,7 +2644,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_lx_regulator.py
 .. _src_tc_linux_tc_lx_trigger_wdt_py:
 
 src/tc/linux/tc_lx_trigger_wdt.py
----------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2002,7 +2668,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_lx_trigger_wdt.py
 .. _src_tc_linux_tc_lx_uname_py:
 
 src/tc/linux/tc_lx_uname.py
----------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2023,7 +2689,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_lx_uname.py
 .. _src_tc_linux_tc_workfd_apply_local_patches_py:
 
 src/tc/linux/tc_workfd_apply_local_patches.py
----------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2053,7 +2719,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_apply_local_pa
 .. _src_tc_linux_tc_workfd_apply_patchwork_patches_py:
 
 src/tc/linux/tc_workfd_apply_patchwork_patches.py
--------------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2084,7 +2750,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_apply_patchwor
 .. _src_tc_linux_tc_workfd_can_py:
 
 src/tc/linux/tc_workfd_can.py
------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2138,7 +2804,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_can.py
 .. _src_tc_linux_tc_workfd_cd_to_dir_py:
 
 src/tc/linux/tc_workfd_cd_to_dir.py
------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2162,7 +2828,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_cd_to_dir.py
 .. _src_tc_linux_tc_workfd_check_cmd_success_py:
 
 src/tc/linux/tc_workfd_check_cmd_success.py
--------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2183,7 +2849,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_check_cmd_succ
 .. _src_tc_linux_tc_workfd_check_if_cmd_exist_py:
 
 src/tc/linux/tc_workfd_check_if_cmd_exist.py
---------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2201,10 +2867,38 @@ used Testcases:
 https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_check_if_cmd_exist.py
 
 
+.. _src_tc_linux_tc_workfd_check_if_device_exist_py:
+
+src/tc/linux/tc_workfd_check_if_device_exist.py
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+::
+
+  # start with
+  # python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_check_if_device_exist.py
+  # check if a device tb.config.tc_workfd_check_if_device_exists_name exist
+  # this tc returns always true, but sets
+  # tb.config.tc_return True or False, because we may not
+  # want to end testcase failed, if device not exists.
+
+used Testcases:
+
+:ref:`src_tc_linux_tc_workfd_check_if_device_exist_py`.
+
+used config variables:
+
+:ref:`tb_config_tc_workfd_check_if_device_exists_name`.
+:ref:`tb_config_tc_return`.
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_check_if_device_exist.py
+
+
 .. _src_tc_linux_tc_workfd_check_if_dir_exist_py:
 
 src/tc/linux/tc_workfd_check_if_dir_exist.py
---------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2231,7 +2925,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_check_if_dir_e
 .. _src_tc_linux_tc_workfd_check_if_file_exist_py:
 
 src/tc/linux/tc_workfd_check_if_file_exist.py
----------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2252,7 +2946,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_check_if_file_
 .. _src_tc_linux_tc_workfd_check_tar_content_py:
 
 src/tc/linux/tc_workfd_check_tar_content.py
--------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2285,7 +2979,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_check_tar_cont
 .. _src_tc_linux_tc_workfd_check_tc_time_py:
 
 src/tc/linux/tc_workfd_check_tc_time.py
----------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2311,7 +3005,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_check_tc_time.
 .. _src_tc_linux_tc_workfd_compile_linux_py:
 
 src/tc/linux/tc_workfd_compile_linux.py
----------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2368,7 +3062,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_compile_linux.
 .. _src_tc_linux_tc_workfd_connect_with_conmux_py:
 
 src/tc/linux/tc_workfd_connect_with_conmux.py
----------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2390,7 +3084,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_connect_with_c
 .. _src_tc_linux_tc_workfd_connect_with_kermit_py:
 
 src/tc/linux/tc_workfd_connect_with_kermit.py
----------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2405,6 +3099,12 @@ src/tc/linux/tc_workfd_connect_with_kermit.py
   #   else
   #   set line tb.config.kermit_line and speed tb.config.kermit_speed and
   #   connect to serial line.
+  # - if you need sudo rights set tb.config.tc_workfd_connect_with_kermit_sudo = 'yes'
+  #   and a sudo is preceded to kermit.
+  #   the sudo password is searched with
+  #   user:  tb.config.user + '_kermit'
+  #   board: tb.config.boardname
+  #
 
 used Testcases:
 
@@ -2417,6 +3117,9 @@ used config variables:
 :ref:`tb_config_tc_workfd_connect_with_kermit_rlogin`.
 :ref:`tb_config_kermit_line`.
 :ref:`tb_config_kermit_speed`.
+:ref:`tb_config_tc_workfd_connect_with_kermit_sudo`.
+:ref:`tb_config_user`.
+:ref:`tb_config_boardname`.
 
 
 
@@ -2426,7 +3129,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_connect_with_k
 .. _src_tc_linux_tc_workfd_cp_file_py:
 
 src/tc/linux/tc_workfd_cp_file.py
----------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2451,7 +3154,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_cp_file.py
 .. _src_tc_linux_tc_workfd_create_ubi_rootfs_py:
 
 src/tc/linux/tc_workfd_create_ubi_rootfs.py
--------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2483,7 +3186,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_create_ubi_roo
 .. _src_tc_linux_tc_workfd_disconnect_with_kermit_py:
 
 src/tc/linux/tc_workfd_disconnect_with_kermit.py
-------------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2504,7 +3207,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_disconnect_wit
 .. _src_tc_linux_tc_workfd_generate_random_file_py:
 
 src/tc/linux/tc_workfd_generate_random_file.py
-----------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2530,7 +3233,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_generate_rando
 .. _src_tc_linux_tc_workfd_get_linux_source_py:
 
 src/tc/linux/tc_workfd_get_linux_source.py
-------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2558,7 +3261,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_get_linux_sour
 .. _src_tc_linux_tc_workfd_get_list_of_files_in_dir_py:
 
 src/tc/linux/tc_workfd_get_list_of_files_in_dir.py
---------------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2584,7 +3287,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_get_list_of_fi
 .. _src_tc_linux_tc_workfd_get_patchwork_number_list_py:
 
 src/tc/linux/tc_workfd_get_patchwork_number_list.py
----------------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2622,7 +3325,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_get_patchwork_
 .. _src_tc_linux_tc_workfd_get_uboot_config_hex_py:
 
 src/tc/linux/tc_workfd_get_uboot_config_hex.py
-----------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2656,7 +3359,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_get_uboot_conf
 .. _src_tc_linux_tc_workfd_get_uboot_config_string_py:
 
 src/tc/linux/tc_workfd_get_uboot_config_string.py
--------------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2690,7 +3393,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_get_uboot_conf
 .. _src_tc_linux_tc_workfd_goto_lab_source_dir_py:
 
 src/tc/linux/tc_workfd_goto_lab_source_dir.py
----------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2716,7 +3419,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_goto_lab_sourc
 .. _src_tc_linux_tc_workfd_goto_linux_code_py:
 
 src/tc/linux/tc_workfd_goto_linux_code.py
------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2750,7 +3453,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_goto_linux_cod
 .. _src_tc_linux_tc_workfd_goto_tbot_workdir_py:
 
 src/tc/linux/tc_workfd_goto_tbot_workdir.py
--------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2775,7 +3478,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_goto_tbot_work
 .. _src_tc_linux_tc_workfd_goto_uboot_code_py:
 
 src/tc/linux/tc_workfd_goto_uboot_code.py
------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2810,7 +3513,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_goto_uboot_cod
 .. _src_tc_linux_tc_workfd_grep_py:
 
 src/tc/linux/tc_workfd_grep.py
-------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2835,7 +3538,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_grep.py
 .. _src_tc_linux_tc_workfd_hdparm_py:
 
 src/tc/linux/tc_workfd_hdparm.py
---------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2867,7 +3570,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_hdparm.py
 .. _src_tc_linux_tc_workfd_insmod_py:
 
 src/tc/linux/tc_workfd_insmod.py
---------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2898,7 +3601,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_insmod.py
 .. _src_tc_linux_tc_workfd_iperf_py:
 
 src/tc/linux/tc_workfd_iperf.py
--------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2931,7 +3634,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_iperf.py
 .. _src_tc_linux_tc_workfd_linux_get_ifconfig_py:
 
 src/tc/linux/tc_workfd_linux_get_ifconfig.py
---------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2961,7 +3664,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_linux_get_ifco
 .. _src_tc_linux_tc_workfd_linux_get_uboot_env_py:
 
 src/tc/linux/tc_workfd_linux_get_uboot_env.py
----------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -2987,7 +3690,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_linux_get_uboo
 .. _src_tc_linux_tc_workfd_linux_mkdir_py:
 
 src/tc/linux/tc_workfd_linux_mkdir.py
--------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -3012,7 +3715,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_linux_mkdir.py
 .. _src_tc_linux_tc_workfd_md5sum_py:
 
 src/tc/linux/tc_workfd_md5sum.py
---------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -3038,7 +3741,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_md5sum.py
 .. _src_tc_linux_tc_workfd_rm_file_py:
 
 src/tc/linux/tc_workfd_rm_file.py
----------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -3062,7 +3765,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_rm_file.py
 .. _src_tc_linux_tc_workfd_rm_linux_code_py:
 
 src/tc/linux/tc_workfd_rm_linux_code.py
----------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -3087,7 +3790,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_rm_linux_code.
 .. _src_tc_linux_tc_workfd_rm_uboot_code_py:
 
 src/tc/linux/tc_workfd_rm_uboot_code.py
----------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -3109,10 +3812,41 @@ used config variables:
 https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_rm_uboot_code.py
 
 
+.. _src_tc_linux_tc_workfd_scp_py:
+
+src/tc/linux/tc_workfd_scp.py
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+::
+
+  # start with
+  # python2.7 src/common/tbot.py -s lab_denx -c exceet -t tc_workfd_scp.py
+  #
+  # start an scp transfer
+  # tb.config.tc_workfd_scp_opt: scp options
+  # tb.config.tc_workfd_scp_from: from where
+  # tb.config.tc_workfd_scp_to
+  #
+
+used Testcases:
+
+:ref:`src_tc_linux_tc_workfd_scp_py`.
+
+used config variables:
+
+:ref:`tb_config_tc_workfd_scp_opt:`.
+:ref:`tb_config_tc_workfd_scp_from:`.
+:ref:`tb_config_tc_workfd_scp_to`.
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_scp.py
+
+
 .. _src_tc_linux_tc_workfd_ssh_py:
 
 src/tc/linux/tc_workfd_ssh.py
------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -3138,7 +3872,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_ssh.py
 .. _src_tc_linux_tc_workfd_sudo_cp_file_py:
 
 src/tc/linux/tc_workfd_sudo_cp_file.py
---------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -3164,7 +3898,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_sudo_cp_file.p
 .. _src_tc_linux_tc_workfd_switch_su_py:
 
 src/tc/linux/tc_workfd_switch_su.py
------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -3182,10 +3916,18 @@ used Testcases:
 https://github.com/hsdenx/tbot/tree/master/src/tc/linux/tc_workfd_switch_su.py
 
 
+src/tc/uboot
+------------
+
+
+src/tc/uboot/duts
+,,,,,,,,,,,,,,,,,
+
+
 .. _src_tc_uboot_duts_tc_ub_basic_py:
 
 src/tc/uboot/duts/tc_ub_basic.py
---------------------------------
+................................
 
 ::
 
@@ -3211,7 +3953,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/duts/tc_ub_basic.py
 .. _src_tc_uboot_duts_tc_ub_bdinfo_py:
 
 src/tc/uboot/duts/tc_ub_bdinfo.py
----------------------------------
+.................................
 
 ::
 
@@ -3237,7 +3979,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/duts/tc_ub_bdinfo.py
 .. _src_tc_uboot_duts_tc_ub_boot_py:
 
 src/tc/uboot/duts/tc_ub_boot.py
--------------------------------
+...............................
 
 ::
 
@@ -3263,7 +4005,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/duts/tc_ub_boot.py
 .. _src_tc_uboot_duts_tc_ub_coninfo_py:
 
 src/tc/uboot/duts/tc_ub_coninfo.py
-----------------------------------
+..................................
 
 ::
 
@@ -3289,7 +4031,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/duts/tc_ub_coninfo.py
 .. _src_tc_uboot_duts_tc_ub_date_py:
 
 src/tc/uboot/duts/tc_ub_date.py
--------------------------------
+...............................
 
 ::
 
@@ -3315,7 +4057,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/duts/tc_ub_date.py
 .. _src_tc_uboot_duts_tc_ub_diskboothelp_py:
 
 src/tc/uboot/duts/tc_ub_diskboothelp.py
----------------------------------------
+.......................................
 
 ::
 
@@ -3341,7 +4083,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/duts/tc_ub_diskboothelp.
 .. _src_tc_uboot_duts_tc_ub_download_py:
 
 src/tc/uboot/duts/tc_ub_download.py
------------------------------------
+...................................
 
 ::
 
@@ -3367,7 +4109,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/duts/tc_ub_download.py
 .. _src_tc_uboot_duts_tc_ub_dtt_py:
 
 src/tc/uboot/duts/tc_ub_dtt.py
-------------------------------
+..............................
 
 ::
 
@@ -3393,7 +4135,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/duts/tc_ub_dtt.py
 .. _src_tc_uboot_duts_tc_ub_environment_py:
 
 src/tc/uboot/duts/tc_ub_environment.py
---------------------------------------
+......................................
 
 ::
 
@@ -3419,7 +4161,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/duts/tc_ub_environment.p
 .. _src_tc_uboot_duts_tc_ub_flash_py:
 
 src/tc/uboot/duts/tc_ub_flash.py
---------------------------------
+................................
 
 ::
 
@@ -3445,7 +4187,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/duts/tc_ub_flash.py
 .. _src_tc_uboot_duts_tc_ub_flinfo_py:
 
 src/tc/uboot/duts/tc_ub_flinfo.py
----------------------------------
+.................................
 
 ::
 
@@ -3471,7 +4213,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/duts/tc_ub_flinfo.py
 .. _src_tc_uboot_duts_tc_ub_i2c_help_py:
 
 src/tc/uboot/duts/tc_ub_i2c_help.py
------------------------------------
+...................................
 
 ::
 
@@ -3492,7 +4234,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/duts/tc_ub_i2c_help.py
 .. _src_tc_uboot_duts_tc_ub_ide_py:
 
 src/tc/uboot/duts/tc_ub_ide.py
-------------------------------
+..............................
 
 ::
 
@@ -3518,7 +4260,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/duts/tc_ub_ide.py
 .. _src_tc_uboot_duts_tc_ub_memory_py:
 
 src/tc/uboot/duts/tc_ub_memory.py
----------------------------------
+.................................
 
 ::
 
@@ -3526,11 +4268,18 @@ src/tc/uboot/duts/tc_ub_memory.py
   # python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_memory.py
   # convert duts tests from:
   # http://git.denx.de/?p=duts.git;a=blob;f=testsystems/dulg/testcases/10_UBootMemory.tc;h=f5fb055499db17c322859215ab489cefb063ac47;hb=101ddd5dbd547d5046363358d560149d873b238a
+  #
+  # disable "base" only command with
+  # tb.config.tc_ub_memory_base = 'no'
+  # default: 'yes'
 
 used Testcases:
 
 :ref:`src_tc_uboot_duts_tc_ub_memory_py`.
 
+used config variables:
+
+:ref:`tb_config_tc_ub_memory_base`.
 
 links:
 
@@ -3544,7 +4293,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/duts/tc_ub_memory.py
 .. _src_tc_uboot_duts_tc_ub_run_py:
 
 src/tc/uboot/duts/tc_ub_run.py
-------------------------------
+..............................
 
 ::
 
@@ -3570,7 +4319,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/duts/tc_ub_run.py
 .. _src_tc_uboot_duts_tc_ub_start_all_duts_py:
 
 src/tc/uboot/duts/tc_ub_start_all_duts.py
------------------------------------------
+.........................................
 
 ::
 
@@ -3591,7 +4340,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/duts/tc_ub_start_all_dut
 .. _src_tc_uboot_tc_ub_aristainetos2_ubi_py:
 
 src/tc/uboot/tc_ub_aristainetos2_ubi.py
----------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -3612,7 +4361,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_ub_aristainetos2_ubi.
 .. _src_tc_uboot_tc_ub_check_reg_file_py:
 
 src/tc/uboot/tc_ub_check_reg_file.py
-------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -3642,7 +4391,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_ub_check_reg_file.py
 .. _src_tc_uboot_tc_ub_check_version_py:
 
 src/tc/uboot/tc_ub_check_version.py
------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -3668,7 +4417,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_ub_check_version.py
 .. _src_tc_uboot_tc_ub_cmp_py:
 
 src/tc/uboot/tc_ub_cmp.py
--------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -3692,10 +4441,125 @@ used config variables:
 https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_ub_cmp.py
 
 
+.. _src_tc_uboot_tc_ub_create_am335x_reg_file_py:
+
+src/tc/uboot/tc_ub_create_am335x_reg_file.py
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+::
+
+  # start with
+  # python2.7 src/common/tbot.py -s lab_denx -c tbot.cfg -t tc_ub_create_am335x_reg_file.py
+  #
+  # creates U-Boot register dump files for an am335x based board.
+  # using testcase tc_ub_create_reg_file.py
+  #
+  # dumps:
+  # - pinmux  44e10000 - 44e10004
+  # - pinmux  44e10010 - 44e10010 
+  # - pinmux  44e10040 - 44e10040
+  # - pinmux  44e10110 - 44e10110
+  # - pinmux  44e10428 - 44e11440
+  # - cm per  44e00000 - 44e00150
+  # - cm wkup 44e00400 - 44e004d0
+  # - cm dpll 44e00500 - 44e0053c
+  # - cm mpu  44e00600 - 44e00604
+  # - cm device 44e00700 - 44e00700
+  # - emif    4c000000 - 4c000120
+  # - ddr     44e12000 - 44e121dc
+  #
+  # into files found in src/files/
+  # create for your board a subdir in the directory,
+  # and move the new created files into it, so you have
+  # them as a base for comparing further use.
+  #
+
+used Testcases:
+
+:ref:`src_tc_uboot_tc_ub_create_am335x_reg_file_py`.
+:ref:`src_tc_uboot_tc_ub_create_reg_file_py`.
+
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_ub_create_am335x_reg_file.py
+
+
+.. _src_tc_uboot_tc_ub_create_imx28_reg_file_py:
+
+src/tc/uboot/tc_ub_create_imx28_reg_file.py
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+::
+
+  # start with
+  # python2.7 src/common/tbot.py -s lab_denx -c tbot.cfg -t tc_ub_create_imx28_reg_file.py
+  #
+  # creates U-Boot register dump files for an imx28 based board.
+  # using testcase tc_ub_create_reg_file.py
+  #
+  # dumps:
+  # - pinmux  80018000 - 80018b40
+  # - clkctrl 80044000 - 80044170
+  # - emi     800e0000 - 800e02ec
+  # - gpmi    8000c000 - 8000c0d4
+  # - enet 0  800f0000 - 800f0684
+  # - enet 1  800f4000 - 800f4684
+  #
+  # into files found in src/files/
+  # create for your board a subdir in the directory,
+  # and move the new created files into it, so you have
+  # them as a base for comparing further use.
+  #
+
+used Testcases:
+
+:ref:`src_tc_uboot_tc_ub_create_imx28_reg_file_py`.
+:ref:`src_tc_uboot_tc_ub_create_reg_file_py`.
+
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_ub_create_imx28_reg_file.py
+
+
+.. _src_tc_uboot_tc_ub_create_imx6_reg_file_py:
+
+src/tc/uboot/tc_ub_create_imx6_reg_file.py
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+::
+
+  # start with
+  # python2.7 src/common/tbot.py -s lab_denx -c tbot.cfg -t tc_ub_create_imx6_reg_file.py
+  #
+  # creates U-Boot register dump files for an imx6 based board.
+  # using testcase tc_ub_create_reg_file.py
+  #
+  # dumps:
+  # - pinmux  20e0000 - 20e0950
+  #
+  # into files found in src/files/
+  # create for your board a subdir in the directory,
+  # and move the new created files into it, so you have
+  # them as a base for comparing further use.
+  #
+
+used Testcases:
+
+:ref:`src_tc_uboot_tc_ub_create_imx6_reg_file_py`.
+:ref:`src_tc_uboot_tc_ub_create_reg_file_py`.
+
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_ub_create_imx6_reg_file.py
+
+
 .. _src_tc_uboot_tc_ub_create_reg_file_py:
 
 src/tc/uboot/tc_ub_create_reg_file.py
--------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -3733,7 +4597,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_ub_create_reg_file.py
 .. _src_tc_uboot_tc_ub_dfu_py:
 
 src/tc/uboot/tc_ub_dfu.py
--------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -3765,7 +4629,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_ub_dfu.py
 .. _src_tc_uboot_tc_ub_dfu_random_py:
 
 src/tc/uboot/tc_ub_dfu_random.py
---------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -3804,7 +4668,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_ub_dfu_random.py
 .. _src_tc_uboot_tc_ub_dfu_random_default_py:
 
 src/tc/uboot/tc_ub_dfu_random_default.py
-----------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -3829,7 +4693,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_ub_dfu_random_default
 .. _src_tc_uboot_tc_ub_get_filesize_py:
 
 src/tc/uboot/tc_ub_get_filesize.py
-----------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -3854,7 +4718,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_ub_get_filesize.py
 .. _src_tc_uboot_tc_ub_get_version_py:
 
 src/tc/uboot/tc_ub_get_version.py
----------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -3880,7 +4744,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_ub_get_version.py
 .. _src_tc_uboot_tc_ub_help_py:
 
 src/tc/uboot/tc_ub_help.py
---------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -3903,14 +4767,29 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_ub_help.py
 .. _src_tc_uboot_tc_ub_load_board_env_py:
 
 src/tc/uboot/tc_ub_load_board_env.py
-------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
   # start with
   # python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_load_board_env.py
-  # load U-Boot Environment for the board tb.config.tftpboardname
-  # tb.config.ub_load_board_env_addr and tb.config.ub_load_board_env_subdir
+  #
+  # task: load U-Boot Environment env.txt file with tftp for the
+  # board tb.config.tftpboardname to the addr tb.config.ub_load_board_env_addr
+  # from subdir tb.config.ub_load_board_env_subdir
+  # and imports the the textfile with 'env import'
+  #
+  # options:
+  # if tb.config.tc_ub_boot_linux_load_env == 'no' than TC does nothing
+  #
+  # if tb.config.tc_ub_boot_linux_load_env == 'set' or == 'setend'
+  # than TC executes the cmds in list tb.config.ub_load_board_env_set
+  #
+  # if tb.config.tc_ub_boot_linux_load_env == 'setend' TC returns
+  # after executing the commands with True
+  #
+  # else TC executes the steps described in 'task'
+  #
 
 used Testcases:
 
@@ -3921,6 +4800,10 @@ used config variables:
 :ref:`tb_config_tftpboardname`.
 :ref:`tb_config_ub_load_board_env_addr`.
 :ref:`tb_config_ub_load_board_env_subdir`.
+:ref:`tb_config_tc_ub_boot_linux_load_env`.
+:ref:`tb_config_tc_ub_boot_linux_load_env`.
+:ref:`tb_config_ub_load_board_env_set`.
+:ref:`tb_config_tc_ub_boot_linux_load_env`.
 
 
 
@@ -3930,7 +4813,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_ub_load_board_env.py
 .. _src_tc_uboot_tc_ub_reset_py:
 
 src/tc/uboot/tc_ub_reset.py
----------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -3951,7 +4834,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_ub_reset.py
 .. _src_tc_uboot_tc_ub_setenv_py:
 
 src/tc/uboot/tc_ub_setenv.py
-----------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -3974,10 +4857,49 @@ used config variables:
 https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_ub_setenv.py
 
 
+.. _src_tc_uboot_tc_ub_setenv_fkt_py:
+
+src/tc/uboot/tc_ub_setenv_fkt.py
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+::
+
+  # start with
+  # python2.7 src/common/tbot.py -s lab_denx -c beagleboneblack -t tc_ub_setenv_fkt.py
+  # set U-Boot Environmentvariable tb.config.setenv_name with value
+  # tb.config.setenv_value
+  #
+  # This is for demonstration how to use functions in tbot only.
+  # So, this testcase sets 3 times the U-Boot Envvariable:
+  # - The new way with importing the functions from testcase
+  #   src/tc/uboot/tc_ub_testfkt.py
+  # - The oldstyled way with calling the testcase tc_ub_testfkt.py
+  #   with tb.eof_call_tc()
+  # - The oldstyled way with calling the testcase tc_ub_testfkt.py
+  #   with tb.call_tc() and getting the return value.
+
+used Testcases:
+
+:ref:`src_tc_uboot_tc_ub_setenv_fkt_py`.
+:ref:`src_tc_uboot_tc_ub_testfkt_py`.
+:ref:`src_tc_uboot_tc_ub_testfkt_py`.
+
+used config variables:
+
+:ref:`tb_config_setenv_name`.
+:ref:`tb_config_setenv_value`.
+:ref:`tb_eof_call_tc()`.
+:ref:`tb_call_tc()`.
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_ub_setenv_fkt.py
+
+
 .. _src_tc_uboot_tc_ub_test_py_py:
 
 src/tc/uboot/tc_ub_test_py.py
------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -3989,6 +4911,8 @@ src/tc/uboot/tc_ub_test_py.py
   # - connect back to console
   # test/py hookscript directory:
   # tb.config.tc_ub_test_py_hook_script_path
+  #
+  # you can disable this testcase with tb.config.tc_ub_test_py_start = 'no'
 
 used Testcases:
 
@@ -3997,16 +4921,75 @@ used Testcases:
 used config variables:
 
 :ref:`tb_config_tc_ub_test_py_hook_script_path`.
+:ref:`tb_config_tc_ub_test_py_start`.
 
 
 
 https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_ub_test_py.py
 
 
+.. _src_tc_uboot_tc_ub_testfkt_py:
+
+src/tc/uboot/tc_ub_testfkt.py
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+::
+
+  # start with
+  # python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_testfkt.py
+  #
+  # This testcase is for demonstration of using functions in
+  # testcases, and use them from other testcases.
+  #
+  # testcase which calls this function for demo:
+  # src/tc/uboot/tc_ub_setenv_fkt.py
+  #
+  # defines 2 functions:
+  # - ub_setenv(tb, c, name, val)
+  #   set Environment variable name with value val
+  # - ub_checkenv(tb, c, name, val)
+  #   checks, if U-Boot Environmentvariable name
+  #   has the value val.
+  #
+  # there are 2 ways from calling this testcase directly
+  # from the cmdline:
+  #
+  # - with arguments:
+  #   tbot.py -s lab_denx -c beagleboneblack -t tc_ub_testfkt.py -a "Heiko Schochernew"
+  #
+  #      name = tb.arguments.split()[0]
+  #      val = tb.arguments.split()[1]
+  #
+  # - without arguments:
+  #   tbot.py -s lab_denx -c beagleboneblack -t tc_ub_testfkt.py
+  #
+  #   in this case 
+  #      name = tb.config.setenv_name
+  #      val = tb.config.setenv_value
+  #
+
+used Testcases:
+
+:ref:`src_tc_uboot_tc_ub_testfkt_py`.
+:ref:`src_tc_uboot_tc_ub_testfkt_py`.
+:ref:`src_tc_uboot_tc_ub_testfkt_py`.
+
+used config variables:
+
+:ref:`tb_arguments_split()[0]`.
+:ref:`tb_arguments_split()[1]`.
+:ref:`tb_config_setenv_name`.
+:ref:`tb_config_setenv_value`.
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_ub_testfkt.py
+
+
 .. _src_tc_uboot_tc_ub_tftp_file_py:
 
 src/tc/uboot/tc_ub_tftp_file.py
--------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -4032,7 +5015,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_ub_tftp_file.py
 .. _src_tc_uboot_tc_ub_ubi_check_volume_py:
 
 src/tc/uboot/tc_ub_ubi_check_volume.py
---------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -4056,7 +5039,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_ub_ubi_check_volume.p
 .. _src_tc_uboot_tc_ub_ubi_create_volume_py:
 
 src/tc/uboot/tc_ub_ubi_create_volume.py
----------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -4082,7 +5065,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_ub_ubi_create_volume.
 .. _src_tc_uboot_tc_ub_ubi_erase_py:
 
 src/tc/uboot/tc_ub_ubi_erase.py
--------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -4104,7 +5087,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_ub_ubi_erase.py
 .. _src_tc_uboot_tc_ub_ubi_info_py:
 
 src/tc/uboot/tc_ub_ubi_info.py
-------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -4125,7 +5108,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_ub_ubi_info.py
 .. _src_tc_uboot_tc_ub_ubi_prepare_py:
 
 src/tc/uboot/tc_ub_ubi_prepare.py
----------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -4154,7 +5137,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_ub_ubi_prepare.py
 .. _src_tc_uboot_tc_ub_ubi_read_py:
 
 src/tc/uboot/tc_ub_ubi_read.py
-------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -4181,7 +5164,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_ub_ubi_read.py
 .. _src_tc_uboot_tc_ub_ubi_write_py:
 
 src/tc/uboot/tc_ub_ubi_write.py
--------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -4208,7 +5191,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_ub_ubi_write.py
 .. _src_tc_uboot_tc_ub_ubifs_ls_py:
 
 src/tc/uboot/tc_ub_ubifs_ls.py
-------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -4232,7 +5215,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_ub_ubifs_ls.py
 .. _src_tc_uboot_tc_ub_ubifs_mount_py:
 
 src/tc/uboot/tc_ub_ubifs_mount.py
----------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -4256,7 +5239,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_ub_ubifs_mount.py
 .. _src_tc_uboot_tc_ub_upd_spl_py:
 
 src/tc/uboot/tc_ub_upd_spl.py
------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -4283,7 +5266,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_ub_upd_spl.py
 .. _src_tc_uboot_tc_ub_upd_uboot_py:
 
 src/tc/uboot/tc_ub_upd_uboot.py
--------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -4310,33 +5293,40 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_ub_upd_uboot.py
 .. _src_tc_uboot_tc_uboot_check_kconfig_py:
 
 src/tc/uboot/tc_uboot_check_kconfig.py
---------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
   # start with
-  # python2.7 src/common/tbot.py -c config/tbot_uboot_kconfig_check.cfg -t tc_uboot_check_kconfig.py
+  # python2.7 src/common/tbot.py -s lab_denx -c uboot_kconfig_check -t tc_uboot_check_kconfig.py
+  #
   # check for all boards, if a patch changes the u-boot binary
   # If U-boot binary changed by the patch this testcase fails.
   # use this testcase, if you for example move a config option
   # into Kconfig. As we need reproducable builds, we need to
-  # patch U-Boot with tb.tc_uboot_check_kconfig_preparepatch
+  # patch U-Boot with tb.config.tc_uboot_check_kconfig_preparepatch
+  # find this patch here: src/files/ub-patches/0001-U-Boot-version-fix.patch
+  # copy it to the lab pc and adapt tb.config.tc_uboot_check_kconfig_preparepatch
+  #
+  # Steps from this testcase:
   # - rm U-Boot code with tc_workfd_rm_uboot_code.py
   # - get U-Boot code with tc_lab_get_uboot_source.py
   # - set SOURCE_DATE_EPOCH=0 to get reproducible builds
-  # - get rid of local version ToDo: find a way to disable CONFIG_LOCALVERSION_AUTO
-  # - if tb.tc_uboot_check_kconfig_read_sumfile is != 'none'
+  # - apply patch from tb.config.tc_uboot_check_kconfig_preparepatch
+  #   get rid of local version ToDo: find a way to disable CONFIG_LOCALVERSION_AUTO
+  #   so this patch is not longer needed.
+  # - if tb.config.tc_uboot_check_kconfig_read_sumfile is != 'none'
   #     read a list of boards and md5sums from the file in
-  #     tb.tc_uboot_check_kconfig_read_sumfile
+  #     tb.config.tc_uboot_check_kconfig_read_sumfile
   #   else
   #   - create a list of boards (all defconfigs)
   #   - do for all boards:
   #     - get architecture and set toolchain
   #     - compile U-Boot and calculate md5sum
   #       with tc_workfd_compile_uboot.py and tc_workfd_md5sum.py
-  #     - if tb.tc_uboot_check_kconfig_create_sumfile != 'none'
+  #     - if tb.config.tc_uboot_check_kconfig_create_sumfile != 'none'
   #       save the board md5sum lists in the file
-  #       tb.tc_uboot_check_kconfig_create_sumfile
+  #       tb.config.tc_uboot_check_kconfig_create_sumfile
   #       you can use this now as a reference, so no need
   #       to calculate always for all boards the md5sums
   #       -> saves a lot of time!
@@ -4359,21 +5349,113 @@ used Testcases:
 
 used config variables:
 
-:ref:`tb_tc_uboot_check_kconfig_preparepatch`.
-:ref:`tb_tc_uboot_check_kconfig_read_sumfile`.
-:ref:`tb_tc_uboot_check_kconfig_read_sumfile`.
-:ref:`tb_tc_uboot_check_kconfig_create_sumfile`.
-:ref:`tb_tc_uboot_check_kconfig_create_sumfile`.
+:ref:`tb_config_tc_uboot_check_kconfig_preparepatch`.
+:ref:`tb_config_tc_uboot_check_kconfig_preparepatch`.
+:ref:`tb_config_tc_uboot_check_kconfig_preparepatch`.
+:ref:`tb_config_tc_uboot_check_kconfig_read_sumfile`.
+:ref:`tb_config_tc_uboot_check_kconfig_read_sumfile`.
+:ref:`tb_config_tc_uboot_check_kconfig_create_sumfile`.
+:ref:`tb_config_tc_uboot_check_kconfig_create_sumfile`.
 
 
 
 https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_uboot_check_kconfig.py
 
 
+.. _src_tc_uboot_tc_uboot_ext2load_py:
+
+src/tc/uboot/tc_uboot_ext2load.py
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+::
+
+  # start with
+  # python2.7 src/common/tbot.py -s lab_denx -c fipad -t tc_uboot_ext2load.py
+  #
+  # load a file from ext2 into ram with ext2ls cmd.
+  # check if the file has crc32 checksum 0x2144df1c
+  #
+  # How to create such a file, which has crc32 checksum of 0x2144df1c ?
+  #
+  # $ dd if=/dev/urandom of=test.bin bs=1M count=1
+  # $ crc32 test.bin
+  # 4f3fef33
+  # $ perl -e 'print pack "H*", "33ef3f4f"' >> test.bin
+  # $ crc32 test.bin
+  # 2144df1c
+  #
+  # https://stackoverflow.com/questions/28591991/crc32-of-already-crc32-treated-data-with-the-crc-data-appended
+  #
+  # !! Don;t forget Big into little endian conversion
+  #
+  # used vars:
+  # tc_uboot_ext2load_interface = 'usb'
+  # tc_uboot_ext2load_dev = '0:1'
+  # tc_uboot_ext2load_addr = '10000000'
+  # tc_uboot_ext2load_file = '/test.bin'
+  # tc_uboot_ext2load_check = 'no'
+  #   if 'yes' check if the file tc_uboot_ext2load_file
+  #   has the checksum 0x2144df1c
+
+used Testcases:
+
+:ref:`src_tc_uboot_tc_uboot_ext2load_py`.
+:ref:`_tc_uboot_ext2load_interface`.
+:ref:`_tc_uboot_ext2load_dev`.
+:ref:`_tc_uboot_ext2load_addr`.
+:ref:`_tc_uboot_ext2load_file`.
+:ref:`_tc_uboot_ext2load_check`.
+:ref:`_tc_uboot_ext2load_file`.
+
+
+links:
+
+https://stackoverflow.com/questions/28591991/crc32-of-already-crc32-treated-data-with-the-crc-data-appended
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_uboot_ext2load.py
+
+
+.. _src_tc_uboot_tc_uboot_ext2ls_py:
+
+src/tc/uboot/tc_uboot_ext2ls.py
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+::
+
+  # start with
+  # python2.7 src/common/tbot.py -s lab_denx -c fipad -t tc_uboot_ext2ls.py
+  #
+  # simply call ext2ls
+  #
+  # used vars:
+  # tb.config.tc_uboot_ext2ls_expect = ['lost+found']
+  #   strings we expect from the ext2ls command
+  # tb.config.tc_uboot_ext2ls_interface = 'usb'
+  # tb.config.tc_uboot_ext2ls_dev = '0:1'
+  # tb.config.tc_uboot_ext2ls_dir = '/'
+
+used Testcases:
+
+:ref:`src_tc_uboot_tc_uboot_ext2ls_py`.
+
+used config variables:
+
+:ref:`tb_config_tc_uboot_ext2ls_expect`.
+:ref:`tb_config_tc_uboot_ext2ls_interface`.
+:ref:`tb_config_tc_uboot_ext2ls_dev`.
+:ref:`tb_config_tc_uboot_ext2ls_dir`.
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_uboot_ext2ls.py
+
+
 .. _src_tc_uboot_tc_uboot_get_arch_py:
 
 src/tc/uboot/tc_uboot_get_arch.py
----------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -4391,10 +5473,111 @@ used Testcases:
 https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_uboot_get_arch.py
 
 
+.. _src_tc_uboot_tc_uboot_load_bin_with_kermit_py:
+
+src/tc/uboot/tc_uboot_load_bin_with_kermit.py
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+::
+
+  # start with
+  # tbot.py -c -s lab_denx -c nero -t tc_uboot_load_bin_with_kermit.py
+  # start tc:
+  # load binary into ram with loadb
+  #
+  # precondition:
+  # kermit must be used
+  #
+  # steps:
+  # - loadb tb.config.tc_uboot_load_bin_ram_addr
+  # - leave kermit
+  # - send tb.config.tc_uboot_load_bin_file
+  #   protocol: kermit_protocol='kermit'
+  # wait for "C-Kermit>"
+  # connect
+  # you must get back something like this:
+  # ## Total Size      = 0x00050bc0 = 330688 Bytes
+  # ## Start Addr      = 0x81000000
+
+used Testcases:
+
+:ref:`src_tc_uboot_tc_uboot_load_bin_with_kermit_py`.
+
+used config variables:
+
+:ref:`tb_config_tc_uboot_load_bin_ram_addr`.
+:ref:`tb_config_tc_uboot_load_bin_file`.
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_uboot_load_bin_with_kermit.py
+
+
+.. _src_tc_uboot_tc_uboot_usb_info_py:
+
+src/tc/uboot/tc_uboot_usb_info.py
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+::
+
+  # start with
+  # python2.7 src/common/tbot.py -s lab_denx -c fipad -t tc_uboot_usb_info.py
+  #
+  # call "usb info" command
+  #
+  # used vars:
+  # tb.config.tc_uboot_usb_info_expect = ['Hub,  USB Revision 2.0',
+  #    'Mass Storage,  USB Revision 2.0']
+
+used Testcases:
+
+:ref:`src_tc_uboot_tc_uboot_usb_info_py`.
+
+used config variables:
+
+:ref:`tb_config_tc_uboot_usb_info_expect`.
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_uboot_usb_info.py
+
+
+.. _src_tc_uboot_tc_uboot_usb_start_py:
+
+src/tc/uboot/tc_uboot_usb_start.py
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+::
+
+  # start with
+  # python2.7 src/common/tbot.py -s lab_denx -c fipad -t tc_uboot_usb_start.py
+  #
+  # call "usb start" command
+  #
+  # used vars:
+  # tb.config.tc_uboot_usb_start_expect = ['Storage Device(s) found']
+
+used Testcases:
+
+:ref:`src_tc_uboot_tc_uboot_usb_start_py`.
+
+used config variables:
+
+:ref:`tb_config_tc_uboot_usb_start_expect`.
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/uboot/tc_uboot_usb_start.py
+
+
+src/tc/yocto
+------------
+
+
 .. _src_tc_yocto_tc_workfd_bitbake_py:
 
 src/tc/yocto/tc_workfd_bitbake.py
----------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -4418,7 +5601,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/yocto/tc_workfd_bitbake.py
 .. _src_tc_yocto_tc_workfd_get_yocto_source_py:
 
 src/tc/yocto/tc_workfd_get_yocto_source.py
-------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -4482,7 +5665,7 @@ https://github.com/hsdenx/tbot/tree/master/src/tc/yocto/tc_workfd_get_yocto_sour
 .. _src_tc_yocto_tc_workfd_goto_yocto_code_py:
 
 src/tc/yocto/tc_workfd_goto_yocto_code.py
------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 ::
 
@@ -4513,6 +5696,94 @@ used config variables:
 https://github.com/hsdenx/tbot/tree/master/src/tc/yocto/tc_workfd_goto_yocto_code.py
 
 
+.. _src_tc_yocto_tc_workfd_yocto_basic_check_py:
+
+src/tc/yocto/tc_workfd_yocto_basic_check.py
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+::
+
+  # start with
+  # tbot.py -s lab_denx -c cuby -t tc_workfd_yocto_basic_check.py
+  #
+  # do basic yocto checks
+  #
+  # - check rootfs version
+  # - check dmesg output
+  #   check if strings defined in tb.config.tc_demo_yocto_test_checks
+  #   are found in dmesg output
+  # - check if devmem2 tool is in rootfs, if so, do register checks
+  #
+
+used Testcases:
+
+:ref:`src_tc_yocto_tc_workfd_yocto_basic_check_py`.
+
+used config variables:
+
+:ref:`tb_config_tc_demo_yocto_test_checks`.
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/yocto/tc_workfd_yocto_basic_check.py
+
+
+.. _src_tc_yocto_tc_workfd_yocto_check_rootfs_version_py:
+
+src/tc/yocto/tc_workfd_yocto_check_rootfs_version.py
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+::
+
+  # start with
+  # tbot.py -s lab_denx -c cuby -t tc_workfd_yocto_check_rootfs_version.py
+  #
+  # check if the current /etc/version on the target rootfs is the
+  # same as in tb.onfig.tc_yocto_get_rootfs_from_tarball
+  #
+
+used Testcases:
+
+:ref:`src_tc_yocto_tc_workfd_yocto_check_rootfs_version_py`.
+
+used config variables:
+
+:ref:`tb_onfig_tc_yocto_get_rootfs_from_tarball`.
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/yocto/tc_workfd_yocto_check_rootfs_version.py
+
+
+.. _src_tc_yocto_tc_yocto_get_rootfs_from_tarball_py:
+
+src/tc/yocto/tc_yocto_get_rootfs_from_tarball.py
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+::
+
+  # start with
+  # tbot.py -s lab_denx -c cuby -t tc_yocto_get_rootfs_from_tarball.py
+  #
+  # get rootfs version from rootfs tar ball filepath and name stored in
+  # tb.config.tc_yocto_get_rootfs_from_tarball
+  # and store versionstring in variable:
+  # tb.config.tc_yocto_get_rootfs_from_tarball_rootfs_version
+
+used Testcases:
+
+:ref:`src_tc_yocto_tc_yocto_get_rootfs_from_tarball_py`.
+
+used config variables:
+
+:ref:`tb_config_tc_yocto_get_rootfs_from_tarball`.
+:ref:`tb_config_tc_yocto_get_rootfs_from_tarball_rootfs_version`.
+
+
+
+https://github.com/hsdenx/tbot/tree/master/src/tc/yocto/tc_yocto_get_rootfs_from_tarball.py
+
+
 .. _src_tc_tc_board_git_bisect_py:
 
 src/tc/tc_board_git_bisect.py
@@ -4529,6 +5800,10 @@ src/tc/tc_board_git_bisect.py
   # tc for testing good or bad is tb.config.board_git_bisect_call_tc
   # if you have some local patches, which needs to be applied
   # each git bisect step, set tb.config.board_git_bisect_patches
+  #
+  # if you need to restore your board after a failure, set the
+  # variable tb.config.board_git_bisect_restore to the tc name
+  # which restores the board.
 
 used Testcases:
 
@@ -4540,6 +5815,7 @@ used config variables:
 :ref:`tb_config_board_git_bisect_good_commit`.
 :ref:`tb_config_board_git_bisect_call_tc`.
 :ref:`tb_config_board_git_bisect_patches`.
+:ref:`tb_config_board_git_bisect_restore`.
 
 
 

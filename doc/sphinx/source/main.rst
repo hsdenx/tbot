@@ -58,8 +58,15 @@ tbot documentation
 
    tbotlib
    event_backends
-   testcases
-   variables
+
+############################################
+tbot documentation Testcases
+############################################
+
+.. toctree::
+   :maxdepth: 3
+
+   testcases_new
 
 ############################################
 older versions of documentation

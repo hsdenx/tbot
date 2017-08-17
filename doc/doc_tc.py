@@ -12,7 +12,7 @@ class create_doc(object):
         create a html doc for tbot testcases
         """
         self.subdir = subdir
-        self.htmlfile = 'doc/doc_testcase.html'
+        self.htmlfile = 'doc/sphinx/source/_static/doc_testcases.html'
         self.workdir = os.getcwd()
         self.fd = open(self.workdir + '/' + self.htmlfile, 'w')
 
