@@ -66,7 +66,7 @@ tbot documentation Testcases
 .. toctree::
    :maxdepth: 3
 
-   testcases_new
+   testcases
 
 ############################################
 older versions of documentation
