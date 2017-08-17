@@ -1,0 +1,7 @@
+<INTERRUPT>
+=> help mm
+mm - memory modify (auto-incrementing address)
+
+Usage:
+mm [.b, .w, .l] address
+=> 

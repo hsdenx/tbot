@@ -1,0 +1,7 @@
+<INTERRUPT>
+=> help mw
+mw - memory write (fill)
+
+Usage:
+mw [.b, .w, .l] address value [count]
+=> 

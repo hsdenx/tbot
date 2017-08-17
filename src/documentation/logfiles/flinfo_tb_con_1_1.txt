@@ -1,0 +1,4 @@
+<INTERRUPT>
+=> flinfo
+Unknown command 'flinfo' - try 'help'
+=> 

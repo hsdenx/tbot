@@ -1,0 +1,8 @@
+<INTERRUPT>
+=> help echo
+echo - echo args to console
+
+Usage:
+echo [args..]
+    - echo args to console; \c suppresses newline
+=> 

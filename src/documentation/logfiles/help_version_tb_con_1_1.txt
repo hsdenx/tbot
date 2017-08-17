@@ -1,0 +1,13 @@
+<INTERRUPT>
+=> help version
+version - print monitor, compiler and linker version
+
+Usage:
+version 
+=> <INTERRUPT>
+=> version
+
+U-Boot 2017.07-rc2-00090-g08546df (Aug 16 2017 - 10:50:22 +0200)
+arm-linux-gnueabi-gcc (GCC) 4.7.2
+GNU ld (GNU Binutils) 2.23.1.20121113
+=> 

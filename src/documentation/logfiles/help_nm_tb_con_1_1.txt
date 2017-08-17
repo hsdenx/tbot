@@ -1,0 +1,7 @@
+<INTERRUPT>
+=> help nm
+nm - memory modify (constant address)
+
+Usage:
+nm [.b, .w, .l] address
+=> 

@@ -1,0 +1,4 @@
+^C
+hs@localhost [13:14:05] ttbott> cat .config | grep --color=never CONFIG_SYS_ARCH
+CONFIG_SYS_ARCH="arm"
+hs@localhost [13:14:05] ttbott> 

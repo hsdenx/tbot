@@ -1,0 +1,3 @@
+^C
+hs@localhost [13:13:54] ttbott> export TBOT_BASEDIR_UBOOT=$TBOT_BASEDIR/u-boot-am335x_evm
+hs@localhost [13:13:54] ttbott> 

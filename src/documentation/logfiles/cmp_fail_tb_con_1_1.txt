@@ -1,0 +1,14 @@
+<INTERRUPT>
+=> cmp 0x80000000 0x80100000 40000
+Total of 262144 word(s) were the same
+=> <INTERRUPT>
+=> md 0x80000000 0xc
+80000000: f5b5afec a76e1eb6 c2c2868a 27e177ee    ......n......w.'
+80000010: 85a9141f ea0e0d29 a3b83b60 9c5abf20    ....)...`;.. .Z.
+80000020: d5f90728 4863422c 3faaa83a 375dfa91    (...,BcH:..?..]7
+=> <INTERRUPT>
+=> md 0x80100000 0xc
+80100000: f5b5afec a76e1eb6 c2c2868a 27e177ee    ......n......w.'
+80100010: 85a9141f ea0e0d29 a3b83b60 9c5abf20    ....)...`;.. .Z.
+80100020: d5f90728 4863422c 3faaa83a 375dfa91    (...,BcH:..?..]7
+=> 

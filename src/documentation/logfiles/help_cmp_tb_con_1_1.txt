@@ -1,0 +1,7 @@
+<INTERRUPT>
+=> help cmp
+cmp - memory compare
+
+Usage:
+cmp [.b, .w, .l] addr1 addr2 count
+=> 

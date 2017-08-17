@@ -1,0 +1,10 @@
+<INTERRUPT>
+=> cmp.l 0x80000000 0x80100000 40000
+Total of 262144 word(s) were the same
+=> <INTERRUPT>
+=> cmp.w 0x80000000 0x80100000 80000
+Total of 524288 halfword(s) were the same
+=> <INTERRUPT>
+=> cmp.b 0x80000000 0x80100000 100000
+Total of 1048576 byte(s) were the same
+=> 

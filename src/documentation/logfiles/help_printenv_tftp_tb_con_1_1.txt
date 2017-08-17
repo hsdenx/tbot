@@ -1,0 +1,14 @@
+<INTERRUPT>
+=> help printenv tftp
+printenv - print environment variables
+
+Usage:
+printenv [-a]
+    - print [all] values of all environment variables
+printenv name ...
+    - print value of environment variable 'name'
+tftpboot - boot image via network using TFTP protocol
+
+Usage:
+tftpboot [loadAddress] [[hostIPaddr:]bootfilename]
+=> 

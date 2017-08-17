@@ -1,0 +1,9 @@
+<INTERRUPT>
+=> help sleep
+sleep - delay execution for some time
+
+Usage:
+sleep N
+    - delay execution for N seconds (N is _decimal_ and can be
+      fractional)
+=> 

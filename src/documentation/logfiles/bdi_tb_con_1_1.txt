@@ -1,0 +1,16 @@
+<INTERRUPT>
+=> bdi
+arch_number = 0x00000E05
+boot_params = 0x80000100
+DRAM bank   = 0x00000000
+-> start    = 0x80000000
+-> size     = 0x20000000
+baudrate    = 115200 bps
+TLB addr    = 0x9FFF0000
+relocaddr   = 0x9FF4F000
+reloc off   = 0x1F74F000
+irq_sp      = 0x9DF264E0
+sp start    = 0x9DF264D0
+Early malloc usage: 178 / 400
+fdt_blob = 9df264f8
+=> 

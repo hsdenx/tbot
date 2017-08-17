@@ -365,13 +365,51 @@ the variable "self.webdir" (and send a patch, which makes this configurable)
 Copy the read_db.php and konfiguration.php script into your webservers
 root dir (the setting from self.webdir)
 
+tbot install documentation backend
+----------------------------------
 
-tbot guide backend ToDo
------------------------
+Enable the documentation backend in tbot
 
-- guide for setting up event backends
 
-  - documentation
+.. image:: image/guide/guide_backend_documentation_enable.png
+
+start the tbot command, for example we want all duts testcases.
+
+.. image:: image/guide/guide_backend_documentation_run.png
+
+make sure, you have created the "logfiles" directory in tbots root source, where
+the documentation backend saves the logfiles.
+
+After tbot has finsihed, you have a lot of logfiles in "logfiles".
+
+You can use tthem now, to integrate them into rst files ...
+
+I started to documentate U-Boot, so see this as an example:
+
+All files for creating an U-Boot doc are in the directory:
+
+https://github.com/hsdenx/tbot/blob/master/src/documentation
+
+Now copy all files from "logfiles" into "src/documentation/logfiles"
+
+Then goto into src/documentation
+
+and start the "make_doku.sh" script. It does all the needed things
+for creating an U-Boot documentation with logs from the BeagleBoneBlack board.
+
+
+You find the resulting pdf here (work in progress):
+
+https://github.com/hsdenx/tbot/blob/master/src/documentation/pdf/dulg_bbb.pdf
+
+Remark: I try to port the DULG, see
+
+http://www.denx.de/wiki/view/DULG/UBoot
+
+as a first step, then may I extend/rework this.
+
+Help is welcome!
+
 
 tbot compile, install U-Boot on the bbb
 ---------------------------------------

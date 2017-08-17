@@ -1,0 +1,10 @@
+<INTERRUPT>
+=> help help
+help - print command description/usage
+
+Usage:
+help 
+	- print brief description of all commands
+help command ...
+	- print detailed usage of 'command'
+=> 

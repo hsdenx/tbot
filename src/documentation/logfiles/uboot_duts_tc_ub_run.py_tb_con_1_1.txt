@@ -1,0 +1,40 @@
+<INTERRUPT>
+=> <INTERRUPT>
+=> <INTERRUPT>
+=> help run
+run - run commands in an environment variable
+
+Usage:
+run var [...]
+    - run the commands in the environment variable(s) 'var'
+=> <INTERRUPT>
+=> setenv test echo This is a test\;printenv ipaddr\;echo Done.
+=> <INTERRUPT>
+=> printenv test
+test=echo This is a test;printenv ipaddr;echo Done.
+=> <INTERRUPT>
+=> run test
+This is a test
+ipaddr=192.168.2.10
+Done.
+=> <INTERRUPT>
+=> setenv test
+=> <INTERRUPT>
+=> setenv test echo This is a test\;printenv ipaddr\;echo Done.
+=> <INTERRUPT>
+=> setenv test2 echo This is another Test\;printenv hostname\;echo Done.
+=> <INTERRUPT>
+=> printenv test test2
+test=echo This is a test;printenv ipaddr;echo Done.
+test2=echo This is another Test;printenv hostname;echo Done.
+=> <INTERRUPT>
+=> run test test2
+This is a test
+ipaddr=192.168.2.10
+Done.
+This is another Test
+## Error: "hostname" not defined
+Done.
+=> <INTERRUPT>
+=> setenv test test2
+=> 

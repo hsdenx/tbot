@@ -1,0 +1,7 @@
+<INTERRUPT>
+=> <INTERRUPT>
+=> <INTERRUPT>
+=> help date
+Unknown command 'date' - try 'help' without arguments for list of all known commands
+
+=> 

@@ -1,0 +1,7 @@
+<INTERRUPT>
+=> help loop
+loop - infinite loop on address range
+
+Usage:
+loop [.b, .w, .l] address number_of_objects
+=> 

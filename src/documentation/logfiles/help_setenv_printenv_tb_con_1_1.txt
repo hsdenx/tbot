@@ -1,0 +1,17 @@
+<INTERRUPT>
+=> help setenv printenv
+setenv - set environment variables
+
+Usage:
+setenv [-f] name value ...
+    - [forcibly] set environment variable 'name' to 'value ...'
+setenv [-f] name
+    - [forcibly] delete environment variable 'name'
+printenv - print environment variables
+
+Usage:
+printenv [-a]
+    - print [all] values of all environment variables
+printenv name ...
+    - print value of environment variable 'name'
+=> 

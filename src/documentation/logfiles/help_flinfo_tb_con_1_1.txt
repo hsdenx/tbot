@@ -1,0 +1,5 @@
+<INTERRUPT>
+=> help flinfo
+Unknown command 'flinfo' - try 'help' without arguments for list of all known commands
+
+=> 

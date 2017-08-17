@@ -1,0 +1,3 @@
+^C
+hs@localhost [13:13:57] ttbott> test -r .config
+hs@localhost [13:13:57] ttbott> 

@@ -1,0 +1,6 @@
+<INTERRUPT>
+=> conin
+List of available devices:
+serial@44e09000 00000003 IO stdin stdout stderr 
+serial   00000003 IO 
+=> 

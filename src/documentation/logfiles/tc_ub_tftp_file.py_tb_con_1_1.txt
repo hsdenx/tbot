@@ -1,0 +1,15 @@
+<INTERRUPT>
+=> <INTERRUPT>
+=> <INTERRUPT>
+=> tftp 0x80000000 beagleboneblack/tbotrandom
+link up on port 0, speed 100, full duplex
+Using ethernet@4a100000 device
+TFTP from server 192.168.2.1; our IP address is 192.168.2.10
+Filename 'beagleboneblack/tbotrandom'.
+Load address: 0x80000000
+Loading: *#################################################################
+	 #######
+	 4.5 MiB/s
+done
+Bytes transferred = 1048576 (100000 hex)
+=> 

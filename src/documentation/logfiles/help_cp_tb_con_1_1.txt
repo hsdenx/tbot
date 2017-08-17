@@ -1,0 +1,7 @@
+<INTERRUPT>
+=> help cp
+cp - memory copy
+
+Usage:
+cp [.b, .w, .l] source target count
+=> 

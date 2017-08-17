@@ -1,0 +1,7 @@
+<INTERRUPT>
+=> help conin
+coninfo - print console devices and information
+
+Usage:
+coninfo 
+=> 
