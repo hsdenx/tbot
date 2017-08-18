@@ -32,9 +32,7 @@ def linux_relay_set_port(tb, c, port, state):
     ret = tc_linux_relay_get_config.tc_linux_relay_get_config(tb, port, state)
     if ret == False:
         return False
-    ret = tb.call_tc(tb.config.tc_linux_relay_set_tc)
-    if ret == False:
-        return False
+    tb.eof_call_tc(tb.config.tc_linux_relay_set_tc)
 
     return True
 
