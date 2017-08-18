@@ -124,7 +124,10 @@ dt:hover > a.headerlink {
 }
 
 img {
-  border: 0;
+  border: 0.2em solid #e1e1e1;
+  backColor: white;
+  borderPadding: 8;
+  margin-bottom: 1em;
 }
 
 div.admonition {
