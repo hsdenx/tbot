@@ -1,0 +1,9 @@
+echo
+echo Network Configuration:
+echo ----------------------
+echo Target:
+printenv ipaddr hostname
+echo
+echo Server:
+printenv serverip rootpath
+echo

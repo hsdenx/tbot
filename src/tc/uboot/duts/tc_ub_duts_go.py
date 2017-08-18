@@ -13,9 +13,11 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_boot.py
-# convert duts tests from:
-# http://git.denx.de/?p=duts.git;a=blob;f=testsystems/dulg/testcases/10_UBootBoot.tc;h=f679ff09cdb1e1393829c32dc5aa5cf299e9af07;hb=101ddd5dbd547d5046363358d560149d873b238a
+# python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_duts_go.py
+# do the commands needed for:
+# http://www.denx.de/wiki/view/DULG/UBootCmdGroupExec#Section_5.9.4.3.
+# U-Boots go command
+#
 # End:
 
 from tbotlib import tbot
@@ -23,11 +25,16 @@ from tbotlib import tbot
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
+if (tb.config.tc_ub_memory_ram_ws_base == 'undef'):
+    # Try to get the SDRAM Base
+    tb.uboot_config_option = 'CONFIG_SYS_SDRAM_BASE'
+    tb.eof_call_tc("tc_workfd_get_uboot_config_hex.py")
+    tb.config.tc_ub_memory_ram_ws_base = tb.config_result
+
 cmdlist = [
-"help boot",
-"help bootm",
-"help bootd",
+"help go",
 ]
 
 tb.eof_write_cmd_list(tb.c_con, cmdlist, create_doc_event=True)
+
 tb.end_tc(True)
