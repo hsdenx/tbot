@@ -83,15 +83,16 @@ def tb_call_tc(func):
         #       for entry in zip(argnames,args) + kwargs.items())
         try:
             ret = func(*args, **kwargs)
+            name = tb.tc_stack.pop()
             tb._ret = ret
             logging.info("End with calling fkt %s ret: %d", fname, tb._ret)
-        except Exception as error:
+        except ValueError as err:
             ret = tb._ret
-            tb.log.exception(error)
+            # tb.log.exception(err)
             logging.info("End with exception calling fkt %s ret: %d", fname, tb._ret)
-            name = tb.tc_stack.pop()
-            #traceback.print_stack()
-            #sys.exit(1)
+            # traceback.print_stack()
+            # sys.exit(1)
+
         tb._main -= 1
         tb.event.create_event(pfname, fname, "End", ret)
         logging.info("*****************************************")
@@ -515,14 +516,18 @@ class tbot(object):
             name = self.tc_stack.pop()
             if 'callfkt_' in name:
                 logging.info('End of Fkt: %s %d', name, self._ret)
-                # sys.exit(0)
+                logging.info('-----------------------------------------')
+                if self._ret:
+                    sys.exit(0)
+                else:
+                    raise ValueError('Fkt ended with error')
                 return self._ret
 
             if self._ret:
                 logging.info('End of TC: %s success', name)
                 logging.info('-----------------------------------------')
                 sys.exit(0)
-            logging.info('End False')
+            logging.info('End of TC: %s False', name)
             sys.exit(1)
 
     def verboseprint(self, *args):
