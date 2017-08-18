@@ -270,6 +270,11 @@ run tbot and after tbot finsihed you got in tbot source dir the file
 
 and find the output.jpg in tbot source dir.
 
+Example output:
+
+.. image:: image/guide/guide_backend_statistic_example.png
+   :scale: 40%
+
 tbot install dot backend
 ------------------------
 
@@ -285,7 +290,7 @@ Enable the dot backend in tbot
 
 .. image:: image/guide/guide_backend_dot_enable.png
 
-Simply run now tbot and after tbot finshed you see the file
+Simply run now tbot and after tbot finished you see the file
 "tc.dot" in tbot source directory.
 
 Create a png Image with
@@ -299,6 +304,23 @@ or a ps file with
 ::
 
   $ dot -Tps tc.dot > tc.ps
+
+Here an example for a resulting image:
+
+.. image:: image/guide/guide_backend_dot_example.png
+   :scale: 70%
+
+What do we see?
+
+Executing testcase files are in black boxes.
+
+Calling testcase functions are in blue boxes.
+
+Returning with success is a green arrow.
+
+Returning with failure is a red arrow.
+
+
 
 tbot install html backend
 -------------------------
