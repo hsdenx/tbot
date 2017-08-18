@@ -312,9 +312,9 @@ Here an example for a resulting image:
 
 What do we see?
 
-Executing testcase files are in black boxes.
+Executed testcase files are in black boxes.
 
-Calling testcase functions are in blue boxes.
+Called testcase functions are in blue boxes.
 
 Returning with success is a green arrow.
 
