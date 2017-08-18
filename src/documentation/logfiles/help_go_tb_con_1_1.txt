@@ -1,0 +1,9 @@
+<INTERRUPT>
+=> help go
+go - start application at address 'addr'
+
+Usage:
+go addr [arg ...]
+    - start application at address 'addr'
+      passing 'arg' as arguments
+=> 

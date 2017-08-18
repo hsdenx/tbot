@@ -1,0 +1,11 @@
+<INTERRUPT>
+=> help source
+source - run script from memory
+
+Usage:
+source [addr]
+	- run script starting at addr
+	- A valid image header must be present
+For FIT format uImage addr must include subimage
+unit name in the form of addr:<subimg_uname>
+=> 

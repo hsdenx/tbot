@@ -1,0 +1,29 @@
+<INTERRUPT>
+=> imi 0x80000000
+
+## Checking Image at 80000000 ...
+   Legacy image found
+   Image Name:   autoscr example script
+   Created:      2017-08-18   8:19:02 UTC
+   Image Type:   PowerPC Linux Script (uncompressed)
+   Data Size:    157 Bytes = 157 Bytes
+   Load Address: 00000000
+   Entry Point:  00000000
+   Contents:
+      Image 0: 149 Bytes = 149 Bytes
+   Verifying Checksum ... OK
+=> <INTERRUPT>
+=> source 0x80000000
+## Executing script at 80000000
+
+Network Configuration:
+----------------------
+Target:
+ipaddr=192.168.2.10
+## Error: "hostname" not defined
+
+Server:
+serverip=192.168.2.1
+rootpath=/export/rootfs
+
+=> 

@@ -1,0 +1,33 @@
+<INTERRUPT>
+=> help bootm
+bootm - boot application image from memory
+
+Usage:
+bootm [addr [arg ...]]
+    - boot application image stored in memory
+	passing arguments 'arg ...'; when booting a Linux kernel,
+	'arg' can be the address of an initrd image
+	When booting a Linux kernel which requires a flat device-tree
+	a third argument is required which is the address of the
+	device-tree blob. To boot that kernel without an initrd image,
+	use a '-' for the second argument. If you do not pass a third
+	a bd_info struct will be passed instead
+	
+For the new multi component uImage format (FIT) addresses
+	must be extended to include component or configuration unit name:
+	addr:<subimg_uname> - direct component image specification
+	addr#<conf_uname>   - configuration specification
+	Use iminfo command to get the list of existing component
+	images and configurations.
+
+Sub-commands to do part of the bootm sequence.  The sub-commands must be
+issued in the order below (it's ok to not issue all sub-commands):
+	start [addr [arg ...]]
+	loados  - load OS image
+	ramdisk - relocate initrd, set env initrd_start/initrd_end
+	fdt     - relocate flat device tree
+	cmdline - OS specific command line processing/setup
+	bdt     - OS specific bd_t processing
+	prep    - OS specific prep before relocation or go
+	go      - start OS
+=> 

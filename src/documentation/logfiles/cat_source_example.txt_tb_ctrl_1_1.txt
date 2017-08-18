@@ -1,0 +1,12 @@
+^C
+hs@localhost [10:24:35] ttbott> cat source_example.txt
+echo
+echo Network Configuration:
+echo ----------------------
+echo Target:
+printenv ipaddr hostname
+echo
+echo Server:
+printenv serverip rootpath
+echo
+hs@localhost [10:24:35] ttbott> 
