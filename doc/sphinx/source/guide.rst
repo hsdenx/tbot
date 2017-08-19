@@ -113,6 +113,28 @@ If you need to adapt the portnumber for ssh
 
 .. image:: image/guide/guide_ssh_port.png
 
+LabPC specific settings
+-----------------------
+
+you may need to set lab specific settings when tbot starts.
+
+For this case you can write a testcase, which setups all things
+you need when tbot starts. As default, no testcases gets
+started.
+
+Add in your lab config file
+
+.. image:: image/guide/guide_lab_specific.png
+
+In this example, always tbot opens a connection, the testcase
+
+https://github.com/hsdenx/tbot/blob/master/src/tc/lab/tc_lab_prepare_laptop_hs.py
+
+gets called. In this example case, always a fix ip is set
+to the p2p1 interface (I use this for tftp and nfs server)
+and rmmod the ftdi_sio module if loaded.
+
+
 Adapt settings for Gembird Powercontroller
 ------------------------------------------
 
