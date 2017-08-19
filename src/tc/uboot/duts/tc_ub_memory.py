@@ -30,6 +30,7 @@ logging.info("args: %s %s %s", tb.config.tc_ub_memory_ram_ws_base, tb.config.tc_
 if (tb.config.tc_ub_memory_ram_ws_base == 'undef'):
     # Try to get the SDRAM Base
     tb.uboot_config_option = 'CONFIG_SYS_SDRAM_BASE'
+    tb.workfd = tb.c_ctrl
     tb.eof_call_tc("tc_workfd_get_uboot_config_hex.py")
     tb.config.tc_ub_memory_ram_ws_base = tb.config_result
 
@@ -191,10 +192,8 @@ def tbot_send_list(tb, mm_list):
         ret = tb.tbot_rup_and_check_strings(tb.c_con, searchlist)
         if ret == '0':
             tb.eof_write_con(cmd, False)
-        elif ret == 'prompt':
-            tb.send_ctrl_c(tb.c_con)
-            tb.c_con.expect_prompt()
-            tb.end_tc(False)
+
+    tb.c_con.expect_prompt()
 
 mm_list = [
 "0", "0xaabbccdd", "0x01234567", "."
