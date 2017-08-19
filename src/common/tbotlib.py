@@ -604,7 +604,7 @@ class tbot(object):
         self.set_prompt(c, self.config.linux_prompt, 'linux')
 
         self.set_term_length(c)
-        tb.workfd = c
+        self.workfd = c
         self.eof_call_tc("tc_lab_prepare.py")
         return True
 
