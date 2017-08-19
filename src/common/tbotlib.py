@@ -997,6 +997,40 @@ class tbot(object):
                 self.end_tc(False)
         return ret
 
+    def write_lx_sudo_cmd_check(self, c, command, user, board, endTC=True, start=True):
+        """write a linux sudo command to console.
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: connection
+        :param arg2: commandstring
+        :param arg3: user
+        :param arg4: board
+        :param arg5: if True and linux cmd ended False end TC
+               with end_tc(False), else return True
+        :param arg6: start boolean, True, send console start before the
+        cmdstring.
+        :return: if linux cmd ended successful True, else False
+        """
+        self.eof_write(c, command, start)
+        searchlist = ['sudo']
+        tmp = True
+        while tmp == True:
+            ret = self.tbot_rup_and_check_strings(c, searchlist)
+            if ret == '0':
+                self.write_stream_passwd(c, user + '_sudo', board)
+            elif ret == 'prompt':
+                tmp = False
+
+        tmpfd = self.workfd
+        self.workfd = c
+        ret = self.call_tc("tc_workfd_check_cmd_success.py")
+        self.workfd = tmpfd
+        if endTC == True:
+            if ret == False:
+                self.end_tc(False)
+        return ret
+
+
     def eof_write_con_lx_cmd(self, command, start=True):
         """write a linux command to console.
 
