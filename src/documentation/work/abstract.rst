@@ -8,7 +8,7 @@ About this Document
 ===================
 
 The documentation is written in reStructuredText_ and converted into a pdf document.
-Some parts of this document are created automatically out of the log files from the tbot build process.
+Some parts of this document are created automatically out of the log files from the tbot_ build process.
 
 .. _reStructuredText: https://de.wikipedia.org/wiki/ReStructuredText
 
@@ -29,7 +29,7 @@ Then we describe what needs to be done to connect to the serial console port of 
 
 In most cases you will want to load images into your target using ethernet; for this purpose you need TFTP and DHCP / BOOTP servers. A short description of their configuration is given.
 
-A description follows of what needs to be done to configure and build the U-Boot for a specific board, and how to install it and get it working on that board.
+A description follows of what needs to be done to configure and build the U-Boot for the beagleboneblack board, and how to install it and get it working on that board.
 
 The configuration, building and installing of Linux in an embedded configuration is the next step. We use SELF, our Simple Embedded Linux Framework, to demonstrate how to set up both a development system (with the root filesystem mounted over NFS) and an embedded target configuration (running from a ramdisk image based on busybox).
 
