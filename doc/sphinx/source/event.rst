@@ -110,6 +110,20 @@ LINUX_SRC_PATH   path, where Linux source is located
 SET_DOC_FILENAME  set a name for the logfile
 ================  ============================
 
+==================  ============================
+  Event-ID           content
+==================  ============================
+DUTS_UBOOT_VERSION  U-Boot version 'undef' if not found
+DUTS_SPL_VERSION    SPL version, 'undef' if not found
+DUTS_BOARDNAME      tb.config.boardlabpowername
+
+When activating the documentation backend, this values
+are saved in the file: self.tb.workdir + '/logfiles/duts_settings.txt'
+
+You can later use them to make your document board independent.
+
+  tc_ub_duts_version.py_
+.. _tc_workfd_compile_linux.py: https://github.com/hsdenx/tbot/blob/master/src/tc/uboot/duts/tc_ub_duts_version.py
 
 demos
 =====

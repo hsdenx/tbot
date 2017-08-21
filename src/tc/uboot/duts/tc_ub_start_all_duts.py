@@ -21,6 +21,7 @@ from tbotlib import tbot
 
 
 dutslist = [
+"uboot/duts/tc_ub_duts_version.py",
 "uboot/duts/tc_ub_basic.py",
 "uboot/duts/tc_ub_bdinfo.py",
 "uboot/duts/tc_ub_boot.py",

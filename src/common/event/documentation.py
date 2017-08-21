@@ -90,6 +90,12 @@ class doc_backend(object):
         # ignore lines which contain the follwoing strings
         self.striplist = tb.config.event_documentation_strip_list
 
+    def __del__(self):
+        try:
+            self.fd_duts.close()
+        except:
+            self.fd_duts = 'none'
+
     def create_docfiles(self):
         """create the files
         """
@@ -106,6 +112,8 @@ class doc_backend(object):
         if el['id'] == 'log':
             return el['id']
         if el['id'] == 'SET_DOC_FILENAME':
+            return el['id']
+        if 'DUTS' in el['id']:
             return el['id']
         return 'none'
 
@@ -196,6 +204,15 @@ class doc_backend(object):
             eid = self._get_event_id(el)
             if eid == 'none':
                 continue
+            if 'DUTS' in eid:
+                # write it in duts_setting file
+                try:
+                    self.fd_duts
+                except:
+                    self.fd_duts = open(self.tb.workdir + '/logfiles/duts_settings.txt', 'w')
+                tmp = eid + '\t' +  el['val'] + '\n'
+                self.fd_duts.write(tmp)
+
             newname = self._get_event_name(el)
             ret = self._check_ignore_list(eid, newname, evl)
             if ret == 'ignore':
