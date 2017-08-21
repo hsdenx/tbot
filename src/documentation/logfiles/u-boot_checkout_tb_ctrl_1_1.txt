@@ -1,0 +1,5 @@
+^C
+hs@localhost [10:45:06] ttbott> git checkout master
+Bereits auf 'master'
+Ihr Branch ist auf dem selben Stand wie 'origin/master'.
+hs@localhost [10:45:06] ttbott> 

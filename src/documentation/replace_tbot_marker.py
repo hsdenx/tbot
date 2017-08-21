@@ -88,14 +88,18 @@ class replace_tbot_marker(object):
         # foundname = None , if not found
         while self.line:
             self.get_next_line()
-            if foundname:
-                self.check_include()
             self.linenr += 1
             found = self.line.find(self.searchstring_only_end)
             if found != -1:
                 return self.linenr
-            else:
-                if foundname:
+
+            if foundname:
+                self.check_include()
+                found = self.line.find(self.searchstring)
+                if found != -1:
+                    self.replace_tbot_marker_file()
+                else:
+                    self.lastline_has_tbotmarker = False
                     self.fo.write(self.line)
 
         return self.linenr

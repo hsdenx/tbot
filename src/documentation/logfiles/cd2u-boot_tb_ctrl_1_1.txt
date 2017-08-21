@@ -1,0 +1,3 @@
+^C
+hs@localhost [10:45:05] ttbott> cd u-boot-am335x_evm
+hs@localhost [10:45:05] ttbott> 

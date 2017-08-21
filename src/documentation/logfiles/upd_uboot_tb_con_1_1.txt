@@ -1,0 +1,14 @@
+<INTERRUPT>
+=> run tbot_upd_uboot
+link up on port 0, speed 100, full duplex
+Using ethernet@4a100000 device
+TFTP from server 192.168.2.1; our IP address is 192.168.2.11
+Filename 'beagleboneblack/tbot/u-boot.img'.
+Load address: 0x81000000
+Loading: *##############################################
+	 4.6 MiB/s
+done
+Bytes transferred = 660860 (a157c hex)
+writing u-boot.img
+660860 bytes written
+=> 

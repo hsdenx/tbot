@@ -22,6 +22,156 @@ For details please see here.
 
 Official releases of U-Boot are also available through FTP. Compressed tar archives can downloaded from the directory ftp://ftp.denx.de/pub/u-boot/. 
 
+.. raw:: pdf
+
+   PageBreak
+
+Get U-Boot code for the DUTS_BOARDNAME
+======================================
+
+define some PATH variables
+--------------------------
+
+Export our workdirectory:
+
+tbot_ref:export_TBOT_BASEDIR=_work_hs_tbot_tb_ctrl_1_1.txt
+
+and cd into it
+
+tbot_ref:cd_$TBOT_BASEDIR_tb_ctrl_1_1.txt
+
+.. raw:: pdf
+
+   PageBreak
+
+clone the U-Boot code
+---------------------
+
+Now we simply clone the U-Boots source code with git:
+
+tbot_ref:u-boot_clone_tb_ctrl_1_1.txt
+
+cd into it
+
+tbot_ref:cd2u-boot_tb_ctrl_1_1.txt
+
+checkout the branch you want to test
+
+tbot_ref:u-boot_checkout_tb_ctrl_1_1.txt
+
+just for the records, print some info of the branch
+
+tbot_ref:u-boot_describe_tb_ctrl_1_1.txt
+
+.. raw:: pdf
+
+   PageBreak
+
+setup toolchain
+===============
+
+This depends on the toolchain you use.
+
+tbot_ref:tc_workfd_set_toolchain.py_tb_ctrl_1_1.txt
+
+.. raw:: pdf
+
+   PageBreak
+
+compile U-Boot for the DUTS_BOARDNAME
+=====================================
+
+.. only:: compile_uboot_set_dtc_tb_ctrl_1_1.txt
+
+Add the path to the dtc command to your PATH variable
+
+tbot_ref:compile_uboot_set_dtc_tb_ctrl_1_1.txt
+
+.. only_end::
+
+clean the source code
+
+tbot_ref:compile_uboot_mrproper_tb_ctrl_1_1.txt
+
+configure source for the DUTS_BOARDNAME
+
+tbot_ref:compile_uboot_config_tb_ctrl_1_1.txt
+
+Now compile it
+
+tbot_ref:compile_uboot_make_tb_ctrl_1_1.txt
+
+after U-Boot is compiled, copy the resulting binaries we need later to our tftpboot directory.
+
+
+tbot_ref:tc_lab_cp_file.py_tb_ctrl_1_1.txt
+tbot_ref:tc_lab_cp_file.py_tb_ctrl_2_1.txt
+tbot_ref:tc_lab_cp_file.py_tb_ctrl_3_1.txt
+
+.. raw:: pdf
+
+   PageBreak
+
+U-Boot installation
+===================
+
+install U-Boot
+--------------
+
+for this example, we install the new U-Boot on the SD card, as we use SD card bootmode.
+
+tbot_ref:print_upd_uboot_tb_con_1_1.txt
+
+tfpt the new u-boot image into ram and write it to the sd card.
+
+tbot_ref:upd_uboot_tb_con_1_1.txt
+
+install SPL
+-----------
+
+for this example, we install the new SPL on the SD card, as we use SD card bootmode.
+
+tbot_ref:print_upd_spl_tb_con_1_1.txt
+
+tfpt the new SPL image into ram and write it to the sd card.
+
+tbot_ref:upd_spl_tb_con_1_1.txt
+
+.. raw:: pdf
+
+   PageBreak
+
+Tool Installation
+=================
+
+U-Boot uses a special image format when loading the Linux kernel or ramdisk or other images. This image contains (among other things) information about the time of creation, operating system, compression type, image type, image name and CRC32 checksums.
+
+The tool :redtext:`mkimage` is used to create such images or to display the information they contain. When using the ELDK_, the :redtext:`mkimage` command is already included with the other ELDK_ tools.
+
+If you don't use the ELDK_ then you should install :redtext:`mkimage` in some directory that is in your command search PATH, for instance:
+
+::
+
+  $ cp tools/mkimage /usr/local/bin/
+
+mkimage is readily available in several distributions; for example, in Ubuntu_ it is part of the :redtext:`u-boot-tools` package, so it can be installed with:
+
+::
+
+  $ sudo apt-get install u-boot-tools
+
+In Fedora_ the package name is :redtext:`uboot-tools`, and the command to install it is:
+
+::
+
+  $ sudo dnf install uboot-tools
+
+Finally, if you're building with OpenEmbedded_ or `Yocto Project`_, you would want to add the :redtext:`u-boot-fw-utils` recipe to your image. 
+
+.. raw:: pdf
+
+   PageBreak
+
 U-Boot Command Line Interface
 =============================
 
@@ -130,3 +280,15 @@ means that the serial device provides input (flag 'I') and output (flag 'O') fun
 
 .. include:: u-boot-execution.rst
 
+links
+=====
+
+.. _ELDK: http://www.denx.de/wiki/DULG/ELDK
+
+.. _Ubuntu: http://www.ubuntu.com/
+
+.. _Fedora: http://fedoraproject.org/
+
+.. _OpenEmbedded: http://openembedded.org/wiki/Main_Page
+
+.. _`Yocto Project`: https://www.yoctoproject.org/

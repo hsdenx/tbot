@@ -1,0 +1,9 @@
+^C
+hs@localhost [11:04:55] ttbott> make -s all
+*** Your GCC is older than 6.0 and will not be supported starting in v2018.01.
+===================== WARNING ======================
+This board uses CONFIG_DM_I2C_COMPAT. Please remove
+(possibly in a subsequent patch in your series)
+before sending patches to the mailing list.
+====================================================
+hs@localhost [11:05:51] ttbott> 

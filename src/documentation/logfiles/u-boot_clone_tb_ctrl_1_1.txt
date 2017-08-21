@@ -1,0 +1,5 @@
+^C
+hs@localhost [10:45:03] ttbott> git clone /home/hs/git/u-boot u-boot-am335x_evm
+Klone nach 'u-boot-am335x_evm'...
+Fertig.
+hs@localhost [10:45:04] ttbott> 

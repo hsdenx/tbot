@@ -1,0 +1,3 @@
+^C
+hs@localhost [11:04:51] ttbott> make mrproper
+hs@localhost [11:04:51] ttbott> 

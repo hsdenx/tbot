@@ -43,7 +43,7 @@ can be converted into a U-Boot script image using the :redtext:`mkimage` command
 ::
 
   $ mkimage -A ppc -O linux -T script -C none -a 0 -e 0 -n "autoscr example script" -d\
-    /work/hs/tbot/source_example.txt /var/lib/tftpboot/beagleboneblack/tbot/source.scr
+    $TBOT_BASEDIR/source_example.txt /var/lib/tftpboot/beagleboneblack/tbot/source.scr
   Image Name:   autoscr example script
   Created:      Fri Aug 18 10:24:36 2017
   Image Type:   PowerPC Linux Script (uncompressed)
@@ -59,17 +59,16 @@ Now you can load and execute this script image in U-Boot:
 
 ::
 
-  => tftp 0x80000000 beagleboneblack/tbotrandom
+  => tftp 0x80000000 beagleboneblack/tbot/source_example.scr
   link up on port 0, speed 100, full duplex
   Using ethernet@4a100000 device
   TFTP from server 192.168.2.1; our IP address is 192.168.2.10
-  Filename 'beagleboneblack/tbotrandom'.
+  Filename 'beagleboneblack/tbot/source_example.scr'.
   Load address: 0x80000000
-  Loading: *#################################################################
-  	 #######
-  	 4.5 MiB/s
+  Loading: *#
+  	 107.4 KiB/s
   done
-  Bytes transferred = 1048576 (100000 hex)
+  Bytes transferred = 221 (dd hex)
   => 
   => imi 0x80000000
   

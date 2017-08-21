@@ -1,0 +1,4 @@
+^C
+hs@localhost [10:45:07] ttbott> git describe --tags
+v2017.09-rc2-151-g2d7cb5b
+hs@localhost [10:45:08] ttbott> 

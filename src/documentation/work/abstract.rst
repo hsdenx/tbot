@@ -14,7 +14,7 @@ Some parts of this document are created automatically out of the log files from 
 
 This document is generated for the beagleboneblack with U-Boot version
 
-U-Boot 2017.07-rc2-00090-g08546df (Aug 16 2017 - 10:50:22 +0200)
+U-Boot 2017.09-rc2-00151-g2d7cb5b (Aug 21 2017 - 10:10:54 +0200)
 
 Introduction
 ============

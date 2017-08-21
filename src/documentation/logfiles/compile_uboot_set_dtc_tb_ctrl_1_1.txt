@@ -1,0 +1,3 @@
+^C
+hs@localhost [11:04:50] ttbott> export PATH=/work/hs/tbot/dtc:$PATH
+hs@localhost [11:04:50] ttbott> 

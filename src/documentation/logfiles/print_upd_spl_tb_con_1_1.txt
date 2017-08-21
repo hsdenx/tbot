@@ -1,0 +1,6 @@
+<INTERRUPT>
+=> print tbot_upd_spl load_mlo upd_mlo
+tbot_upd_spl=run load_mlo;run upd_mlo
+load_mlo=tftp ${load_addr_r} ${mlofile}
+upd_mlo=fatwrite mmc 1:1 ${load_addr_r} mlo ${filesize}
+=> 
