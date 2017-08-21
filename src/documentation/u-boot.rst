@@ -283,6 +283,8 @@ means that the serial device provides input (flag 'I') and output (flag 'O') fun
 links
 =====
 
+.. _tbot: https://github.com/hsdenx/tbot
+
 .. _ELDK: http://www.denx.de/wiki/DULG/ELDK
 
 .. _Ubuntu: http://www.ubuntu.com/

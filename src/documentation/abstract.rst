@@ -8,7 +8,7 @@ About this Document
 ===================
 
 The documentation is written in reStructuredText_ and converted into a pdf document.
-Some parts of this document are created automatically out of the log files from the tbot build process.
+Some parts of this document are created automatically out of the log files from the tbot_ build process.
 
 .. _reStructuredText: https://de.wikipedia.org/wiki/ReStructuredText
 
