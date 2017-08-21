@@ -12,6 +12,10 @@ Some parts of this document are created automatically out of the log files from 
 
 .. _reStructuredText: https://de.wikipedia.org/wiki/ReStructuredText
 
+This document is generated for the beagleboneblack with U-Boot version
+
+U-Boot 2017.07-rc2-00090-g08546df (Aug 16 2017 - 10:50:22 +0200)
+
 Introduction
 ============
 

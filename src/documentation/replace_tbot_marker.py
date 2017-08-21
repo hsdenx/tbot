@@ -20,6 +20,7 @@
 # the outputfile
 # 
 import os, sys
+import os.path
 from optparse import OptionParser
 import textwrap
 
@@ -48,6 +49,23 @@ class replace_tbot_marker(object):
             self.tbot_wdir = '/work/hs/tbot'
             self.tbot_first = False
 
+        if os.path.isfile(self.options.tcpath + '/duts_settings.txt'):
+            self.fd_duts = open(self.options.tcpath + '/duts_settings.txt', 'r')
+            # create dictionary
+            self.duts_var = []
+            self.line = self.fd_duts.readline()
+            while self.line:
+                tmp = self.line.split('\t')
+                tmp[1] = tmp[1].strip('\n')
+                newel = {'var' : tmp[0], 'value' : tmp[1]}
+                self.duts_var.append(newel)
+               
+                self.line = self.fd_duts.readline()
+            self.fd_duts.close()
+            self.fd_duts = True
+        else:
+            self.fd_duts = False
+
     def findfilename(self, name, path):
         for root, dirs, files in os.walk(path):
             if name in files:
@@ -69,7 +87,7 @@ class replace_tbot_marker(object):
         foundname = self.findfilename(tmp, self.options.tcpath)
         # foundname = None , if not found
         while self.line:
-            self.line = self.fi.readline()
+            self.get_next_line()
             if foundname:
                 self.check_include()
             self.linenr += 1
@@ -170,10 +188,23 @@ class replace_tbot_marker(object):
         fl.close()
         self.lastline_has_tbotmarker = True
 
+    def replace_duts(self):
+        if self.fd_duts == False:
+            return
+
+        for el in self.duts_var:
+            if el['var'] in self.line:
+                self.line = self.line.replace(el['var'], el['value'])
+            
+
+    def get_next_line(self):
+        self.line = self.fi.readline()
+        self.replace_duts()
+
     def do_work(self):
         self.fi = open(self.options.ifile, 'r')
         self.fo = open(self.options.ofile, 'w')
-        self.line = self.fi.readline()
+        self.get_next_line()
 
         self.lastline_has_tbotmarker = False
         self.linenr = 0
@@ -190,7 +221,7 @@ class replace_tbot_marker(object):
                     self.check_only_marker()
                 else:
                     self.fo.write(self.line)
-            self.line = self.fi.readline()
+            self.get_next_line()
 
         self.fi.close()
         self.fo.close()

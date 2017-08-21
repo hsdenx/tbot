@@ -1,11 +1,11 @@
 .. footer::
-   U-Boot / BeagleBoneBlack documentation - page ###Page### / ###Total###
+   U-Boot / DUTS_BOARDNAME documentation - page ###Page### / ###Total###
 
 .. role:: redtext
 .. role:: ubvar
 
 ####################################
-U-Boot BeagleBoneBlack Documentation
+U-Boot DUTS_BOARDNAME Documentation
 ####################################
 
 .. include:: abstract.rst

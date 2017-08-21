@@ -12,6 +12,10 @@ Some parts of this document are created automatically out of the log files from 
 
 .. _reStructuredText: https://de.wikipedia.org/wiki/ReStructuredText
 
+This document is generated for the DUTS_BOARDNAME with U-Boot version
+
+DUTS_UBOOT_VERSION
+
 Introduction
 ============
 

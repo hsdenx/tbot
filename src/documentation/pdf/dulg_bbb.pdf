@@ -134,8 +134,8 @@ endobj
 << /Outlines 37 0 R /PageLabels 87 0 R /PageMode /UseNone /Pages 64 0 R /Type /Catalog >>
 endobj
 36 0 obj
-<< /Author () /CreationDate (D:20170818114207-01'00') /Creator (\(unspecified\)) /Keywords () /Producer (ReportLab PDF Library - www.reportlab.com) /Subject (\(unspecified\)) 
-  /Title (U-Boot BeagleBoneBlack Documentation) >>
+<< /Author () /CreationDate (D:20170821095243-01'00') /Creator (\(unspecified\)) /Keywords () /Producer (ReportLab PDF Library - www.reportlab.com) /Subject (\(unspecified\)) 
+  /Title (U-Boot beagleboneblack Documentation) >>
 endobj
 37 0 obj
 << /Count 32 /First 38 0 R /Last 42 0 R /Type /Outlines >>
@@ -148,7 +148,7 @@ endobj
 << /Dest [ 6 0 R /XYZ 62.69291 583.0236 0 ] /Next 40 0 R /Parent 38 0 R /Title (About this Document) >>
 endobj
 40 0 obj
-<< /Dest [ 6 0 R /XYZ 62.69291 499.0236 0 ] /Next 41 0 R /Parent 38 0 R /Prev 39 0 R /Title (Introduction) >>
+<< /Dest [ 6 0 R /XYZ 62.69291 463.0236 0 ] /Next 41 0 R /Parent 38 0 R /Prev 39 0 R /Title (Introduction) >>
 endobj
 41 0 obj
 << /Dest [ 7 0 R /XYZ 62.69291 765.0236 0 ] /Parent 38 0 R /Prev 40 0 R /Title (Disclaimer) >>
@@ -230,14 +230,14 @@ endobj
   33 0 R 34 0 R ] /Type /Pages >>
 endobj
 65 0 obj
-<< /Length 3998 >>
+<< /Length 4330 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
 q
 1 0 0 1 62.69291 693.0236 cm
 q
 0 0 0 rg
-BT 1 0 0 1 0 42 Tm /F2 30 Tf 36 TL 54.08988 0 Td (U-Boot BeagleBoneBlack) Tj T* 71.685 0 Td (Documentation) Tj T* -125.7749 0 Td ET
+BT 1 0 0 1 0 42 Tm /F2 30 Tf 36 TL 59.08488 0 Td (U-Boot beagleboneblack) Tj T* 66.69 0 Td (Documentation) Tj T* -125.7749 0 Td ET
 Q
 Q
 q
@@ -259,74 +259,87 @@ BT 1 0 0 1 0 14 Tm .755984 Tw 12 TL /F1 10 Tf 0 0 0 rg (The documentation is wri
 Q
 Q
 q
-1 0 0 1 62.69291 475.0236 cm
+1 0 0 1 62.69291 499.0236 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (This document is generated for the beagleboneblack with U-Boot version) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 481.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (U-Boot 2017.07-rc2-00090-g08546df \(Aug 16 2017 - 10:50:22 +0200\)) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 439.0236 cm
 q
 BT 1 0 0 1 0 4 Tm 176.6149 0 Td 24 TL /F3 20 Tf 0 0 0 rg (Introduction) Tj T* -176.6149 0 Td ET
 Q
 Q
 q
-1 0 0 1 62.69291 433.0236 cm
+1 0 0 1 62.69291 397.0236 cm
 q
 0 0 0 rg
 BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL .831318 Tw (This document describes how to use the firmware U-Boot and the operating system Linux in Embedded) Tj T* 0 Tw (Power Architecture\256, ARM and MIPS Systems.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 391.0236 cm
+1 0 0 1 62.69291 355.0236 cm
 q
 0 0 0 rg
 BT 1 0 0 1 0 26 Tm /F1 10 Tf 12 TL .382846 Tw (There are many steps along the way, and it is nearly impossible to cover them all in depth, but we will try) Tj T* 0 Tw 1.054651 Tw (to provide all necessary information to get an embedded system running from scratch. This includes all) Tj T* 0 Tw (the tools you will probably need to configure, build and run U-Boot and Linux.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 349.0236 cm
+1 0 0 1 62.69291 313.0236 cm
 q
 0 0 0 rg
 BT 1 0 0 1 0 26 Tm /F1 10 Tf 12 TL 1.012126 Tw (First, we describe how to install the Cross Development Tools Embedded Linux Development Kit which) Tj T* 0 Tw .427488 Tw (you probably need - at least when you use a standard x86 PC running Linux or a Sun Solaris 2.6 system) Tj T* 0 Tw (as build environment.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 319.0236 cm
+1 0 0 1 62.69291 283.0236 cm
 q
 0 0 0 rg
 BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL .093488 Tw (Then we describe what needs to be done to connect to the serial console port of your target: you will have) Tj T* 0 Tw (to configure a terminal emulation program like cu or kermit.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 289.0236 cm
+1 0 0 1 62.69291 253.0236 cm
 q
 0 0 0 rg
 BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL 1.494431 Tw (In most cases you will want to load images into your target using ethernet; for this purpose you need) Tj T* 0 Tw (TFTP and DHCP / BOOTP servers. A short description of their configuration is given.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 259.0236 cm
+1 0 0 1 62.69291 223.0236 cm
 q
 0 0 0 rg
 BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL .273672 Tw (A description follows of what needs to be done to configure and build the U-Boot for a specific board, and) Tj T* 0 Tw (how to install it and get it working on that board.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 205.0236 cm
+1 0 0 1 62.69291 169.0236 cm
 q
 0 0 0 rg
 BT 1 0 0 1 0 38 Tm /F1 10 Tf 12 TL .60311 Tw (The configuration, building and installing of Linux in an embedded configuration is the next step. We use) Tj T* 0 Tw .089984 Tw (SELF, our Simple Embedded Linux Framework, to demonstrate how to set up both a development system) Tj T* 0 Tw 2.319983 Tw (\(with the root filesystem mounted over NFS\) and an embedded target configuration \(running from a) Tj T* 0 Tw (ramdisk image based on busybox\).) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 175.0236 cm
+1 0 0 1 62.69291 139.0236 cm
 q
 0 0 0 rg
 BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL 1.678876 Tw (This document does not describe what needs to be done to port U-Boot or Linux to a new hardware) Tj T* 0 Tw (platform. Instead, it is silently assumed that your board is already supported by U-Boot and Linux.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 175.0236 cm
+1 0 0 1 62.69291 139.0236 cm
 Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 118.0999 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / BeagleBoneBlack documentation - page 1 / 22) Tj T* -118.0999 0 Td ET
+BT 1 0 0 1 0 2 Tm 119.7649 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 1 / 22) Tj T* -119.7649 0 Td ET
 Q
 Q
  
@@ -355,7 +368,7 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 118.0999 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / BeagleBoneBlack documentation - page 2 / 22) Tj T* -118.0999 0 Td ET
+BT 1 0 0 1 0 2 Tm 119.7649 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 2 / 22) Tj T* -119.7649 0 Td ET
 Q
 Q
  
@@ -491,7 +504,7 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 118.0999 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / BeagleBoneBlack documentation - page 3 / 22) Tj T* -118.0999 0 Td ET
+BT 1 0 0 1 0 2 Tm 119.7649 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 3 / 22) Tj T* -119.7649 0 Td ET
 Q
 Q
  
@@ -565,7 +578,7 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 118.0999 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / BeagleBoneBlack documentation - page 4 / 22) Tj T* -118.0999 0 Td ET
+BT 1 0 0 1 0 2 Tm 119.7649 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 4 / 22) Tj T* -119.7649 0 Td ET
 Q
 Q
  
@@ -668,7 +681,7 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 118.0999 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / BeagleBoneBlack documentation - page 5 / 22) Tj T* -118.0999 0 Td ET
+BT 1 0 0 1 0 2 Tm 119.7649 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 5 / 22) Tj T* -119.7649 0 Td ET
 Q
 Q
  
@@ -736,7 +749,7 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 118.0999 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / BeagleBoneBlack documentation - page 6 / 22) Tj T* -118.0999 0 Td ET
+BT 1 0 0 1 0 2 Tm 119.7649 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 6 / 22) Tj T* -119.7649 0 Td ET
 Q
 Q
  
@@ -804,7 +817,7 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 118.0999 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / BeagleBoneBlack documentation - page 7 / 22) Tj T* -118.0999 0 Td ET
+BT 1 0 0 1 0 2 Tm 119.7649 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 7 / 22) Tj T* -119.7649 0 Td ET
 Q
 Q
  
@@ -931,7 +944,7 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 118.0999 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / BeagleBoneBlack documentation - page 8 / 22) Tj T* -118.0999 0 Td ET
+BT 1 0 0 1 0 2 Tm 119.7649 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 8 / 22) Tj T* -119.7649 0 Td ET
 Q
 Q
  
@@ -1040,7 +1053,7 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 118.0999 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / BeagleBoneBlack documentation - page 9 / 22) Tj T* -118.0999 0 Td ET
+BT 1 0 0 1 0 2 Tm 119.7649 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 9 / 22) Tj T* -119.7649 0 Td ET
 Q
 Q
  
@@ -1134,7 +1147,7 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 115.3199 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / BeagleBoneBlack documentation - page 10 / 22) Tj T* -115.3199 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 10 / 22) Tj T* -116.9849 0 Td ET
 Q
 Q
  
@@ -1228,7 +1241,7 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 115.3199 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / BeagleBoneBlack documentation - page 11 / 22) Tj T* -115.3199 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 11 / 22) Tj T* -116.9849 0 Td ET
 Q
 Q
  
@@ -1271,7 +1284,7 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 115.3199 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / BeagleBoneBlack documentation - page 12 / 22) Tj T* -115.3199 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 12 / 22) Tj T* -116.9849 0 Td ET
 Q
 Q
  
@@ -1365,7 +1378,7 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 115.3199 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / BeagleBoneBlack documentation - page 13 / 22) Tj T* -115.3199 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 13 / 22) Tj T* -116.9849 0 Td ET
 Q
 Q
  
@@ -1459,7 +1472,7 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 115.3199 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / BeagleBoneBlack documentation - page 14 / 22) Tj T* -115.3199 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 14 / 22) Tj T* -116.9849 0 Td ET
 Q
 Q
  
@@ -1533,7 +1546,7 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 115.3199 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / BeagleBoneBlack documentation - page 15 / 22) Tj T* -115.3199 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 15 / 22) Tj T* -116.9849 0 Td ET
 Q
 Q
  
@@ -1595,7 +1608,7 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 115.3199 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / BeagleBoneBlack documentation - page 16 / 22) Tj T* -115.3199 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 16 / 22) Tj T* -116.9849 0 Td ET
 Q
 Q
  
@@ -1727,7 +1740,7 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 115.3199 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / BeagleBoneBlack documentation - page 17 / 22) Tj T* -115.3199 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 17 / 22) Tj T* -116.9849 0 Td ET
 Q
 Q
  
@@ -1763,7 +1776,7 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 115.3199 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / BeagleBoneBlack documentation - page 18 / 22) Tj T* -115.3199 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 18 / 22) Tj T* -116.9849 0 Td ET
 Q
 Q
  
@@ -1888,7 +1901,7 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 115.3199 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / BeagleBoneBlack documentation - page 19 / 22) Tj T* -115.3199 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 19 / 22) Tj T* -116.9849 0 Td ET
 Q
 Q
  
@@ -1911,7 +1924,7 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 115.3199 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / BeagleBoneBlack documentation - page 20 / 22) Tj T* -115.3199 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 20 / 22) Tj T* -116.9849 0 Td ET
 Q
 Q
  
@@ -1980,7 +1993,7 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 115.3199 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / BeagleBoneBlack documentation - page 21 / 22) Tj T* -115.3199 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 21 / 22) Tj T* -116.9849 0 Td ET
 Q
 Q
  
@@ -1996,7 +2009,7 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 115.3199 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / BeagleBoneBlack documentation - page 22 / 22) Tj T* -115.3199 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 22 / 22) Tj T* -116.9849 0 Td ET
 Q
 Q
  
@@ -2143,55 +2156,55 @@ xref
 0000014782 00000 n
 0000014927 00000 n
 0000015145 00000 n
-0000019200 00000 n
-0000020346 00000 n
-0000024785 00000 n
-0000026892 00000 n
-0000029129 00000 n
-0000030588 00000 n
-0000032681 00000 n
-0000036119 00000 n
-0000039767 00000 n
-0000041717 00000 n
-0000045811 00000 n
-0000047956 00000 n
-0000051955 00000 n
-0000055831 00000 n
-0000058089 00000 n
-0000059565 00000 n
-0000063986 00000 n
-0000065272 00000 n
-0000070609 00000 n
-0000071535 00000 n
-0000073640 00000 n
-0000073956 00000 n
-0000074227 00000 n
-0000074264 00000 n
-0000074301 00000 n
-0000074338 00000 n
-0000074375 00000 n
-0000074412 00000 n
-0000074449 00000 n
-0000074486 00000 n
-0000074523 00000 n
-0000074560 00000 n
-0000074598 00000 n
-0000074636 00000 n
-0000074674 00000 n
-0000074713 00000 n
-0000074752 00000 n
-0000074791 00000 n
-0000074830 00000 n
-0000074869 00000 n
-0000074908 00000 n
-0000074947 00000 n
-0000074986 00000 n
-0000075025 00000 n
+0000019532 00000 n
+0000020678 00000 n
+0000025117 00000 n
+0000027224 00000 n
+0000029461 00000 n
+0000030920 00000 n
+0000033013 00000 n
+0000036451 00000 n
+0000040099 00000 n
+0000042049 00000 n
+0000046143 00000 n
+0000048288 00000 n
+0000052287 00000 n
+0000056163 00000 n
+0000058421 00000 n
+0000059897 00000 n
+0000064318 00000 n
+0000065604 00000 n
+0000070941 00000 n
+0000071867 00000 n
+0000073972 00000 n
+0000074288 00000 n
+0000074559 00000 n
+0000074596 00000 n
+0000074633 00000 n
+0000074670 00000 n
+0000074707 00000 n
+0000074744 00000 n
+0000074781 00000 n
+0000074818 00000 n
+0000074855 00000 n
+0000074892 00000 n
+0000074930 00000 n
+0000074968 00000 n
+0000075006 00000 n
+0000075045 00000 n
+0000075084 00000 n
+0000075123 00000 n
+0000075162 00000 n
+0000075201 00000 n
+0000075240 00000 n
+0000075279 00000 n
+0000075318 00000 n
+0000075357 00000 n
 trailer
 << /ID 
  % ReportLab generated PDF document -- digest (http://www.reportlab.com)
- [(q\335\216\323\324\377\020\355\363\303\306\236\244\0123\214) (q\335\216\323\324\377\020\355\363\303\306\236\244\0123\214)]
+ [(\027Ns\371\031\335\200\236\360Ds\242\017#\355=) (\027Ns\371\031\335\200\236\360Ds\242\017#\355=)]
  /Info 36 0 R /Root 35 0 R /Size 110 >>
 startxref
-75064
+75396
 %%EOF
