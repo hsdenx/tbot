@@ -26,15 +26,19 @@ ret = tb.call_tc("tc_workfd_goto_uboot_code.py")
 if ret == False:
     u_boot_name = "u-boot-" + tb.config.boardlabname
     tb.eof_call_tc("tc_workfd_goto_lab_source_dir.py")
+    self.event.create_event('main', 'tc_ub_memory.py', 'SET_DOC_FILENAME', 'u-boot_clone')
     # clone u-boot.git
     tmp = "git clone " + tb.config.tc_lab_get_uboot_source_git_repo + " " + u_boot_name
     tb.write_lx_cmd_check(tb.workfd, tmp)
 
+    self.event.create_event('main', 'tc_ub_memory.py', 'SET_DOC_FILENAME', 'cd2u-boot')
     tmp = "cd " + u_boot_name
     tb.write_lx_cmd_check(tb.workfd, tmp)
     # check out a specific branch
+    self.event.create_event('main', 'tc_ub_memory.py', 'SET_DOC_FILENAME', 'u-boot_checkout')
     tmp = "git checkout " + tb.config.tc_lab_get_uboot_source_git_branch
     tb.write_lx_cmd_check(tb.workfd, tmp)
+    self.event.create_event('main', 'tc_ub_memory.py', 'SET_DOC_FILENAME', 'u-boot_describe')
     # print some info
     tmp = "git describe --tags"
     tb.write_lx_cmd_check(tb.workfd, tmp)

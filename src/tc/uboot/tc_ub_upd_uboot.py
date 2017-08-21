@@ -39,8 +39,7 @@ c = tb.c_con
 # 'OK' must beread, if the board supports
 # hush shell, best to run if then else with echoing
 # OK ...
-tb.eof_write(c, "print tbot_upd_uboot")
-tb.tbot_expect_prompt(c)
+tb.eof_write_cmd(c, "print tbot_upd_uboot", create_doc_event=True)
 upd_fail = True
 i = 0
 retry = 2
@@ -50,6 +49,7 @@ while upd_fail == True:
         # try a save u-boot ?
         tb.end_tc(False)
 
+    tb.event.create_event('main', 'tc_ub_upd_uboot.py', 'SET_DOC_FILENAME', 'upd_uboot')
     tb.eof_write(c, "run tbot_upd_uboot")
     searchlist = ["!= byte at", "error", "Retry count exceeded", "not defined"]
     tmp = True
@@ -69,8 +69,8 @@ while upd_fail == True:
             tmp = False
 
 # "run tbot_cmp_uboot"
-tb.eof_write(c, "print tbot_cmp_uboot")
-tb.tbot_expect_prompt(c)
+tb.eof_write_cmd(c, "print tbot_cmp_uboot", create_doc_event=True)
+tb.event.create_event('main', 'tc_ub_upd_uboot.py', 'SET_DOC_FILENAME', 'cmp_uboot')
 tb.eof_write(c, "run tbot_cmp_uboot")
 
 # read "!=" -> error

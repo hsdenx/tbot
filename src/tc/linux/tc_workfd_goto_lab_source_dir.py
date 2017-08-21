@@ -19,7 +19,7 @@
 # End:
 
 from tbotlib import tbot
-
+tb.workfd = tb.c_ctrl
 logging.info("args: %s", tb.workfd)
 
 try:
@@ -29,17 +29,18 @@ except:
 
 if tb.workfd.tc_lab_source_dir_checked == False:
     tmp = 'export TBOT_BASEDIR=' + tb.config.tc_lab_source_dir
-    tb.write_lx_cmd_check(tb.workfd, tmp)
+    tb.write_lx_cmd_check(tb.workfd, tmp, create_doc_event=True)
 
+    self.event.create_event('main', 'tc_workfd_goto_lab_source_dir.py', 'SET_DOC_FILENAME', 'TBOT_BASEDIR_check_exist')
     tb.config.tc_workfd_check_if_dir_exists_name = '$TBOT_BASEDIR'
     ret = tb.call_tc("tc_workfd_check_if_dir_exist.py")
     if ret == False:
         tmp = 'mkdir $TBOT_BASEDIR'
-        tb.write_lx_cmd_check(tb.workfd, tmp)
+        tb.write_lx_cmd_check(tb.workfd, tmp, create_doc_event=True)
 
     tb.workfd.tc_lab_source_dir_checked = True
 
 tmp = "cd $TBOT_BASEDIR"
-tb.write_lx_cmd_check(tb.workfd, tmp)
+tb.write_lx_cmd_check(tb.workfd, tmp, create_doc_event=True)
 
 tb.end_tc(True)

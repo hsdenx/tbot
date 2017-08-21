@@ -977,7 +977,7 @@ class tbot(object):
         for tmp_cmd in cmdlist:
             self.eof_write_cmd(c, tmp_cmd, start, create_doc_event)
 
-    def write_lx_cmd_check(self, c, command, endTC=True, start=True):
+    def write_lx_cmd_check(self, c, command, endTC=True, start=True, create_doc_event=False):
         """write a linux command to console.
 
         - **parameters**, **types**, **return** and **return types**::
@@ -989,7 +989,7 @@ class tbot(object):
         cmdstring.
         :return: if linux cmd ended successful True, else False
         """
-        self.eof_write_cmd(c, command, start)
+        self.eof_write_cmd(c, command, start, create_doc_event)
         tmpfd = self.workfd
         self.workfd = c
         ret = self.call_tc("tc_workfd_check_cmd_success.py")
