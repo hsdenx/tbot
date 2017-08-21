@@ -43,11 +43,14 @@ ub_load_board_env_set = [
 setenv_name = 'Heiko'
 setenv_value = 'Schocher'
 ub_load_board_env_addr = '0x81000000'
-tc_lab_get_uboot_source_git_repo = "/home/hs/git/u-boot"
+tc_lab_get_uboot_source_git_repo = "git://git.denx.de/u-boot"
 tc_lab_get_uboot_source_git_branch = "master"
 tc_lab_compile_uboot_export_path = '/work/hs/tbot/dtc'
 tc_demo_compile_install_test_files = ['u-boot.bin', 'u-boot.img', 'MLO']
 tc_ub_test_py_start = 'no'
+tc_lab_compile_uboot_makeoptions = '-s'
+tc_ub_upd_uboot_ubvars = 'load_uboot upd_uboot'
+tc_ub_upd_spl_ubvars = 'load_mlo upd_mlo'
 
 # Linux
 tc_lab_toolchain_rev = '5.8'
