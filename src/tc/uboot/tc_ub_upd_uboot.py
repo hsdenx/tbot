@@ -25,7 +25,12 @@
 
 from tbotlib import tbot
 
-logging.info("args: %s %s %s", tb.config.ub_load_board_env_addr, tb.config.ub_load_board_env_subdir, tb.config.tc_ub_upd_uboot_latest)
+try:
+    tb.config.tc_ub_upd_uboot_ubvars
+except:
+    tb.config.tc_ub_upd_uboot_ubvars = ''
+
+logging.info("args: %s %s %s %s", tb.config.ub_load_board_env_addr, tb.config.ub_load_board_env_subdir, tb.config.tc_ub_upd_uboot_latest, tb.config.tc_ub_upd_uboot_ubvars)
 
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
@@ -39,7 +44,8 @@ c = tb.c_con
 # 'OK' must beread, if the board supports
 # hush shell, best to run if then else with echoing
 # OK ...
-tb.eof_write_cmd(c, "print tbot_upd_uboot", create_doc_event=True)
+tb.event.create_event('main', 'tc_ub_upd_uboot.py', 'SET_DOC_FILENAME', 'print_upd_uboot')
+tb.eof_write_cmd(c, "print tbot_upd_uboot " + tb.config.tc_ub_upd_uboot_ubvars)
 upd_fail = True
 i = 0
 retry = 2
