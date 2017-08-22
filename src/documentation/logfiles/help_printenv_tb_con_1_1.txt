@@ -1,0 +1,10 @@
+<INTERRUPT>
+=> help printenv
+printenv - print environment variables
+
+Usage:
+printenv [-a]
+    - print [all] values of all environment variables
+printenv name ...
+    - print value of environment variable 'name'
+=> 

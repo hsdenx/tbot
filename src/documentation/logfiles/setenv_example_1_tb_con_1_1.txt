@@ -1,0 +1,11 @@
+<INTERRUPT>
+=> setenv foo This is an example value.
+=> <INTERRUPT>
+=> printenv foo
+foo=This is an example value.
+=> <INTERRUPT>
+=> setenv foo
+=> <INTERRUPT>
+=> printenv foo
+## Error: "foo" not defined
+=> 

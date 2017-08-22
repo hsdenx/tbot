@@ -1,0 +1,6 @@
+<INTERRUPT>
+=> printenv ipaddr hostname netmask
+ipaddr=192.168.2.10
+## Error: "hostname" not defined
+netmask=255.255.255.0
+=> 

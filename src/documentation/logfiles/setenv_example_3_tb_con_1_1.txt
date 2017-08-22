@@ -1,0 +1,8 @@
+<INTERRUPT>
+=> setenv cons_opts 'console=tty0 console=ttyS0,\${baudrate}'
+=> <INTERRUPT>
+=> printenv cons_opts
+cons_opts=console=tty0 console=ttyS0,${baudrate}
+=> <INTERRUPT>
+=> setenv cons_opts
+=> 

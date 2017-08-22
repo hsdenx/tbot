@@ -1,0 +1,11 @@
+<INTERRUPT>
+=> printenv bar
+## Error: "bar" not defined
+=> <INTERRUPT>
+=> setenv bar This is a new example.
+=> <INTERRUPT>
+=> printenv bar
+bar=This is a new example.
+=> <INTERRUPT>
+=> setenv bar
+=> 

@@ -1,0 +1,10 @@
+<INTERRUPT>
+=> help setenv
+setenv - set environment variables
+
+Usage:
+setenv [-f] name value ...
+    - [forcibly] set environment variable 'name' to 'value ...'
+setenv [-f] name
+    - [forcibly] delete environment variable 'name'
+=> 
