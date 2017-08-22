@@ -19,10 +19,11 @@
 #   connect first with ssh to another PC (where kermit is started)
 # - start kermit
 # - if tb.config.tc_workfd_connect_with_kermit_rlogin == 'none'
-#   connect with command in tb.config.tc_workfd_connect_with_kermit_rlogin
+#     set line tb.config.kermit_line and speed tb.config.kermit_speed and
+#     kermit parameter list tb.config.tc_workfd_connect_with_kermit_settings
+#     than connect to serial line.
 #   else
-#   set line tb.config.kermit_line and speed tb.config.kermit_speed and
-#   connect to serial line.
+#     connect with command in tb.config.tc_workfd_connect_with_kermit_rlogin
 # - if you need sudo rights set tb.config.tc_workfd_connect_with_kermit_sudo = 'yes'
 #   and a sudo is preceded to kermit.
 #   the sudo password is searched with
@@ -37,6 +38,21 @@ logging.info("args: workdfd: %s", tb.workfd)
 logging.info("args: ssh: %s", tb.config.tc_workfd_connect_with_kermit_ssh)
 logging.info("args: sudo: %s", tb.config.tc_workfd_connect_with_kermit_sudo)
 logging.info("args: kermit: %s %s", tb.config.kermit_line, tb.config.kermit_speed)
+
+try:
+    tb.config.tc_workfd_connect_with_kermit_settings
+except:
+    tb.config.tc_workfd_connect_with_kermit_settings = [
+        "set carrier-watch off",
+        "set handshake none",
+        "set flow-control none",
+        "robust",
+        "set file type bin",
+        "set file name lit",
+        "set rec pack 1000",
+        "set send pack 1000",
+        "set window 5",
+    ]
 
 if tb.config.tc_workfd_connect_with_kermit_ssh != 'none':
     tb.workfd_ssh_cmd = tb.config.tc_workfd_connect_with_kermit_ssh
@@ -87,8 +103,9 @@ if tb.config.tc_workfd_connect_with_kermit_rlogin == 'none':
         tb.end_tc(False)
 
     tb.eof_write_cmd(tb.workfd, "set speed " + tb.config.kermit_speed, start=False)
-    tb.eof_write_cmd(tb.workfd, "set flow-control none", start=False)
-    tb.eof_write_cmd(tb.workfd, "set carrier-watch off", start=False)
+    for cmd in tb.config.tc_workfd_connect_with_kermit_settings:
+        tb.eof_write_cmd(tb.workfd, cmd, start=False)
+
     tb.eof_write(tb.workfd, "connect")
     searchlist = ["Connecting"]
     tmp = True
