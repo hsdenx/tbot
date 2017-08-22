@@ -1,0 +1,3 @@
+<INTERRUPT>
+=> fdt move ${fdt_addr_r} 0x8000b000 b000
+=> 

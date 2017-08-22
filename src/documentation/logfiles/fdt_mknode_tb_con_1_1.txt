@@ -1,0 +1,87 @@
+<INTERRUPT>
+=> fdt list /
+/ {
+	#address-cells = <0x00000001>;
+	#size-cells = <0x00000001>;
+	compatible = "ti,am335x-evm", "ti,am33xx";
+	interrupt-parent = <0x00000001>;
+	model = "TI AM335x EVM";
+	chosen {
+	};
+	aliases {
+	};
+	memory {
+	};
+	cpus {
+	};
+	pmu {
+	};
+	soc {
+	};
+	ocp {
+	};
+	fixedregulator@0 {
+	};
+	fixedregulator@1 {
+	};
+	fixedregulator@2 {
+	};
+	matrix_keypad@0 {
+	};
+	volume_keys@0 {
+	};
+	backlight {
+	};
+	panel {
+	};
+	sound {
+	};
+};
+=> <INTERRUPT>
+=> fdt mknode / testnode
+=> <INTERRUPT>
+=> fdt list /
+/ {
+	#address-cells = <0x00000001>;
+	#size-cells = <0x00000001>;
+	compatible = "ti,am335x-evm", "ti,am33xx";
+	interrupt-parent = <0x00000001>;
+	model = "TI AM335x EVM";
+	testnode {
+	};
+	chosen {
+	};
+	aliases {
+	};
+	memory {
+	};
+	cpus {
+	};
+	pmu {
+	};
+	soc {
+	};
+	ocp {
+	};
+	fixedregulator@0 {
+	};
+	fixedregulator@1 {
+	};
+	fixedregulator@2 {
+	};
+	matrix_keypad@0 {
+	};
+	volume_keys@0 {
+	};
+	backlight {
+	};
+	panel {
+	};
+	sound {
+	};
+};
+=> <INTERRUPT>
+=> fdt list /testnode
+testnode {
+};
+=> 

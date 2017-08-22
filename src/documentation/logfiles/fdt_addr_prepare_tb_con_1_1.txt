@@ -1,0 +1,14 @@
+<INTERRUPT>
+=> setenv fdt_addr_r 0x80000000
+=> <INTERRUPT>
+=> tftpb ${fdt_addr_r} beagleboneblack/tbot/u-boot.dtb
+link up on port 0, speed 100, full duplex
+Using ethernet@4a100000 device
+TFTP from server 192.168.2.1; our IP address is 192.168.2.10
+Filename 'beagleboneblack/tbot/u-boot.dtb'.
+Load address: 0x80000000
+Loading: *####
+	 4.3 MiB/s
+done
+Bytes transferred = 45056 (b000 hex)
+=> 

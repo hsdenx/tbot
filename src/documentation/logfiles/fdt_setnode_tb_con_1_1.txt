@@ -1,0 +1,10 @@
+<INTERRUPT>
+=> fdt set /testnode testprop
+=> <INTERRUPT>
+=> fdt set /testnode testprop testvalue
+=> <INTERRUPT>
+=> fdt list /testnode
+testnode {
+	testprop = "testvalue";
+};
+=> 
