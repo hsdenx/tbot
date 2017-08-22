@@ -26,23 +26,49 @@ tb.set_board_state("u-boot")
 cmdlist = [
 "help printenv",
 "printenv ipaddr hostname netmask",
-"printenv",
+"printenv"
+]
+
+cmdlist_saveenv = [
 "help saveenv",
-"saveenv",
-"help setenv",
+"saveenv"
+]
+
+cmdlist_setenv_1 = [
 "setenv foo This is an example value.",
 "printenv foo",
 "setenv foo",
-"printenv foo",
-"setenv bar",
+"printenv foo"
+]
+
+cmdlist_setenv_2 = [
 "printenv bar",
 "setenv bar This is a new example.",
 "printenv bar",
-"setenv bar",
+"setenv bar"
+]
+
+cmdlist_setenv_3 = [
 "setenv cons_opts 'console=tty0 console=ttyS0,\${baudrate}'",
 "printenv cons_opts",
 "setenv cons_opts"
 ]
 
-tb.eof_write_cmd_list(tb.c_con, cmdlist)
+tb.eof_write_cmd_list(tb.c_con, cmdlist, create_doc_event=True)
+tb.eof_write_cmd_list(tb.c_con, cmdlist_saveenv, create_doc_event=True)
+
+tb.event.create_event('main', 'tc_ub_environment.py', 'SET_DOC_FILENAME', 'help_setenv')
+tb.eof_write_cmd(tb.c_con, "help setenv")
+
+tb.event.create_event('main', 'tc_ub_environment.py', 'SET_DOC_FILENAME', 'setenv_example_1')
+tb.eof_write_cmd_list(tb.c_con, cmdlist_setenv_1)
+
+tb.eof_write_cmd(tb.c_con, "setenv bar", create_doc_event=True)
+
+tb.event.create_event('main', 'tc_ub_environment.py', 'SET_DOC_FILENAME', 'setenv_example_2')
+tb.eof_write_cmd_list(tb.c_con, cmdlist_setenv_2)
+
+tb.event.create_event('main', 'tc_ub_environment.py', 'SET_DOC_FILENAME', 'setenv_example_3')
+tb.eof_write_cmd_list(tb.c_con, cmdlist_setenv_3)
+
 tb.end_tc(True)
