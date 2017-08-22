@@ -34,6 +34,19 @@
 
 from tbotlib import tbot
 
+tb.config.tc_uboot_load_bin_with_kermit_kermit_settings = [
+    "set carrier-watch off",
+    "set handshake none",
+    "set flow-control none",
+    "robust",
+    "set file type bin",
+    "set file name lit",
+    "set rec pack 1000",
+    "set send pack 1000",
+    "set window 5",
+]
+
+
 try:
     tb.config.tc_uboot_load_bin_ram_addr
 except:
@@ -66,7 +79,12 @@ c.send_raw('C')
 c.set_prompt('C-Kermit>')
 c.expect_prompt()
 
+tb.event.create_event('main', 'tc_uboot_load_bin_with_kermit.py', 'SET_DOC_FILENAME', 'loadb_kermit_settings')
+for cmd in tb.config.tc_uboot_load_bin_with_kermit_kermit_settings:
+    tb.eof_write_cmd(tb.workfd, cmd, start=False)
+
 # send file
+tb.event.create_event('main', 'tc_uboot_load_bin_with_kermit.py', 'SET_DOC_FILENAME', 'loadb_send_file')
 cmd = 'send /protocol=' + kermit_protocol + ' ' + tb.config.tc_uboot_load_bin_file
 tb.eof_write(c, cmd)
 
