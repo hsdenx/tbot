@@ -62,6 +62,8 @@ logging.info("args: %s", tb.config.tc_uboot_load_bin_file)
 
 kermit_protocol = 'kermit'
 
+tb.event.create_event('main', 'tc_uboot_load_bin_with_kermit.py', 'SET_DOC_FILENAME', 'loadb_run')
+
 # set workfd to the connection we want to work on
 tb.workfd = tb.c_con
 c = tb.workfd

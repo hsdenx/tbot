@@ -32,6 +32,20 @@ cmdlist = [
 "help tftp"
 ]
 
-tb.eof_write_cmd_list(tb.c_con, cmdlist)
+tb.eof_write_cmd_list(tb.c_con, cmdlist, create_doc_event=True)
+
+ret = tb.write_cmd_check(tb.c_con, "help loadb", "Unknown command", create_doc_event=True)
+if ret == False:
+    if (tb.config.tc_ub_memory_ram_ws_base == 'undef'):
+        # Try to get the SDRAM Base
+        tb.uboot_config_option = 'CONFIG_SYS_SDRAM_BASE'
+        tb.workfd = tb.c_ctrl
+        tb.eof_call_tc("tc_workfd_get_uboot_config_hex.py")
+        tb.config.tc_ub_memory_ram_ws_base = tb.config_result
+
+    tb.config.tc_uboot_load_bin_ram_addr = tb.config.tc_ub_memory_ram_ws_base.replace('0x', '')
+    tb.config.tc_uboot_load_bin_file = tb.config.tftprootdir + tb.config.tc_ub_tftp_path + '/u-boot.img'
+    tb.eof_call_tc("tc_uboot_load_bin_with_kermit.py")
+    tb.eof_write_cmd(tb.c_con, "imi " + tb.config.tc_uboot_load_bin_ram_addr, create_doc_event=True)
 
 tb.end_tc(True)
