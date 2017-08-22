@@ -1,0 +1,100 @@
+<INTERRUPT>
+=> imi 80000000
+
+## Checking Image at 80000000 ...
+   FIT image found
+   FIT description: Firmware image with one or more FDT blobs
+   Created:         2017-08-22   5:01:06 UTC
+    Image 0 (firmware@1)
+     Description:  U-Boot 2017.09-rc2-00151-g2d7cb5b426 for am335x board
+     Created:      2017-08-22   5:01:06 UTC
+     Type:         Firmware
+     Compression:  uncompressed
+     Data Start:   unavailable
+     Data Size:    unavailable
+     Architecture: ARM
+     Load Address: 0x80800000
+    Image 1 (fdt@1)
+     Description:  am335x-evm
+     Created:      2017-08-22   5:01:06 UTC
+     Type:         Firmware
+     Compression:  uncompressed
+     Data Start:   unavailable
+     Data Size:    unavailable
+     Architecture: ARM
+     Load Address: unavailable
+    Image 2 (fdt@2)
+     Description:  am335x-bone
+     Created:      2017-08-22   5:01:06 UTC
+     Type:         Firmware
+     Compression:  uncompressed
+     Data Start:   unavailable
+     Data Size:    unavailable
+     Architecture: ARM
+     Load Address: unavailable
+    Image 3 (fdt@3)
+     Description:  am335x-boneblack
+     Created:      2017-08-22   5:01:06 UTC
+     Type:         Firmware
+     Compression:  uncompressed
+     Data Start:   unavailable
+     Data Size:    unavailable
+     Architecture: ARM
+     Load Address: unavailable
+    Image 4 (fdt@4)
+     Description:  am335x-evmsk
+     Created:      2017-08-22   5:01:06 UTC
+     Type:         Firmware
+     Compression:  uncompressed
+     Data Start:   unavailable
+     Data Size:    unavailable
+     Architecture: ARM
+     Load Address: unavailable
+    Image 5 (fdt@5)
+     Description:  am335x-bonegreen
+     Created:      2017-08-22   5:01:06 UTC
+     Type:         Firmware
+     Compression:  uncompressed
+     Data Start:   unavailable
+     Data Size:    unavailable
+     Architecture: ARM
+     Load Address: unavailable
+    Image 6 (fdt@6)
+     Description:  am335x-icev2
+     Created:      2017-08-22   5:01:06 UTC
+     Type:         Firmware
+     Compression:  uncompressed
+     Data Start:   unavailable
+     Data Size:    unavailable
+     Architecture: ARM
+     Load Address: unavailable
+    Default Configuration: 'conf@1'
+    Configuration 0 (conf@1)
+     Description:  am335x-evm
+     Kernel:       unavailable
+     FDT:          fdt@1
+    Configuration 1 (conf@2)
+     Description:  am335x-bone
+     Kernel:       unavailable
+     FDT:          fdt@2
+    Configuration 2 (conf@3)
+     Description:  am335x-boneblack
+     Kernel:       unavailable
+     FDT:          fdt@3
+    Configuration 3 (conf@4)
+     Description:  am335x-evmsk
+     Kernel:       unavailable
+     FDT:          fdt@4
+    Configuration 4 (conf@5)
+     Description:  am335x-bonegreen
+     Kernel:       unavailable
+     FDT:          fdt@5
+    Configuration 5 (conf@6)
+     Description:  am335x-icev2
+     Kernel:       unavailable
+     FDT:          fdt@6
+## Checking hash(es) for FIT Image at 80000000 ...
+   Hash(es) for Image 0 (firmware@1):  error!
+Can't get image data/size for '' hash node in 'firmware@1' image node
+Bad hash in FIT image!
+=> 

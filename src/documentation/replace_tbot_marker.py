@@ -131,7 +131,9 @@ class replace_tbot_marker(object):
             if p < n:
                 ln = ln[(p+1):]
             elif p > n:
-                print("TODO ")
+                print("TODO ", p, n)
+                if n == -1:
+                    ln = ln[(p+1):]
                 # may split \n and work all elements
                 # and paste it together at the end
             p = ln.find('\r')

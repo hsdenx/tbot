@@ -414,7 +414,6 @@ tbot install documentation backend
 
 Enable the documentation backend in tbot
 
-
 .. image:: image/guide/guide_backend_documentation_enable.png
 
 start the tbot command, for example we want all duts testcases.
@@ -426,7 +425,32 @@ the documentation backend saves the logfiles.
 
 After tbot has finsihed, you have a lot of logfiles in "logfiles".
 
-You can use tthem now, to integrate them into rst files ...
+You can use them now, to integrate them into rst files ...
+
+You need also the tool "ansi2txt" for removing ansi escape sequences.
+
+https://sourceforge.net/projects/ansi2txt/files/latest/download
+
+https://sourceforge.net/p/ansi2txt/wiki/Home/
+
+before using the logfiles, remove the escape sequences from some logfiles (yes,
+it is not so easy to call ansi2txt for all files, because ansi2txt may removes
+to much ... so this is in experimental state) with:
+
+::
+
+  for f in logfiles/*.txt;
+  do
+    # echo "Processing $f file..";
+    # check if it contains escape sequences
+    grep -q $'\x1B' $f
+    if [ $? -eq 0 ]; then
+      echo 'FOUND '$f
+      ansi2txt $f > tmp.txt
+      mv tmp.txt $f
+    fi
+  done
+
 
 I started to documentate U-Boot, so see this as an example:
 

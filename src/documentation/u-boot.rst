@@ -280,6 +280,13 @@ means that the serial device provides input (flag 'I') and output (flag 'O') fun
 
 .. include:: u-boot-execution.rst
 
+.. raw:: pdf
+
+   PageBreak
+
+.. include:: u-boot-download.rst
+
+
 links
 =====
 

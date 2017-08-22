@@ -1,0 +1,14 @@
+<INTERRUPT>                                                                         
+=> help loadb                                                                       
+loadb - load binary file over serial line (kermit mode)                             
+                                                                                    
+Usage:                                                                              
+loadb [ off ] [ baud ]                                                              
+    - load binary file over serial line with offset 'off' and baudrate 'baud'       
+=>                                                                                  
+                                                                                    
+                                                                                    
+                                                                                    
+                                                                                    
+                                                                                    
+                                                                                    

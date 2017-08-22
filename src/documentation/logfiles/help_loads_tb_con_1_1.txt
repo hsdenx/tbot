@@ -1,0 +1,14 @@
+<INTERRUPT>                                                       
+=> help loads                                                     
+loads - load S-Record file over serial line                       
+                                                                  
+Usage:                                                            
+loads [ off ]                                                     
+    - load S-Record file over serial line with offset 'off'       
+=>                                                                
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
