@@ -26,7 +26,16 @@ Make sure you use the following settings in kermit.
 
 tbot_ref:loadb_kermit_settings_tb_con_1_1.txt
 
-Now download for example u-boot.img.
+If you have problems with downloading, may you set the values
+
+::
+
+  set rec pack
+  set send pack
+
+to smaller values.
+
+Now for example download u-boot.img.
 
 tbot_ref:loadb_run_tb_con_1_1.txt
 tbot_ref:loadb_send_file_tb_con_1_1.txt
