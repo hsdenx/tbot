@@ -25,11 +25,7 @@ from tbotlib import tbot
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
-if (tb.config.tc_ub_memory_ram_ws_base == 'undef'):
-    # Try to get the SDRAM Base
-    tb.uboot_config_option = 'CONFIG_SYS_SDRAM_BASE'
-    tb.eof_call_tc("tc_workfd_get_uboot_config_hex.py")
-    tb.config.tc_ub_memory_ram_ws_base = tb.config_result
+tb.eof_call_tc("tc_workfd_get_uboot_config_vars.py")
 
 cmdlist = [
 "help go",

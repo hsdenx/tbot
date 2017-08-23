@@ -22,15 +22,7 @@
 
 from tbotlib import tbot
 
-logging.info("args: %s %s %s", tb.config.tc_ub_memory_ram_ws_base, tb.config.tc_ub_memory_ram_ws_base_alt,
-             tb.config.tc_ub_memory_ram_big)
-
-if (tb.config.tc_ub_memory_ram_ws_base == 'undef'):
-    # Try to get the SDRAM Base
-    tb.uboot_config_option = 'CONFIG_SYS_SDRAM_BASE'
-    tb.workfd = tb.c_ctrl
-    tb.eof_call_tc("tc_workfd_get_uboot_config_hex.py")
-    tb.config.tc_ub_memory_ram_ws_base = tb.config_result
+tb.eof_call_tc("tc_workfd_get_uboot_config_vars.py")
 
 def fdt_cmd_check(tb, cmd):
     tb.eof_write(tb.c_con, cmd)

@@ -24,32 +24,7 @@
 
 from tbotlib import tbot
 
-logging.info("args: %s %s %s", tb.config.tc_ub_memory_ram_ws_base, tb.config.tc_ub_memory_ram_ws_base_alt,
-             tb.config.tc_ub_memory_ram_big)
-
-if (tb.config.tc_ub_memory_ram_ws_base == 'undef'):
-    # Try to get the SDRAM Base
-    tb.uboot_config_option = 'CONFIG_SYS_SDRAM_BASE'
-    tb.workfd = tb.c_ctrl
-    tb.eof_call_tc("tc_workfd_get_uboot_config_hex.py")
-    tb.config.tc_ub_memory_ram_ws_base = tb.config_result
-
-if (tb.config.tc_ub_memory_ram_ws_base_alt == 'undef'):
-    try:
-        tmp = int(tb.config.tc_ub_memory_ram_ws_base, 16)
-    except:
-        tb.end_tc(False)
-    tmp += 1024 * 1024
-    tb.config.tc_ub_memory_ram_ws_base_alt = hex(tmp)
-
-if (tb.config.tc_ub_memory_ram_big == 'undef'):
-    # Try to get CONFIG_SYS_ARCH
-    tb.uboot_config_option = 'CONFIG_SYS_ARCH'
-    tb.eof_call_tc("tc_workfd_get_uboot_config_string.py")
-    if tb.config_result == 'powerpc':
-        tb.config.tc_ub_memory_ram_big = 'yes'
-    else:
-        tb.config.tc_ub_memory_ram_big = 'no'
+tb.eof_call_tc("tc_workfd_get_uboot_config_vars.py")
 
 logging.info("args: %s %s %s", tb.config.tc_ub_memory_ram_ws_base, tb.config.tc_ub_memory_ram_ws_base_alt,
              tb.config.tc_ub_memory_ram_big)
