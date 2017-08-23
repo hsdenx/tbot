@@ -1,7 +1,7 @@
 ^C
-hs@localhost [10:53:37] ttbott> printenv PATH | grep --color=never /opt/eldk-5.4/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-linux-gnueabi
-hs@localhost [10:53:38] ttbott> ^C
-hs@localhost [10:53:38] ttbott> export PATH=/opt/eldk-5.4/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-linux-gnueabi:$PATH
-hs@localhost [10:53:39] ttbott> ^C
-hs@localhost [10:53:39] ttbott> export CROSS_COMPILE=arm-linux-gnueabi-
-hs@localhost [10:53:39] ttbott> 
+hs@localhost [ 8:35:21] ttbott> printenv PATH | grep --color=never /opt/eldk-5.4/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-linux-gnueabi
+hs@localhost [ 8:35:21] ttbott> ^C
+hs@localhost [ 8:35:22] ttbott> export PATH=/opt/eldk-5.4/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-linux-gnueabi:$PATH
+hs@localhost [ 8:35:22] ttbott> ^C
+hs@localhost [ 8:35:22] ttbott> export CROSS_COMPILE=arm-linux-gnueabi-
+hs@localhost [ 8:35:22] ttbott> 

@@ -1,0 +1,7 @@
+<INTERRUPT>
+=> help boot
+boot - boot default, i.e., run 'bootcmd'
+
+Usage:
+boot 
+=> 

@@ -1,0 +1,3 @@
+^C
+hs@localhost [ 8:37:38] ttbott> cp MLO /var/lib/tftpboot/beagleboneblack/tbot/latestworking-MLO
+hs@localhost [ 8:37:38] ttbott> 

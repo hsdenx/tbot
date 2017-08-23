@@ -1,0 +1,3 @@
+^C
+hs@localhost [ 8:37:39] ttbott> cp u-boot.dtb /var/lib/tftpboot/beagleboneblack/tbot/latestworking-u-boot.dtb
+hs@localhost [ 8:37:39] ttbott> 

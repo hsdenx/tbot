@@ -1,13 +1,7 @@
-<INTERRUPT>                                                  
-=> help dhcp                                                 
-dhcp - boot image via network using DHCP/TFTP protocol       
-                                                             
-Usage:                                                       
-dhcp [loadAddress] [[hostIPaddr:]bootfilename]               
-=>                                                           
-                                                             
-                                                             
-                                                             
-                                                             
-                                                             
-                                                             
+<INTERRUPT>
+=> help dhcp
+dhcp - boot image via network using DHCP/TFTP protocol
+
+Usage:
+dhcp [loadAddress] [[hostIPaddr:]bootfilename]
+=> 

@@ -1,0 +1,4 @@
+<INTERRUPT>
+=> print tbot_cmp_uboot
+tbot_cmp_uboot=run cmp_uboot
+=> 

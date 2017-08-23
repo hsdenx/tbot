@@ -1,0 +1,7 @@
+<INTERRUPT>
+=> help bootd
+bootd - boot default, i.e., run 'bootcmd'
+
+Usage:
+bootd 
+=> 

@@ -4,7 +4,7 @@ set carrier-watch off
 (/work/hs/tbot/) C-Kermit>robust
 (/work/hs/tbot/) C-Kermit>set file type bin
 (/work/hs/tbot/) C-Kermit>set file name lit
-(/work/hs/tbot/) C-Kermit>set rec pack 1000
-(/work/hs/tbot/) C-Kermit>set send pack 1000
+(/work/hs/tbot/) C-Kermit>set rec pack 100
+(/work/hs/tbot/) C-Kermit>set send pack 100
 (/work/hs/tbot/) C-Kermit>set window 5
 (/work/hs/tbot/) C-Kermit>

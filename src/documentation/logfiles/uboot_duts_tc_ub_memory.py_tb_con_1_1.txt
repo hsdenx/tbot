@@ -1,12 +1,3 @@
 <INTERRUPT>
 => <INTERRUPT>
-=> <INTERRUPT>
-=> help base
-base - print or set address offset
-
-Usage:
-base 
-    - print address offset for memory commands
-base off
-    - set address offset for memory commands to 'off'
 => 

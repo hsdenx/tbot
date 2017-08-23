@@ -1,0 +1,6 @@
+<INTERRUPT>
+=> <INTERRUPT>
+=> <INTERRUPT>
+=> printenv filesize
+filesize=b000
+=> 

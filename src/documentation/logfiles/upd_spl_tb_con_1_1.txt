@@ -6,7 +6,7 @@ TFTP from server 192.168.2.1; our IP address is 192.168.2.11
 Filename 'beagleboneblack/tbot/MLO'.
 Load address: 0x81000000
 Loading: *#######
-	 4.6 MiB/s
+	 4.3 MiB/s
 done
 Bytes transferred = 95468 (174ec hex)
 writing mlo

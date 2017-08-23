@@ -1,3 +1,3 @@
 ^C
-hs@localhost [10:44:57] ttbott> export TBOT_BASEDIR=/work/hs/tbot
-hs@localhost [10:44:57] ttbott> 
+hs@localhost [ 9:19:15] ttbott> export TBOT_BASEDIR=/work/hs/tbot
+hs@localhost [ 9:19:15] ttbott> 

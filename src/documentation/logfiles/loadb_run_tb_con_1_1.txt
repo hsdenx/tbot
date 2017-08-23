@@ -2,6 +2,6 @@
 => loadb 80000000
 ## Ready for binary (kermit) download to 0x80000000 at 115200 bps...
 
-(Back at pollux.denx.de)
+(Back at localhost.localdomain)
 ----------------------------------------------------
 (/work/hs/tbot/) C-Kermit>

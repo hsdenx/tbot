@@ -1,0 +1,8 @@
+^C
+hs@localhost [ 9:19:22] ttbott> cat .config | grep --color=never CONFIG_SYS_SDRAM_BASE
+hs@localhost [ 9:19:22] ttbott> ^C
+hs@localhost [ 9:19:23] ttbott> cat include/configs/am335x_evm.h | grep --color=never CONFIG_SYS_SDRAM_BASE
+hs@localhost [ 9:19:23] ttbott> ^C
+hs@localhost [ 9:19:23] ttbott> cat include/configs/ti_armv7_common.h | grep --color=never CONFIG_SYS_SDRAM_BASE
+#define CONFIG_SYS_SDRAM_BASE		0x80000000
+hs@localhost [ 9:19:24] ttbott> 

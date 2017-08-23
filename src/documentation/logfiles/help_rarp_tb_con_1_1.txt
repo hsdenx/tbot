@@ -1,11 +1,5 @@
-<INTERRUPT>                                                                                
-=> help rarp                                                                               
-Unknown command 'rarp' - try 'help' without arguments for list of all known commands       
-                                                                                           
-=>                                                                                         
-                                                                                           
-                                                                                           
-                                                                                           
-                                                                                           
-                                                                                           
-                                                                                           
+<INTERRUPT>
+=> help rarp
+Unknown command 'rarp' - try 'help' without arguments for list of all known commands
+
+=> 

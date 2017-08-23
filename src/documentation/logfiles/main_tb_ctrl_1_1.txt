@@ -1,6 +1,6 @@
 export PS1="\u@\h [\$(date +%k:%M:%S)] ttbott> "
-hs@localhost [13:12:42] ttbott> stty cols 200
-hs@localhost [13:12:42] ttbott> export TERM=vt200
-hs@localhost [13:12:43] ttbott> echo $COLUMNS
+hs@localhost [ 9:18:13] ttbott> stty cols 200
+hs@localhost [ 9:18:13] ttbott> export TERM=vt200
+hs@localhost [ 9:18:14] ttbott> echo $COLUMNS
 200
-hs@localhost [13:12:43] ttbott> 
+hs@localhost [ 9:18:14] ttbott> 

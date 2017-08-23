@@ -1,0 +1,6 @@
+^C
+hs@localhost [ 9:18:16] ttbott> sudo ifconfig p2p1 192.168.2.1 up
+[sudo] Passwort für hs: 
+hs@localhost [ 9:18:17] ttbott> ^C
+hs@localhost [ 9:18:17] ttbott> sudo lsmod | grep ftdi
+hs@localhost [ 9:18:18] ttbott> 

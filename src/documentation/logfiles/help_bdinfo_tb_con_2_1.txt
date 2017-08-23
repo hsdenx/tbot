@@ -1,0 +1,7 @@
+<INTERRUPT>
+=> help bdinfo
+bdinfo - print Board Info structure
+
+Usage:
+bdinfo 
+=> 

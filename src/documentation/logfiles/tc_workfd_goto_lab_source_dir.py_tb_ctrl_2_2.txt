@@ -1,0 +1,3 @@
+^C
+hs@localhost [ 9:19:28] ttbott> cd $TBOT_BASEDIR_UBOOT
+hs@localhost [ 9:19:28] ttbott> 

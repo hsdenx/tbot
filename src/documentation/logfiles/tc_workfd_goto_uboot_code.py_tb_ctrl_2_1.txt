@@ -1,3 +1,4 @@
 ^C
-hs@localhost [13:14:01] ttbott> export TBOT_BASEDIR_UBOOT=$TBOT_BASEDIR/u-boot-am335x_evm
-hs@localhost [13:14:01] ttbott> 
+hs@localhost [ 9:19:30] ttbott> cat .config | grep --color=never CONFIG_SYS_ARCH
+CONFIG_SYS_ARCH="arm"
+hs@localhost [ 9:19:30] ttbott> 

@@ -1,0 +1,5 @@
+^C
+hs@localhost [ 9:23:26] ttbott> sispmctl -D 01:01:56:a2:f1 -g 1
+Accessing Gembird #0 USB device 008
+Status of outlet 1:	on
+hs@localhost [ 9:23:26] ttbott> 

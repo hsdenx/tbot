@@ -1,39 +1,3 @@
 <INTERRUPT>
 => <INTERRUPT>
-=> <INTERRUPT>
-=> help bootp
-bootp - boot image via network using BOOTP/TFTP protocol
-
-Usage:
-bootp [loadAddress] [[hostIPaddr:]bootfilename]
-=> <INTERRUPT>
-=> help dhcp
-dhcp - boot image via network using DHCP/TFTP protocol
-
-Usage:
-dhcp [loadAddress] [[hostIPaddr:]bootfilename]
-=> <INTERRUPT>
-=> help loadb
-loadb - load binary file over serial line (kermit mode)
-
-Usage:
-loadb [ off ] [ baud ]
-    - load binary file over serial line with offset 'off' and baudrate 'baud'
-=> <INTERRUPT>
-=> help loads
-loads - load S-Record file over serial line
-
-Usage:
-loads [ off ]
-    - load S-Record file over serial line with offset 'off'
-=> <INTERRUPT>
-=> help rarp
-Unknown command 'rarp' - try 'help' without arguments for list of all known commands
-
-=> <INTERRUPT>
-=> help tftp
-tftpboot - boot image via network using TFTP protocol
-
-Usage:
-tftpboot [loadAddress] [[hostIPaddr:]bootfilename]
 => 

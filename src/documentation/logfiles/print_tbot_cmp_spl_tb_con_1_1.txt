@@ -1,0 +1,4 @@
+<INTERRUPT>
+=> print tbot_cmp_spl
+tbot_cmp_spl=run cmp_mlo
+=> 

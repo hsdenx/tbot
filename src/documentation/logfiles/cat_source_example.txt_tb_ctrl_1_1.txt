@@ -1,5 +1,5 @@
 ^C
-hs@localhost [10:24:35] ttbott> cat source_example.txt
+hs@localhost [ 9:23:32] ttbott> cat source_example.txt
 echo
 echo Network Configuration:
 echo ----------------------
@@ -9,4 +9,4 @@ echo
 echo Server:
 printenv serverip rootpath
 echo
-hs@localhost [10:24:35] ttbott> 
+hs@localhost [ 9:23:32] ttbott> 

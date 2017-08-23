@@ -158,8 +158,916 @@ Now compile it
 
 ::
 
-  $ make -s all
+  $ make -s DTC_FLAGS="-S 0xb000" all
   *** Your GCC is older than 6.0 and will not be supported starting in v2018.01.
+  Warning (unit_address_vs_reg): Node /memory has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_m4_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_m5_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_m6_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_mpu_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_mpu_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_ddr_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_ddr_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_disp_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_disp_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_per_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_per_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/cefuse_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/clkdiv32k_ick has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/pruss_ocp_gclk has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/mmu_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer1_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer2_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer3_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer4_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer5_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer6_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer7_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/usbotg_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/ieee5000_fck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/wdt1_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/cpsw_cpts_rft_clk has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio0_dbclk_mux_ck has\
+    a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio0_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio1_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio2_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio3_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/lcd_gclk has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gfx_fclk_clksel_ck has\
+    a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gfx_fck_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/sysclkout_pre_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/clkout2_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dbg_sysclk_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dbg_clka_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/stm_pmd_clock_mux_ck\
+    has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/trace_pmd_clk_mux_ck\
+    has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/stm_clk_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/trace_clk_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/clkout2_ck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/scm@210000/scm_conf@0/clocks/sys_clkin_ck\
+    has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/ethernet@4a100000/slave@4a100200 has a unit name, but no\
+    reg property
+  Warning (unit_address_vs_reg): Node /ocp/ethernet@4a100000/slave@4a100300 has a unit name, but no\
+    reg property
+  Warning (unit_address_vs_reg): Node /leds/led@2 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /leds/led@3 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /leds/led@4 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /leds/led@5 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /fixedregulator@0 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /memory has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_m4_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_m5_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_m6_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_mpu_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_mpu_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_ddr_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_ddr_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_disp_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_disp_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_per_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_per_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/cefuse_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/clkdiv32k_ick has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/pruss_ocp_gclk has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/mmu_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer1_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer2_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer3_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer4_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer5_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer6_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer7_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/usbotg_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/ieee5000_fck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/wdt1_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/cpsw_cpts_rft_clk has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio0_dbclk_mux_ck has\
+    a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio0_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio1_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio2_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio3_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/lcd_gclk has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gfx_fclk_clksel_ck has\
+    a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gfx_fck_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/sysclkout_pre_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/clkout2_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dbg_sysclk_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dbg_clka_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/stm_pmd_clock_mux_ck\
+    has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/trace_pmd_clk_mux_ck\
+    has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/stm_clk_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/trace_clk_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/clkout2_ck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/scm@210000/scm_conf@0/clocks/sys_clkin_ck\
+    has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/ethernet@4a100000/slave@4a100200 has a unit name, but no\
+    reg property
+  Warning (unit_address_vs_reg): Node /ocp/ethernet@4a100000/slave@4a100300 has a unit name, but no\
+    reg property
+  Warning (unit_address_vs_reg): Node /leds/led@2 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /leds/led@3 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /leds/led@4 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /leds/led@5 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /fixedregulator@0 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /memory has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_m4_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_m5_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_m6_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_mpu_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_mpu_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_ddr_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_ddr_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_disp_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_disp_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_per_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_per_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/cefuse_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/clkdiv32k_ick has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/pruss_ocp_gclk has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/mmu_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer1_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer2_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer3_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer4_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer5_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer6_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer7_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/usbotg_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/ieee5000_fck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/wdt1_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/cpsw_cpts_rft_clk has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio0_dbclk_mux_ck has\
+    a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio0_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio1_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio2_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio3_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/lcd_gclk has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gfx_fclk_clksel_ck has\
+    a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gfx_fck_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/sysclkout_pre_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/clkout2_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dbg_sysclk_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dbg_clka_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/stm_pmd_clock_mux_ck\
+    has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/trace_pmd_clk_mux_ck\
+    has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/stm_clk_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/trace_clk_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/clkout2_ck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/scm@210000/scm_conf@0/clocks/sys_clkin_ck\
+    has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/ethernet@4a100000/slave@4a100200 has a unit name, but no\
+    reg property
+  Warning (unit_address_vs_reg): Node /ocp/ethernet@4a100000/slave@4a100300 has a unit name, but no\
+    reg property
+  Warning (unit_address_vs_reg): Node /memory has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_m4_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_m5_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_m6_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_mpu_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_mpu_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_ddr_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_ddr_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_disp_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_disp_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_per_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_per_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/cefuse_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/clkdiv32k_ick has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/pruss_ocp_gclk has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/mmu_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer1_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer2_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer3_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer4_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer5_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer6_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer7_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/usbotg_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/ieee5000_fck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/wdt1_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/cpsw_cpts_rft_clk has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio0_dbclk_mux_ck has\
+    a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio0_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio1_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio2_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio3_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/lcd_gclk has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gfx_fclk_clksel_ck has\
+    a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gfx_fck_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/sysclkout_pre_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/clkout2_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dbg_sysclk_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dbg_clka_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/stm_pmd_clock_mux_ck\
+    has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/trace_pmd_clk_mux_ck\
+    has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/stm_clk_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/trace_clk_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/clkout2_ck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/scm@210000/scm_conf@0/clocks/sys_clkin_ck\
+    has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/ethernet@4a100000/slave@4a100200 has a unit name, but no\
+    reg property
+  Warning (unit_address_vs_reg): Node /ocp/ethernet@4a100000/slave@4a100300 has a unit name, but no\
+    reg property
+  Warning (unit_address_vs_reg): Node /fixedregulator@0 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /fixedregulator@1 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /fixedregulator@2 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /matrix_keypad@0 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /volume_keys@0 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /volume_keys@0/switch@9 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /volume_keys@0/switch@10 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /memory has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_m4_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_m5_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_m6_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_mpu_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_mpu_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_ddr_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_ddr_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_disp_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_disp_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_per_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_per_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/cefuse_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/clkdiv32k_ick has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/pruss_ocp_gclk has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/mmu_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer1_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer2_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer3_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer4_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer5_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer6_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer7_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/usbotg_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/ieee5000_fck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/wdt1_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/cpsw_cpts_rft_clk has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio0_dbclk_mux_ck has\
+    a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio0_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio1_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio2_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio3_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/lcd_gclk has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gfx_fclk_clksel_ck has\
+    a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gfx_fck_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/sysclkout_pre_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/clkout2_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dbg_sysclk_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dbg_clka_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/stm_pmd_clock_mux_ck\
+    has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/trace_pmd_clk_mux_ck\
+    has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/stm_clk_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/trace_clk_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/clkout2_ck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/scm@210000/scm_conf@0/clocks/sys_clkin_ck\
+    has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/ethernet@4a100000/slave@4a100200 has a unit name, but no\
+    reg property
+  Warning (unit_address_vs_reg): Node /ocp/ethernet@4a100000/slave@4a100300 has a unit name, but no\
+    reg property
+  Warning (unit_address_vs_reg): Node /fixedregulator@0 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /fixedregulator@1 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /fixedregulator@2 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /fixedregulator@3 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /leds/led@1 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /leds/led@2 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /leds/led@3 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /leds/led@4 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /gpio_buttons@0 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /gpio_buttons@0/switch@1 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /gpio_buttons@0/switch@2 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /gpio_buttons@0/switch@3 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /gpio_buttons@0/switch@4 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /memory has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_m4_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_m5_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_m6_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_mpu_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_mpu_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_ddr_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_ddr_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_disp_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_disp_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_per_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_per_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/cefuse_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/clkdiv32k_ick has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/pruss_ocp_gclk has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/mmu_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer1_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer2_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer3_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer4_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer5_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer6_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer7_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/usbotg_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/ieee5000_fck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/wdt1_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/cpsw_cpts_rft_clk has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio0_dbclk_mux_ck has\
+    a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio0_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio1_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio2_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio3_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/lcd_gclk has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gfx_fclk_clksel_ck has\
+    a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gfx_fck_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/sysclkout_pre_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/clkout2_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dbg_sysclk_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dbg_clka_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/stm_pmd_clock_mux_ck\
+    has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/trace_pmd_clk_mux_ck\
+    has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/stm_clk_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/trace_clk_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/clkout2_ck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/scm@210000/scm_conf@0/clocks/sys_clkin_ck\
+    has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/ethernet@4a100000/slave@4a100200 has a unit name, but no\
+    reg property
+  Warning (unit_address_vs_reg): Node /ocp/ethernet@4a100000/slave@4a100300 has a unit name, but no\
+    reg property
+  Warning (unit_address_vs_reg): Node /leds/led@2 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /leds/led@3 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /leds/led@4 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /leds/led@5 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /fixedregulator@0 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /memory has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_m4_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_m5_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_m6_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_mpu_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_mpu_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_ddr_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_ddr_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_disp_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_disp_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_per_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_per_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/cefuse_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/clkdiv32k_ick has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/pruss_ocp_gclk has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/mmu_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer1_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer2_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer3_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer4_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer5_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer6_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer7_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/usbotg_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/ieee5000_fck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/wdt1_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/cpsw_cpts_rft_clk has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio0_dbclk_mux_ck has\
+    a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio0_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio1_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio2_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio3_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/lcd_gclk has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gfx_fclk_clksel_ck has\
+    a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gfx_fck_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/sysclkout_pre_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/clkout2_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dbg_sysclk_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dbg_clka_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/stm_pmd_clock_mux_ck\
+    has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/trace_pmd_clk_mux_ck\
+    has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/stm_clk_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/trace_clk_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/clkout2_ck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/scm@210000/scm_conf@0/clocks/sys_clkin_ck\
+    has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/ethernet@4a100000/slave@4a100200 has a unit name, but no\
+    reg property
+  Warning (unit_address_vs_reg): Node /ocp/ethernet@4a100000/slave@4a100300 has a unit name, but no\
+    reg property
+  Warning (unit_address_vs_reg): Node /fixedregulator@0 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /fixedregulator@1 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /leds@0 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /leds@0/led@0 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /leds@0/led@1 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /leds@0/led@2 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /leds@0/led@3 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /leds@0/led@4 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /leds@0/led@5 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /leds@0/led@6 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /leds@0/led@7 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /leds@1 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /leds@1/led@0 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /leds@1/led@1 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /leds@1/led@2 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /leds@1/led@3 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /leds@1/led@4 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /leds@1/led@5 has a unit name, but no reg property
+  Warning (unit_address_vs_reg): Node /memory has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_m4_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_m5_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_m6_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_mpu_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_mpu_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_ddr_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_ddr_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_disp_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_disp_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_per_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_per_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/cefuse_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/clkdiv32k_ick has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/pruss_ocp_gclk has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/mmu_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer1_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer2_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer3_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer4_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer5_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer6_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer7_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/usbotg_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/ieee5000_fck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/wdt1_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/cpsw_cpts_rft_clk has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio0_dbclk_mux_ck has\
+    a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio0_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio1_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio2_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio3_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/lcd_gclk has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gfx_fclk_clksel_ck has\
+    a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gfx_fck_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/sysclkout_pre_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/clkout2_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dbg_sysclk_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dbg_clka_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/stm_pmd_clock_mux_ck\
+    has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/trace_pmd_clk_mux_ck\
+    has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/stm_clk_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/trace_clk_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/clkout2_ck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/scm@210000/scm_conf@0/clocks/sys_clkin_ck\
+    has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/ethernet@4a100000/slave@4a100200 has a unit name, but no\
+    reg property
+  Warning (unit_address_vs_reg): Node /ocp/ethernet@4a100000/slave@4a100300 has a unit name, but no\
+    reg property
+  Warning (unit_address_vs_reg): Node /memory has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_m4_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_m5_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_m6_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_mpu_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_mpu_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_ddr_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_ddr_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_disp_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_disp_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_per_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_per_m2_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/cefuse_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/clkdiv32k_ick has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/pruss_ocp_gclk has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/mmu_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer1_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer2_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer3_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer4_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer5_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer6_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/timer7_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/usbotg_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/ieee5000_fck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/wdt1_fck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/cpsw_cpts_rft_clk has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio0_dbclk_mux_ck has\
+    a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio0_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio1_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio2_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio3_dbclk has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/lcd_gclk has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gfx_fclk_clksel_ck has\
+    a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/gfx_fck_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/sysclkout_pre_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/clkout2_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dbg_sysclk_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/dbg_clka_ck has a reg\
+    or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/stm_pmd_clock_mux_ck\
+    has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/trace_pmd_clk_mux_ck\
+    has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/stm_clk_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/trace_clk_div_ck has a\
+    reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/prcm@200000/clocks/clkout2_ck has a reg or\
+    ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/l4_wkup@44c00000/scm@210000/scm_conf@0/clocks/sys_clkin_ck\
+    has a reg or ranges property, but no unit name
+  Warning (unit_address_vs_reg): Node /ocp/ethernet@4a100000/slave@4a100200 has a unit name, but no\
+    reg property
+  Warning (unit_address_vs_reg): Node /ocp/ethernet@4a100000/slave@4a100300 has a unit name, but no\
+    reg property
   ===================== WARNING ======================
   This board uses CONFIG_DM_I2C_COMPAT. Please remove
   (possibly in a subsequent patch in your series)
@@ -178,6 +1086,15 @@ after U-Boot is compiled, copy the resulting binaries we need later to our tftpb
   $ cp u-boot.img /var/lib/tftpboot/beagleboneblack/tbot
   $ 
   $ cp MLO /var/lib/tftpboot/beagleboneblack/tbot
+  $ 
+
+We also copy the u-boot.dtb file to our tftp directory, as we do some
+testing with it later.
+
+
+::
+
+  $ cp u-boot.dtb /var/lib/tftpboot/beagleboneblack/tbot
   $ 
 
 .. raw:: pdf
@@ -212,12 +1129,12 @@ tfpt the new u-boot image into ram and write it to the sd card.
   TFTP from server 192.168.2.1; our IP address is 192.168.2.11
   Filename 'beagleboneblack/tbot/u-boot.img'.
   Load address: 0x81000000
-  Loading: *##############################################
+  Loading: *###################################################
   	 4.6 MiB/s
   done
-  Bytes transferred = 660860 (a157c hex)
+  Bytes transferred = 734224 (b3410 hex)
   writing u-boot.img
-  660860 bytes written
+  734224 bytes written
   => 
 
 install SPL
@@ -246,7 +1163,7 @@ tfpt the new SPL image into ram and write it to the sd card.
   Filename 'beagleboneblack/tbot/MLO'.
   Load address: 0x81000000
   Loading: *#######
-  	 4.6 MiB/s
+  	 4.3 MiB/s
   done
   Bytes transferred = 95468 (174ec hex)
   writing mlo
@@ -337,12 +1254,12 @@ The :redtext:`bdinfo` command (:redtext:`bdi`) prints the information that U-Boo
   -> size     = 0x20000000
   baudrate    = 115200 bps
   TLB addr    = 0x9FFF0000
-  relocaddr   = 0x9FF4F000
-  reloc off   = 0x1F74F000
-  irq_sp      = 0x9DF264E0
-  sp start    = 0x9DF264D0
-  Early malloc usage: 178 / 400
-  fdt_blob = 9df264f8
+  relocaddr   = 0x9FF4E000
+  reloc off   = 0x1F74E000
+  irq_sp      = 0x9DF21EC0
+  sp start    = 0x9DF21EB0
+  Early malloc usage: 188 / 400
+  fdt_blob = 9df21ed8
   => 
 
 .. raw:: pdf
@@ -369,7 +1286,7 @@ The :redtext:`coninfo` command (:redtext:`conin`) displays information about the
 
   => conin
   List of available devices:
-  serial@44e09000 00000003 IO stdin stdout stderr 
+  serial@44e09000 00000007 IO stdin stdout stderr 
   serial   00000003 IO 
   => 
 

@@ -1,0 +1,3 @@
+^C
+hs@localhost [ 8:35:04] ttbott> rm -rf /work/hs/tbot/u-boot-am335x_evm
+hs@localhost [ 8:35:05] ttbott> 

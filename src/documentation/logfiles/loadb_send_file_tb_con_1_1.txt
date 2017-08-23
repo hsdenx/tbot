@@ -1,34 +1,34 @@
-C-Kermit 9.0.302 OPEN SOURCE:, 20 Aug 2011, pollux.denx.de [192.168.1.1]                                                
+C-Kermit 9.0.302 OPEN SOURCE:, 20 Aug 2011, localhost.localdomain [192.168.1.105]                                       
                                                                                                                         
    Current Directory: /work/hs/tbot                                                                                     
-        Network Host: metis:513                                                                                         
-        Network Type: TCP/IP                                                                                            
+Communication Device: /dev/ttybbb                                                                                       
+ Communication Speed: 115200                                                                                            
               Parity: none                                                                                              
          RTT/Timeout: 01 / 02                                                                                           
-             SENDING: /tftpboot/bbb/tbot/u-boot.img => u-boot.img                                                       
+             SENDING:  => /lib/tftpboot/beagleboneblack/tbot/u-boot.img                                                 
            File Type: BINARY                                                                                            
-           File Size: 660876                                                                                            
+           File Size: 734224                                                                                            
         Percent Done: 100 //////////////////////////////////////////////////                                            
-           ...10...20...30...40...50...60...70...80...90..100                                                       6   
-       teElapsed Time: 00:01:31                                                                                        2
-44Transfer56ate, CPS: 7299                                                                                             F
-        Window Slots: 1 of 1                                                                                         D11
-         9acket Type: B                                                                                             3937
-90     900cket Count: 788                                                                                            6  
- 0 et Length:                                                                                                         0 
-         Error Count:                                                                                                   
+:01        ...10...20...30...40...50...60...70...80...90..100                                                        :02
+       teElapsed Time: 00:01:59                                                                                         
+5 Transfer67ate, CPS: 6197                                                                                            69
+        55ndow Slots: 1 of 1                                                                                        2705
+6        75cket Type: B6                                                                                          918482
+0       P921et Count: 11819                                                                                         3276
+ cket Length:                                                                                                         0(
+resend)  Error Count: 4                                                                                                 
           Last Error:                                                                                                   
-        Last Message: SUCCESS.  Files: 1, Bytes: 660876, 7252 CPS                                                       
+        Last Message: SUCCESS.  Files: 1, Bytes: 734224, 6167 CPS                                                       
                                                                                                                         
                                                                                                                         
 (/work/hs/tbot/) C-Kermit>^C...                                                                                         
 (/work/hs/tbot/) C-Kermit>connect                                                                                       
-Connecting to host metis:513                                                                                            
+Connecting to /dev/ttybbb, speed 115200                                                                                 
  Escape character: Ctrl-\ (ASCII 28, FS): enabled                                                                       
 Type the escape character followed by C to get back,                                                                    
 or followed by ? to see other options.                                                                                  
 ----------------------------------------------------                                                                    
-CACHE: Misaligned operation at range [80000000, 800a158c]                                                               
-## Total Size      = 0x000a158c = 660876 Bytes                                                                          
+CACHE: Misaligned operation at range [80000000, 800b3410]                                                               
+## Total Size      = 0x000b3410 = 734224 Bytes                                                                          
 ## Start Addr      = 0x80000000                                                                                         
 =>                                                                                                                      

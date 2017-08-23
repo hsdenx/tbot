@@ -1,0 +1,4 @@
+^C
+hs@localhost [ 9:23:31] ttbott> pwd
+/work/hs/tbot
+hs@localhost [ 9:23:31] ttbott> 

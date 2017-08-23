@@ -25,9 +25,9 @@ The :redtext:`nm` command (non-incrementing memory modify) can be used to intera
   80000000: 0000006f ? .
   => md 0x80000000 10
   80000000: 0000006f ff551155 ffffffff 1155ffff    o...U.U.......U.
-  80000010: 00000000 00000000 a3b83b60 9c5abf20    ........`;.. .Z.
-  80000020: d5f90728 4863422c 3faaa83a 375dfa91    (...,BcH:..?..]7
-  80000030: f708c998 a5e27535 2df72513 c2210796    ....5u...%.-..!.
+  80000010: 00000000 00000000 6f236743 3b46fbe6    ........Cg#o..F;
+  80000020: ea2356f6 6e7c540f e056e377 7bd28a9f    .V#..T|nw.V....{
+  80000030: cfa9bcec b19ace51 b27f4dc5 8eeca28b    ....Q....M......
   => 
 
 The :redtext:`nm` command also accepts the type :redtext:`.l`, :redtext:`.w` and :redtext:`.b`

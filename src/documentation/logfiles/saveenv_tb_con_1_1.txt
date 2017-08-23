@@ -2,6 +2,6 @@
 => saveenv
 Saving Environment to FAT...
 writing uboot.env
-FAT: Misaligned buffer address (9df05368)
+FAT: Misaligned buffer address (9df01d48)
 done
 => 

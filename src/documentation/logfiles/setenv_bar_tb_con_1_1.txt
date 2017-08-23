@@ -1,0 +1,3 @@
+<INTERRUPT>
+=> setenv bar
+=> 
