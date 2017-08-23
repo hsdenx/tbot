@@ -38,9 +38,7 @@ tbot_ref:cmp_fail_tb_con_1_1.txt
 
 Like most memory commands the :redtext:cmp` can access the memory in different sizes: as 32 bit (long word), 16 bit (word) or 8 bit (byte) data. If invoked just as cmp the default size (32 bit or long words) is used; the same can be selected explicitly by typing cmp.l instead. If you want to access memory as 16 bit or word data, you can use the variant cmp.w instead; and to access memory as 8 bit or byte data please use cmp.b.
 
-.. image:: ./images/Warning-icon.png
-
-Please note that the count argument specifies the number of data items to process, i. e. the number of long words or words or bytes to compare. 
+|Warning| Please note that the count argument specifies the number of data items to process, i. e. the number of long words or words or bytes to compare. 
 
 tbot_ref:cmp_long_tb_con_1_1.txt
 

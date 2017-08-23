@@ -50,9 +50,7 @@ If a ramdisk image shall be used, you can type:
 
 Both examples of course imply that the variables used are set to correct addresses for a kernel, fdt blob and a initrd ramdisk image.
 
-.. image:: ./images/Warning-icon.png
-
-When booting images that have been loaded to RAM (for instance using TFTP download) you have to be careful that the locations where the (compressed) images were stored do not overlap with the memory needed to load the uncompressed kernel. For instance, if you load a ramdisk image at a location in low memory, it may be overwritten when the Linux kernel gets loaded. This will cause undefined system crashes. 
+|Warning| When booting images that have been loaded to RAM (for instance using TFTP download) you have to be careful that the locations where the (compressed) images were stored do not overlap with the memory needed to load the uncompressed kernel. For instance, if you load a ramdisk image at a location in low memory, it may be overwritten when the Linux kernel gets loaded. This will cause undefined system crashes. 
 
 .. raw:: pdf
 

@@ -1,3 +1,11 @@
+.. |Warning| image:: ./images/Warning-icon.png
+   :height: 80
+   :width: 80
+
+.. |Help| image:: ./images/help.gif
+   :height: 80
+   :width: 80
+
 U-Boot
 ######
 
@@ -184,9 +192,7 @@ The following section describes the most important commands available in U-Boot.
 
 For most commands, you do not need to type in the full command name; instead it is sufficient to type a few characters. For instance, help can be abbreviated as h.
 
-.. image:: ./images/Warning-icon.png
-
-The behaviour of some commands depends on the configuration of U-Boot and on the definition of some variables in your U-Boot environment.
+|Warning| The behaviour of some commands depends on the configuration of U-Boot and on the definition of some variables in your U-Boot environment.
 
 Almost all U-Boot commands expect numbers to be entered in hexadecimal input format. (Exception: for historical reasons, the sleep command takes its argument in decimal input format.)
 

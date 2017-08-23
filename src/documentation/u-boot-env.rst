@@ -40,13 +40,9 @@ Remember standard shell quoting rules when the value of a variable shall contain
 
 tbot_ref:setenv_example_3_tb_con_1_1.txt
 
-.. image:: ./images/help.gif
+|Help| There is no restriction on the characters that can be used in a variable name except the restrictions imposed by the command line parser (like using backslash for quoting, space and tab characters to separate arguments, or semicolon and newline to separate commands). Even strange input like :redtext:`=-/|()+=` is a perfectly legal variable name in U-Boot. 
 
-There is no restriction on the characters that can be used in a variable name except the restrictions imposed by the command line parser (like using backslash for quoting, space and tab characters to separate arguments, or semicolon and newline to separate commands). Even strange input like :redtext:`=-/|()+=` is a perfectly legal variable name in U-Boot. 
-
-.. image:: ./images/Warning-icon.png
-
-A common mistake is to write 
+|Warning| A common mistake is to write 
 
 ::
 

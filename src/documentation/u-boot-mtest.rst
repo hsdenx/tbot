@@ -5,9 +5,7 @@ tbot_ref:help_mtest_tb_con_1_1.txt
 
 The :redtext:`mtest` provides a simple memory test. 
 
-.. image:: ./images/Warning-icon.png
-
-This tests writes to memory, thus modifying the memory contents. It will fail when applied to ROM or flash memory.
+|Warning| This tests writes to memory, thus modifying the memory contents. It will fail when applied to ROM or flash memory.
 
 tbot_ref:mtest_run_tb_con_1_1.txt
 
