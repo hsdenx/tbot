@@ -48,6 +48,23 @@ you need for running tbot the python paramiko module, see:
 
 http://www.paramiko.org/installing.html
 
+may you face an error:
+
+::
+
+  from tbotlib import tbot
+  File "/home/lukma/work/tests/tbot/src/common/tbotlib.py", line 29, in <module>
+  from tbot_connection_paramiko import Connection
+  File "/home/lukma/work/tests/tbot/src/common/tbot_connection_paramiko.py", line 7, in <module>
+  import paramiko
+  File "/usr/local/lib/python2.7/dist-packages/paramiko/__init__.py", line 31, in <module>
+  from paramiko.transport import SecurityOptions, Transport File "/usr/local/lib/python2.7/dist-packages/paramiko/transport.py", line 57, in <module>
+  from paramiko.ed25519key import Ed25519Key File "/usr/local/lib/python2.7/dist-packages/paramiko/ed25519key.py", line 22, in <module>
+  import nacl.signing
+  ImportError: No module named nacl.signing
+
+http://pynacl.readthedocs.io/en/latest/install
+
 install gembird software
 ------------------------
 
