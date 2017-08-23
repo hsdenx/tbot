@@ -33,7 +33,11 @@ dutslist = [
 "uboot/duts/tc_ub_memory.py",
 "uboot/duts/tc_ub_run.py",
 "uboot/duts/tc_ub_date.py",
-"uboot/duts/tc_ub_dtt.py"
+"uboot/duts/tc_ub_dtt.py",
+"tc_ub_duts_source.py",
+"tc_ub_duts_fdt.py",
+"tc_ub_duts_go.py",
+"tc_ub_bdinfo.py",
 ]
 
 for tc in dutslist:

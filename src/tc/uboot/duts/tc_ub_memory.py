@@ -43,7 +43,7 @@ basecmdlist2 = [
 "base 0",
 ]
 
-tb.eof_write_cmd(tb.c_con, "help base")
+tb.eof_write_cmd(tb.c_con, "help base", create_doc_event=True)
 if tb.config.tc_ub_memory_base == 'yes':
     tb.c_con.set_check_error(False)
     tb.eof_write_cmd_list(tb.c_con, basecmdlist, create_doc_event=True)
