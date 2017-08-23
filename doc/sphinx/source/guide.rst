@@ -416,7 +416,12 @@ Enable the documentation backend in tbot
 
 .. image:: image/guide/guide_backend_documentation_enable.png
 
-start the tbot command, for example we want all duts testcases.
+For getting all logfiles we must get current U-Boot code,
+compile and install it on the BeagleoneBlack, see the section:
+
+`tbot compile, install U-Boot on the bbb`_
+
+Also we must create all lofiles for the so called duts testcases:
 
 .. image:: image/guide/guide_backend_documentation_run.png
 
