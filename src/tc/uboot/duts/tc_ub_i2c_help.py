@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_i2c_help.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_i2c_help.py
 # simple prints "help i2c" cmd
 # End:
 

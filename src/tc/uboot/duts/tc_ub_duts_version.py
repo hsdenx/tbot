@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_duts_version.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_duts_version.py
 #
 # execute U-Boots "version" cmd, and create event
 # DUTS_UBOOT_VERSION

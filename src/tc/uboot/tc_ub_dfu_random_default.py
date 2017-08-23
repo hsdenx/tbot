@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_dfu_random_default.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_dfu_random_default.py
 # test a U-Boot dfu alt setting tb.config.tc_ub_dfu_dfu_util_alt_setting
 # with reading / writing different sizes
 # End:

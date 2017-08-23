@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_switch_su.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_switch_su.py
 # switch to superuser
 # End:
 

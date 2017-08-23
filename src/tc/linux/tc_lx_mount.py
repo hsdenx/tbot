@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_mount.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lx_mount.py
 # mount device tb.config.tc_lx_mount_dev with fs type tb.config.tc_lx_mount_fs_type
 # to tb.config.tc_lx_mount_dir
 # End:

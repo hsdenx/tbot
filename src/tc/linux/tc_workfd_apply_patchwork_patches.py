@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_apply_patchwork_patches.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_apply_patchwork_patches.py
 # apply patchworkpatches from list:
 # tb.config.tc_workfd_apply_patchwork_patches_list:
 # to source in current directory.

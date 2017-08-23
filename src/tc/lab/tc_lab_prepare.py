@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lab_prepare.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lab_prepare.py
 #
 # when logging into a lab, do some basic setup
 # - go into workdir

@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_bonnie.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lx_bonnie.py
 # run a bonnie test, if timer tc_workfd_check_tc_time.py timed out
 # - try to install bonnie if not is installed tc_lx_bonnie_install.py
 # - start bonnie on device tb.config.tc_lx_bonnie_dev with

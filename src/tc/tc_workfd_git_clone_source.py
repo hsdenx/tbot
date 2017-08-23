@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_git_clone_source.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_git_clone_source.py
 # get source from git repo tb.config.tc_lab_git_clone_source_git_repo with "git clone"
 # and go into the source tree. 
 # check out branch tb.config.tc_lab_git_clone_source_git_branch

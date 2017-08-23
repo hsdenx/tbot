@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lab_bdi_upd_uboot.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lab_bdi_upd_uboot.py
 # BDI run
 # - send "res halt" to workfd
 # - send BDI cmd tb.config.lab_bdi_upd_uboot_bdi_run

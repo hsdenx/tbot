@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_get_version.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lx_get_version.py
 # get the linux version and create event LINUX_VERSION
 # save the linux version in tb.config.tc_return
 # End:

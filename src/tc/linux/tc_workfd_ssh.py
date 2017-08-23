@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_ssh.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_ssh.py
 # login with ssh to tb.workfd_ssh_cmd and set new ssh prompt
 # tb.config.workfd_ssh_cmd_prompt
 # End:

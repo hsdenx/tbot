@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_set_toolchain.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_set_toolchain.py
 # set the toolchain, dependend on the architecture setting in
 # tb.config.tc_workfd_set_toolchain_arch
 # supported toolchains defined in

@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_check_if_file_exist.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_check_if_file_exist.py
 # check if a file in tbot workdir exist
 # End:
 

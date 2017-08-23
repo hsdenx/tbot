@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_goto_linux_code.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_goto_linux_code.py
 # switch into linux source tb.config.tc_lab_source_dir + "/linux-" + tb.config.boardlabname
 # set tb.config.linux_name to "linux-" + tb.config.boardlabname
 # and tb.config.linux_fulldir_name to tb.config.tc_lab_source_dir + "/" + tb.config.linux_name

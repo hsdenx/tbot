@@ -53,7 +53,7 @@ only 2 lines necessary for setting this up:
 
 ```
 1 # start with
-2 # python2.7 src/common/tbot.py -c tbot.cfg -t tc_setenv.py
+2 # python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_setenv.py
 3 from tbotlib import tbot
 4 
 5 #here starts the real test

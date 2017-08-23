@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_get_ubi_parameters.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lx_get_ubi_parameters.py
 # get ubi parameters of ubi device tb.config.tc_ubi_mtd_dev
 # save them into:
 # - tb.config.tc_ubi_max_leb_cnt

@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lab_denx_get_power_state.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lab_denx_get_power_state.py
 # get the power state of the board, and save it in
 # tb.power_state
 # End:

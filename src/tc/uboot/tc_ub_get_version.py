@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_get_version.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_get_version.py
 # get the U-Boot and/or SPL version from a binary
 # and save it in tb.uboot_vers or tb.spl_vers
 # End:

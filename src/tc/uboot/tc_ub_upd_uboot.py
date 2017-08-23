@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_upd_uboot.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_upd_uboot.py
 # update new uboot to board
 # steps:
 # - load tbot u-boot env vars

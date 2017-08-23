@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_generate_random_file.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_generate_random_file.py
 # simple create a random file tb.tc_workfd_generate_random_file_name
 # with tb.tc_workfd_generate_random_file_length length.
 # End:

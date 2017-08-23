@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lab_sispmctl_get_variables.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lab_sispmctl_get_variables.py
 # get serial and index for tb.config.boardlabpowername for
 # controlling the Gembird Silver Shield PM power controller
 # and save it in tb.config.gembird_serial and tb.config.gembird_index

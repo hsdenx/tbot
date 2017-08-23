@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_create_reg_file.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_create_reg_file.py
 # creates a reg file tb.tc_ub_create_reg_file_name on the tbot host
 # in tb.workdir
 # read from tb.tc_ub_create_reg_file_start to tb.tc_ub_create_reg_file_stop

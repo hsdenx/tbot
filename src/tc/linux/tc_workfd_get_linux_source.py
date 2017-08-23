@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_get_linux_source.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_get_linux_source.py
 # get Linux source tb.config.tc_lab_get_linux_source_git_repo with "git clone"
 # and go into the source tree. Apply patches if needed with:
 # tc_lab_apply_patches.py and tc_workfd_apply_local_patches.py

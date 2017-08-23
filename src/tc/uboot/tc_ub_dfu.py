@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_dfu.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_dfu.py
 # test dfu
 # - use dfu-util in tb.config.tc_ub_dfu_dfu_util_path
 # - upload file tb.config.tc_ub_dfu_dfu_util_alt_setting to

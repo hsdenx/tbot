@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_regulator.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lx_regulator.py
 # check if regulators in tb.config.tc_lx_regulator_nrs exist, and have
 # the correct microvolts settings.
 # End:

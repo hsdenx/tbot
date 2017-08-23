@@ -12,7 +12,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_board_dxr2_lx_ubi_tests.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_board_dxr2_lx_ubi_tests.py
 # more dxr2 specific ubi tests, maybe make them common
 # End:
 

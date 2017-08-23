@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_check_tar_content.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_check_tar_content.py
 # check if the strings in the tb.config.tc_workfd_check_tar_content_elements
 # list are in the tar file tb.config.tc_workfd_check_tar_content_path
 #

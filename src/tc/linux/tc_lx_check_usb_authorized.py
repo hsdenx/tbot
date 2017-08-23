@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_check_usb_authorized.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lx_check_usb_authorized.py
 # check if usb device tb.config.tc_lx_check_usb_authorized needs authorizing
 # End:
 

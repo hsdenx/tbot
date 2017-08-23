@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_apply_local_patches.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_apply_local_patches.py
 # apply patches from directory tb.config.tc_workfd_apply_local_patches_dir
 # with 'git am -3' to the source in current directory.
 # if tb.config.tc_workfd_apply_local_patches_checkpatch_cmd != 'none'

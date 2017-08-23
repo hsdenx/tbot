@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_get_uboot_config_vars.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_get_uboot_config_vars.py
 #
 # try to get some configuration variables from the U-Boot
 # source code, and save them in config variables.

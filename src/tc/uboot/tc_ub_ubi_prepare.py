@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_ubi_prepare.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_ubi_prepare.py
 # - ubi prepare
 #   execute "ubi part" ith tb.config.tc_ub_ubi_prep_partname
 #   if tb.config.tc_ub_ubi_prep_offset != 'none'

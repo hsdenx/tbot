@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_cmp.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_cmp.py
 # - compare 2 the contents of tb.tc_ub_cmp_addr1 with tb.tc_ub_cmp_addr2
 # bytes tb.tc_ub_cmp_len length
 # End:

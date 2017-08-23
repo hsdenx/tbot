@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_ubi_write.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_ubi_write.py
 # - write image @ tb.config.tc_ub_ubi_write_addr to ubi volume
 #   tb.config.tc_ub_ubi_write_vol_name with len tb.config.tc_ub_ubi_write_len
 # End:

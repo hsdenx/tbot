@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_linux_relay_set.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_linux_relay_set.py
 # set relay port with the simple cmd to state
 # find the c source code for the simple cmd in src/files/relay/simple.c
 #

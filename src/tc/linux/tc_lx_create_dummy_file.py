@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_create_dummy_file.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lx_create_dummy_file.py
 # create a random dummy file tb.tc_lx_dummy_file_tempfile in linux
 # on tb.c_con with bs = tb.tc_lx_dummy_file_bs and
 # count = tb.tc_lx_dummy_file_count

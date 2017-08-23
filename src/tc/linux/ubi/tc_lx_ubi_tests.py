@@ -12,7 +12,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_ubi_tests.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lx_ubi_tests.py
 # - install mtd utils if needed with tc_lx_mtdutils_install.py
 # - attach ubi device with tc_lx_ubi_attach.py
 # - get info with tc_lx_ubi_info.py

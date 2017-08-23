@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_eeprom.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lx_eeprom.py
 # Test an eeprom:
 # - read the content from eeprom @ tb.config.tc_lx_eeprom_tmp_dir
 #   with "cat" into tmpfile

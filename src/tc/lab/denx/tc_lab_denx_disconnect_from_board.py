@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lab_denx_disconnect_from_board.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lab_denx_disconnect_from_board.py
 # disconnect from board in denx vlab
 # End:
 

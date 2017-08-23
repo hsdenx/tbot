@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_get_uboot_config_hex.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_get_uboot_config_hex.py
 # get a hex parameter from U-Boot configuration
 # Input:
 # tb.config.uboot_get_parameter_file_list: list of files, where TC searches

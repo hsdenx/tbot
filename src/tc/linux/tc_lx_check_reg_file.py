@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_check_reg_file.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lx_check_reg_file.py
 # checks if the default values in reg file tb.config.tc_lx_create_reg_file_name
 # on the tbot host in tb.workdir have the same values, as the
 # registers on the board. Needs devmem2 installed.

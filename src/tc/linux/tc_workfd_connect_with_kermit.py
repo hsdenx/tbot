@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_connect_with_kermit.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_connect_with_kermit.py
 # connect with kermit to serials board console
 # - if tb.config.tc_workfd_connect_with_kermit_ssh != 'none'
 #   connect first with ssh to another PC (where kermit is started)

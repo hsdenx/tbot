@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_gpio.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lx_gpio.py
 # set in linux gpio tb.config.tc_lx_gpio_nr to direction tb.config.tc_lx_gpio_dir
 # and value tb.config.tc_lx_gpio_val
 # End:

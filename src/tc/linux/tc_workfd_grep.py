@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_grep.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_grep.py
 # search string tb.tc_workfd_grep_string in file tb.tc_workfd_grep_file
 # End:
 

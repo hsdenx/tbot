@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lab_bdi_connect.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lab_bdi_connect.py
 # connect to the BDI if tb.config.board_has_debugger != 0
 # - send to workfd tb.config.lab_bdi_upd_uboot_bdi_cmd
 # - set BDI prompt tb.config.lab_bdi_upd_uboot_bdi_prompt

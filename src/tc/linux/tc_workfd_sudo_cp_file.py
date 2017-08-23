@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_sudo_cp_file.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_sudo_cp_file.py
 # simple copy file from tb.tc_workfd_cp_file_a to tb.tc_workfd_cp_file_b
 # with sudo rights
 # End:

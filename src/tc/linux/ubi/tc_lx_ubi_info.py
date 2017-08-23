@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_ubi_info.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lx_ubi_info.py
 # ubinfo tb.config.tc_ubi_ubi_dev
 # End:
 from tbotlib import tbot

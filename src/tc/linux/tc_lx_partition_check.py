@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_partition_check.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lx_partition_check.py
 # cp a dummy file into a partiton umount/mount it and
 # compare it.
 # - Mount tb.config.tc_lx_mount_dir with tc_lx_mount.py

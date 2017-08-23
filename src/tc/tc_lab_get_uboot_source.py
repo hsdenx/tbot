@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lab_get_uboot_source.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lab_get_uboot_source.py
 # get U-Boot source
 # and go into the source tree
 # End:

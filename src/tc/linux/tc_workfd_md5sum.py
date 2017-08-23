@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_md5sum.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_md5sum.py
 # calculate md5sum of file tb.tc_workfd_md5sum_name , and store it in
 # tb.tc_workfd_md5sum_sum
 # End:

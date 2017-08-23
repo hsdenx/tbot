@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lab_prepare_laptop_hs.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lab_prepare_laptop_hs.py
 #
 # do setup needed for the laptop from hs, when used as
 # lapPC

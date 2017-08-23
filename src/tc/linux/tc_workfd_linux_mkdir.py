@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_linux_mkdir.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_linux_mkdir.py
 # check if the directory tb.config.tc_workfd_linux_mkdir_dir exists.
 # if not, create it
 # End:

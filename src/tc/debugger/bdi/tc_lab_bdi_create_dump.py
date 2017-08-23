@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lab_bdi_create_dump.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lab_bdi_create_dump.py
 #
 # check if we are on the BDI already, if not switch to it
 # with tc_lab_bdi_connect.py

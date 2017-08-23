@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_compile_linux.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_compile_linux.py
 # compile linux:
 # - set toolchain with tc_lab_set_toolchain.py
 # - if tb.config.tc_workfd_compile_linux_clean == 'yes'

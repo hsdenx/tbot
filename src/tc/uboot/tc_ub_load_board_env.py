@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_load_board_env.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_load_board_env.py
 #
 # task: load U-Boot Environment env.txt file with tftp for the
 # board tb.config.tftpboardname to the addr tb.config.ub_load_board_env_addr

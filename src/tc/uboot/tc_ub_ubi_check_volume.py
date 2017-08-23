@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_ub_ubi_check_volume.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_ubi_check_volume.py
 # - checks if ubi volume tb.config.tc_ub_ubi_load_name exists
 # End:
 

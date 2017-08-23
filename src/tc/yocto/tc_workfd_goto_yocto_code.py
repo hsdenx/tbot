@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_goto_yocto_code.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_goto_yocto_code.py
 # switch into yocto source tb.config.tc_lab_source_dir + "/yocto-" + tb.config.boardlabname
 # set tb.config.yocto_name to "yocto-" + tb.config.boardlabname
 # and tb.config.yocto_fulldir_name to tb.config.tc_lab_source_dir + "/" + tb.config.yocto_name

@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_get_yocto_source.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_get_yocto_source.py
 # get yocto source tb.config.tc_workfd_get_yocto_patches_git_repo with "git clone"
 # check out branch:
 # tb.config.tc_workfd_get_yocto_patches_git_branch

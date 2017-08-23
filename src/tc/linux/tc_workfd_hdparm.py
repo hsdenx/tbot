@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_hdparm.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_hdparm.py
 # make a minimal hdparm check
 # call hdparm -t tb.config.tc_workfd_hdparm_dev
 # and check if read speed is greater than tb.config.tc_workfd_hdparm_min

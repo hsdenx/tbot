@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_lx_trigger_wdt.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lx_trigger_wdt.py
 # simple trigger wdt with command tb.config.tc_lx_trigger_wdt_cmd
 # End:
 

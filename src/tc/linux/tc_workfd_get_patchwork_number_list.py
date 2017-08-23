@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_workfd_get_patchwork_number_list.py
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_get_patchwork_number_list.py
 # get a list of patchworknumbers
 # which are delegated to specific user
 # tb.config.workfd_get_patchwork_number_user
