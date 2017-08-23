@@ -136,14 +136,11 @@ LabPC specific settings
 you may need to set lab specific settings when tbot starts.
 
 For this case you can write a testcase, which setups all things
-you need when tbot starts. As default, no testcases gets
-started.
-
-Add in your lab config file
+you need when tbot starts, and add it in your lab config file
 
 .. image:: image/guide/guide_lab_specific.png
 
-In this example, always tbot opens a connection, the testcase
+In this example, we named the testcase `tc_lab_prepare_laptop_hs.py` and always when tbot opens a connection, the testcase
 
 https://github.com/hsdenx/tbot/blob/master/src/tc/lab/tc_lab_prepare_laptop_hs.py
 
@@ -151,6 +148,16 @@ gets called. In this example case, always a fix ip is set
 to the p2p1 interface (I use this for tftp and nfs server)
 and rmmod the ftdi_sio module if loaded.
 
+tbot *always* calls the testcase:
+
+https://github.com/hsdenx/tbot/blob/master/src/tc/lab/tc_lab_prepare.py
+
+when opening a connection. As you see in the testcase, tbot always
+wants to cd into tbots workdirectory. So you *need* to adapt the config variables:
+
+.. image:: image/guide/guide_demo1_lab_config.png
+
+to the settings on your LabPC! Otherwise tbot fails on startup.
 
 Adapt settings for Gembird Powercontroller
 ------------------------------------------
