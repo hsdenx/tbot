@@ -162,6 +162,7 @@ dfu_test_sizes_default = [
         8 * 1024 * 1024,
     ]
 workfd_ssh_cmd_prompt = '$'
+workfd_ssh_cmd_opt = ''
 linux_prompt_default = 'root@generic-armv7a-hf:~# '
 labprompt = 'config.linux_prompt'
 linux_user = 'root'

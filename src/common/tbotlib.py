@@ -605,8 +605,16 @@ class tbot(object):
         c.set_prompt(self.config.labsshprompt)
         self.tbot_expect_prompt(c)
         self.donotlog = False
-        self.set_prompt(c, self.config.linux_prompt, 'linux')
+        self.do_first_settings_after_login(c)
 
+    def do_first_settings_after_login(self, c):
+        """do the first tasks after logging in
+           - set tbots linux prompt
+           - set term length
+           - set workfd to c
+           - call testcase tc_lab_prepare.py
+        """
+        self.set_prompt(c, self.config.linux_prompt, 'linux')
         self.set_term_length(c)
         self.workfd = c
         self.eof_call_tc("tc_lab_prepare.py")

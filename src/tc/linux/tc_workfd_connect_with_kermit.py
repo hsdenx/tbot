@@ -55,7 +55,7 @@ except:
     ]
 
 if tb.config.tc_workfd_connect_with_kermit_ssh != 'none':
-    tb.workfd_ssh_cmd = tb.config.tc_workfd_connect_with_kermit_ssh
+    tb.config.workfd_ssh_cmd = tb.config.tc_workfd_connect_with_kermit_ssh
     tb.config.workfd_ssh_cmd_prompt = '$'
     tb.eof_call_tc("tc_workfd_ssh.py")
 

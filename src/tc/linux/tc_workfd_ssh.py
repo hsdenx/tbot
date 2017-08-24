@@ -14,30 +14,61 @@
 # Description:
 # start with
 # python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_ssh.py
-# login with ssh to tb.workfd_ssh_cmd and set new ssh prompt
+#
+# login with ssh to tb.config.workfd_ssh_cmd and ssh options
+# tb.config.tc_workfd_ssh_opt.
+# This testcases expects
 # tb.config.workfd_ssh_cmd_prompt
+# as the prompt it get, after a succefull log in.
+# When logged in, set tbots linux prompt.
+#
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: workfd %s %s %s", tb.workfd.name, tb.workfd_ssh_cmd,
+logging.info("args: workfd %s %s %s %s", tb.workfd.name, tb.config.workfd_ssh_cmd,
+             tb.config.tc_workfd_ssh_opt,
              tb.config.workfd_ssh_cmd_prompt)
 
-# switch to root
-tb.eof_write(tb.workfd, "ssh " + tb.workfd_ssh_cmd)
-ret = tb.tbot_expect_string(tb.workfd, 'password')
-if ret == 'prompt':
-    logging.error("No ssh to %s", tb.workfd_ssh_cmd)
-    tb.end_tc(False)
+c = tb.workfd
 
-tb.write_stream_passwd(tb.workfd, tb.workfd_ssh_cmd, 'lab')
-ret = tb.tbot_expect_string(tb.workfd, tb.config.workfd_ssh_cmd_prompt)
-if ret == 'prompt':
-    logging.error("No login to %s", tb.workfd_ssh_cmd)
-    tb.end_tc(False)
+cmd = 'ssh ' + tb.config.tc_workfd_ssh_opt + ' ' + tb.config.workfd_ssh_cmd
+tb.eof_write(c, cmd)
+loop = True
+s = ['Are you sure', 'assword', tb.config.workfd_ssh_cmd_prompt]
+while loop:
+    tmp = tb.tbot_rup_and_check_strings(c, s)
+    if tmp == '0':
+        tb.eof_write(c, 'yes', start=False)
+    elif tmp == '1':
+        # get the user name (before @) from scp output
+        tmp = tb.buf.split('@')
+        try:
+            tmp[1]
+            # OK, there is a @
+            user = tmp[0].replace('\r', '')
+            user = user.replace('\n', '')
+        except:
+            # Hmm.. no user name found ... what to do?
+            # currently tbot searches now for user ''
+            # which it not found -> wrng password send,
+            # which leads in failure of the scp cmd ...
+            user = ''
 
-# set prompt
-tb.set_prompt(tb.workfd, tb.config.labprompt, 'linux')
+        if user != '':
+            tmp = tmp[1].split("'s ")
+            try:
+                tmp[1]
+                # Ok "'s " found
+                ip = tmp[0]
+            except:
+                # no ip, same as no user ...
+                ip = ''
+        tb.write_stream_passwd(tb.workfd, user, ip)
+    elif tmp == '2':
+        loop = False
+    elif tmp == 'prompt':
+        tb.end_tc(False)
 
-tb.set_term_length(tb.workfd)
+tb.do_first_settings_after_login(c)
 tb.end_tc(True)

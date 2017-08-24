@@ -66,7 +66,7 @@ tb.eof_write(c, tb.config.tc_ub_dfu_rand_ubcmd)
 tb.workfd = tb.c_ctrl
 ctrl = tb.workfd
 if tb.config.tc_ub_dfu_dfu_util_ssh != "none":
-    tb.workfd_ssh_cmd = tb.config.tc_ub_dfu_dfu_util_ssh
+    tb.config.workfd_ssh_cmd = tb.config.tc_ub_dfu_dfu_util_ssh
     tb.config.workfd_ssh_cmd_prompt = '#'
     tb.eof_call_tc("tc_workfd_ssh.py")
 

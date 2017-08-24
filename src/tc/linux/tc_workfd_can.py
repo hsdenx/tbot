@@ -57,7 +57,7 @@ savefd = tb.workfd
 tb.workfd = can_master
 
 if tb.config.tc_workfd_can_ssh != 'no':
-    tb.workfd_ssh_cmd = tb.config.tc_workfd_can_ssh
+    tb.config.workfd_ssh_cmd = tb.config.tc_workfd_can_ssh
     tb.config.workfd_ssh_cmd_prompt = tb.config.tc_workfd_can_ssh_prompt
     ret = tb.call_tc("tc_workfd_ssh.py")
     if ret == False:
