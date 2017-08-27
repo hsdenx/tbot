@@ -31,25 +31,35 @@ tb.eof_call_tc("tc_ub_load_board_env.py")
 tb.eof_write_con(tb.config.ub_boot_linux_cmd)
 
 c = tb.c_con
+oldt = c.get_timeout()
 c.set_prompt(tb.config.linux_prompt_default)
+c.set_timeout(tb.config.state_linux_timeout)
 
 got_login = 0
-tmp = True
 sl = ['Last login:', 'login:', 'assword']
-while (tmp):
+loop = True
+while (loop):
     ret = tb.tbot_rup_and_check_strings(c, sl)
     if ret == '0':
         tmp = True
+        continue
     if ret == '1':
         # login
         tb.write_stream(c, tb.config.linux_user, send_console_start=False)
         got_login = 1
+        continue
     if ret == '2':
         if got_login:
 	    tb.write_stream_passwd(c, tb.config.linux_user, tb.config.boardname)
+        continue
     if ret == 'prompt':
         # we are in linux
         tb.set_prompt(c, tb.config.linux_prompt, 'linux')
-        tmp = False
+        c.set_timeout(oldt)
+        loop = False
+    if ret == 'exception':
+        logging.warning('Timeout while trying to boot Linux')
+        c.set_timeout(oldt)
+        tb.end_tc(False)
 
 tb.end_tc(True)
