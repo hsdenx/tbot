@@ -14,10 +14,16 @@
 # Description:
 # start with
 # python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_set_toolchain.py
+#
 # set the toolchain, dependend on the architecture setting in
 # tb.config.tc_workfd_set_toolchain_arch
+#
 # supported toolchains defined in
 # tb.config.tc_workfd_set_toolchain_t_p and tb.config.tc_workfd_set_toolchain_cr_co
+#
+# set also the ARCH environment variable with the value from
+# tb.config.tc_workfd_set_toolchain_arch
+#
 # End:
 
 from tbotlib import tbot
@@ -25,6 +31,10 @@ from tbotlib import tbot
 logging.info("args: %s %s", tb.workfd.name, tb.config.tc_workfd_set_toolchain_arch)
 
 c = tb.workfd
+
+# set ARCH
+cmd = 'export ARCH=' + tb.config.tc_workfd_set_toolchain_arch
+tb.write_lx_cmd_check(c, cmd)
 
 try:
     tb.config.tc_workfd_set_toolchain_t_p
