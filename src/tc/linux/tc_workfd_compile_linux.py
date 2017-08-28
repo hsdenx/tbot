@@ -58,7 +58,7 @@ tb.eof_write_cmd(tb.workfd, 'pwd')
 
 # call set toolchain
 tb.statusprint("set toolchain")
-tb.eof_call_tc("tc_lab_set_toolchain.py")
+tb.eof_call_tc("tc_workfd_set_toolchain.py")
 
 if tb.config.tc_workfd_compile_linux_clean == 'yes':
     tmp = "make mrproper"
