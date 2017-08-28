@@ -18,11 +18,21 @@
 #
 # src/tc/demo/tc_demo_linux_testcases.py
 #
+# if tb.config.tc_demo_linux_test_deploy != ''
+# call this testcase for deploying the resulting images.
+#
 # End:
 
 from tbotlib import tbot
 
+try:
+    tb.config.tc_demo_linux_test_deploy
+except:
+    tb.config.tc_demo_linux_test_deploy = ''
+
 tb.workfd = tb.c_ctrl
+
+logging.info("args: %s %s", tb.workfd.name, tb.config.tc_demo_linux_test_deploy)
 
 # delete old linux source tree
 tb.eof_call_tc("tc_workfd_rm_linux_code.py")
@@ -33,6 +43,10 @@ tb.eof_call_tc("tc_workfd_goto_linux_code.py")
 
 # compile it
 tb.eof_call_tc("tc_workfd_compile_linux.py")
+
+if tb.config.tc_demo_linux_test_deploy = '':
+    tb.eof_call_tc(tc_demo_linux_test_deploy)
+    tb.end_tc(True)
 
 # copy files to tftpdir
 c = tb.workfd
