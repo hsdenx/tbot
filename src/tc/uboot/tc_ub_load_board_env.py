@@ -31,17 +31,31 @@
 #
 # else TC executes the steps described in 'task'
 #
+# tb.config.ub_load_board_env_testcase != ''
+# call a board specific testcase, whichs name is defined in
+# tb.config.ub_load_board_env_testcase for setting U-Boot
+# Env. If this testcase succeeds, end True.
 # End:
 
 from tbotlib import tbot
+
+try:
+    tb.config.ub_load_board_env_testcase
+except:
+    tb.config.ub_load_board_env_testcase = ''
 
 logging.info("args: %s %s %s", tb.config.tftpboardname, tb.config.ub_load_board_env_addr, tb.config.ub_load_board_env_subdir)
 logging.info("args: %s", tb.config.tc_ub_boot_linux_load_env)
 logging.info("args: %s", tb.config.tftpboardrootdir)
 logging.info("args: %s", tb.config.ub_load_board_env_set)
+logging.info("args: %s", tb.config.ub_load_board_env_testcase)
 
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
+
+if tb.config.ub_load_board_env_testcase != '':
+    tb.eof_call_tc(tb.config.ub_load_board_env_testcase)
+    tb.end_tc(True)
 
 # load U-Boot Env only if allowed
 if tb.config.tc_ub_boot_linux_load_env == 'no':
