@@ -22,12 +22,6 @@
 from tbotlib import tbot
 
 try:
-    tb.c_cpc
-    tb.workfd = tb.c_cpc
-except:
-    tb.workfd = tb.c_ctrl
-
-try:
     tb.config.tc_demo_linux_test_deploy
 except:
     tb.config.tc_demo_linux_test_deploy = ''

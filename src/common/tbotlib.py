@@ -305,6 +305,10 @@ class tbot(object):
     def cleanup(self):
         self.c_ctrl.cleanup()
         self.c_con.cleanup()
+        try:
+            self.c_cpc.cleanup()
+        except:
+            pass
 
     def get_power_state(self, boardname):
         """ Get powerstate of the board in the lab
@@ -499,6 +503,11 @@ class tbot(object):
     def failure(self):
         self.flush(self.c_con)
         self.flush(self.c_ctrl)
+        try:
+            self.flush(self.c_cpc)
+        except:
+            pass
+
         self.event.create_event('main', self.config.boardname, "BoardnameEnd", False)
         logging.warn('End of TBOT: failure')
         # traceback.print_stack()
@@ -602,10 +611,14 @@ class tbot(object):
         if c.created == True:
             return True
 
-        if c == self.c_con:
-            logname = 'log/ssh_tb_con.log'
-        else:
-            logname = 'log/ssh_tb_ctrl.log'
+        try:
+            self.c_cpc
+            logname = 'log/ssh_tb_cpc.log'
+        except:
+            if c == self.c_con:
+                logname = 'log/ssh_tb_con.log'
+            else:
+                logname = 'log/ssh_tb_ctrl.log'
 
         passwd = self.tbot_get_password(self.config.user, self.config.ip)
         self.donotlog = True

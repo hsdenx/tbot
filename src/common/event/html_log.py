@@ -144,6 +144,24 @@ class html_log(object):
         self.fd.write('<!-- end of console log of testcase -->\n')
         self.fd.write('\n')
 
+    def _write_cpc_log_block(self, log):
+        if log == '':
+            return
+        self.htmlid += 1
+        self.fd.write('<!-- ctrl cpc log of testcase -->\n')
+        self.fd.write('<div class="stream block" id="' + str(self.htmlid) + '">\n')
+        self.fd.write('<div class="stream-header block-header">ctrl cpc</div>\n')
+        self.fd.write('<div class="stream-content block-content">\n')
+        self.fd.write('<pre>\n')
+        self.fd.write(log)
+        self.fd.write('</pre>\n')
+        self.fd.write('<div class="stream-trailer block-trailer">End stream: ctrl cpc</div>\n')
+        self.fd.write('<div class="status-pass"></div>\n')
+        self.fd.write('</div>\n')
+        self.fd.write('</div>\n')
+        self.fd.write('<!-- end of ctrl cpc log of testcase -->\n')
+        self.fd.write('\n')
+
     def _write_ctrl_log_block(self, log):
         if log == '':
             return
@@ -233,6 +251,7 @@ class html_log(object):
 
         conlog =''
         ctrlog =''
+        cpclog =''
         canmlog =''
         el = 'start'
         while el != '':
@@ -249,12 +268,15 @@ class html_log(object):
             if typ == 'Start' or typ == 'Boardname' or typ == 'StartFkt':
                 # write con block need log
                 self._write_con_log_block(conlog)
+                # write cpc block need log
+                self._write_cpc_log_block(cpclog)
                 # write ctrl need log
                 self._write_ctrl_log_block(ctrlog)
                 # write canm need log
                 self._write_canm_log_block(canmlog)
                 # write end of tc block (name, status)
                 conlog = ''
+                cpclog = ''
                 ctrlog = ''
                 canmlog = ''
                 self._write_testcase(tc_name, evl)
@@ -266,6 +288,8 @@ class html_log(object):
                 status = el['val']
                 # write con block need log
                 self._write_con_log_block(conlog)
+                # write cpc block need log
+                self._write_cpc_log_block(cpclog)
                 # write ctrl need log
                 self._write_ctrl_log_block(ctrlog)
                 # write canm need log
@@ -297,6 +321,12 @@ class html_log(object):
                         ctrlog += loglin[2:]
                     if loglin.startswith("re "):
                         ctrlog += loglin[3:]
+                if el['fname'] == 'tb_cpc':
+                    loglin = el['val']
+                    if loglin.startswith("r "):
+                        cpclog += loglin[2:]
+                    if loglin.startswith("re "):
+                        cpclog += loglin[3:]
                 if el['fname'] == 'tb_canm':
                     loglin = el['val']
                     if loglin.startswith("r "):
