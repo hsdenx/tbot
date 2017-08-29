@@ -1,10 +1,10 @@
 .. |Warning| image:: ./images/Warning-icon.png
    :height: 80
-   :width: 100
+   :width: 80
 
 .. |Help| image:: ./images/help.gif
    :height: 80
-   :width: 100
+   :width: 80
 
 U-Boot
 ######
@@ -456,6 +456,13 @@ means that the serial device provides input (flag 'I') and output (flag 'O') fun
    PageBreak
 
 .. include:: u-boot-fdt.rst
+
+.. raw:: pdf
+
+   PageBreak
+
+.. include:: u-boot-special.rst
+
 
 
 links

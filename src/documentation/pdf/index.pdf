@@ -19,11 +19,11 @@ endobj
 << /A << /S /URI /Type /Action /URI (https://github.com/hsdenx/tbot) >> /Border [ 0 0 0 ] /Rect [ 344.4929 517.7736 363.9529 529.7736 ] /Subtype /Link /Type /Annot >>
 endobj
 7 0 obj
-<< /Annots [ 5 0 R 6 0 R ] /Contents 128 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 
+<< /Annots [ 5 0 R 6 0 R ] /Contents 131 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 
   /Trans <<  >> /Type /Page >>
 endobj
 8 0 obj
-<< /Contents 129 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 132 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 9 0 obj
@@ -39,30 +39,30 @@ endobj
 << /A << /S /URI /Type /Action /URI (ftp://ftp.denx.de/pub/u-boot/) >> /Border [ 0 0 0 ] /Rect [ 143.2729 450.3736 265.5829 462.3736 ] /Subtype /Link /Type /Annot >>
 endobj
 13 0 obj
-<< /Annots [ 9 0 R 10 0 R 12 0 R ] /Contents 130 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 
+<< /Annots [ 9 0 R 10 0 R 12 0 R ] /Contents 133 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 
   /Trans <<  >> /Type /Page >>
 endobj
 14 0 obj
-<< /Contents 131 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 134 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 15 0 obj
-<< /Contents 132 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 135 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 16 0 obj
-<< /Contents 133 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 136 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 17 0 obj
-<< /Contents 134 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 137 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 18 0 obj
 << /BaseFont /ZapfDingbats /Encoding /ZapfDingbatsEncoding /Name /F5 /Subtype /Type1 /Type /Font >>
 endobj
 19 0 obj
-<< /Contents 135 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 138 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 20 0 obj
@@ -87,7 +87,7 @@ endobj
 << /A << /S /URI /Type /Action /URI (https://www.yoctoproject.org/) >> /Border [ 0 0 0 ] /Rect [ 282.5441 451.9736 342.4215 463.9736 ] /Subtype /Link /Type /Annot >>
 endobj
 27 0 obj
-<< /Annots [ 20 0 R 21 0 R 22 0 R 23 0 R 24 0 R 25 0 R 26 0 R ] /Contents 136 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 
+<< /Annots [ 20 0 R 21 0 R 22 0 R 23 0 R 24 0 R 25 0 R 26 0 R ] /Contents 139 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 
   /Trans <<  >> /Type /Page >>
 endobj
 28 0 obj
@@ -103,111 +103,111 @@ stream
 Gb"0UCIHue!6=VN]&-McgQkgG8P3Mb;V=YTM:f1+6oL0`<74r$fqe879o29F&W+FLdS2VL-!=,;d7''Vh(Rshf$_."bQ%E$ci:u0p\!M:k3mfFn*qB_b*FV`[NlR>0JUrdW#5P,L[0%8(#n87ERXFc7<muAgpZ:FKO9SJ.M^kDp%Q1,JS21p&*dWL`u?)r#1ej.H4l:-<3u8h@FAAW]\A1?^Z!2\Y;bQoHA6h2M7J*Kb0L#qc3)sln]@)A+INg[2f%*=Z")f1>NUKG-G7rj21NZ)L#6F##FZM!cd/`jkKiAhK@Y<UO?0#U`<2NmH,i?kJ'jC]?cL=mAQ3q>*M9P,UZm9gj+4BJq3W[]s!ibp5Jk_K,LlKn+ZtiZM0E);k-)ACnZ.B65W';Ul(LrRn-KQ=>::#(;rA=J_L5nqEF(dSS-PpIc_1Cp4A\;1GMa+tDn;/*)oV9^-_c"@WEB0WN25>YQ3[6lnu:Vo+I*d^5:=FBZR=kLQbijn#k?c`demBh14G-<*bZ_67p\aZ0-X!_6W/2;L]F%nSHlH2o1hsVMY2E[an<j=n3FNXhLAn(^[Ei%DjSKHmBZLh"2DXB+]aUf.[LB0AajX!o>#.`]^$IBJ'Cun?V>tUC*iGe7qDOm?tk'#)'8"(`$^EZ4PUef-1H)m8FaJk#q+2UjER=o2".\<dbjU,lSk!fJOYcLp_d67/6n_&:R27^7Ib)fGp#famk@PoT6Ck7Q]UB]'#D6,*Y!VF8#Y<;K*PQ`nkk`qr6$Ks^6T6>BEdqZ[!3]t!:R9gcX.GALFVNX5Qre_E'Vl:#iP;9C%=M:%j*0Gn8N#rj5ebNFEq8ao40nC2@nkgn?2*LrH4,\<(EPclE'P"a"7/K&8Q_J$QeN>_C#p74PUg</Fmu5Cj9@AiZ'FW`</OEGgC5MrjJ`8s-Xl<HnjY+33Lenml\J:+(31m""&C">9:k1`&fNSp(ndpTi0H(;#5_:jh4\^5+V/Uho;5mg@"`L8qVo2bNOHTYS'&PI*:\$_ZMnX]^q"YrlWLc(93VYJZ<KL8C.;r>3UZ=WXe-8TL5PaqRpOq\]3t[5MP`n.dMS_;:_pB=4U/KO"&23WDsjOa'JUW21Jt`.F$S7=m!tBRo@O\L"inElTaYF+WG1c~>endstream
 endobj
 30 0 obj
-<< /Contents 137 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] /XObject << /FormXob.2500e21ba6b1543d9ba2126fde074a9d 28 0 R >> >> /Rotate 0 /Trans <<  >> 
+<< /Contents 140 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] /XObject << /FormXob.2500e21ba6b1543d9ba2126fde074a9d 28 0 R >> >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 31 0 obj
-<< /Contents 138 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 141 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 32 0 obj
-<< /Contents 139 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 142 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 33 0 obj
-<< /Contents 140 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 143 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 34 0 obj
-<< /Contents 141 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 144 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 35 0 obj
-<< /Contents 142 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 145 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 36 0 obj
-<< /Contents 143 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] /XObject << /FormXob.2500e21ba6b1543d9ba2126fde074a9d 28 0 R >> >> /Rotate 0 /Trans <<  >> 
+<< /Contents 146 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] /XObject << /FormXob.2500e21ba6b1543d9ba2126fde074a9d 28 0 R >> >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 37 0 obj
-<< /Contents 144 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 147 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 38 0 obj
-<< /Contents 145 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 148 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 39 0 obj
-<< /Contents 146 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 149 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 40 0 obj
-<< /Contents 147 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 150 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 41 0 obj
-<< /Contents 148 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 151 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 42 0 obj
-<< /Contents 149 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 152 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 43 0 obj
-<< /Contents 150 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] /XObject << /FormXob.2500e21ba6b1543d9ba2126fde074a9d 28 0 R >> >> /Rotate 0 /Trans <<  >> 
+<< /Contents 153 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] /XObject << /FormXob.2500e21ba6b1543d9ba2126fde074a9d 28 0 R >> >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 44 0 obj
-<< /Contents 151 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 154 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 45 0 obj
-<< /Contents 152 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 155 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 46 0 obj
-<< /Contents 153 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] /XObject << /FormXob.2500e21ba6b1543d9ba2126fde074a9d 28 0 R >> >> /Rotate 0 /Trans <<  >> 
+<< /Contents 156 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] /XObject << /FormXob.2500e21ba6b1543d9ba2126fde074a9d 28 0 R >> >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 47 0 obj
-<< /Contents 154 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 157 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 48 0 obj
-<< /Contents 155 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 158 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 49 0 obj
-<< /Contents 156 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 159 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 50 0 obj
-<< /Contents 157 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 160 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 51 0 obj
-<< /Contents 158 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 161 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 52 0 obj
-<< /Contents 159 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 162 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 53 0 obj
-<< /Contents 160 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 163 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 54 0 obj
-<< /Contents 161 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 164 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 55 0 obj
-<< /Contents 162 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 165 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 56 0 obj
-<< /Contents 163 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 166 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 57 0 obj
@@ -217,242 +217,253 @@ stream
 GatUn;$m:H#XnCeS[K3U_1bpQ`,\dbL\[(hLkaD?[Jj^2M:$pq88KM>*e<Ed#rS&(0:33G4R:&m]UE4%Cr?^__l(07>b%_eT758hrGVG*j8k1t,`tmtAq->9Lb2tTdo`7~>endstream
 endobj
 58 0 obj
-<< /Contents 164 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] /XObject << /FormXob.2500e21ba6b1543d9ba2126fde074a9d 28 0 R /FormXob.8de8427910dad6206a6d69120dc9c9cf 57 0 R >> >> /Rotate 0 /Trans <<  >> 
+<< /Contents 167 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] /XObject << /FormXob.2500e21ba6b1543d9ba2126fde074a9d 28 0 R /FormXob.8de8427910dad6206a6d69120dc9c9cf 57 0 R >> >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 59 0 obj
-<< /Contents 165 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 168 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 60 0 obj
-<< /Contents 166 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 169 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 61 0 obj
-<< /Contents 167 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 170 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 62 0 obj
-<< /Contents 168 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 171 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 63 0 obj
-<< /Contents 169 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 172 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 64 0 obj
-<< /Contents 170 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 173 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 65 0 obj
-<< /Contents 171 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 174 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 66 0 obj
-<< /Contents 172 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 175 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 67 0 obj
-<< /Contents 173 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 127 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 176 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 68 0 obj
-<< /Outlines 70 0 R /PageLabels 174 0 R /PageMode /UseNone /Pages 127 0 R /Type /Catalog >>
+<< /Contents 177 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 130 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+  /Type /Page >>
 endobj
 69 0 obj
-<< /Author () /CreationDate (D:20170823124650-01'00') /Creator (\(unspecified\)) /Keywords () /Producer (ReportLab PDF Library - www.reportlab.com) /Subject (\(unspecified\)) 
-  /Title (U-Boot beagleboneblack Documentation) >>
+<< /Outlines 71 0 R /PageLabels 178 0 R /PageMode /UseNone /Pages 130 0 R /Type /Catalog >>
 endobj
 70 0 obj
-<< /Count 67 /First 71 0 R /Last 75 0 R /Type /Outlines >>
+<< /Author () /CreationDate (D:20170829102517-01'00') /Creator (\(unspecified\)) /Keywords () /Producer (ReportLab PDF Library - www.reportlab.com) /Subject (\(unspecified\)) 
+  /Title (U-Boot beagleboneblack Documentation) >>
 endobj
 71 0 obj
-<< /Count 3 /Dest [ 7 0 R /XYZ 62.69291 653.0236 0 ] /First 72 0 R /Last 74 0 R /Next 75 0 R /Parent 70 0 R 
-  /Title (Abstract) >>
+<< /Count 70 /First 72 0 R /Last 76 0 R /Type /Outlines >>
 endobj
 72 0 obj
-<< /Dest [ 7 0 R /XYZ 62.69291 583.0236 0 ] /Next 73 0 R /Parent 71 0 R /Title (About this Document) >>
+<< /Count 3 /Dest [ 7 0 R /XYZ 62.69291 653.0236 0 ] /First 73 0 R /Last 75 0 R /Next 76 0 R /Parent 71 0 R 
+  /Title (Abstract) >>
 endobj
 73 0 obj
-<< /Dest [ 7 0 R /XYZ 62.69291 463.0236 0 ] /Next 74 0 R /Parent 71 0 R /Prev 72 0 R /Title (Introduction) >>
+<< /Dest [ 7 0 R /XYZ 62.69291 583.0236 0 ] /Next 74 0 R /Parent 72 0 R /Title (About this Document) >>
 endobj
 74 0 obj
-<< /Dest [ 8 0 R /XYZ 62.69291 765.0236 0 ] /Parent 71 0 R /Prev 73 0 R /Title (Disclaimer) >>
+<< /Dest [ 7 0 R /XYZ 62.69291 463.0236 0 ] /Next 75 0 R /Parent 72 0 R /Prev 73 0 R /Title (Introduction) >>
 endobj
 75 0 obj
-<< /Count 51 /Dest [ 13 0 R /XYZ 62.69291 765.0236 0 ] /First 76 0 R /Last 126 0 R /Parent 70 0 R /Prev 71 0 R 
-  /Title (U-Boot) >>
+<< /Dest [ 8 0 R /XYZ 62.69291 765.0236 0 ] /Parent 72 0 R /Prev 74 0 R /Title (Disclaimer) >>
 endobj
 76 0 obj
-<< /Dest [ 13 0 R /XYZ 62.69291 695.0236 0 ] /Next 77 0 R /Parent 75 0 R /Title (Current Versions) >>
+<< /Count 53 /Dest [ 13 0 R /XYZ 62.69291 765.0236 0 ] /First 77 0 R /Last 129 0 R /Parent 71 0 R /Prev 72 0 R 
+  /Title (U-Boot) >>
 endobj
 77 0 obj
-<< /Count 2 /Dest [ 14 0 R /XYZ 62.69291 765.0236 0 ] /First 78 0 R /Last 79 0 R /Next 80 0 R /Parent 75 0 R 
-  /Prev 76 0 R /Title (Get U-Boot code for the beagleboneblack) >>
+<< /Dest [ 13 0 R /XYZ 62.69291 695.0236 0 ] /Next 78 0 R /Parent 76 0 R /Title (Current Versions) >>
 endobj
 78 0 obj
-<< /Dest [ 14 0 R /XYZ 62.69291 723.0236 0 ] /Next 79 0 R /Parent 77 0 R /Title (define some PATH variables) >>
+<< /Count 2 /Dest [ 14 0 R /XYZ 62.69291 765.0236 0 ] /First 79 0 R /Last 80 0 R /Next 81 0 R /Parent 76 0 R 
+  /Prev 77 0 R /Title (Get U-Boot code for the beagleboneblack) >>
 endobj
 79 0 obj
-<< /Dest [ 15 0 R /XYZ 62.69291 765.0236 0 ] /Parent 77 0 R /Prev 78 0 R /Title (clone the U-Boot code) >>
+<< /Dest [ 14 0 R /XYZ 62.69291 723.0236 0 ] /Next 80 0 R /Parent 78 0 R /Title (define some PATH variables) >>
 endobj
 80 0 obj
-<< /Dest [ 16 0 R /XYZ 62.69291 765.0236 0 ] /Next 81 0 R /Parent 75 0 R /Prev 77 0 R /Title (setup toolchain) >>
+<< /Dest [ 15 0 R /XYZ 62.69291 765.0236 0 ] /Parent 78 0 R /Prev 79 0 R /Title (clone the U-Boot code) >>
 endobj
 81 0 obj
-<< /Dest [ 17 0 R /XYZ 62.69291 765.0236 0 ] /Next 82 0 R /Parent 75 0 R /Prev 80 0 R /Title (compile U-Boot for the beagleboneblack) >>
+<< /Dest [ 16 0 R /XYZ 62.69291 765.0236 0 ] /Next 82 0 R /Parent 76 0 R /Prev 78 0 R /Title (setup toolchain) >>
 endobj
 82 0 obj
-<< /Count 2 /Dest [ 19 0 R /XYZ 62.69291 765.0236 0 ] /First 83 0 R /Last 84 0 R /Next 85 0 R /Parent 75 0 R 
-  /Prev 81 0 R /Title (U-Boot installation) >>
+<< /Dest [ 17 0 R /XYZ 62.69291 765.0236 0 ] /Next 83 0 R /Parent 76 0 R /Prev 81 0 R /Title (compile U-Boot for the beagleboneblack) >>
 endobj
 83 0 obj
-<< /Dest [ 19 0 R /XYZ 62.69291 723.0236 0 ] /Next 84 0 R /Parent 82 0 R /Title (install U-Boot) >>
+<< /Count 2 /Dest [ 19 0 R /XYZ 62.69291 765.0236 0 ] /First 84 0 R /Last 85 0 R /Next 86 0 R /Parent 76 0 R 
+  /Prev 82 0 R /Title (U-Boot installation) >>
 endobj
 84 0 obj
-<< /Dest [ 19 0 R /XYZ 62.69291 435.4236 0 ] /Parent 82 0 R /Prev 83 0 R /Title (install SPL) >>
+<< /Dest [ 19 0 R /XYZ 62.69291 723.0236 0 ] /Next 85 0 R /Parent 83 0 R /Title (install U-Boot) >>
 endobj
 85 0 obj
-<< /Dest [ 27 0 R /XYZ 62.69291 765.0236 0 ] /Next 86 0 R /Parent 75 0 R /Prev 82 0 R /Title (Tool Installation) >>
+<< /Dest [ 19 0 R /XYZ 62.69291 435.4236 0 ] /Parent 83 0 R /Prev 84 0 R /Title (install SPL) >>
 endobj
 86 0 obj
-<< /Count 39 /Dest [ 30 0 R /XYZ 62.69291 765.0236 0 ] /First 87 0 R /Last 117 0 R /Next 126 0 R /Parent 75 0 R 
-  /Prev 85 0 R /Title (U-Boot Command Line Interface) >>
+<< /Dest [ 27 0 R /XYZ 62.69291 765.0236 0 ] /Next 87 0 R /Parent 76 0 R /Prev 83 0 R /Title (Tool Installation) >>
 endobj
 87 0 obj
-<< /Count 4 /Dest [ 31 0 R /XYZ 62.69291 765.0236 0 ] /First 88 0 R /Last 91 0 R /Next 92 0 R /Parent 86 0 R 
-  /Title (Information Commands) >>
+<< /Count 41 /Dest [ 30 0 R /XYZ 62.69291 765.0236 0 ] /First 88 0 R /Last 127 0 R /Next 129 0 R /Parent 76 0 R 
+  /Prev 86 0 R /Title (U-Boot Command Line Interface) >>
 endobj
 88 0 obj
-<< /Dest [ 31 0 R /XYZ 62.69291 729.0236 0 ] /Next 89 0 R /Parent 87 0 R /Title (bdinfo - print Board Info structure) >>
+<< /Count 4 /Dest [ 31 0 R /XYZ 62.69291 765.0236 0 ] /First 89 0 R /Last 92 0 R /Next 93 0 R /Parent 87 0 R 
+  /Title (Information Commands) >>
 endobj
 89 0 obj
-<< /Dest [ 32 0 R /XYZ 62.69291 765.0236 0 ] /Next 90 0 R /Parent 87 0 R /Prev 88 0 R /Title (coninfo - print console devices and informations) >>
+<< /Dest [ 31 0 R /XYZ 62.69291 729.0236 0 ] /Next 90 0 R /Parent 88 0 R /Title (bdinfo - print Board Info structure) >>
 endobj
 90 0 obj
-<< /Dest [ 33 0 R /XYZ 62.69291 765.0236 0 ] /Next 91 0 R /Parent 87 0 R /Prev 89 0 R /Title (flinfo - print FLASH memory information) >>
+<< /Dest [ 32 0 R /XYZ 62.69291 765.0236 0 ] /Next 91 0 R /Parent 88 0 R /Prev 89 0 R /Title (coninfo - print console devices and informations) >>
 endobj
 91 0 obj
-<< /Dest [ 34 0 R /XYZ 62.69291 765.0236 0 ] /Parent 87 0 R /Prev 90 0 R /Title (help - print online help) >>
+<< /Dest [ 33 0 R /XYZ 62.69291 765.0236 0 ] /Next 92 0 R /Parent 88 0 R /Prev 90 0 R /Title (flinfo - print FLASH memory information) >>
 endobj
 92 0 obj
-<< /Count 9 /Dest [ 35 0 R /XYZ 62.69291 765.0236 0 ] /First 93 0 R /Last 101 0 R /Next 102 0 R /Parent 86 0 R 
-  /Prev 87 0 R /Title (Memory Commands) >>
+<< /Dest [ 34 0 R /XYZ 62.69291 765.0236 0 ] /Parent 88 0 R /Prev 91 0 R /Title (help - print online help) >>
 endobj
 93 0 obj
-<< /Dest [ 35 0 R /XYZ 62.69291 729.0236 0 ] /Next 94 0 R /Parent 92 0 R /Title (base - print or set address offset) >>
+<< /Count 9 /Dest [ 35 0 R /XYZ 62.69291 765.0236 0 ] /First 94 0 R /Last 102 0 R /Next 103 0 R /Parent 87 0 R 
+  /Prev 88 0 R /Title (Memory Commands) >>
 endobj
 94 0 obj
-<< /Dest [ 35 0 R /XYZ 62.69291 500.2236 0 ] /Next 95 0 R /Parent 92 0 R /Prev 93 0 R /Title (crc32 - checksum calculation) >>
+<< /Dest [ 35 0 R /XYZ 62.69291 729.0236 0 ] /Next 95 0 R /Parent 93 0 R /Title (base - print or set address offset) >>
 endobj
 95 0 obj
-<< /Dest [ 36 0 R /XYZ 62.69291 765.0236 0 ] /Next 96 0 R /Parent 92 0 R /Prev 94 0 R /Title (cmp - memory compare) >>
+<< /Dest [ 35 0 R /XYZ 62.69291 500.2236 0 ] /Next 96 0 R /Parent 93 0 R /Prev 94 0 R /Title (crc32 - checksum calculation) >>
 endobj
 96 0 obj
-<< /Dest [ 37 0 R /XYZ 62.69291 765.0236 0 ] /Next 97 0 R /Parent 92 0 R /Prev 95 0 R /Title (cp - memory copy) >>
+<< /Dest [ 36 0 R /XYZ 62.69291 765.0236 0 ] /Next 97 0 R /Parent 93 0 R /Prev 95 0 R /Title (cmp - memory compare) >>
 endobj
 97 0 obj
-<< /Dest [ 38 0 R /XYZ 62.69291 765.0236 0 ] /Next 98 0 R /Parent 92 0 R /Prev 96 0 R /Title (md - memory display) >>
+<< /Dest [ 37 0 R /XYZ 62.69291 765.0236 0 ] /Next 98 0 R /Parent 93 0 R /Prev 96 0 R /Title (cp - memory copy) >>
 endobj
 98 0 obj
-<< /Dest [ 40 0 R /XYZ 62.69291 765.0236 0 ] /Next 99 0 R /Parent 92 0 R /Prev 97 0 R /Title (mm - memory modify \(auto-incrementing\)) >>
+<< /Dest [ 38 0 R /XYZ 62.69291 765.0236 0 ] /Next 99 0 R /Parent 93 0 R /Prev 97 0 R /Title (md - memory display) >>
 endobj
 99 0 obj
-<< /Dest [ 41 0 R /XYZ 62.69291 765.0236 0 ] /Next 100 0 R /Parent 92 0 R /Prev 98 0 R /Title (mw - memory write \(fill\)) >>
+<< /Dest [ 40 0 R /XYZ 62.69291 765.0236 0 ] /Next 100 0 R /Parent 93 0 R /Prev 98 0 R /Title (mm - memory modify \(auto-incrementing\)) >>
 endobj
 100 0 obj
-<< /Dest [ 42 0 R /XYZ 62.69291 765.0236 0 ] /Next 101 0 R /Parent 92 0 R /Prev 99 0 R /Title (nm - memory modify \(constant address\)) >>
+<< /Dest [ 41 0 R /XYZ 62.69291 765.0236 0 ] /Next 101 0 R /Parent 93 0 R /Prev 99 0 R /Title (mw - memory write \(fill\)) >>
 endobj
 101 0 obj
-<< /Dest [ 43 0 R /XYZ 62.69291 765.0236 0 ] /Parent 92 0 R /Prev 100 0 R /Title (loop - infinite loop on address range) >>
+<< /Dest [ 42 0 R /XYZ 62.69291 765.0236 0 ] /Next 102 0 R /Parent 93 0 R /Prev 100 0 R /Title (nm - memory modify \(constant address\)) >>
 endobj
 102 0 obj
-<< /Count 3 /Dest [ 44 0 R /XYZ 62.69291 765.0236 0 ] /First 103 0 R /Last 105 0 R /Next 106 0 R /Parent 86 0 R 
-  /Prev 92 0 R /Title (Execution Control Commands) >>
+<< /Dest [ 43 0 R /XYZ 62.69291 765.0236 0 ] /Parent 93 0 R /Prev 101 0 R /Title (loop - infinite loop on address range) >>
 endobj
 103 0 obj
-<< /Dest [ 44 0 R /XYZ 62.69291 729.0236 0 ] /Next 104 0 R /Parent 102 0 R /Title (source - run script from memory) >>
+<< /Count 3 /Dest [ 44 0 R /XYZ 62.69291 765.0236 0 ] /First 104 0 R /Last 106 0 R /Next 107 0 R /Parent 87 0 R 
+  /Prev 93 0 R /Title (Execution Control Commands) >>
 endobj
 104 0 obj
-<< /Dest [ 46 0 R /XYZ 62.69291 765.0236 0 ] /Next 105 0 R /Parent 102 0 R /Prev 103 0 R /Title (bootm - boot application image from memory) >>
+<< /Dest [ 44 0 R /XYZ 62.69291 729.0236 0 ] /Next 105 0 R /Parent 103 0 R /Title (source - run script from memory) >>
 endobj
 105 0 obj
-<< /Dest [ 48 0 R /XYZ 62.69291 765.0236 0 ] /Parent 102 0 R /Prev 104 0 R /Title (go - start application at address 'addr') >>
+<< /Dest [ 46 0 R /XYZ 62.69291 765.0236 0 ] /Next 106 0 R /Parent 103 0 R /Prev 104 0 R /Title (bootm - boot application image from memory) >>
 endobj
 106 0 obj
-<< /Count 6 /Dest [ 49 0 R /XYZ 62.69291 765.0236 0 ] /First 107 0 R /Last 112 0 R /Next 113 0 R /Parent 86 0 R 
-  /Prev 102 0 R /Title (Download Commands) >>
+<< /Dest [ 48 0 R /XYZ 62.69291 765.0236 0 ] /Parent 103 0 R /Prev 105 0 R /Title (go - start application at address 'addr') >>
 endobj
 107 0 obj
-<< /Dest [ 49 0 R /XYZ 62.69291 729.0236 0 ] /Next 108 0 R /Parent 106 0 R /Title (bootp - boot image via network using BOOTP/TFTP protocol) >>
+<< /Count 6 /Dest [ 49 0 R /XYZ 62.69291 765.0236 0 ] /First 108 0 R /Last 113 0 R /Next 114 0 R /Parent 87 0 R 
+  /Prev 103 0 R /Title (Download Commands) >>
 endobj
 108 0 obj
-<< /Dest [ 49 0 R /XYZ 62.69291 613.4236 0 ] /Next 109 0 R /Parent 106 0 R /Prev 107 0 R /Title (dhcp - invoke DHCP client to obtain IP/boot params) >>
+<< /Dest [ 49 0 R /XYZ 62.69291 729.0236 0 ] /Next 109 0 R /Parent 107 0 R /Title (bootp - boot image via network using BOOTP/TFTP protocol) >>
 endobj
 109 0 obj
-<< /Dest [ 50 0 R /XYZ 62.69291 765.0236 0 ] /Next 110 0 R /Parent 106 0 R /Prev 108 0 R /Title (loadb - load binary file over serial line \(kermit mode\)) >>
+<< /Dest [ 49 0 R /XYZ 62.69291 613.4236 0 ] /Next 110 0 R /Parent 107 0 R /Prev 108 0 R /Title (dhcp - invoke DHCP client to obtain IP/boot params) >>
 endobj
 110 0 obj
-<< /Dest [ 53 0 R /XYZ 62.69291 765.0236 0 ] /Next 111 0 R /Parent 106 0 R /Prev 109 0 R /Title (loads - load S-Record file over serial line) >>
+<< /Dest [ 50 0 R /XYZ 62.69291 765.0236 0 ] /Next 111 0 R /Parent 107 0 R /Prev 109 0 R /Title (loadb - load binary file over serial line \(kermit mode\)) >>
 endobj
 111 0 obj
-<< /Dest [ 53 0 R /XYZ 62.69291 641.0236 0 ] /Next 112 0 R /Parent 106 0 R /Prev 110 0 R /Title (rarpboot- boot image via network using RARP/TFTP protocol) >>
+<< /Dest [ 53 0 R /XYZ 62.69291 765.0236 0 ] /Next 112 0 R /Parent 107 0 R /Prev 110 0 R /Title (loads - load S-Record file over serial line) >>
 endobj
 112 0 obj
-<< /Dest [ 53 0 R /XYZ 62.69291 542.2236 0 ] /Parent 106 0 R /Prev 111 0 R /Title (tftpboot- boot image via network using TFTP protocol) >>
+<< /Dest [ 53 0 R /XYZ 62.69291 641.0236 0 ] /Next 113 0 R /Parent 107 0 R /Prev 111 0 R /Title (rarpboot- boot image via network using RARP/TFTP protocol) >>
 endobj
 113 0 obj
-<< /Count 3 /Dest [ 54 0 R /XYZ 62.69291 765.0236 0 ] /First 114 0 R /Last 116 0 R /Next 117 0 R /Parent 86 0 R 
-  /Prev 106 0 R /Title (Environment Variables Commands) >>
+<< /Dest [ 53 0 R /XYZ 62.69291 542.2236 0 ] /Parent 107 0 R /Prev 112 0 R /Title (tftpboot- boot image via network using TFTP protocol) >>
 endobj
 114 0 obj
-<< /Dest [ 54 0 R /XYZ 62.69291 729.0236 0 ] /Next 115 0 R /Parent 113 0 R /Title (printenv- print environment variables) >>
+<< /Count 3 /Dest [ 54 0 R /XYZ 62.69291 765.0236 0 ] /First 115 0 R /Last 117 0 R /Next 118 0 R /Parent 87 0 R 
+  /Prev 107 0 R /Title (Environment Variables Commands) >>
 endobj
 115 0 obj
-<< /Dest [ 56 0 R /XYZ 62.69291 270.8236 0 ] /Next 116 0 R /Parent 113 0 R /Prev 114 0 R /Title (saveenv - save environment variables to persistent storage) >>
+<< /Dest [ 54 0 R /XYZ 62.69291 729.0236 0 ] /Next 116 0 R /Parent 114 0 R /Title (printenv- print environment variables) >>
 endobj
 116 0 obj
-<< /Dest [ 58 0 R /XYZ 62.69291 682.4236 0 ] /Parent 113 0 R /Prev 115 0 R /Title (setenv - set environment variables) >>
+<< /Dest [ 56 0 R /XYZ 62.69291 270.8236 0 ] /Next 117 0 R /Parent 114 0 R /Prev 115 0 R /Title (saveenv - save environment variables to persistent storage) >>
 endobj
 117 0 obj
-<< /Count 8 /Dest [ 60 0 R /XYZ 62.69291 765.0236 0 ] /First 118 0 R /Last 125 0 R /Parent 86 0 R /Prev 113 0 R 
-  /Title (Flattened Device Tree support) >>
+<< /Dest [ 58 0 R /XYZ 62.69291 682.4236 0 ] /Parent 114 0 R /Prev 116 0 R /Title (setenv - set environment variables) >>
 endobj
 118 0 obj
-<< /Dest [ 60 0 R /XYZ 62.69291 427.6236 0 ] /Next 119 0 R /Parent 117 0 R /Title (fdt addr - select FDT to work on) >>
+<< /Count 8 /Dest [ 60 0 R /XYZ 62.69291 765.0236 0 ] /First 119 0 R /Last 126 0 R /Next 127 0 R /Parent 87 0 R 
+  /Prev 114 0 R /Title (Flattened Device Tree support) >>
 endobj
 119 0 obj
-<< /Dest [ 60 0 R /XYZ 62.69291 186.8236 0 ] /Next 120 0 R /Parent 117 0 R /Prev 118 0 R /Title (fdt list - print one level) >>
+<< /Dest [ 60 0 R /XYZ 62.69291 427.6236 0 ] /Next 120 0 R /Parent 118 0 R /Title (fdt addr - select FDT to work on) >>
 endobj
 120 0 obj
-<< /Dest [ 61 0 R /XYZ 62.69291 665.6236 0 ] /Next 121 0 R /Parent 117 0 R /Prev 119 0 R /Title (fdt print - recursive print) >>
+<< /Dest [ 60 0 R /XYZ 62.69291 186.8236 0 ] /Next 121 0 R /Parent 118 0 R /Prev 119 0 R /Title (fdt list - print one level) >>
 endobj
 121 0 obj
-<< /Dest [ 61 0 R /XYZ 62.69291 415.2236 0 ] /Next 122 0 R /Parent 117 0 R /Prev 120 0 R /Title (fdt mknode - create new nodes) >>
+<< /Dest [ 61 0 R /XYZ 62.69291 665.6236 0 ] /Next 122 0 R /Parent 118 0 R /Prev 120 0 R /Title (fdt print - recursive print) >>
 endobj
 122 0 obj
-<< /Dest [ 62 0 R /XYZ 62.69291 279.2236 0 ] /Next 123 0 R /Parent 117 0 R /Prev 121 0 R /Title (fdt set - set node properties) >>
+<< /Dest [ 61 0 R /XYZ 62.69291 415.2236 0 ] /Next 123 0 R /Parent 118 0 R /Prev 121 0 R /Title (fdt mknode - create new nodes) >>
 endobj
 123 0 obj
-<< /Dest [ 62 0 R /XYZ 62.69291 133.2236 0 ] /Next 124 0 R /Parent 117 0 R /Prev 122 0 R /Title (fdt rm - remove nodes or properties) >>
+<< /Dest [ 62 0 R /XYZ 62.69291 279.2236 0 ] /Next 124 0 R /Parent 118 0 R /Prev 122 0 R /Title (fdt set - set node properties) >>
 endobj
 124 0 obj
-<< /Dest [ 63 0 R /XYZ 62.69291 329.2236 0 ] /Next 125 0 R /Parent 117 0 R /Prev 123 0 R /Title (fdt move - move FDT blob to new address) >>
+<< /Dest [ 62 0 R /XYZ 62.69291 133.2236 0 ] /Next 125 0 R /Parent 118 0 R /Prev 123 0 R /Title (fdt rm - remove nodes or properties) >>
 endobj
 125 0 obj
-<< /Dest [ 65 0 R /XYZ 62.69291 514.4236 0 ] /Parent 117 0 R /Prev 124 0 R /Title (fdt chosen - fixup dynamic info) >>
+<< /Dest [ 63 0 R /XYZ 62.69291 329.2236 0 ] /Next 126 0 R /Parent 118 0 R /Prev 124 0 R /Title (fdt move - move FDT blob to new address) >>
 endobj
 126 0 obj
-<< /Dest [ 66 0 R /XYZ 62.69291 304.0236 0 ] /Parent 75 0 R /Prev 86 0 R /Title (links) >>
+<< /Dest [ 65 0 R /XYZ 62.69291 514.4236 0 ] /Parent 118 0 R /Prev 125 0 R /Title (fdt chosen - fixup dynamic info) >>
 endobj
 127 0 obj
-<< /Count 46 /Kids [ 7 0 R 8 0 R 13 0 R 14 0 R 15 0 R 16 0 R 17 0 R 19 0 R 27 0 R 30 0 R 
+<< /Count 1 /Dest [ 67 0 R /XYZ 62.69291 765.0236 0 ] /First 128 0 R /Last 128 0 R /Parent 87 0 R /Prev 118 0 R 
+  /Title (Special Commands) >>
+endobj
+128 0 obj
+<< /Dest [ 67 0 R /XYZ 62.69291 729.0236 0 ] /Parent 127 0 R /Title (i2c - I2C sub-system) >>
+endobj
+129 0 obj
+<< /Dest [ 67 0 R /XYZ 62.69291 487.4236 0 ] /Parent 76 0 R /Prev 87 0 R /Title (links) >>
+endobj
+130 0 obj
+<< /Count 47 /Kids [ 7 0 R 8 0 R 13 0 R 14 0 R 15 0 R 16 0 R 17 0 R 19 0 R 27 0 R 30 0 R 
   31 0 R 32 0 R 33 0 R 34 0 R 35 0 R 36 0 R 37 0 R 38 0 R 39 0 R 40 0 R 
   41 0 R 42 0 R 43 0 R 44 0 R 45 0 R 46 0 R 47 0 R 48 0 R 49 0 R 50 0 R 
   51 0 R 52 0 R 53 0 R 54 0 R 55 0 R 56 0 R 58 0 R 59 0 R 60 0 R 61 0 R 
-  62 0 R 63 0 R 64 0 R 65 0 R 66 0 R 67 0 R ] /Type /Pages >>
+  62 0 R 63 0 R 64 0 R 65 0 R 66 0 R 67 0 R 68 0 R ] /Type /Pages >>
 endobj
-128 0 obj
+131 0 obj
 << /Length 4373 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -561,13 +572,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 119.7649 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 1 / 46) Tj T* -119.7649 0 Td ET
+BT 1 0 0 1 0 2 Tm 119.7649 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 1 / 47) Tj T* -119.7649 0 Td ET
 Q
 Q
  
 endstream
 endobj
-129 0 obj
+132 0 obj
 << /Length 1089 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -590,13 +601,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 119.7649 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 2 / 46) Tj T* -119.7649 0 Td ET
+BT 1 0 0 1 0 2 Tm 119.7649 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 2 / 47) Tj T* -119.7649 0 Td ET
 Q
 Q
  
 endstream
 endobj
-130 0 obj
+133 0 obj
 << /Length 2458 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -678,13 +689,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 119.7649 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 3 / 46) Tj T* -119.7649 0 Td ET
+BT 1 0 0 1 0 2 Tm 119.7649 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 3 / 47) Tj T* -119.7649 0 Td ET
 Q
 Q
  
 endstream
 endobj
-131 0 obj
+134 0 obj
 << /Length 1354 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -762,13 +773,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 119.7649 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 4 / 46) Tj T* -119.7649 0 Td ET
+BT 1 0 0 1 0 2 Tm 119.7649 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 4 / 47) Tj T* -119.7649 0 Td ET
 Q
 Q
  
 endstream
 endobj
-132 0 obj
+135 0 obj
 << /Length 2227 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -896,13 +907,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 119.7649 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 5 / 46) Tj T* -119.7649 0 Td ET
+BT 1 0 0 1 0 2 Tm 119.7649 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 5 / 47) Tj T* -119.7649 0 Td ET
 Q
 Q
  
 endstream
 endobj
-133 0 obj
+136 0 obj
 << /Length 1059 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -946,13 +957,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 119.7649 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 6 / 46) Tj T* -119.7649 0 Td ET
+BT 1 0 0 1 0 2 Tm 119.7649 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 6 / 47) Tj T* -119.7649 0 Td ET
 Q
 Q
  
 endstream
 endobj
-134 0 obj
+137 0 obj
 << /Length 3901 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -1136,13 +1147,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 119.7649 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 7 / 46) Tj T* -119.7649 0 Td ET
+BT 1 0 0 1 0 2 Tm 119.7649 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 7 / 47) Tj T* -119.7649 0 Td ET
 Q
 Q
  
 endstream
 endobj
-135 0 obj
+138 0 obj
 << /Length 3814 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -1278,13 +1289,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 119.7649 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 8 / 46) Tj T* -119.7649 0 Td ET
+BT 1 0 0 1 0 2 Tm 119.7649 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 8 / 47) Tj T* -119.7649 0 Td ET
 Q
 Q
  
 endstream
 endobj
-136 0 obj
+139 0 obj
 << /Length 3267 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -1400,14 +1411,14 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 119.7649 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 9 / 46) Tj T* -119.7649 0 Td ET
+BT 1 0 0 1 0 2 Tm 119.7649 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 9 / 47) Tj T* -119.7649 0 Td ET
 Q
 Q
  
 endstream
 endobj
-137 0 obj
-<< /Length 2161 >>
+140 0 obj
+<< /Length 2167 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
 q
@@ -1434,10 +1445,10 @@ q
 1 0 0 1 62.69291 615.0236 cm
 q
 q
-24 0 0 19.2 0 12 cm
+19.2 0 0 19.2 0 12 cm
 /FormXob.2500e21ba6b1543d9ba2126fde074a9d Do
 Q
-BT 1 0 0 1 0 14 Tm .561984 Tw 12 TL 24 0 Td /F1 10 Tf 0 0 0 rg (The behaviour of some commands depends on the configuration of U-Boot and on the definition of) Tj T* -24 0 Td 0 Tw (some variables in your U-Boot environment.) Tj T* ET
+BT 1 0 0 1 0 14 Tm .881984 Tw 12 TL 19.2 0 Td /F1 10 Tf 0 0 0 rg (The behaviour of some commands depends on the configuration of U-Boot and on the definition of) Tj T* -19.2 0 Td 0 Tw (some variables in your U-Boot environment.) Tj T* ET
 Q
 Q
 q
@@ -1460,13 +1471,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 10 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 10 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-138 0 obj
+141 0 obj
 << /Length 2051 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -1534,13 +1545,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 11 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 11 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-139 0 obj
+142 0 obj
 << /Length 2181 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -1637,13 +1648,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 12 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 12 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-140 0 obj
+143 0 obj
 << /Length 1403 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -1705,13 +1716,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 13 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 13 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-141 0 obj
+144 0 obj
 << /Length 2037 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -1773,13 +1784,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 14 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 14 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-142 0 obj
+145 0 obj
 << /Length 3394 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -1900,14 +1911,14 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 15 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 15 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-143 0 obj
-<< /Length 3564 >>
+146 0 obj
+<< /Length 3570 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
 q
@@ -1973,10 +1984,10 @@ q
 1 0 0 1 62.69291 404.8236 cm
 q
 q
-24 0 0 19.2 0 12 cm
+19.2 0 0 19.2 0 12 cm
 /FormXob.2500e21ba6b1543d9ba2126fde074a9d Do
 Q
-BT 1 0 0 1 0 14 Tm .169398 Tw 12 TL 24 0 Td /F1 10 Tf 0 0 0 rg (Please note that the count argument specifies the number of data items to process, i. e. the number) Tj T* -24 0 Td 0 Tw (of long words or words or bytes to compare.) Tj T* ET
+BT 1 0 0 1 0 14 Tm .451751 Tw 12 TL 19.2 0 Td /F1 10 Tf 0 0 0 rg (Please note that the count argument specifies the number of data items to process, i. e. the number) Tj T* -19.2 0 Td 0 Tw (of long words or words or bytes to compare.) Tj T* ET
 Q
 Q
 q
@@ -2005,13 +2016,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 16 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 16 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-144 0 obj
+147 0 obj
 << /Length 1893 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -2099,13 +2110,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 17 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 17 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-145 0 obj
+148 0 obj
 << /Length 3983 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -2193,13 +2204,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 18 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 18 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-146 0 obj
+149 0 obj
 << /Length 2059 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -2236,13 +2247,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 19 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 19 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-147 0 obj
+150 0 obj
 << /Length 3936 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -2330,13 +2341,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 20 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 20 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-148 0 obj
+151 0 obj
 << /Length 3812 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -2424,13 +2435,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 21 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 21 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-149 0 obj
+152 0 obj
 << /Length 2200 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -2498,14 +2509,14 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 22 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 22 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-150 0 obj
-<< /Length 1395 >>
+153 0 obj
+<< /Length 1401 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
 q
@@ -2544,10 +2555,10 @@ q
 1 0 0 1 62.69291 615.4236 cm
 q
 q
-24 0 0 19.2 0 0 cm
+19.2 0 0 19.2 0 0 cm
 /FormXob.2500e21ba6b1543d9ba2126fde074a9d Do
 Q
-BT 1 0 0 1 0 2 Tm 12 TL 24 0 Td /F1 10 Tf 0 0 0 rg (This command will never terminate. There is no way to stop it but to reset the board!) Tj T* -24 0 Td ET
+BT 1 0 0 1 0 2 Tm 12 TL 19.2 0 Td /F1 10 Tf 0 0 0 rg (This command will never terminate. There is no way to stop it but to reset the board!) Tj T* -19.2 0 Td ET
 Q
 Q
 q
@@ -2556,13 +2567,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 23 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 23 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-151 0 obj
+154 0 obj
 << /Length 4364 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -2688,13 +2699,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 24 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 24 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-152 0 obj
+155 0 obj
 << /Length 1229 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -2724,14 +2735,14 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 25 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 25 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-153 0 obj
-<< /Length 5721 >>
+156 0 obj
+<< /Length 5727 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
 q
@@ -2843,22 +2854,22 @@ q
 1 0 0 1 62.69291 101.8236 cm
 q
 q
-24 0 0 19.2 0 24 cm
+19.2 0 0 19.2 0 24 cm
 /FormXob.2500e21ba6b1543d9ba2126fde074a9d Do
 Q
-BT 1 0 0 1 0 26 Tm .267318 Tw 12 TL 24 0 Td /F1 10 Tf 0 0 0 rg (When booting images that have been loaded to RAM \(for instance using TFTP download\) you have ) Tj T* -24 0 Td 0 Tw 2.02936 Tw (to be careful that the locations where the \(compressed\) images were stored do not overlap with the ) Tj T* 0 Tw .308221 Tw (memory needed to load the uncompressed kernel. For instance, if you load a ramdisk image at a location) Tj T* 0 Tw ET
+BT 1 0 0 1 0 26 Tm .587318 Tw 12 TL 19.2 0 Td /F1 10 Tf 0 0 0 rg (When booting images that have been loaded to RAM \(for instance using TFTP download\) you have ) Tj T* -19.2 0 Td 0 Tw 2.02936 Tw (to be careful that the locations where the \(compressed\) images were stored do not overlap with the ) Tj T* 0 Tw .308221 Tw (memory needed to load the uncompressed kernel. For instance, if you load a ramdisk image at a location) Tj T* 0 Tw ET
 Q
 Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 26 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 26 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-154 0 obj
+157 0 obj
 << /Length 496 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -2874,13 +2885,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 27 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 27 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-155 0 obj
+158 0 obj
 << /Length 2048 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -2943,13 +2954,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 28 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 28 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-156 0 obj
+159 0 obj
 << /Length 1540 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -3017,13 +3028,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 29 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 29 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-157 0 obj
+160 0 obj
 << /Length 4394 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -3152,13 +3163,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 30 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 30 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-158 0 obj
+161 0 obj
 << /Length 3566 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -3185,13 +3196,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 31 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 31 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-159 0 obj
+162 0 obj
 << /Length 1642 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -3221,13 +3232,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 32 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 32 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-160 0 obj
+163 0 obj
 << /Length 1939 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -3315,13 +3326,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 33 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 33 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-161 0 obj
+164 0 obj
 << /Length 4857 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -3412,13 +3423,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 34 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 34 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-162 0 obj
+165 0 obj
 << /Length 5633 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -3445,13 +3456,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 35 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 35 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-163 0 obj
+166 0 obj
 << /Length 4881 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -3510,14 +3521,14 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 36 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 36 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-164 0 obj
-<< /Length 5028 >>
+167 0 obj
+<< /Length 5040 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
 q
@@ -3650,32 +3661,32 @@ q
 1 0 0 1 62.69291 119.4236 cm
 q
 q
-24 0 0 19.2 0 36 cm
+19.2 0 0 19.2 0 36 cm
 /FormXob.8de8427910dad6206a6d69120dc9c9cf Do
 Q
-BT 1 0 0 1 0 38 Tm .334692 Tw 12 TL 24 0 Td /F1 10 Tf 0 0 0 rg (There is no restriction on the characters that can be used in a variable name except the restrictions) Tj T* -24 0 Td 0 Tw 2.127984 Tw (imposed by the command line parser \(like using backslash for quoting, space and tab characters to) Tj T* 0 Tw .169269 Tw (separate arguments, or semicolon and newline to separate commands\). Even strange input like ) Tj 1 0 0 rg (=-/|\(\)+= ) Tj 0 0 0 rg (is) Tj T* 0 Tw (a perfectly legal variable name in U-Boot.) Tj T* ET
+BT 1 0 0 1 0 38 Tm .617045 Tw 12 TL 19.2 0 Td /F1 10 Tf 0 0 0 rg (There is no restriction on the characters that can be used in a variable name except the restrictions) Tj T* -19.2 0 Td 0 Tw 2.127984 Tw (imposed by the command line parser \(like using backslash for quoting, space and tab characters to) Tj T* 0 Tw .169269 Tw (separate arguments, or semicolon and newline to separate commands\). Even strange input like ) Tj 1 0 0 rg (=-/|\(\)+= ) Tj 0 0 0 rg (is) Tj T* 0 Tw (a perfectly legal variable name in U-Boot.) Tj T* ET
 Q
 Q
 q
 1 0 0 1 62.69291 101.4236 cm
 q
 q
-24 0 0 19.2 0 0 cm
+19.2 0 0 19.2 0 0 cm
 /FormXob.2500e21ba6b1543d9ba2126fde074a9d Do
 Q
-BT 1 0 0 1 0 2 Tm 12 TL 24 0 Td /F1 10 Tf 0 0 0 rg (A common mistake is to write) Tj T* -24 0 Td ET
+BT 1 0 0 1 0 2 Tm 12 TL 19.2 0 Td /F1 10 Tf 0 0 0 rg (A common mistake is to write) Tj T* -19.2 0 Td ET
 Q
 Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 37 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 37 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-165 0 obj
+168 0 obj
 << /Length 1373 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -3741,13 +3752,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 38 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 38 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-166 0 obj
+169 0 obj
 << /Length 6430 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -3830,13 +3841,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 39 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 39 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-167 0 obj
+170 0 obj
 << /Length 3770 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -3927,13 +3938,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 40 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 40 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-168 0 obj
+171 0 obj
 << /Length 2756 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -3998,13 +4009,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 41 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 41 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-169 0 obj
+172 0 obj
 << /Length 3258 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -4069,13 +4080,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 42 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 42 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-170 0 obj
+173 0 obj
 << /Length 2530 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -4102,13 +4113,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 43 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 43 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-171 0 obj
+174 0 obj
 << /Length 3034 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -4167,14 +4178,14 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 44 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 44 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-172 0 obj
-<< /Length 2186 >>
+175 0 obj
+<< /Length 2054 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
 q
@@ -4204,24 +4215,72 @@ BT 1 0 0 1 0 14 Tm .205814 Tw 12 TL /F1 10 Tf 0 0 0 rg (Note: ) Tj 1 0 0 rg (fdt
 Q
 Q
 q
-1 0 0 1 62.69291 280.0236 cm
-q
-BT 1 0 0 1 0 4 Tm 212.1549 0 Td 24 TL /F3 20 Tf 0 0 0 rg (links) Tj T* -212.1549 0 Td ET
-Q
-Q
-q
-1 0 0 1 62.69291 262.0236 cm
+1 0 0 1 62.69291 322.0236 cm
 Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 45 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 45 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-173 0 obj
+176 0 obj
+<< /Length 2121 >>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 62.69291 747.0236 cm
+q
+BT 1 0 0 1 0 3 Tm 165.7574 0 Td 18 TL /F3 15 Tf 0 0 0 rg (Special Commands) Tj T* -165.7574 0 Td ET
+Q
+Q
+q
+1 0 0 1 62.69291 714.0236 cm
+q
+BT 1 0 0 1 0 2.5 Tm 15 TL /F3 12.5 Tf 0 0 0 rg (i2c - I2C sub-system) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 505.4236 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 7.1 7.1 cm
+q
+0 0 0 RG
+1 w
+.960784 .960784 .862745 rg
+n -6 -6 467.6898 188.4 re B*
+Q
+q
+BT 1 0 0 1 0 169.4 Tm 8.4 TL /F4 7 Tf 0 0 0 rg (=) Tj (>) Tj ( help i2c) Tj T* (i2c - I2C sub-system) Tj T*  T* (Usage:) Tj T* (i2c bus [muxtype:muxaddr:muxchannel] - show I2C bus info) Tj T* (crc32 chip address[.0, .1, .2] count - compute CRC32 checksum) Tj T* (i2c dev [dev] - show or set current I2C bus) Tj T* (i2c loop chip address[.0, .1, .2] [# of objects] - looping read of device) Tj T* (i2c md chip address[.0, .1, .2] [# of objects] - read from I2C device) Tj T* (i2c mm chip address[.0, .1, .2] - write to I2C device \(auto-incrementing\)) Tj T* (i2c mw chip address[.0, .1, .2] value [count] - write to I2C device \(fill\)) Tj T* (i2c nm chip address[.0, .1, .2] - write to I2C device \(constant address\)) Tj T* (i2c probe [address] - test for and show device\(s\) on the I2C bus) Tj T* (i2c read chip address[.0, .1, .2] length memaddress - read to memory) Tj T* (i2c write memaddress chip address[.0, .1, .2] length [-s] - write memory) Tj T* (          to I2C; the -s option selects bulk write in a single transaction) Tj T* (i2c flags chip [flags] - set or get chip flags) Tj T* (i2c olen chip [offset_length] - set or get chip offset length) Tj T* (i2c reset - re-init the I2C Controller) Tj T* (i2c speed [speed] - show or set I2C bus speed) Tj T* (=) Tj (>) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+q
+1 0 0 1 62.69291 463.4236 cm
+q
+BT 1 0 0 1 0 4 Tm 212.1549 0 Td 24 TL /F3 20 Tf 0 0 0 rg (links) Tj T* -212.1549 0 Td ET
+Q
+Q
+q
+1 0 0 1 62.69291 445.4236 cm
+Q
+q
+1 0 0 1 56.69291 56.69291 cm
+q
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 46 / 47) Tj T* -116.9849 0 Td ET
+Q
+Q
+ 
+endstream
+endobj
+177 0 obj
 << /Length 260 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -4231,164 +4290,167 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 46 / 46) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 47 / 47) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-174 0 obj
-<< /Nums [ 0 175 0 R 1 176 0 R 2 177 0 R 3 178 0 R 4 179 0 R 
-  5 180 0 R 6 181 0 R 7 182 0 R 8 183 0 R 9 184 0 R 
-  10 185 0 R 11 186 0 R 12 187 0 R 13 188 0 R 14 189 0 R 
-  15 190 0 R 16 191 0 R 17 192 0 R 18 193 0 R 19 194 0 R 
-  20 195 0 R 21 196 0 R 22 197 0 R 23 198 0 R 24 199 0 R 
-  25 200 0 R 26 201 0 R 27 202 0 R 28 203 0 R 29 204 0 R 
-  30 205 0 R 31 206 0 R 32 207 0 R 33 208 0 R 34 209 0 R 
-  35 210 0 R 36 211 0 R 37 212 0 R 38 213 0 R 39 214 0 R 
-  40 215 0 R 41 216 0 R 42 217 0 R 43 218 0 R 44 219 0 R 
-  45 220 0 R ] >>
-endobj
-175 0 obj
-<< /S /D /St 1 >>
-endobj
-176 0 obj
-<< /S /D /St 2 >>
-endobj
-177 0 obj
-<< /S /D /St 3 >>
-endobj
 178 0 obj
-<< /S /D /St 4 >>
+<< /Nums [ 0 179 0 R 1 180 0 R 2 181 0 R 3 182 0 R 4 183 0 R 
+  5 184 0 R 6 185 0 R 7 186 0 R 8 187 0 R 9 188 0 R 
+  10 189 0 R 11 190 0 R 12 191 0 R 13 192 0 R 14 193 0 R 
+  15 194 0 R 16 195 0 R 17 196 0 R 18 197 0 R 19 198 0 R 
+  20 199 0 R 21 200 0 R 22 201 0 R 23 202 0 R 24 203 0 R 
+  25 204 0 R 26 205 0 R 27 206 0 R 28 207 0 R 29 208 0 R 
+  30 209 0 R 31 210 0 R 32 211 0 R 33 212 0 R 34 213 0 R 
+  35 214 0 R 36 215 0 R 37 216 0 R 38 217 0 R 39 218 0 R 
+  40 219 0 R 41 220 0 R 42 221 0 R 43 222 0 R 44 223 0 R 
+  45 224 0 R 46 225 0 R ] >>
 endobj
 179 0 obj
-<< /S /D /St 5 >>
+<< /S /D /St 1 >>
 endobj
 180 0 obj
-<< /S /D /St 6 >>
+<< /S /D /St 2 >>
 endobj
 181 0 obj
-<< /S /D /St 7 >>
+<< /S /D /St 3 >>
 endobj
 182 0 obj
-<< /S /D /St 8 >>
+<< /S /D /St 4 >>
 endobj
 183 0 obj
-<< /S /D /St 9 >>
+<< /S /D /St 5 >>
 endobj
 184 0 obj
-<< /S /D /St 10 >>
+<< /S /D /St 6 >>
 endobj
 185 0 obj
-<< /S /D /St 11 >>
+<< /S /D /St 7 >>
 endobj
 186 0 obj
-<< /S /D /St 12 >>
+<< /S /D /St 8 >>
 endobj
 187 0 obj
-<< /S /D /St 13 >>
+<< /S /D /St 9 >>
 endobj
 188 0 obj
-<< /S /D /St 14 >>
+<< /S /D /St 10 >>
 endobj
 189 0 obj
-<< /S /D /St 15 >>
+<< /S /D /St 11 >>
 endobj
 190 0 obj
-<< /S /D /St 16 >>
+<< /S /D /St 12 >>
 endobj
 191 0 obj
-<< /S /D /St 17 >>
+<< /S /D /St 13 >>
 endobj
 192 0 obj
-<< /S /D /St 18 >>
+<< /S /D /St 14 >>
 endobj
 193 0 obj
-<< /S /D /St 19 >>
+<< /S /D /St 15 >>
 endobj
 194 0 obj
-<< /S /D /St 20 >>
+<< /S /D /St 16 >>
 endobj
 195 0 obj
-<< /S /D /St 21 >>
+<< /S /D /St 17 >>
 endobj
 196 0 obj
-<< /S /D /St 22 >>
+<< /S /D /St 18 >>
 endobj
 197 0 obj
-<< /S /D /St 23 >>
+<< /S /D /St 19 >>
 endobj
 198 0 obj
-<< /S /D /St 24 >>
+<< /S /D /St 20 >>
 endobj
 199 0 obj
-<< /S /D /St 25 >>
+<< /S /D /St 21 >>
 endobj
 200 0 obj
-<< /S /D /St 26 >>
+<< /S /D /St 22 >>
 endobj
 201 0 obj
-<< /S /D /St 27 >>
+<< /S /D /St 23 >>
 endobj
 202 0 obj
-<< /S /D /St 28 >>
+<< /S /D /St 24 >>
 endobj
 203 0 obj
-<< /S /D /St 29 >>
+<< /S /D /St 25 >>
 endobj
 204 0 obj
-<< /S /D /St 30 >>
+<< /S /D /St 26 >>
 endobj
 205 0 obj
-<< /S /D /St 31 >>
+<< /S /D /St 27 >>
 endobj
 206 0 obj
-<< /S /D /St 32 >>
+<< /S /D /St 28 >>
 endobj
 207 0 obj
-<< /S /D /St 33 >>
+<< /S /D /St 29 >>
 endobj
 208 0 obj
-<< /S /D /St 34 >>
+<< /S /D /St 30 >>
 endobj
 209 0 obj
-<< /S /D /St 35 >>
+<< /S /D /St 31 >>
 endobj
 210 0 obj
-<< /S /D /St 36 >>
+<< /S /D /St 32 >>
 endobj
 211 0 obj
-<< /S /D /St 37 >>
+<< /S /D /St 33 >>
 endobj
 212 0 obj
-<< /S /D /St 38 >>
+<< /S /D /St 34 >>
 endobj
 213 0 obj
-<< /S /D /St 39 >>
+<< /S /D /St 35 >>
 endobj
 214 0 obj
-<< /S /D /St 40 >>
+<< /S /D /St 36 >>
 endobj
 215 0 obj
-<< /S /D /St 41 >>
+<< /S /D /St 37 >>
 endobj
 216 0 obj
-<< /S /D /St 42 >>
+<< /S /D /St 38 >>
 endobj
 217 0 obj
-<< /S /D /St 43 >>
+<< /S /D /St 39 >>
 endobj
 218 0 obj
-<< /S /D /St 44 >>
+<< /S /D /St 40 >>
 endobj
 219 0 obj
-<< /S /D /St 45 >>
+<< /S /D /St 41 >>
 endobj
 220 0 obj
+<< /S /D /St 42 >>
+endobj
+221 0 obj
+<< /S /D /St 43 >>
+endobj
+222 0 obj
+<< /S /D /St 44 >>
+endobj
+223 0 obj
+<< /S /D /St 45 >>
+endobj
+224 0 obj
 << /S /D /St 46 >>
 endobj
+225 0 obj
+<< /S /D /St 47 >>
+endobj
 xref
-0 221
+0 226
 0000000000 65535 f
 0000000075 00000 n
 0000000151 00000 n
@@ -4458,163 +4520,168 @@ xref
 0000017428 00000 n
 0000017640 00000 n
 0000017852 00000 n
-0000017963 00000 n
-0000018210 00000 n
-0000018288 00000 n
-0000018440 00000 n
-0000018563 00000 n
-0000018692 00000 n
-0000018806 00000 n
-0000018959 00000 n
-0000019080 00000 n
-0000019277 00000 n
-0000019408 00000 n
-0000019534 00000 n
-0000019667 00000 n
-0000019823 00000 n
-0000020000 00000 n
-0000020119 00000 n
-0000020235 00000 n
-0000020370 00000 n
-0000020560 00000 n
-0000020725 00000 n
-0000020865 00000 n
-0000021031 00000 n
-0000021188 00000 n
-0000021317 00000 n
-0000021492 00000 n
-0000021631 00000 n
-0000021777 00000 n
-0000021915 00000 n
-0000022049 00000 n
-0000022186 00000 n
-0000022344 00000 n
-0000022489 00000 n
-0000022648 00000 n
-0000022792 00000 n
-0000022980 00000 n
-0000023119 00000 n
-0000023283 00000 n
-0000023431 00000 n
-0000023611 00000 n
-0000023775 00000 n
-0000023947 00000 n
-0000024126 00000 n
-0000024291 00000 n
-0000024470 00000 n
-0000024630 00000 n
-0000024823 00000 n
-0000024968 00000 n
-0000025148 00000 n
-0000025290 00000 n
-0000025468 00000 n
-0000025608 00000 n
-0000025756 00000 n
-0000025905 00000 n
-0000026056 00000 n
-0000026207 00000 n
-0000026364 00000 n
-0000026525 00000 n
-0000026664 00000 n
-0000026775 00000 n
-0000027170 00000 n
-0000031601 00000 n
-0000032748 00000 n
-0000035264 00000 n
-0000036676 00000 n
-0000038961 00000 n
-0000040078 00000 n
-0000044037 00000 n
-0000047909 00000 n
-0000051234 00000 n
-0000053453 00000 n
-0000055562 00000 n
-0000057801 00000 n
-0000059262 00000 n
-0000061357 00000 n
-0000064809 00000 n
-0000068431 00000 n
-0000070382 00000 n
-0000074423 00000 n
-0000076540 00000 n
-0000080534 00000 n
-0000084404 00000 n
-0000086662 00000 n
-0000088115 00000 n
-0000092537 00000 n
-0000093824 00000 n
-0000099603 00000 n
-0000100156 00000 n
-0000102262 00000 n
-0000103860 00000 n
-0000108312 00000 n
-0000111936 00000 n
-0000113636 00000 n
-0000115633 00000 n
-0000120548 00000 n
-0000126239 00000 n
-0000131178 00000 n
-0000136264 00000 n
-0000137695 00000 n
-0000144183 00000 n
-0000148011 00000 n
-0000150825 00000 n
-0000154141 00000 n
-0000156729 00000 n
-0000159821 00000 n
-0000162065 00000 n
-0000162382 00000 n
-0000162950 00000 n
-0000162988 00000 n
-0000163026 00000 n
-0000163064 00000 n
-0000163102 00000 n
-0000163140 00000 n
-0000163178 00000 n
-0000163216 00000 n
-0000163254 00000 n
-0000163292 00000 n
-0000163331 00000 n
-0000163370 00000 n
-0000163409 00000 n
-0000163448 00000 n
-0000163487 00000 n
-0000163526 00000 n
-0000163565 00000 n
-0000163604 00000 n
-0000163643 00000 n
-0000163682 00000 n
-0000163721 00000 n
-0000163760 00000 n
-0000163799 00000 n
-0000163838 00000 n
-0000163877 00000 n
-0000163916 00000 n
-0000163955 00000 n
-0000163994 00000 n
-0000164033 00000 n
-0000164072 00000 n
-0000164111 00000 n
-0000164150 00000 n
-0000164189 00000 n
-0000164228 00000 n
-0000164267 00000 n
-0000164306 00000 n
-0000164345 00000 n
-0000164384 00000 n
-0000164423 00000 n
-0000164462 00000 n
-0000164501 00000 n
-0000164540 00000 n
-0000164579 00000 n
-0000164618 00000 n
-0000164657 00000 n
-0000164696 00000 n
+0000018064 00000 n
+0000018175 00000 n
+0000018422 00000 n
+0000018500 00000 n
+0000018652 00000 n
+0000018775 00000 n
+0000018904 00000 n
+0000019018 00000 n
+0000019171 00000 n
+0000019292 00000 n
+0000019489 00000 n
+0000019620 00000 n
+0000019746 00000 n
+0000019879 00000 n
+0000020035 00000 n
+0000020212 00000 n
+0000020331 00000 n
+0000020447 00000 n
+0000020582 00000 n
+0000020772 00000 n
+0000020937 00000 n
+0000021077 00000 n
+0000021243 00000 n
+0000021400 00000 n
+0000021529 00000 n
+0000021704 00000 n
+0000021843 00000 n
+0000021989 00000 n
+0000022127 00000 n
+0000022261 00000 n
+0000022398 00000 n
+0000022557 00000 n
+0000022703 00000 n
+0000022863 00000 n
+0000023007 00000 n
+0000023195 00000 n
+0000023334 00000 n
+0000023498 00000 n
+0000023646 00000 n
+0000023826 00000 n
+0000023990 00000 n
+0000024162 00000 n
+0000024341 00000 n
+0000024506 00000 n
+0000024685 00000 n
+0000024845 00000 n
+0000025038 00000 n
+0000025183 00000 n
+0000025363 00000 n
+0000025505 00000 n
+0000025697 00000 n
+0000025837 00000 n
+0000025985 00000 n
+0000026134 00000 n
+0000026285 00000 n
+0000026436 00000 n
+0000026593 00000 n
+0000026754 00000 n
+0000026893 00000 n
+0000027058 00000 n
+0000027172 00000 n
+0000027283 00000 n
+0000027685 00000 n
+0000032116 00000 n
+0000033263 00000 n
+0000035779 00000 n
+0000037191 00000 n
+0000039476 00000 n
+0000040593 00000 n
+0000044552 00000 n
+0000048424 00000 n
+0000051749 00000 n
+0000053974 00000 n
+0000056083 00000 n
+0000058322 00000 n
+0000059783 00000 n
+0000061878 00000 n
+0000065330 00000 n
+0000068958 00000 n
+0000070909 00000 n
+0000074950 00000 n
+0000077067 00000 n
+0000081061 00000 n
+0000084931 00000 n
+0000087189 00000 n
+0000088648 00000 n
+0000093070 00000 n
+0000094357 00000 n
+0000100142 00000 n
+0000100695 00000 n
+0000102801 00000 n
+0000104399 00000 n
+0000108851 00000 n
+0000112475 00000 n
+0000114175 00000 n
+0000116172 00000 n
+0000121087 00000 n
+0000126778 00000 n
+0000131717 00000 n
+0000136815 00000 n
+0000138246 00000 n
+0000144734 00000 n
+0000148562 00000 n
+0000151376 00000 n
+0000154692 00000 n
+0000157280 00000 n
+0000160372 00000 n
+0000162484 00000 n
+0000164663 00000 n
+0000164980 00000 n
+0000165559 00000 n
+0000165597 00000 n
+0000165635 00000 n
+0000165673 00000 n
+0000165711 00000 n
+0000165749 00000 n
+0000165787 00000 n
+0000165825 00000 n
+0000165863 00000 n
+0000165901 00000 n
+0000165940 00000 n
+0000165979 00000 n
+0000166018 00000 n
+0000166057 00000 n
+0000166096 00000 n
+0000166135 00000 n
+0000166174 00000 n
+0000166213 00000 n
+0000166252 00000 n
+0000166291 00000 n
+0000166330 00000 n
+0000166369 00000 n
+0000166408 00000 n
+0000166447 00000 n
+0000166486 00000 n
+0000166525 00000 n
+0000166564 00000 n
+0000166603 00000 n
+0000166642 00000 n
+0000166681 00000 n
+0000166720 00000 n
+0000166759 00000 n
+0000166798 00000 n
+0000166837 00000 n
+0000166876 00000 n
+0000166915 00000 n
+0000166954 00000 n
+0000166993 00000 n
+0000167032 00000 n
+0000167071 00000 n
+0000167110 00000 n
+0000167149 00000 n
+0000167188 00000 n
+0000167227 00000 n
+0000167266 00000 n
+0000167305 00000 n
+0000167344 00000 n
 trailer
 << /ID 
  % ReportLab generated PDF document -- digest (http://www.reportlab.com)
- [(\027w\260-\204\256\362'\356\217U!\302]\316`) (\027w\260-\204\256\362'\356\217U!\302]\316`)]
- /Info 69 0 R /Root 68 0 R /Size 221 >>
+ [(\200\222\337\326\216\356\237\331\017\301o\265\260M\377\235) (\200\222\337\326\216\356\237\331\017\301o\265\260M\377\235)]
+ /Info 70 0 R /Root 69 0 R /Size 226 >>
 startxref
-164735
+167383
 %%EOF

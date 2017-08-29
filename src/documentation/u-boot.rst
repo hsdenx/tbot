@@ -309,6 +309,13 @@ means that the serial device provides input (flag 'I') and output (flag 'O') fun
 
 .. include:: u-boot-fdt.rst
 
+.. raw:: pdf
+
+   PageBreak
+
+.. include:: u-boot-special.rst
+
+
 
 links
 =====
