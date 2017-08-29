@@ -388,13 +388,39 @@ Enable dashboard for the bbb:
 
 .. image:: image/guide/guide_backend_dashboard_enable.png
 
-create in database tbot_root a table for tbot with
+The dashboard backend fills a MySQL database, so you need a MySQL installation
+on your host PC.
+
+Example fedora setup
+....................
+
+::
+
+  yum install mysql-community-server
+
+Create a database named `tbot_root`:
+
+::
+
+  mysql -u root -p
+  CREATE SCHEMA tbot_root;
+
+Create in database tbot_root a table for tbot with
 
 ::
 
   $ mysql tbot_root -u tbot -p  < src/files/mysql/tbot_root.sql
   Enter password: 
   $
+
+Create user "tbot" and grant all privileges on the created database:
+
+::
+
+  CREATE USER 'tbot'@'localhost' IDENTIFIED BY 'tbot';
+  GRANT ALL PRIVILEGES ON tbot_root.tbot_results TO 'tbot'@'localhost';
+  FLUSH PRIVILEGES;
+
 
 If you want to use another name for the database, replace "tbot_root"
 with the name you use. In this case, also edit
@@ -411,6 +437,30 @@ replace "tbot_root" with the name you use. Also, if you have other user / passwo
 settings adapt them in this line.
 
 Now you should see after tbot finished a new entry in your database.
+
+Now, as the tbot results are in the database, you may want to setup a webserver
+to have the tbot result visible on a webpage, so:
+
+Setting up the Web server
+.........................
+
+::
+
+  yum install httpd
+
+Allow the default HTTP and HTTPS ports through the firewall
+
+::
+
+  firewall-cmd --permanent --add-port=80/tcp
+  firewall-cmd --permanent --add-port=443/tcp
+  firewall-cmd --reload
+
+and start Apache
+
+::
+
+  systemctl start httpd
 
 A simple php script, which you can open in a webbroser:
 
@@ -430,8 +480,14 @@ https://github.com/hsdenx/tbot/blob/master/src/common/event/dashboard.py
 
 the variable "self.webdir" (and send a patch, which makes this configurable)
 
-Copy the read_db.php and konfiguration.php script into your webservers
-root dir (the setting from self.webdir)
+Now copy the files from `src/dashboard/` to `/var/www/html` on your host PC, and
+open in your browser the following page:
+
+::
+
+  http://localhost/read_db.php
+
+
 
 tbot install documentation backend
 ----------------------------------
