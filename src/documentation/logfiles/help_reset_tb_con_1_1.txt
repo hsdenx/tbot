@@ -1,0 +1,7 @@
+<INTERRUPT>
+=> help reset
+reset - Perform RESET of the CPU
+
+Usage:
+reset 
+=> 
