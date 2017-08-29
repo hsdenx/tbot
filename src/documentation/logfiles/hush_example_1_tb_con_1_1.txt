@@ -1,0 +1,12 @@
+<INTERRUPT>
+=> setenv check 'if imi $addr; then echo Image OK; else echo Image corrupted!!; fi'
+=> <INTERRUPT>
+=> print check
+check=if imi $addr; then echo Image OK; else echo Image corrupted!!; fi
+=> <INTERRUPT>
+=> addr=0x80000000 ; run check
+
+## Checking Image at 80000000 ...
+Unknown image format!
+Image corrupted!!
+=> 

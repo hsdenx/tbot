@@ -1,0 +1,16 @@
+<INTERRUPT>
+=> addr=0x80100000 ; run check
+
+## Checking Image at 80100000 ...
+   Legacy image found
+   Image Name:   autoscr example script
+   Created:      2017-08-18   8:19:02 UTC
+   Image Type:   PowerPC Linux Script (uncompressed)
+   Data Size:    157 Bytes = 157 Bytes
+   Load Address: 00000000
+   Entry Point:  00000000
+   Contents:
+      Image 0: 149 Bytes = 149 Bytes
+   Verifying Checksum ... OK
+Image OK
+=> 

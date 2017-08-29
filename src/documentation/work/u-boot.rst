@@ -6,6 +6,11 @@
    :height: 80
    :width: 80
 
+.. |Tip| image:: ./images/tip.gif
+   :height: 80
+   :width: 80
+
+
 U-Boot
 ######
 
@@ -474,6 +479,12 @@ means that the serial device provides input (flag 'I') and output (flag 'O') fun
    PageBreak
 
 .. include:: u-boot-vars.rst
+
+.. raw:: pdf
+
+   PageBreak
+
+.. include:: u-boot-script.rst
 
 
 
