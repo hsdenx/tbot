@@ -19,7 +19,6 @@
 # End:
 
 from tbotlib import tbot
-tb.workfd = tb.c_ctrl
 logging.info("args: %s", tb.workfd)
 
 try:
