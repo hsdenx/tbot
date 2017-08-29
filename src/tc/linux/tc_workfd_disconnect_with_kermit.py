@@ -33,7 +33,7 @@ tb.workfd.expect_prompt()
 # set lab pc linux prompt
 tb.workfd.set_prompt(tb.config.linux_prompt)
 tb.eof_write(tb.workfd, 'exit', False)
-searchlist = ['OK']
+searchlist = ['OK to exit']
 tmp = True
 once = 0
 while tmp == True:
