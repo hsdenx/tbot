@@ -19,11 +19,11 @@ endobj
 << /A << /S /URI /Type /Action /URI (https://github.com/hsdenx/tbot) >> /Border [ 0 0 0 ] /Rect [ 344.4929 517.7736 363.9529 529.7736 ] /Subtype /Link /Type /Annot >>
 endobj
 7 0 obj
-<< /Annots [ 5 0 R 6 0 R ] /Contents 154 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 
+<< /Annots [ 5 0 R 6 0 R ] /Contents 157 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 
   /Trans <<  >> /Type /Page >>
 endobj
 8 0 obj
-<< /Contents 155 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 158 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 9 0 obj
@@ -39,30 +39,30 @@ endobj
 << /A << /S /URI /Type /Action /URI (ftp://ftp.denx.de/pub/u-boot/) >> /Border [ 0 0 0 ] /Rect [ 143.2729 450.3736 265.5829 462.3736 ] /Subtype /Link /Type /Annot >>
 endobj
 13 0 obj
-<< /Annots [ 9 0 R 10 0 R 12 0 R ] /Contents 156 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 
+<< /Annots [ 9 0 R 10 0 R 12 0 R ] /Contents 159 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 
   /Trans <<  >> /Type /Page >>
 endobj
 14 0 obj
-<< /Contents 157 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 160 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 15 0 obj
-<< /Contents 158 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 161 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 16 0 obj
-<< /Contents 159 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 162 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 17 0 obj
-<< /Contents 160 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 163 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 18 0 obj
 << /BaseFont /ZapfDingbats /Encoding /ZapfDingbatsEncoding /Name /F5 /Subtype /Type1 /Type /Font >>
 endobj
 19 0 obj
-<< /Contents 161 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 164 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 20 0 obj
@@ -87,7 +87,7 @@ endobj
 << /A << /S /URI /Type /Action /URI (https://www.yoctoproject.org/) >> /Border [ 0 0 0 ] /Rect [ 282.5441 451.9736 342.4215 463.9736 ] /Subtype /Link /Type /Annot >>
 endobj
 27 0 obj
-<< /Annots [ 20 0 R 21 0 R 22 0 R 23 0 R 24 0 R 25 0 R 26 0 R ] /Contents 162 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 
+<< /Annots [ 20 0 R 21 0 R 22 0 R 23 0 R 24 0 R 25 0 R 26 0 R ] /Contents 165 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 
   /Trans <<  >> /Type /Page >>
 endobj
 28 0 obj
@@ -103,111 +103,111 @@ stream
 Gb"0UCIHue!6=VN]&-McgQkgG8P3Mb;V=YTM:f1+6oL0`<74r$fqe879o29F&W+FLdS2VL-!=,;d7''Vh(Rshf$_."bQ%E$ci:u0p\!M:k3mfFn*qB_b*FV`[NlR>0JUrdW#5P,L[0%8(#n87ERXFc7<muAgpZ:FKO9SJ.M^kDp%Q1,JS21p&*dWL`u?)r#1ej.H4l:-<3u8h@FAAW]\A1?^Z!2\Y;bQoHA6h2M7J*Kb0L#qc3)sln]@)A+INg[2f%*=Z")f1>NUKG-G7rj21NZ)L#6F##FZM!cd/`jkKiAhK@Y<UO?0#U`<2NmH,i?kJ'jC]?cL=mAQ3q>*M9P,UZm9gj+4BJq3W[]s!ibp5Jk_K,LlKn+ZtiZM0E);k-)ACnZ.B65W';Ul(LrRn-KQ=>::#(;rA=J_L5nqEF(dSS-PpIc_1Cp4A\;1GMa+tDn;/*)oV9^-_c"@WEB0WN25>YQ3[6lnu:Vo+I*d^5:=FBZR=kLQbijn#k?c`demBh14G-<*bZ_67p\aZ0-X!_6W/2;L]F%nSHlH2o1hsVMY2E[an<j=n3FNXhLAn(^[Ei%DjSKHmBZLh"2DXB+]aUf.[LB0AajX!o>#.`]^$IBJ'Cun?V>tUC*iGe7qDOm?tk'#)'8"(`$^EZ4PUef-1H)m8FaJk#q+2UjER=o2".\<dbjU,lSk!fJOYcLp_d67/6n_&:R27^7Ib)fGp#famk@PoT6Ck7Q]UB]'#D6,*Y!VF8#Y<;K*PQ`nkk`qr6$Ks^6T6>BEdqZ[!3]t!:R9gcX.GALFVNX5Qre_E'Vl:#iP;9C%=M:%j*0Gn8N#rj5ebNFEq8ao40nC2@nkgn?2*LrH4,\<(EPclE'P"a"7/K&8Q_J$QeN>_C#p74PUg</Fmu5Cj9@AiZ'FW`</OEGgC5MrjJ`8s-Xl<HnjY+33Lenml\J:+(31m""&C">9:k1`&fNSp(ndpTi0H(;#5_:jh4\^5+V/Uho;5mg@"`L8qVo2bNOHTYS'&PI*:\$_ZMnX]^q"YrlWLc(93VYJZ<KL8C.;r>3UZ=WXe-8TL5PaqRpOq\]3t[5MP`n.dMS_;:_pB=4U/KO"&23WDsjOa'JUW21Jt`.F$S7=m!tBRo@O\L"inElTaYF+WG1c~>endstream
 endobj
 30 0 obj
-<< /Contents 163 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] /XObject << /FormXob.2500e21ba6b1543d9ba2126fde074a9d 28 0 R >> >> /Rotate 0 /Trans <<  >> 
+<< /Contents 166 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] /XObject << /FormXob.2500e21ba6b1543d9ba2126fde074a9d 28 0 R >> >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 31 0 obj
-<< /Contents 164 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 167 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 32 0 obj
-<< /Contents 165 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 168 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 33 0 obj
-<< /Contents 166 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 169 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 34 0 obj
-<< /Contents 167 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 170 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 35 0 obj
-<< /Contents 168 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 171 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 36 0 obj
-<< /Contents 169 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] /XObject << /FormXob.2500e21ba6b1543d9ba2126fde074a9d 28 0 R >> >> /Rotate 0 /Trans <<  >> 
+<< /Contents 172 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] /XObject << /FormXob.2500e21ba6b1543d9ba2126fde074a9d 28 0 R >> >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 37 0 obj
-<< /Contents 170 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 173 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 38 0 obj
-<< /Contents 171 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 174 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 39 0 obj
-<< /Contents 172 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 175 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 40 0 obj
-<< /Contents 173 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 176 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 41 0 obj
-<< /Contents 174 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 177 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 42 0 obj
-<< /Contents 175 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 178 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 43 0 obj
-<< /Contents 176 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] /XObject << /FormXob.2500e21ba6b1543d9ba2126fde074a9d 28 0 R >> >> /Rotate 0 /Trans <<  >> 
+<< /Contents 179 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] /XObject << /FormXob.2500e21ba6b1543d9ba2126fde074a9d 28 0 R >> >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 44 0 obj
-<< /Contents 177 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 180 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 45 0 obj
-<< /Contents 178 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 181 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 46 0 obj
-<< /Contents 179 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] /XObject << /FormXob.2500e21ba6b1543d9ba2126fde074a9d 28 0 R >> >> /Rotate 0 /Trans <<  >> 
+<< /Contents 182 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] /XObject << /FormXob.2500e21ba6b1543d9ba2126fde074a9d 28 0 R >> >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 47 0 obj
-<< /Contents 180 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 183 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 48 0 obj
-<< /Contents 181 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 184 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 49 0 obj
-<< /Contents 182 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 185 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 50 0 obj
-<< /Contents 183 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 186 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 51 0 obj
-<< /Contents 184 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 187 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 52 0 obj
-<< /Contents 185 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 188 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 53 0 obj
-<< /Contents 186 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 189 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 54 0 obj
-<< /Contents 187 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 190 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 55 0 obj
-<< /Contents 188 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 191 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 56 0 obj
-<< /Contents 189 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 192 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 57 0 obj
@@ -217,335 +217,345 @@ stream
 GatUn;$m:H#XnCeS[K3U_1bpQ`,\dbL\[(hLkaD?[Jj^2M:$pq88KM>*e<Ed#rS&(0:33G4R:&m]UE4%Cr?^__l(07>b%_eT758hrGVG*j8k1t,`tmtAq->9Lb2tTdo`7~>endstream
 endobj
 58 0 obj
-<< /Contents 190 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] /XObject << /FormXob.2500e21ba6b1543d9ba2126fde074a9d 28 0 R /FormXob.8de8427910dad6206a6d69120dc9c9cf 57 0 R >> >> /Rotate 0 /Trans <<  >> 
+<< /Contents 193 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] /XObject << /FormXob.2500e21ba6b1543d9ba2126fde074a9d 28 0 R /FormXob.8de8427910dad6206a6d69120dc9c9cf 57 0 R >> >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 59 0 obj
-<< /Contents 191 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 194 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 60 0 obj
-<< /Contents 192 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 195 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 61 0 obj
-<< /Contents 193 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 196 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 62 0 obj
-<< /Contents 194 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 197 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 63 0 obj
-<< /Contents 195 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 198 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 64 0 obj
-<< /Contents 196 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 199 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 65 0 obj
-<< /Contents 197 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 200 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 66 0 obj
-<< /Contents 198 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 201 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 67 0 obj
-<< /Contents 199 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 202 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 68 0 obj
-<< /Contents 200 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 203 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 69 0 obj
-<< /Contents 201 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 204 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 70 0 obj
-<< /Contents 202 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 205 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 71 0 obj
-<< /Contents 203 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
-  /Type /Page >>
-endobj
-72 0 obj
 << /Border [ 0 0 0 ] /Contents () /Dest [ 44 0 R /XYZ 62.69291 731.5236 0 ] /Rect [ 97.15291 693.7736 238.8429 705.7736 ] /Subtype /Link /Type /Annot >>
 endobj
-73 0 obj
+72 0 obj
 << /BitsPerComponent 8 /ColorSpace /DeviceRGB /Filter [ /ASCII85Decode /FlateDecode ] /Height 16 /Length 129 /Mask [ 192 192 192 192 192 192 ] 
   /Subtype /Image /Type /XObject /Width 16 >>
 stream
 Gat=d$OX['#X`fXO4Kf2ITR.UZYlHN_3`[*)OL?/l29TCoHG>b:LnV8GY%<9p7ZI698/R`Nr=(Uba'P=;-h884O9qsYP_1'eo9U*pPC*^5BWqdM>K]^5NG9.%05VePQ~>endstream
 endobj
-74 0 obj
-<< /Border [ 0 0 0 ] /Contents () /Dest [ 75 0 R /XYZ 157.6128 648.0236 0 ] /Rect [ 118.2729 663.7736 293.3229 675.7736 ] /Subtype /Link /Type /Annot >>
+73 0 obj
+<< /Border [ 0 0 0 ] /Contents () /Dest [ 74 0 R /XYZ 157.6128 648.0236 0 ] /Rect [ 118.2729 663.7736 293.3229 675.7736 ] /Subtype /Link /Type /Annot >>
 endobj
-75 0 obj
-<< /Annots [ 72 0 R 74 0 R ] /Contents 204 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] /XObject << /FormXob.2500e21ba6b1543d9ba2126fde074a9d 28 0 R /FormXob.dcfda2e6b7dc748020d5b9302ed21d37 73 0 R >> >> /Rotate 0 
+74 0 obj
+<< /Annots [ 71 0 R 73 0 R ] /Contents 206 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] /XObject << /FormXob.2500e21ba6b1543d9ba2126fde074a9d 28 0 R /FormXob.dcfda2e6b7dc748020d5b9302ed21d37 72 0 R >> >> /Rotate 0 
   /Trans <<  >> /Type /Page >>
 endobj
+75 0 obj
+<< /Contents 207 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+  /Type /Page >>
+endobj
 76 0 obj
-<< /Contents 205 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+<< /Contents 208 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
   /Type /Page >>
 endobj
 77 0 obj
-<< /Contents 206 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
-  /Type /Page >>
+<< /A << /S /URI /Type /Action /URI (http://git.denx.de/?p=u-boot.git;a=blob;f=test/py/README.md) >> /Border [ 0 0 0 ] /Rect [ 62.69291 699.7736 532.5827 711.7736 ] /Subtype /Link /Type /Annot >>
 endobj
 78 0 obj
-<< /Contents 207 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 153 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
-  /Type /Page >>
+<< /Annots [ 77 0 R ] /Contents 209 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 
+  /Trans <<  >> /Type /Page >>
 endobj
 79 0 obj
-<< /Outlines 81 0 R /PageLabels 208 0 R /PageMode /UseNone /Pages 153 0 R /Type /Catalog >>
+<< /Contents 210 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+  /Type /Page >>
 endobj
 80 0 obj
-<< /Author () /CreationDate (D:20170829120602-01'00') /Creator (\(unspecified\)) /Keywords () /Producer (ReportLab PDF Library - www.reportlab.com) /Subject (\(unspecified\)) 
-  /Title (U-Boot beagleboneblack Documentation) >>
+<< /Outlines 82 0 R /PageLabels 211 0 R /PageMode /UseNone /Pages 156 0 R /Type /Catalog >>
 endobj
 81 0 obj
-<< /Count 85 /First 82 0 R /Last 86 0 R /Type /Outlines >>
+<< /Author () /CreationDate (D:20170829160104-01'00') /Creator (\(unspecified\)) /Keywords () /Producer (ReportLab PDF Library - www.reportlab.com) /Subject (\(unspecified\)) 
+  /Title (U-Boot beagleboneblack Documentation) >>
 endobj
 82 0 obj
-<< /Count 3 /Dest [ 7 0 R /XYZ 62.69291 653.0236 0 ] /First 83 0 R /Last 85 0 R /Next 86 0 R /Parent 81 0 R 
-  /Title (Abstract) >>
+<< /Count 88 /First 83 0 R /Last 87 0 R /Type /Outlines >>
 endobj
 83 0 obj
-<< /Dest [ 7 0 R /XYZ 62.69291 583.0236 0 ] /Next 84 0 R /Parent 82 0 R /Title (About this Document) >>
+<< /Count 3 /Dest [ 7 0 R /XYZ 62.69291 653.0236 0 ] /First 84 0 R /Last 86 0 R /Next 87 0 R /Parent 82 0 R 
+  /Title (Abstract) >>
 endobj
 84 0 obj
-<< /Dest [ 7 0 R /XYZ 62.69291 463.0236 0 ] /Next 85 0 R /Parent 82 0 R /Prev 83 0 R /Title (Introduction) >>
+<< /Dest [ 7 0 R /XYZ 62.69291 583.0236 0 ] /Next 85 0 R /Parent 83 0 R /Title (About this Document) >>
 endobj
 85 0 obj
-<< /Dest [ 8 0 R /XYZ 62.69291 765.0236 0 ] /Parent 82 0 R /Prev 84 0 R /Title (Disclaimer) >>
+<< /Dest [ 7 0 R /XYZ 62.69291 463.0236 0 ] /Next 86 0 R /Parent 83 0 R /Prev 84 0 R /Title (Introduction) >>
 endobj
 86 0 obj
-<< /Count 66 /Dest [ 13 0 R /XYZ 62.69291 765.0236 0 ] /First 87 0 R /Last 152 0 R /Parent 81 0 R /Prev 82 0 R 
-  /Title (U-Boot) >>
+<< /Dest [ 8 0 R /XYZ 62.69291 765.0236 0 ] /Parent 83 0 R /Prev 85 0 R /Title (Disclaimer) >>
 endobj
 87 0 obj
-<< /Dest [ 13 0 R /XYZ 62.69291 695.0236 0 ] /Next 88 0 R /Parent 86 0 R /Title (Current Versions) >>
+<< /Count 68 /Dest [ 13 0 R /XYZ 62.69291 765.0236 0 ] /First 88 0 R /Last 155 0 R /Parent 82 0 R /Prev 83 0 R 
+  /Title (U-Boot) >>
 endobj
 88 0 obj
-<< /Count 2 /Dest [ 14 0 R /XYZ 62.69291 765.0236 0 ] /First 89 0 R /Last 90 0 R /Next 91 0 R /Parent 86 0 R 
-  /Prev 87 0 R /Title (Get U-Boot code for the beagleboneblack) >>
+<< /Dest [ 13 0 R /XYZ 62.69291 695.0236 0 ] /Next 89 0 R /Parent 87 0 R /Title (Current Versions) >>
 endobj
 89 0 obj
-<< /Dest [ 14 0 R /XYZ 62.69291 723.0236 0 ] /Next 90 0 R /Parent 88 0 R /Title (define some PATH variables) >>
+<< /Count 2 /Dest [ 14 0 R /XYZ 62.69291 765.0236 0 ] /First 90 0 R /Last 91 0 R /Next 92 0 R /Parent 87 0 R 
+  /Prev 88 0 R /Title (Get U-Boot code for the beagleboneblack) >>
 endobj
 90 0 obj
-<< /Dest [ 15 0 R /XYZ 62.69291 765.0236 0 ] /Parent 88 0 R /Prev 89 0 R /Title (clone the U-Boot code) >>
+<< /Dest [ 14 0 R /XYZ 62.69291 723.0236 0 ] /Next 91 0 R /Parent 89 0 R /Title (define some PATH variables) >>
 endobj
 91 0 obj
-<< /Dest [ 16 0 R /XYZ 62.69291 765.0236 0 ] /Next 92 0 R /Parent 86 0 R /Prev 88 0 R /Title (setup toolchain) >>
+<< /Dest [ 15 0 R /XYZ 62.69291 765.0236 0 ] /Parent 89 0 R /Prev 90 0 R /Title (clone the U-Boot code) >>
 endobj
 92 0 obj
-<< /Dest [ 17 0 R /XYZ 62.69291 765.0236 0 ] /Next 93 0 R /Parent 86 0 R /Prev 91 0 R /Title (compile U-Boot for the beagleboneblack) >>
+<< /Dest [ 16 0 R /XYZ 62.69291 765.0236 0 ] /Next 93 0 R /Parent 87 0 R /Prev 89 0 R /Title (setup toolchain) >>
 endobj
 93 0 obj
-<< /Count 2 /Dest [ 19 0 R /XYZ 62.69291 765.0236 0 ] /First 94 0 R /Last 95 0 R /Next 96 0 R /Parent 86 0 R 
-  /Prev 92 0 R /Title (U-Boot installation) >>
+<< /Dest [ 17 0 R /XYZ 62.69291 765.0236 0 ] /Next 94 0 R /Parent 87 0 R /Prev 92 0 R /Title (compile U-Boot for the beagleboneblack) >>
 endobj
 94 0 obj
-<< /Dest [ 19 0 R /XYZ 62.69291 723.0236 0 ] /Next 95 0 R /Parent 93 0 R /Title (install U-Boot) >>
+<< /Count 2 /Dest [ 19 0 R /XYZ 62.69291 765.0236 0 ] /First 95 0 R /Last 96 0 R /Next 97 0 R /Parent 87 0 R 
+  /Prev 93 0 R /Title (U-Boot installation) >>
 endobj
 95 0 obj
-<< /Dest [ 19 0 R /XYZ 62.69291 435.4236 0 ] /Parent 93 0 R /Prev 94 0 R /Title (install SPL) >>
+<< /Dest [ 19 0 R /XYZ 62.69291 723.0236 0 ] /Next 96 0 R /Parent 94 0 R /Title (install U-Boot) >>
 endobj
 96 0 obj
-<< /Dest [ 27 0 R /XYZ 62.69291 765.0236 0 ] /Next 97 0 R /Parent 86 0 R /Prev 93 0 R /Title (Tool Installation) >>
+<< /Dest [ 19 0 R /XYZ 62.69291 435.4236 0 ] /Parent 94 0 R /Prev 95 0 R /Title (install SPL) >>
 endobj
 97 0 obj
-<< /Count 54 /Dest [ 30 0 R /XYZ 62.69291 765.0236 0 ] /First 98 0 R /Last 147 0 R /Next 152 0 R /Parent 86 0 R 
-  /Prev 96 0 R /Title (U-Boot Command Line Interface) >>
+<< /Dest [ 27 0 R /XYZ 62.69291 765.0236 0 ] /Next 98 0 R /Parent 87 0 R /Prev 94 0 R /Title (Tool Installation) >>
 endobj
 98 0 obj
-<< /Count 4 /Dest [ 31 0 R /XYZ 62.69291 765.0236 0 ] /First 99 0 R /Last 102 0 R /Next 103 0 R /Parent 97 0 R 
-  /Title (Information Commands) >>
+<< /Count 56 /Dest [ 30 0 R /XYZ 62.69291 765.0236 0 ] /First 99 0 R /Last 153 0 R /Next 155 0 R /Parent 87 0 R 
+  /Prev 97 0 R /Title (U-Boot Command Line Interface) >>
 endobj
 99 0 obj
-<< /Dest [ 31 0 R /XYZ 62.69291 729.0236 0 ] /Next 100 0 R /Parent 98 0 R /Title (bdinfo - print Board Info structure) >>
+<< /Count 4 /Dest [ 31 0 R /XYZ 62.69291 765.0236 0 ] /First 100 0 R /Last 103 0 R /Next 104 0 R /Parent 98 0 R 
+  /Title (Information Commands) >>
 endobj
 100 0 obj
-<< /Dest [ 32 0 R /XYZ 62.69291 765.0236 0 ] /Next 101 0 R /Parent 98 0 R /Prev 99 0 R /Title (coninfo - print console devices and informations) >>
+<< /Dest [ 31 0 R /XYZ 62.69291 729.0236 0 ] /Next 101 0 R /Parent 99 0 R /Title (bdinfo - print Board Info structure) >>
 endobj
 101 0 obj
-<< /Dest [ 33 0 R /XYZ 62.69291 765.0236 0 ] /Next 102 0 R /Parent 98 0 R /Prev 100 0 R /Title (flinfo - print FLASH memory information) >>
+<< /Dest [ 32 0 R /XYZ 62.69291 765.0236 0 ] /Next 102 0 R /Parent 99 0 R /Prev 100 0 R /Title (coninfo - print console devices and informations) >>
 endobj
 102 0 obj
-<< /Dest [ 34 0 R /XYZ 62.69291 765.0236 0 ] /Parent 98 0 R /Prev 101 0 R /Title (help - print online help) >>
+<< /Dest [ 33 0 R /XYZ 62.69291 765.0236 0 ] /Next 103 0 R /Parent 99 0 R /Prev 101 0 R /Title (flinfo - print FLASH memory information) >>
 endobj
 103 0 obj
-<< /Count 9 /Dest [ 35 0 R /XYZ 62.69291 765.0236 0 ] /First 104 0 R /Last 112 0 R /Next 113 0 R /Parent 97 0 R 
-  /Prev 98 0 R /Title (Memory Commands) >>
+<< /Dest [ 34 0 R /XYZ 62.69291 765.0236 0 ] /Parent 99 0 R /Prev 102 0 R /Title (help - print online help) >>
 endobj
 104 0 obj
-<< /Dest [ 35 0 R /XYZ 62.69291 729.0236 0 ] /Next 105 0 R /Parent 103 0 R /Title (base - print or set address offset) >>
+<< /Count 9 /Dest [ 35 0 R /XYZ 62.69291 765.0236 0 ] /First 105 0 R /Last 113 0 R /Next 114 0 R /Parent 98 0 R 
+  /Prev 99 0 R /Title (Memory Commands) >>
 endobj
 105 0 obj
-<< /Dest [ 35 0 R /XYZ 62.69291 500.2236 0 ] /Next 106 0 R /Parent 103 0 R /Prev 104 0 R /Title (crc32 - checksum calculation) >>
+<< /Dest [ 35 0 R /XYZ 62.69291 729.0236 0 ] /Next 106 0 R /Parent 104 0 R /Title (base - print or set address offset) >>
 endobj
 106 0 obj
-<< /Dest [ 36 0 R /XYZ 62.69291 765.0236 0 ] /Next 107 0 R /Parent 103 0 R /Prev 105 0 R /Title (cmp - memory compare) >>
+<< /Dest [ 35 0 R /XYZ 62.69291 500.2236 0 ] /Next 107 0 R /Parent 104 0 R /Prev 105 0 R /Title (crc32 - checksum calculation) >>
 endobj
 107 0 obj
-<< /Dest [ 37 0 R /XYZ 62.69291 765.0236 0 ] /Next 108 0 R /Parent 103 0 R /Prev 106 0 R /Title (cp - memory copy) >>
+<< /Dest [ 36 0 R /XYZ 62.69291 765.0236 0 ] /Next 108 0 R /Parent 104 0 R /Prev 106 0 R /Title (cmp - memory compare) >>
 endobj
 108 0 obj
-<< /Dest [ 38 0 R /XYZ 62.69291 765.0236 0 ] /Next 109 0 R /Parent 103 0 R /Prev 107 0 R /Title (md - memory display) >>
+<< /Dest [ 37 0 R /XYZ 62.69291 765.0236 0 ] /Next 109 0 R /Parent 104 0 R /Prev 107 0 R /Title (cp - memory copy) >>
 endobj
 109 0 obj
-<< /Dest [ 40 0 R /XYZ 62.69291 765.0236 0 ] /Next 110 0 R /Parent 103 0 R /Prev 108 0 R /Title (mm - memory modify \(auto-incrementing\)) >>
+<< /Dest [ 38 0 R /XYZ 62.69291 765.0236 0 ] /Next 110 0 R /Parent 104 0 R /Prev 108 0 R /Title (md - memory display) >>
 endobj
 110 0 obj
-<< /Dest [ 41 0 R /XYZ 62.69291 765.0236 0 ] /Next 111 0 R /Parent 103 0 R /Prev 109 0 R /Title (mw - memory write \(fill\)) >>
+<< /Dest [ 40 0 R /XYZ 62.69291 765.0236 0 ] /Next 111 0 R /Parent 104 0 R /Prev 109 0 R /Title (mm - memory modify \(auto-incrementing\)) >>
 endobj
 111 0 obj
-<< /Dest [ 42 0 R /XYZ 62.69291 765.0236 0 ] /Next 112 0 R /Parent 103 0 R /Prev 110 0 R /Title (nm - memory modify \(constant address\)) >>
+<< /Dest [ 41 0 R /XYZ 62.69291 765.0236 0 ] /Next 112 0 R /Parent 104 0 R /Prev 110 0 R /Title (mw - memory write \(fill\)) >>
 endobj
 112 0 obj
-<< /Dest [ 43 0 R /XYZ 62.69291 765.0236 0 ] /Parent 103 0 R /Prev 111 0 R /Title (loop - infinite loop on address range) >>
+<< /Dest [ 42 0 R /XYZ 62.69291 765.0236 0 ] /Next 113 0 R /Parent 104 0 R /Prev 111 0 R /Title (nm - memory modify \(constant address\)) >>
 endobj
 113 0 obj
-<< /Count 3 /Dest [ 44 0 R /XYZ 62.69291 765.0236 0 ] /First 114 0 R /Last 116 0 R /Next 117 0 R /Parent 97 0 R 
-  /Prev 103 0 R /Title (Execution Control Commands) >>
+<< /Dest [ 43 0 R /XYZ 62.69291 765.0236 0 ] /Parent 104 0 R /Prev 112 0 R /Title (loop - infinite loop on address range) >>
 endobj
 114 0 obj
-<< /Dest [ 44 0 R /XYZ 62.69291 729.0236 0 ] /Next 115 0 R /Parent 113 0 R /Title (source - run script from memory) >>
+<< /Count 3 /Dest [ 44 0 R /XYZ 62.69291 765.0236 0 ] /First 115 0 R /Last 117 0 R /Next 118 0 R /Parent 98 0 R 
+  /Prev 104 0 R /Title (Execution Control Commands) >>
 endobj
 115 0 obj
-<< /Dest [ 46 0 R /XYZ 62.69291 765.0236 0 ] /Next 116 0 R /Parent 113 0 R /Prev 114 0 R /Title (bootm - boot application image from memory) >>
+<< /Dest [ 44 0 R /XYZ 62.69291 729.0236 0 ] /Next 116 0 R /Parent 114 0 R /Title (source - run script from memory) >>
 endobj
 116 0 obj
-<< /Dest [ 48 0 R /XYZ 62.69291 765.0236 0 ] /Parent 113 0 R /Prev 115 0 R /Title (go - start application at address 'addr') >>
+<< /Dest [ 46 0 R /XYZ 62.69291 765.0236 0 ] /Next 117 0 R /Parent 114 0 R /Prev 115 0 R /Title (bootm - boot application image from memory) >>
 endobj
 117 0 obj
-<< /Count 6 /Dest [ 49 0 R /XYZ 62.69291 765.0236 0 ] /First 118 0 R /Last 123 0 R /Next 124 0 R /Parent 97 0 R 
-  /Prev 113 0 R /Title (Download Commands) >>
+<< /Dest [ 48 0 R /XYZ 62.69291 765.0236 0 ] /Parent 114 0 R /Prev 116 0 R /Title (go - start application at address 'addr') >>
 endobj
 118 0 obj
-<< /Dest [ 49 0 R /XYZ 62.69291 729.0236 0 ] /Next 119 0 R /Parent 117 0 R /Title (bootp - boot image via network using BOOTP/TFTP protocol) >>
+<< /Count 6 /Dest [ 49 0 R /XYZ 62.69291 765.0236 0 ] /First 119 0 R /Last 124 0 R /Next 125 0 R /Parent 98 0 R 
+  /Prev 114 0 R /Title (Download Commands) >>
 endobj
 119 0 obj
-<< /Dest [ 49 0 R /XYZ 62.69291 613.4236 0 ] /Next 120 0 R /Parent 117 0 R /Prev 118 0 R /Title (dhcp - invoke DHCP client to obtain IP/boot params) >>
+<< /Dest [ 49 0 R /XYZ 62.69291 729.0236 0 ] /Next 120 0 R /Parent 118 0 R /Title (bootp - boot image via network using BOOTP/TFTP protocol) >>
 endobj
 120 0 obj
-<< /Dest [ 50 0 R /XYZ 62.69291 765.0236 0 ] /Next 121 0 R /Parent 117 0 R /Prev 119 0 R /Title (loadb - load binary file over serial line \(kermit mode\)) >>
+<< /Dest [ 49 0 R /XYZ 62.69291 613.4236 0 ] /Next 121 0 R /Parent 118 0 R /Prev 119 0 R /Title (dhcp - invoke DHCP client to obtain IP/boot params) >>
 endobj
 121 0 obj
-<< /Dest [ 53 0 R /XYZ 62.69291 765.0236 0 ] /Next 122 0 R /Parent 117 0 R /Prev 120 0 R /Title (loads - load S-Record file over serial line) >>
+<< /Dest [ 50 0 R /XYZ 62.69291 765.0236 0 ] /Next 122 0 R /Parent 118 0 R /Prev 120 0 R /Title (loadb - load binary file over serial line \(kermit mode\)) >>
 endobj
 122 0 obj
-<< /Dest [ 53 0 R /XYZ 62.69291 641.0236 0 ] /Next 123 0 R /Parent 117 0 R /Prev 121 0 R /Title (rarpboot- boot image via network using RARP/TFTP protocol) >>
+<< /Dest [ 53 0 R /XYZ 62.69291 765.0236 0 ] /Next 123 0 R /Parent 118 0 R /Prev 121 0 R /Title (loads - load S-Record file over serial line) >>
 endobj
 123 0 obj
-<< /Dest [ 53 0 R /XYZ 62.69291 542.2236 0 ] /Parent 117 0 R /Prev 122 0 R /Title (tftpboot- boot image via network using TFTP protocol) >>
+<< /Dest [ 53 0 R /XYZ 62.69291 641.0236 0 ] /Next 124 0 R /Parent 118 0 R /Prev 122 0 R /Title (rarpboot- boot image via network using RARP/TFTP protocol) >>
 endobj
 124 0 obj
-<< /Count 3 /Dest [ 54 0 R /XYZ 62.69291 765.0236 0 ] /First 125 0 R /Last 127 0 R /Next 128 0 R /Parent 97 0 R 
-  /Prev 117 0 R /Title (Environment Variables Commands) >>
+<< /Dest [ 53 0 R /XYZ 62.69291 542.2236 0 ] /Parent 118 0 R /Prev 123 0 R /Title (tftpboot- boot image via network using TFTP protocol) >>
 endobj
 125 0 obj
-<< /Dest [ 54 0 R /XYZ 62.69291 729.0236 0 ] /Next 126 0 R /Parent 124 0 R /Title (printenv- print environment variables) >>
+<< /Count 3 /Dest [ 54 0 R /XYZ 62.69291 765.0236 0 ] /First 126 0 R /Last 128 0 R /Next 129 0 R /Parent 98 0 R 
+  /Prev 118 0 R /Title (Environment Variables Commands) >>
 endobj
 126 0 obj
-<< /Dest [ 56 0 R /XYZ 62.69291 270.8236 0 ] /Next 127 0 R /Parent 124 0 R /Prev 125 0 R /Title (saveenv - save environment variables to persistent storage) >>
+<< /Dest [ 54 0 R /XYZ 62.69291 729.0236 0 ] /Next 127 0 R /Parent 125 0 R /Title (printenv- print environment variables) >>
 endobj
 127 0 obj
-<< /Dest [ 58 0 R /XYZ 62.69291 682.4236 0 ] /Parent 124 0 R /Prev 126 0 R /Title (setenv - set environment variables) >>
+<< /Dest [ 56 0 R /XYZ 62.69291 430.4236 0 ] /Next 128 0 R /Parent 125 0 R /Prev 126 0 R /Title (saveenv - save environment variables to persistent storage) >>
 endobj
 128 0 obj
-<< /Count 8 /Dest [ 60 0 R /XYZ 62.69291 765.0236 0 ] /First 129 0 R /Last 136 0 R /Next 137 0 R /Parent 97 0 R 
-  /Prev 124 0 R /Title (Flattened Device Tree support) >>
+<< /Dest [ 56 0 R /XYZ 62.69291 182.2236 0 ] /Parent 125 0 R /Prev 127 0 R /Title (setenv - set environment variables) >>
 endobj
 129 0 obj
-<< /Dest [ 60 0 R /XYZ 62.69291 427.6236 0 ] /Next 130 0 R /Parent 128 0 R /Title (fdt addr - select FDT to work on) >>
+<< /Count 8 /Dest [ 59 0 R /XYZ 62.69291 765.0236 0 ] /First 130 0 R /Last 137 0 R /Next 138 0 R /Parent 98 0 R 
+  /Prev 125 0 R /Title (Flattened Device Tree support) >>
 endobj
 130 0 obj
-<< /Dest [ 60 0 R /XYZ 62.69291 186.8236 0 ] /Next 131 0 R /Parent 128 0 R /Prev 129 0 R /Title (fdt list - print one level) >>
+<< /Dest [ 59 0 R /XYZ 62.69291 436.0236 0 ] /Next 131 0 R /Parent 129 0 R /Title (fdt addr - select FDT to work on) >>
 endobj
 131 0 obj
-<< /Dest [ 61 0 R /XYZ 62.69291 665.6236 0 ] /Next 132 0 R /Parent 128 0 R /Prev 130 0 R /Title (fdt print - recursive print) >>
+<< /Dest [ 59 0 R /XYZ 62.69291 195.2236 0 ] /Next 132 0 R /Parent 129 0 R /Prev 130 0 R /Title (fdt list - print one level) >>
 endobj
 132 0 obj
-<< /Dest [ 61 0 R /XYZ 62.69291 415.2236 0 ] /Next 133 0 R /Parent 128 0 R /Prev 131 0 R /Title (fdt mknode - create new nodes) >>
+<< /Dest [ 60 0 R /XYZ 62.69291 665.6236 0 ] /Next 133 0 R /Parent 129 0 R /Prev 131 0 R /Title (fdt print - recursive print) >>
 endobj
 133 0 obj
-<< /Dest [ 62 0 R /XYZ 62.69291 279.2236 0 ] /Next 134 0 R /Parent 128 0 R /Prev 132 0 R /Title (fdt set - set node properties) >>
+<< /Dest [ 60 0 R /XYZ 62.69291 423.6236 0 ] /Next 134 0 R /Parent 129 0 R /Prev 132 0 R /Title (fdt mknode - create new nodes) >>
 endobj
 134 0 obj
-<< /Dest [ 62 0 R /XYZ 62.69291 133.2236 0 ] /Next 135 0 R /Parent 128 0 R /Prev 133 0 R /Title (fdt rm - remove nodes or properties) >>
+<< /Dest [ 61 0 R /XYZ 62.69291 287.6236 0 ] /Next 135 0 R /Parent 129 0 R /Prev 133 0 R /Title (fdt set - set node properties) >>
 endobj
 135 0 obj
-<< /Dest [ 63 0 R /XYZ 62.69291 329.2236 0 ] /Next 136 0 R /Parent 128 0 R /Prev 134 0 R /Title (fdt move - move FDT blob to new address) >>
+<< /Dest [ 61 0 R /XYZ 62.69291 141.6236 0 ] /Next 136 0 R /Parent 129 0 R /Prev 134 0 R /Title (fdt rm - remove nodes or properties) >>
 endobj
 136 0 obj
-<< /Dest [ 65 0 R /XYZ 62.69291 514.4236 0 ] /Parent 128 0 R /Prev 135 0 R /Title (fdt chosen - fixup dynamic info) >>
+<< /Dest [ 62 0 R /XYZ 62.69291 329.2236 0 ] /Next 137 0 R /Parent 129 0 R /Prev 135 0 R /Title (fdt move - move FDT blob to new address) >>
 endobj
 137 0 obj
-<< /Count 1 /Dest [ 67 0 R /XYZ 62.69291 765.0236 0 ] /First 138 0 R /Last 138 0 R /Next 139 0 R /Parent 97 0 R 
-  /Prev 128 0 R /Title (Special Commands) >>
+<< /Dest [ 64 0 R /XYZ 62.69291 514.4236 0 ] /Parent 129 0 R /Prev 136 0 R /Title (fdt chosen - fixup dynamic info) >>
 endobj
 138 0 obj
-<< /Dest [ 67 0 R /XYZ 62.69291 729.0236 0 ] /Parent 137 0 R /Title (i2c - I2C sub-system) >>
+<< /Count 1 /Dest [ 66 0 R /XYZ 62.69291 765.0236 0 ] /First 139 0 R /Last 139 0 R /Next 140 0 R /Parent 98 0 R 
+  /Prev 129 0 R /Title (Special Commands) >>
 endobj
 139 0 obj
-<< /Count 5 /Dest [ 68 0 R /XYZ 62.69291 765.0236 0 ] /First 140 0 R /Last 144 0 R /Next 145 0 R /Parent 97 0 R 
-  /Prev 137 0 R /Title (Miscellaneous Commands) >>
+<< /Dest [ 66 0 R /XYZ 62.69291 729.0236 0 ] /Parent 138 0 R /Title (i2c - I2C sub-system) >>
 endobj
 140 0 obj
-<< /Dest [ 68 0 R /XYZ 62.69291 729.0236 0 ] /Next 141 0 R /Parent 139 0 R /Title (echo - echo args to console) >>
+<< /Count 5 /Dest [ 67 0 R /XYZ 62.69291 765.0236 0 ] /First 141 0 R /Last 145 0 R /Next 146 0 R /Parent 98 0 R 
+  /Prev 138 0 R /Title (Miscellaneous Commands) >>
 endobj
 141 0 obj
-<< /Dest [ 68 0 R /XYZ 62.69291 533.6236 0 ] /Next 142 0 R /Parent 139 0 R /Prev 140 0 R /Title (reset - Perform RESET of the CPU) >>
+<< /Dest [ 67 0 R /XYZ 62.69291 729.0236 0 ] /Next 142 0 R /Parent 140 0 R /Title (echo - echo args to console) >>
 endobj
 142 0 obj
-<< /Dest [ 69 0 R /XYZ 62.69291 765.0236 0 ] /Next 143 0 R /Parent 139 0 R /Prev 141 0 R /Title (sleep - delay execution for some time) >>
+<< /Dest [ 67 0 R /XYZ 62.69291 533.6236 0 ] /Next 143 0 R /Parent 140 0 R /Prev 141 0 R /Title (reset - Perform RESET of the CPU) >>
 endobj
 143 0 obj
-<< /Dest [ 69 0 R /XYZ 62.69291 569.6236 0 ] /Next 144 0 R /Parent 139 0 R /Prev 142 0 R /Title (version - print monitor version) >>
+<< /Dest [ 68 0 R /XYZ 62.69291 765.0236 0 ] /Next 144 0 R /Parent 140 0 R /Prev 142 0 R /Title (sleep - delay execution for some time) >>
 endobj
 144 0 obj
-<< /Dest [ 69 0 R /XYZ 62.69291 303.4236 0 ] /Parent 139 0 R /Prev 143 0 R /Title (? - alias for 'help') >>
+<< /Dest [ 68 0 R /XYZ 62.69291 569.6236 0 ] /Next 145 0 R /Parent 140 0 R /Prev 143 0 R /Title (version - print monitor version) >>
 endobj
 145 0 obj
-<< /Dest [ 70 0 R /XYZ 62.69291 765.0236 0 ] /Next 146 0 R /Parent 97 0 R /Prev 139 0 R /Title (U-Boot Environment Variables) >>
+<< /Dest [ 68 0 R /XYZ 62.69291 303.4236 0 ] /Parent 140 0 R /Prev 144 0 R /Title (? - alias for 'help') >>
 endobj
 146 0 obj
-<< /Dest [ 75 0 R /XYZ 62.69291 765.0236 0 ] /Next 147 0 R /Parent 97 0 R /Prev 145 0 R /Title (U-Boot Scripting Capabilities) >>
+<< /Dest [ 69 0 R /XYZ 62.69291 765.0236 0 ] /Next 147 0 R /Parent 98 0 R /Prev 140 0 R /Title (U-Boot Environment Variables) >>
 endobj
 147 0 obj
-<< /Count 4 /Dest [ 75 0 R /XYZ 62.69291 645.0236 0 ] /First 148 0 R /Last 151 0 R /Parent 97 0 R /Prev 146 0 R 
-  /Title (How the Command Line Parsing Works) >>
+<< /Dest [ 74 0 R /XYZ 62.69291 765.0236 0 ] /Next 148 0 R /Parent 98 0 R /Prev 146 0 R /Title (U-Boot Scripting Capabilities) >>
 endobj
 148 0 obj
-<< /Dest [ 75 0 R /XYZ 62.69291 567.0236 0 ] /Next 149 0 R /Parent 147 0 R /Title (Old, simple command line parser) >>
+<< /Count 4 /Dest [ 74 0 R /XYZ 62.69291 645.0236 0 ] /First 149 0 R /Last 152 0 R /Next 153 0 R /Parent 98 0 R 
+  /Prev 147 0 R /Title (How the Command Line Parsing Works) >>
 endobj
 149 0 obj
-<< /Dest [ 75 0 R /XYZ 62.69291 299.8236 0 ] /Next 150 0 R /Parent 147 0 R /Prev 148 0 R /Title (Hush shell) >>
+<< /Dest [ 74 0 R /XYZ 62.69291 567.0236 0 ] /Next 150 0 R /Parent 148 0 R /Title (Old, simple command line parser) >>
 endobj
 150 0 obj
-<< /Dest [ 76 0 R /XYZ 62.69291 592.0236 0 ] /Next 151 0 R /Parent 147 0 R /Prev 149 0 R /Title (Hush shell scripts) >>
+<< /Dest [ 74 0 R /XYZ 62.69291 299.8236 0 ] /Next 151 0 R /Parent 148 0 R /Prev 149 0 R /Title (Hush shell) >>
 endobj
 151 0 obj
-<< /Dest [ 77 0 R /XYZ 62.69291 560.8236 0 ] /Parent 147 0 R /Prev 150 0 R /Title (General rules) >>
+<< /Dest [ 75 0 R /XYZ 62.69291 592.0236 0 ] /Next 152 0 R /Parent 148 0 R /Prev 150 0 R /Title (Hush shell scripts) >>
 endobj
 152 0 obj
-<< /Dest [ 77 0 R /XYZ 62.69291 425.8236 0 ] /Parent 86 0 R /Prev 97 0 R /Title (links) >>
+<< /Dest [ 76 0 R /XYZ 62.69291 569.2236 0 ] /Parent 148 0 R /Prev 151 0 R /Title (General rules) >>
 endobj
 153 0 obj
+<< /Count 1 /Dest [ 78 0 R /XYZ 62.69291 765.0236 0 ] /First 154 0 R /Last 154 0 R /Parent 98 0 R /Prev 148 0 R 
+  /Title (U-Boot pytest suite) >>
+endobj
+154 0 obj
+<< /Dest [ 78 0 R /XYZ 62.69291 681.0236 0 ] /Parent 153 0 R /Title (Test py results) >>
+endobj
+155 0 obj
+<< /Dest [ 78 0 R /XYZ 62.69291 439.4236 0 ] /Parent 87 0 R /Prev 98 0 R /Title (links) >>
+endobj
+156 0 obj
 << /Count 54 /Kids [ 7 0 R 8 0 R 13 0 R 14 0 R 15 0 R 16 0 R 17 0 R 19 0 R 27 0 R 30 0 R 
   31 0 R 32 0 R 33 0 R 34 0 R 35 0 R 36 0 R 37 0 R 38 0 R 39 0 R 40 0 R 
   41 0 R 42 0 R 43 0 R 44 0 R 45 0 R 46 0 R 47 0 R 48 0 R 49 0 R 50 0 R 
   51 0 R 52 0 R 53 0 R 54 0 R 55 0 R 56 0 R 58 0 R 59 0 R 60 0 R 61 0 R 
-  62 0 R 63 0 R 64 0 R 65 0 R 66 0 R 67 0 R 68 0 R 69 0 R 70 0 R 71 0 R 
-  75 0 R 76 0 R 77 0 R 78 0 R ] /Type /Pages >>
+  62 0 R 63 0 R 64 0 R 65 0 R 66 0 R 67 0 R 68 0 R 69 0 R 70 0 R 74 0 R 
+  75 0 R 76 0 R 78 0 R 79 0 R ] /Type /Pages >>
 endobj
-154 0 obj
+157 0 obj
 << /Length 4373 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -660,7 +670,7 @@ Q
  
 endstream
 endobj
-155 0 obj
+158 0 obj
 << /Length 1089 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -689,7 +699,7 @@ Q
  
 endstream
 endobj
-156 0 obj
+159 0 obj
 << /Length 2458 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -777,7 +787,7 @@ Q
  
 endstream
 endobj
-157 0 obj
+160 0 obj
 << /Length 1354 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -861,7 +871,7 @@ Q
  
 endstream
 endobj
-158 0 obj
+161 0 obj
 << /Length 2227 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -995,8 +1005,8 @@ Q
  
 endstream
 endobj
-159 0 obj
-<< /Length 1059 >>
+162 0 obj
+<< /Length 1047 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
 q
@@ -1013,7 +1023,7 @@ BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (This depends on the toolchain you use.) Tj T*
 Q
 Q
 q
-1 0 0 1 62.69291 644.8236 cm
+1 0 0 1 62.69291 653.2236 cm
 q
 q
 1 0 0 1 0 0 cm
@@ -1023,18 +1033,18 @@ q
 0 0 0 RG
 1 w
 .960784 .960784 .862745 rg
-n -6 -6 467.6898 54 re B*
+n -6 -6 486.6 45.6 re B*
 Q
 q
 0 0 0 rg
-BT 1 0 0 1 0 35 Tm /F4 7 Tf 8.4 TL ($ printenv PATH | grep --color=never /opt/eldk-5.4/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-\\) Tj T* (  linux-gnueabi) Tj T* ($ export PATH=/opt/eldk-5.4/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-linux-gnueabi:$PATH) Tj T* ($ export CROSS_COMPILE=arm-linux-gnueabi-) Tj T* ($) Tj T* ET
+BT 1 0 0 1 0 26.6 Tm /F4 7 Tf 8.4 TL ($ printenv PATH | grep --color=never /opt/eldk-5.4/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-linux-gnueabi) Tj T* ($ export PATH=/opt/eldk-5.4/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-linux-gnueabi:$PATH) Tj T* ($ export CROSS_COMPILE=arm-linux-gnueabi-) Tj T* ($) Tj T* ET
 Q
 Q
 Q
 Q
 Q
 q
-1 0 0 1 62.69291 634.8236 cm
+1 0 0 1 62.69291 643.2236 cm
 Q
 q
 1 0 0 1 56.69291 56.69291 cm
@@ -1045,7 +1055,7 @@ Q
  
 endstream
 endobj
-160 0 obj
+163 0 obj
 << /Length 3901 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -1235,7 +1245,7 @@ Q
  
 endstream
 endobj
-161 0 obj
+164 0 obj
 << /Length 3814 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -1377,7 +1387,7 @@ Q
  
 endstream
 endobj
-162 0 obj
+165 0 obj
 << /Length 3267 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -1499,7 +1509,7 @@ Q
  
 endstream
 endobj
-163 0 obj
+166 0 obj
 << /Length 2167 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -1559,7 +1569,7 @@ Q
  
 endstream
 endobj
-164 0 obj
+167 0 obj
 << /Length 2051 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -1633,7 +1643,7 @@ Q
  
 endstream
 endobj
-165 0 obj
+168 0 obj
 << /Length 2181 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -1736,7 +1746,7 @@ Q
  
 endstream
 endobj
-166 0 obj
+169 0 obj
 << /Length 1403 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -1804,7 +1814,7 @@ Q
  
 endstream
 endobj
-167 0 obj
+170 0 obj
 << /Length 2037 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -1872,7 +1882,7 @@ Q
  
 endstream
 endobj
-168 0 obj
+171 0 obj
 << /Length 3394 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -1999,7 +2009,7 @@ Q
  
 endstream
 endobj
-169 0 obj
+172 0 obj
 << /Length 3570 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -2104,7 +2114,7 @@ Q
  
 endstream
 endobj
-170 0 obj
+173 0 obj
 << /Length 1893 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -2198,7 +2208,7 @@ Q
  
 endstream
 endobj
-171 0 obj
+174 0 obj
 << /Length 3983 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -2292,7 +2302,7 @@ Q
  
 endstream
 endobj
-172 0 obj
+175 0 obj
 << /Length 2059 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -2335,7 +2345,7 @@ Q
  
 endstream
 endobj
-173 0 obj
+176 0 obj
 << /Length 3936 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -2429,7 +2439,7 @@ Q
  
 endstream
 endobj
-174 0 obj
+177 0 obj
 << /Length 3812 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -2523,7 +2533,7 @@ Q
  
 endstream
 endobj
-175 0 obj
+178 0 obj
 << /Length 2200 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -2597,7 +2607,7 @@ Q
  
 endstream
 endobj
-176 0 obj
+179 0 obj
 << /Length 1401 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -2655,8 +2665,8 @@ Q
  
 endstream
 endobj
-177 0 obj
-<< /Length 4364 >>
+180 0 obj
+<< /Length 4361 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
 q
@@ -2741,11 +2751,11 @@ q
 0 0 0 RG
 1 w
 .960784 .960784 .862745 rg
-n -6 -6 467.6898 104.4 re B*
+n -6 -6 507.6 104.4 re B*
 Q
 q
 0 0 0 rg
-BT 1 0 0 1 0 85.4 Tm /F4 7 Tf 8.4 TL ($ mkimage -A ppc -O linux -T script -C none -a 0 -e 0 -n "autoscr example script" -d\\) Tj T* (  ) Tj 1 0 0 rg ($) Tj 1 0 0 rg (TBOT_BASEDIR) Tj 0 0 0 rg () Tj 0 0 0 rg (/source_example.txt /var/lib/tftpboot/beagleboneblack/tbot/source.scr) Tj T* (Image Name:   autoscr example script) Tj T* (Created:      Wed Aug 23 09:23:32 2017) Tj T* (Image Type:   PowerPC Linux Script \(uncompressed\)) Tj T* (Data Size:    157 Bytes = 0.15 kB = 0.00 MB) Tj T* (Load Address: 00000000) Tj T* (Entry Point:  00000000) Tj T* (Contents:) Tj T* (   Image 0: 149 Bytes = 0.15 kB = 0.00 MB) Tj T* ($) Tj T* ET
+BT 1 0 0 1 0 85.4 Tm /F4 7 Tf 8.4 TL ($ mkimage -A ppc -O linux -T script -C none -a 0 -e 0 -n "autoscr example script" -d ) Tj 1 0 0 rg ($) Tj 1 0 0 rg (TBOT_BASEDIR) Tj 0 0 0 rg () Tj 0 0 0 rg (/source_example.txt\\) Tj T* (  /var/lib/tftpboot/beagleboneblack/tbot/source.scr) Tj T* (Image Name:   autoscr example script) Tj T* (Created:      Wed Aug 23 09:23:32 2017) Tj T* (Image Type:   PowerPC Linux Script \(uncompressed\)) Tj T* (Data Size:    157 Bytes = 0.15 kB = 0.00 MB) Tj T* (Load Address: 00000000) Tj T* (Entry Point:  00000000) Tj T* (Contents:) Tj T* (   Image 0: 149 Bytes = 0.15 kB = 0.00 MB) Tj T* ($) Tj T* ET
 Q
 Q
 Q
@@ -2787,7 +2797,7 @@ Q
  
 endstream
 endobj
-178 0 obj
+181 0 obj
 << /Length 1229 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -2823,7 +2833,7 @@ Q
  
 endstream
 endobj
-179 0 obj
+182 0 obj
 << /Length 5727 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -2951,7 +2961,7 @@ Q
  
 endstream
 endobj
-180 0 obj
+183 0 obj
 << /Length 496 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -2973,7 +2983,7 @@ Q
  
 endstream
 endobj
-181 0 obj
+184 0 obj
 << /Length 2048 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -3042,7 +3052,7 @@ Q
  
 endstream
 endobj
-182 0 obj
+185 0 obj
 << /Length 1540 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -3116,8 +3126,8 @@ Q
  
 endstream
 endobj
-183 0 obj
-<< /Length 4394 >>
+186 0 obj
+<< /Length 4978 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
 q
@@ -3233,10 +3243,10 @@ q
 0 0 0 RG
 1 w
 .960784 .960784 .862745 rg
-n -6 -6 467.6898 306 re B*
+n -6 -6 516 306 re B*
 Q
 q
-BT 1 0 0 1 0 287 Tm 8.4 TL /F4 7 Tf 0 0 0 rg (=) Tj (>) Tj ( loadb 80000000) Tj T* (## Ready for binary \(kermit\) download to 0x80000000 at 115200 bps...) Tj T*  T* (\(Back at localhost.localdomain\)) Tj T* (----------------------------------------------------) Tj T* (\($) Tj 1 0 0 rg (TBOT_BASEDIR) Tj 0 0 0 rg (/\) C-Kermit) Tj (>) Tj  T* (C-Kermit 9.0.302 OPEN SOURCE:, 20 Aug 2011, localhost.localdomain [192.168.1.105]\\) Tj T* (   Current Directory: $) Tj 1 0 0 rg (TBOT_BASEDIR) Tj 0 0 0 rg (\\) Tj T* (Communication Device: /dev/ttybbb\\) Tj T* ( Communication Speed: 115200\\) Tj T* (              Parity: none\\) Tj T* (         RTT/Timeout: 01 / 02\\) Tj T* (             SENDING:  =) Tj (>) Tj ( /lib/tftpboot/beagleboneblack/tbot/u-boot.img\\) Tj T* (           File Type: BINARY\\) Tj T* (           File Size: 734224\\) Tj T* (        Percent Done: 100 //////////////////////////////////////////////////\\) Tj T* (:01        ...10...20...30...40...50...60...70...80...90..100\\) Tj T* (  :02) Tj T* (       teElapsed Time: 00:01:59\\) Tj T* (5 Transfer67ate, CPS: 6197\\) Tj T* (  69) Tj T* (        55ndow Slots: 1 of 1\\) Tj T* (  2705) Tj T* (6        75cket Type: B6\\) Tj T* (  918482) Tj T* (0       P921et Count: 11819\\) Tj T* (  3276) Tj T* ( cket Length:\\) Tj T* (  0\() Tj T* (resend\)  Error Count: 4\\) Tj T* (          Last Error:\\) Tj T* (        Last Message: SUCCESS.  Files: 1, Bytes: 734224, 6167 CPS\\) Tj T* (\($) Tj 1 0 0 rg (TBOT_BASEDIR) Tj 0 0 0 rg (/\) C-Kermit) Tj (>) Tj (connect\\) Tj T* (Connecting to /dev/ttybbb, speed 115200\\) Tj T* ( Escape character: Ctrl-\\ \(ASCII 28, FS\): enabled\\) Tj T* ET
+BT 1 0 0 1 0 287 Tm 8.4 TL /F4 7 Tf 0 0 0 rg (=) Tj (>) Tj ( loadb 80000000) Tj T* (## Ready for binary \(kermit\) download to 0x80000000 at 115200 bps...) Tj T*  T* (\(Back at localhost.localdomain\)) Tj T* (----------------------------------------------------) Tj T* (\($) Tj 1 0 0 rg (TBOT_BASEDIR) Tj 0 0 0 rg (/\) C-Kermit) Tj (>) Tj  T* (C-Kermit 9.0.302 OPEN SOURCE:, 20 Aug 2011, localhost.localdomain [192.168.1.105]) Tj T*  T* (   Current Directory: $) Tj 1 0 0 rg (TBOT_BASEDIR) Tj 0 0 0 rg () Tj T* (Communication Device: /dev/ttybbb) Tj T* ( Communication Speed: 115200) Tj T* (              Parity: none) Tj T* (         RTT/Timeout: 01 / 02) Tj T* (             SENDING:  =) Tj (>) Tj ( /lib/tftpboot/beagleboneblack/tbot/u-boot.img) Tj T* (           File Type: BINARY) Tj T* (           File Size: 734224) Tj T* (        Percent Done: 100 //////////////////////////////////////////////////) Tj T* (:01        ...10...20...30...40...50...60...70...80...90..100                                                        :02) Tj T* (       teElapsed Time: 00:01:59) Tj T* (5 Transfer67ate, CPS: 6197                                                                                            69) Tj T* (        55ndow Slots: 1 of 1                                                                                        2705) Tj T* (6        75cket Type: B6                                                                                          918482) Tj T* (0       P921et Count: 11819                                                                                         3276) Tj T* ( cket Length:                                                                                                         0\() Tj T* (resend\)  Error Count: 4) Tj T* (          Last Error:) Tj T* (        Last Message: SUCCESS.  Files: 1, Bytes: 734224, 6167 CPS) Tj T*  T*  T* (\($) Tj 1 0 0 rg (TBOT_BASEDIR) Tj 0 0 0 rg (/\) C-Kermit) Tj (>) Tj (connect) Tj T* (Connecting to /dev/ttybbb, speed 115200) Tj T* ( Escape character: Ctrl-\\ \(ASCII 28, FS\): enabled) Tj T* (Type the escape character followed by C to get back,) Tj T* (or followed by ? to see other options.) Tj T* (----------------------------------------------------) Tj T* ET
 Q
 Q
 Q
@@ -3251,8 +3261,8 @@ Q
  
 endstream
 endobj
-184 0 obj
-<< /Length 3566 >>
+187 0 obj
+<< /Length 3494 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
 q
@@ -3269,7 +3279,7 @@ q
 n -6 -6 467.6898 667.2 re B*
 Q
 q
-BT 1 0 0 1 0 648.2 Tm 8.4 TL /F4 7 Tf 0 0 0 rg (Type the escape character followed by C to get back,\\) Tj T* (or followed by ? to see other options.\\) Tj T* (----------------------------------------------------\\) Tj T* (CACHE: Misaligned operation at range [80000000, 800b3410]\\) Tj T* (## Total Size      = 0x000b3410 = 734224 Bytes\\) Tj T* (## Start Addr      = 0x80000000\\) Tj T* (=) Tj (>) Tj (\\) Tj T*  T* (=) Tj (>) Tj ( imi 80000000) Tj T*  T* (## Checking Image at 80000000 ...) Tj T* (   FIT image found) Tj T* (   FIT description: Firmware image with one or more FDT blobs) Tj T* (   Created:         2017-08-23   6:36:19 UTC) Tj T* (    Image 0 \(firmware@1\)) Tj T* (     Description:  U-Boot 2017.09-rc2-00151-g2d7cb5b for am335x board) Tj T* (     Created:      2017-08-23   6:36:19 UTC) Tj T* (     Type:         Firmware) Tj T* (     Compression:  uncompressed) Tj T* (     Data Start:   unavailable) Tj T* (     Data Size:    unavailable) Tj T* (     Architecture: ARM) Tj T* (     Load Address: 0x80800000) Tj T* (    Image 1 \(fdt@1\)) Tj T* (     Description:  am335x-evm) Tj T* (     Created:      2017-08-23   6:36:19 UTC) Tj T* (     Type:         Firmware) Tj T* (     Compression:  uncompressed) Tj T* (     Data Start:   unavailable) Tj T* (     Data Size:    unavailable) Tj T* (     Architecture: ARM) Tj T* (     Load Address: unavailable) Tj T* (    Image 2 \(fdt@2\)) Tj T* (     Description:  am335x-bone) Tj T* (     Created:      2017-08-23   6:36:19 UTC) Tj T* (     Type:         Firmware) Tj T* (     Compression:  uncompressed) Tj T* (     Data Start:   unavailable) Tj T* (     Data Size:    unavailable) Tj T* (     Architecture: ARM) Tj T* (     Load Address: unavailable) Tj T* (    Image 3 \(fdt@3\)) Tj T* (     Description:  am335x-boneblack) Tj T* (     Created:      2017-08-23   6:36:19 UTC) Tj T* (     Type:         Firmware) Tj T* (     Compression:  uncompressed) Tj T* (     Data Start:   unavailable) Tj T* (     Data Size:    unavailable) Tj T* (     Architecture: ARM) Tj T* (     Load Address: unavailable) Tj T* (    Image 4 \(fdt@4\)) Tj T* (     Description:  am335x-evmsk) Tj T* (     Created:      2017-08-23   6:36:19 UTC) Tj T* (     Type:         Firmware) Tj T* (     Compression:  uncompressed) Tj T* (     Data Start:   unavailable) Tj T* (     Data Size:    unavailable) Tj T* (     Architecture: ARM) Tj T* (     Load Address: unavailable) Tj T* (    Image 5 \(fdt@5\)) Tj T* (     Description:  am335x-bonegreen) Tj T* (     Created:      2017-08-23   6:36:19 UTC) Tj T* (     Type:         Firmware) Tj T* (     Compression:  uncompressed) Tj T* (     Data Start:   unavailable) Tj T* (     Data Size:    unavailable) Tj T* (     Architecture: ARM) Tj T* (     Load Address: unavailable) Tj T* (    Image 6 \(fdt@6\)) Tj T* (     Description:  am335x-icev2) Tj T* (     Created:      2017-08-23   6:36:19 UTC) Tj T* (     Type:         Firmware) Tj T* (     Compression:  uncompressed) Tj T* (     Data Start:   unavailable) Tj T* (     Data Size:    unavailable) Tj T* (     Architecture: ARM) Tj T* (     Load Address: unavailable) Tj T* (    Default Configuration: 'conf@1') Tj T* ET
+BT 1 0 0 1 0 648.2 Tm 8.4 TL /F4 7 Tf 0 0 0 rg (CACHE: Misaligned operation at range [80000000, 800b3410]) Tj T* (## Total Size      = 0x000b3410 = 734224 Bytes) Tj T* (## Start Addr      = 0x80000000) Tj T* (=) Tj (>) Tj  T*  T* (=) Tj (>) Tj ( imi 80000000) Tj T*  T* (## Checking Image at 80000000 ...) Tj T* (   FIT image found) Tj T* (   FIT description: Firmware image with one or more FDT blobs) Tj T* (   Created:         2017-08-23   6:36:19 UTC) Tj T* (    Image 0 \(firmware@1\)) Tj T* (     Description:  U-Boot 2017.09-rc2-00151-g2d7cb5b for am335x board) Tj T* (     Created:      2017-08-23   6:36:19 UTC) Tj T* (     Type:         Firmware) Tj T* (     Compression:  uncompressed) Tj T* (     Data Start:   unavailable) Tj T* (     Data Size:    unavailable) Tj T* (     Architecture: ARM) Tj T* (     Load Address: 0x80800000) Tj T* (    Image 1 \(fdt@1\)) Tj T* (     Description:  am335x-evm) Tj T* (     Created:      2017-08-23   6:36:19 UTC) Tj T* (     Type:         Firmware) Tj T* (     Compression:  uncompressed) Tj T* (     Data Start:   unavailable) Tj T* (     Data Size:    unavailable) Tj T* (     Architecture: ARM) Tj T* (     Load Address: unavailable) Tj T* (    Image 2 \(fdt@2\)) Tj T* (     Description:  am335x-bone) Tj T* (     Created:      2017-08-23   6:36:19 UTC) Tj T* (     Type:         Firmware) Tj T* (     Compression:  uncompressed) Tj T* (     Data Start:   unavailable) Tj T* (     Data Size:    unavailable) Tj T* (     Architecture: ARM) Tj T* (     Load Address: unavailable) Tj T* (    Image 3 \(fdt@3\)) Tj T* (     Description:  am335x-boneblack) Tj T* (     Created:      2017-08-23   6:36:19 UTC) Tj T* (     Type:         Firmware) Tj T* (     Compression:  uncompressed) Tj T* (     Data Start:   unavailable) Tj T* (     Data Size:    unavailable) Tj T* (     Architecture: ARM) Tj T* (     Load Address: unavailable) Tj T* (    Image 4 \(fdt@4\)) Tj T* (     Description:  am335x-evmsk) Tj T* (     Created:      2017-08-23   6:36:19 UTC) Tj T* (     Type:         Firmware) Tj T* (     Compression:  uncompressed) Tj T* (     Data Start:   unavailable) Tj T* (     Data Size:    unavailable) Tj T* (     Architecture: ARM) Tj T* (     Load Address: unavailable) Tj T* (    Image 5 \(fdt@5\)) Tj T* (     Description:  am335x-bonegreen) Tj T* (     Created:      2017-08-23   6:36:19 UTC) Tj T* (     Type:         Firmware) Tj T* (     Compression:  uncompressed) Tj T* (     Data Start:   unavailable) Tj T* (     Data Size:    unavailable) Tj T* (     Architecture: ARM) Tj T* (     Load Address: unavailable) Tj T* (    Image 6 \(fdt@6\)) Tj T* (     Description:  am335x-icev2) Tj T* (     Created:      2017-08-23   6:36:19 UTC) Tj T* (     Type:         Firmware) Tj T* (     Compression:  uncompressed) Tj T* (     Data Start:   unavailable) Tj T* (     Data Size:    unavailable) Tj T* (     Architecture: ARM) Tj T* (     Load Address: unavailable) Tj T* (    Default Configuration: 'conf@1') Tj T* (    Configuration 0 \(conf@1\)) Tj T* (     Description:  am335x-evm) Tj T* (     Kernel:       unavailable) Tj T* ET
 Q
 Q
 Q
@@ -3284,12 +3294,12 @@ Q
  
 endstream
 endobj
-185 0 obj
-<< /Length 1642 >>
+188 0 obj
+<< /Length 1526 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
 q
-1 0 0 1 62.69291 507.2236 cm
+1 0 0 1 62.69291 532.4236 cm
 q
 q
 1 0 0 1 0 0 cm
@@ -3299,17 +3309,17 @@ q
 0 0 0 RG
 1 w
 .960784 .960784 .862745 rg
-n -6 -6 467.6898 255.6 re B*
+n -6 -6 467.6898 230.4 re B*
 Q
 q
-BT 1 0 0 1 0 236.6 Tm 8.4 TL /F4 7 Tf 0 0 0 rg (    Configuration 0 \(conf@1\)) Tj T* (     Description:  am335x-evm) Tj T* (     Kernel:       unavailable) Tj T* (     FDT:          fdt@1) Tj T* (    Configuration 1 \(conf@2\)) Tj T* (     Description:  am335x-bone) Tj T* (     Kernel:       unavailable) Tj T* (     FDT:          fdt@2) Tj T* (    Configuration 2 \(conf@3\)) Tj T* (     Description:  am335x-boneblack) Tj T* (     Kernel:       unavailable) Tj T* (     FDT:          fdt@3) Tj T* (    Configuration 3 \(conf@4\)) Tj T* (     Description:  am335x-evmsk) Tj T* (     Kernel:       unavailable) Tj T* (     FDT:          fdt@4) Tj T* (    Configuration 4 \(conf@5\)) Tj T* (     Description:  am335x-bonegreen) Tj T* (     Kernel:       unavailable) Tj T* (     FDT:          fdt@5) Tj T* (    Configuration 5 \(conf@6\)) Tj T* (     Description:  am335x-icev2) Tj T* (     Kernel:       unavailable) Tj T* (     FDT:          fdt@6) Tj T* (## Checking hash\(es\) for FIT Image at 80000000 ...) Tj T* (   Hash\(es\) for Image 0 \(firmware@1\):  error!) Tj T* (Can't get image data/size for '' hash node in 'firmware@1' image node) Tj T* (Bad hash in FIT image!) Tj T* (=) Tj (>) Tj T* ET
+BT 1 0 0 1 0 211.4 Tm 8.4 TL /F4 7 Tf 0 0 0 rg (     FDT:          fdt@1) Tj T* (    Configuration 1 \(conf@2\)) Tj T* (     Description:  am335x-bone) Tj T* (     Kernel:       unavailable) Tj T* (     FDT:          fdt@2) Tj T* (    Configuration 2 \(conf@3\)) Tj T* (     Description:  am335x-boneblack) Tj T* (     Kernel:       unavailable) Tj T* (     FDT:          fdt@3) Tj T* (    Configuration 3 \(conf@4\)) Tj T* (     Description:  am335x-evmsk) Tj T* (     Kernel:       unavailable) Tj T* (     FDT:          fdt@4) Tj T* (    Configuration 4 \(conf@5\)) Tj T* (     Description:  am335x-bonegreen) Tj T* (     Kernel:       unavailable) Tj T* (     FDT:          fdt@5) Tj T* (    Configuration 5 \(conf@6\)) Tj T* (     Description:  am335x-icev2) Tj T* (     Kernel:       unavailable) Tj T* (     FDT:          fdt@6) Tj T* (## Checking hash\(es\) for FIT Image at 80000000 ...) Tj T* (   Hash\(es\) for Image 0 \(firmware@1\):  error!) Tj T* (Can't get image data/size for '' hash node in 'firmware@1' image node) Tj T* (Bad hash in FIT image!) Tj T* (=) Tj (>) Tj T* ET
 Q
 Q
 Q
 Q
 Q
 q
-1 0 0 1 62.69291 497.2236 cm
+1 0 0 1 62.69291 522.4236 cm
 Q
 q
 1 0 0 1 56.69291 56.69291 cm
@@ -3320,7 +3330,7 @@ Q
  
 endstream
 endobj
-186 0 obj
+189 0 obj
 << /Length 1939 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -3414,8 +3424,8 @@ Q
  
 endstream
 endobj
-187 0 obj
-<< /Length 4857 >>
+190 0 obj
+<< /Length 5001 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
 q
@@ -3493,10 +3503,10 @@ q
 0 0 0 RG
 1 w
 .960784 .960784 .862745 rg
-n -6 -6 467.6898 356.4 re B*
+n -6 -6 541.2 356.4 re B*
 Q
 q
-BT 1 0 0 1 0 337.4 Tm 8.4 TL /F4 7 Tf 0 0 0 rg (=) Tj (>) Tj ( printenv) Tj T* (Heiko=Schocher) Tj T* (arch=arm) Tj T* (args_mmc=run finduuid;setenv bootargs console=${console} ${optargs} root=PARTUUID=${uuid} rw\\) Tj T* (  rootfstype=${mmcrootfstype}) Tj T* (baudrate=115200) Tj T* (board=am335x) Tj T* (board_name=A335BNLT) Tj T* (board_rev=00C0) Tj T* (board_serial=414BBBK0180) Tj T* (boot_a_script=load ${devtype} ${devnum}:${distro_bootpart} ${scriptaddr} ${prefix}${script}; source\\) Tj T* (  ${scriptaddr}) Tj T* (boot_efi_binary=load ${devtype} ${devnum}:${distro_bootpart} ${kernel_addr_r} efi/boot/bootarm.efi;\\) Tj T* (  if fdt addr ${fdt_addr_r}; then bootefi ${kernel_addr_r} ${fdt_addr_r};else bootefi ${kernel_addr_r}\\) Tj T* (  ${fdtcontroladdr};fi) Tj T* (boot_extlinux=sysboot ${devtype} ${devnum}:${distro_bootpart} any ${scriptaddr}\\) Tj T* (  ${prefix}extlinux/extlinux.conf) Tj T* (boot_fdt=try) Tj T* (boot_fit=0) Tj T* (boot_net_usb_start=usb start) Tj T* (boot_prefixes=/ /boot/) Tj T* (boot_script_dhcp=boot.scr.uimg) Tj T* (boot_scripts=boot.scr.uimg boot.scr) Tj T* (boot_targets=mmc0 legacy_mmc0 mmc1 legacy_mmc1 nand0 pxe dhcp) Tj T* (bootcmd=if test ${boot_fit} -eq 1; then run update_to_fit;fi;run findfdt; run init_console; run\\) Tj T* (  envboot; run distro_bootcmd) Tj T* (bootcmd_dhcp=run boot_net_usb_start; if dhcp ${scriptaddr} ${boot_script_dhcp}; then source\\) Tj T* (  ${scriptaddr}; fi;setenv efi_fdtfile ${fdtfile}; if test -z "${fdtfile}" -a -n "${soc}"; then setenv\\) Tj T* (  efi_fdtfile ${soc}-${board}${boardver}.dtb; fi; setenv efi_old_vci ${bootp_vci};setenv efi_old_arch\\) Tj T* (  ${bootp_arch};setenv bootp_vci PXEClient:Arch:00010:UNDI:003000;setenv bootp_arch 0xa;if dhcp\\) Tj T* (  ${kernel_addr_r}; then tftpboot ${fdt_addr_r} dtb/${efi_fdtfile};if fdt addr ${fdt_addr_r}; then\\) Tj T* (  bootefi ${kernel_addr_r} ${fdt_addr_r}; else bootefi ${kernel_addr_r} ${fdtcontroladdr};fi;fi;setenv\\) Tj T* (  bootp_vci ${efi_old_vci};setenv bootp_arch ${efi_old_arch};setenv efi_fdtfile;setenv\\) Tj T* (  efi_old_arch;setenv efi_old_vci;) Tj T* (bootcmd_legacy_mmc0=setenv mmcdev 0; setenv bootpart 0:2 ; run mmcboot) Tj T* (bootcmd_legacy_mmc1=setenv mmcdev 1; setenv bootpart 1:2 ; run mmcboot) Tj T* (bootcmd_mmc0=setenv devnum 0; run mmc_boot) Tj T* (bootcmd_mmc1=setenv devnum 1; run mmc_boot) Tj T* (bootcmd_nand=run nandboot) Tj T* (bootcmd_pxe=run boot_net_usb_start; dhcp; if pxe get; then pxe boot; fi) Tj T* (bootcount=5) Tj T* ET
+BT 1 0 0 1 0 337.4 Tm 8.4 TL /F4 7 Tf 0 0 0 rg (=) Tj (>) Tj ( printenv) Tj T* (Heiko=Schocher) Tj T* (arch=arm) Tj T* (args_mmc=run finduuid;setenv bootargs console=${console} ${optargs} root=PARTUUID=${uuid} rw rootfstype=${mmcrootfstype}) Tj T* (baudrate=115200) Tj T* (board=am335x) Tj T* (board_name=A335BNLT) Tj T* (board_rev=00C0) Tj T* (board_serial=414BBBK0180) Tj T* (boot_a_script=load ${devtype} ${devnum}:${distro_bootpart} ${scriptaddr} ${prefix}${script}; source ${scriptaddr}) Tj T* (boot_efi_binary=load ${devtype} ${devnum}:${distro_bootpart} ${kernel_addr_r} efi/boot/bootarm.efi; if fdt addr\\) Tj T* (  ${fdt_addr_r}; then bootefi ${kernel_addr_r} ${fdt_addr_r};else bootefi ${kernel_addr_r} ${fdtcontroladdr};fi) Tj T* (boot_extlinux=sysboot ${devtype} ${devnum}:${distro_bootpart} any ${scriptaddr} ${prefix}extlinux/extlinux.conf) Tj T* (boot_fdt=try) Tj T* (boot_fit=0) Tj T* (boot_net_usb_start=usb start) Tj T* (boot_prefixes=/ /boot/) Tj T* (boot_script_dhcp=boot.scr.uimg) Tj T* (boot_scripts=boot.scr.uimg boot.scr) Tj T* (boot_targets=mmc0 legacy_mmc0 mmc1 legacy_mmc1 nand0 pxe dhcp) Tj T* (bootcmd=if test ${boot_fit} -eq 1; then run update_to_fit;fi;run findfdt; run init_console; run envboot; run distro_bootcmd) Tj T* (bootcmd_dhcp=run boot_net_usb_start; if dhcp ${scriptaddr} ${boot_script_dhcp}; then source ${scriptaddr}; fi;setenv\\) Tj T* (  efi_fdtfile ${fdtfile}; if test -z "${fdtfile}" -a -n "${soc}"; then setenv efi_fdtfile ${soc}-${board}${boardver}.dtb; fi;\\) Tj T* (  setenv efi_old_vci ${bootp_vci};setenv efi_old_arch ${bootp_arch};setenv bootp_vci PXEClient:Arch:00010:UNDI:003000;setenv\\) Tj T* (  bootp_arch 0xa;if dhcp ${kernel_addr_r}; then tftpboot ${fdt_addr_r} dtb/${efi_fdtfile};if fdt addr ${fdt_addr_r}; then\\) Tj T* (  bootefi ${kernel_addr_r} ${fdt_addr_r}; else bootefi ${kernel_addr_r} ${fdtcontroladdr};fi;fi;setenv bootp_vci\\) Tj T* (  ${efi_old_vci};setenv bootp_arch ${efi_old_arch};setenv efi_fdtfile;setenv efi_old_arch;setenv efi_old_vci;) Tj T* (bootcmd_legacy_mmc0=setenv mmcdev 0; setenv bootpart 0:2 ; run mmcboot) Tj T* (bootcmd_legacy_mmc1=setenv mmcdev 1; setenv bootpart 1:2 ; run mmcboot) Tj T* (bootcmd_mmc0=setenv devnum 0; run mmc_boot) Tj T* (bootcmd_mmc1=setenv devnum 1; run mmc_boot) Tj T* (bootcmd_nand=run nandboot) Tj T* (bootcmd_pxe=run boot_net_usb_start; dhcp; if pxe get; then pxe boot; fi) Tj T* (bootcount=5) Tj T* (bootdelay=2) Tj T* (bootdir=/boot) Tj T* (bootenvfile=uEnv.txt) Tj T* (bootfile=zImage) Tj T* (bootm_size=0x10000000) Tj T* (bootpart=0:2) Tj T* (bootscript=echo Running bootscript from mmc${mmcdev} ...; source ${loadaddr}) Tj T* ET
 Q
 Q
 Q
@@ -3511,8 +3521,8 @@ Q
  
 endstream
 endobj
-188 0 obj
-<< /Length 5633 >>
+191 0 obj
+<< /Length 6189 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
 q
@@ -3526,10 +3536,10 @@ q
 0 0 0 RG
 1 w
 .960784 .960784 .862745 rg
-n -6 -6 467.6898 667.2 re B*
+n -6 -6 545.4 667.2 re B*
 Q
 q
-BT 1 0 0 1 0 648.2 Tm 8.4 TL /F4 7 Tf 0 0 0 rg (bootdelay=2) Tj T* (bootdir=/boot) Tj T* (bootenvfile=uEnv.txt) Tj T* (bootfile=zImage) Tj T* (bootm_size=0x10000000) Tj T* (bootpart=0:2) Tj T* (bootscript=echo Running bootscript from mmc${mmcdev} ...; source ${loadaddr}) Tj T* (console=ttyO0,115200n8) Tj T* (cpu=armv7) Tj T* (dfu_alt_info_emmc=rawemmc raw 0 3751936) Tj T* (dfu_alt_info_mmc=boot part 0 1;rootfs part 0 2;MLO fat 0 1;MLO.raw raw 0x100 0x100;u-boot.img.raw\\) Tj T* (  raw 0x300 0x1000;u-env.raw raw 0x1300 0x200;spl-os-args.raw raw 0x1500 0x200;spl-os-image.raw raw\\) Tj T* (  0x1700 0x6900;spl-os-args fat 0 1;spl-os-image fat 0 1;u-boot.img fat 0 1;uEnv.txt fat 0 1) Tj T* (dfu_alt_info_nand=SPL part 0 1;SPL.backup1 part 0 2;SPL.backup2 part 0 3;SPL.backup3 part 0 4;u-boot\\) Tj T* (  part 0 5;u-boot-spl-os part 0 6;kernel part 0 8;rootfs part 0 9) Tj T* (dfu_alt_info_ram=kernel ram 0x80200000 0x4000000;fdt ram 0x80f80000 0x80000;ramdisk ram 0x81000000\\) Tj T* (  0x4000000) Tj T* (distro_bootcmd=for target in ${boot_targets}; do run bootcmd_${target}; done) Tj T* (efi_dtb_prefixes=/ /dtb/ /dtb/current/) Tj T* (envboot=mmc dev ${mmcdev}; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run\\) Tj T* (  loadbootscript; then run bootscript;else if run loadbootenv; then echo Loaded env from\\) Tj T* (  ${bootenvfile};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run\\) Tj T* (  uenvcmd;fi;fi;fi;) Tj T* (eth1addr=6c:ec:eb:83:40:33) Tj T* (ethact=ethernet@4a100000) Tj T* (ethaddr=6c:ec:eb:83:40:31) Tj T* (fdt_addr_r=0x88000000) Tj T* (fdtaddr=0x88000000) Tj T* (fdtcontroladdr=9df21ed8) Tj T* (fdtfile=undefined) Tj T* (fileaddr=80100000) Tj T* (filesize=b3410) Tj T* (findfdt=if test $board_name = A335BONE; then setenv fdtfile am335x-bone.dtb; fi; if test $board_name\\) Tj T* (  = A335BNLT; then setenv fdtfile am335x-boneblack.dtb; fi; if test $board_name = BBBW; then setenv\\) Tj T* (  fdtfile am335x-boneblack-wireless.dtb; fi; if test $board_name = BBG1; then setenv fdtfile am335x-\\) Tj T* (  bonegreen.dtb; fi; if test $board_name = BBGW; then setenv fdtfile am335x-bonegreen-wireless.dtb;\\) Tj T* (  fi; if test $board_name = BBBL; then setenv fdtfile am335x-boneblue.dtb; fi; if test $board_name =\\) Tj T* (  A33515BB; then setenv fdtfile am335x-evm.dtb; fi; if test $board_name = A335X_SK; then setenv\\) Tj T* (  fdtfile am335x-evmsk.dtb; fi; if test $board_name = A335_ICE; then setenv fdtfile am335x-icev2.dtb;\\) Tj T* (  fi; if test $fdtfile = undefined; then echo WARNING: Could not determine device tree to use; fi;) Tj T* (finduuid=part uuid mmc ${bootpart} uuid) Tj T* (fit_bootfile=fitImage) Tj T* (fit_loadaddr=0x88000000) Tj T* (importbootenv=echo Importing environment from mmc${mmcdev} ...; env import -t ${loadaddr}\\) Tj T* (  ${filesize}) Tj T* (init_console=if test $board_name = A335_ICE; then setenv console ttyO3,115200n8;else setenv console\\) Tj T* (  ttyO0,115200n8;fi;) Tj T* (ipaddr=192.168.2.10) Tj T* (kernel_addr_r=0x82000000) Tj T* (load_efi_dtb=load ${devtype} ${devnum}:${distro_bootpart} ${fdt_addr_r} ${prefix}${efi_fdtfile}) Tj T* (loadaddr=0x82000000) Tj T* (loadbootenv=fatload mmc ${mmcdev} ${loadaddr} ${bootenvfile}) Tj T* (loadbootscript=load mmc ${mmcdev} ${loadaddr} boot.scr) Tj T* (loadfdt=load ${devtype} ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile}) Tj T* (loadfit=run args_mmc; bootm ${loadaddr}#${fdtfile};) Tj T* (loadimage=load ${devtype} ${bootpart} ${loadaddr} ${bootdir}/${bootfile}) Tj T* (loadramdisk=load mmc ${mmcdev} ${rdaddr} ramdisk.gz) Tj T* (mmc_boot=if mmc dev ${devnum}; then setenv devtype mmc; run scan_dev_for_boot_part; fi) Tj T* (mmcboot=mmc dev ${mmcdev}; setenv devnum ${mmcdev}; setenv devtype mmc; if mmc rescan; then echo\\) Tj T* (  SD/MMC found on device ${mmcdev};if run loadimage; then if test ${boot_fit} -eq 1; then run loadfit;\\) Tj T* (  else run mmcloados;fi;fi;fi;) Tj T* (mmcdev=0) Tj T* (mmcloados=run args_mmc; if test ${boot_fdt} = yes || test ${boot_fdt} = try; then if run loadfdt;\\) Tj T* (  then bootz ${loadaddr} - ${fdtaddr}; else if test ${boot_fdt} = try; then bootz; else echo WARN:\\) Tj T* (  Cannot load the DT; fi; fi; else bootz; fi;) Tj T* (mmcrootfstype=ext4 rootwait) Tj T* (mtdids=nand0=nand.0) Tj T* (mtdparts=mtdparts=nand.0:128k\(NAND.SPL\),128k\(NAND.SPL.backup1\),128k\(NAND.SPL.backup2\),128k\(NAND.SPL.\\) Tj T* (  backup3\),256k\(NAND.u-boot-spl-os\),1m\(NAND.u-boot\),128k\(NAND.u-boot-env\),128k\(NAND.u-boot-\\) Tj T* (  env.backup1\),8m\(NAND.kernel\),-\(NAND.file-system\)) Tj T* (nandargs=setenv bootargs console=${console} ${optargs} root=${nandroot} rootfstype=${nandrootfstype}\\) Tj T* (nandboot=echo Booting from nand ...; run nandargs; nand read ${fdtaddr} NAND.u-boot-spl-os; nand\\) Tj T* (  read ${loadaddr} NAND.kernel; bootz ${loadaddr} - ${fdtaddr}) Tj T* (nandroot=ubi0:rootfs rw ubi.mtd=NAND.file-system,2048) Tj T* (nandrootfstype=ubifs rootwait=1) Tj T* (netargs=setenv bootargs console=${console} ${optargs} root=/dev/nfs\\) Tj T* (  nfsroot=${serverip}:${rootpath},${nfsopts} rw ip=dhcp) Tj T* (netboot=echo Booting from network ...; setenv autoload no; dhcp; run netloadimage; run netloadfdt;\\) Tj T* ET
+BT 1 0 0 1 0 648.2 Tm 8.4 TL /F4 7 Tf 0 0 0 rg (console=ttyO0,115200n8) Tj T* (cpu=armv7) Tj T* (dfu_alt_info_emmc=rawemmc raw 0 3751936) Tj T* (dfu_alt_info_mmc=boot part 0 1;rootfs part 0 2;MLO fat 0 1;MLO.raw raw 0x100 0x100;u-boot.img.raw raw 0x300 0x1000;u-env.raw\\) Tj T* (  raw 0x1300 0x200;spl-os-args.raw raw 0x1500 0x200;spl-os-image.raw raw 0x1700 0x6900;spl-os-args fat 0 1;spl-os-image fat 0\\) Tj T* (  1;u-boot.img fat 0 1;uEnv.txt fat 0 1) Tj T* (dfu_alt_info_nand=SPL part 0 1;SPL.backup1 part 0 2;SPL.backup2 part 0 3;SPL.backup3 part 0 4;u-boot part 0 5;u-boot-spl-os\\) Tj T* (  part 0 6;kernel part 0 8;rootfs part 0 9) Tj T* (dfu_alt_info_ram=kernel ram 0x80200000 0x4000000;fdt ram 0x80f80000 0x80000;ramdisk ram 0x81000000 0x4000000) Tj T* (distro_bootcmd=for target in ${boot_targets}; do run bootcmd_${target}; done) Tj T* (efi_dtb_prefixes=/ /dtb/ /dtb/current/) Tj T* (envboot=mmc dev ${mmcdev}; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run loadbootscript; then run\\) Tj T* (  bootscript;else if run loadbootenv; then echo Loaded env from ${bootenvfile};run importbootenv;fi;if test -n $uenvcmd; then\\) Tj T* (  echo Running uenvcmd ...;run uenvcmd;fi;fi;fi;) Tj T* (eth1addr=6c:ec:eb:83:40:33) Tj T* (ethact=ethernet@4a100000) Tj T* (ethaddr=6c:ec:eb:83:40:31) Tj T* (fdt_addr_r=0x88000000) Tj T* (fdtaddr=0x88000000) Tj T* (fdtcontroladdr=9df21ed8) Tj T* (fdtfile=undefined) Tj T* (fileaddr=80100000) Tj T* (filesize=b3410) Tj T* (findfdt=if test $board_name = A335BONE; then setenv fdtfile am335x-bone.dtb; fi; if test $board_name = A335BNLT; then setenv\\) Tj T* (  fdtfile am335x-boneblack.dtb; fi; if test $board_name = BBBW; then setenv fdtfile am335x-boneblack-wireless.dtb; fi; if test\\) Tj T* (  $board_name = BBG1; then setenv fdtfile am335x-bonegreen.dtb; fi; if test $board_name = BBGW; then setenv fdtfile am335x-\\) Tj T* (  bonegreen-wireless.dtb; fi; if test $board_name = BBBL; then setenv fdtfile am335x-boneblue.dtb; fi; if test $board_name =\\) Tj T* (  A33515BB; then setenv fdtfile am335x-evm.dtb; fi; if test $board_name = A335X_SK; then setenv fdtfile am335x-evmsk.dtb; fi;\\) Tj T* (  if test $board_name = A335_ICE; then setenv fdtfile am335x-icev2.dtb; fi; if test $fdtfile = undefined; then echo WARNING:\\) Tj T* (  Could not determine device tree to use; fi;) Tj T* (finduuid=part uuid mmc ${bootpart} uuid) Tj T* (fit_bootfile=fitImage) Tj T* (fit_loadaddr=0x88000000) Tj T* (importbootenv=echo Importing environment from mmc${mmcdev} ...; env import -t ${loadaddr} ${filesize}) Tj T* (init_console=if test $board_name = A335_ICE; then setenv console ttyO3,115200n8;else setenv console ttyO0,115200n8;fi;) Tj T* (ipaddr=192.168.2.10) Tj T* (kernel_addr_r=0x82000000) Tj T* (load_efi_dtb=load ${devtype} ${devnum}:${distro_bootpart} ${fdt_addr_r} ${prefix}${efi_fdtfile}) Tj T* (loadaddr=0x82000000) Tj T* (loadbootenv=fatload mmc ${mmcdev} ${loadaddr} ${bootenvfile}) Tj T* (loadbootscript=load mmc ${mmcdev} ${loadaddr} boot.scr) Tj T* (loadfdt=load ${devtype} ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile}) Tj T* (loadfit=run args_mmc; bootm ${loadaddr}#${fdtfile};) Tj T* (loadimage=load ${devtype} ${bootpart} ${loadaddr} ${bootdir}/${bootfile}) Tj T* (loadramdisk=load mmc ${mmcdev} ${rdaddr} ramdisk.gz) Tj T* (mmc_boot=if mmc dev ${devnum}; then setenv devtype mmc; run scan_dev_for_boot_part; fi) Tj T* (mmcboot=mmc dev ${mmcdev}; setenv devnum ${mmcdev}; setenv devtype mmc; if mmc rescan; then echo SD/MMC found on device\\) Tj T* (  ${mmcdev};if run loadimage; then if test ${boot_fit} -eq 1; then run loadfit; else run mmcloados;fi;fi;fi;) Tj T* (mmcdev=0) Tj T* (mmcloados=run args_mmc; if test ${boot_fdt} = yes || test ${boot_fdt} = try; then if run loadfdt; then bootz ${loadaddr} -\\) Tj T* (  ${fdtaddr}; else if test ${boot_fdt} = try; then bootz; else echo WARN: Cannot load the DT; fi; fi; else bootz; fi;) Tj T* (mmcrootfstype=ext4 rootwait) Tj T* (mtdids=nand0=nand.0) Tj T* (mtdparts=mtdparts=nand.0:128k\(NAND.SPL\),128k\(NAND.SPL.backup1\),128k\(NAND.SPL.backup2\),128k\(NAND.SPL.backup3\),256k\(NAND.u\\) Tj T* (  -boot-spl-os\),1m\(NAND.u-boot\),128k\(NAND.u-boot-env\),128k\(NAND.u-boot-env.backup1\),8m\(NAND.kernel\),-\(NAND.file-system\)) Tj T* (nandargs=setenv bootargs console=${console} ${optargs} root=${nandroot} rootfstype=${nandrootfstype}) Tj T* (nandboot=echo Booting from nand ...; run nandargs; nand read ${fdtaddr} NAND.u-boot-spl-os; nand read ${loadaddr}\\) Tj T* (  NAND.kernel; bootz ${loadaddr} - ${fdtaddr}) Tj T* (nandroot=ubi0:rootfs rw ubi.mtd=NAND.file-system,2048) Tj T* (nandrootfstype=ubifs rootwait=1) Tj T* (netargs=setenv bootargs console=${console} ${optargs} root=/dev/nfs nfsroot=${serverip}:${rootpath},${nfsopts} rw ip=dhcp) Tj T* (netboot=echo Booting from network ...; setenv autoload no; dhcp; run netloadimage; run netloadfdt; run netargs; bootz\\) Tj T* (  ${loadaddr} - ${fdtaddr}) Tj T* (netloadfdt=tftp ${fdtaddr} ${fdtfile}) Tj T* (netloadimage=tftp ${loadaddr} ${bootfile}) Tj T* (netmask=255.255.255.0) Tj T* (nfsopts=nolock) Tj T* (partitions=uuid_disk=${uuid_gpt_disk};name=rootfs,start=2MiB,size=-,uuid=${uuid_gpt_rootfs}) Tj T* (pxefile_addr_r=0x80100000) Tj T* (ramargs=setenv bootargs console=${console} ${optargs} root=${ramroot} rootfstype=${ramrootfstype}) Tj T* (ramboot=echo Booting from ramdisk ...; run ramargs; bootz ${loadaddr} ${rdaddr} ${fdtaddr}) Tj T* (ramdisk_addr_r=0x88080000) Tj T* (ramroot=/dev/ram0 rw) Tj T* (ramrootfstype=ext2) Tj T* (rdaddr=0x88080000) Tj T* (rootpath=/export/rootfs) Tj T* (scan_dev_for_boot=echo Scanning ${devtype} ${devnum}:${distro_bootpart}...; for prefix in ${boot_prefixes}; do run\\) Tj T* (  scan_dev_for_extlinux; run scan_dev_for_scripts; done;run scan_dev_for_efi;) Tj T* ET
 Q
 Q
 Q
@@ -3544,12 +3554,12 @@ Q
  
 endstream
 endobj
-189 0 obj
-<< /Length 4881 >>
+192 0 obj
+<< /Length 4833 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
 q
-1 0 0 1 62.69291 288.8236 cm
+1 0 0 1 62.69291 448.4236 cm
 q
 q
 1 0 0 1 0 0 cm
@@ -3559,23 +3569,23 @@ q
 0 0 0 RG
 1 w
 .960784 .960784 .862745 rg
-n -6 -6 467.6898 474 re B*
+n -6 -6 545.4 314.4 re B*
 Q
 q
-BT 1 0 0 1 0 455 Tm 8.4 TL /F4 7 Tf 0 0 0 rg (  run netargs; bootz ${loadaddr} - ${fdtaddr}) Tj T* (netloadfdt=tftp ${fdtaddr} ${fdtfile}) Tj T* (netloadimage=tftp ${loadaddr} ${bootfile}) Tj T* (netmask=255.255.255.0) Tj T* (nfsopts=nolock) Tj T* (partitions=uuid_disk=${uuid_gpt_disk};name=rootfs,start=2MiB,size=-,uuid=${uuid_gpt_rootfs}) Tj T* (pxefile_addr_r=0x80100000) Tj T* (ramargs=setenv bootargs console=${console} ${optargs} root=${ramroot} rootfstype=${ramrootfstype}) Tj T* (ramboot=echo Booting from ramdisk ...; run ramargs; bootz ${loadaddr} ${rdaddr} ${fdtaddr}) Tj T* (ramdisk_addr_r=0x88080000) Tj T* (ramroot=/dev/ram0 rw) Tj T* (ramrootfstype=ext2) Tj T* (rdaddr=0x88080000) Tj T* (rootpath=/export/rootfs) Tj T* (scan_dev_for_boot=echo Scanning ${devtype} ${devnum}:${distro_bootpart}...; for prefix in\\) Tj T* (  ${boot_prefixes}; do run scan_dev_for_extlinux; run scan_dev_for_scripts; done;run scan_dev_for_efi;) Tj T* (scan_dev_for_boot_part=part list ${devtype} ${devnum} -bootable devplist; env exists devplist ||\\) Tj T* (  setenv devplist 1; for distro_bootpart in ${devplist}; do if fstype ${devtype}\\) Tj T* (  ${devnum}:${distro_bootpart} bootfstype; then run scan_dev_for_boot; fi; done) Tj T* (scan_dev_for_efi=setenv efi_fdtfile ${fdtfile}; if test -z "${fdtfile}" -a -n "${soc}"; then setenv\\) Tj T* (  efi_fdtfile ${soc}-${board}${boardver}.dtb; fi; for prefix in ${efi_dtb_prefixes}; do if test -e\\) Tj T* (  ${devtype} ${devnum}:${distro_bootpart} ${prefix}${efi_fdtfile}; then run load_efi_dtb; fi;done;if\\) Tj T* (  test -e ${devtype} ${devnum}:${distro_bootpart} efi/boot/bootarm.efi; then echo Found EFI removable\\) Tj T* (  media binary efi/boot/bootarm.efi; run boot_efi_binary; echo EFI LOAD FAILED: continuing...; fi;\\) Tj T* (  setenv efi_fdtfile) Tj T* (scan_dev_for_extlinux=if test -e ${devtype} ${devnum}:${distro_bootpart}\\) Tj T* (  ${prefix}extlinux/extlinux.conf; then echo Found ${prefix}extlinux/extlinux.conf; run boot_extlinux;\\) Tj T* (  echo SCRIPT FAILED: continuing...; fi) Tj T* (scan_dev_for_scripts=for script in ${boot_scripts}; do if test -e ${devtype}\\) Tj T* (  ${devnum}:${distro_bootpart} ${prefix}${script}; then echo Found U-Boot script ${prefix}${script};\\) Tj T* (  run boot_a_script; echo SCRIPT FAILED: continuing...; fi; done) Tj T* (scriptaddr=0x80000000) Tj T* (serverip=192.168.2.1) Tj T* (soc=am33xx) Tj T* (spiargs=setenv bootargs console=${console} ${optargs} root=${spiroot} rootfstype=${spirootfstype}) Tj T* (spiboot=echo Booting from spi ...; run spiargs; sf probe ${spibusno}:0; sf read ${loadaddr}\\) Tj T* (  ${spisrcaddr} ${spiimgsize}; bootz ${loadaddr}) Tj T* (spibusno=0) Tj T* (spiimgsize=0x362000) Tj T* (spiroot=/dev/mtdblock4 rw) Tj T* (spirootfstype=jffs2) Tj T* (spisrcaddr=0xe0000) Tj T* (static_ip=${ipaddr}:${serverip}:${gatewayip}:${netmask}:${hostname}::off) Tj T* (stderr=serial@44e09000) Tj T* (stdin=serial@44e09000) Tj T* (stdout=serial@44e09000) Tj T* (test=test2) Tj T* (test2=echo This is another Test;printenv hostname;echo Done.) Tj T* (update_to_fit=setenv loadaddr ${fit_loadaddr}; setenv bootfile ${fit_bootfile}) Tj T* (usb_boot=usb start; if usb dev ${devnum}; then setenv devtype usb; run scan_dev_for_boot_part; fi) Tj T* (vendor=ti) Tj T* (ver=U-Boot 2017.09-rc2-00151-g2d7cb5b \(Aug 23 2017 - 08:35:31 +0200\)) Tj T*  T* (Environment size: 9569/131068 bytes) Tj T* (=) Tj (>) Tj T* ET
+BT 1 0 0 1 0 295.4 Tm 8.4 TL /F4 7 Tf 0 0 0 rg (scan_dev_for_boot_part=part list ${devtype} ${devnum} -bootable devplist; env exists devplist || setenv devplist 1; for\\) Tj T* (  distro_bootpart in ${devplist}; do if fstype ${devtype} ${devnum}:${distro_bootpart} bootfstype; then run scan_dev_for_boot;\\) Tj T* (  fi; done) Tj T* (scan_dev_for_efi=setenv efi_fdtfile ${fdtfile}; if test -z "${fdtfile}" -a -n "${soc}"; then setenv efi_fdtfile\\) Tj T* (  ${soc}-${board}${boardver}.dtb; fi; for prefix in ${efi_dtb_prefixes}; do if test -e ${devtype} ${devnum}:${distro_bootpart}\\) Tj T* (  ${prefix}${efi_fdtfile}; then run load_efi_dtb; fi;done;if test -e ${devtype} ${devnum}:${distro_bootpart}\\) Tj T* (  efi/boot/bootarm.efi; then echo Found EFI removable media binary efi/boot/bootarm.efi; run boot_efi_binary; echo EFI LOAD\\) Tj T* (  FAILED: continuing...; fi; setenv efi_fdtfile) Tj T* (scan_dev_for_extlinux=if test -e ${devtype} ${devnum}:${distro_bootpart} ${prefix}extlinux/extlinux.conf; then echo Found\\) Tj T* (  ${prefix}extlinux/extlinux.conf; run boot_extlinux; echo SCRIPT FAILED: continuing...; fi) Tj T* (scan_dev_for_scripts=for script in ${boot_scripts}; do if test -e ${devtype} ${devnum}:${distro_bootpart} ${prefix}${script};\\) Tj T* (  then echo Found U-Boot script ${prefix}${script}; run boot_a_script; echo SCRIPT FAILED: continuing...; fi; done) Tj T* (scriptaddr=0x80000000) Tj T* (serverip=192.168.2.1) Tj T* (soc=am33xx) Tj T* (spiargs=setenv bootargs console=${console} ${optargs} root=${spiroot} rootfstype=${spirootfstype}) Tj T* (spiboot=echo Booting from spi ...; run spiargs; sf probe ${spibusno}:0; sf read ${loadaddr} ${spisrcaddr} ${spiimgsize};\\) Tj T* (  bootz ${loadaddr}) Tj T* (spibusno=0) Tj T* (spiimgsize=0x362000) Tj T* (spiroot=/dev/mtdblock4 rw) Tj T* (spirootfstype=jffs2) Tj T* (spisrcaddr=0xe0000) Tj T* (static_ip=${ipaddr}:${serverip}:${gatewayip}:${netmask}:${hostname}::off) Tj T* (stderr=serial@44e09000) Tj T* (stdin=serial@44e09000) Tj T* (stdout=serial@44e09000) Tj T* (test=test2) Tj T* (test2=echo This is another Test;printenv hostname;echo Done.) Tj T* (update_to_fit=setenv loadaddr ${fit_loadaddr}; setenv bootfile ${fit_bootfile}) Tj T* (usb_boot=usb start; if usb dev ${devnum}; then setenv devtype usb; run scan_dev_for_boot_part; fi) Tj T* (vendor=ti) Tj T* (ver=U-Boot 2017.09-rc2-00151-g2d7cb5b \(Aug 23 2017 - 08:35:31 +0200\)) Tj T*  T* (Environment size: 9569/131068 bytes) Tj T* (=) Tj (>) Tj T* ET
 Q
 Q
 Q
 Q
 Q
 q
-1 0 0 1 62.69291 255.8236 cm
+1 0 0 1 62.69291 415.4236 cm
 q
 BT 1 0 0 1 0 2.5 Tm 15 TL /F3 12.5 Tf 0 0 0 rg (saveenv - save environment variables to persistent storage) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 173.2236 cm
+1 0 0 1 62.69291 332.8236 cm
 q
 q
 1 0 0 1 0 0 cm
@@ -3595,26 +3605,13 @@ Q
 Q
 Q
 q
-1 0 0 1 62.69291 115.2236 cm
+1 0 0 1 62.69291 274.8236 cm
 q
 BT 1 0 0 1 0 38 Tm .919461 Tw 12 TL /F1 10 Tf 0 0 0 rg (All changes you make to the U-Boot environment are made in RAM only. They are lost as soon as you) Tj T* 0 Tw .469986 Tw (reboot the system. If you want to make your changes permanent you have to use the ) Tj 1 0 0 rg (saveenv ) Tj 0 0 0 rg (command) Tj T* 0 Tw .04936 Tw (to write a copy of the environment settings to persistent storage, from where they are automatically loaded) Tj T* 0 Tw (during startup:) Tj T* ET
 Q
 Q
 q
-1 0 0 1 56.69291 56.69291 cm
-q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 36 / 54) Tj T* -116.9849 0 Td ET
-Q
-Q
- 
-endstream
-endobj
-190 0 obj
-<< /Length 5040 >>
-stream
-1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
-q
-1 0 0 1 62.69291 700.4236 cm
+1 0 0 1 62.69291 200.2236 cm
 q
 q
 1 0 0 1 0 0 cm
@@ -3634,13 +3631,13 @@ Q
 Q
 Q
 q
-1 0 0 1 62.69291 667.4236 cm
+1 0 0 1 62.69291 167.2236 cm
 q
 BT 1 0 0 1 0 2.5 Tm 15 TL /F3 12.5 Tf 0 0 0 rg (setenv - set environment variables) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 559.6236 cm
+1 0 0 1 62.69291 93.02362 cm
 q
 q
 1 0 0 1 0 0 cm
@@ -3650,23 +3647,56 @@ q
 0 0 0 RG
 1 w
 .960784 .960784 .862745 rg
-n -6 -6 467.6898 87.6 re B*
+n -6 -6 467.6898 54 re B*
 Q
 q
-BT 1 0 0 1 0 68.6 Tm 8.4 TL /F4 7 Tf 0 0 0 rg (=) Tj (>) Tj ( help setenv) Tj T* (setenv - set environment variables) Tj T*  T* (Usage:) Tj T* (setenv [-f] name value ...) Tj T* (    - [forcibly] set environment variable 'name' to 'value ...') Tj T* (setenv [-f] name) Tj T* (    - [forcibly] delete environment variable 'name') Tj T* (=) Tj (>) Tj T* ET
+BT 1 0 0 1 0 35 Tm 8.4 TL /F4 7 Tf 0 0 0 rg (=) Tj (>) Tj ( help setenv) Tj T* (setenv - set environment variables) Tj T*  T* (Usage:) Tj T* (setenv [-f] name value ...) Tj T* ET
 Q
 Q
 Q
 Q
 Q
 q
-1 0 0 1 62.69291 513.6236 cm
+1 0 0 1 56.69291 56.69291 cm
+q
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 36 / 54) Tj T* -116.9849 0 Td ET
+Q
+Q
+ 
+endstream
+endobj
+193 0 obj
+<< /Length 5521 >>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 62.69291 717.2236 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 7.1 7.1 cm
+q
+0 0 0 RG
+1 w
+.960784 .960784 .862745 rg
+n -6 -6 467.6898 45.6 re B*
+Q
+q
+BT 1 0 0 1 0 26.6 Tm 8.4 TL /F4 7 Tf 0 0 0 rg (    - [forcibly] set environment variable 'name' to 'value ...') Tj T* (setenv [-f] name) Tj T* (    - [forcibly] delete environment variable 'name') Tj T* (=) Tj (>) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+q
+1 0 0 1 62.69291 671.2236 cm
 q
 BT 1 0 0 1 0 26 Tm .88311 Tw 12 TL /F1 10 Tf 0 0 0 rg (To modify the U-Boot environment you have to use the ) Tj 1 0 0 rg (setenv ) Tj 0 0 0 rg (command. When called with exactly one) Tj T* 0 Tw .131751 Tw (argument, it will delete any variable of that name from U-Boot's environment, if such a variable exists. Any) Tj T* 0 Tw (storage occupied for such a variable will be automatically reclaimed:) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 430.6236 cm
+1 0 0 1 62.69291 588.2236 cm
 q
 q
 1 0 0 1 0 0 cm
@@ -3686,14 +3716,14 @@ Q
 Q
 Q
 q
-1 0 0 1 62.69291 384.6236 cm
+1 0 0 1 62.69291 542.2236 cm
 q
 0 0 0 rg
 BT 1 0 0 1 0 26 Tm /F1 10 Tf 12 TL .908876 Tw (When called with more arguments, the first one will again be the name of the variable, and all following) Tj T* 0 Tw .275984 Tw (arguments will \(concatenated by single space characters\) form the value that gets stored for this variable.) Tj T* 0 Tw (New variables will be automatically created, existing ones overwritten.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 301.6236 cm
+1 0 0 1 62.69291 459.2236 cm
 q
 q
 1 0 0 1 0 0 cm
@@ -3713,14 +3743,14 @@ Q
 Q
 Q
 q
-1 0 0 1 62.69291 243.6236 cm
+1 0 0 1 62.69291 401.2236 cm
 q
 0 0 0 rg
 BT 1 0 0 1 0 38 Tm /F1 10 Tf 12 TL .50061 Tw (Remember standard shell quoting rules when the value of a variable shall contain characters that have a) Tj T* 0 Tw .701163 Tw (special meaning to the command line parser \(like the $ character that is used for variable substitution or) Tj T* 0 Tw 2.543059 Tw (the semicolon which separates commands\). Use the backslash \(\) character to escape such special) Tj T* 0 Tw (characters, or enclose the whole phrase in apstrophes \('\). Use "${name}" for variable expansion.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 177.4236 cm
+1 0 0 1 62.69291 335.0236 cm
 q
 q
 1 0 0 1 0 0 cm
@@ -3740,7 +3770,7 @@ Q
 Q
 Q
 q
-1 0 0 1 62.69291 119.4236 cm
+1 0 0 1 62.69291 277.0236 cm
 q
 q
 19.2 0 0 19.2 0 36 cm
@@ -3750,7 +3780,7 @@ BT 1 0 0 1 0 38 Tm .617045 Tw 12 TL 19.2 0 Td /F1 10 Tf 0 0 0 rg (There is no re
 Q
 Q
 q
-1 0 0 1 62.69291 101.4236 cm
+1 0 0 1 62.69291 259.0236 cm
 q
 q
 19.2 0 0 19.2 0 0 cm
@@ -3760,20 +3790,7 @@ BT 1 0 0 1 0 2 Tm 12 TL 19.2 0 Td /F1 10 Tf 0 0 0 rg (A common mistake is to wri
 Q
 Q
 q
-1 0 0 1 56.69291 56.69291 cm
-q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 37 / 54) Tj T* -116.9849 0 Td ET
-Q
-Q
- 
-endstream
-endobj
-191 0 obj
-<< /Length 1373 >>
-stream
-1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
-q
-1 0 0 1 62.69291 742.4236 cm
+1 0 0 1 62.69291 226.4236 cm
 q
 q
 1 0 0 1 0 0 cm
@@ -3794,14 +3811,14 @@ Q
 Q
 Q
 q
-1 0 0 1 62.69291 720.4236 cm
+1 0 0 1 62.69291 204.4236 cm
 q
 0 0 0 rg
 BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (instead of) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 687.8236 cm
+1 0 0 1 62.69291 171.8236 cm
 q
 q
 1 0 0 1 0 0 cm
@@ -3822,26 +3839,26 @@ Q
 Q
 Q
 q
-1 0 0 1 62.69291 629.8236 cm
+1 0 0 1 62.69291 113.8236 cm
 q
 0 0 0 rg
 BT 1 0 0 1 0 38 Tm /F1 10 Tf 12 TL .246654 Tw (There will be no error message, which lets you believe everything went OK, but it didn't: instead of setting) Tj T* 0 Tw 1.254724 Tw (the variable name to the value value you tried to delete a variable with the name name=value - this is) Tj T* 0 Tw .77686 Tw (probably not what you intended! Always remember that name and value have to be separated by space) Tj T* 0 Tw (and/or tab characters!) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 629.8236 cm
+1 0 0 1 62.69291 113.8236 cm
 Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 38 / 54) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 37 / 54) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-192 0 obj
-<< /Length 6430 >>
+194 0 obj
+<< /Length 6413 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
 q
@@ -3857,7 +3874,7 @@ BT 1 0 0 1 0 14 Tm .606651 Tw 12 TL /F1 10 Tf 0 0 0 rg (U-Boot is capable of qui
 Q
 Q
 q
-1 0 0 1 62.69291 445.6236 cm
+1 0 0 1 62.69291 454.0236 cm
 q
 q
 1 0 0 1 0 0 cm
@@ -3867,29 +3884,29 @@ q
 0 0 0 RG
 1 w
 .960784 .960784 .862745 rg
-n -6 -6 467.6898 247.2 re B*
+n -6 -6 495 238.8 re B*
 Q
 q
-BT 1 0 0 1 0 228.2 Tm 8.4 TL /F4 7 Tf 0 0 0 rg (=) Tj (>) Tj ( help fdt) Tj T* (fdt - flattened device tree utility commands) Tj T*  T* (Usage:) Tj T* (fdt addr [-c]  ) Tj (<) Tj (addr) Tj (>) Tj ( [) Tj (<) Tj (length) Tj (>) Tj (]   - Set the [control] fdt location to ) Tj (<) Tj (addr) Tj (>) Tj  T* (fdt apply ) Tj (<) Tj (addr) Tj (>) Tj (                    - Apply overlay to the DT) Tj T* (fdt move   ) Tj (<) Tj (fdt) Tj (>) Tj ( ) Tj (<) Tj (newaddr) Tj (>) Tj ( ) Tj (<) Tj (length) Tj (>) Tj ( - Copy the fdt to ) Tj (<) Tj (addr) Tj (>) Tj ( and make it active) Tj T* (fdt resize [) Tj (<) Tj (extrasize) Tj (>) Tj (]            - Resize fdt to size + padding to 4k addr + some optional\\) Tj T* (  ) Tj (<) Tj (extrasize) Tj (>) Tj ( if needed) Tj T* (fdt print  ) Tj (<) Tj (path) Tj (>) Tj ( [) Tj (<) Tj (prop) Tj (>) Tj (]          - Recursive print starting at ) Tj (<) Tj (path) Tj (>) Tj  T* (fdt list   ) Tj (<) Tj (path) Tj (>) Tj ( [) Tj (<) Tj (prop) Tj (>) Tj (]          - Print one level starting at ) Tj (<) Tj (path) Tj (>) Tj  T* (fdt get value ) Tj (<) Tj (var) Tj (>) Tj ( ) Tj (<) Tj (path) Tj (>) Tj ( ) Tj (<) Tj (prop) Tj (>) Tj (   - Get ) Tj (<) Tj (property) Tj (>) Tj ( and store in ) Tj (<) Tj (var) Tj (>) Tj  T* (fdt get name ) Tj (<) Tj (var) Tj (>) Tj ( ) Tj (<) Tj (path) Tj (>) Tj ( ) Tj (<) Tj (index) Tj (>) Tj (   - Get name of node ) Tj (<) Tj (index) Tj (>) Tj ( and store in ) Tj (<) Tj (var) Tj (>) Tj  T* (fdt get addr ) Tj (<) Tj (var) Tj (>) Tj ( ) Tj (<) Tj (path) Tj (>) Tj ( ) Tj (<) Tj (prop) Tj (>) Tj (    - Get start address of ) Tj (<) Tj (property) Tj (>) Tj ( and store in ) Tj (<) Tj (var) Tj (>) Tj  T* (fdt get size ) Tj (<) Tj (var) Tj (>) Tj ( ) Tj (<) Tj (path) Tj (>) Tj ( [) Tj (<) Tj (prop) Tj (>) Tj (]  - Get size of [) Tj (<) Tj (property) Tj (>) Tj (] or num nodes and store in ) Tj (<) Tj (var) Tj (>) Tj  T* (fdt set    ) Tj (<) Tj (path) Tj (>) Tj ( ) Tj (<) Tj (prop) Tj (>) Tj ( [) Tj (<) Tj (val) Tj (>) Tj (]    - Set ) Tj (<) Tj (property) Tj (>) Tj ( [to ) Tj (<) Tj (val) Tj (>) Tj (]) Tj T* (fdt mknode ) Tj (<) Tj (path) Tj (>) Tj ( ) Tj (<) Tj (node) Tj (>) Tj (            - Create a new node after ) Tj (<) Tj (path) Tj (>) Tj  T* (fdt rm     ) Tj (<) Tj (path) Tj (>) Tj ( [) Tj (<) Tj (prop) Tj (>) Tj (]          - Delete the node or ) Tj (<) Tj (property) Tj (>) Tj  T* (fdt header                          - Display header info) Tj T* (fdt bootcpu ) Tj (<) Tj (id) Tj (>) Tj (                    - Set boot cpuid) Tj T* (fdt memory ) Tj (<) Tj (addr) Tj (>) Tj ( ) Tj (<) Tj (size) Tj (>) Tj (            - Add/Update memory node) Tj T* (fdt rsvmem print                    - Show current mem reserves) Tj T* (fdt rsvmem add ) Tj (<) Tj (addr) Tj (>) Tj ( ) Tj (<) Tj (size) Tj (>) Tj (        - Add a mem reserve) Tj T* (fdt rsvmem delete ) Tj (<) Tj (index) Tj (>) Tj (           - Delete a mem reserves) Tj T* (fdt chosen [) Tj (<) Tj (start) Tj (>) Tj ( ) Tj (<) Tj (end) Tj (>) Tj (]          - Add/update the /chosen branch in the tree) Tj T* (                                        ) Tj (<) Tj (start) Tj (>) Tj (/) Tj (<) Tj (end) Tj (>) Tj ( - initrd start/end addr) Tj T* (NOTE: Dereference aliases by omitting the leading '/', e.g. fdt print ethernet0.) Tj T* (=) Tj (>) Tj T* ET
+BT 1 0 0 1 0 219.8 Tm 8.4 TL /F4 7 Tf 0 0 0 rg (=) Tj (>) Tj ( help fdt) Tj T* (fdt - flattened device tree utility commands) Tj T*  T* (Usage:) Tj T* (fdt addr [-c]  ) Tj (<) Tj (addr) Tj (>) Tj ( [) Tj (<) Tj (length) Tj (>) Tj (]   - Set the [control] fdt location to ) Tj (<) Tj (addr) Tj (>) Tj  T* (fdt apply ) Tj (<) Tj (addr) Tj (>) Tj (                    - Apply overlay to the DT) Tj T* (fdt move   ) Tj (<) Tj (fdt) Tj (>) Tj ( ) Tj (<) Tj (newaddr) Tj (>) Tj ( ) Tj (<) Tj (length) Tj (>) Tj ( - Copy the fdt to ) Tj (<) Tj (addr) Tj (>) Tj ( and make it active) Tj T* (fdt resize [) Tj (<) Tj (extrasize) Tj (>) Tj (]            - Resize fdt to size + padding to 4k addr + some optional ) Tj (<) Tj (extrasize) Tj (>) Tj ( if needed) Tj T* (fdt print  ) Tj (<) Tj (path) Tj (>) Tj ( [) Tj (<) Tj (prop) Tj (>) Tj (]          - Recursive print starting at ) Tj (<) Tj (path) Tj (>) Tj  T* (fdt list   ) Tj (<) Tj (path) Tj (>) Tj ( [) Tj (<) Tj (prop) Tj (>) Tj (]          - Print one level starting at ) Tj (<) Tj (path) Tj (>) Tj  T* (fdt get value ) Tj (<) Tj (var) Tj (>) Tj ( ) Tj (<) Tj (path) Tj (>) Tj ( ) Tj (<) Tj (prop) Tj (>) Tj (   - Get ) Tj (<) Tj (property) Tj (>) Tj ( and store in ) Tj (<) Tj (var) Tj (>) Tj  T* (fdt get name ) Tj (<) Tj (var) Tj (>) Tj ( ) Tj (<) Tj (path) Tj (>) Tj ( ) Tj (<) Tj (index) Tj (>) Tj (   - Get name of node ) Tj (<) Tj (index) Tj (>) Tj ( and store in ) Tj (<) Tj (var) Tj (>) Tj  T* (fdt get addr ) Tj (<) Tj (var) Tj (>) Tj ( ) Tj (<) Tj (path) Tj (>) Tj ( ) Tj (<) Tj (prop) Tj (>) Tj (    - Get start address of ) Tj (<) Tj (property) Tj (>) Tj ( and store in ) Tj (<) Tj (var) Tj (>) Tj  T* (fdt get size ) Tj (<) Tj (var) Tj (>) Tj ( ) Tj (<) Tj (path) Tj (>) Tj ( [) Tj (<) Tj (prop) Tj (>) Tj (]  - Get size of [) Tj (<) Tj (property) Tj (>) Tj (] or num nodes and store in ) Tj (<) Tj (var) Tj (>) Tj  T* (fdt set    ) Tj (<) Tj (path) Tj (>) Tj ( ) Tj (<) Tj (prop) Tj (>) Tj ( [) Tj (<) Tj (val) Tj (>) Tj (]    - Set ) Tj (<) Tj (property) Tj (>) Tj ( [to ) Tj (<) Tj (val) Tj (>) Tj (]) Tj T* (fdt mknode ) Tj (<) Tj (path) Tj (>) Tj ( ) Tj (<) Tj (node) Tj (>) Tj (            - Create a new node after ) Tj (<) Tj (path) Tj (>) Tj  T* (fdt rm     ) Tj (<) Tj (path) Tj (>) Tj ( [) Tj (<) Tj (prop) Tj (>) Tj (]          - Delete the node or ) Tj (<) Tj (property) Tj (>) Tj  T* (fdt header                          - Display header info) Tj T* (fdt bootcpu ) Tj (<) Tj (id) Tj (>) Tj (                    - Set boot cpuid) Tj T* (fdt memory ) Tj (<) Tj (addr) Tj (>) Tj ( ) Tj (<) Tj (size) Tj (>) Tj (            - Add/Update memory node) Tj T* (fdt rsvmem print                    - Show current mem reserves) Tj T* (fdt rsvmem add ) Tj (<) Tj (addr) Tj (>) Tj ( ) Tj (<) Tj (size) Tj (>) Tj (        - Add a mem reserve) Tj T* (fdt rsvmem delete ) Tj (<) Tj (index) Tj (>) Tj (           - Delete a mem reserves) Tj T* (fdt chosen [) Tj (<) Tj (start) Tj (>) Tj ( ) Tj (<) Tj (end) Tj (>) Tj (]          - Add/update the /chosen branch in the tree) Tj T* (                                        ) Tj (<) Tj (start) Tj (>) Tj (/) Tj (<) Tj (end) Tj (>) Tj ( - initrd start/end addr) Tj T* (NOTE: Dereference aliases by omitting the leading '/', e.g. fdt print ethernet0.) Tj T* (=) Tj (>) Tj T* ET
 Q
 Q
 Q
 Q
 Q
 q
-1 0 0 1 62.69291 412.6236 cm
+1 0 0 1 62.69291 421.0236 cm
 q
 BT 1 0 0 1 0 2.5 Tm 15 TL /F3 12.5 Tf 0 0 0 rg (fdt addr - select FDT to work on) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 346.6236 cm
+1 0 0 1 62.69291 355.0236 cm
 q
 BT 1 0 0 1 0 38 Tm .148988 Tw 12 TL /F1 10 Tf 0 0 0 rg (First, the blob that is to be operated on should be stored in memory, and U-Boot has to be informed about) Tj T* 0 Tw .916235 Tw (its location by the ) Tj 1 0 0 rg (fdt addr ) Tj 0 0 0 rg (command. Once this command has been issued, all subsequent fdt handling) Tj T* 0 Tw .197765 Tw (commands will use the blob stored at the given address. This address can be changed later on by issuing) Tj T* 0 Tw 1 0 0 rg (fdt addr ) Tj 0 0 0 rg (or ) Tj 1 0 0 rg (fdt move ) Tj 0 0 0 rg (command. Here's how to load the blob into memory and tell U-Boot its location:) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 204.8236 cm
+1 0 0 1 62.69291 213.2236 cm
 q
 q
 1 0 0 1 0 0 cm
@@ -3909,13 +3926,13 @@ Q
 Q
 Q
 q
-1 0 0 1 62.69291 171.8236 cm
+1 0 0 1 62.69291 180.2236 cm
 q
 BT 1 0 0 1 0 2.5 Tm 15 TL /F3 12.5 Tf 0 0 0 rg (fdt list - print one level) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 105.8236 cm
+1 0 0 1 62.69291 114.2236 cm
 q
 BT 1 0 0 1 0 38 Tm 1.185542 Tw 12 TL /F1 10 Tf 0 0 0 rg (Having selected the device tree stored in the blob just loaded, we can inspect its contents. As an FDT) Tj T* 0 Tw .896457 Tw (usually is quite extensive, it is easier to get information about the structure by looking at selected levels) Tj T* 0 Tw .332988 Tw (rather than full hierarchies. ) Tj 1 0 0 rg (fdt list ) Tj 0 0 0 rg (allows us to do exactly this. Let's have a look at the hierarchy one level) Tj T* 0 Tw (below the cpus node:) Tj T* ET
 Q
@@ -3923,14 +3940,14 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 39 / 54) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 38 / 54) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-193 0 obj
-<< /Length 3770 >>
+195 0 obj
+<< /Length 3779 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
 q
@@ -3966,7 +3983,7 @@ BT 1 0 0 1 0 14 Tm .479988 Tw 12 TL /F1 10 Tf 0 0 0 rg (To print a complete subt
 Q
 Q
 q
-1 0 0 1 62.69291 433.2236 cm
+1 0 0 1 62.69291 441.6236 cm
 q
 q
 1 0 0 1 0 0 cm
@@ -3976,23 +3993,23 @@ q
 0 0 0 RG
 1 w
 .960784 .960784 .862745 rg
-n -6 -6 467.6898 163.2 re B*
+n -6 -6 528.6 154.8 re B*
 Q
 q
-BT 1 0 0 1 0 144.2 Tm 8.4 TL /F4 7 Tf 0 0 0 rg (=) Tj (>) Tj ( fdt print /cpus) Tj T* (cpus {) Tj T* (      #address-cells = ) Tj (<) Tj (0x00000001) Tj (>) Tj (;) Tj T* (      #size-cells = ) Tj (<) Tj (0x00000000) Tj (>) Tj (;) Tj T* (      cpu@0 {) Tj T* (              compatible = "arm,cortex-a8";) Tj T* (              device_type = "cpu";) Tj T* (              reg = ) Tj (<) Tj (0x00000000) Tj (>) Tj (;) Tj T* (                operating-points = ) Tj (<) Tj (0x000afc80 0x00139b88 0x000927c0 0x0012b128 0x0007a120\\) Tj T* (  0x00112a88 0x00043238 0x00112a88) Tj (>) Tj (;) Tj T* (              voltage-tolerance = ) Tj (<) Tj (0x00000002) Tj (>) Tj (;) Tj T* (              clocks = ) Tj (<) Tj (0x00000002) Tj (>) Tj (;) Tj T* (              clock-names = "cpu";) Tj T* (              clock-latency = ) Tj (<) Tj (0x000493e0) Tj (>) Tj (;) Tj T* (              cpu0-supply = ) Tj (<) Tj (0x00000003) Tj (>) Tj (;) Tj T* (      };) Tj T* (};) Tj T* (=) Tj (>) Tj T* ET
+BT 1 0 0 1 0 135.8 Tm 8.4 TL /F4 7 Tf 0 0 0 rg (=) Tj (>) Tj ( fdt print /cpus) Tj T* (cpus {) Tj T* (      #address-cells = ) Tj (<) Tj (0x00000001) Tj (>) Tj (;) Tj T* (      #size-cells = ) Tj (<) Tj (0x00000000) Tj (>) Tj (;) Tj T* (      cpu@0 {) Tj T* (              compatible = "arm,cortex-a8";) Tj T* (              device_type = "cpu";) Tj T* (              reg = ) Tj (<) Tj (0x00000000) Tj (>) Tj (;) Tj T* (              operating-points = ) Tj (<) Tj (0x000afc80 0x00139b88 0x000927c0 0x0012b128 0x0007a120 0x00112a88 0x00043238 0x00112a88) Tj (>) Tj (;) Tj T* (              voltage-tolerance = ) Tj (<) Tj (0x00000002) Tj (>) Tj (;) Tj T* (              clocks = ) Tj (<) Tj (0x00000002) Tj (>) Tj (;) Tj T* (              clock-names = "cpu";) Tj T* (              clock-latency = ) Tj (<) Tj (0x000493e0) Tj (>) Tj (;) Tj T* (              cpu0-supply = ) Tj (<) Tj (0x00000003) Tj (>) Tj (;) Tj T* (      };) Tj T* (};) Tj T* (=) Tj (>) Tj T* ET
 Q
 Q
 Q
 Q
 Q
 q
-1 0 0 1 62.69291 400.2236 cm
+1 0 0 1 62.69291 408.6236 cm
 q
 BT 1 0 0 1 0 2.5 Tm 15 TL /F3 12.5 Tf 0 0 0 rg (fdt mknode - create new nodes) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 358.2236 cm
+1 0 0 1 62.69291 366.6236 cm
 q
 BT 1 0 0 1 0 14 Tm .640898 Tw 12 TL /F1 10 Tf 1 0 0 rg (fdt mknode ) Tj 0 0 0 rg (can be used to attach a new node to the tree. We will use the ) Tj 1 0 0 rg (fdt list ) Tj 0 0 0 rg (command to verify that) Tj T* 0 Tw (the new node has been created and that it is empty:) Tj T* ET
 Q
@@ -4008,10 +4025,10 @@ q
 0 0 0 RG
 1 w
 .960784 .960784 .862745 rg
-n -6 -6 467.6898 255.6 re B*
+n -6 -6 467.6898 264 re B*
 Q
 q
-BT 1 0 0 1 0 236.6 Tm 8.4 TL /F4 7 Tf 0 0 0 rg (=) Tj (>) Tj ( fdt list /) Tj T* (/ {) Tj T* (      #address-cells = ) Tj (<) Tj (0x00000001) Tj (>) Tj (;) Tj T* (      #size-cells = ) Tj (<) Tj (0x00000001) Tj (>) Tj (;) Tj T* (      compatible = "ti,am335x-evm", "ti,am33xx";) Tj T* (      interrupt-parent = ) Tj (<) Tj (0x00000001) Tj (>) Tj (;) Tj T* (      model = "TI AM335x EVM";) Tj T* (      chosen {) Tj T* (      };) Tj T* (      aliases {) Tj T* (      };) Tj T* (      memory {) Tj T* (      };) Tj T* (      cpus {) Tj T* (      };) Tj T* (      pmu {) Tj T* (      };) Tj T* (      soc {) Tj T* (      };) Tj T* (      ocp {) Tj T* (      };) Tj T* (      fixedregulator@0 {) Tj T* (      };) Tj T* (      fixedregulator@1 {) Tj T* (      };) Tj T* (      fixedregulator@2 {) Tj T* (      };) Tj T* (      matrix_keypad@0 {) Tj T* (      };) Tj T* ET
+BT 1 0 0 1 0 245 Tm 8.4 TL /F4 7 Tf 0 0 0 rg (=) Tj (>) Tj ( fdt list /) Tj T* (/ {) Tj T* (      #address-cells = ) Tj (<) Tj (0x00000001) Tj (>) Tj (;) Tj T* (      #size-cells = ) Tj (<) Tj (0x00000001) Tj (>) Tj (;) Tj T* (      compatible = "ti,am335x-evm", "ti,am33xx";) Tj T* (      interrupt-parent = ) Tj (<) Tj (0x00000001) Tj (>) Tj (;) Tj T* (      model = "TI AM335x EVM";) Tj T* (      chosen {) Tj T* (      };) Tj T* (      aliases {) Tj T* (      };) Tj T* (      memory {) Tj T* (      };) Tj T* (      cpus {) Tj T* (      };) Tj T* (      pmu {) Tj T* (      };) Tj T* (      soc {) Tj T* (      };) Tj T* (      ocp {) Tj T* (      };) Tj T* (      fixedregulator@0 {) Tj T* (      };) Tj T* (      fixedregulator@1 {) Tj T* (      };) Tj T* (      fixedregulator@2 {) Tj T* (      };) Tj T* (      matrix_keypad@0 {) Tj T* (      };) Tj T* (      volume_keys@0 {) Tj T* ET
 Q
 Q
 Q
@@ -4020,18 +4037,18 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 40 / 54) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 39 / 54) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-194 0 obj
-<< /Length 2756 >>
+196 0 obj
+<< /Length 2726 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
 q
-1 0 0 1 62.69291 297.2236 cm
+1 0 0 1 62.69291 305.6236 cm
 q
 q
 1 0 0 1 0 0 cm
@@ -4041,29 +4058,29 @@ q
 0 0 0 RG
 1 w
 .960784 .960784 .862745 rg
-n -6 -6 467.6898 465.6 re B*
+n -6 -6 467.6898 457.2 re B*
 Q
 q
-BT 1 0 0 1 0 446.6 Tm 8.4 TL /F4 7 Tf 0 0 0 rg (      volume_keys@0 {) Tj T* (      };) Tj T* (      backlight {) Tj T* (      };) Tj T* (      panel {) Tj T* (      };) Tj T* (      sound {) Tj T* (      };) Tj T* (};) Tj T* (=) Tj (>) Tj ( fdt mknode / testnode) Tj T* (=) Tj (>) Tj ( fdt list /) Tj T* (/ {) Tj T* (      #address-cells = ) Tj (<) Tj (0x00000001) Tj (>) Tj (;) Tj T* (      #size-cells = ) Tj (<) Tj (0x00000001) Tj (>) Tj (;) Tj T* (      compatible = "ti,am335x-evm", "ti,am33xx";) Tj T* (      interrupt-parent = ) Tj (<) Tj (0x00000001) Tj (>) Tj (;) Tj T* (      model = "TI AM335x EVM";) Tj T* (      testnode {) Tj T* (      };) Tj T* (      chosen {) Tj T* (      };) Tj T* (      aliases {) Tj T* (      };) Tj T* (      memory {) Tj T* (      };) Tj T* (      cpus {) Tj T* (      };) Tj T* (      pmu {) Tj T* (      };) Tj T* (      soc {) Tj T* (      };) Tj T* (      ocp {) Tj T* (      };) Tj T* (      fixedregulator@0 {) Tj T* (      };) Tj T* (      fixedregulator@1 {) Tj T* (      };) Tj T* (      fixedregulator@2 {) Tj T* (      };) Tj T* (      matrix_keypad@0 {) Tj T* (      };) Tj T* (      volume_keys@0 {) Tj T* (      };) Tj T* (      backlight {) Tj T* (      };) Tj T* (      panel {) Tj T* (      };) Tj T* (      sound {) Tj T* (      };) Tj T* (};) Tj T* (=) Tj (>) Tj ( fdt list /testnode) Tj T* (testnode {) Tj T* (};) Tj T* (=) Tj (>) Tj T* ET
+BT 1 0 0 1 0 438.2 Tm 8.4 TL /F4 7 Tf 0 0 0 rg (      };) Tj T* (      backlight {) Tj T* (      };) Tj T* (      panel {) Tj T* (      };) Tj T* (      sound {) Tj T* (      };) Tj T* (};) Tj T* (=) Tj (>) Tj ( fdt mknode / testnode) Tj T* (=) Tj (>) Tj ( fdt list /) Tj T* (/ {) Tj T* (      #address-cells = ) Tj (<) Tj (0x00000001) Tj (>) Tj (;) Tj T* (      #size-cells = ) Tj (<) Tj (0x00000001) Tj (>) Tj (;) Tj T* (      compatible = "ti,am335x-evm", "ti,am33xx";) Tj T* (      interrupt-parent = ) Tj (<) Tj (0x00000001) Tj (>) Tj (;) Tj T* (      model = "TI AM335x EVM";) Tj T* (      testnode {) Tj T* (      };) Tj T* (      chosen {) Tj T* (      };) Tj T* (      aliases {) Tj T* (      };) Tj T* (      memory {) Tj T* (      };) Tj T* (      cpus {) Tj T* (      };) Tj T* (      pmu {) Tj T* (      };) Tj T* (      soc {) Tj T* (      };) Tj T* (      ocp {) Tj T* (      };) Tj T* (      fixedregulator@0 {) Tj T* (      };) Tj T* (      fixedregulator@1 {) Tj T* (      };) Tj T* (      fixedregulator@2 {) Tj T* (      };) Tj T* (      matrix_keypad@0 {) Tj T* (      };) Tj T* (      volume_keys@0 {) Tj T* (      };) Tj T* (      backlight {) Tj T* (      };) Tj T* (      panel {) Tj T* (      };) Tj T* (      sound {) Tj T* (      };) Tj T* (};) Tj T* (=) Tj (>) Tj ( fdt list /testnode) Tj T* (testnode {) Tj T* (};) Tj T* (=) Tj (>) Tj T* ET
 Q
 Q
 Q
 Q
 Q
 q
-1 0 0 1 62.69291 264.2236 cm
+1 0 0 1 62.69291 272.6236 cm
 q
 BT 1 0 0 1 0 2.5 Tm 15 TL /F3 12.5 Tf 0 0 0 rg (fdt set - set node properties) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 234.2236 cm
+1 0 0 1 62.69291 242.6236 cm
 q
 BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (Now, let's create a property at the newly created node; again we'll use ) Tj 1 0 0 rg (fdt list ) Tj 0 0 0 rg (for verification:) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 151.2236 cm
+1 0 0 1 62.69291 159.6236 cm
 q
 q
 1 0 0 1 0 0 cm
@@ -4083,7 +4100,7 @@ Q
 Q
 Q
 q
-1 0 0 1 62.69291 118.2236 cm
+1 0 0 1 62.69291 126.6236 cm
 q
 BT 1 0 0 1 0 2.5 Tm 15 TL /F3 12.5 Tf 0 0 0 rg (fdt rm - remove nodes or properties) Tj T* ET
 Q
@@ -4091,13 +4108,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 41 / 54) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 40 / 54) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-195 0 obj
+197 0 obj
 << /Length 3258 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -4162,13 +4179,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 42 / 54) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 41 / 54) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-196 0 obj
+198 0 obj
 << /Length 2530 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -4195,13 +4212,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 43 / 54) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 42 / 54) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-197 0 obj
+199 0 obj
 << /Length 3034 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -4260,13 +4277,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 44 / 54) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 43 / 54) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-198 0 obj
+200 0 obj
 << /Length 2054 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -4302,13 +4319,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 45 / 54) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 44 / 54) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-199 0 obj
+201 0 obj
 << /Length 1989 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -4350,13 +4367,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 46 / 54) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 45 / 54) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-200 0 obj
+202 0 obj
 << /Length 3322 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -4473,13 +4490,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 47 / 54) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 46 / 54) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-201 0 obj
+203 0 obj
 << /Length 3147 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -4605,13 +4622,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 48 / 54) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 47 / 54) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-202 0 obj
+204 0 obj
 << /Length 9271 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -4938,13 +4955,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 49 / 54) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 48 / 54) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-203 0 obj
+205 0 obj
 << /Length 10098 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -5427,13 +5444,13 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 50 / 54) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 49 / 54) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-204 0 obj
+206 0 obj
 << /Length 7216 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -5757,14 +5774,14 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 51 / 54) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 50 / 54) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-205 0 obj
-<< /Length 5317 >>
+207 0 obj
+<< /Length 5318 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
 q
@@ -5928,7 +5945,7 @@ q
 n -6 -6 467.6898 138 re B*
 Q
 q
-BT 1 0 0 1 0 119 Tm 8.4 TL /F4 7 Tf 0 0 0 rg (=) Tj (>) Tj ( addr1=0x80000000) Tj T* (=) Tj (>) Tj ( addr2=0x80100000) Tj T* (=) Tj (>) Tj ( bootm $addr1 || bootm $addr2 || tftp 0x80000000 beagleboneblack/tbot/source_example.scr) Tj (&) Tj (&) Tj ( imi\\) Tj T* (  0x80000000) Tj T* (Wrong Image Format for bootm command) Tj T* (ERROR: can't get kernel image!) Tj T* (Wrong Image Format for bootm command) Tj T* (ERROR: can't get kernel image!) Tj T* (link up on port 0, speed 100, full duplex) Tj T* (Using ethernet@4a100000 device) Tj T* (TFTP from server 192.168.2.1; our IP address is 192.168.2.10) Tj T* (Filename 'beagleboneblack/tbot/source_example.scr'.) Tj T* (Load address: 0x80000000) Tj T* (Loading: *) Tj /F5 7 Tf 8.4 TL (n) Tj /F4 7 Tf 8.4 TL (#) Tj T* (       215.8 KiB/s) Tj T* ET
+BT 1 0 0 1 0 119 Tm 8.4 TL /F4 7 Tf 0 0 0 rg (=) Tj (>) Tj ( addr1=0x80000000) Tj T* (=) Tj (>) Tj ( addr2=0x80100000) Tj T* (=) Tj (>) Tj ( bootm $addr1 || bootm $addr2 || tftp 0x80000000 beagleboneblack/tbot/source_example.scr) Tj (&) Tj (&) Tj ( imi 0x80000000) Tj T* (Wrong Image Format for bootm command) Tj T* (ERROR: can't get kernel image!) Tj T* (Wrong Image Format for bootm command) Tj T* (ERROR: can't get kernel image!) Tj T* (link up on port 0, speed 100, full duplex) Tj T* (Using ethernet@4a100000 device) Tj T* (TFTP from server 192.168.2.1; our IP address is 192.168.2.10) Tj T* (Filename 'beagleboneblack/tbot/source_example.scr'.) Tj T* (Load address: 0x80000000) Tj T* (Loading: *) Tj /F5 7 Tf 8.4 TL (n) Tj /F4 7 Tf 8.4 TL (#) Tj T* (       215.8 KiB/s) Tj T* (done) Tj T* ET
 Q
 Q
 Q
@@ -5937,18 +5954,18 @@ Q
 q
 1 0 0 1 56.69291 56.69291 cm
 q
-BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 52 / 54) Tj T* -116.9849 0 Td ET
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 51 / 54) Tj T* -116.9849 0 Td ET
 Q
 Q
  
 endstream
 endobj
-206 0 obj
-<< /Length 2892 >>
+208 0 obj
+<< /Length 2751 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
 q
-1 0 0 1 62.69291 624.8236 cm
+1 0 0 1 62.69291 633.2236 cm
 q
 q
 1 0 0 1 0 0 cm
@@ -5958,36 +5975,36 @@ q
 0 0 0 RG
 1 w
 .960784 .960784 .862745 rg
-n -6 -6 467.6898 138 re B*
+n -6 -6 467.6898 129.6 re B*
 Q
 q
-BT 1 0 0 1 0 119 Tm 8.4 TL /F4 7 Tf 0 0 0 rg (done) Tj T* (Bytes transferred = 221 \(dd hex\)) Tj T*  T* (## Checking Image at 80000000 ...) Tj T* (   Legacy image found) Tj T* (   Image Name:   autoscr example script) Tj T* (   Created:      2017-08-18   8:19:02 UTC) Tj T* (   Image Type:   PowerPC Linux Script \(uncompressed\)) Tj T* (   Data Size:    157 Bytes = 157 Bytes) Tj T* (   Load Address: 00000000) Tj T* (   Entry Point:  00000000) Tj T* (   Contents:) Tj T* (      Image 0: 149 Bytes = 149 Bytes) Tj T* (   Verifying Checksum ... OK) Tj T* (=) Tj (>) Tj T* ET
+BT 1 0 0 1 0 110.6 Tm 8.4 TL /F4 7 Tf 0 0 0 rg (Bytes transferred = 221 \(dd hex\)) Tj T*  T* (## Checking Image at 80000000 ...) Tj T* (   Legacy image found) Tj T* (   Image Name:   autoscr example script) Tj T* (   Created:      2017-08-18   8:19:02 UTC) Tj T* (   Image Type:   PowerPC Linux Script \(uncompressed\)) Tj T* (   Data Size:    157 Bytes = 157 Bytes) Tj T* (   Load Address: 00000000) Tj T* (   Entry Point:  00000000) Tj T* (   Contents:) Tj T* (      Image 0: 149 Bytes = 149 Bytes) Tj T* (   Verifying Checksum ... OK) Tj T* (=) Tj (>) Tj T* ET
 Q
 Q
 Q
 Q
 Q
 q
-1 0 0 1 62.69291 578.8236 cm
+1 0 0 1 62.69291 587.2236 cm
 q
 0 0 0 rg
 BT 1 0 0 1 0 26 Tm /F1 10 Tf 12 TL 1.313798 Tw (This will check if the image at address "addr1" is ok and boot it; if the image is not ok, the alternative) Tj T* 0 Tw .228084 Tw (image at address "addr2" will be checked and booted if it is found to be OK. If both images are missing or) Tj T* 0 Tw (corrupted, a new image will be loaded over TFTP and checked with imi.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 545.8236 cm
+1 0 0 1 62.69291 554.2236 cm
 q
 BT 1 0 0 1 0 2.5 Tm 15 TL /F3 12.5 Tf 0 0 0 rg (General rules) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 521.8236 cm
+1 0 0 1 62.69291 530.2236 cm
 Q
 q
-1 0 0 1 62.69291 521.8236 cm
+1 0 0 1 62.69291 530.2236 cm
 Q
 q
-1 0 0 1 62.69291 485.8236 cm
+1 0 0 1 62.69291 494.2236 cm
 0 0 0 rg
 BT /F1 10 Tf 12 TL ET
 q
@@ -6008,10 +6025,10 @@ q
 Q
 Q
 q
-1 0 0 1 62.69291 479.8236 cm
+1 0 0 1 62.69291 488.2236 cm
 Q
 q
-1 0 0 1 62.69291 443.8236 cm
+1 0 0 1 62.69291 452.2236 cm
 0 0 0 rg
 BT /F1 10 Tf 12 TL ET
 q
@@ -6032,16 +6049,79 @@ q
 Q
 Q
 q
-1 0 0 1 62.69291 443.8236 cm
+1 0 0 1 62.69291 452.2236 cm
 Q
 q
-1 0 0 1 62.69291 401.8236 cm
+1 0 0 1 62.69291 452.2236 cm
+Q
+q
+1 0 0 1 56.69291 56.69291 cm
+q
+BT 1 0 0 1 0 2 Tm 116.9849 0 Td 12 TL /F1 10 Tf 0 0 0 rg (U-Boot / beagleboneblack documentation - page 52 / 54) Tj T* -116.9849 0 Td ET
+Q
+Q
+ 
+endstream
+endobj
+209 0 obj
+<< /Length 2361 >>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 62.69291 747.0236 cm
+q
+BT 1 0 0 1 0 3 Tm 166.1924 0 Td 18 TL /F3 15 Tf 0 0 0 rg (U-Boot pytest suite) Tj T* -166.1924 0 Td ET
+Q
+Q
+q
+1 0 0 1 62.69291 717.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Read more of how to setup test/py in U-Boot source code:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 699.0236 cm
+q
+0 0 .501961 rg
+0 0 .501961 RG
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (http://git.denx.de/?p=u-boot.git;a=blob;f=test/py/README.md) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 666.0236 cm
+q
+BT 1 0 0 1 0 2.5 Tm 15 TL /F3 12.5 Tf 0 0 0 rg (Test py results) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 457.4236 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 7.1 7.1 cm
+q
+0 0 0 RG
+1 w
+.960784 .960784 .862745 rg
+n -6 -6 516 188.4 re B*
+Q
+q
+BT 1 0 0 1 0 169.4 Tm 8.4 TL /F4 7 Tf 0 0 0 rg ($ PATH=/home/hs/data/Entwicklung/test_py_scripts/hook-scripts:$PATH;PYTHONPATH=/work/hs/tb) Tj T* (ot/u-boot-am335x_evm;./test/py/test.py --bd am335x_evm -s --build-dir .) Tj T* (+u-boot-test-flash am335x_evm na) Tj T* (board type  am335x_evm) Tj T* (No flashing supported yet) Tj T* (========================================================================================= test session starts ==========) Tj T* (================================================================================) Tj T* (platform linux2 -- Python 2.7.8, pytest-3.2.1, py-1.4.34, pluggy-0.4.0) Tj T* (rootdir: ) Tj 1 0 0 rg ($) Tj 1 0 0 rg (TBOT_BASEDIR) Tj 0 0 0 rg () Tj 0 0 0 rg (/u-boot-am335x_evm/test/py, inifile: pytest.ini) Tj T* (collecting 0 items) Tj T* (collecting 1 item) Tj T* ([...]) Tj T* (Unknown command 'non_existent_cmd' - try 'help') Tj T* (=) Tj (>) Tj  T* (test/py/tests/test_unknown_cmd.py .) Tj T* (test/py/tests/test_ut.py ss) Tj T* (test/py/tests/test_vboot.py s) Tj T*  T* (================================================================================ 74 passed, 20 skipped in 12.71 seconds) Tj T* (================================================================================) Tj T* ($) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+q
+1 0 0 1 62.69291 415.4236 cm
 q
 BT 1 0 0 1 0 4 Tm 212.1549 0 Td 24 TL /F3 20 Tf 0 0 0 rg (links) Tj T* -212.1549 0 Td ET
 Q
 Q
 q
-1 0 0 1 62.69291 383.8236 cm
+1 0 0 1 62.69291 397.4236 cm
 Q
 q
 1 0 0 1 56.69291 56.69291 cm
@@ -6052,7 +6132,7 @@ Q
  
 endstream
 endobj
-207 0 obj
+210 0 obj
 << /Length 260 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -6068,183 +6148,183 @@ Q
  
 endstream
 endobj
-208 0 obj
-<< /Nums [ 0 209 0 R 1 210 0 R 2 211 0 R 3 212 0 R 4 213 0 R 
-  5 214 0 R 6 215 0 R 7 216 0 R 8 217 0 R 9 218 0 R 
-  10 219 0 R 11 220 0 R 12 221 0 R 13 222 0 R 14 223 0 R 
-  15 224 0 R 16 225 0 R 17 226 0 R 18 227 0 R 19 228 0 R 
-  20 229 0 R 21 230 0 R 22 231 0 R 23 232 0 R 24 233 0 R 
-  25 234 0 R 26 235 0 R 27 236 0 R 28 237 0 R 29 238 0 R 
-  30 239 0 R 31 240 0 R 32 241 0 R 33 242 0 R 34 243 0 R 
-  35 244 0 R 36 245 0 R 37 246 0 R 38 247 0 R 39 248 0 R 
-  40 249 0 R 41 250 0 R 42 251 0 R 43 252 0 R 44 253 0 R 
-  45 254 0 R 46 255 0 R 47 256 0 R 48 257 0 R 49 258 0 R 
-  50 259 0 R 51 260 0 R 52 261 0 R 53 262 0 R ] >>
-endobj
-209 0 obj
-<< /S /D /St 1 >>
-endobj
-210 0 obj
-<< /S /D /St 2 >>
-endobj
 211 0 obj
-<< /S /D /St 3 >>
+<< /Nums [ 0 212 0 R 1 213 0 R 2 214 0 R 3 215 0 R 4 216 0 R 
+  5 217 0 R 6 218 0 R 7 219 0 R 8 220 0 R 9 221 0 R 
+  10 222 0 R 11 223 0 R 12 224 0 R 13 225 0 R 14 226 0 R 
+  15 227 0 R 16 228 0 R 17 229 0 R 18 230 0 R 19 231 0 R 
+  20 232 0 R 21 233 0 R 22 234 0 R 23 235 0 R 24 236 0 R 
+  25 237 0 R 26 238 0 R 27 239 0 R 28 240 0 R 29 241 0 R 
+  30 242 0 R 31 243 0 R 32 244 0 R 33 245 0 R 34 246 0 R 
+  35 247 0 R 36 248 0 R 37 249 0 R 38 250 0 R 39 251 0 R 
+  40 252 0 R 41 253 0 R 42 254 0 R 43 255 0 R 44 256 0 R 
+  45 257 0 R 46 258 0 R 47 259 0 R 48 260 0 R 49 261 0 R 
+  50 262 0 R 51 263 0 R 52 264 0 R 53 265 0 R ] >>
 endobj
 212 0 obj
-<< /S /D /St 4 >>
+<< /S /D /St 1 >>
 endobj
 213 0 obj
-<< /S /D /St 5 >>
+<< /S /D /St 2 >>
 endobj
 214 0 obj
-<< /S /D /St 6 >>
+<< /S /D /St 3 >>
 endobj
 215 0 obj
-<< /S /D /St 7 >>
+<< /S /D /St 4 >>
 endobj
 216 0 obj
-<< /S /D /St 8 >>
+<< /S /D /St 5 >>
 endobj
 217 0 obj
-<< /S /D /St 9 >>
+<< /S /D /St 6 >>
 endobj
 218 0 obj
-<< /S /D /St 10 >>
+<< /S /D /St 7 >>
 endobj
 219 0 obj
-<< /S /D /St 11 >>
+<< /S /D /St 8 >>
 endobj
 220 0 obj
-<< /S /D /St 12 >>
+<< /S /D /St 9 >>
 endobj
 221 0 obj
-<< /S /D /St 13 >>
+<< /S /D /St 10 >>
 endobj
 222 0 obj
-<< /S /D /St 14 >>
+<< /S /D /St 11 >>
 endobj
 223 0 obj
-<< /S /D /St 15 >>
+<< /S /D /St 12 >>
 endobj
 224 0 obj
-<< /S /D /St 16 >>
+<< /S /D /St 13 >>
 endobj
 225 0 obj
-<< /S /D /St 17 >>
+<< /S /D /St 14 >>
 endobj
 226 0 obj
-<< /S /D /St 18 >>
+<< /S /D /St 15 >>
 endobj
 227 0 obj
-<< /S /D /St 19 >>
+<< /S /D /St 16 >>
 endobj
 228 0 obj
-<< /S /D /St 20 >>
+<< /S /D /St 17 >>
 endobj
 229 0 obj
-<< /S /D /St 21 >>
+<< /S /D /St 18 >>
 endobj
 230 0 obj
-<< /S /D /St 22 >>
+<< /S /D /St 19 >>
 endobj
 231 0 obj
-<< /S /D /St 23 >>
+<< /S /D /St 20 >>
 endobj
 232 0 obj
-<< /S /D /St 24 >>
+<< /S /D /St 21 >>
 endobj
 233 0 obj
-<< /S /D /St 25 >>
+<< /S /D /St 22 >>
 endobj
 234 0 obj
-<< /S /D /St 26 >>
+<< /S /D /St 23 >>
 endobj
 235 0 obj
-<< /S /D /St 27 >>
+<< /S /D /St 24 >>
 endobj
 236 0 obj
-<< /S /D /St 28 >>
+<< /S /D /St 25 >>
 endobj
 237 0 obj
-<< /S /D /St 29 >>
+<< /S /D /St 26 >>
 endobj
 238 0 obj
-<< /S /D /St 30 >>
+<< /S /D /St 27 >>
 endobj
 239 0 obj
-<< /S /D /St 31 >>
+<< /S /D /St 28 >>
 endobj
 240 0 obj
-<< /S /D /St 32 >>
+<< /S /D /St 29 >>
 endobj
 241 0 obj
-<< /S /D /St 33 >>
+<< /S /D /St 30 >>
 endobj
 242 0 obj
-<< /S /D /St 34 >>
+<< /S /D /St 31 >>
 endobj
 243 0 obj
-<< /S /D /St 35 >>
+<< /S /D /St 32 >>
 endobj
 244 0 obj
-<< /S /D /St 36 >>
+<< /S /D /St 33 >>
 endobj
 245 0 obj
-<< /S /D /St 37 >>
+<< /S /D /St 34 >>
 endobj
 246 0 obj
-<< /S /D /St 38 >>
+<< /S /D /St 35 >>
 endobj
 247 0 obj
-<< /S /D /St 39 >>
+<< /S /D /St 36 >>
 endobj
 248 0 obj
-<< /S /D /St 40 >>
+<< /S /D /St 37 >>
 endobj
 249 0 obj
-<< /S /D /St 41 >>
+<< /S /D /St 38 >>
 endobj
 250 0 obj
-<< /S /D /St 42 >>
+<< /S /D /St 39 >>
 endobj
 251 0 obj
-<< /S /D /St 43 >>
+<< /S /D /St 40 >>
 endobj
 252 0 obj
-<< /S /D /St 44 >>
+<< /S /D /St 41 >>
 endobj
 253 0 obj
-<< /S /D /St 45 >>
+<< /S /D /St 42 >>
 endobj
 254 0 obj
-<< /S /D /St 46 >>
+<< /S /D /St 43 >>
 endobj
 255 0 obj
-<< /S /D /St 47 >>
+<< /S /D /St 44 >>
 endobj
 256 0 obj
-<< /S /D /St 48 >>
+<< /S /D /St 45 >>
 endobj
 257 0 obj
-<< /S /D /St 49 >>
+<< /S /D /St 46 >>
 endobj
 258 0 obj
-<< /S /D /St 50 >>
+<< /S /D /St 47 >>
 endobj
 259 0 obj
-<< /S /D /St 51 >>
+<< /S /D /St 48 >>
 endobj
 260 0 obj
-<< /S /D /St 52 >>
+<< /S /D /St 49 >>
 endobj
 261 0 obj
-<< /S /D /St 53 >>
+<< /S /D /St 50 >>
 endobj
 262 0 obj
+<< /S /D /St 51 >>
+endobj
+263 0 obj
+<< /S /D /St 52 >>
+endobj
+264 0 obj
+<< /S /D /St 53 >>
+endobj
+265 0 obj
 << /S /D /St 54 >>
 endobj
 xref
-0 263
+0 266
 0000000000 65535 f
 0000000075 00000 n
 0000000151 00000 n
@@ -6317,202 +6397,205 @@ xref
 0000018064 00000 n
 0000018276 00000 n
 0000018488 00000 n
-0000018700 00000 n
-0000018872 00000 n
-0000019230 00000 n
-0000019402 00000 n
+0000018660 00000 n
+0000019018 00000 n
+0000019190 00000 n
+0000019541 00000 n
 0000019753 00000 n
 0000019965 00000 n
-0000020177 00000 n
-0000020389 00000 n
-0000020500 00000 n
-0000020747 00000 n
-0000020825 00000 n
-0000020977 00000 n
-0000021100 00000 n
-0000021229 00000 n
-0000021343 00000 n
-0000021496 00000 n
-0000021617 00000 n
-0000021814 00000 n
-0000021945 00000 n
-0000022071 00000 n
-0000022204 00000 n
-0000022360 00000 n
-0000022537 00000 n
-0000022656 00000 n
-0000022772 00000 n
-0000022907 00000 n
-0000023097 00000 n
-0000023264 00000 n
-0000023405 00000 n
-0000023573 00000 n
-0000023733 00000 n
-0000023864 00000 n
-0000024041 00000 n
-0000024183 00000 n
-0000024333 00000 n
-0000024475 00000 n
-0000024613 00000 n
-0000024754 00000 n
-0000024916 00000 n
-0000025064 00000 n
-0000025225 00000 n
-0000025370 00000 n
-0000025559 00000 n
-0000025698 00000 n
-0000025862 00000 n
-0000026010 00000 n
-0000026190 00000 n
-0000026354 00000 n
-0000026526 00000 n
-0000026705 00000 n
-0000026870 00000 n
-0000027049 00000 n
-0000027209 00000 n
-0000027402 00000 n
-0000027547 00000 n
-0000027727 00000 n
-0000027869 00000 n
-0000028061 00000 n
-0000028201 00000 n
-0000028349 00000 n
-0000028498 00000 n
-0000028649 00000 n
-0000028800 00000 n
-0000028957 00000 n
-0000029118 00000 n
-0000029257 00000 n
-0000029436 00000 n
-0000029550 00000 n
-0000029735 00000 n
-0000029870 00000 n
-0000030024 00000 n
-0000030183 00000 n
-0000030336 00000 n
-0000030464 00000 n
-0000030613 00000 n
-0000030763 00000 n
-0000030946 00000 n
-0000031085 00000 n
-0000031217 00000 n
-0000031357 00000 n
-0000031478 00000 n
-0000031589 00000 n
-0000032044 00000 n
-0000036475 00000 n
-0000037622 00000 n
-0000040138 00000 n
-0000041550 00000 n
-0000043835 00000 n
-0000044952 00000 n
-0000048911 00000 n
-0000052783 00000 n
-0000056108 00000 n
-0000058333 00000 n
-0000060442 00000 n
-0000062681 00000 n
-0000064142 00000 n
-0000066237 00000 n
-0000069689 00000 n
-0000073317 00000 n
-0000075268 00000 n
-0000079309 00000 n
-0000081426 00000 n
-0000085420 00000 n
-0000089290 00000 n
-0000091548 00000 n
-0000093007 00000 n
-0000097429 00000 n
-0000098716 00000 n
-0000104501 00000 n
-0000105054 00000 n
-0000107160 00000 n
-0000108758 00000 n
-0000113210 00000 n
-0000116834 00000 n
-0000118534 00000 n
-0000120531 00000 n
-0000125446 00000 n
-0000131137 00000 n
-0000136076 00000 n
-0000141174 00000 n
-0000142605 00000 n
-0000149093 00000 n
-0000152921 00000 n
-0000155735 00000 n
-0000159051 00000 n
-0000161639 00000 n
-0000164731 00000 n
-0000166843 00000 n
-0000168890 00000 n
-0000172270 00000 n
-0000175475 00000 n
-0000184804 00000 n
-0000194961 00000 n
-0000202235 00000 n
-0000207610 00000 n
-0000210560 00000 n
-0000210877 00000 n
-0000211537 00000 n
-0000211575 00000 n
-0000211613 00000 n
-0000211651 00000 n
-0000211689 00000 n
-0000211727 00000 n
-0000211765 00000 n
-0000211803 00000 n
-0000211841 00000 n
-0000211879 00000 n
-0000211918 00000 n
-0000211957 00000 n
-0000211996 00000 n
-0000212035 00000 n
-0000212074 00000 n
-0000212113 00000 n
-0000212152 00000 n
-0000212191 00000 n
-0000212230 00000 n
-0000212269 00000 n
-0000212308 00000 n
-0000212347 00000 n
-0000212386 00000 n
-0000212425 00000 n
-0000212464 00000 n
-0000212503 00000 n
-0000212542 00000 n
-0000212581 00000 n
-0000212620 00000 n
-0000212659 00000 n
-0000212698 00000 n
-0000212737 00000 n
-0000212776 00000 n
-0000212815 00000 n
-0000212854 00000 n
-0000212893 00000 n
-0000212932 00000 n
-0000212971 00000 n
-0000213010 00000 n
-0000213049 00000 n
-0000213088 00000 n
-0000213127 00000 n
-0000213166 00000 n
-0000213205 00000 n
-0000213244 00000 n
-0000213283 00000 n
-0000213322 00000 n
-0000213361 00000 n
-0000213400 00000 n
-0000213439 00000 n
-0000213478 00000 n
-0000213517 00000 n
-0000213556 00000 n
-0000213595 00000 n
+0000020180 00000 n
+0000020411 00000 n
+0000020623 00000 n
+0000020734 00000 n
+0000020981 00000 n
+0000021059 00000 n
+0000021211 00000 n
+0000021334 00000 n
+0000021463 00000 n
+0000021577 00000 n
+0000021730 00000 n
+0000021851 00000 n
+0000022048 00000 n
+0000022179 00000 n
+0000022305 00000 n
+0000022438 00000 n
+0000022594 00000 n
+0000022771 00000 n
+0000022890 00000 n
+0000023006 00000 n
+0000023141 00000 n
+0000023331 00000 n
+0000023499 00000 n
+0000023641 00000 n
+0000023810 00000 n
+0000023970 00000 n
+0000024101 00000 n
+0000024278 00000 n
+0000024420 00000 n
+0000024570 00000 n
+0000024712 00000 n
+0000024850 00000 n
+0000024991 00000 n
+0000025153 00000 n
+0000025301 00000 n
+0000025462 00000 n
+0000025607 00000 n
+0000025796 00000 n
+0000025935 00000 n
+0000026099 00000 n
+0000026247 00000 n
+0000026427 00000 n
+0000026591 00000 n
+0000026763 00000 n
+0000026942 00000 n
+0000027107 00000 n
+0000027286 00000 n
+0000027446 00000 n
+0000027639 00000 n
+0000027784 00000 n
+0000027964 00000 n
+0000028106 00000 n
+0000028298 00000 n
+0000028438 00000 n
+0000028586 00000 n
+0000028735 00000 n
+0000028886 00000 n
+0000029037 00000 n
+0000029194 00000 n
+0000029355 00000 n
+0000029494 00000 n
+0000029673 00000 n
+0000029787 00000 n
+0000029972 00000 n
+0000030107 00000 n
+0000030261 00000 n
+0000030420 00000 n
+0000030573 00000 n
+0000030701 00000 n
+0000030850 00000 n
+0000031000 00000 n
+0000031197 00000 n
+0000031336 00000 n
+0000031468 00000 n
+0000031608 00000 n
+0000031729 00000 n
+0000031897 00000 n
+0000032006 00000 n
+0000032117 00000 n
+0000032572 00000 n
+0000037003 00000 n
+0000038150 00000 n
+0000040666 00000 n
+0000042078 00000 n
+0000044363 00000 n
+0000045468 00000 n
+0000049427 00000 n
+0000053299 00000 n
+0000056624 00000 n
+0000058849 00000 n
+0000060958 00000 n
+0000063197 00000 n
+0000064658 00000 n
+0000066753 00000 n
+0000070205 00000 n
+0000073833 00000 n
+0000075784 00000 n
+0000079825 00000 n
+0000081942 00000 n
+0000085936 00000 n
+0000089806 00000 n
+0000092064 00000 n
+0000093523 00000 n
+0000097942 00000 n
+0000099229 00000 n
+0000105014 00000 n
+0000105567 00000 n
+0000107673 00000 n
+0000109271 00000 n
+0000114307 00000 n
+0000117859 00000 n
+0000119443 00000 n
+0000121440 00000 n
+0000126499 00000 n
+0000132746 00000 n
+0000137637 00000 n
+0000143216 00000 n
+0000149687 00000 n
+0000153524 00000 n
+0000156308 00000 n
+0000159624 00000 n
+0000162212 00000 n
+0000165304 00000 n
+0000167416 00000 n
+0000169463 00000 n
+0000172843 00000 n
+0000176048 00000 n
+0000185377 00000 n
+0000195534 00000 n
+0000202808 00000 n
+0000208184 00000 n
+0000210993 00000 n
+0000213412 00000 n
+0000213729 00000 n
+0000214389 00000 n
+0000214427 00000 n
+0000214465 00000 n
+0000214503 00000 n
+0000214541 00000 n
+0000214579 00000 n
+0000214617 00000 n
+0000214655 00000 n
+0000214693 00000 n
+0000214731 00000 n
+0000214770 00000 n
+0000214809 00000 n
+0000214848 00000 n
+0000214887 00000 n
+0000214926 00000 n
+0000214965 00000 n
+0000215004 00000 n
+0000215043 00000 n
+0000215082 00000 n
+0000215121 00000 n
+0000215160 00000 n
+0000215199 00000 n
+0000215238 00000 n
+0000215277 00000 n
+0000215316 00000 n
+0000215355 00000 n
+0000215394 00000 n
+0000215433 00000 n
+0000215472 00000 n
+0000215511 00000 n
+0000215550 00000 n
+0000215589 00000 n
+0000215628 00000 n
+0000215667 00000 n
+0000215706 00000 n
+0000215745 00000 n
+0000215784 00000 n
+0000215823 00000 n
+0000215862 00000 n
+0000215901 00000 n
+0000215940 00000 n
+0000215979 00000 n
+0000216018 00000 n
+0000216057 00000 n
+0000216096 00000 n
+0000216135 00000 n
+0000216174 00000 n
+0000216213 00000 n
+0000216252 00000 n
+0000216291 00000 n
+0000216330 00000 n
+0000216369 00000 n
+0000216408 00000 n
+0000216447 00000 n
 trailer
 << /ID 
  % ReportLab generated PDF document -- digest (http://www.reportlab.com)
- [(7&A\025\261k\(\213nL&\272\022\034\251\244) (7&A\025\261k\(\213nL&\272\022\034\251\244)]
- /Info 80 0 R /Root 79 0 R /Size 263 >>
+ [(,\330\016\016q`\011j\242E#\3104\210\262r) (,\330\016\016q`\011j\242E#\3104\210\262r)]
+ /Info 81 0 R /Root 80 0 R /Size 266 >>
 startxref
-213634
+216486
 %%EOF

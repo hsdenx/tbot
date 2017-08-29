@@ -42,8 +42,8 @@ can be converted into a U-Boot script image using the :redtext:`mkimage` command
 
 ::
 
-  $ mkimage -A ppc -O linux -T script -C none -a 0 -e 0 -n "autoscr example script" -d\
-    $TBOT_BASEDIR/source_example.txt /var/lib/tftpboot/beagleboneblack/tbot/source.scr
+  $ mkimage -A ppc -O linux -T script -C none -a 0 -e 0 -n "autoscr example script" -d $TBOT_BASEDIR/source_example.txt\
+    /var/lib/tftpboot/beagleboneblack/tbot/source.scr
   Image Name:   autoscr example script
   Created:      Wed Aug 23 09:23:32 2017
   Image Type:   PowerPC Linux Script (uncompressed)

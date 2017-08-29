@@ -117,8 +117,7 @@ This depends on the toolchain you use.
 
 ::
 
-  $ printenv PATH | grep --color=never /opt/eldk-5.4/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-\
-    linux-gnueabi
+  $ printenv PATH | grep --color=never /opt/eldk-5.4/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-linux-gnueabi
   $ export PATH=/opt/eldk-5.4/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-linux-gnueabi:$PATH
   $ export CROSS_COMPILE=arm-linux-gnueabi-
   $ 
@@ -486,6 +485,11 @@ means that the serial device provides input (flag 'I') and output (flag 'O') fun
 
 .. include:: u-boot-script.rst
 
+.. raw:: pdf
+
+   PageBreak
+
+.. include:: u-boot-testpy.rst
 
 
 links
