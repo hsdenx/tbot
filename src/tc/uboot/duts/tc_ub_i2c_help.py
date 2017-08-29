@@ -41,8 +41,8 @@ else:
     ok_list = [False, False, False, False, False, False, False, False, False, False, False]
     count = 12
 
-tmp = "help i2c"
-tb.eof_write(tb.c_con, tmp)
+self.event.create_event('main', 'tc_ub_i2c_help.py', 'SET_DOC_FILENAME', 'help_i2c')
+tb.eof_write(tb.c_con, 'help i2c')
 tmp = True
 cmd_ok = True
 while tmp == True:
