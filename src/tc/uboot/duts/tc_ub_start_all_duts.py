@@ -38,6 +38,7 @@ dutslist = [
 "tc_ub_duts_fdt.py",
 "tc_ub_duts_go.py",
 "tc_ub_bdinfo.py",
+"tc_ub_duts_hush.py",
 ]
 
 for tc in dutslist:
