@@ -18,6 +18,9 @@
 # replace the marker with the content of the
 # filename it refers. Write the new file to
 # the outputfile
+# you can cut a long logfile with:
+# tbot_ref:[filename] cut length
+# this script will delete all lines > length and lines < filelength - length
 # 
 import os, sys
 import os.path
@@ -152,6 +155,18 @@ class replace_tbot_marker(object):
         logfile = self.line.split(self.searchstring)
         logfile = logfile[1]
         logfile = logfile.replace('\n', '')
+        options = logfile.split()
+        self.cutlen = 0
+        try:
+            name = options[1]
+            logfile = options[0]
+            if name == 'cut':
+                self.cutlen = int(options[2])
+                self.num_lines = sum(1 for line in open(self.options.tcpath + logfile))
+                print("CUT ", self.cutlen, num_lines)
+        except:
+            pass
+
         # open filename
         try:
             fl = open(self.options.tcpath + logfile, 'r')
@@ -163,6 +178,7 @@ class replace_tbot_marker(object):
         # and replace 'ttbott>' with '$'
         ln = fl.readline()
         pr_str = 'ttbott>'
+        i = 0
         while ln:
             found_line = False
             for ds in self.delete_line_list:
@@ -189,6 +205,14 @@ class replace_tbot_marker(object):
             ln = self.replace_lf(ln)
             self.write_line(ln)
             ln = fl.readline()
+            i += 1
+            if self.cutlen > 0:
+                if i > self.cutlen:
+                    self.write_line('[...]\n')
+                    while i < self.num_lines - self.cutlen:
+                        ln = fl.readline()
+                        i += 1
+                    self.cutlen = 0
 
         self.fo.write("\n")
         fl.close()
