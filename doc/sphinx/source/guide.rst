@@ -487,6 +487,19 @@ open in your browser the following page:
 
   http://localhost/read_db.php
 
+If you want to reset the dashboard:
+
+complete reset
+
+::
+
+  truncate tbot_root.tbot_results;
+
+delete the last XXX entries:
+
+::
+
+  DELETE FROM tbot_root.tbot_results ORDER BY id DESC limit XXX;
 
 
 tbot install documentation backend
