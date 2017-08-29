@@ -46,7 +46,7 @@ def analyse_one_page(tb, urll, url, page):
     target = url + "?order=" + tb.config.tc_workfd_get_patchwork_number_list_order + "&page=" + page
     data = urll.urlopen(target) # it's a file like object and works just like a file
 
-    fd =open('result.txt', 'w')
+    fd = open('result.txt', 'w')
     line = data.readline()
     while line:
         fd.write(line)
@@ -69,18 +69,22 @@ def analyse_one_page(tb, urll, url, page):
                     tmp = True
 
             # read delegated to
+            # there are 3 lines with "text-nowrap"
+            reg2 = re.compile('text-nowrap')
+            tmp = False
+            i = 0
+            for line2 in data: # files are iterable
+                fd.write(line2)
+                res = reg2.search(line2)
+                if res:
+                    i += 1
+                if i == 3:
+                   break
+
+            # plus one more line with a href ...
             line = data.readline()
             fd.write(line)
-            line = data.readline()
-            fd.write(line)
-            line = data.readline()
-            fd.write(line)
-            line = data.readline()
-            fd.write(line)
-            line = data.readline()
-            fd.write(line)
-            line = data.readline()
-            fd.write(line)
+            # finally read the line with the delegated to
             line = data.readline()
             fd.write(line)
             line = line.split('>')[1]
