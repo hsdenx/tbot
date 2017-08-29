@@ -34,13 +34,14 @@ cmdlist = [
 "help sleep",
 "sleep 5",
 "help version",
+"help reset",
 ]
 
 c = tb.c_con
 tb.eof_write_cmd_list(c, cmdlist, create_doc_event=True)
 
-cmd = "version"
-tb.eof_write(c, cmd)
+self.event.create_event('main', 'tc_ub_basic.py', 'SET_DOC_FILENAME', 'version')
+tb.eof_write(c, 'version')
 searchlist = ["U-Boot "]
 tmp = True
 cmd_ok = False
@@ -50,5 +51,9 @@ while tmp == True:
         cmd_ok = True
     elif ret == 'prompt':
         tmp = False
+
+self.event.create_event('main', 'tc_ub_basic.py', 'SET_DOC_FILENAME', 'reset')
+tb.eof_write(c, 'reset')
+tb.set_board_state("u-boot")
 
 tb.end_tc(cmd_ok)
