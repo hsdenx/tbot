@@ -338,6 +338,13 @@ means that the serial device provides input (flag 'I') and output (flag 'O') fun
 
 .. include:: u-boot-script.rst
 
+.. only:: test_py_start_tb_con_1_1.txt
+.. raw:: pdf
+
+   PageBreak
+
+.. include:: u-boot-testpy.rst
+.. only_end::
 
 
 links

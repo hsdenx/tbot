@@ -1,0 +1,535 @@
+^C                                                                                                                      
+hs@localhost [15:09:39] ttbott> PATH=/home/hs/data/Entwicklung/test_py_scripts/hook-scripts:$PATH;PYTHONPATH=/work/hs/tb
+ot/u-boot-am335x_evm;./test/py/test.py --bd am335x_evm -s --build-dir .                                                 
++u-boot-test-flash am335x_evm na                                                                                        
+board type  am335x_evm                                                                                                  
+No flashing supported yet                                                                                               
+========================================================================================= test session starts ==========
+================================================================================                                        
+platform linux2 -- Python 2.7.8, pytest-3.2.1, py-1.4.34, pluggy-0.4.0                                                  
+rootdir: /work/hs/tbot/u-boot-am335x_evm/test/py, inifile: pytest.ini                                                   
+collecting 0 items                                                                                                      
+collecting 1 item                                                                                                       
+collecting 2 items                                                                                                      
+collecting 8 items                                                                                                      
+collecting 16 items                                                                                                     
+collecting 17 items                                                                                                     
+collecting 18 items                                                                                                     
+collecting 73 items                                                                                                     
+collecting 75 items                                                                                                     
+collecting 81 items                                                                                                     
+collecting 82 items                                                                                                     
+collecting 84 items                                                                                                     
+collecting 88 items                                                                                                     
+collecting 89 items                                                                                                     
+collecting 90 items                                                                                                     
+collecting 91 items                                                                                                     
+collecting 93 items                                                                                                     
+collecting 94 items                                                                                                     
+collected 94 items                                                                                                      
+                                                                                                                        
++u-boot-test-reset am335x_evm na                                                                                        
+board type  am335x_evm                                                                                                  
+fixing am335x_evm                                                                                                       
+Accessing Gembird #0 USB device 013                                                                                     
+Switched outlet 1 off                                                                                                   
+Accessing Gembird #0 USB device 013                                                                                     
+Switched outlet 1 on                                                                                                    
+fixing am335x_evm                                                                                                       
+board type  bbb                                                                                                         
+Connecting to /dev/ttybbb, speed 115200                                                                                 
+ Escape character: Ctrl-\ (ASCII 28, FS): enabled                                                                       
+Type the escape character followed by C to get back,                                                                    
+or followed by ? to see other options.                                                                                  
+----------------------------------------------------                                                                    
+                                                                                                                        
+U-Boot SPL 2017.09-rc2-00151-g2d7cb5b (Aug 23 2017 - 08:35:31)                                                          
+Trying to boot from MMC2                                                                                                
+reading uboot.env                                                                                                       
+                                                                                                                        
+** Unable to read "uboot.env" from mmc0:1 **                                                                            
+Using default environment                                                                                               
+                                                                                                                        
+reading u-boot.img                                                                                                      
+reading u-boot.img                                                                                                      
+reading u-boot.img                                                                                                      
+reading u-boot.img                                                                                                      
+                                                                                                                        
+                                                                                                                        
+U-Boot 2017.09-rc2-00151-g2d7cb5b (Aug 23 2017 - 08:35:31 +0200)                                                        
+                                                                                                                        
+CPU  : AM335X-GP rev 2.1                                                                                                
+Model: TI AM335x BeagleBone Black                                                                                       
+DRAM:  512 MiB                                                                                                          
+NAND:  0 MiB                                                                                                            
+MMC:   OMAP SD/MMC: 0, OMAP SD/MMC: 1                                                                                   
+reading uboot.env                                                                                                       
+ERROR: No USB device found                                                                                              
+                                                                                                                        
+at drivers/usb/gadget/ether.c:2709/usb_ether_init()                                                                     
+Net:   CACHE: Misaligned operation at range [9df2f440, 9df2f4e4]                                                        
+eth0: ethernet@4a100000                                                                                                 
+Hit any key to stop autoboot:  0                                                                                        
+=> => version                                                                                                           
+U-Boot 2017.09-rc2-00151-g2d7cb5b (Aug 23 2017 - 08:35:31 +0200)                                                        
+                                                                                                                        
+arm-linux-gnueabi-gcc (GCC) 4.7.2                                                                                       
+GNU ld (GNU Binutils) 2.23.1.20121113                                                                                   
+=>                                                                                                                      
+test/py/tests/test_000_version.py .                                                                                     
+test/py/tests/test_dfu.py s                                                                                             
+test/py/tests/test_efi_loader.py .sssss=> printenv                                                                      
+Heiko=Schocher                                                                                                          
+arch=arm                                                                                                                
+args_mmc=run finduuid;setenv bootargs console=${console} ${optargs} root=PARTUUID=${uuid} rw rootfstype=${mmcrootfstype}
+                                                                                                                        
+baudrate=115200                                                                                                         
+board=am335x                                                                                                            
+board_name=A335BNLT                                                                                                     
+board_rev=00C0                                                                                                          
+board_serial=414BBBK0180                                                                                                
+boot_a_script=load ${devtype} ${devnum}:${distro_bootpart} ${scriptaddr} ${prefix}${script}; source ${scriptaddr}       
+boot_efi_binary=load ${devtype} ${devnum}:${distro_bootpart} ${kernel_addr_r} efi/boot/bootarm.efi; if fdt addr ${fdt_ad
+dr_r}; then bootefi ${kernel_addr_r} ${fdt_addr_r};else bootefi ${kernel_addr_r} ${fdtcontroladdr};fi                   
+boot_extlinux=sysboot ${devtype} ${devnum}:${distro_bootpart} any ${scriptaddr} ${prefix}extlinux/extlinux.conf         
+boot_fdt=try                                                                                                            
+boot_fit=0                                                                                                              
+boot_net_usb_start=usb start                                                                                            
+boot_prefixes=/ /boot/                                                                                                  
+boot_script_dhcp=boot.scr.uimg                                                                                          
+boot_scripts=boot.scr.uimg boot.scr                                                                                     
+boot_targets=mmc0 legacy_mmc0 mmc1 legacy_mmc1 nand0 pxe dhcp                                                           
+bootcmd=if test ${boot_fit} -eq 1; then run update_to_fit;fi;run findfdt; run init_console; run envboot; run distro_boot
+cmd                                                                                                                     
+bootcmd_dhcp=run boot_net_usb_start; if dhcp ${scriptaddr} ${boot_script_dhcp}; then source ${scriptaddr}; fi;setenv efi
+_fdtfile ${fdtfile}; if test -z "${fdtfile}" -a -n "${soc}"; then setenv efi_fdtfile ${soc}-${board}${boardver}.dtb; fi;
+ setenv efi_old_vci ${bootp_vci};setenv efi_old_arch ${bootp_arch};setenv bootp_vci PXEClient:Arch:00010:UNDI:003000;set
+env bootp_arch 0xa;if dhcp ${kernel_addr_r}; then tftpboot ${fdt_addr_r} dtb/${efi_fdtfile};if fdt addr ${fdt_addr_r}; t
+hen bootefi ${kernel_addr_r} ${fdt_addr_r}; else bootefi ${kernel_addr_r} ${fdtcontroladdr};fi;fi;setenv bootp_vci ${efi
+_old_vci};setenv bootp_arch ${efi_old_arch};setenv efi_fdtfile;setenv efi_old_arch;setenv efi_old_vci;                  
+bootcmd_legacy_mmc0=setenv mmcdev 0; setenv bootpart 0:2 ; run mmcboot                                                  
+bootcmd_legacy_mmc1=setenv mmcdev 1; setenv bootpart 1:2 ; run mmcboot                                                  
+bootcmd_mmc0=setenv devnum 0; run mmc_boot                                                                              
+bootcmd_mmc1=setenv devnum 1; run mmc_boot                                                                              
+bootcmd_nand=run nandboot                                                                                               
+bootcmd_pxe=run boot_net_usb_start; dhcp; if pxe get; then pxe boot; fi                                                 
+bootcount=1                                                                                                             
+bootdelay=2                                                                                                             
+bootdir=/boot                                                                                                           
+bootenvfile=uEnv.txt                                                                                                    
+bootfile=zImage                                                                                                         
+bootm_size=0x10000000                                                                                                   
+bootpart=0:2                                                                                                            
+bootscript=echo Running bootscript from mmc${mmcdev} ...; source ${loadaddr}                                            
+console=ttyO0,115200n8                                                                                                  
+cpu=armv7                                                                                                               
+dfu_alt_info_emmc=rawemmc raw 0 3751936                                                                                 
+dfu_alt_info_mmc=boot part 0 1;rootfs part 0 2;MLO fat 0 1;MLO.raw raw 0x100 0x100;u-boot.img.raw raw 0x300 0x1000;u-env
+.raw raw 0x1300 0x200;spl-os-args.raw raw 0x1500 0x200;spl-os-image.raw raw 0x1700 0x6900;spl-os-args fat 0 1;spl-os-ima
+ge fat 0 1;u-boot.img fat 0 1;uEnv.txt fat 0 1                                                                          
+dfu_alt_info_nand=SPL part 0 1;SPL.backup1 part 0 2;SPL.backup2 part 0 3;SPL.backup3 part 0 4;u-boot part 0 5;u-boot-spl
+-os part 0 6;kernel part 0 8;rootfs part 0 9                                                                            
+dfu_alt_info_ram=kernel ram 0x80200000 0x4000000;fdt ram 0x80f80000 0x80000;ramdisk ram 0x81000000 0x4000000            
+distro_bootcmd=for target in ${boot_targets}; do run bootcmd_${target}; done                                            
+efi_dtb_prefixes=/ /dtb/ /dtb/current/                                                                                  
+envboot=mmc dev ${mmcdev}; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run loadbootscript; then run boo
+tscript;else if run loadbootenv; then echo Loaded env from ${bootenvfile};run importbootenv;fi;if test -n $uenvcmd; then
+ echo Running uenvcmd ...;run uenvcmd;fi;fi;fi;                                                                         
+eth1addr=6c:ec:eb:83:40:33                                                                                              
+ethact=ethernet@4a100000                                                                                                
+ethaddr=6c:ec:eb:83:40:31                                                                                               
+fdt_addr_r=0x88000000                                                                                                   
+fdtaddr=0x88000000                                                                                                      
+fdtcontroladdr=9df21ed8                                                                                                 
+fdtfile=undefined                                                                                                       
+fileaddr=80100000                                                                                                       
+filesize=b3410                                                                                                          
+findfdt=if test $board_name = A335BONE; then setenv fdtfile am335x-bone.dtb; fi; if test $board_name = A335BNLT; then se
+tenv fdtfile am335x-boneblack.dtb; fi; if test $board_name = BBBW; then setenv fdtfile am335x-boneblack-wireless.dtb; fi
+; if test $board_name = BBG1; then setenv fdtfile am335x-bonegreen.dtb; fi; if test $board_name = BBGW; then setenv fdtf
+ile am335x-bonegreen-wireless.dtb; fi; if test $board_name = BBBL; then setenv fdtfile am335x-boneblue.dtb; fi; if test 
+$board_name = A33515BB; then setenv fdtfile am335x-evm.dtb; fi; if test $board_name = A335X_SK; then setenv fdtfile am33
+5x-evmsk.dtb; fi; if test $board_name = A335_ICE; then setenv fdtfile am335x-icev2.dtb; fi; if test $fdtfile = undefined
+; then echo WARNING: Could not determine device tree to use; fi;                                                        
+finduuid=part uuid mmc ${bootpart} uuid                                                                                 
+fit_bootfile=fitImage                                                                                                   
+fit_loadaddr=0x88000000                                                                                                 
+importbootenv=echo Importing environment from mmc${mmcdev} ...; env import -t ${loadaddr} ${filesize}                   
+init_console=if test $board_name = A335_ICE; then setenv console ttyO3,115200n8;else setenv console ttyO0,115200n8;fi;  
+ipaddr=192.168.2.10                                                                                                     
+kernel_addr_r=0x82000000                                                                                                
+load_efi_dtb=load ${devtype} ${devnum}:${distro_bootpart} ${fdt_addr_r} ${prefix}${efi_fdtfile}                         
+loadaddr=0x82000000                                                                                                     
+loadbootenv=fatload mmc ${mmcdev} ${loadaddr} ${bootenvfile}                                                            
+loadbootscript=load mmc ${mmcdev} ${loadaddr} boot.scr                                                                  
+loadfdt=load ${devtype} ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile}                                                    
+loadfit=run args_mmc; bootm ${loadaddr}#${fdtfile};                                                                     
+loadimage=load ${devtype} ${bootpart} ${loadaddr} ${bootdir}/${bootfile}                                                
+loadramdisk=load mmc ${mmcdev} ${rdaddr} ramdisk.gz                                                                     
+mmc_boot=if mmc dev ${devnum}; then setenv devtype mmc; run scan_dev_for_boot_part; fi                                  
+mmcboot=mmc dev ${mmcdev}; setenv devnum ${mmcdev}; setenv devtype mmc; if mmc rescan; then echo SD/MMC found on device 
+${mmcdev};if run loadimage; then if test ${boot_fit} -eq 1; then run loadfit; else run mmcloados;fi;fi;fi;              
+mmcdev=0                                                                                                                
+mmcloados=run args_mmc; if test ${boot_fdt} = yes || test ${boot_fdt} = try; then if run loadfdt; then bootz ${loadaddr}
+ - ${fdtaddr}; else if test ${boot_fdt} = try; then bootz; else echo WARN: Cannot load the DT; fi; fi; else bootz; fi;  
+mmcrootfstype=ext4 rootwait                                                                                             
+mtdids=nand0=nand.0                                                                                                     
+mtdparts=mtdparts=nand.0:128k(NAND.SPL),128k(NAND.SPL.backup1),128k(NAND.SPL.backup2),128k(NAND.SPL.backup3),256k(NAND.u
+-boot-spl-os),1m(NAND.u-boot),128k(NAND.u-boot-env),128k(NAND.u-boot-env.backup1),8m(NAND.kernel),-(NAND.file-system)   
+nandargs=setenv bootargs console=${console} ${optargs} root=${nandroot} rootfstype=${nandrootfstype}                    
+nandboot=echo Booting from nand ...; run nandargs; nand read ${fdtaddr} NAND.u-boot-spl-os; nand read ${loadaddr} NAND.k
+ernel; bootz ${loadaddr} - ${fdtaddr}                                                                                   
+nandroot=ubi0:rootfs rw ubi.mtd=NAND.file-system,2048                                                                   
+nandrootfstype=ubifs rootwait=1                                                                                         
+netargs=setenv bootargs console=${console} ${optargs} root=/dev/nfs nfsroot=${serverip}:${rootpath},${nfsopts} rw ip=dhc
+p                                                                                                                       
+netboot=echo Booting from network ...; setenv autoload no; dhcp; run netloadimage; run netloadfdt; run netargs; bootz ${
+loadaddr} - ${fdtaddr}                                                                                                  
+netloadfdt=tftp ${fdtaddr} ${fdtfile}                                                                                   
+netloadimage=tftp ${loadaddr} ${bootfile}                                                                               
+netmask=255.255.255.0                                                                                                   
+nfsopts=nolock                                                                                                          
+partitions=uuid_disk=${uuid_gpt_disk};name=rootfs,start=2MiB,size=-,uuid=${uuid_gpt_rootfs}                             
+pxefile_addr_r=0x80100000                                                                                               
+ramargs=setenv bootargs console=${console} ${optargs} root=${ramroot} rootfstype=${ramrootfstype}                       
+ramboot=echo Booting from ramdisk ...; run ramargs; bootz ${loadaddr} ${rdaddr} ${fdtaddr}                              
+ramdisk_addr_r=0x88080000                                                                                               
+ramroot=/dev/ram0 rw                                                                                                    
+ramrootfstype=ext2                                                                                                      
+rdaddr=0x88080000                                                                                                       
+rootpath=/export/rootfs                                                                                                 
+scan_dev_for_boot=echo Scanning ${devtype} ${devnum}:${distro_bootpart}...; for prefix in ${boot_prefixes}; do run scan_
+dev_for_extlinux; run scan_dev_for_scripts; done;run scan_dev_for_efi;                                                  
+scan_dev_for_boot_part=part list ${devtype} ${devnum} -bootable devplist; env exists devplist || setenv devplist 1; for 
+distro_bootpart in ${devplist}; do if fstype ${devtype} ${devnum}:${distro_bootpart} bootfstype; then run scan_dev_for_b
+oot; fi; done                                                                                                           
+scan_dev_for_efi=setenv efi_fdtfile ${fdtfile}; if test -z "${fdtfile}" -a -n "${soc}"; then setenv efi_fdtfile ${soc}-$
+{board}${boardver}.dtb; fi; for prefix in ${efi_dtb_prefixes}; do if test -e ${devtype} ${devnum}:${distro_bootpart} ${p
+refix}${efi_fdtfile}; then run load_efi_dtb; fi;done;if test -e ${devtype} ${devnum}:${distro_bootpart} efi/boot/bootarm
+.efi; then echo Found EFI removable media binary efi/boot/bootarm.efi; run boot_efi_binary; echo EFI LOAD FAILED: contin
+uing...; fi; setenv efi_fdtfile                                                                                         
+scan_dev_for_extlinux=if test -e ${devtype} ${devnum}:${distro_bootpart} ${prefix}extlinux/extlinux.conf; then echo Foun
+d ${prefix}extlinux/extlinux.conf; run boot_extlinux; echo SCRIPT FAILED: continuing...; fi                             
+scan_dev_for_scripts=for script in ${boot_scripts}; do if test -e ${devtype} ${devnum}:${distro_bootpart} ${prefix}${scr
+ipt}; then echo Found U-Boot script ${prefix}${script}; run boot_a_script; echo SCRIPT FAILED: continuing...; fi; done  
+scriptaddr=0x80000000                                                                                                   
+serverip=192.168.2.1                                                                                                    
+soc=am33xx                                                                                                              
+spiargs=setenv bootargs console=${console} ${optargs} root=${spiroot} rootfstype=${spirootfstype}                       
+spiboot=echo Booting from spi ...; run spiargs; sf probe ${spibusno}:0; sf read ${loadaddr} ${spisrcaddr} ${spiimgsize};
+ bootz ${loadaddr}                                                                                                      
+spibusno=0                                                                                                              
+spiimgsize=0x362000                                                                                                     
+spiroot=/dev/mtdblock4 rw                                                                                               
+spirootfstype=jffs2                                                                                                     
+spisrcaddr=0xe0000                                                                                                      
+static_ip=${ipaddr}:${serverip}:${gatewayip}:${netmask}:${hostname}::off                                                
+stderr=serial@44e09000                                                                                                  
+stdin=serial@44e09000                                                                                                   
+stdout=serial@44e09000                                                                                                  
+test=test2                                                                                                              
+test2=echo This is another Test;printenv hostname;echo Done.                                                            
+update_to_fit=setenv loadaddr ${fit_loadaddr}; setenv bootfile ${fit_bootfile}                                          
+usb_boot=usb start; if usb dev ${devnum}; then setenv devtype usb; run scan_dev_for_boot_part; fi                       
+vendor=ti                                                                                                               
+ver=U-Boot 2017.09-rc2-00151-g2d7cb5b (Aug 23 2017 - 08:35:31 +0200)                                                    
+                                                                                                                        
+Environment size: 9569/131068 bytes                                                                                     
+=> printenv rdaddr                                                                                                      
+rdaddr=0x88080000                                                                                                       
+=>                                                                                                                      
+test/py/tests/test_env.py .=> echo $test_env_0                                                                          
+                                                                                                                        
+=> .=> printenv test_env_0                                                                                              
+## Error: "test_env_0" not defined                                                                                      
+=> .=> setenv test_env_0                                                                                                
+=> echo $test_env_0                                                                                                     
+                                                                                                                        
+=> .=> setenv test_env_0 "foo"                                                                                          
+=> printenv test_env_0                                                                                                  
+test_env_0=foo                                                                                                          
+=> .=> setenv test_env_0 "bar"                                                                                          
+=> printenv test_env_0                                                                                                  
+test_env_0=bar                                                                                                          
+=> .=> setenv test_env_0                                                                                                
+=> echo $test_env_0                                                                                                     
+                                                                                                                        
+=> .=> setenv test_env_0 " "                                                                                            
+=> setenv test_env_1 " 1${test_env_0}${test_env_0} 2 "                                                                  
+=> printenv test_env_1                                                                                                  
+test_env_1= 1   2                                                                                                       
+=> setenv test_env_0                                                                                                    
+=> setenv test_env_1                                                                                                    
+=> .                                                                                                                    
+test/py/tests/test_fit.py s=> help                                                                                      
+?       - alias for 'help'                                                                                              
+askenv  - get environment variables from stdin                                                                          
+base    - print or set address offset                                                                                   
+bdinfo  - print Board Info structure                                                                                    
+boot    - boot default, i.e., run 'bootcmd'                                                                             
+bootd   - boot default, i.e., run 'bootcmd'                                                                             
+bootefi - Boots an EFI payload from memory                                                                              
+bootelf - Boot from an ELF image in memory                                                                              
+bootm   - boot application image from memory                                                                            
+bootp   - boot image via network using BOOTP/TFTP protocol                                                              
+bootvx  - Boot vxWorks from an ELF image                                                                                
+bootz   - boot Linux zImage image from memory                                                                           
+chpart  - change active partition                                                                                       
+cmp     - memory compare                                                                                                
+coninfo - print console devices and information                                                                         
+cp      - memory copy                                                                                                   
+crc32   - checksum calculation                                                                                          
+dfu     - Device Firmware Upgrade                                                                                       
+dhcp    - boot image via network using DHCP/TFTP protocol                                                               
+dm      - Driver model low level access                                                                                 
+echo    - echo args to console                                                                                          
+editenv - edit environment variable                                                                                     
+eeprom  - EEPROM sub-system                                                                                             
+env     - environment handling commands                                                                                 
+exit    - exit script                                                                                                   
+ext2load- load binary file from a Ext2 filesystem                                                                       
+ext2ls  - list files in a directory (default /)                                                                         
+ext4load- load binary file from a Ext4 filesystem                                                                       
+ext4ls  - list files in a directory (default /)                                                                         
+ext4size- determine a file's size                                                                                       
+ext4write- create a file in the root directory                                                                          
+false   - do nothing, unsuccessfully                                                                                    
+fastboot- use USB Fastboot protocol                                                                                     
+fatinfo - print information about filesystem                                                                            
+fatload - load binary file from a dos filesystem                                                                        
+fatls   - list files in a directory (default /)                                                                         
+fatsize - determine a file's size                                                                                       
+fatwrite- write file into a dos filesystem                                                                              
+fdt     - flattened device tree utility commands                                                                        
+fstype  - Look up a filesystem type                                                                                     
+go      - start application at address 'addr'                                                                           
+gpio    - query and control gpio pins                                                                                   
+gpt     - GUID Partition Table                                                                                          
+help    - print command description/usage                                                                               
+i2c     - I2C sub-system                                                                                                
+iminfo  - print header information for application image                                                                
+imxtract- extract a part of a multi-image                                                                               
+itest   - return true/false on integer compare                                                                          
+load    - load binary file from a filesystem                                                                            
+loadb   - load binary file over serial line (kermit mode)                                                               
+loads   - load S-Record file over serial line                                                                           
+loadx   - load binary file over serial line (xmodem mode)                                                               
+loady   - load binary file over serial line (ymodem mode)                                                               
+loop    - infinite loop on address range                                                                                
+ls      - list files in a directory (default /)                                                                         
+md      - memory display                                                                                                
+mdio    - MDIO utility commands                                                                                         
+mii     - MII utility commands                                                                                          
+mm      - memory modify (auto-incrementing address)                                                                     
+mmc     - MMC sub system                                                                                                
+mmcinfo - display MMC info                                                                                              
+mtdparts- define flash/nand partitions                                                                                  
+mw      - memory write (fill)                                                                                           
+nand    - NAND sub-system                                                                                               
+nboot   - boot from NAND device                                                                                         
+nfs     - boot image via network using NFS protocol                                                                     
+nm      - memory modify (constant address)                                                                              
+part    - disk partition related commands                                                                               
+ping    - send ICMP ECHO_REQUEST to network host                                                                        
+printenv- print environment variables                                                                                   
+pxe     - commands to get and boot from pxe files                                                                       
+reset   - Perform RESET of the CPU                                                                                      
+run     - run commands in an environment variable                                                                       
+save    - save file to a filesystem                                                                                     
+saveenv - save environment variables to persistent storage                                                              
+setenv  - set environment variables                                                                                     
+sf      - SPI flash sub-system                                                                                          
+showvar - print local hushshell variables                                                                               
+size    - determine a file's size                                                                                       
+sleep   - delay execution for some time                                                                                 
+source  - run script from memory                                                                                        
+spl     - SPL configuration                                                                                             
+sspi    - SPI utility command                                                                                           
+sysboot - command to get and boot from syslinux files                                                                   
+test    - minimal test like /bin/sh                                                                                     
+tftpboot- boot image via network using TFTP protocol                                                                    
+time    - run commands and summarize execution time                                                                     
+true    - do nothing, successfully                                                                                      
+usb     - USB sub-system                                                                                                
+usbboot - boot from USB device                                                                                          
+version - print monitor, compiler and linker version                                                                    
+=>                                                                                                                      
+test/py/tests/test_help.py .=> setenv ut_var_nonexistent                                                                
+=> setenv ut_var_exists 1                                                                                               
+=>                                                                                                                      
+test/py/tests/test_hush_if_test.py .=> if true; then echo true; else echo false; fi                                     
+true                                                                                                                    
+=> .=> if false; then echo true; else echo false; fi                                                                    
+false                                                                                                                   
+=> .=> if test aaa = aaa; then echo true; else echo false; fi                                                           
+true                                                                                                                    
+=> .=> if test aaa = bbb; then echo true; else echo false; fi                                                           
+false                                                                                                                   
+=> .=> if test aaa != bbb; then echo true; else echo false; fi                                                          
+true                                                                                                                    
+=> .=> if test aaa != aaa; then echo true; else echo false; fi                                                          
+false                                                                                                                   
+=> .=> if test aaa < bbb; then echo true; else echo false; fi                                                           
+true                                                                                                                    
+=> .=> if test bbb < aaa; then echo true; else echo false; fi                                                           
+false                                                                                                                   
+=> .=> if test bbb > aaa; then echo true; else echo false; fi                                                           
+true                                                                                                                    
+=> .=> if test aaa > bbb; then echo true; else echo false; fi                                                           
+false                                                                                                                   
+=> .=> if test 123 -eq 123; then echo true; else echo false; fi                                                         
+true                                                                                                                    
+=> .=> if test 123 -eq 456; then echo true; else echo false; fi                                                         
+false                                                                                                                   
+=> .=> if test 123 -ne 456; then echo true; else echo false; fi                                                         
+true                                                                                                                    
+=> .=> if test 123 -ne 123; then echo true; else echo false; fi                                                         
+false                                                                                                                   
+=> .=> if test 123 -lt 456; then echo true; else echo false; fi                                                         
+true                                                                                                                    
+=> .=> if test 123 -lt 123; then echo true; else echo false; fi                                                         
+false                                                                                                                   
+=> .=> if test 456 -lt 123; then echo true; else echo false; fi                                                         
+false                                                                                                                   
+=> .=> if test 123 -le 456; then echo true; else echo false; fi                                                         
+true                                                                                                                    
+=> .=> if test 123 -le 123; then echo true; else echo false; fi                                                         
+true                                                                                                                    
+=> .=> if test 456 -le 123; then echo true; else echo false; fi                                                         
+false                                                                                                                   
+=> .=> if test 456 -gt 123; then echo true; else echo false; fi                                                         
+true                                                                                                                    
+=> .=> if test 123 -gt 123; then echo true; else echo false; fi                                                         
+false                                                                                                                   
+=> .=> if test 123 -gt 456; then echo true; else echo false; fi                                                         
+false                                                                                                                   
+=> .=> if test 456 -ge 123; then echo true; else echo false; fi                                                         
+true                                                                                                                    
+=> .=> if test 123 -ge 123; then echo true; else echo false; fi                                                         
+true                                                                                                                    
+=> .=> if test 123 -ge 456; then echo true; else echo false; fi                                                         
+false                                                                                                                   
+=> .=> if test -z ""; then echo true; else echo false; fi                                                               
+true                                                                                                                    
+=> .=> if test -z "aaa"; then echo true; else echo false; fi                                                            
+false                                                                                                                   
+=> .=> if test -n "aaa"; then echo true; else echo false; fi                                                            
+true                                                                                                                    
+=> .=> if test -n ""; then echo true; else echo false; fi                                                               
+false                                                                                                                   
+=> .=> if test ! aaa = aaa; then echo true; else echo false; fi                                                         
+false                                                                                                                   
+=> .=> if test ! aaa = bbb; then echo true; else echo false; fi                                                         
+true                                                                                                                    
+=> .=> if test ! ! aaa = aaa; then echo true; else echo false; fi                                                       
+true                                                                                                                    
+=> .=> if test ! ! aaa = bbb; then echo true; else echo false; fi                                                       
+false                                                                                                                   
+=> .=> if test aaa != aaa -o bbb != bbb; then echo true; else echo false; fi                                            
+false                                                                                                                   
+=> .=> if test aaa != aaa -o bbb = bbb; then echo true; else echo false; fi                                             
+true                                                                                                                    
+=> .=> if test aaa = aaa -o bbb != bbb; then echo true; else echo false; fi                                             
+true                                                                                                                    
+=> .=> if test aaa = aaa -o bbb = bbb; then echo true; else echo false; fi                                              
+true                                                                                                                    
+=> .=> if test aaa != aaa -a bbb != bbb; then echo true; else echo false; fi                                            
+false                                                                                                                   
+=> .=> if test aaa != aaa -a bbb = bbb; then echo true; else echo false; fi                                             
+false                                                                                                                   
+=> .=> if test aaa = aaa -a bbb != bbb; then echo true; else echo false; fi                                             
+false                                                                                                                   
+=> .=> if test aaa = aaa -a bbb = bbb; then echo true; else echo false; fi                                              
+true                                                                                                                    
+=> .=> if test ! aaa != aaa -o ! bbb != bbb; then echo true; else echo false; fi                                        
+true                                                                                                                    
+=> .=> if test ! aaa != aaa -o ! bbb = bbb; then echo true; else echo false; fi                                         
+true                                                                                                                    
+=> .=> if test ! aaa = aaa -o ! bbb != bbb; then echo true; else echo false; fi                                         
+true                                                                                                                    
+=> .=> if test ! aaa = aaa -o ! bbb = bbb; then echo true; else echo false; fi                                          
+false                                                                                                                   
+=> .=> if test ! ! aaa != aaa -o ! ! bbb != bbb; then echo true; else echo false; fi                                    
+false                                                                                                                   
+=> .=> if test ! ! aaa != aaa -o ! ! bbb = bbb; then echo true; else echo false; fi                                     
+true                                                                                                                    
+=> .=> if test ! ! aaa = aaa -o ! ! bbb != bbb; then echo true; else echo false; fi                                     
+true                                                                                                                    
+=> .=> if test ! ! aaa = aaa -o ! ! bbb = bbb; then echo true; else echo false; fi                                      
+true                                                                                                                    
+=> .=> if test -z "$ut_var_nonexistent"; then echo true; else echo false; fi                                            
+true                                                                                                                    
+=> .=> if test -z "$ut_var_exists"; then echo true; else echo false; fi                                                 
+false                                                                                                                   
+=> .=> setenv ut_var_exists                                                                                             
+=> .s=> bdinfo                                                                                                          
+arch_number = 0x00000E05                                                                                                
+boot_params = 0x80000100                                                                                                
+DRAM bank   = 0x00000000                                                                                                
+-> start    = 0x80000000                                                                                                
+-> size     = 0x20000000                                                                                                
+baudrate    = 115200 bps                                                                                                
+TLB addr    = 0x9FFF0000                                                                                                
+relocaddr   = 0x9FF4E000                                                                                                
+reloc off   = 0x1F74E000                                                                                                
+irq_sp      = 0x9DF21EC0                                                                                                
+sp start    = 0x9DF21EB0                                                                                                
+Early malloc usage: 188 / 400                                                                                           
+fdt_blob = 9df21ed8                                                                                                     
+=> => mw 80000000 0 10                                                                                                  
+=> md 80000000 10                                                                                                       
+80000000: 00000000 00000000 00000000 00000000    ................                                                       
+80000010: 00000000 00000000 00000000 00000000    ................                                                       
+80000020: 00000000 00000000 00000000 00000000    ................                                                       
+80000030: 00000000 00000000 00000000 00000000    ................                                                       
+=> mw 80000000 a5f09876                                                                                                 
+=> md 80000000 10                                                                                                       
+80000000: a5f09876 00000000 00000000 00000000    v...............                                                       
+80000010: 00000000 00000000 00000000 00000000    ................                                                       
+80000020: 00000000 00000000 00000000 00000000    ................                                                       
+80000030: 00000000 00000000 00000000 00000000    ................                                                       
+=>                                                                                                                      
+test/py/tests/test_md.py .=> md 80000000 10                                                                             
+80000000: a5f09876 00000000 00000000 00000000    v...............                                                       
+80000010: 00000000 00000000 00000000 00000000    ................                                                       
+80000020: 00000000 00000000 00000000 00000000    ................                                                       
+80000030: 00000000 00000000 00000000 00000000    ................                                                       
+=>                                                                                                                      
+80000040: fbffffd7 dfffffff effffdd6 fdd7e777    ............w...                                                       
+80000050: ffffffff ffffffff fffffeff dfdfdeff    ................                                                       
+80000060: fffdff4d eff7efdf d3ff3ff7 feffdfff    M........?......                                                       
+80000070: fbfefffd f5ffffff ffb6fdfe f5fdfdff    ................                                                       
+=> .                                                                                                                    
+test/py/tests/test_net.py .sssss                                                                                        
+test/py/tests/test_ofplatdata.py s                                                                                      
+test/py/tests/test_sandbox_exit.py ss=> echo hello                                                                      
+hello                                                                                                                   
+=>                                                                                                                      
+test/py/tests/test_shell_basics.py .=> echo hello; echo world                                                           
+hello                                                                                                                   
+world                                                                                                                   
+=> .=> setenv list 1; setenv list ${list}2; setenv list ${list}3; echo ${list}                                          
+123                                                                                                                     
+=> setenv list                                                                                                          
+=> .=> setenv foo "setenv monty 1; setenv python 2"                                                                     
+=> run foo                                                                                                              
+=> echo $monty                                                                                                          
+1                                                                                                                       
+=> echo $python                                                                                                         
+2                                                                                                                       
+=> setenv foo                                                                                                           
+=> setenv monty                                                                                                         
+=> setenv python                                                                                                        
+=> .=> sleep 3                                                                                                          
+=>                                                                                                                      
+test/py/tests/test_sleep.py .                                                                                           
+test/py/tests/test_ums.py s=> non_existent_cmd                                                                          
+Unknown command 'non_existent_cmd' - try 'help'                                                                         
+=>                                                                                                                      
+test/py/tests/test_unknown_cmd.py .                                                                                     
+test/py/tests/test_ut.py ss                                                                                             
+test/py/tests/test_vboot.py s                                                                                           
+                                                                                                                        
+================================================================================ 74 passed, 20 skipped in 12.71 seconds 
+================================================================================                                        
+hs@localhost [15:09:53] ttbott>                                                                                         
