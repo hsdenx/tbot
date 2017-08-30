@@ -122,6 +122,15 @@ This depends on the toolchain you use.
   $ export CROSS_COMPILE=arm-linux-gnueabi-
   $ 
 
+If you have no toolchain installed, may you try buildman (see U-Boot code
+tools/buildman) to fetch a toolchain:
+
+::
+
+   cd /path/to/u-boot
+   PATH=$PATH:`pwd`/tools/buildman
+   buildman --fetch-arch arm
+
 .. raw:: pdf
 
    PageBreak
