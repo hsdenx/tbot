@@ -36,6 +36,7 @@ if (tb.config.tc_ub_memory_ram_ws_base == 'undef'):
     tb.uboot_config_option = 'CONFIG_SYS_SDRAM_BASE'
     tb.eof_call_tc("tc_workfd_get_uboot_config_hex.py")
     tb.config.tc_ub_memory_ram_ws_base = tb.config_result
+    tb.event.create_event('main', tb.config.boardname, "DUTS_UBOOT_SDRAM_BASE", tb.config.tc_ub_memory_ram_ws_base)
 
 if (tb.config.tc_ub_memory_ram_ws_base_alt == 'undef'):
     try:
@@ -44,11 +45,13 @@ if (tb.config.tc_ub_memory_ram_ws_base_alt == 'undef'):
         tb.end_tc(False)
     tmp += 1024 * 1024
     tb.config.tc_ub_memory_ram_ws_base_alt = hex(tmp)
+    tb.event.create_event('main', tb.config.boardname, "DUTS_UBOOT_SDRAM_BASE_ALT", tb.config.tc_ub_memory_ram_ws_base_alt)
 
 if (tb.config.tc_ub_memory_ram_big == 'undef'):
     # Try to get CONFIG_SYS_ARCH
     tb.uboot_config_option = 'CONFIG_SYS_ARCH'
     tb.eof_call_tc("tc_workfd_get_uboot_config_string.py")
+    tb.event.create_event('main', tb.config.boardname, "DUTS_UBOOT_ARCH", tb.config_result)
     if tb.config_result == 'powerpc':
         tb.config.tc_ub_memory_ram_big = 'yes'
     else:
