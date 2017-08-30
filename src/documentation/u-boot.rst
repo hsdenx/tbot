@@ -87,6 +87,15 @@ This depends on the toolchain you use.
 
 tbot_ref:tc_workfd_set_toolchain.py_tb_ctrl_1_1.txt
 
+If you have no toolchain installed, may you try buildman (see U-Boot code
+tools/buildman) to fetch a toolchain:
+
+::
+
+   cd /path/to/u-boot
+   PATH=$PATH:`pwd`/tools/buildman
+   buildman --fetch-arch DUTS_UBOOT_ARCH
+
 .. raw:: pdf
 
    PageBreak
