@@ -19,6 +19,13 @@ Buy the following hw
 [2] Gembird Silver Shield PM power controller
     https://www.amazon.de/EG-PMS2-programmierbare-Steckdosenleiste-%C3%9Cberspannungsschutz-Schnittstelle/dp/B00BAQZJ4K/ref=sr_1_3?ie=UTF8&qid=1502686146&sr=8-3&keywords=SIS-PMS+Silvershield+Power+Manager
 
+    If you do not get the gembird powercontroller, you can use tbot
+    without controlling boards power ... try `interactive power mode`_
+
+    This is also a good startig point for running tbot with another power controller.
+
+    `Using tbot without Gembirds powercontroller`_
+
 [3] USB2serial FTDI
     http://elinux.org/Beagleboard:BeagleBone_Black_Accessories#Serial_Debug_Cables
 
@@ -914,5 +921,75 @@ More to udev rules:
 
 https://wiki.archlinux.org/index.php/udev
 
+interactive power mode
+......................
+
+If you do not have a power controller handy, or you want to
+start fast with tbot, you may interested in powering on/off
+the board with your hands ... so there is a testcase for this
+usecase:
+
+https://github.com/hsdenx/tbot/blob/master/src/tc/lab/denx/tc_lab_interactive_power.py
+
+Do all the setup steps from `install paramiko on [5]`_ until `copy some existing lab config to your new config`_
+
+Now, simply change in your new lab config file, you created:
+
+.. image:: image/guide/guide_interactive_power.png
 
 
+and continue with the step `Adapt the setting for accessing your labPC`_
+
+(Of course without step `Adapt settings for Gembird Powercontroller`_)
+
+Here an example gif "video":
+
+.. image:: image/guide/guide_interactive.gif
+
+This is also a good example, how you can use tbot with another power controller, so:
+
+Using tbot without Gembirds powercontroller
+...........................................
+
+You must have the possibility to power on the board through
+a cmdline on the LabPC. Then you can write a new tbot testcase, which exactly
+does this for you, and simply set the "tc_lab_denx_power_tc" value in your
+lab config file to the name of your new testcase.
+tbot uses than your testcase for powering on / off the board.
+
+see for example:
+
+`interactive power mode`_
+
+In your new testcase, look at "tb.power_state" to get the info, if
+you must power on or off the board.
+
+May you have the possibility to controll more than one board with
+your power controller, than you can differ between the different
+boards in your power testcase through the config variable:
+
+::
+
+  tb.config.boardlabpowername
+
+If you have the possibility to read back the current state of the
+power to your board, you should also write a testcase for this,
+and add the name of your new testcase to "tc_lab_denx_get_power_state_tc"
+
+Your new testcase should set
+
+::
+
+        tb.power_state = 'on'
+
+if the power is on
+or
+
+::
+
+        tb.power_state = 'off'
+
+if the power is off.
+
+If you cannot read back the state, simply return True, and tbot uses the last
+state it set ... not perfect, but better than nothing ...
