@@ -64,15 +64,20 @@ class dashboard(object):
         self.dbname = dbname
         self.tname = tname
         self.webdir = '/var/www/html'
+        self.init_ok = True
         try:
             self.connection = MySQLdb.connect(self.host, self.user, self.pw, self.dbname)
         except:
             logging.warn("Could not connect to host %s", self.host)
+            self.init_ok = False
+            return
 
         try:
             self.cursor = self.connection.cursor()
         except:
             logging.warn("Could not connect to DB %s", self.dbname)
+            self.init_ok = False
+            return
 
     def _insert(self, query):
         try:
@@ -97,6 +102,10 @@ class dashboard(object):
     def insert_test_into_db(self):
         """starts with filling the DB
         """
+        if self.init_ok == False:
+            logging.warn("DB not correct initialized.")
+            return
+
         evl = list(self.tb.event.event_list)
         self.dt = ''
         self.tool = 'unknown'
