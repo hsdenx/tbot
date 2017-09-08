@@ -21,7 +21,7 @@
 # starts an iperf "slave" on tb.tc_workfd_c_sl
 # waiting for the first result of iperf measure and
 # check if the resulting speed is bigger then
-# tb.tc_workfd_iperf_minval
+# tb.config.tc_workfd_iperf_minval
 #
 # if you have not the iperf cmd instead iperf 3, you can
 # set
@@ -41,7 +41,7 @@ try:
 except:
     tb.config.tc_workfd_c_sl_vers = ''
 
-logging.info("args: workfd %s %s %s %s", tb.tc_workfd_c_sr.name, tb.tc_workfd_c_sl.name, tb.tc_workfd_iperf_sip, tb.tc_workfd_iperf_minval)
+logging.info("args: workfd %s %s %s %s", tb.tc_workfd_c_sr.name, tb.tc_workfd_c_sl.name, tb.tc_workfd_iperf_sip, tb.config.tc_workfd_iperf_minval)
 logging.info("args: %s %s", tb.config.tc_workfd_c_sr_vers, tb.config.tc_workfd_c_sl_vers)
 
 tb.set_board_state("linux")
@@ -101,7 +101,7 @@ while tmp == True:
 
         if tmp2[2] == timestring:
             val = float(tmp2[6])
-            if val > tb.tc_workfd_iperf_minval:
+            if val > tb.config.tc_workfd_iperf_minval:
                 result = True
     elif ret == 'prompt':
         tmp = False
