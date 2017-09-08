@@ -145,6 +145,13 @@ class tbot(object):
             print("board cfg file %s not found" % cfgfile)
             sys.exit(1)
 
+        try:
+            self.config.config_list
+            for f in self.config.config_list:
+                self.insert_config(f)
+        except:
+            pass
+
         # load lab settigs ...
         self.overwrite_config(labfile)
 
@@ -241,6 +248,17 @@ class tbot(object):
 
     def __del__(self):
         time.sleep(1)
+
+    def insert_config(self, filename):
+        try:
+            self.insert_cfg = importlib.import_module(filename)
+        except Exception as e:
+            print("insert_config ", e)
+            sys.exit(1)
+
+        for ins in self.insert_cfg.__dict__.items():
+            if not ins[0].startswith('__'):
+                self.config.__dict__.update({ins[0] : ins[1]})
 
     def overwrite_config(self, filename):
         try:
