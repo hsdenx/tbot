@@ -190,13 +190,21 @@ class Connection(object):
         """
         return self.prompt
 
-    def set_prompt(self, newprompt):
+    def get_prompt_type(self):
+        """simple return the current prompt type
+
+        :return: string of current prompt type
+        """
+        return self.prompt_type
+
+    def set_prompt(self, newprompt, type):
         """set the new prompt string
 
         :param newprompt: string of new prompt
         :return:
         """
         self.prompt = newprompt
+        self.prompt_type = type
         return
 
     def set_lineend(self, lineend):

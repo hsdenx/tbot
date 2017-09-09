@@ -78,7 +78,7 @@ string = pack('h', 28)
 string = string[:1]
 c.send_raw(string)
 c.send_raw('C')
-c.set_prompt('C-Kermit>')
+c.set_prompt('C-Kermit>', 'linux')
 c.expect_prompt()
 
 tb.event.create_event('main', 'tc_uboot_load_bin_with_kermit.py', 'SET_DOC_FILENAME', 'loadb_kermit_settings')
@@ -99,7 +99,7 @@ c.expect_prompt()
 
 # connect to console, and expect U-Boot prompt
 tb.eof_write(c, 'connect')
-c.set_prompt(tb.config.uboot_prompt)
+c.set_prompt(tb.config.uboot_prompt, 'u-boot')
 tb.eof_expect_string(c, 'Total Size', wait_prompt=False)
 tb.eof_expect_string(c, 'Start Addr', wait_prompt=False)
 tb.tbot_expect_prompt(c)

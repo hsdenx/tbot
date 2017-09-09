@@ -27,11 +27,11 @@ string = pack('h', 28)
 string = string[:1]
 tb.workfd.send_raw(string)
 tb.workfd.send_raw('C')
-tb.workfd.set_prompt('C-Kermit>')
+tb.workfd.set_prompt('C-Kermit>', 'linux')
 tb.workfd.expect_prompt()
 
 # set lab pc linux prompt
-tb.workfd.set_prompt(tb.config.linux_prompt)
+tb.workfd.set_prompt(tb.config.linux_prompt, 'linux')
 tb.eof_write(tb.workfd, 'exit', False)
 searchlist = ['OK to exit']
 tmp = True

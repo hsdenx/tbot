@@ -66,7 +66,7 @@ else:
 
 tb.eof_write(tb.workfd, pre + 'kermit', start=False)
 oldprompt = tb.workfd.get_prompt()
-tb.workfd.set_prompt('C-Kermit>')
+tb.workfd.set_prompt('C-Kermit>', 'linux')
 
 searchlist = ["assword", "Locked"]
 tmp = True
@@ -105,7 +105,7 @@ if tb.config.tc_workfd_connect_with_kermit_rlogin == 'none':
             tmp = False
 
     if retu == True:
-        tb.workfd.set_prompt(oldprompt)
+        tb.workfd.set_prompt(oldprompt, 'linux')
         tb.gotprompt = True
         tb.end_tc(False)
 
@@ -139,7 +139,7 @@ if tb.config.tc_workfd_connect_with_kermit_rlogin != 'none':
         if ret == '0':
             # some Error with connect, leave kermit
             tb.workfd.set_timeout(oldt)
-            tb.workfd.set_prompt(oldprompt)
+            tb.workfd.set_prompt(oldprompt, 'linux')
             tb.eof_write_cmd(tb.workfd, 'exit', start=False)
             tb.gotprompt = True
             tb.end_tc(False)
@@ -149,5 +149,5 @@ if tb.config.tc_workfd_connect_with_kermit_rlogin != 'none':
 
 tb.gotprompt = True
 # set now U-Boot prompt ?
-tb.workfd.set_prompt(tb.config.uboot_prompt)
+tb.workfd.set_prompt(tb.config.uboot_prompt, 'u-boot')
 tb.end_tc(True)

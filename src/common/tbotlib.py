@@ -620,7 +620,7 @@ class tbot(object):
             self.end_tc(False)
 
         c.set_timeout(None)
-        c.set_prompt(self.config.labsshprompt)
+        c.set_prompt(self.config.labsshprompt, 'linux')
         self.tbot_expect_prompt(c)
         self.donotlog = False
         self.do_first_settings_after_login(c)
@@ -837,7 +837,7 @@ class tbot(object):
             end = ''
 
         # contains the current prompt
-        c.set_prompt(prompt)
+        c.set_prompt(prompt, ptype)
         if ptype == 'linux':
             cmd = header + prompt + end
             logging.debug("Prompt CMD:%s", cmd)

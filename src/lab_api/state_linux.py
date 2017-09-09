@@ -55,7 +55,7 @@ def state_lx_parse_input(tb, c, retry, sl):
             return True
 
         if ret == '0':
-            c.set_prompt(tb.config.linux_prompt)
+            c.set_prompt(tb.config.linux_prompt, 'linux')
             c.set_timeout(oldt)
             return True
 

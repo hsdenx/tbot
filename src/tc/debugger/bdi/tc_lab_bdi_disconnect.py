@@ -31,7 +31,7 @@ if c.get_prompt() != tb.config.lab_bdi_upd_uboot_bdi_prompt:
     tb.end_tc(False)
 
 tb.write_stream(c, 'quit')
-c.set_prompt(tb.config.linux_prompt)
+c.set_prompt(tb.config.linux_prompt, 'linux')
 tb.tbot_expect_prompt(c)
 c.lineend = '\n'
 

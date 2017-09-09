@@ -26,7 +26,7 @@ tmp = ''
 tb.eof_write(tb.workfd, tmp)
 
 # set lab pc linux prompt
-tb.workfd.set_prompt(tb.config.linux_prompt)
+tb.workfd.set_prompt(tb.config.linux_prompt, 'linux')
 # check if we get linux prompt
 tb.tbot_expect_prompt(tb.workfd)
 tb.end_tc(True)

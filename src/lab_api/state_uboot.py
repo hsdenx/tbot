@@ -81,7 +81,7 @@ def u_boot_set_board_state(tb, state, retry):
     except AttributeError:
         tb.config.uboot_prompt = 'U-Boot#'
 
-    tb.c_con.set_prompt(tb.config.uboot_prompt)
+    tb.c_con.set_prompt(tb.config.uboot_prompt, 'u-boot')
 
     ret = tb.get_power_state(tb.config.boardlabpowername)
     if ret:

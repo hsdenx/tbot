@@ -32,7 +32,7 @@ tb.eof_write_con(tb.config.ub_boot_linux_cmd)
 
 c = tb.c_con
 oldt = c.get_timeout()
-c.set_prompt(tb.config.linux_prompt_default)
+c.set_prompt(tb.config.linux_prompt_default, 'linux')
 c.set_timeout(tb.config.state_linux_timeout)
 
 got_login = 0
