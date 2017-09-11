@@ -24,11 +24,18 @@
 # set also the ARCH environment variable with the value from
 # tb.config.tc_workfd_set_toolchain_arch
 #
+# Add a list of also executed cmds in tb.config.tc_workfd_set_toolchain_addlist
+#
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: %s %s", tb.workfd.name, tb.config.tc_workfd_set_toolchain_arch)
+try:
+    tb.config.tc_workfd_set_toolchain_addlist
+except:
+    tb.config.tc_workfd_set_toolchain_addlist = ''
+
+logging.info("args: %s %s %s", tb.workfd.name, tb.config.tc_workfd_set_toolchain_arch, tb.config.tc_workfd_set_toolchain_addlist)
 
 c = tb.workfd
 
@@ -75,4 +82,9 @@ if ret == False:
 
 tmp = 'export CROSS_COMPILE=' + cross
 tb.eof_write_cmd(c, tmp)
+
+if tb.config.tc_workfd_set_toolchain_addlist != '':
+    for cmd in tb.config.tc_workfd_set_toolchain_addlist:
+        tb.eof_write_cmd(c, cmd)
+
 tb.end_tc(True)
