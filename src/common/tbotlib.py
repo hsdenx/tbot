@@ -597,6 +597,10 @@ class tbot(object):
             self.config.port = '22'
 
         ret = c.create('not needed', logname, self.config.labprompt, self.config.user, self.config.ip, passwd, self.config.port)
+        if ret == False:
+            logging.error("Unable to connect to lap pc user: %s ip: %s port: %s" % (self.config.user, self.config.ip, self.config.port))
+            self.end_tc(False)
+
         c.set_timeout(None)
         c.set_prompt(self.config.labsshprompt)
         self.tbot_expect_prompt(c)

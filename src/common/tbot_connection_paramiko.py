@@ -84,6 +84,13 @@ class Connection(object):
         """ get bytes from connection
         """
         try:
+            self.channel
+        except:
+            logging.debug("No channel")
+            self.data = ''
+            return None
+
+        try:
             tmp = self.channel.recv(self.maxread)
         except socket.timeout:
             logging.debug("read_bytes: Timeout")
