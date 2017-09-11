@@ -21,6 +21,7 @@
 from tbotlib import tbot
 
 # call get u-boot source
+tb.workfd = tb.c_ctrl
 tb.statusprint("get u-boot source")
 tb.eof_call_tc("tc_lab_get_uboot_source.py")
 

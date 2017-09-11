@@ -20,8 +20,6 @@
 
 from tbotlib import tbot
 
-save = tb.workfd
-tb.workfd = tb.c_ctrl
 ret = tb.call_tc("tc_workfd_goto_uboot_code.py")
 if ret == False:
     u_boot_name = "u-boot-" + tb.config.boardlabname
@@ -47,5 +45,4 @@ if ret == False:
 # check if there are patches to apply
 tb.eof_call_tc("tc_lab_apply_patches.py")
 
-tb.workfd = save
 tb.end_tc(True)

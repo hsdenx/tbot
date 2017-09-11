@@ -23,6 +23,7 @@ from tbotlib import tbot
 tb.set_board_state("u-boot")
 
 # delete old u-boot source tree
+tb.workfd = tb.c_ctrl
 tb.eof_call_tc("tc_workfd_rm_uboot_code.py")
 
 # call get u-boot source
