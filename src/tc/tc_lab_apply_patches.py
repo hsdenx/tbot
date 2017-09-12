@@ -14,7 +14,11 @@
 # Description:
 # start with
 # python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lab_apply_patches.py
-# apply patches to source
+#
+# set workfd to c_ctrl
+# call  tc_workfd_apply_patches.py
+# restore old workfd
+#
 # End:
 
 from tbotlib import tbot
@@ -24,34 +28,11 @@ logging.info("args: %s", tb.config.tc_lab_apply_patches_dir)
 if tb.config.tc_lab_apply_patches_dir == 'none':
     tb.end_tc(True)
 
-c = tb.c_ctrl
-# apply all patches in tc_lab_apply_patches_dir
-tb.set_term_length(c)
-
-tmp = 'for i in ' + tb.config.tc_lab_apply_patches_dir + '/*.patch; do patch -p1 < $i; done'
-tb.eof_write(c, tmp)
-
-searchlist = ["No such", "FAILED", "Assume -R?"]
-tmp = True
-apply_ok = True
-while tmp == True:
-    tmp = tb.tbot_rup_and_check_strings(c, searchlist)
-    if tmp == '0':
-        apply_ok = False
-        tmp = True
-    if tmp == '1':
-        apply_ok = False
-        tmp = True
-    if tmp == '2':
-        tb.eof_write(c, 'y')
-        tmp = True
-    elif tmp == 'prompt':
-        tmp = False
-
-if apply_ok == False:
-    tb.end_tc(False)
-
+save = tb.workfd
 tb.workfd = tb.c_ctrl
-tb.eof_call_tc("tc_workfd_check_cmd_success.py")
+
+tb.eof_call_tc("tc_workfd_apply_patches.py")
+
+tb.workfd = save
 
 tb.end_tc(True)
