@@ -12,19 +12,17 @@
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 # Description:
-# start with
-# tbot.py -s lab_denx -c smartweb -t tc_demo_part1.py
-# start tc:
 #
-# - set workfd to c_ctrl
-# - call tc_demo_uboot_test.py
+# call testcases
+# tc_demo_get_ub_code.py
+# tc_demo_compile_install_test.py
 #
 # End:
 
 from tbotlib import tbot
 
-tb.workfd = tb.c_ctrl
+tb.eof_call_tc("tc_demo_get_ub_code.py")
 
-tb.eof_call_tc("tc_demo_uboot_test.py")
+tb.eof_call_tc("tc_demo_compile_install_test.py")
 
 tb.end_tc(True)

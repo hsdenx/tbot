@@ -46,7 +46,6 @@ for f in tb.config.tc_demo_compile_install_test_files:
     tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=f, t=ta)
 
 # set workfd to the connection we want to work on
-tb.workfd = tb.c_ctrl
 tb.eof_call_tc("tc_workfd_goto_uboot_code.py")
 
 # check U-Boot version
