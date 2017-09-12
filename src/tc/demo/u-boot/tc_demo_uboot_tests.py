@@ -14,7 +14,14 @@
 # Description:
 # start with
 # tbot.py -s lab_denx -c smartweb -t tc_demo_uboot_tests.py
+#
 # start all "standard" u-boot testcases
+#
+# - start cmd defined in tb.config.tc_demo_uboot_test_basic_cmd
+#   and check the returning strings.
+# - tb.eof_call_tc("uboot/duts/tc_ub_start_all_duts.py")
+# - tb.eof_call_tc("tc_ub_test_py.py")
+#
 # End:
 
 from tbotlib import tbot
@@ -24,6 +31,20 @@ tb.set_board_state("u-boot")
 
 # call tc tc_ub_load_board_env.py
 tb.eof_call_tc("tc_ub_load_board_env.py")
+
+# call basic cmd list
+try:
+    bcmd = tb.config.tc_demo_uboot_test_basic_cmd
+except:
+    bcmd = ''
+
+if bcmd != '':
+    tb.statusprint("start basic U-Boot checks")
+    for bl in bcmd:
+        if bl["val"] == 'undef':
+            tb.eof_write_cmd(tb.c_con, bl["cmd"])
+        else:
+            tb.eof_call_tc('tc_workfd_write_cmd_check.py', cmd=bl["cmd"], string=bl["val"])
 
 tb.workfd = tb.c_ctrl
 tb.statusprint("start all DUTS testcases")
