@@ -29,6 +29,9 @@
 #
 # - tb.eof_call_tc("tc_ub_test_py.py")
 #
+# - call a list of testcases defined in
+#   tb.config.tc_demo_uboot_tc_list
+#
 # End:
 
 from tbotlib import tbot
@@ -71,5 +74,15 @@ tb.eof_call_tc("uboot/duts/tc_ub_start_all_duts.py")
 # call test/py
 tb.statusprint("u-boot test/py test")
 tb.eof_call_tc("tc_ub_test_py.py")
+
+try:
+    tc = tb.config.tc_demo_uboot_tc_list
+except:
+    tc = ''
+
+if tc != '':
+    tb.statusprint("Call board specific testcases")
+    for tcname in tc:
+        tb.eof_call_tc(tcname)
 
 tb.end_tc(True)
