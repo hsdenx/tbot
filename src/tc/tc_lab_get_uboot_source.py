@@ -47,8 +47,7 @@ if ret == False:
     tmp = "git describe --tags"
     tb.write_lx_cmd_check(tb.workfd, tmp)
 
-
-# check if there are patches to apply
-tb.eof_call_tc("tc_lab_apply_patches.py")
+    # check if there are patches to apply
+    tb.eof_call_tc("tc_lab_apply_patches.py")
 
 tb.end_tc(True)
