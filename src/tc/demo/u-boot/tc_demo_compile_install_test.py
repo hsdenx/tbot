@@ -25,9 +25,6 @@
 
 from tbotlib import tbot
 
-# set workfd to the connection we want to work on
-tb.workfd = tb.c_ctrl
-
 # go into u-boot code
 tb.eof_call_tc("tc_workfd_goto_uboot_code.py")
 
