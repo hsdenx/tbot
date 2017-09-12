@@ -23,7 +23,7 @@ from tbotlib import tbot
 logging.info("arg: %s %s %s", tb.workfd.name, tb.tc_ub_get_version_file, tb.tc_ub_get_version_string)
 
 # set board state for which the tc is valid
-tb.set_board_state("u-boot")
+tb.set_board_state("lab")
 
 # set env var
 c = tb.workfd
