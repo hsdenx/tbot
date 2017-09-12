@@ -14,8 +14,10 @@
 # Description:
 # start with
 # python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lab_get_uboot_source.py
+#
 # get U-Boot source
 # and go into the source tree
+#
 # End:
 
 from tbotlib import tbot
@@ -26,7 +28,11 @@ if ret == False:
     tb.eof_call_tc("tc_workfd_goto_lab_source_dir.py")
     self.event.create_event('main', 'tc_ub_memory.py', 'SET_DOC_FILENAME', 'u-boot_clone')
     # clone u-boot.git
-    tmp = "git clone " + tb.config.tc_lab_get_uboot_source_git_repo + " " + u_boot_name
+    if tb.config.tc_get_ub_source_reference != 'none':
+        opt = '--reference=' + tb.config.tc_get_ub_source_reference + ' '
+    else:
+        opt = ''
+    tmp = "git clone " + opt + ' ' + tb.config.tc_lab_get_uboot_source_git_repo + " " + u_boot_name
     tb.write_lx_cmd_check(tb.workfd, tmp)
 
     self.event.create_event('main', 'tc_ub_memory.py', 'SET_DOC_FILENAME', 'cd2u-boot')
