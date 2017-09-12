@@ -15,10 +15,23 @@
 # start with
 # python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_start_all_duts.py
 # start all DUTS tests
+#
+# only start the DUTS testcases, if tb.config.tc_ub_start_all_duts_start
+# is set to True (default)
+#
 # End:
 
 from tbotlib import tbot
 
+try:
+    tb.config.tc_ub_start_all_duts_start
+except:
+    tb.config.tc_ub_start_all_duts_start = True
+
+logging.info("arg: %s", tb.config.tc_ub_start_all_duts_start)
+
+if tb.config.tc_ub_start_all_duts_start == False:
+    tb.end_tc(True)
 
 dutslist = [
 "uboot/duts/tc_ub_duts_version.py",
