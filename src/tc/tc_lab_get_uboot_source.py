@@ -48,6 +48,6 @@ if ret == False:
     tb.write_lx_cmd_check(tb.workfd, tmp)
 
     # check if there are patches to apply
-    tb.eof_call_tc("tc_lab_apply_patches.py")
+    tb.eof_call_tc("tc_workfd_apply_patches.py")
 
 tb.end_tc(True)
