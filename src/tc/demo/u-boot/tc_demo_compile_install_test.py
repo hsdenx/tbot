@@ -24,7 +24,7 @@
 #     copy files in list tb.config.tc_demo_compile_install_test_files
 #     tb.config.tc_demo_compile_install_test_files contains a list of files,
 #     which are copied to tftp directory
-#     tb.config.tftprootdir + tb.config.tftpboardname + '/' + tb.config.ub_load_board_env_subdir
+#     tb.config.tftpdir + tb.config.tftpboardname + '/' + tb.config.ub_load_board_env_subdir
 # - get u-boot version from binary with tc_ub_get_version.py
 # - if tb.config.tc_demo_uboot_test_update != '':
 #     call tb.config.tc_demo_uboot_test_update
@@ -63,7 +63,7 @@ tb.eof_call_tc("tc_workfd_set_toolchain.py")
 tb.statusprint("compile u-boot")
 tb.eof_call_tc("tc_workfd_compile_uboot.py")
 
-r = tb.config.tftprootdir
+r = tb.config.tftpdir + '/'
 if tb.config.tc_demo_uboot_test_deploy != '':
     tb.eof_call_tc(tb.config.tc_demo_uboot_test_deploy)
 else:

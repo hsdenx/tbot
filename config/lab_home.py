@@ -11,7 +11,7 @@ labsshprompt = '$ '
 
 tc_workfd_work_dir = '/work/hs/tbot'
 lab_tmp_dir = '/var/tmp/'
-tftprootdir = '/var/lib/tftpboot/'
+tftpdir = '/var/lib/tftpboot'
 
 tc_lab_denx_connect_to_board_tc = 'tc_workfd_connect_with_kermit.py'
 tc_lab_denx_power_tc = 'tc_lab_sispmctl_set_power_state.py'

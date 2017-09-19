@@ -40,7 +40,7 @@ if tb.config.tc_demo_linux_test_deploy != '':
 # copy files to tftpdir
 c = tb.workfd
 tb.statusprint("copy files")
-r = tb.config.tftprootdir
+r = tb.config.tftpdir + '/'
 t = r + tb.config.tftpboardname + '/' + tb.config.ub_load_board_env_subdir
 s = "$TBOT_BASEDIR_LINUX/arch/arm/boot/"
 so = s + tb.config.tc_workfd_compile_linux_make_target

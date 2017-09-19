@@ -7,7 +7,7 @@ accept_all=True
 keepalivetimeout=1
 channel_timeout=0.5
 loglevel = 'INFO'
-tftprootdir = '/var/lib//tftpboot/'
+tftpdir = '/var/lib//tftpboot'
 labsshprompt = '$ '
 kermit_line = '/dev/ttyUSB1'
 

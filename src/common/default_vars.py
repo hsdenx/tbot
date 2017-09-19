@@ -32,7 +32,6 @@ tc_lab_compile_uboot_export_path = 'none'
 tftpboardname = 'config.boardname'
 boardlabname = 'config.boardname'
 boardlabpowername = 'config.boardname'
-tftprootdir='/tftpboot/'
 tftpboardrootdir=''
 tc_ub_dfu_dfu_util_path = "/home/hs/zug/dfu-util"
 tc_ub_dfu_dfu_util_alt_setting = "Linux"

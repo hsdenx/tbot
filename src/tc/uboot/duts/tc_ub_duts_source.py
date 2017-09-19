@@ -40,7 +40,7 @@ tb.eof_write_cmd(c, "pwd", create_doc_event=True)
 tb.eof_write_cmd(c, "cat source_example.txt", create_doc_event=True)
 
 cmd = 'mkimage -A ppc -O linux -T script -C none -a 0 -e 0 -n "autoscr example script" -d ' + \
-  tb.config.tc_workfd_work_dir + '/source_example.txt ' + tb.config.tftprootdir + tb.config.tc_ub_tftp_path + '/source.scr'
+  tb.config.tc_workfd_work_dir + '/source_example.txt ' + tb.config.tftpdir + '/' + tb.config.tc_ub_tftp_path + '/source.scr'
 
 self.event.create_event('main', 'tc_ub_duts_source.py', 'SET_DOC_FILENAME', 'source_mkimage')
 tb.eof_write_cmd(c, cmd)
