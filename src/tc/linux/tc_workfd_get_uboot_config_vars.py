@@ -27,10 +27,6 @@
 
 from tbotlib import tbot
 
-c = tb.c_ctrl
-savefd = tb.workfd
-tb.workfd = c
-
 if (tb.config.tc_ub_memory_ram_ws_base == 'undef'):
     # Try to get the SDRAM Base
     tb.uboot_config_option = 'CONFIG_SYS_SDRAM_BASE'
@@ -60,5 +56,4 @@ if (tb.config.tc_ub_memory_ram_big == 'undef'):
 logging.info("detected: %s %s %s", tb.config.tc_ub_memory_ram_ws_base, tb.config.tc_ub_memory_ram_ws_base_alt,
              tb.config.tc_ub_memory_ram_big)
 
-tb.workfd = savefd
 tb.end_tc(True)
