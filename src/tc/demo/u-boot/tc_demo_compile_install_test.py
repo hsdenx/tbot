@@ -98,7 +98,7 @@ tb.eof_call_tc(tb.config.tc_demo_compile_install_test_name)
 
 if tb.config.tc_demo_uboot_test_deploy != '':
     # save working u-boot bin
-    c = tb.workfd
+    c = tb.c_ctrl
     p = tb.config.tftpdir + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/"
     for f in tb.config.tc_demo_compile_install_test_files:
         tmp = f.replace('/', "_")
