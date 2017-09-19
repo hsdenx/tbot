@@ -41,8 +41,8 @@ tb.config.tc_uboot_load_bin_with_kermit_kermit_settings = [
     "robust",
     "set file type bin",
     "set file name lit",
-    "set rec pack 1000",
-    "set send pack 1000",
+    "set rec pack 100",
+    "set send pack 100",
     "set window 5",
 ]
 
