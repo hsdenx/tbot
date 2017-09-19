@@ -916,20 +916,63 @@ class tbot(object):
             self.gotprompt = True
         return ret
 
-    def eof_write(self, c, string, start=True):
+    def eof_write_split(self, c, string, split, start=True):
         """ write a string to connection c
 
         - **parameters**, **types**, **return** and **return types**::
         :param arg1: connection
         :param arg2: string
-        :param arg3: start boolean, True, send console start before the
+        :param arg3: split if > 0 split command string
+        :param arg4: start boolean, True, send console start before the
         cmdstring.
         :return: If write_stream returns not True, end tc
         with failure
         """
         if start:
             self.send_console_start(c)
-        ret = c.sendcmd(string)
+        tmp = string[0:split]
+        string = string[split:]
+        while tmp:
+            if len(string) > 0:
+                tmp = tmp + '\\'
+            ret = c.sendcmd(tmp)
+            self.tbot_trigger_wdt()
+            tmp = string[0:split]
+            string = string[split:]
+            if len(string) == 0:
+                if len(tmp) > 0:
+                    ret = c.sendcmd(tmp)
+                break
+            se = '>'
+            searchlist = [se]
+            tmp2 = True
+            ret = self.tbot_rup_and_check_strings(c, se)
+            if ret == 'prompt':
+                self.end_tc(False)
+
+        self.gotprompt = False
+        if ret == True:
+            return True
+        self.end_tc(False)
+
+    def eof_write(self, c, string, start=True, split=0):
+        """ write a string to connection c
+
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: connection
+        :param arg2: string
+        :param arg3: split if > 0 split command string
+        :param arg4: start boolean, True, send console start before the
+        cmdstring.
+        :return: If write_stream returns not True, end tc
+        with failure
+        """
+        if start:
+            self.send_console_start(c)
+        if split:
+            ret = self.eof_write_split(c, string, split=split, start=False)
+        else:
+            ret = c.sendcmd(string)
         self.tbot_trigger_wdt()
         self.gotprompt = False
         if ret == True:
@@ -948,19 +991,20 @@ class tbot(object):
         ret = self.eof_write(self.c_con, string, start)
         return True
   
-    def eof_write_cmd(self, c, command, start=True, create_doc_event=False):
+    def eof_write_cmd(self, c, command, start=True, create_doc_event=False, split=0):
         """write a command to fd, wait for prompt
 
         - **parameters**, **types**, **return** and **return types**::
         :param arg1: connection
         :param arg2: commandstring
         :param arg3: start boolean, True, send console start before the
+        :param arg4: split if > 0 split command string
         cmdstring.
         :return: True if prompt read, else end testcase with False
         """
         if create_doc_event == True:
             self.event.create_event('main', 'eof_write_cmd', 'SET_DOC_FILENAME', command.replace(" ", "_"))
-        self.eof_write(c, command, start)
+        self.eof_write(c, command, start, split)
         self.tbot_expect_prompt(c)
         return True
 
@@ -977,7 +1021,7 @@ class tbot(object):
         for tmp_cmd in cmdlist:
             self.eof_write_cmd(c, tmp_cmd, start, create_doc_event)
 
-    def write_lx_cmd_check(self, c, command, endTC=True, start=True, create_doc_event=False):
+    def write_lx_cmd_check(self, c, command, endTC=True, start=True, create_doc_event=False, split=0):
         """write a linux command to console.
 
         - **parameters**, **types**, **return** and **return types**::
@@ -986,10 +1030,11 @@ class tbot(object):
         :param arg3: if True and linux cmd ended False end TC
                with end_tc(False), else return True
         :param arg4: start boolean, True, send console start before the
-        cmdstring.
+               cmdstring.
+        :param arg5: split if > 0 split command string
         :return: if linux cmd ended successful True, else False
         """
-        self.eof_write_cmd(c, command, start, create_doc_event)
+        self.eof_write_cmd(c, command, start, create_doc_event, split)
         tmpfd = self.workfd
         self.workfd = c
         ret = self.call_tc("tc_workfd_check_cmd_success.py")
