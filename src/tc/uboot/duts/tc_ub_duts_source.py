@@ -34,16 +34,18 @@ cmdlist = [
 tb.eof_write_cmd_list(tb.c_con, cmdlist, create_doc_event=True)
 
 c = tb.c_ctrl
+save = tb.workfd
 tb.workfd = c
 tb.eof_call_tc("tc_workfd_goto_tbot_workdir.py")
+tb.eof_write_cmd(c, 'cp ' + tb.workdir + '/src/files/duts/source_example.txt' + ' ' + tb.config.tc_workfd_work_dir, create_doc_event=True)
 tb.eof_write_cmd(c, "pwd", create_doc_event=True)
 tb.eof_write_cmd(c, "cat source_example.txt", create_doc_event=True)
 
 cmd = 'mkimage -A ppc -O linux -T script -C none -a 0 -e 0 -n "autoscr example script" -d ' + \
-  tb.config.tc_workfd_work_dir + '/source_example.txt ' + tb.config.tftpdir + '/' + tb.config.tc_ub_tftp_path + '/source.scr'
+  tb.config.tc_workfd_work_dir + '/source_example.txt ' + tb.config.tftpdir + '/' + tb.config.tc_ub_tftp_path + '/source_example.scr'
 
-self.event.create_event('main', 'tc_ub_duts_source.py', 'SET_DOC_FILENAME', 'source_mkimage')
-tb.eof_write_cmd(c, cmd)
+tb.event.create_event('main', 'tc_ub_duts_source.py', 'SET_DOC_FILENAME', 'source_mkimage')
+tb.write_lx_cmd_check(c, cmd, split=c.line_length / 2)
 
 tb.workfd = tb.c_con
 
@@ -58,4 +60,5 @@ tb.eof_write_cmd(tb.c_con, cmd)
 cmd = 'source ' + tb.config.tc_ub_memory_ram_ws_base
 tb.eof_write_cmd(tb.c_con, cmd)
 
+tb.workfd= save
 tb.end_tc(True)
