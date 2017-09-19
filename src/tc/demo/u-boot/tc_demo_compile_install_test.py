@@ -15,6 +15,9 @@
 # start with
 # tbot.py -c -s lab_denx -c demo -t tc_demo_compile_install_test.py
 # start tc:
+# - if tb.config.tc_board_bootmode_tc is defined
+#   call tc tb.config.tc_board_bootmode_tc
+#   (set bootmode for the board)
 # - go to uboot code with tc_workfd_goto_uboot_code.py
 # - set toolchain with tc_workfd_set_toolchain.py
 # - compile source tree with tc_workfd_compile_uboot.py
@@ -48,9 +51,17 @@ try:
 except:
     tb.config.tc_demo_uboot_test_update = ''
 
+try:
+    tb.config.tc_board_bootmode_tc
+except:
+    tb.config.tc_board_bootmode_tc = ''
 
-logging.info("args: %s %s %s", tb.workfd.name, tb.config.tc_demo_uboot_test_deploy,
-             tb.config.tc_demo_uboot_test_update)
+logging.info("args: %s %s %s %s", tb.workfd.name, tb.config.tc_demo_uboot_test_deploy,
+             tb.config.tc_demo_uboot_test_update, tb.config.tc_board_bootmode_tc)
+
+if tb.config.tc_board_bootmode_tc != '':
+    tb.config.tc_board_bootmode = 'normal'
+    tb.eof_call_tc(tb.config.tc_board_bootmode_tc)
 
 # go into u-boot code
 tb.eof_call_tc("tc_workfd_goto_uboot_code.py")
