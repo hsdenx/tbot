@@ -22,6 +22,11 @@
 
 from tbotlib import tbot
 
+try:
+    tb.config.tc_get_ub_source_reference
+except:
+    tb.config.tc_get_ub_source_reference = 'none'
+
 ret = tb.call_tc("tc_workfd_goto_uboot_code.py")
 if ret == False:
     u_boot_name = "u-boot-" + tb.config.boardlabname
