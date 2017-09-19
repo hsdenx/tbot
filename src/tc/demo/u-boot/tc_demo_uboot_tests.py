@@ -67,7 +67,13 @@ if bcmd != '':
         else:
             tb.eof_call_tc('tc_workfd_write_cmd_check.py', cmd=bl["cmd"], string=bl["val"])
 
-tb.workfd = tb.c_ctrl
+save = tb.workfd
+try:
+    tb.c_cpc
+    tb.workfd = tb.c_cpc
+except:
+    tb.workfd = tb.c_ctrl
+
 tb.statusprint("start all DUTS testcases")
 tb.eof_call_tc("uboot/duts/tc_ub_start_all_duts.py")
 
@@ -85,4 +91,5 @@ if tc != '':
     for tcname in tc:
         tb.eof_call_tc(tcname)
 
+tb.workfd = save
 tb.end_tc(True)
