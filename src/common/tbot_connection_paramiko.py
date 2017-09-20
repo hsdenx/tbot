@@ -79,7 +79,7 @@ class Connection(object):
         self.channel.settimeout(self.channel_timeout)
         return True
 
-    def lab_recv(self):
+    def lab_recv(self, fix_power_off=False):
         """ get bytes from connection
         """
         try:
@@ -88,7 +88,14 @@ class Connection(object):
             logging.debug("read_bytes: Timeout")
             return None
 
+        if fix_power_off == True:
+            hexstr = tmp.encode("hex")
+            if '000000' in hexstr:
+                logging.warning("got a lof 00 on channel %s", self.name)
+                return False
+
         logging.debug("%s read: %s", self.name, tmp)
+
         self.data += tmp
         se = tmp.rstrip()
         se = se.lstrip()
@@ -466,7 +473,7 @@ class Connection(object):
         """
         ret = True
         while (ret):
-            ret = self.lab_recv()
+            ret = self.lab_recv(fix_power_off=True)
         self.tb.event.create_event_log(self, "rf", self.data)
         self.data = ''
         return True
