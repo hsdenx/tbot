@@ -27,7 +27,7 @@ c = tb.workfd
 # set board state for which the tc is valid
 tb.set_board_state("linux")
 
-tmp = 'dmesg | grep \'' + tb.config.tc_lx_dmesg_grep_name + '\''
+tmp = 'dmesg | grep --color=never \'' + tb.config.tc_lx_dmesg_grep_name + '\''
 tb.eof_write(c, tmp)
 tb.tbot_expect_prompt(c)
 #tb.eof_expect_string(c, tb.config.tc_lx_dmesg_grep_name)
