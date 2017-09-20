@@ -12,25 +12,30 @@
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 # Description:
-# start with
-# tbot.py -s lab_denx -c beagleboneblack -t tc_demo_linux_test.py
-# get linux code and compile it for a board, then call testcase
 #
-# src/tc/demo/tc_demo_linux_testcases.py
-#
-# if tb.config.tc_demo_linux_test_deploy != ''
-# call this testcase for deploying the resulting images.
+# - if tb.config.tc_board_bootmode_tc is defined
+#   call tc tb.config.tc_board_bootmode_tc
+#   (set bootmode for the board)
+# - call tc_workfd_rm_linux_code.py
+# - call tc_workfd_get_linux_source.py
+# - call tc_workfd_goto_linux_code.py
+# - call tc_demo_linux_compile.py
+# - tc_demo_linux_testcases.py
 #
 # End:
 
 from tbotlib import tbot
 
 try:
-    tb.config.tc_demo_linux_test_deploy
+    tb.config.tc_board_bootmode_tc
 except:
-    tb.config.tc_demo_linux_test_deploy = ''
+    tb.config.tc_board_bootmode_tc = ''
 
-logging.info("args: %s %s", tb.workfd.name, tb.config.tc_demo_linux_test_deploy)
+logging.info("args: %s %s", tb.workfd.name, tb.config.tc_board_bootmode_tc)
+
+if tb.config.tc_board_bootmode_tc != '':
+    tb.config.tc_board_bootmode = 'normal'
+    tb.eof_call_tc(tb.config.tc_board_bootmode_tc)
 
 # delete old linux source tree
 tb.eof_call_tc("tc_workfd_rm_linux_code.py")

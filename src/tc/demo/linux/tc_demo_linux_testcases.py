@@ -15,6 +15,8 @@
 # start with
 # tbot.py -s lab_denx -c beagleboneblack -t tc_demo_linux_testcases.py
 #
+# - if tb.config.tc_board_bootmode_tc is set, call
+#   tb.config.tc_board_bootmode_tc
 # - boot a linux kernel
 # - get booted linux version
 # - grep through dmesg and check if strings in
@@ -29,6 +31,17 @@
 # End:
 
 from tbotlib import tbot
+
+try:
+    tb.config.tc_board_bootmode_tc
+except:
+    tb.config.tc_board_bootmode_tc = ''
+
+logging.info("args: %s %s", tb.workfd.name, tb.config.tc_board_bootmode_tc)
+
+if tb.config.tc_board_bootmode_tc != '':
+    tb.config.tc_board_bootmode = 'normal'
+    tb.eof_call_tc(tb.config.tc_board_bootmode_tc)
 
 # call ubot setenv
 tb.set_board_state("u-boot")
