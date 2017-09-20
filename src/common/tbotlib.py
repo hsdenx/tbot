@@ -991,7 +991,7 @@ class tbot(object):
         ret = self.eof_write(self.c_con, string, start)
         return True
   
-    def eof_write_cmd(self, c, command, start=True, create_doc_event=False, split=0):
+    def eof_write_cmd(self, c, command, start=True, create_doc_event=False, split=0, triggerlist=[]):
         """write a command to fd, wait for prompt
 
         - **parameters**, **types**, **return** and **return types**::
@@ -999,13 +999,22 @@ class tbot(object):
         :param arg2: commandstring
         :param arg3: start boolean, True, send console start before the
         :param arg4: split if > 0 split command string
+        :param arg5: triggerlist if != [] trigger wdt if strings in triggerlist found
         cmdstring.
         :return: True if prompt read, else end testcase with False
         """
+
         if create_doc_event == True:
             self.event.create_event('main', 'eof_write_cmd', 'SET_DOC_FILENAME', command.replace(" ", "_"))
         self.eof_write(c, command, start, split)
-        self.tbot_expect_prompt(c)
+        loop = True
+        while loop == True:
+            ret = self.tbot_rup_and_check_strings(c, triggerlist)
+            if ret == 'prompt':
+                loop = False
+            else:
+                self.tbot_trigger_wdt()
+
         return True
 
     def eof_write_cmd_list(self, c, cmdlist, start=True, create_doc_event=False):
@@ -1021,7 +1030,7 @@ class tbot(object):
         for tmp_cmd in cmdlist:
             self.eof_write_cmd(c, tmp_cmd, start, create_doc_event)
 
-    def write_lx_cmd_check(self, c, command, endTC=True, start=True, create_doc_event=False, split=0):
+    def write_lx_cmd_check(self, c, command, endTC=True, start=True, create_doc_event=False, split=0, triggerlist=[]):
         """write a linux command to console.
 
         - **parameters**, **types**, **return** and **return types**::
@@ -1032,9 +1041,10 @@ class tbot(object):
         :param arg4: start boolean, True, send console start before the
                cmdstring.
         :param arg5: split if > 0 split command string
+        :param arg6: triggerlist if != [] trigger wdt if strings in triggerlist found
         :return: if linux cmd ended successful True, else False
         """
-        self.eof_write_cmd(c, command, start, create_doc_event, split)
+        self.eof_write_cmd(c, command, start, create_doc_event, split, triggerlist)
         tmpfd = self.workfd
         self.workfd = c
         ret = self.call_tc("tc_workfd_check_cmd_success.py")
