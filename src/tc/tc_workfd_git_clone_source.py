@@ -54,7 +54,7 @@ else:
 
 tmp = "git clone " + opt + tb.config.tc_lab_git_clone_source_git_repo + " " + repo_name
 tb.eof_write(tb.workfd, tmp)
-searchlist = ["Username", "Password", "Authentication failed"] # add here error cases
+searchlist = ["Username", "Password", "Authentication failed", "Receiving"]
 tmp = True
 clone_ok = True
 while tmp == True:
@@ -66,6 +66,8 @@ while tmp == True:
                                tb.config.tc_lab_git_clone_source_git_repo)
     if ret == '2':
         clone_ok = False
+    if ret == '3':
+        tb.tbot_trigger_wdt()
     elif ret == 'prompt':
         tmp = False
 
