@@ -76,16 +76,16 @@ tb.event.create_event('main', tb.config.boardname, "LINUX_DEFCONFIG", tb.config.
 tb.event.create_event('main', tb.config.boardname, "LINUX_SRC_PATH", tb.config.tc_lab_source_dir + "/linux-" + tb.config.boardlabname)
 
 tmp = "make" + ld + " " + tb.config.tc_workfd_compile_linux_makeoptions + " " + tb.config.tc_workfd_compile_linux_make_target
-tb.write_lx_cmd_check(tb.workfd, tmp)
+tb.write_lx_cmd_check(tb.workfd, tmp, triggerlist=['CC'])
 
 # compile modules (if wanted)
 if tb.config.tc_workfd_compile_linux_modules != 'none':
     tmp = "make" + ld + " " + tb.config.tc_workfd_compile_linux_makeoptions + " modules"
-    tb.write_lx_cmd_check(tb.workfd, tmp)
+    tb.write_lx_cmd_check(tb.workfd, tmp, triggerlist=['CC'])
     # install modules (if wanted)
     if tb.config.tc_workfd_compile_linux_modules_path != 'none':
         tmp = "INSTALL_MOD_PATH=" + tb.config.tc_workfd_compile_linux_modules_path + " make modules_install"
-        tb.write_lx_cmd_check(tb.workfd, tmp)
+        tb.write_lx_cmd_check(tb.workfd, tmp, triggerlist=['CC'])
 
 # compile DT (if wanted)
 if tb.config.tc_workfd_compile_linux_dt_name != 'none':
