@@ -21,6 +21,6 @@ from tbotlib import tbot
 
 logging.info("args: %s %s", tb.workfd, tb.config.tc_workfd_bitbake_args)
 
-tb.write_lx_cmd_check(tb.workfd, 'bitbake ' + tb.config.tc_workfd_bitbake_args, triggerlist=['pid'])
+tb.write_lx_cmd_check(tb.workfd, 'bitbake ' + tb.config.tc_workfd_bitbake_args, triggerlist=['pid', 'Loading'])
 
 tb.end_tc(True)
