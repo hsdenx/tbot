@@ -83,9 +83,7 @@ def tb_call_tc(func):
         #       for entry in zip(argnames,args) + kwargs.items())
         try:
             ret = func(*args, **kwargs)
-            name = tb.tc_stack.pop()
-            tb._ret = ret
-            logging.info("End with calling fkt %s ret: %d", fname, tb._ret)
+            ret = tb._ret
         except ValueError as err:
             ret = tb._ret
             # tb.log.exception(err)
@@ -518,7 +516,8 @@ class tbot(object):
                 logging.info('End of Fkt: %s %d', name, self._ret)
                 logging.info('-----------------------------------------')
                 if self._ret:
-                    sys.exit(0)
+                    #sys.exit(0)
+                    return True
                 else:
                     raise ValueError('Fkt ended with error')
                 return self._ret
