@@ -8,20 +8,21 @@ $db_link = mysqli_connect (
                     );
 if ( $db_link )
 {
-    // print_r( $db_link);
+    # print_r( $db_link);
 }
 else
 {
-    die('no Connection: ' . mysqli_error());
+    die('no Connection: ' . mysqli_error($db_link));
 }
 mysqli_select_db($db_link, "database");
 
-$sql = "SELECT * FROM tbot_results ORDER BY tbot_id DESC";
+#$sql = "SELECT * FROM tbot_results ORDER BY tbot_id DESC";
+$sql = "SELECT * FROM `tbot_results` ORDER BY `tbot_results`.`tbot_id` ASC ";
  
 $db_erg = mysqli_query( $db_link, $sql );
 if ( ! $db_erg )
 {
-  die('invalid query: ' . mysqli_error());
+  die('invalid query: ' . mysqli_error($db_link));
 }
 
 # get number of rows
@@ -82,8 +83,17 @@ echo "<tr bgcolor= #e67e22>";
   echo "<td> Logfile </td>";
   echo "</tr>\n";
 $count = 0;
-while (($zeile = mysqli_fetch_array( $db_erg, MYSQL_ASSOC)) && ($count < 6))
+$max = 10;
+$diff = $num - $max;
+# var_dump($diff);
+while (($zeile = mysqli_fetch_array( $db_erg, MYSQLI_ASSOC)))
 {
+  if ($num > $max) {
+    $count = $count + 1;
+    if ($count <= $diff) {
+      continue;
+    }
+  }
   if ($zeile['success'] == 0) {
     echo "<tr bgcolor=#FA8072>";
   } else {
@@ -93,28 +103,27 @@ while (($zeile = mysqli_fetch_array( $db_erg, MYSQL_ASSOC)) && ($count < 6))
   echo "<td>". $zeile['test_date'] . "</td>";
   echo "<td>". $zeile['toolchain'] . "</td>";
   echo "<td>". $zeile['binaryversion'] . "</td>";
-  if (file_exists("tbot/id_". $zeile['tbot_id'] ."/.config")) {
-    echo "<td> <a href='tbot/id_". $zeile['tbot_id'] ."/.config'> ". $zeile['defname'] . " </a>  </td>";
+  if (file_exists("../tbot/id_". $zeile['tbot_id'] ."/defconfig")) {
+    echo "<td> <a href='../tbot/id_". $zeile['tbot_id'] ."/defconfig'> ". $zeile['defname'] . " </a>  </td>";
   } else {
     echo "<td>". $zeile['defname'] . "</td>";
   }
   echo "<td> <a href='https://github.com/hsdenx/tbot/tree/master/src/tc/board/". $zeile['testcase'] ."' target='_blank'> ". $zeile['testcase'] ." </a> </td>";
-  echo "<td> <a href='tbot/id_". $zeile['tbot_id'] ."/statistic.jpg'> statistic </a> </td>";
-  echo "<td> <a href='tbot/id_". $zeile['tbot_id'] ."/graph.png'> tc graph </a> </td>";
-  if (file_exists("tbot/id_". $zeile['tbot_id'] ."/html_log.html")) {
-    echo "<td> <a href='tbot/id_". $zeile['tbot_id'] ."/html_log.html'> nice log </a> </td>";
+  echo "<td> <a href='../tbot/id_". $zeile['tbot_id'] ."/statistic.jpg'> statistic </a> </td>";
+  echo "<td> <a href='../tbot/id_". $zeile['tbot_id'] ."/graph.png'> tc graph </a> </td>";
+  if (file_exists("../tbot/id_". $zeile['tbot_id'] ."/html_log.html")) {
+    echo "<td> <a href='../tbot/id_". $zeile['tbot_id'] ."/html_log.html'> nice log </a> </td>";
   } else {
     echo "<td> none </a> </td>";
   }
 
-  if (file_exists("tbot/id_". $zeile['tbot_id'] ."/test-log.html")) {
-    echo "<td> <a href='tbot/id_". $zeile['tbot_id'] ."/test-log.html'> test py result </a> </td>";
+  if (file_exists("../tbot/id_". $zeile['tbot_id'] ."/test-log.html")) {
+    echo "<td> <a href='../tbot/id_". $zeile['tbot_id'] ."/test-log.html'> test py result </a> </td>";
   } else {
     echo "<td> none </a> </td>";
   }
-  echo "<td> <a href='tbot/id_". $zeile['tbot_id'] ."/tbot.log'> rawlog </a> </td>";
+  echo "<td> <a href='../tbot/id_". $zeile['tbot_id'] ."/tbot.log'> rawlog </a> </td>";
   echo "</tr>\n";
-  $count = $count + 1;
 }
 echo "</table>";
  
