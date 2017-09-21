@@ -22,19 +22,24 @@
 
 from tbotlib import tbot
 
-logging.info("args: %s", tb.workfd)
+try:
+    tb.config.tc_workfd_goto_yocto_code_dirext
+except:
+    tb.config.tc_workfd_goto_yocto_code_dirext = ''
 
 try:
     tb.workfd.tc_workfd_goto_yocto_code_checked
 except:
     tb.workfd.tc_workfd_goto_yocto_code_checked = False
 
+logging.info("args: %s %s %s", tb.workfd, tb.workfd.tc_workfd_goto_yocto_code_checked, tb.config.tc_workfd_goto_yocto_code_dirext)
+
 if tb.workfd.tc_workfd_goto_yocto_code_checked == False:
     # set some global config variables
     try:
         tb.config.yocto_name
     except:
-        tb.config.yocto_name = "yocto-" + tb.config.boardlabname
+        tb.config.yocto_name = "yocto-" + tb.config.boardlabname + tb.config.tc_workfd_goto_yocto_code_dirext
 
     # first check, that we are in our base dir
     tb.eof_call_tc("tc_workfd_goto_lab_source_dir.py")
