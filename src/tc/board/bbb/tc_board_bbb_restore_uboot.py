@@ -26,9 +26,15 @@
 import time
 from tbotlib import tbot
 
-# switch to bootmode emmc
-tb.write_lx_cmd_check(tb.c_ctrl, 'relais   relsrv-02-02  1  on')
-tb.eof_call_tc("tc_lab_poweroff.py")
+try:
+    tb.config.tc_board_bootmode_tc
+except:
+    tb.end_tc(False)
+
+tb.config.tc_board_bootmode = 'recovery'
+tb.eof_call_tc(tb.config.tc_board_bootmode_tc)
+
+tb.config.uboot_prompt = 'U-Boot# '
 time.sleep(2)
 tb.eof_call_tc("tc_lab_poweron.py")
 tb.set_board_state("u-boot")
@@ -44,8 +50,9 @@ tb.eof_call_tc("tc_ub_load_board_env.py")
 # set latest images
 import tc_ub_testfkt
 
-tc_ub_testfkt.ub_setenv(tb, tb.c_con, 'ubfile', 'bbb/tbot/latestworking-u-boot.img')
-tc_ub_testfkt.ub_setenv(tb, tb.c_con, 'mlofile', 'bbb/tbot/latestworking-MLO')
+p = tb.config.tftpdir + '/' + tb.config.tftpboardname + '/' + tb.config.ub_load_board_env_subdir + '/'
+ret = tc_ub_testfkt.ub_setenv(tb, tb.c_con, 'ubfile', p + 'latestworking-u-boot.img')
+tc_ub_testfkt.ub_setenv(tb, tb.c_con, 'mlofile', p + 'latestworking-MLO')
 
 # call upd_uboot
 tb.eof_call_tc("tc_ub_upd_uboot.py")
@@ -53,10 +60,10 @@ tb.eof_call_tc("tc_ub_upd_uboot.py")
 # call upd_spl
 tb.eof_call_tc("tc_ub_upd_spl.py")
 
+tb.config.tc_board_bootmode = 'normal'
+tb.eof_call_tc(tb.config.tc_board_bootmode_tc)
 
-# switch to bootmode sdcard
-tb.write_lx_cmd_check(tb.c_ctrl, 'relais   relsrv-02-02  1  off')
-tb.eof_call_tc("tc_lab_poweroff.py")
+tb.config.uboot_prompt = '=> '
 time.sleep(2)
 tb.eof_call_tc("tc_lab_poweron.py")
 tb.set_board_state("u-boot")
