@@ -189,14 +189,13 @@ class dashboard(object):
             self.tb.c_ctrl.copy_file(rem, loc)
         if self.uboot_src_path != '':
             rem = self.uboot_src_path + '/.config'
-            loc = newdir + '/.config'
+            loc = newdir + '/defconfig'
             self.tb.c_ctrl.copy_file(rem, loc)
         if self.linux_src_path != '':
             rem = self.linux_src_path + '/.config'
-            loc = newdir + '/.config'
+            loc = newdir + '/defconfig'
             self.tb.c_ctrl.copy_file(rem, loc)
 
         tmp = "cp " + self.tb.logfilen + " " + newdir + "/tbot.log"
         os.system(tmp)
-        os.system("chmod 744 " + newdir + "/.config")
         os.system("chmod 744 " + newdir + "/*")
