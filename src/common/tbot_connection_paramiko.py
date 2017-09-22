@@ -492,3 +492,18 @@ class Connection(object):
         except Exception as e:
             logging.error("sftp Exception rem: %s loc: %s %s", remotepath, localpath, str(e))
             return False
+
+    def copy_file_tolabpc(self, localpath, remotepath):
+        try:
+            ### Copy remote file to server        
+            logging.debug("sftp tolabpc rem: %s loc: %s", remotepath, localpath)
+            sftp = self.ssh.open_sftp()
+            sftp.put(localpath, remotepath)
+            sftp.close()
+            return True
+        except IOError as e:
+            logging.error("sftp IOError rem: %s loc: %s %s", remotepath, localpath, str(e))
+            return False
+        except Exception as e:
+            logging.error("sftp Exception rem: %s loc: %s %s", remotepath, localpath, str(e))
+            return False
