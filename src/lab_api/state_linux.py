@@ -18,7 +18,7 @@ import time
 
 def state_lx_parse_input(tb, c, retry, sl):
     i = 0
-    # print("PPPPPPPPPPPP START", sl, c.name, c.data, c.logbuf)
+    # print("PPPPPPPPPPPP START", sl, c.name, c.data, c.logbuf, tb.config.state_linux_timeout)
     ctrlc_send = 0
     ctrlm_send = 0
     oldt = c.get_timeout()
@@ -55,32 +55,38 @@ def state_lx_parse_input(tb, c, retry, sl):
             return True
 
         if ret == '0':
+            # we got our tbot linux prompt
             c.set_prompt(tb.config.linux_prompt, 'linux')
             c.set_timeout(oldt)
             return True
 
         if ret == '1':
+            # we got the default linux prompt
             tb.set_prompt(c, tb.config.linux_prompt, 'linux')
             c.set_timeout(oldt)
             return True
 
         if ret == '2':
+            # we got u-boot prompt
             c.set_timeout(oldt)
             tb.eof_call_tc("tc_ub_boot_linux.py")
             return True
 
         if ret == '3':
+            # we got login
             tb.write_stream(c, tb.config.linux_user, send_console_start=False)
             i = 0
 
         if ret == '4':
+            # we got password
 	    tb.write_stream_passwd(c, tb.config.linux_user, tb.config.boardname)
             i = 0
 
         if (ret == '5') or (ret == '6') or (ret == '7'):
-            # U-Boot autobooting
+            # U-Boot autobooting, try to stop it
             tb.send_ctrl_c(c)
             i = 0
+
         i += 1
 
     c.set_timeout(oldt)
@@ -99,7 +105,7 @@ def linux_set_board_state(tb, state, retry):
 
     # set new prompt
     tb.send_ctrl_c(c)
-    sl = [tb.config.linux_prompt, tb.config.linux_prompt_default, tb.config.uboot_prompt, 'login', 'Password']
+    sl = [tb.config.linux_prompt, tb.config.linux_prompt_default, tb.config.uboot_prompt, 'login', 'assword', 'Autobooting in', 'noautoboot',  'autoboot']
     sl = sl + tb.config.uboot_strings
     state_lx_parse_input(tb, c, retry, sl)
 
