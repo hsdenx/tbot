@@ -10,3 +10,4 @@ doc/sphinx/build/doctrees
 doc/sphinx/build/html
 doc/sphinx/build/pdf
 doc/sphinx/build/*
+src/documentation/work/*
