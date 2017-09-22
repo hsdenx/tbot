@@ -37,12 +37,22 @@ c = tb.c_ctrl
 save = tb.workfd
 tb.workfd = c
 tb.eof_call_tc("tc_workfd_goto_tbot_workdir.py")
-tb.eof_write_cmd(c, 'cp ' + tb.workdir + '/src/files/duts/source_example.txt' + ' ' + tb.config.tc_workfd_work_dir, create_doc_event=True)
+
+rem = tb.config.tc_workfd_work_dir + '/source_example.txt'
+
+# check if file on remote (labPC) exist
+tb.config.tc_workfd_check_if_file_exists_name = rem
+ret = tb.call_tc("tc_workfd_check_if_file_exist.py")
+if ret == False:
+    # if not exist, copy it to labPC
+    loc = tb.workdir + '/src/files/duts/source_example.txt'
+    tb.workfd.copy_file_tolabpc(loc, rem)
+
 tb.eof_write_cmd(c, "pwd", create_doc_event=True)
 tb.eof_write_cmd(c, "cat source_example.txt", create_doc_event=True)
 
 cmd = 'mkimage -A ppc -O linux -T script -C none -a 0 -e 0 -n "autoscr example script" -d ' + \
-  tb.config.tc_workfd_work_dir + '/source_example.txt ' + tb.config.tftpdir + '/' + tb.config.tc_ub_tftp_path + '/source_example.scr'
+  rem + ' ' + tb.config.tftpdir + '/' + tb.config.tc_ub_tftp_path + '/source_example.scr'
 
 tb.event.create_event('main', 'tc_ub_duts_source.py', 'SET_DOC_FILENAME', 'source_mkimage')
 tb.write_lx_cmd_check(c, cmd, split=c.line_length / 2)
