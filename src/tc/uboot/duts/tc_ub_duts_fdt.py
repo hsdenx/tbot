@@ -41,6 +41,18 @@ tb.set_board_state("u-boot")
 tb.eof_write_cmd(tb.c_con, "help fdt", create_doc_event=True)
 
 tb.event.create_event('main', 'tc_ub_duts_fdt.py', 'SET_DOC_FILENAME', 'fdt_addr_pre')
+
+save = tb.workfd
+tb.workfd = tb.c_ctrl
+rem = tb.config.tftpdir + '/' + tb.config.tc_ub_tftp_path + "/u-boot.dtb"
+tb.config.tc_workfd_check_if_file_exists_name = rem
+ret = tb.call_tc("tc_workfd_check_if_file_exist.py")
+if ret == False:
+    # if not exist, copy it to labPC
+    loc = tb.workdir + '/src/files/duts/u-boot.dtb'
+    tb.workfd.copy_file_tolabpc(loc, rem)
+tb.workfd = save
+
 tb.eof_write_cmd(tb.c_con, "tftpb " + tb.config.tc_ub_memory_ram_ws_base + " " + tb.config.tc_ub_tftp_path + "/u-boot.dtb")
 tb.eof_call_tc("tc_ub_get_filesize.py")
 tb.config.tc_ub_duts_fdt_mv_len = tb.ub_filesize
