@@ -49,7 +49,7 @@ tb.eof_call_tc("tc_workfd_apply_patchwork_patches.py")
 
 # call ub tests
 tb.statusprint("call ub test")
-tb.call_tc("tc_board_smartweb_test_ub.py")
+tb.eof_call_tc("tc_board_smartweb_test_ub.py")
 
 # save working u-boot bin
 c = tb.workfd
