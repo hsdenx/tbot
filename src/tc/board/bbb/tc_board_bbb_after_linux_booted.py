@@ -25,6 +25,14 @@
 
 from tbotlib import tbot
 
-tb.c_con.expect_string('crng init')
+try:
+    tb.config.bbb_check_crng_init
+except:
+    tb.config.bbb_check_crng_init = 'yes'
+
+logging.info("args: %s", tb.config.bbb_check_crng_init)
+
+if tb.config.bbb_check_crng_init == 'yes':
+    tb.c_con.expect_string('crng init')
 
 tb.end_tc(True)
