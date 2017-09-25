@@ -25,13 +25,12 @@ from tbotlib import tbot
 # boot into linux
 tb.set_board_state("linux")
 
-tb.workfd = tb.c_ctrl
-tb.eof_call_tc("tc_workfd_goto_lab_source_dir.py")
-tb.eof_call_tc("tc_workfd_goto_yocto_code.py")
-
 try:
     tb.config.tc_yocto_get_rootfs_from_tarball_rootfs_version
 except:
+    tb.workfd = tb.c_ctrl
+    tb.eof_call_tc("tc_workfd_goto_lab_source_dir.py")
+    tb.eof_call_tc("tc_workfd_goto_yocto_code.py")
     tb.eof_call_tc("tc_yocto_get_rootfs_from_tarball.py")
 
 # check if we booted the new rootfs version
