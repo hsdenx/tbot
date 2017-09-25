@@ -23,7 +23,7 @@
 
 from tbotlib import tbot
 
-tb.workfd = tb.c_ctrl
+logging.info("args: workfd %s %s", tb.workfd.name, tb.config.tc_yocto_get_rootfs_from_tarball)
 
 if 'tar.bz2' in tb.config.tc_yocto_get_rootfs_from_tarball:
     opt = 'xfvj '
@@ -31,11 +31,11 @@ else:
     opt = 'zxvf '
 
 cmd = 'tar ' + opt + tb.config.tc_yocto_get_rootfs_from_tarball + ' ./etc/version'
-tb.write_lx_cmd_check(tb.c_ctrl, cmd)
+tb.write_lx_cmd_check(tb.workfd, cmd)
 cmd = 'cat etc/version'
-tb.eof_write_cmd_get_line(tb.c_ctrl, cmd)
+tb.eof_write_cmd_get_line(tb.workfd, cmd)
 tb.config.tc_yocto_get_rootfs_from_tarball_rootfs_version = tb.ret_write_cmd_get_line.strip()
 cmd = 'rm -rf etc/'
-tb.write_lx_cmd_check(tb.c_ctrl, cmd)
+tb.write_lx_cmd_check(tb.workfd, cmd)
 
 tb.end_tc(True)
