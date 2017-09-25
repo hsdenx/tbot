@@ -43,7 +43,7 @@ logging.info("args: %s %s %s", tb.config.tc_workfd_scp_opt, tb.config.tc_workfd_
 c = tb.workfd
 
 cmd = 'scp ' + tb.config.tc_workfd_scp_opt + ' ' + tb.config.tc_workfd_scp_from + ' ' + tb.config.tc_workfd_scp_to
-tb.eof_write(c, cmd)
+tb.eof_write(c, cmd, split=c.line_length / 2)
 loop = True
 s = ['Are you sure', 'password']
 while loop:
