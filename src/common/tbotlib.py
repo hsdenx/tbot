@@ -221,6 +221,7 @@ class tbot(object):
 
         self.event = events(self, 'log/event.log')
         self.event.create_event('main', self.config.boardname, "Boardname", True)
+        self.event.create_event('main', self.config.boardname, "DUTS_BOARDNAME", self.config.boardlabpowername)
 
         self.wdtdir = self.workdir + "/wdt"
         if not os.path.exists(self.wdtdir):

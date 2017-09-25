@@ -68,6 +68,4 @@ if uvers != 'undef':
 if splvers != 'undef':
     tb.event.create_event('main', tb.config.boardname, "DUTS_SPL_VERSION", splvers)
 
-tb.event.create_event('main', tb.config.boardname, "DUTS_BOARDNAME", tb.config.boardlabpowername)
-
 tb.end_tc(True)
