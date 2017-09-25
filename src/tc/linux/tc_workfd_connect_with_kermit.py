@@ -68,15 +68,22 @@ tb.eof_write(tb.workfd, pre + 'kermit', start=False)
 oldprompt = tb.workfd.get_prompt()
 tb.workfd.set_prompt('C-Kermit>')
 
-searchlist = ["assword"]
+searchlist = ["assword", "Locked"]
 tmp = True
 retu = False
 while tmp == True:
     ret = tb.tbot_rup_and_check_strings(tb.workfd, searchlist)
     if ret == '0':
        tb.write_stream_passwd(tb.workfd, tb.config.user + '_kermit', tb.config.boardname)
+    if ret == '1':
+       retu = True
     elif ret == 'prompt':
        tmp = False
+
+    if retu == True:
+        tb.workfd.set_prompt(oldprompt, 'linux')
+        tb.eof_write(tb.workfd, 'exit', start=False)
+        tb.end_tc(False)
 
 if tb.config.tc_workfd_connect_with_kermit_rlogin == 'none':
     # check for "no effect", "Sorry, write access"
