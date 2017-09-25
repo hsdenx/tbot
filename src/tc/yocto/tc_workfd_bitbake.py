@@ -32,6 +32,7 @@ tlist = [
 	'pid',
 	'tasks',
 	'Loading',
+	'NOTE',
 	'Initialising'
 ]
 tb.write_lx_cmd_check(tb.workfd, 'bitbake ' + tb.config.tc_workfd_bitbake_args, triggerlist=tlist)
