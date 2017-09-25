@@ -33,8 +33,8 @@ tb.workfd = tb.c_ctrl
 
 tb.eof_call_tc("tc_lab_poweroff.py")
 
-state = 'high'
 # low = emmc boot
+state = 'high'
 if tb.config.tc_board_bootmode == 'normal':
     state = 'low'
 

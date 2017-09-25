@@ -15,9 +15,9 @@
 # start with
 # tbot.py -s lab_denx -c beagleboneblack -t tc_demo_part1.py -l log/tbot_demo_part1.log -v
 #
-# we boot from sd card, if it is broken, we boot
-# from emmc and restore a known working uboot on
-# the sdcard.
+# we boot from emmc, if it is broken, we boot
+# from sdcard and restore a known working uboot on
+# the emmc.
 #
 # To switch between botmodes we can use the PIN P8_43
 # attached to GND -> boot from emmc, floating -> boot
@@ -31,10 +31,10 @@ try:
 except:
     tb.end_tc(False)
 
-tb.config.tc_board_bootmode = 'recovery'
+tb.config.tc_board_bootmode = 'normal'
 tb.eof_call_tc(tb.config.tc_board_bootmode_tc)
 
-tb.config.uboot_prompt = 'U-Boot# '
+tb.config.uboot_prompt = '=> '
 time.sleep(2)
 tb.eof_call_tc("tc_lab_poweron.py")
 tb.set_board_state("u-boot")
@@ -60,7 +60,7 @@ tb.eof_call_tc("tc_ub_upd_uboot.py")
 # call upd_spl
 tb.eof_call_tc("tc_ub_upd_spl.py")
 
-tb.config.tc_board_bootmode = 'normal'
+tb.config.tc_board_bootmode = 'recovery'
 tb.eof_call_tc(tb.config.tc_board_bootmode_tc)
 
 tb.config.uboot_prompt = '=> '
