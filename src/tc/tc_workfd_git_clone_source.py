@@ -54,22 +54,36 @@ else:
 
 tmp = "git clone " + opt + tb.config.tc_lab_git_clone_source_git_repo + " " + repo_name
 tb.eof_write(tb.workfd, tmp)
-searchlist = ["Username", "Password", "Authentication failed", "Receiving"]
-tmp = True
+searchlist = ["Username", "assword", "Authentication failed", "Receiving", "yes"]
+loop = True
 clone_ok = True
-while tmp == True:
+while loop == True:
     ret = tb.tbot_rup_and_check_strings(tb.workfd, searchlist)
     if ret == '0':
         tb.write_stream(tb.workfd, tb.config.tc_lab_git_clone_source_git_repo_user)
     if ret == '1':
-        tb.write_stream_passwd(tb.workfd, tb.config.tc_lab_git_clone_source_git_repo_user,
-                               tb.config.tc_lab_git_clone_source_git_repo)
+        if '@' in tb.config.tc_lab_git_clone_source_git_repo:
+            # try to get the ip
+            tmp = tb.config.tc_lab_git_clone_source_git_repo.split('@')
+            u = tmp[0]
+            u = u.split('/')
+            u = u[-1]
+            tmp = tmp[1]
+            tmp = tmp.split(':')
+            b = tmp[0]
+        else:
+            u = tb.config.tc_lab_git_clone_source_git_repo_user
+            b = tb.config.tc_lab_git_clone_source_git_repo
+
+        tb.write_stream_passwd(tb.workfd, u, b)
     if ret == '2':
         clone_ok = False
     if ret == '3':
         tb.tbot_trigger_wdt()
+    if ret == '4':
+        tb.eof_write(tb.workfd, 'yes', start=False)
     elif ret == 'prompt':
-        tmp = False
+        loop = False
 
 if clone_ok != True:
     tb.end_tc(False)
