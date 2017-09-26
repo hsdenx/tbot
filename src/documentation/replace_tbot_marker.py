@@ -45,7 +45,7 @@ class replace_tbot_marker(object):
                             '\x1b[1;34m]\x1b[0;39m',
                             '\x1b[1A\x1b[J'
             ]
-        self.delete_line_list = ['^C', 'root@cuby:~#', 'INTERRUPT', 'unit_address_vs_reg']
+        self.delete_line_list = ['^C', 'root@cuby:~#', 'INTERRUPT', 'unit_address_vs_reg', 'simple_bus_reg']
         # remove yocto workdir
         print("OPT in INIT", self.options)
         if self.options.replace:
