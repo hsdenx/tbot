@@ -13,10 +13,10 @@ endobj
 << /BaseFont /Helvetica-BoldOblique /Encoding /WinAnsiEncoding /Name /F3 /Subtype /Type1 /Type /Font >>
 endobj
 5 0 obj
-<< /A << /S /URI /Type /Action /URI (https://de.wikipedia.org/wiki/ReStructuredText) >> /Border [ 0 0 0 ] /Rect [ 207.6428 529.7736 285.6488 541.7736 ] /Subtype /Link /Type /Annot >>
+<< /A << /S /URI /Type /Action /URI (https://de.wikipedia.org/wiki/ReStructuredText) >> /Border [ 0 0 0 ] /Rect [ 207.6428 529.0236 282.8688 541.0236 ] /Subtype /Link /Type /Annot >>
 endobj
 6 0 obj
-<< /A << /S /URI /Type /Action /URI (https://github.com/hsdenx/tbot) >> /Border [ 0 0 0 ] /Rect [ 344.4929 517.7736 363.9529 529.7736 ] /Subtype /Link /Type /Annot >>
+<< /A << /S /URI /Type /Action /URI (https://github.com/hsdenx/tbot) >> /Border [ 0 0 0 ] /Rect [ 344.4929 517.0236 361.1729 529.0236 ] /Subtype /Link /Type /Annot >>
 endobj
 7 0 obj
 << /Annots [ 5 0 R 6 0 R ] /Contents 157 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 
@@ -27,16 +27,16 @@ endobj
   /Type /Page >>
 endobj
 9 0 obj
-<< /A << /S /URI /Type /Action /URI (http://www.denx.de/wiki/U-Boot/) >> /Border [ 0 0 0 ] /Rect [ 167.7529 617.7736 308.9129 629.7736 ] /Subtype /Link /Type /Annot >>
+<< /A << /S /URI /Type /Action /URI (http://www.denx.de/wiki/U-Boot/) >> /Border [ 0 0 0 ] /Rect [ 167.7529 617.0236 308.9129 629.0236 ] /Subtype /Link /Type /Annot >>
 endobj
 10 0 obj
-<< /A << /S /URI /Type /Action /URI (http://git.denx.de/) >> /Border [ 0 0 0 ] /Rect [ 239.8729 581.7736 316.5929 593.7736 ] /Subtype /Link /Type /Annot >>
+<< /A << /S /URI /Type /Action /URI (http://git.denx.de/) >> /Border [ 0 0 0 ] /Rect [ 239.8729 581.0236 316.5929 593.0236 ] /Subtype /Link /Type /Annot >>
 endobj
 11 0 obj
 << /BaseFont /Courier /Encoding /WinAnsiEncoding /Name /F4 /Subtype /Type1 /Type /Font >>
 endobj
 12 0 obj
-<< /A << /S /URI /Type /Action /URI (ftp://ftp.denx.de/pub/u-boot/) >> /Border [ 0 0 0 ] /Rect [ 143.2729 450.3736 265.5829 462.3736 ] /Subtype /Link /Type /Annot >>
+<< /A << /S /URI /Type /Action /URI (ftp://ftp.denx.de/pub/u-boot/) >> /Border [ 0 0 0 ] /Rect [ 143.2729 449.6236 265.5829 461.6236 ] /Subtype /Link /Type /Annot >>
 endobj
 13 0 obj
 << /Annots [ 9 0 R 10 0 R 12 0 R ] /Contents 159 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 
@@ -66,25 +66,25 @@ endobj
   /Type /Page >>
 endobj
 20 0 obj
-<< /A << /S /URI /Type /Action /URI (http://www.denx.de/wiki/DULG/ELDK) >> /Border [ 0 0 0 ] /Rect [ 79.37291 657.7736 105.4929 669.7736 ] /Subtype /Link /Type /Annot >>
+<< /A << /S /URI /Type /Action /URI (http://www.denx.de/wiki/DULG/ELDK) >> /Border [ 0 0 0 ] /Rect [ 79.37291 657.0236 105.4929 669.0236 ] /Subtype /Link /Type /Annot >>
 endobj
 21 0 obj
-<< /A << /S /URI /Type /Action /URI (http://www.denx.de/wiki/DULG/ELDK) >> /Border [ 0 0 0 ] /Rect [ 366.1529 657.7736 395.0529 669.7736 ] /Subtype /Link /Type /Annot >>
+<< /A << /S /URI /Type /Action /URI (http://www.denx.de/wiki/DULG/ELDK) >> /Border [ 0 0 0 ] /Rect [ 366.1529 657.0236 392.2729 669.0236 ] /Subtype /Link /Type /Annot >>
 endobj
 22 0 obj
-<< /A << /S /URI /Type /Action /URI (http://www.denx.de/wiki/DULG/ELDK) >> /Border [ 0 0 0 ] /Rect [ 156.3017 639.7736 186.5295 651.7736 ] /Subtype /Link /Type /Annot >>
+<< /A << /S /URI /Type /Action /URI (http://www.denx.de/wiki/DULG/ELDK) >> /Border [ 0 0 0 ] /Rect [ 156.3017 639.0236 183.7495 651.0236 ] /Subtype /Link /Type /Annot >>
 endobj
 23 0 obj
-<< /A << /S /URI /Type /Action /URI (http://www.ubuntu.com/) >> /Border [ 0 0 0 ] /Rect [ 373.2365 573.1736 409.2459 585.1736 ] /Subtype /Link /Type /Annot >>
+<< /A << /S /URI /Type /Action /URI (http://www.ubuntu.com/) >> /Border [ 0 0 0 ] /Rect [ 373.2365 572.4236 406.4659 584.4236 ] /Subtype /Link /Type /Annot >>
 endobj
 24 0 obj
-<< /A << /S /URI /Type /Action /URI (http://fedoraproject.org/) >> /Border [ 0 0 0 ] /Rect [ 73.81291 506.5736 108.2729 518.5736 ] /Subtype /Link /Type /Annot >>
+<< /A << /S /URI /Type /Action /URI (http://fedoraproject.org/) >> /Border [ 0 0 0 ] /Rect [ 73.81291 505.8236 105.4929 517.8236 ] /Subtype /Link /Type /Annot >>
 endobj
 25 0 obj
-<< /A << /S /URI /Type /Action /URI (http://openembedded.org/wiki/Main_Page) >> /Border [ 0 0 0 ] /Rect [ 194.4595 451.9736 270.4668 463.9736 ] /Subtype /Link /Type /Annot >>
+<< /A << /S /URI /Type /Action /URI (http://openembedded.org/wiki/Main_Page) >> /Border [ 0 0 0 ] /Rect [ 194.4595 451.2236 267.6868 463.2236 ] /Subtype /Link /Type /Annot >>
 endobj
 26 0 obj
-<< /A << /S /URI /Type /Action /URI (https://www.yoctoproject.org/) >> /Border [ 0 0 0 ] /Rect [ 282.5441 451.9736 342.4215 463.9736 ] /Subtype /Link /Type /Annot >>
+<< /A << /S /URI /Type /Action /URI (https://www.yoctoproject.org/) >> /Border [ 0 0 0 ] /Rect [ 282.5441 451.2236 342.4215 463.2236 ] /Subtype /Link /Type /Annot >>
 endobj
 27 0 obj
 << /Annots [ 20 0 R 21 0 R 22 0 R 23 0 R 24 0 R 25 0 R 26 0 R ] /Contents 165 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 
@@ -269,7 +269,7 @@ endobj
   /Type /Page >>
 endobj
 71 0 obj
-<< /Border [ 0 0 0 ] /Contents () /Dest [ 44 0 R /XYZ 62.69291 731.5236 0 ] /Rect [ 97.15291 693.7736 238.8429 705.7736 ] /Subtype /Link /Type /Annot >>
+<< /Border [ 0 0 0 ] /Contents () /Dest [ 44 0 R /XYZ 62.69291 731.5236 0 ] /Rect [ 97.15291 693.0236 238.8429 705.0236 ] /Subtype /Link /Type /Annot >>
 endobj
 72 0 obj
 << /BitsPerComponent 8 /ColorSpace /DeviceRGB /Filter [ /ASCII85Decode /FlateDecode ] /Height 16 /Length 129 /Mask [ 192 192 192 192 192 192 ] 
@@ -278,7 +278,7 @@ stream
 Gat=d$OX['#X`fXO4Kf2ITR.UZYlHN_3`[*)OL?/l29TCoHG>b:LnV8GY%<9p7ZI698/R`Nr=(Uba'P=;-h884O9qsYP_1'eo9U*pPC*^5BWqdM>K]^5NG9.%05VePQ~>endstream
 endobj
 73 0 obj
-<< /Border [ 0 0 0 ] /Contents () /Dest [ 74 0 R /XYZ 157.6128 648.0236 0 ] /Rect [ 118.2729 663.7736 293.3229 675.7736 ] /Subtype /Link /Type /Annot >>
+<< /Border [ 0 0 0 ] /Contents () /Dest [ 74 0 R /XYZ 157.6128 648.0236 0 ] /Rect [ 118.2729 663.0236 293.3229 675.0236 ] /Subtype /Link /Type /Annot >>
 endobj
 74 0 obj
 << /Annots [ 71 0 R 73 0 R ] /Contents 206 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] /XObject << /FormXob.2500e21ba6b1543d9ba2126fde074a9d 28 0 R /FormXob.dcfda2e6b7dc748020d5b9302ed21d37 72 0 R >> >> /Rotate 0 
@@ -293,7 +293,7 @@ endobj
   /Type /Page >>
 endobj
 77 0 obj
-<< /A << /S /URI /Type /Action /URI (http://git.denx.de/?p=u-boot.git;a=blob;f=test/py/README.md) >> /Border [ 0 0 0 ] /Rect [ 62.69291 699.7736 532.5827 711.7736 ] /Subtype /Link /Type /Annot >>
+<< /A << /S /URI /Type /Action /URI (http://git.denx.de/?p=u-boot.git;a=blob;f=test/py/README.md) >> /Border [ 0 0 0 ] /Rect [ 62.69291 699.7736 334.2329 711.7736 ] /Subtype /Link /Type /Annot >>
 endobj
 78 0 obj
 << /Annots [ 77 0 R ] /Contents 209 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 156 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 
@@ -307,8 +307,8 @@ endobj
 << /Outlines 82 0 R /PageLabels 211 0 R /PageMode /UseNone /Pages 156 0 R /Type /Catalog >>
 endobj
 81 0 obj
-<< /Author () /CreationDate (D:20170830084356-01'00') /Creator (\(unspecified\)) /Keywords () /Producer (ReportLab PDF Library - www.reportlab.com) /Subject (\(unspecified\)) 
-  /Title (U-Boot beagleboneblack Documentation) >>
+<< /Author () /CreationDate (D:20170926054726+00'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20170926054726+00'00') /Producer (ReportLab PDF Library - www.reportlab.com) 
+  /Subject (\(unspecified\)) /Title (U-Boot beagleboneblack Documentation) /Trapped /False >>
 endobj
 82 0 obj
 << /Count 88 /First 83 0 R /Last 87 0 R /Type /Outlines >>
@@ -825,7 +825,7 @@ n -6 -6 467.6898 28.8 re B*
 Q
 q
 0 0 0 rg
-BT 1 0 0 1 0 9.8 Tm /F4 7 Tf 8.4 TL ($ export TBOT_BASEDIR=/work/hs/tbot) Tj T* ($) Tj T* ET
+BT 1 0 0 1 0 9.8 Tm /F4 7 Tf 8.4 TL ($ export ) Tj 1 0 0 rg (TBOT_BASEDIR) Tj 0 0 0 rg (=/work/hs/tbot) Tj T* ($) Tj T* ET
 Q
 Q
 Q
@@ -853,7 +853,7 @@ n -6 -6 467.6898 28.8 re B*
 Q
 q
 0 0 0 rg
-BT 1 0 0 1 0 9.8 Tm /F4 7 Tf 8.4 TL ($ cd $TBOT_BASEDIR) Tj T* ($) Tj T* ET
+BT 1 0 0 1 0 9.8 Tm /F4 7 Tf 8.4 TL ($ cd ) Tj 1 0 0 rg ($) Tj 1 0 0 rg (TBOT_BASEDIR) Tj 0 0 0 rg () Tj 0 0 0 rg () Tj T* ($) Tj T* ET
 Q
 Q
 Q
@@ -1115,7 +1115,7 @@ n -6 -6 467.6898 28.8 re B*
 Q
 q
 0 0 0 rg
-BT 1 0 0 1 0 9.8 Tm /F4 7 Tf 8.4 TL ($ export PATH=$TBOT_BASEDIR/dtc:$PATH) Tj T* ($) Tj T* ET
+BT 1 0 0 1 0 9.8 Tm /F4 7 Tf 8.4 TL ($ export PATH=) Tj 1 0 0 rg ($) Tj 1 0 0 rg (TBOT_BASEDIR) Tj 0 0 0 rg () Tj 0 0 0 rg (/dtc:$PATH) Tj T* ($) Tj T* ET
 Q
 Q
 Q
@@ -2783,7 +2783,7 @@ n -6 -6 507.6 104.4 re B*
 Q
 q
 0 0 0 rg
-BT 1 0 0 1 0 85.4 Tm /F4 7 Tf 8.4 TL ($ mkimage -A ppc -O linux -T script -C none -a 0 -e 0 -n "autoscr example script" -d $TBOT_BASEDIR/source_example.txt\\) Tj T* (  /var/lib/tftpboot/beagleboneblack/tbot/source.scr) Tj T* (Image Name:   autoscr example script) Tj T* (Created:      Wed Aug 23 09:23:32 2017) Tj T* (Image Type:   PowerPC Linux Script \(uncompressed\)) Tj T* (Data Size:    157 Bytes = 0.15 kB = 0.00 MB) Tj T* (Load Address: 00000000) Tj T* (Entry Point:  00000000) Tj T* (Contents:) Tj T* (   Image 0: 149 Bytes = 0.15 kB = 0.00 MB) Tj T* ($) Tj T* ET
+BT 1 0 0 1 0 85.4 Tm /F4 7 Tf 8.4 TL ($ mkimage -A ppc -O linux -T script -C none -a 0 -e 0 -n "autoscr example script" -d ) Tj 1 0 0 rg ($) Tj 1 0 0 rg (TBOT_BASEDIR) Tj 0 0 0 rg () Tj 0 0 0 rg (/source_example.txt\\) Tj T* (  /var/lib/tftpboot/beagleboneblack/tbot/source.scr) Tj T* (Image Name:   autoscr example script) Tj T* (Created:      Wed Aug 23 09:23:32 2017) Tj T* (Image Type:   PowerPC Linux Script \(uncompressed\)) Tj T* (Data Size:    157 Bytes = 0.15 kB = 0.00 MB) Tj T* (Load Address: 00000000) Tj T* (Entry Point:  00000000) Tj T* (Contents:) Tj T* (   Image 0: 149 Bytes = 0.15 kB = 0.00 MB) Tj T* ($) Tj T* ET
 Q
 Q
 Q
@@ -3212,7 +3212,7 @@ q
 n -6 -6 467.6898 96 re B*
 Q
 q
-BT 1 0 0 1 0 77 Tm 8.4 TL /F4 7 Tf 0 0 0 rg (set carrier-watch off) Tj T* (\($TBOT_BASEDIR/\) C-Kermit) Tj (>) Tj (set handshake none) Tj T* (\($TBOT_BASEDIR/\) C-Kermit) Tj (>) Tj (set flow-control none) Tj T* (\($TBOT_BASEDIR/\) C-Kermit) Tj (>) Tj (robust) Tj T* (\($TBOT_BASEDIR/\) C-Kermit) Tj (>) Tj (set file type bin) Tj T* (\($TBOT_BASEDIR/\) C-Kermit) Tj (>) Tj (set file name lit) Tj T* (\($TBOT_BASEDIR/\) C-Kermit) Tj (>) Tj (set rec pack 100) Tj T* (\($TBOT_BASEDIR/\) C-Kermit) Tj (>) Tj (set send pack 100) Tj T* (\($TBOT_BASEDIR/\) C-Kermit) Tj (>) Tj (set window 5) Tj T* (\($TBOT_BASEDIR/\) C-Kermit) Tj (>) Tj T* ET
+BT 1 0 0 1 0 77 Tm 8.4 TL /F4 7 Tf 0 0 0 rg (set carrier-watch off) Tj T* (\($) Tj 1 0 0 rg (TBOT_BASEDIR) Tj 0 0 0 rg (/\) C-Kermit) Tj (>) Tj (set handshake none) Tj T* (\($) Tj 1 0 0 rg (TBOT_BASEDIR) Tj 0 0 0 rg (/\) C-Kermit) Tj (>) Tj (set flow-control none) Tj T* (\($) Tj 1 0 0 rg (TBOT_BASEDIR) Tj 0 0 0 rg (/\) C-Kermit) Tj (>) Tj (robust) Tj T* (\($) Tj 1 0 0 rg (TBOT_BASEDIR) Tj 0 0 0 rg (/\) C-Kermit) Tj (>) Tj (set file type bin) Tj T* (\($) Tj 1 0 0 rg (TBOT_BASEDIR) Tj 0 0 0 rg (/\) C-Kermit) Tj (>) Tj (set file name lit) Tj T* (\($) Tj 1 0 0 rg (TBOT_BASEDIR) Tj 0 0 0 rg (/\) C-Kermit) Tj (>) Tj (set rec pack 100) Tj T* (\($) Tj 1 0 0 rg (TBOT_BASEDIR) Tj 0 0 0 rg (/\) C-Kermit) Tj (>) Tj (set send pack 100) Tj T* (\($) Tj 1 0 0 rg (TBOT_BASEDIR) Tj 0 0 0 rg (/\) C-Kermit) Tj (>) Tj (set window 5) Tj T* (\($) Tj 1 0 0 rg (TBOT_BASEDIR) Tj 0 0 0 rg (/\) C-Kermit) Tj (>) Tj T* ET
 Q
 Q
 Q
@@ -3274,7 +3274,7 @@ q
 n -6 -6 516 306 re B*
 Q
 q
-BT 1 0 0 1 0 287 Tm 8.4 TL /F4 7 Tf 0 0 0 rg (=) Tj (>) Tj ( loadb 80000000) Tj T* (## Ready for binary \(kermit\) download to 0x80000000 at 115200 bps...) Tj T*  T* (\(Back at localhost.localdomain\)) Tj T* (----------------------------------------------------) Tj T* (\($TBOT_BASEDIR/\) C-Kermit) Tj (>) Tj  T* (C-Kermit 9.0.302 OPEN SOURCE:, 20 Aug 2011, localhost.localdomain [192.168.1.105]) Tj T*  T* (   Current Directory: $TBOT_BASEDIR) Tj T* (Communication Device: /dev/ttybbb) Tj T* ( Communication Speed: 115200) Tj T* (              Parity: none) Tj T* (         RTT/Timeout: 01 / 02) Tj T* (             SENDING:  =) Tj (>) Tj ( /lib/tftpboot/beagleboneblack/tbot/u-boot.img) Tj T* (           File Type: BINARY) Tj T* (           File Size: 734224) Tj T* (        Percent Done: 100 //////////////////////////////////////////////////) Tj T* (:01        ...10...20...30...40...50...60...70...80...90..100                                                        :02) Tj T* (       teElapsed Time: 00:01:59) Tj T* (5 Transfer67ate, CPS: 6197                                                                                            69) Tj T* (        55ndow Slots: 1 of 1                                                                                        2705) Tj T* (6        75cket Type: B6                                                                                          918482) Tj T* (0       P921et Count: 11819                                                                                         3276) Tj T* ( cket Length:                                                                                                         0\() Tj T* (resend\)  Error Count: 4) Tj T* (          Last Error:) Tj T* (        Last Message: SUCCESS.  Files: 1, Bytes: 734224, 6167 CPS) Tj T*  T*  T* (\($TBOT_BASEDIR/\) C-Kermit) Tj (>) Tj (connect) Tj T* (Connecting to /dev/ttybbb, speed 115200) Tj T* ( Escape character: Ctrl-\\ \(ASCII 28, FS\): enabled) Tj T* (Type the escape character followed by C to get back,) Tj T* (or followed by ? to see other options.) Tj T* (----------------------------------------------------) Tj T* ET
+BT 1 0 0 1 0 287 Tm 8.4 TL /F4 7 Tf 0 0 0 rg (=) Tj (>) Tj ( loadb 80000000) Tj T* (## Ready for binary \(kermit\) download to 0x80000000 at 115200 bps...) Tj T*  T* (\(Back at localhost.localdomain\)) Tj T* (----------------------------------------------------) Tj T* (\($) Tj 1 0 0 rg (TBOT_BASEDIR) Tj 0 0 0 rg (/\) C-Kermit) Tj (>) Tj  T* (C-Kermit 9.0.302 OPEN SOURCE:, 20 Aug 2011, localhost.localdomain [192.168.1.105]) Tj T*  T* (   Current Directory: $) Tj 1 0 0 rg (TBOT_BASEDIR) Tj 0 0 0 rg () Tj T* (Communication Device: /dev/ttybbb) Tj T* ( Communication Speed: 115200) Tj T* (              Parity: none) Tj T* (         RTT/Timeout: 01 / 02) Tj T* (             SENDING:  =) Tj (>) Tj ( /lib/tftpboot/beagleboneblack/tbot/u-boot.img) Tj T* (           File Type: BINARY) Tj T* (           File Size: 734224) Tj T* (        Percent Done: 100 //////////////////////////////////////////////////) Tj T* (:01        ...10...20...30...40...50...60...70...80...90..100                                                        :02) Tj T* (       teElapsed Time: 00:01:59) Tj T* (5 Transfer67ate, CPS: 6197                                                                                            69) Tj T* (        55ndow Slots: 1 of 1                                                                                        2705) Tj T* (6        75cket Type: B6                                                                                          918482) Tj T* (0       P921et Count: 11819                                                                                         3276) Tj T* ( cket Length:                                                                                                         0\() Tj T* (resend\)  Error Count: 4) Tj T* (          Last Error:) Tj T* (        Last Message: SUCCESS.  Files: 1, Bytes: 734224, 6167 CPS) Tj T*  T*  T* (\($) Tj 1 0 0 rg (TBOT_BASEDIR) Tj 0 0 0 rg (/\) C-Kermit) Tj (>) Tj (connect) Tj T* (Connecting to /dev/ttybbb, speed 115200) Tj T* ( Escape character: Ctrl-\\ \(ASCII 28, FS\): enabled) Tj T* (Type the escape character followed by C to get back,) Tj T* (or followed by ? to see other options.) Tj T* (----------------------------------------------------) Tj T* ET
 Q
 Q
 Q
@@ -6136,7 +6136,7 @@ q
 n -6 -6 516 188.4 re B*
 Q
 q
-BT 1 0 0 1 0 169.4 Tm 8.4 TL /F4 7 Tf 0 0 0 rg ($ PATH=/home/hs/data/Entwicklung/test_py_scripts/hook-scripts:$PATH;PYTHONPATH=/work/hs/tb) Tj T* (ot/u-boot-am335x_evm;./test/py/test.py --bd am335x_evm -s --build-dir .) Tj T* (+u-boot-test-flash am335x_evm na) Tj T* (board type  am335x_evm) Tj T* (No flashing supported yet) Tj T* (========================================================================================= test session starts ==========) Tj T* (================================================================================) Tj T* (platform linux2 -- Python 2.7.8, pytest-3.2.1, py-1.4.34, pluggy-0.4.0) Tj T* (rootdir: $TBOT_BASEDIR/u-boot-am335x_evm/test/py, inifile: pytest.ini) Tj T* (collecting 0 items) Tj T* (collecting 1 item) Tj T* ([...]) Tj T* (Unknown command 'non_existent_cmd' - try 'help') Tj T* (=) Tj (>) Tj  T* (test/py/tests/test_unknown_cmd.py .) Tj T* (test/py/tests/test_ut.py ss) Tj T* (test/py/tests/test_vboot.py s) Tj T*  T* (================================================================================ 74 passed, 20 skipped in 12.71 seconds) Tj T* (================================================================================) Tj T* ($) Tj T* ET
+BT 1 0 0 1 0 169.4 Tm 8.4 TL /F4 7 Tf 0 0 0 rg ($ PATH=/home/hs/data/Entwicklung/test_py_scripts/hook-scripts:$PATH;PYTHONPATH=/work/hs/tb) Tj T* (ot/u-boot-am335x_evm;./test/py/test.py --bd am335x_evm -s --build-dir .) Tj T* (+u-boot-test-flash am335x_evm na) Tj T* (board type  am335x_evm) Tj T* (No flashing supported yet) Tj T* (========================================================================================= test session starts ==========) Tj T* (================================================================================) Tj T* (platform linux2 -- Python 2.7.8, pytest-3.2.1, py-1.4.34, pluggy-0.4.0) Tj T* (rootdir: ) Tj 1 0 0 rg ($) Tj 1 0 0 rg (TBOT_BASEDIR) Tj 0 0 0 rg () Tj 0 0 0 rg (/u-boot-am335x_evm/test/py, inifile: pytest.ini) Tj T* (collecting 0 items) Tj T* (collecting 1 item) Tj T* ([...]) Tj T* (Unknown command 'non_existent_cmd' - try 'help') Tj T* (=) Tj (>) Tj  T* (test/py/tests/test_unknown_cmd.py .) Tj T* (test/py/tests/test_ut.py ss) Tj T* (test/py/tests/test_vboot.py s) Tj T*  T* (================================================================================ 74 passed, 20 skipped in 12.71 seconds) Tj T* (================================================================================) Tj T* ($) Tj T* ET
 Q
 Q
 Q
@@ -6435,195 +6435,195 @@ xref
 0000020411 00000 n
 0000020623 00000 n
 0000020734 00000 n
-0000020981 00000 n
-0000021059 00000 n
-0000021211 00000 n
-0000021334 00000 n
-0000021463 00000 n
-0000021577 00000 n
-0000021730 00000 n
-0000021851 00000 n
-0000022048 00000 n
-0000022179 00000 n
-0000022305 00000 n
-0000022438 00000 n
-0000022594 00000 n
-0000022771 00000 n
-0000022890 00000 n
-0000023006 00000 n
-0000023141 00000 n
-0000023331 00000 n
-0000023499 00000 n
-0000023641 00000 n
-0000023810 00000 n
-0000023970 00000 n
-0000024101 00000 n
-0000024278 00000 n
-0000024420 00000 n
-0000024570 00000 n
-0000024712 00000 n
-0000024850 00000 n
-0000024991 00000 n
-0000025153 00000 n
-0000025301 00000 n
-0000025462 00000 n
-0000025607 00000 n
-0000025796 00000 n
-0000025935 00000 n
-0000026099 00000 n
-0000026247 00000 n
-0000026427 00000 n
-0000026591 00000 n
-0000026763 00000 n
-0000026942 00000 n
-0000027107 00000 n
-0000027286 00000 n
-0000027446 00000 n
-0000027639 00000 n
-0000027784 00000 n
-0000027964 00000 n
-0000028106 00000 n
-0000028298 00000 n
-0000028438 00000 n
-0000028586 00000 n
-0000028735 00000 n
-0000028886 00000 n
-0000029037 00000 n
-0000029194 00000 n
-0000029355 00000 n
-0000029494 00000 n
-0000029673 00000 n
-0000029787 00000 n
-0000029972 00000 n
-0000030107 00000 n
-0000030261 00000 n
-0000030420 00000 n
-0000030573 00000 n
-0000030701 00000 n
-0000030850 00000 n
-0000031000 00000 n
-0000031197 00000 n
-0000031336 00000 n
-0000031468 00000 n
-0000031608 00000 n
-0000031729 00000 n
-0000031897 00000 n
-0000032006 00000 n
-0000032117 00000 n
-0000032572 00000 n
-0000037003 00000 n
-0000038150 00000 n
-0000040666 00000 n
-0000042078 00000 n
-0000044363 00000 n
-0000046031 00000 n
-0000049990 00000 n
-0000053862 00000 n
-0000057187 00000 n
-0000059412 00000 n
-0000061521 00000 n
-0000063760 00000 n
-0000065221 00000 n
-0000067316 00000 n
-0000070768 00000 n
-0000074396 00000 n
-0000076347 00000 n
-0000080388 00000 n
-0000082505 00000 n
-0000086499 00000 n
-0000090369 00000 n
-0000092627 00000 n
-0000094086 00000 n
-0000098505 00000 n
-0000099792 00000 n
-0000105577 00000 n
-0000106130 00000 n
-0000108236 00000 n
-0000109834 00000 n
-0000114870 00000 n
-0000118422 00000 n
-0000120006 00000 n
-0000122003 00000 n
-0000127062 00000 n
-0000133309 00000 n
-0000138200 00000 n
-0000143779 00000 n
-0000150250 00000 n
-0000154087 00000 n
-0000156871 00000 n
-0000160187 00000 n
-0000162775 00000 n
-0000165867 00000 n
-0000167979 00000 n
-0000170026 00000 n
-0000173406 00000 n
-0000176611 00000 n
-0000185940 00000 n
-0000196097 00000 n
-0000203371 00000 n
-0000208747 00000 n
-0000211556 00000 n
-0000213975 00000 n
-0000214292 00000 n
-0000214952 00000 n
-0000214990 00000 n
-0000215028 00000 n
-0000215066 00000 n
-0000215104 00000 n
-0000215142 00000 n
-0000215180 00000 n
-0000215218 00000 n
-0000215256 00000 n
-0000215294 00000 n
-0000215333 00000 n
-0000215372 00000 n
-0000215411 00000 n
-0000215450 00000 n
-0000215489 00000 n
-0000215528 00000 n
-0000215567 00000 n
-0000215606 00000 n
-0000215645 00000 n
-0000215684 00000 n
-0000215723 00000 n
-0000215762 00000 n
-0000215801 00000 n
-0000215840 00000 n
-0000215879 00000 n
-0000215918 00000 n
-0000215957 00000 n
-0000215996 00000 n
-0000216035 00000 n
-0000216074 00000 n
-0000216113 00000 n
-0000216152 00000 n
-0000216191 00000 n
-0000216230 00000 n
-0000216269 00000 n
-0000216308 00000 n
-0000216347 00000 n
-0000216386 00000 n
-0000216425 00000 n
-0000216464 00000 n
-0000216503 00000 n
-0000216542 00000 n
-0000216581 00000 n
-0000216620 00000 n
-0000216659 00000 n
-0000216698 00000 n
-0000216737 00000 n
-0000216776 00000 n
-0000216815 00000 n
-0000216854 00000 n
-0000216893 00000 n
-0000216932 00000 n
-0000216971 00000 n
-0000217010 00000 n
+0000021032 00000 n
+0000021110 00000 n
+0000021262 00000 n
+0000021385 00000 n
+0000021514 00000 n
+0000021628 00000 n
+0000021781 00000 n
+0000021902 00000 n
+0000022099 00000 n
+0000022230 00000 n
+0000022356 00000 n
+0000022489 00000 n
+0000022645 00000 n
+0000022822 00000 n
+0000022941 00000 n
+0000023057 00000 n
+0000023192 00000 n
+0000023382 00000 n
+0000023550 00000 n
+0000023692 00000 n
+0000023861 00000 n
+0000024021 00000 n
+0000024152 00000 n
+0000024329 00000 n
+0000024471 00000 n
+0000024621 00000 n
+0000024763 00000 n
+0000024901 00000 n
+0000025042 00000 n
+0000025204 00000 n
+0000025352 00000 n
+0000025513 00000 n
+0000025658 00000 n
+0000025847 00000 n
+0000025986 00000 n
+0000026150 00000 n
+0000026298 00000 n
+0000026478 00000 n
+0000026642 00000 n
+0000026814 00000 n
+0000026993 00000 n
+0000027158 00000 n
+0000027337 00000 n
+0000027497 00000 n
+0000027690 00000 n
+0000027835 00000 n
+0000028015 00000 n
+0000028157 00000 n
+0000028349 00000 n
+0000028489 00000 n
+0000028637 00000 n
+0000028786 00000 n
+0000028937 00000 n
+0000029088 00000 n
+0000029245 00000 n
+0000029406 00000 n
+0000029545 00000 n
+0000029724 00000 n
+0000029838 00000 n
+0000030023 00000 n
+0000030158 00000 n
+0000030312 00000 n
+0000030471 00000 n
+0000030624 00000 n
+0000030752 00000 n
+0000030901 00000 n
+0000031051 00000 n
+0000031248 00000 n
+0000031387 00000 n
+0000031519 00000 n
+0000031659 00000 n
+0000031780 00000 n
+0000031948 00000 n
+0000032057 00000 n
+0000032168 00000 n
+0000032623 00000 n
+0000037054 00000 n
+0000038201 00000 n
+0000040717 00000 n
+0000042129 00000 n
+0000044414 00000 n
+0000046082 00000 n
+0000050041 00000 n
+0000053913 00000 n
+0000057238 00000 n
+0000059463 00000 n
+0000061572 00000 n
+0000063811 00000 n
+0000065272 00000 n
+0000067367 00000 n
+0000070819 00000 n
+0000074447 00000 n
+0000076398 00000 n
+0000080439 00000 n
+0000082556 00000 n
+0000086550 00000 n
+0000090420 00000 n
+0000092678 00000 n
+0000094137 00000 n
+0000098556 00000 n
+0000099843 00000 n
+0000105628 00000 n
+0000106181 00000 n
+0000108287 00000 n
+0000109885 00000 n
+0000114921 00000 n
+0000118473 00000 n
+0000120057 00000 n
+0000122054 00000 n
+0000127113 00000 n
+0000133360 00000 n
+0000138251 00000 n
+0000143830 00000 n
+0000150301 00000 n
+0000154138 00000 n
+0000156922 00000 n
+0000160238 00000 n
+0000162826 00000 n
+0000165918 00000 n
+0000168030 00000 n
+0000170077 00000 n
+0000173457 00000 n
+0000176662 00000 n
+0000185991 00000 n
+0000196148 00000 n
+0000203422 00000 n
+0000208798 00000 n
+0000211607 00000 n
+0000214026 00000 n
+0000214343 00000 n
+0000215003 00000 n
+0000215041 00000 n
+0000215079 00000 n
+0000215117 00000 n
+0000215155 00000 n
+0000215193 00000 n
+0000215231 00000 n
+0000215269 00000 n
+0000215307 00000 n
+0000215345 00000 n
+0000215384 00000 n
+0000215423 00000 n
+0000215462 00000 n
+0000215501 00000 n
+0000215540 00000 n
+0000215579 00000 n
+0000215618 00000 n
+0000215657 00000 n
+0000215696 00000 n
+0000215735 00000 n
+0000215774 00000 n
+0000215813 00000 n
+0000215852 00000 n
+0000215891 00000 n
+0000215930 00000 n
+0000215969 00000 n
+0000216008 00000 n
+0000216047 00000 n
+0000216086 00000 n
+0000216125 00000 n
+0000216164 00000 n
+0000216203 00000 n
+0000216242 00000 n
+0000216281 00000 n
+0000216320 00000 n
+0000216359 00000 n
+0000216398 00000 n
+0000216437 00000 n
+0000216476 00000 n
+0000216515 00000 n
+0000216554 00000 n
+0000216593 00000 n
+0000216632 00000 n
+0000216671 00000 n
+0000216710 00000 n
+0000216749 00000 n
+0000216788 00000 n
+0000216827 00000 n
+0000216866 00000 n
+0000216905 00000 n
+0000216944 00000 n
+0000216983 00000 n
+0000217022 00000 n
+0000217061 00000 n
 trailer
 << /ID 
  % ReportLab generated PDF document -- digest (http://www.reportlab.com)
- [(}\363\246\316\204\322V\012\371T]\314\275cw\306) (}\363\246\316\204\322V\012\371T]\314\275cw\306)]
+ [(\262\375^s\374|\362\222X\203\273\232\347\366\232\246) (\262\375^s\374|\362\222X\203\273\232\347\366\232\246)]
  /Info 81 0 R /Root 80 0 R /Size 266 >>
 startxref
-217049
+217100
 %%EOF

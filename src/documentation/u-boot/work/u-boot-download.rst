@@ -1,0 +1,261 @@
+Download Commands
+-----------------
+
+bootp - boot image via network using BOOTP/TFTP protocol
+........................................................
+
+
+::
+
+  => help bootp
+  bootp - boot image via network using BOOTP/TFTP protocol
+  
+  Usage:
+  bootp [loadAddress] [[hostIPaddr:]bootfilename]
+  => 
+
+dhcp - invoke DHCP client to obtain IP/boot params
+..................................................
+
+
+::
+
+  => help dhcp
+  dhcp - boot image via network using DHCP/TFTP protocol
+  
+  Usage:
+  dhcp [loadAddress] [[hostIPaddr:]bootfilename]
+  => 
+
+.. raw:: pdf
+
+   PageBreak
+
+loadb - load binary file over serial line (kermit mode)
+.......................................................
+
+
+::
+
+  => help loadb
+  loadb - load binary file over serial line (kermit mode)
+  
+  Usage:
+  loadb [ off ] [ baud ]
+      - load binary file over serial line with offset 'off' and baudrate 'baud'
+  => 
+
+With kermit you can download binary data via the serial line.
+
+Make sure you use the following settings in kermit.
+
+
+::
+
+  set carrier-watch off
+  ($TBOT_BASEDIR/) C-Kermit>set handshake none
+  ($TBOT_BASEDIR/) C-Kermit>set flow-control none
+  ($TBOT_BASEDIR/) C-Kermit>robust
+  ($TBOT_BASEDIR/) C-Kermit>set file type bin
+  ($TBOT_BASEDIR/) C-Kermit>set file name lit
+  ($TBOT_BASEDIR/) C-Kermit>set rec pack 100
+  ($TBOT_BASEDIR/) C-Kermit>set send pack 100
+  ($TBOT_BASEDIR/) C-Kermit>set window 5
+  ($TBOT_BASEDIR/) C-Kermit>
+
+If you have problems with downloading, may you set the values
+
+::
+
+  set rec pack
+  set send pack
+
+to smaller values.
+
+Now for example download u-boot.img.
+
+
+::
+
+  => loadb 80000000
+  ## Ready for binary (kermit) download to 0x80000000 at 115200 bps...
+  
+  (Back at localhost.localdomain)
+  ----------------------------------------------------
+  ($TBOT_BASEDIR/) C-Kermit>
+  C-Kermit 9.0.302 OPEN SOURCE:, 20 Aug 2011, localhost.localdomain [192.168.1.105]                                       
+                                                                                                                          
+     Current Directory: $TBOT_BASEDIR                                                                                     
+  Communication Device: /dev/ttybbb                                                                                       
+   Communication Speed: 115200                                                                                            
+                Parity: none                                                                                              
+           RTT/Timeout: 01 / 02                                                                                           
+               SENDING:  => /lib/tftpboot/beagleboneblack/tbot/u-boot.img                                                 
+             File Type: BINARY                                                                                            
+             File Size: 734224                                                                                            
+          Percent Done: 100 //////////////////////////////////////////////////                                            
+  :01        ...10...20...30...40...50...60...70...80...90..100                                                        :02
+         teElapsed Time: 00:01:59                                                                                         
+  5 Transfer67ate, CPS: 6197                                                                                            69
+          55ndow Slots: 1 of 1                                                                                        2705
+  6        75cket Type: B6                                                                                          918482
+  0       P921et Count: 11819                                                                                         3276
+   cket Length:                                                                                                         0(
+  resend)  Error Count: 4                                                                                                 
+            Last Error:                                                                                                   
+          Last Message: SUCCESS.  Files: 1, Bytes: 734224, 6167 CPS                                                       
+                                                                                                                          
+                                                                                                                          
+  ($TBOT_BASEDIR/) C-Kermit>connect                                                                                       
+  Connecting to /dev/ttybbb, speed 115200                                                                                 
+   Escape character: Ctrl-\ (ASCII 28, FS): enabled                                                                       
+  Type the escape character followed by C to get back,                                                                    
+  or followed by ? to see other options.                                                                                  
+  ----------------------------------------------------                                                                    
+  CACHE: Misaligned operation at range [80000000, 800b3410]                                                               
+  ## Total Size      = 0x000b3410 = 734224 Bytes                                                                          
+  ## Start Addr      = 0x80000000                                                                                         
+  =>                                                                                                                      
+
+  => imi 80000000
+  
+  ## Checking Image at 80000000 ...
+     FIT image found
+     FIT description: Firmware image with one or more FDT blobs
+     Created:         2017-08-23   6:36:19 UTC
+      Image 0 (firmware@1)
+       Description:  U-Boot 2017.09-rc2-00151-g2d7cb5b for am335x board
+       Created:      2017-08-23   6:36:19 UTC
+       Type:         Firmware
+       Compression:  uncompressed
+       Data Start:   unavailable
+       Data Size:    unavailable
+       Architecture: ARM
+       Load Address: 0x80800000
+      Image 1 (fdt@1)
+       Description:  am335x-evm
+       Created:      2017-08-23   6:36:19 UTC
+       Type:         Firmware
+       Compression:  uncompressed
+       Data Start:   unavailable
+       Data Size:    unavailable
+       Architecture: ARM
+       Load Address: unavailable
+      Image 2 (fdt@2)
+       Description:  am335x-bone
+       Created:      2017-08-23   6:36:19 UTC
+       Type:         Firmware
+       Compression:  uncompressed
+       Data Start:   unavailable
+       Data Size:    unavailable
+       Architecture: ARM
+       Load Address: unavailable
+      Image 3 (fdt@3)
+       Description:  am335x-boneblack
+       Created:      2017-08-23   6:36:19 UTC
+       Type:         Firmware
+       Compression:  uncompressed
+       Data Start:   unavailable
+       Data Size:    unavailable
+       Architecture: ARM
+       Load Address: unavailable
+      Image 4 (fdt@4)
+       Description:  am335x-evmsk
+       Created:      2017-08-23   6:36:19 UTC
+       Type:         Firmware
+       Compression:  uncompressed
+       Data Start:   unavailable
+       Data Size:    unavailable
+       Architecture: ARM
+       Load Address: unavailable
+      Image 5 (fdt@5)
+       Description:  am335x-bonegreen
+       Created:      2017-08-23   6:36:19 UTC
+       Type:         Firmware
+       Compression:  uncompressed
+       Data Start:   unavailable
+       Data Size:    unavailable
+       Architecture: ARM
+       Load Address: unavailable
+      Image 6 (fdt@6)
+       Description:  am335x-icev2
+       Created:      2017-08-23   6:36:19 UTC
+       Type:         Firmware
+       Compression:  uncompressed
+       Data Start:   unavailable
+       Data Size:    unavailable
+       Architecture: ARM
+       Load Address: unavailable
+      Default Configuration: 'conf@1'
+      Configuration 0 (conf@1)
+       Description:  am335x-evm
+       Kernel:       unavailable
+       FDT:          fdt@1
+      Configuration 1 (conf@2)
+       Description:  am335x-bone
+       Kernel:       unavailable
+       FDT:          fdt@2
+      Configuration 2 (conf@3)
+       Description:  am335x-boneblack
+       Kernel:       unavailable
+       FDT:          fdt@3
+      Configuration 3 (conf@4)
+       Description:  am335x-evmsk
+       Kernel:       unavailable
+       FDT:          fdt@4
+      Configuration 4 (conf@5)
+       Description:  am335x-bonegreen
+       Kernel:       unavailable
+       FDT:          fdt@5
+      Configuration 5 (conf@6)
+       Description:  am335x-icev2
+       Kernel:       unavailable
+       FDT:          fdt@6
+  ## Checking hash(es) for FIT Image at 80000000 ...
+     Hash(es) for Image 0 (firmware@1):  error!
+  Can't get image data/size for '' hash node in 'firmware@1' image node
+  Bad hash in FIT image!
+  => 
+
+
+.. raw:: pdf
+
+   PageBreak
+
+loads - load S-Record file over serial line
+...........................................
+
+
+::
+
+  => help loads
+  loads - load S-Record file over serial line
+  
+  Usage:
+  loads [ off ]
+      - load S-Record file over serial line with offset 'off'
+  => 
+
+rarpboot- boot image via network using RARP/TFTP protocol
+.........................................................
+
+
+::
+
+  => help rarp
+  Unknown command 'rarp' - try 'help' without arguments for list of all known commands
+  
+  => 
+
+tftpboot- boot image via network using TFTP protocol
+....................................................
+
+
+::
+
+  => help tftp
+  tftpboot - boot image via network using TFTP protocol
+  
+  Usage:
+  tftpboot [loadAddress] [[hostIPaddr:]bootfilename]
+  => 

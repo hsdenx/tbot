@@ -280,9 +280,13 @@ if __name__ == '__main__':
 
     work = replace_tbot_marker(options)
     work.do_work()
-    while work.list_of_files:
-        filename = work.list_of_files[0]
-        work.options.ifile = filename
-        work.options.ofile = 'work/' + filename
+    print("work.options.ifile ", work.options.ifile)
+    rpath = os.path.dirname(work.options.ifile)
+    rpath = rpath + '/'
+    print("RPATH ", rpath)
+    print("work.list_of_files: ", work.list_of_files)
+    for f in  work.list_of_files:
+        filename = f
+        work.options.ifile = rpath + filename
+        work.options.ofile = rpath + 'work/' + filename
         work.do_work()
-        work.list_of_files.remove(filename)
