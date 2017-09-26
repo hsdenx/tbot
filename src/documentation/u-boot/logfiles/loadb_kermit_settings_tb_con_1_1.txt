@@ -1,10 +1,10 @@
 set carrier-watch off
-(/work/hs/tbot/) C-Kermit>set handshake none
-(/work/hs/tbot/) C-Kermit>set flow-control none
-(/work/hs/tbot/) C-Kermit>robust
-(/work/hs/tbot/) C-Kermit>set file type bin
-(/work/hs/tbot/) C-Kermit>set file name lit
-(/work/hs/tbot/) C-Kermit>set rec pack 100
-(/work/hs/tbot/) C-Kermit>set send pack 100
-(/work/hs/tbot/) C-Kermit>set window 5
-(/work/hs/tbot/) C-Kermit>
+(/work/tbot2go/tbot/) C-Kermit>set handshake none
+(/work/tbot2go/tbot/) C-Kermit>set flow-control none
+(/work/tbot2go/tbot/) C-Kermit>robust
+(/work/tbot2go/tbot/) C-Kermit>set file type bin
+(/work/tbot2go/tbot/) C-Kermit>set file name lit
+(/work/tbot2go/tbot/) C-Kermit>set rec pack 100
+(/work/tbot2go/tbot/) C-Kermit>set send pack 100
+(/work/tbot2go/tbot/) C-Kermit>set window 5
+(/work/tbot2go/tbot/) C-Kermit>

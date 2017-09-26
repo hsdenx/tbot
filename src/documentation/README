@@ -5,6 +5,11 @@ tbot run:
 src/common/tbot.py -s lab_hs_laptop -c beagleboneblack -t tc_ub_start_all_duts.py -l log/tbot_all_duts.log
 
 copy the logfiles into logifles
+go into src/documentation
+
+python2.7 copy_logfiles.py -i /home/pi/tbot2go/tbot/logfiles -o u-boot/logfiles
+
+check if all files are new!
 
 execute:
 

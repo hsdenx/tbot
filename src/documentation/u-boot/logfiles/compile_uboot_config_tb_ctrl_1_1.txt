@@ -1,5 +1,5 @@
 ^C
-hs@localhost [ 8:35:27] ttbott> make am335x_evm_defconfig
+hs@localhost [ 7:15:58] ttbott_compile> make am335x_evm_defconfig
   HOSTCC  scripts/basic/fixdep
   HOSTCC  scripts/kconfig/conf.o
   SHIPPED scripts/kconfig/zconf.tab.c
@@ -10,4 +10,4 @@ hs@localhost [ 8:35:27] ttbott> make am335x_evm_defconfig
 #
 # configuration written to .config
 #
-hs@localhost [ 8:35:28] ttbott> 
+hs@localhost [ 7:16:01] ttbott_compile> 

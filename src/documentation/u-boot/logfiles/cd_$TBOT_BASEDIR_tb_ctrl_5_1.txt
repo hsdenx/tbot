@@ -1,3 +1,3 @@
 ^C
-hs@localhost [ 8:36:46] ttbott> cd $TBOT_BASEDIR
-hs@localhost [ 8:36:46] ttbott> 
+hs@localhost [ 9:00:53] ttbott_compile> cd $TBOT_BASEDIR
+hs@localhost [ 9:00:53] ttbott_compile> 

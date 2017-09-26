@@ -73,10 +73,16 @@ Now we simply clone the U-Boots source code with git:
 
 ::
 
-  $ git clone /home/hs/git/u-boot u-boot-am335x_evm
-  Klone nach 'u-boot-am335x_evm'...
-  Fertig.
-  $ 
+  $ git clone  git://git.denx.de/u-boot u-boot-am335x_evm 
+  Cloning into 'u-boot-am335x_evm'...                                                           
+  remote: Counting objects: 501780, done.                                                       
+  remote: Compressing objects: 100% (85102/85102), done.                                        
+  remote: Total 501780 (delta 412960), reused 497673 (delta 409125)                             
+  Receiving objects: 100% (501780/501780), 102.72 MiB | 1.13 MiB/s, done.                       
+  Resolving deltas: 100% (412960/412960), done.                                                 
+  Checking connectivity... done.                                                                
+  $                                                       
+
 
 cd into it
 
@@ -92,8 +98,8 @@ checkout the branch you want to test
 ::
 
   $ git checkout master
-  Bereits auf 'master'
-  Ihr Branch ist auf dem selben Stand wie 'origin/master'.
+  Already on 'master'
+  Your branch is up-to-date with 'origin/master'.
   $ 
 
 just for the records, print some info of the branch
@@ -102,7 +108,7 @@ just for the records, print some info of the branch
 ::
 
   $ git describe --tags
-  v2017.09-rc2-151-g2d7cb5b
+  v2017.09-396-g6ca43a5
   $ 
 
 .. raw:: pdf
@@ -117,9 +123,10 @@ This depends on the toolchain you use.
 
 ::
 
-  $ printenv PATH | grep --color=never /opt/eldk-5.4/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-linux-gnueabi
-  $ export PATH=/opt/eldk-5.4/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-linux-gnueabi:$PATH
-  $ export CROSS_COMPILE=arm-linux-gnueabi-
+  $ export ARCH=arm
+  $ printenv PATH | grep --color=never /home/hs/.buildman-toolchains/gcc-4.9.0-nolibc/arm-unknown-linux-gnueabi/bin
+  $ export PATH=/home/hs/.buildman-toolchains/gcc-4.9.0-nolibc/arm-unknown-linux-gnueabi/bin:$PATH
+  $ export CROSS_COMPILE=arm-unknown-linux-gnueabi-
   $ 
 
 If you have no toolchain installed, may you try buildman (see U-Boot code
@@ -144,7 +151,8 @@ Add the path to the dtc command to your PATH variable
 
 ::
 
-  $ export PATH=$TBOT_BASEDIR/dtc:$PATH
+  $ printenv PATH | grep --color=never /work/tbot2go/tbot/dtc
+  $ export PATH=/work/tbot2go/tbot/dtc:$PATH
   $ 
 
 
@@ -181,6 +189,8 @@ Now compile it
 
   $ make -s DTC_FLAGS="-S 0xb000" all
   *** Your GCC is older than 6.0 and will not be supported starting in v2018.01.
+  arch/arm/dts/am335x-pxm50.dtb: Warning (unit_address_format): Node /ocp/i2c@4819c000/egalax_ts@04 unit name should not have\
+    leading 0s
   ===================== WARNING ======================
   This board uses CONFIG_DM_I2C_COMPAT. Please remove
   (possibly in a subsequent patch in your series)
@@ -194,11 +204,20 @@ after U-Boot is compiled, copy the resulting binaries we need later to our tftpb
 
 ::
 
-  $ cp u-boot.bin /var/lib/tftpboot/beagleboneblack/tbot
+  $ scp  u-boot.bin pi@192.168.1.110:/srv/tftpboot//beagleboneblack/tbot/u-boot.bin
+  pi@192.168.1.110's password: 
+  u-boot.bin\
+    100%  494KB 493.8KB/s   00:00
   $ 
-  $ cp u-boot.img /var/lib/tftpboot/beagleboneblack/tbot
+  $ scp  u-boot.img pi@192.168.1.110:/srv/tftpboot//beagleboneblack/tbot/u-boot.img
+  pi@192.168.1.110's password: 
+  u-boot.img\
+    100%  716KB 715.7KB/s   00:00
   $ 
-  $ cp MLO /var/lib/tftpboot/beagleboneblack/tbot
+  $ scp  MLO pi@192.168.1.110:/srv/tftpboot//beagleboneblack/tbot/MLO
+  pi@192.168.1.110's password: 
+  MLO\
+    100%   92KB  92.4KB/s   00:00
   $ 
 
 We also copy the u-boot.dtb file to our tftp directory, as we do some
@@ -207,7 +226,10 @@ testing with it later.
 
 ::
 
-  $ cp u-boot.dtb /var/lib/tftpboot/beagleboneblack/tbot
+  $ scp  u-boot.dtb pi@192.168.1.110:/srv/tftpboot//beagleboneblack/tbot/u-boot.dtb
+  pi@192.168.1.110's password: 
+  u-boot.dtb\
+    100%   44KB  44.0KB/s   00:00
   $ 
 
 .. raw:: pdf
@@ -239,15 +261,17 @@ tfpt the new u-boot image into ram and write it to the sd card.
   => run tbot_upd_uboot
   link up on port 0, speed 100, full duplex
   Using ethernet@4a100000 device
-  TFTP from server 192.168.2.1; our IP address is 192.168.2.11
+  TFTP from server 192.168.3.1; our IP address is 192.168.3.20
   Filename 'beagleboneblack/tbot/u-boot.img'.
   Load address: 0x81000000
-  Loading: *###################################################
-  	 4.6 MiB/s
+  Loading: *#################################################################
+  	 #################################################################
+  	 ##############
+  	 1.1 MiB/s
   done
-  Bytes transferred = 734224 (b3410 hex)
+  Bytes transferred = 732904 (b2ee8 hex)
   writing u-boot.img
-  734224 bytes written
+  732904 bytes written
   => 
 
 install SPL
@@ -272,15 +296,15 @@ tfpt the new SPL image into ram and write it to the sd card.
   => run tbot_upd_spl
   link up on port 0, speed 100, full duplex
   Using ethernet@4a100000 device
-  TFTP from server 192.168.2.1; our IP address is 192.168.2.11
+  TFTP from server 192.168.3.1; our IP address is 192.168.3.20
   Filename 'beagleboneblack/tbot/MLO'.
   Load address: 0x81000000
-  Loading: *#######
-  	 4.3 MiB/s
+  Loading: *###################
+  	 1 MiB/s
   done
-  Bytes transferred = 95468 (174ec hex)
+  Bytes transferred = 94652 (171bc hex)
   writing mlo
-  95468 bytes written
+  94652 bytes written
   => 
 
 .. raw:: pdf
@@ -369,7 +393,7 @@ The :redtext:`bdinfo` command (:redtext:`bdi`) prints the information that U-Boo
   reloc off   = 0x1F74E000
   irq_sp      = 0x9DF21EC0
   sp start    = 0x9DF21EB0
-  Early malloc usage: 188 / 400
+  Early malloc usage: 184 / 400
   fdt_blob = 9df21ed8
   => 
 

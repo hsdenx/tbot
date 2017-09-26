@@ -1,3 +1,3 @@
 ^C
-hs@localhost [ 8:36:45] ttbott> cp u-boot.dtb /var/lib/tftpboot/beagleboneblack/tbot
-hs@localhost [ 8:36:45] ttbott> 
+pi@raspberrypitbot2go [ 5:25:02] ttbott> cp /srv/tftpboot/beagleboneblack/tbot/u-boot.dtb /srv/tftpboot/beagleboneblack/tbot//latestworking-u-boot.dtb
+pi@raspberrypitbot2go [ 5:25:02] ttbott> 

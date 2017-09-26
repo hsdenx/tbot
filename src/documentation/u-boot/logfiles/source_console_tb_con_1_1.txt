@@ -4,7 +4,7 @@
 ## Checking Image at 80000000 ...
    Legacy image found
    Image Name:   autoscr example script
-   Created:      2017-08-18   8:19:02 UTC
+   Created:      2017-09-30   5:24:22 UTC
    Image Type:   PowerPC Linux Script (uncompressed)
    Data Size:    157 Bytes = 157 Bytes
    Load Address: 00000000
@@ -19,11 +19,11 @@
 Network Configuration:
 ----------------------
 Target:
-ipaddr=192.168.2.10
-## Error: "hostname" not defined
+ipaddr=192.168.3.20
+hostname=bbb
 
 Server:
-serverip=192.168.2.1
-rootpath=/export/rootfs
+serverip=192.168.3.1
+rootpath=/work/tbot2go/tbot/nfs/bbb
 
 => 

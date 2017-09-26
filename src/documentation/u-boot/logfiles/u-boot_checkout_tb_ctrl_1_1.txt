@@ -1,5 +1,5 @@
 ^C
-hs@localhost [ 8:35:14] ttbott> git checkout master
-Bereits auf 'master'
-Ihr Branch ist auf dem selben Stand wie 'origin/master'.
-hs@localhost [ 8:35:15] ttbott> 
+hs@localhost [ 7:15:42] ttbott_compile> git checkout master
+Already on 'master'
+Your branch is up-to-date with 'origin/master'.
+hs@localhost [ 7:15:43] ttbott_compile> 

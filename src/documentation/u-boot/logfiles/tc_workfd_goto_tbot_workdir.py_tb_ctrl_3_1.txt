@@ -1,5 +1,5 @@
 ^C
-hs@localhost [ 9:23:29] ttbott> [ ! -d "/work/hs/tbot" ] && echo "Does not exist"
-hs@localhost [ 9:23:30] ttbott> ^C
-hs@localhost [ 9:23:30] ttbott> cd /work/hs/tbot
-hs@localhost [ 9:23:30] ttbott> 
+pi@raspberrypitbot2go [ 5:13:58] ttbott> [ ! -d "/work/tbot2go/tbot/" ] && echo "Does not exist"
+pi@raspberrypitbot2go [ 5:13:59] ttbott> ^C
+pi@raspberrypitbot2go [ 5:13:59] ttbott> cd /work/tbot2go/tbot/
+pi@raspberrypitbot2go [ 5:13:59] ttbott> 

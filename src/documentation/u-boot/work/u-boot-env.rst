@@ -23,8 +23,8 @@ The :redtext:`printenv` command prints one, several or all variables of the U-Bo
 ::
 
   => printenv ipaddr hostname netmask
-  ipaddr=192.168.2.10
-  ## Error: "hostname" not defined
+  ipaddr=192.168.3.20
+  hostname=bbb
   netmask=255.255.255.0
   => 
 
@@ -34,7 +34,10 @@ Without arguments, :redtext:`printenv` prints all a list with all variables in t
 ::
 
   => printenv
-  Heiko=Schocher
+  addcon=setenv bootargs ${bootargs} console=${console}
+  addip=setenv bootargs ${bootargs} ip=${ipaddr}:${serverip}:${gatewayip}:${netmask}:${hostname}:${netdev}::off panic=1
+  addmisc=setenv bootargs ${bootargs} loglevel=8
+  addmtd=setenv bootargs ${bootargs} ${mtdparts}
   arch=arm
   args_mmc=run finduuid;setenv bootargs console=${console} ${optargs} root=PARTUUID=${uuid} rw rootfstype=${mmcrootfstype}
   baudrate=115200
@@ -66,15 +69,18 @@ Without arguments, :redtext:`printenv` prints all a list with all variables in t
   bootcmd_mmc1=setenv devnum 1; run mmc_boot
   bootcmd_nand=run nandboot
   bootcmd_pxe=run boot_net_usb_start; dhcp; if pxe get; then pxe boot; fi
-  bootcount=5
+  bootcount=6
   bootdelay=2
   bootdir=/boot
   bootenvfile=uEnv.txt
-  bootfile=zImage
+  bootfile=beagleboneblack/tbot/zImage
   bootm_size=0x10000000
   bootpart=0:2
   bootscript=echo Running bootscript from mmc${mmcdev} ...; source ${loadaddr}
-  console=ttyO0,115200n8
+  cmp_addr_r=82000000
+  cmp_mlo=tftp ${cmp_addr_r} ${mlofile};cmp.b ${load_addr_r} ${cmp_addr_r} ${filesize}
+  cmp_uboot=tftp ${cmp_addr_r} ${ubfile};cmp.b ${load_addr_r} ${cmp_addr_r} ${filesize}
+  console=ttyS0,115200n8
   cpu=armv7
   dfu_alt_info_emmc=rawemmc raw 0 3751936
   dfu_alt_info_mmc=boot part 0 1;rootfs part 0 2;MLO fat 0 1;MLO.raw raw 0x100 0x100;u-boot.img.raw raw 0x300 0x1000;u-env.raw\
@@ -89,14 +95,12 @@ Without arguments, :redtext:`printenv` prints all a list with all variables in t
     bootscript;else if run loadbootenv; then echo Loaded env from ${bootenvfile};run importbootenv;fi;if test -n $uenvcmd; then\
     echo Running uenvcmd ...;run uenvcmd;fi;fi;fi;
   eth1addr=6c:ec:eb:83:40:33
-  ethact=ethernet@4a100000
   ethaddr=6c:ec:eb:83:40:31
   fdt_addr_r=0x88000000
   fdtaddr=0x88000000
   fdtcontroladdr=9df21ed8
-  fdtfile=undefined
-  fileaddr=80100000
-  filesize=b3410
+  fdtfile=beagleboneblack/tbot/am335x-boneblack.dtb
+  filesize=b2ee8
   findfdt=if test $board_name = A335BONE; then setenv fdtfile am335x-bone.dtb; fi; if test $board_name = A335BNLT; then setenv\
     fdtfile am335x-boneblack.dtb; fi; if test $board_name = BBBW; then setenv fdtfile am335x-boneblack-wireless.dtb; fi; if test\
     $board_name = BBG1; then setenv fdtfile am335x-bonegreen.dtb; fi; if test $board_name = BBGW; then setenv fdtfile am335x-\
@@ -106,12 +110,16 @@ Without arguments, :redtext:`printenv` prints all a list with all variables in t
     Could not determine device tree to use; fi;
   finduuid=part uuid mmc ${bootpart} uuid
   fit_bootfile=fitImage
-  fit_loadaddr=0x88000000
+  fit_loadaddr=0x87000000
+  hostname=bbb
   importbootenv=echo Importing environment from mmc${mmcdev} ...; env import -t ${loadaddr} ${filesize}
   init_console=if test $board_name = A335_ICE; then setenv console ttyO3,115200n8;else setenv console ttyO0,115200n8;fi;
-  ipaddr=192.168.2.10
+  ipaddr=192.168.3.20
   kernel_addr_r=0x82000000
+  load_addr_r=81000000
   load_efi_dtb=load ${devtype} ${devnum}:${distro_bootpart} ${fdt_addr_r} ${prefix}${efi_fdtfile}
+  load_mlo=tftp ${load_addr_r} ${mlofile}
+  load_uboot=tftp ${load_addr_r} ${ubfile}
   loadaddr=0x82000000
   loadbootenv=fatload mmc ${mmcdev} ${loadaddr} ${bootenvfile}
   loadbootscript=load mmc ${mmcdev} ${loadaddr} boot.scr
@@ -119,10 +127,14 @@ Without arguments, :redtext:`printenv` prints all a list with all variables in t
   loadfit=run args_mmc; bootm ${loadaddr}#${fdtfile};
   loadimage=load ${devtype} ${bootpart} ${loadaddr} ${bootdir}/${bootfile}
   loadramdisk=load mmc ${mmcdev} ${rdaddr} ramdisk.gz
+  mlofile=beagleboneblack/tbot/MLO
   mmc_boot=if mmc dev ${devnum}; then setenv devtype mmc; run scan_dev_for_boot_part; fi
+  mmc_mmc=run mmcloadk; run mmcloadfdt;run args_mmc;bootz ${loadaddr} - ${fdtaddr}
   mmcboot=mmc dev ${mmcdev}; setenv devnum ${mmcdev}; setenv devtype mmc; if mmc rescan; then echo SD/MMC found on device\
     ${mmcdev};if run loadimage; then if test ${boot_fit} -eq 1; then run loadfit; else run mmcloados;fi;fi;fi;
   mmcdev=0
+  mmcloadfdt=ext2load mmc 0:2 ${fdtaddr} /boot/am335x-boneblack.dtb
+  mmcloadk=ext2load mmc 0:2 ${loadaddr} /boot/zImage
   mmcloados=run args_mmc; if test ${boot_fdt} = yes || test ${boot_fdt} = try; then if run loadfdt; then bootz ${loadaddr} -\
     ${fdtaddr}; else if test ${boot_fdt} = try; then bootz; else echo WARN: Cannot load the DT; fi; fi; else bootz; fi;
   mmcrootfstype=ext4 rootwait
@@ -134,13 +146,18 @@ Without arguments, :redtext:`printenv` prints all a list with all variables in t
     NAND.kernel; bootz ${loadaddr} - ${fdtaddr}
   nandroot=ubi0:rootfs rw ubi.mtd=NAND.file-system,2048
   nandrootfstype=ubifs rootwait=1
+  net_nfs=run netloadimage; run netloadfdt;run nfsargs addcon addip addmtd addmisc;bootz ${loadaddr} - ${fdtaddr}
   netargs=setenv bootargs console=${console} ${optargs} root=/dev/nfs nfsroot=${serverip}:${rootpath},${nfsopts} rw ip=dhcp
   netboot=echo Booting from network ...; setenv autoload no; dhcp; run netloadimage; run netloadfdt; run netargs; bootz\
     ${loadaddr} - ${fdtaddr}
+  netdev=eth0
   netloadfdt=tftp ${fdtaddr} ${fdtfile}
   netloadimage=tftp ${loadaddr} ${bootfile}
   netmask=255.255.255.0
-  nfsopts=nolock
+  netmmcboot=echo Booting from network ... with mmcargs ...; setenv autoload no; run netloadimage; run netloadfdt; run\
+    args_mmc; bootz ${loadaddr} - ${fdtaddr}
+  nfsargs=setenv bootargs ${bootargs} root=/dev/nfs rw nfsroot=${serverip}:${rootpath},${nfsopts}
+  nfsopts=nfsvers=3 nolock rw
   partitions=uuid_disk=${uuid_gpt_disk};name=rootfs,start=2MiB,size=-,uuid=${uuid_gpt_rootfs}
   pxefile_addr_r=0x80100000
   ramargs=setenv bootargs console=${console} ${optargs} root=${ramroot} rootfstype=${ramrootfstype}
@@ -149,7 +166,7 @@ Without arguments, :redtext:`printenv` prints all a list with all variables in t
   ramroot=/dev/ram0 rw
   ramrootfstype=ext2
   rdaddr=0x88080000
-  rootpath=/export/rootfs
+  rootpath=/work/tbot2go/tbot/nfs/bbb
   scan_dev_for_boot=echo Scanning ${devtype} ${devnum}:${distro_bootpart}...; for prefix in ${boot_prefixes}; do run\
     scan_dev_for_extlinux; run scan_dev_for_scripts; done;run scan_dev_for_efi;
   scan_dev_for_boot_part=part list ${devtype} ${devnum} -bootable devplist; env exists devplist || setenv devplist 1; for\
@@ -165,7 +182,7 @@ Without arguments, :redtext:`printenv` prints all a list with all variables in t
   scan_dev_for_scripts=for script in ${boot_scripts}; do if test -e ${devtype} ${devnum}:${distro_bootpart} ${prefix}${script};\
     then echo Found U-Boot script ${prefix}${script}; run boot_a_script; echo SCRIPT FAILED: continuing...; fi; done
   scriptaddr=0x80000000
-  serverip=192.168.2.1
+  serverip=192.168.3.1
   soc=am33xx
   spiargs=setenv bootargs console=${console} ${optargs} root=${spiroot} rootfstype=${spirootfstype}
   spiboot=echo Booting from spi ...; run spiargs; sf probe ${spibusno}:0; sf read ${loadaddr} ${spisrcaddr} ${spiimgsize};\
@@ -179,14 +196,19 @@ Without arguments, :redtext:`printenv` prints all a list with all variables in t
   stderr=serial@44e09000
   stdin=serial@44e09000
   stdout=serial@44e09000
-  test=test2
-  test2=echo This is another Test;printenv hostname;echo Done.
+  tbot_cmp_spl=run cmp_mlo
+  tbot_cmp_uboot=run cmp_uboot
+  tbot_upd_spl=run load_mlo;run upd_mlo
+  tbot_upd_uboot=run load_uboot;run upd_uboot
+  ubfile=beagleboneblack/tbot/u-boot.img
+  upd_mlo=fatwrite mmc 1:1 ${load_addr_r} mlo ${filesize}
+  upd_uboot=fatwrite mmc 1:1 ${load_addr_r} u-boot.img ${filesize}
   update_to_fit=setenv loadaddr ${fit_loadaddr}; setenv bootfile ${fit_bootfile}
   usb_boot=usb start; if usb dev ${devnum}; then setenv devtype usb; run scan_dev_for_boot_part; fi
   vendor=ti
-  ver=U-Boot 2017.09-rc2-00151-g2d7cb5b (Aug 23 2017 - 08:35:31 +0200)
+  ver=U-Boot 2017.09-00396-g6ca43a5 (Sep 30 2017 - 07:16:03 +0200)
   
-  Environment size: 9569/131068 bytes
+  Environment size: 11032/131068 bytes
   => 
 
 saveenv - save environment variables to persistent storage
@@ -210,7 +232,7 @@ All changes you make to the U-Boot environment are made in RAM only. They are lo
   => saveenv
   Saving Environment to FAT...
   writing uboot.env
-  FAT: Misaligned buffer address (9df01d48)
+  FAT: Misaligned buffer address (9df01d58)
   done
   => 
 

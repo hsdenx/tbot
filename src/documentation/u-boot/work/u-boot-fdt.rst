@@ -46,11 +46,11 @@ First, the blob that is to be operated on should be stored in memory, and U-Boot
   => tftpb ${fdt_addr_r} beagleboneblack/tbot/u-boot.dtb
   link up on port 0, speed 100, full duplex
   Using ethernet@4a100000 device
-  TFTP from server 192.168.2.1; our IP address is 192.168.2.10
+  TFTP from server 192.168.3.1; our IP address is 192.168.3.20
   Filename 'beagleboneblack/tbot/u-boot.dtb'.
   Load address: 0x80000000
-  Loading: *####
-  	 4.3 MiB/s
+  Loading: *#########
+  	 862.3 KiB/s
   done
   Bytes transferred = 45056 (b000 hex)
   => 
@@ -269,7 +269,7 @@ To move the blob from one memory location to another we will use the :redtext:`f
 
 ::
 
-  => fdt move ${fdt_addr_r} 0x8000b000 b000
+  => fdt move ${fdt_addr_r} 0x8000b000L b000
   => 
   => fdt list /
   / {

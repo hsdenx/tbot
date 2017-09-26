@@ -7,6 +7,7 @@ check=if imi $addr; then echo Image OK; else echo Image corrupted!!; fi
 => addr=0x80000000 ; run check
 
 ## Checking Image at 80000000 ...
-Unknown image format!
+   FIT image found
+Bad FIT image format!
 Image corrupted!!
 => 

@@ -1,6 +1,6 @@
 <INTERRUPT>
 => printenv ipaddr hostname netmask
-ipaddr=192.168.2.10
-## Error: "hostname" not defined
+ipaddr=192.168.3.20
+hostname=bbb
 netmask=255.255.255.0
 => 

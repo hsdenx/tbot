@@ -1,5 +1,10 @@
-^C
-hs@localhost [ 8:35:11] ttbott> git clone /home/hs/git/u-boot u-boot-am335x_evm
-Klone nach 'u-boot-am335x_evm'...
-Fertig.
-hs@localhost [ 8:35:12] ttbott> 
+^C                                                                                            
+hs@localhost [ 7:14:29] ttbott_compile> git clone  git://git.denx.de/u-boot u-boot-am335x_evm 
+Cloning into 'u-boot-am335x_evm'...                                                           
+remote: Counting objects: 501780, done.                                                       
+remote: Compressing objects: 100% (85102/85102), done.                                        
+remote: Total 501780 (delta 412960), reused 497673 (delta 409125)                             
+Receiving objects: 100% (501780/501780), 102.72 MiB | 1.13 MiB/s, done.                       
+Resolving deltas: 100% (412960/412960), done.                                                 
+Checking connectivity... done.                                                                
+hs@localhost [ 7:15:41] ttbott_compile>                                                       

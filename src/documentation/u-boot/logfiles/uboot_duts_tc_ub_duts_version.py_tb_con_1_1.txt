@@ -1,15 +1,13 @@
-
-## Total Size      = 0x00000000 = 0 Bytes
-## Start Addr      = 0x80000000
-=> 
+<INTERRUPT>
+=> <INTERRUPT>
 => <INTERRUPT>
 => vers
-U-Boot 2017.09-rc2-00151-g2d7cb5b (Aug 23 2017 - 08:35:31 +0200)
+U-Boot 2017.09-00396-g6ca43a5 (Sep 30 2017 - 07:16:03 +0200)
 
-arm-linux-gnueabi-gcc (GCC) 4.7.2
-GNU ld (GNU Binutils) 2.23.1.20121113
+arm-unknown-linux-gnueabi-gcc (GCC) 4.9.0
+GNU ld (GNU Binutils) 2.24
 => <INTERRUPT>
 => res
 resetting ...
 
-U-Boot SPL 2017.09-rc2-00151-g2d7cb5b (Aug 23 2017 - 08:35:31)
+U-Boot SPL 2017.09-00396-g6ca43a5 (Sep 30 2017 - 07:16:03)

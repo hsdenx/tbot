@@ -1,4 +1,4 @@
 ^C
-hs@localhost [ 9:23:31] ttbott> pwd
-/work/hs/tbot
-hs@localhost [ 9:23:31] ttbott> 
+pi@raspberrypitbot2go [ 5:24:20] ttbott> pwd
+/work/tbot2go/tbot
+pi@raspberrypitbot2go [ 5:24:21] ttbott> 

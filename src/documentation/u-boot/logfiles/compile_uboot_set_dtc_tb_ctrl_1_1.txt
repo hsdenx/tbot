@@ -1,3 +1,5 @@
 ^C
-hs@localhost [ 8:35:25] ttbott> export PATH=/work/hs/tbot/dtc:$PATH
-hs@localhost [ 8:35:25] ttbott> 
+hs@localhost [ 7:15:54] ttbott_compile> printenv PATH | grep --color=never /work/tbot2go/tbot/dtc
+hs@localhost [ 7:15:54] ttbott_compile> ^C
+hs@localhost [ 7:15:55] ttbott_compile> export PATH=/work/tbot2go/tbot/dtc:$PATH
+hs@localhost [ 7:15:55] ttbott_compile> 

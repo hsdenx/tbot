@@ -43,15 +43,12 @@ The :redtext:`reset` command reboots the system.
 ::
 
   => reset
-  
+
   resetting ...
   
-  U-Boot SPL 2017.09-rc2-00151-g2d7cb5b (Aug 23 2017 - 08:35:31)
+  U-Boot SPL 2017.09-00396-g6ca43a5 (Sep 30 2017 - 07:16:03)
   Trying to boot from MMC2
-  reading uboot.env
-  
-  ** Unable to read "uboot.env" from mmc0:1 **
-  Using default environment
+  *** Warning - bad CRC, using default environment
   
   reading u-boot.img
   reading u-boot.img
@@ -59,18 +56,20 @@ The :redtext:`reset` command reboots the system.
   reading u-boot.img
   
   
-  U-Boot 2017.09-rc2-00151-g2d7cb5b (Aug 23 2017 - 08:35:31 +0200)
+  U-Boot 2017.09-00396-g6ca43a5 (Sep 30 2017 - 07:16:03 +0200)
   
   CPU  : AM335X-GP rev 2.1
   Model: TI AM335x BeagleBone Black
   DRAM:  512 MiB
   NAND:  0 MiB
   MMC:   OMAP SD/MMC: 0, OMAP SD/MMC: 1
-  reading uboot.env
+  *** Warning - bad CRC, using default environment
+  
   ERROR: No USB device found
   
   at drivers/usb/gadget/ether.c:2709/usb_ether_init()
-  Net:   CACHE: Misaligned operation at range [9df2f440, 9df2f4e4]
+  <ethaddr> not set. Validating first E-fuse MAC
+  Net:   CACHE: Misaligned operation at range [9df2f580, 9df2f624]
   eth0: ethernet@4a100000
   Hit any key to stop autoboot:  2  0
   => 
@@ -109,11 +108,6 @@ version - print monitor version
   
   Usage:
   version 
-  => version
-  U-Boot 2017.09-rc2-00151-g2d7cb5b (Aug 23 2017 - 08:35:31 +0200)
-  
-  arm-linux-gnueabi-gcc (GCC) 4.7.2
-  GNU ld (GNU Binutils) 2.23.1.20121113
   => 
 
 You can print the version and build date of the U-Boot image running on your system using the :redtext:`version` command (short: :redtext:`vers`): 
@@ -122,10 +116,10 @@ You can print the version and build date of the U-Boot image running on your sys
 ::
 
   => version
-  U-Boot 2017.09-rc2-00151-g2d7cb5b (Aug 23 2017 - 08:35:31 +0200)
+  U-Boot 2017.09-00396-g6ca43a5 (Sep 30 2017 - 07:16:03 +0200)
   
-  arm-linux-gnueabi-gcc (GCC) 4.7.2
-  GNU ld (GNU Binutils) 2.23.1.20121113
+  arm-unknown-linux-gnueabi-gcc (GCC) 4.9.0
+  GNU ld (GNU Binutils) 2.24
   => 
 
 ? - alias for 'help'

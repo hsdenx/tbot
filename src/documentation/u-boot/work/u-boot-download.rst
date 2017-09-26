@@ -53,15 +53,15 @@ Make sure you use the following settings in kermit.
 ::
 
   set carrier-watch off
-  ($TBOT_BASEDIR/) C-Kermit>set handshake none
-  ($TBOT_BASEDIR/) C-Kermit>set flow-control none
-  ($TBOT_BASEDIR/) C-Kermit>robust
-  ($TBOT_BASEDIR/) C-Kermit>set file type bin
-  ($TBOT_BASEDIR/) C-Kermit>set file name lit
-  ($TBOT_BASEDIR/) C-Kermit>set rec pack 100
-  ($TBOT_BASEDIR/) C-Kermit>set send pack 100
-  ($TBOT_BASEDIR/) C-Kermit>set window 5
-  ($TBOT_BASEDIR/) C-Kermit>
+  (/work/tbot2go/tbot/) C-Kermit>set handshake none
+  (/work/tbot2go/tbot/) C-Kermit>set flow-control none
+  (/work/tbot2go/tbot/) C-Kermit>robust
+  (/work/tbot2go/tbot/) C-Kermit>set file type bin
+  (/work/tbot2go/tbot/) C-Kermit>set file name lit
+  (/work/tbot2go/tbot/) C-Kermit>set rec pack 100
+  (/work/tbot2go/tbot/) C-Kermit>set send pack 100
+  (/work/tbot2go/tbot/) C-Kermit>set window 5
+  (/work/tbot2go/tbot/) C-Kermit>
 
 If you have problems with downloading, may you set the values
 
@@ -80,52 +80,52 @@ Now for example download u-boot.img.
   => loadb 80000000
   ## Ready for binary (kermit) download to 0x80000000 at 115200 bps...
   
-  (Back at localhost.localdomain)
+  (Back at raspberrypitbot2go)
   ----------------------------------------------------
-  ($TBOT_BASEDIR/) C-Kermit>
-  C-Kermit 9.0.302 OPEN SOURCE:, 20 Aug 2011, localhost.localdomain [192.168.1.105]                                       
+  (/work/tbot2go/tbot/) C-Kermit>
+  (/work/tbot2go/tbot/) C-Kermit>send /protocol=kermit /srv/tftpboot//beagleboneblack/tbot/u-boot.img                     
+  C-Kermit 9.0.302 OPEN SOURCE:, 20 Aug 2011, raspberrypitbot2go [192.168.3.1]                                            
                                                                                                                           
-     Current Directory: $TBOT_BASEDIR                                                                                     
-  Communication Device: /dev/ttybbb                                                                                       
-   Communication Speed: 115200                                                                                            
-                Parity: none                                                                                              
-           RTT/Timeout: 01 / 02                                                                                           
-               SENDING:  => /lib/tftpboot/beagleboneblack/tbot/u-boot.img                                                 
+     Current Directory: /work/tbot2go/tbot                                                                                
+  Communication Parity: none/ttyUSB0                                                                                      
+   CommunicRTT/Timeout: 01 / 02                                                                                           
+               SENDING:  => /tftpboot//beagleboneblack/tbot/u-boot.img                                                    
              File Type: BINARY                                                                                            
-             File Size: 734224                                                                                            
+             File Size: 732904                                                                                            
           Percent Done: 100 //////////////////////////////////////////////////                                            
-  :01        ...10...20...30...40...50...60...70...80...90..100                                                        :02
-         teElapsed Time: 00:01:59                                                                                         
-  5 Transfer67ate, CPS: 6197                                                                                            69
-          55ndow Slots: 1 of 1                                                                                        2705
-  6        75cket Type: B6                                                                                          918482
-  0       P921et Count: 11819                                                                                         3276
-   cket Length:                                                                                                         0(
-  resend)  Error Count: 4                                                                                                 
-            Last Error:                                                                                                   
-          Last Message: SUCCESS.  Files: 1, Bytes: 734224, 6167 CPS                                                       
+  :06  ...10...20...30...40...50...60...70...80...90..100                                                              :01
+          Elapsed Time: 00:02:33                                                                                          
+  76Transfer Rate, CPS: 4704                                                                                             0
+  550     Window Slots: 1 of 1                                                                                        %767
+  332      Packet Type: B                                                                                          2105674
+  3108    Packet Count: 53006                                                                                         1226
+                                                                                                                          
+  hecksum errorr Count: 84                                                                                              (r
+  esend)                                                                                                                  
+          Last Message: SUCCESS.  Files: 1, Bytes: 732904, 4787 CPS                                                       
                                                                                                                           
                                                                                                                           
-  ($TBOT_BASEDIR/) C-Kermit>connect                                                                                       
-  Connecting to /dev/ttybbb, speed 115200                                                                                 
+  (/work/tbot2go/tbot/) C-Kermit>connect                                                                                  
+  Connecting to /dev/ttyUSB0, speed 115200                                                                                
    Escape character: Ctrl-\ (ASCII 28, FS): enabled                                                                       
   Type the escape character followed by C to get back,                                                                    
   or followed by ? to see other options.                                                                                  
   ----------------------------------------------------                                                                    
-  CACHE: Misaligned operation at range [80000000, 800b3410]                                                               
-  ## Total Size      = 0x000b3410 = 734224 Bytes                                                                          
+  CACHE: Misaligned operation at range [80000000, 800b2ee8]                                                               
+  ## Total Size      = 0x000b2ee8 = 732904 Bytes                                                                          
   ## Start Addr      = 0x80000000                                                                                         
   =>                                                                                                                      
+                                                                                                                          
 
   => imi 80000000
   
   ## Checking Image at 80000000 ...
      FIT image found
      FIT description: Firmware image with one or more FDT blobs
-     Created:         2017-08-23   6:36:19 UTC
+     Created:         2017-09-30   5:16:48 UTC
       Image 0 (firmware@1)
-       Description:  U-Boot 2017.09-rc2-00151-g2d7cb5b for am335x board
-       Created:      2017-08-23   6:36:19 UTC
+       Description:  U-Boot 2017.09-00396-g6ca43a5 for am335x board
+       Created:      2017-09-30   5:16:48 UTC
        Type:         Firmware
        Compression:  uncompressed
        Data Start:   unavailable
@@ -134,7 +134,7 @@ Now for example download u-boot.img.
        Load Address: 0x80800000
       Image 1 (fdt@1)
        Description:  am335x-evm
-       Created:      2017-08-23   6:36:19 UTC
+       Created:      2017-09-30   5:16:48 UTC
        Type:         Firmware
        Compression:  uncompressed
        Data Start:   unavailable
@@ -143,7 +143,7 @@ Now for example download u-boot.img.
        Load Address: unavailable
       Image 2 (fdt@2)
        Description:  am335x-bone
-       Created:      2017-08-23   6:36:19 UTC
+       Created:      2017-09-30   5:16:48 UTC
        Type:         Firmware
        Compression:  uncompressed
        Data Start:   unavailable
@@ -152,7 +152,7 @@ Now for example download u-boot.img.
        Load Address: unavailable
       Image 3 (fdt@3)
        Description:  am335x-boneblack
-       Created:      2017-08-23   6:36:19 UTC
+       Created:      2017-09-30   5:16:48 UTC
        Type:         Firmware
        Compression:  uncompressed
        Data Start:   unavailable
@@ -161,7 +161,7 @@ Now for example download u-boot.img.
        Load Address: unavailable
       Image 4 (fdt@4)
        Description:  am335x-evmsk
-       Created:      2017-08-23   6:36:19 UTC
+       Created:      2017-09-30   5:16:48 UTC
        Type:         Firmware
        Compression:  uncompressed
        Data Start:   unavailable
@@ -170,7 +170,7 @@ Now for example download u-boot.img.
        Load Address: unavailable
       Image 5 (fdt@5)
        Description:  am335x-bonegreen
-       Created:      2017-08-23   6:36:19 UTC
+       Created:      2017-09-30   5:16:48 UTC
        Type:         Firmware
        Compression:  uncompressed
        Data Start:   unavailable
@@ -179,7 +179,7 @@ Now for example download u-boot.img.
        Load Address: unavailable
       Image 6 (fdt@6)
        Description:  am335x-icev2
-       Created:      2017-08-23   6:36:19 UTC
+       Created:      2017-09-30   5:16:48 UTC
        Type:         Firmware
        Compression:  uncompressed
        Data Start:   unavailable

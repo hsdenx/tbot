@@ -1,34 +1,35 @@
-C-Kermit 9.0.302 OPEN SOURCE:, 20 Aug 2011, localhost.localdomain [192.168.1.105]                                       
+^C...                                                                                                                   
+(/work/tbot2go/tbot/) C-Kermit>send /protocol=kermit /srv/tftpboot//beagleboneblack/tbot/u-boot.img                     
+C-Kermit 9.0.302 OPEN SOURCE:, 20 Aug 2011, raspberrypitbot2go [192.168.3.1]                                            
                                                                                                                         
-   Current Directory: /work/hs/tbot                                                                                     
-Communication Device: /dev/ttybbb                                                                                       
- Communication Speed: 115200                                                                                            
-              Parity: none                                                                                              
-         RTT/Timeout: 01 / 02                                                                                           
-             SENDING:  => /lib/tftpboot/beagleboneblack/tbot/u-boot.img                                                 
+   Current Directory: /work/tbot2go/tbot                                                                                
+Communication Parity: none/ttyUSB0                                                                                      
+ CommunicRTT/Timeout: 01 / 02                                                                                           
+             SENDING:  => /tftpboot//beagleboneblack/tbot/u-boot.img                                                    
            File Type: BINARY                                                                                            
-           File Size: 734224                                                                                            
+           File Size: 732904                                                                                            
         Percent Done: 100 //////////////////////////////////////////////////                                            
-:01        ...10...20...30...40...50...60...70...80...90..100                                                        :02
-       teElapsed Time: 00:01:59                                                                                         
-5 Transfer67ate, CPS: 6197                                                                                            69
-        55ndow Slots: 1 of 1                                                                                        2705
-6        75cket Type: B6                                                                                          918482
-0       P921et Count: 11819                                                                                         3276
- cket Length:                                                                                                         0(
-resend)  Error Count: 4                                                                                                 
-          Last Error:                                                                                                   
-        Last Message: SUCCESS.  Files: 1, Bytes: 734224, 6167 CPS                                                       
+:06  ...10...20...30...40...50...60...70...80...90..100                                                              :01
+        Elapsed Time: 00:02:33                                                                                          
+76Transfer Rate, CPS: 4704                                                                                             0
+550     Window Slots: 1 of 1                                                                                        %767
+332      Packet Type: B                                                                                          2105674
+3108    Packet Count: 53006                                                                                         1226
+                                                                                                                        
+hecksum errorr Count: 84                                                                                              (r
+esend)                                                                                                                  
+        Last Message: SUCCESS.  Files: 1, Bytes: 732904, 4787 CPS                                                       
                                                                                                                         
                                                                                                                         
-(/work/hs/tbot/) C-Kermit>^C...                                                                                         
-(/work/hs/tbot/) C-Kermit>connect                                                                                       
-Connecting to /dev/ttybbb, speed 115200                                                                                 
+(/work/tbot2go/tbot/) C-Kermit>^C...                                                                                    
+(/work/tbot2go/tbot/) C-Kermit>connect                                                                                  
+Connecting to /dev/ttyUSB0, speed 115200                                                                                
  Escape character: Ctrl-\ (ASCII 28, FS): enabled                                                                       
 Type the escape character followed by C to get back,                                                                    
 or followed by ? to see other options.                                                                                  
 ----------------------------------------------------                                                                    
-CACHE: Misaligned operation at range [80000000, 800b3410]                                                               
-## Total Size      = 0x000b3410 = 734224 Bytes                                                                          
+CACHE: Misaligned operation at range [80000000, 800b2ee8]                                                               
+## Total Size      = 0x000b2ee8 = 732904 Bytes                                                                          
 ## Start Addr      = 0x80000000                                                                                         
 =>                                                                                                                      
+                                                                                                                        

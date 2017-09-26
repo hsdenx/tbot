@@ -67,16 +67,16 @@ With the :redtext:`cmp` command you can test whether the contents of two memory 
 
 ::
 
-  => cmp 0x80000000 0x80100000 40000
+  => cmp 0x80000000 0x80100000L 40000
   Total of 262144 word(s) were the same
   => md 0x80000000 0xc
-  80000000: 1cec5b8c 381401ad 6778e393 01fbbcc3    .[.....8..xg....
-  80000010: 89e9712a 0fb40e16 6f236743 3b46fbe6    *q......Cg#o..F;
-  80000020: ea2356f6 6e7c540f e056e377 7bd28a9f    .V#..T|nw.V....{
-  => md 0x80100000 0xc
-  80100000: 1cec5b8c 381401ad 6778e393 01fbbcc3    .[.....8..xg....
-  80100010: 89e9712a 0fb40e16 6f236743 3b46fbe6    *q......Cg#o..F;
-  80100020: ea2356f6 6e7c540f e056e377 7bd28a9f    .V#..T|nw.V....{
+  80000000: a555037f 7d9aebcf 1a1e2529 dfb0e082    ..U....})%......
+  80000010: 0d838660 e04e09df 62a2cc8a def1601a    `.....N....b.`..
+  80000020: 65b8b965 fb0fa81b c202c517 7fc93243    e..e........C2..
+  => md 0x80100000L 0xc
+  80100000: a555037f 7d9aebcf 1a1e2529 dfb0e082    ..U....})%......
+  80100010: 0d838660 e04e09df 62a2cc8a def1601a    `.....N....b.`..
+  80100020: 65b8b965 fb0fa81b c202c517 7fc93243    e..e........C2..
   => 
 
 Like most memory commands the :redtext:cmp` can access the memory in different sizes: as 32 bit (long word), 16 bit (word) or 8 bit (byte) data. If invoked just as cmp the default size (32 bit or long words) is used; the same can be selected explicitly by typing cmp.l instead. If you want to access memory as 16 bit or word data, you can use the variant cmp.w instead; and to access memory as 8 bit or byte data please use cmp.b.
@@ -86,11 +86,11 @@ Like most memory commands the :redtext:cmp` can access the memory in different s
 
 ::
 
-  => cmp.l 0x80000000 0x80100000 40000
+  => cmp.l 0x80000000 0x80100000L 40000
   Total of 262144 word(s) were the same
-  => cmp.w 0x80000000 0x80100000 80000
+  => cmp.w 0x80000000 0x80100000L 80000
   Total of 524288 halfword(s) were the same
-  => cmp.b 0x80000000 0x80100000 100000
+  => cmp.b 0x80000000 0x80100000L 100000
   Total of 1048576 byte(s) were the same
   => 
 
@@ -116,7 +116,7 @@ The :redtext:`cp` command is used to copy memory areas.
 
 ::
 
-  => cp 0x80000000 0x80100000 10000
+  => cp 0x80000000 0x80100000L 10000
   => 
 
 The :redtext:`cp` command understands the type extensions :redtext:`.l`, :redtext:`.w` and :redtext:`.b` : 
@@ -124,9 +124,9 @@ The :redtext:`cp` command understands the type extensions :redtext:`.l`, :redtex
 
 ::
 
-  => cp.l 0x80000000 0x80100000 10000
-  => cp.w 0x80000000 0x80100000 20000
-  => cp.b 0x80000000 0x80100000 40000
+  => cp.l 0x80000000 0x80100000L 10000
+  => cp.w 0x80000000 0x80100000L 20000
+  => cp.b 0x80000000 0x80100000L 40000
   => 
 
 .. raw:: pdf
@@ -152,22 +152,22 @@ The :redtext:`md` command can be used to display memory contents both as hexadec
 ::
 
   => md 0x80000000
-  80000000: 1cec5b8c 381401ad 6778e393 01fbbcc3    .[.....8..xg....
-  80000010: 89e9712a 0fb40e16 6f236743 3b46fbe6    *q......Cg#o..F;
-  80000020: ea2356f6 6e7c540f e056e377 7bd28a9f    .V#..T|nw.V....{
-  80000030: cfa9bcec b19ace51 b27f4dc5 8eeca28b    ....Q....M......
-  80000040: ee9b1d07 09f8e81f 969e7603 6be76204    .........v...b.k
-  80000050: b0de9f91 0b9a6062 825adf5e 6914b64e    ....b`..^.Z.N..i
-  80000060: 31eb81cc ec1b3009 b7096df7 0546f59b    ...1.0...m....F.
-  80000070: d94137a6 3d455f1d 01549ffb 4d7b0a2d    .7A.._E=..T.-.{M
-  80000080: 8e8650b9 e2101ce1 d705d373 34455d16    .P......s....]E4
-  80000090: b3776306 bb40cb3b 246c65e8 25587336    .cw.;.@..el$6sX%
-  800000a0: 65f88ce1 33c09949 67ca3299 e88b24bf    ...eI..3.2.g.$..
-  800000b0: 2057a219 45fe820a c5ae6da8 e9b39578    ..W ...E.m..x...
-  800000c0: 0d27e891 5201230c da4c518d bfa2cc2b    ..'..#.R.QL.+...
-  800000d0: 98386a41 803c36df 1b0d4c5d 09e31558    Aj8..6<.]L..X...
-  800000e0: 58ae8bf1 681bc92b 752a350e 3f057db9    ...X+..h.5*u.}.?
-  800000f0: a5e3bbbd c7c2239e ecf15559 e91c4375    .....#..YU..uC..
+  80000000: a555037f 7d9aebcf 1a1e2529 dfb0e082    ..U....})%......
+  80000010: 0d838660 e04e09df 62a2cc8a def1601a    `.....N....b.`..
+  80000020: 65b8b965 fb0fa81b c202c517 7fc93243    e..e........C2..
+  80000030: d5246ead 92d57185 768d30c9 cecb8383    .n$..q...0.v....
+  80000040: 4cc9e97b 852c5e63 9cf20e84 4f946122    {..Lc^,....."a.O
+  80000050: 98649544 0a9a9788 526ca383 caa717c9    D.d.......lR....
+  80000060: 40833929 97efd07d 93b179f9 faa3c3d2    )9.@}....y......
+  80000070: d9aadf23 272e8f4c 8686240a 2230043a    #...L..'.$..:.0"
+  80000080: 3939631e 3eb909cb 369e094f b2bb9795    .c99...>O..6....
+  80000090: e64395c4 553b38e3 1e68ac97 ffdd5ff3    ..C..8;U..h.._..
+  800000a0: 16c77f90 12bf8209 3b22f187 d922fba9    ..........";..".
+  800000b0: 0f8a8ebc 3bee36c1 3d432085 04eb523f    .....6.;. C=?R..
+  800000c0: 8525a54d bb52b1ea 1bd58cc6 210481d9    M.%...R........!
+  800000d0: ef186528 dc261323 17e5f5bf d57f5029    (e..#.&.....)P..
+  800000e0: 6bd14e6d f5289e33 07fcfa87 e9fef934    mN.k3.(.....4...
+  800000f0: 1f4bdda6 2ef1e31d 2d7a05b2 2d21b481    ..K.......z-..!-
   => 
 
 This command can also be used with the type extensions :redtext:`.l`, :redtext:`.w` and :redtext:`.b` : 
@@ -176,19 +176,19 @@ This command can also be used with the type extensions :redtext:`.l`, :redtext:`
 ::
 
   => md.w 0x80000000
-  80000000: 5b8c 1cec 01ad 3814 e393 6778 bcc3 01fb    .[.....8..xg....
-  80000010: 712a 89e9 0e16 0fb4 6743 6f23 fbe6 3b46    *q......Cg#o..F;
-  80000020: 56f6 ea23 540f 6e7c e377 e056 8a9f 7bd2    .V#..T|nw.V....{
-  80000030: bcec cfa9 ce51 b19a 4dc5 b27f a28b 8eec    ....Q....M......
-  80000040: 1d07 ee9b e81f 09f8 7603 969e 6204 6be7    .........v...b.k
-  80000050: 9f91 b0de 6062 0b9a df5e 825a b64e 6914    ....b`..^.Z.N..i
-  80000060: 81cc 31eb 3009 ec1b 6df7 b709 f59b 0546    ...1.0...m....F.
-  80000070: 37a6 d941 5f1d 3d45 9ffb 0154 0a2d 4d7b    .7A.._E=..T.-.{M
+  80000000: 037f a555 ebcf 7d9a 2529 1a1e e082 dfb0    ..U....})%......
+  80000010: 8660 0d83 09df e04e cc8a 62a2 601a def1    `.....N....b.`..
+  80000020: b965 65b8 a81b fb0f c517 c202 3243 7fc9    e..e........C2..
+  80000030: 6ead d524 7185 92d5 30c9 768d 8383 cecb    .n$..q...0.v....
+  80000040: e97b 4cc9 5e63 852c 0e84 9cf2 6122 4f94    {..Lc^,....."a.O
+  80000050: 9544 9864 9788 0a9a a383 526c 17c9 caa7    D.d.......lR....
+  80000060: 3929 4083 d07d 97ef 79f9 93b1 c3d2 faa3    )9.@}....y......
+  80000070: df23 d9aa 8f4c 272e 240a 8686 043a 2230    #...L..'.$..:.0"
   => md.b 0x80000000
-  80000000: 8c 5b ec 1c ad 01 14 38 93 e3 78 67 c3 bc fb 01    .[.....8..xg....
-  80000010: 2a 71 e9 89 16 0e b4 0f 43 67 23 6f e6 fb 46 3b    *q......Cg#o..F;
-  80000020: f6 56 23 ea 0f 54 7c 6e 77 e3 56 e0 9f 8a d2 7b    .V#..T|nw.V....{
-  80000030: ec bc a9 cf 51 ce 9a b1 c5 4d 7f b2 8b a2 ec 8e    ....Q....M......
+  80000000: 7f 03 55 a5 cf eb 9a 7d 29 25 1e 1a 82 e0 b0 df    ..U....})%......
+  80000010: 60 86 83 0d df 09 4e e0 8a cc a2 62 1a 60 f1 de    `.....N....b.`..
+  80000020: 65 b9 b8 65 1b a8 0f fb 17 c5 02 c2 43 32 c9 7f    e..e........C2..
+  80000030: ad 6e 24 d5 85 71 d5 92 c9 30 8d 76 83 83 cb ce    .n$..q...0.v....
   => 
 
 .. raw:: pdf
@@ -201,22 +201,22 @@ The last displayed memory address and the value of the count argument are rememb
 ::
 
   => md.b 0x80000000 0x20
-  80000000: 8c 5b ec 1c ad 01 14 38 93 e3 78 67 c3 bc fb 01    .[.....8..xg....
-  80000010: 2a 71 e9 89 16 0e b4 0f 43 67 23 6f e6 fb 46 3b    *q......Cg#o..F;
+  80000000: 7f 03 55 a5 cf eb 9a 7d 29 25 1e 1a 82 e0 b0 df    ..U....})%......
+  80000010: 60 86 83 0d df 09 4e e0 8a cc a2 62 1a 60 f1 de    `.....N....b.`..
   => md.w 0x80000000
-  80000000: 5b8c 1cec 01ad 3814 e393 6778 bcc3 01fb    .[.....8..xg....
-  80000010: 712a 89e9 0e16 0fb4 6743 6f23 fbe6 3b46    *q......Cg#o..F;
-  80000020: 56f6 ea23 540f 6e7c e377 e056 8a9f 7bd2    .V#..T|nw.V....{
-  80000030: bcec cfa9 ce51 b19a 4dc5 b27f a28b 8eec    ....Q....M......
+  80000000: 037f a555 ebcf 7d9a 2529 1a1e e082 dfb0    ..U....})%......
+  80000010: 8660 0d83 09df e04e cc8a 62a2 601a def1    `.....N....b.`..
+  80000020: b965 65b8 a81b fb0f c517 c202 3243 7fc9    e..e........C2..
+  80000030: 6ead d524 7185 92d5 30c9 768d 8383 cecb    .n$..q...0.v....
   => md 0x80000000
-  80000000: 1cec5b8c 381401ad 6778e393 01fbbcc3    .[.....8..xg....
-  80000010: 89e9712a 0fb40e16 6f236743 3b46fbe6    *q......Cg#o..F;
-  80000020: ea2356f6 6e7c540f e056e377 7bd28a9f    .V#..T|nw.V....{
-  80000030: cfa9bcec b19ace51 b27f4dc5 8eeca28b    ....Q....M......
-  80000040: ee9b1d07 09f8e81f 969e7603 6be76204    .........v...b.k
-  80000050: b0de9f91 0b9a6062 825adf5e 6914b64e    ....b`..^.Z.N..i
-  80000060: 31eb81cc ec1b3009 b7096df7 0546f59b    ...1.0...m....F.
-  80000070: d94137a6 3d455f1d 01549ffb 4d7b0a2d    .7A.._E=..T.-.{M
+  80000000: a555037f 7d9aebcf 1a1e2529 dfb0e082    ..U....})%......
+  80000010: 0d838660 e04e09df 62a2cc8a def1601a    `.....N....b.`..
+  80000020: 65b8b965 fb0fa81b c202c517 7fc93243    e..e........C2..
+  80000030: d5246ead 92d57185 768d30c9 cecb8383    .n$..q...0.v....
+  80000040: 4cc9e97b 852c5e63 9cf20e84 4f946122    {..Lc^,....."a.O
+  80000050: 98649544 0a9a9788 526ca383 caa717c9    D.d.......lR....
+  80000060: 40833929 97efd07d 93b179f9 faa3c3d2    )9.@}....y......
+  80000070: d9aadf23 272e8f4c 8686240a 2230043a    #...L..'.$..:.0"
   => 
 
 .. raw:: pdf
@@ -242,15 +242,15 @@ The :redtext:`mm` command is a method to interactively modify memory contents. I
 ::
 
   => mm 0x80000000
-  80000000: 1cec5b8c ? 0
-  80000004: 381401ad ? 0xaabbccdd
-  80000008: 6778e393 ? 0x01234567
-  8000000c: 01fbbcc3 ? .
+  80000000: a555037f ? 0
+  80000004: 7d9aebcf ? 0xaabbccdd
+  80000008: 1a1e2529 ? 0x01234567
+  8000000c: dfb0e082 ? .
   => md 0x80000000 10
-  80000000: 00000000 aabbccdd 01234567 01fbbcc3    ........gE#.....
-  80000010: 89e9712a 0fb40e16 6f236743 3b46fbe6    *q......Cg#o..F;
-  80000020: ea2356f6 6e7c540f e056e377 7bd28a9f    .V#..T|nw.V....{
-  80000030: cfa9bcec b19ace51 b27f4dc5 8eeca28b    ....Q....M......
+  80000000: 00000000 aabbccdd 01234567 dfb0e082    ........gE#.....
+  80000010: 0d838660 e04e09df 62a2cc8a def1601a    `.....N....b.`..
+  80000020: 65b8b965 fb0fa81b c202c517 7fc93243    e..e........C2..
+  80000030: d5246ead 92d57185 768d30c9 cecb8383    .n$..q...0.v....
   => 
 
 Again this command can be used with the type extensions :redtext:`.l`, :redtext:`.w` and :redtext:`.b` :
@@ -265,10 +265,10 @@ Again this command can be used with the type extensions :redtext:`.l`, :redtext:
   80000006: aabb ? 0x8765
   80000008: 4567 ? .
   => md 0x80000000 10
-  80000000: 02020101 87654321 01234567 01fbbcc3    ....!Ce.gE#.....
-  80000010: 89e9712a 0fb40e16 6f236743 3b46fbe6    *q......Cg#o..F;
-  80000020: ea2356f6 6e7c540f e056e377 7bd28a9f    .V#..T|nw.V....{
-  80000030: cfa9bcec b19ace51 b27f4dc5 8eeca28b    ....Q....M......
+  80000000: 02020101 87654321 01234567 dfb0e082    ....!Ce.gE#.....
+  80000010: 0d838660 e04e09df 62a2cc8a def1601a    `.....N....b.`..
+  80000020: 65b8b965 fb0fa81b c202c517 7fc93243    e..e........C2..
+  80000030: d5246ead 92d57185 768d30c9 cecb8383    .n$..q...0.v....
   => 
   => mm.b 0x80000000
   80000000: 01 ? 0x48
@@ -281,9 +281,9 @@ Again this command can be used with the type extensions :redtext:`.l`, :redtext:
   80000007: 87 ? 0x20
   80000008: 67 ? .
   => md 0x80000000 10
-  80000000: 6c6c6548 2020206f 01234567 01fbbcc3    Hello   gE#.....
-  80000010: 89e9712a 0fb40e16 6f236743 3b46fbe6    *q......Cg#o..F;
-  80000020: ea2356f6 6e7c540f e056e377 7bd28a9f    .V#..T|nw.V....{
-  80000030: cfa9bcec b19ace51 b27f4dc5 8eeca28b    ....Q....M......
+  80000000: 6c6c6548 2020206f 01234567 dfb0e082    Hello   gE#.....
+  80000010: 0d838660 e04e09df 62a2cc8a def1601a    `.....N....b.`..
+  80000020: 65b8b965 fb0fa81b c202c517 7fc93243    e..e........C2..
+  80000030: d5246ead 92d57185 768d30c9 cecb8383    .n$..q...0.v....
   => 
 

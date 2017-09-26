@@ -11,6 +11,6 @@ relocaddr   = 0x9FF4E000
 reloc off   = 0x1F74E000
 irq_sp      = 0x9DF21EC0
 sp start    = 0x9DF21EB0
-Early malloc usage: 188 / 400
+Early malloc usage: 184 / 400
 fdt_blob = 9df21ed8
 => 

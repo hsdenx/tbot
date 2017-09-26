@@ -15,7 +15,7 @@ test=echo This is a test;printenv ipaddr;echo Done.
 => <INTERRUPT>
 => run test
 This is a test
-ipaddr=192.168.2.10
+ipaddr=192.168.3.20
 Done.
 => <INTERRUPT>
 => setenv test
@@ -30,10 +30,10 @@ test2=echo This is another Test;printenv hostname;echo Done.
 => <INTERRUPT>
 => run test test2
 This is a test
-ipaddr=192.168.2.10
+ipaddr=192.168.3.20
 Done.
 This is another Test
-## Error: "hostname" not defined
+hostname=bbb
 Done.
 => <INTERRUPT>
 => setenv test test2

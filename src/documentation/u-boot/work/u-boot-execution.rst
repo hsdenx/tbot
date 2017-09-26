@@ -42,10 +42,10 @@ can be converted into a U-Boot script image using the :redtext:`mkimage` command
 
 ::
 
-  $ mkimage -A ppc -O linux -T script -C none -a 0 -e 0 -n "autoscr example script" -d $TBOT_BASEDIR/source_example.txt\
-    /var/lib/tftpboot/beagleboneblack/tbot/source.scr
+  $ mkimage -A ppc -O linux -T script -C none -a 0 -e 0 -n "autoscr example script" -d /work/tbot2go/tbo\
+  > t//source_example.txt /srv/tftpboot//beagleboneblack/tbot/source_example.scr
   Image Name:   autoscr example script
-  Created:      Wed Aug 23 09:23:32 2017
+  Created:      Sat Sep 30 05:24:22 2017
   Image Type:   PowerPC Linux Script (uncompressed)
   Data Size:    157 Bytes = 0.15 kB = 0.00 MB
   Load Address: 00000000
@@ -59,15 +59,17 @@ Now you can load and execute this script image in U-Boot:
 
 ::
 
-  => tftp 0x80000000 beagleboneblack/tbotrandom
+  => tftp 0x80000000 /srv/tftpboot//beagleboneblack/tbot/random
   link up on port 0, speed 100, full duplex
   Using ethernet@4a100000 device
-  TFTP from server 192.168.2.1; our IP address is 192.168.2.10
-  Filename 'beagleboneblack/tbotrandom'.
+  TFTP from server 192.168.3.1; our IP address is 192.168.3.20
+  Filename '/srv/tftpboot//beagleboneblack/tbot/random'.
   Load address: 0x80000000
   Loading: *#################################################################
-  	 #######
-  	 4.4 MiB/s
+  	 #################################################################
+  	 #################################################################
+  	 ##########
+  	 1 MiB/s
   done
   Bytes transferred = 1048576 (100000 hex)
   => 
@@ -76,7 +78,7 @@ Now you can load and execute this script image in U-Boot:
   ## Checking Image at 80000000 ...
      Legacy image found
      Image Name:   autoscr example script
-     Created:      2017-08-18   8:19:02 UTC
+     Created:      2017-09-30   5:24:22 UTC
      Image Type:   PowerPC Linux Script (uncompressed)
      Data Size:    157 Bytes = 157 Bytes
      Load Address: 00000000
@@ -90,12 +92,12 @@ Now you can load and execute this script image in U-Boot:
   Network Configuration:
   ----------------------
   Target:
-  ipaddr=192.168.2.10
-  ## Error: "hostname" not defined
+  ipaddr=192.168.3.20
+  hostname=bbb
   
   Server:
-  serverip=192.168.2.1
-  rootpath=/export/rootfs
+  serverip=192.168.3.1
+  rootpath=/work/tbot2go/tbot/nfs/bbb
   
   => 
 

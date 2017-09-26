@@ -1,6 +1,6 @@
 export PS1="\u@\h [\$(date +%k:%M:%S)] ttbott> "
-hs@localhost [ 9:18:13] ttbott> stty cols 200
-hs@localhost [ 9:18:13] ttbott> export TERM=vt200
-hs@localhost [ 9:18:14] ttbott> echo $COLUMNS
+pi@raspberrypitbot2go [15:42:15] ttbott> stty cols 200
+pi@raspberrypitbot2go [15:42:15] ttbott> export TERM=vt200
+pi@raspberrypitbot2go [15:42:16] ttbott> echo $COLUMNS
 200
-hs@localhost [ 9:18:14] ttbott> 
+pi@raspberrypitbot2go [15:42:16] ttbott> 

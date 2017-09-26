@@ -64,15 +64,16 @@ Here are a few examples for the use of the advanced capabilities of the hush she
   => addr=0x80000000 ; run check
   
   ## Checking Image at 80000000 ...
-  Unknown image format!
+     FIT image found
+  Bad FIT image format!
   Image corrupted!!
   => 
-  => addr=0x80100000 ; run check
+  => addr=0x80100000L ; run check
   
   ## Checking Image at 80100000 ...
      Legacy image found
      Image Name:   autoscr example script
-     Created:      2017-08-18   8:19:02 UTC
+     Created:      2017-09-30   5:24:22 UTC
      Image Type:   PowerPC Linux Script (uncompressed)
      Data Size:    157 Bytes = 157 Bytes
      Load Address: 00000000
@@ -91,26 +92,54 @@ For Example:
 ::
 
   => addr1=0x80000000
-  => addr2=0x80100000
-  => bootm $addr1 || bootm $addr2 || tftp 0x80000000 beagleboneblack/tbot/source_example.scr&& imi 0x80000000
+  => addr2=0x80100000L
+  => bootm $addr1 || bootm $addr2 || tftp 0x80000000 beagleboneblack/tbot/source_example.scr && imi 0x80000000
   Wrong Image Format for bootm command
   ERROR: can't get kernel image!
-  Wrong Image Format for bootm command
-  ERROR: can't get kernel image!
+  bootm - boot application image from memory
+  
+  Usage:
+  bootm [addr [arg ...]]
+      - boot application image stored in memory
+  	passing arguments 'arg ...'; when booting a Linux kernel,
+  	'arg' can be the address of an initrd image
+  	When booting a Linux kernel which requires a flat device-tree
+  	a third argument is required which is the address of the
+  	device-tree blob. To boot that kernel without an initrd image,
+  	use a '-' for the second argument. If you do not pass a third
+  	a bd_info struct will be passed instead
+  	
+  For the new multi component uImage format (FIT) addresses
+  	must be extended to include component or configuration unit name:
+  	addr:<subimg_uname> - direct component image specification
+  	addr#<conf_uname>   - configuration specification
+  	Use iminfo command to get the list of existing component
+  	images and configurations.
+  
+  Sub-commands to do part of the bootm sequence.  The sub-commands must be
+  issued in the order below (it's ok to not issue all sub-commands):
+  	start [addr [arg ...]]
+  	loados  - load OS image
+  	ramdisk - relocate initrd, set env initrd_start/initrd_end
+  	fdt     - relocate flat device tree
+  	cmdline - OS specific command line processing/setup
+  	bdt     - OS specific bd_t processing
+  	prep    - OS specific prep before relocation or go
+  	go      - start OS
   link up on port 0, speed 100, full duplex
   Using ethernet@4a100000 device
-  TFTP from server 192.168.2.1; our IP address is 192.168.2.10
+  TFTP from server 192.168.3.1; our IP address is 192.168.3.20
   Filename 'beagleboneblack/tbot/source_example.scr'.
   Load address: 0x80000000
   Loading: *#
-  	 215.8 KiB/s
+  	 43 KiB/s
   done
   Bytes transferred = 221 (dd hex)
   
   ## Checking Image at 80000000 ...
      Legacy image found
      Image Name:   autoscr example script
-     Created:      2017-08-18   8:19:02 UTC
+     Created:      2017-09-30   5:24:22 UTC
      Image Type:   PowerPC Linux Script (uncompressed)
      Data Size:    157 Bytes = 157 Bytes
      Load Address: 00000000

@@ -1,23 +1,24 @@
 kermit
-C-Kermit 9.0.302 OPEN SOURCE:, 20 Aug 2011, for Linux (64-bit)
+Executing /home/pi/.mykermrc...
+C-Kermit 9.0.302 OPEN SOURCE:, 20 Aug 2011, for Linux+SSL+KRB5
  Copyright (C) 1985, 2011,
   Trustees of Columbia University in the City of New York.
 Type ? or HELP for help.
-(/work/hs/tbot/) C-Kermit>set line /dev/ttybbb
-(/work/hs/tbot/) C-Kermit>set speed 115200
-/dev/ttybbb, 115200 bps
-(/work/hs/tbot/) C-Kermit>set carrier-watch off
-(/work/hs/tbot/) C-Kermit>set handshake none
-(/work/hs/tbot/) C-Kermit>set flow-control none
-(/work/hs/tbot/) C-Kermit>robust
-(/work/hs/tbot/) C-Kermit>set file type bin
-(/work/hs/tbot/) C-Kermit>set file name lit
-(/work/hs/tbot/) C-Kermit>set rec pack 1000
-(/work/hs/tbot/) C-Kermit>set send pack 1000
-(/work/hs/tbot/) C-Kermit>set window 5
-(/work/hs/tbot/) C-Kermit>^C...
-(/work/hs/tbot/) C-Kermit>connect
-Connecting to /dev/ttybbb, speed 115200
+(/work/tbot2go/tbot/) C-Kermit>set line /dev/ttyUSB0
+(/work/tbot2go/tbot/) C-Kermit>set speed 115200
+/dev/ttyUSB0, 115200 bps
+(/work/tbot2go/tbot/) C-Kermit>set carrier-watch off
+(/work/tbot2go/tbot/) C-Kermit>set handshake none
+(/work/tbot2go/tbot/) C-Kermit>set flow-control none
+(/work/tbot2go/tbot/) C-Kermit>robust
+(/work/tbot2go/tbot/) C-Kermit>set file type bin
+(/work/tbot2go/tbot/) C-Kermit>set file name lit
+(/work/tbot2go/tbot/) C-Kermit>set rec pack 1000
+(/work/tbot2go/tbot/) C-Kermit>set send pack 1000
+(/work/tbot2go/tbot/) C-Kermit>set window 5
+(/work/tbot2go/tbot/) C-Kermit>^C...
+(/work/tbot2go/tbot/) C-Kermit>connect
+Connecting to /dev/ttyUSB0, speed 115200
  Escape character: Ctrl-\ (ASCII 28, FS): enabled
 Type the escape character followed by C to get back,
 or followed by ? to see other options.
