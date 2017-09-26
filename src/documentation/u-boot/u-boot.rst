@@ -126,14 +126,14 @@ tbot_ref:compile_uboot_make_tb_ctrl_1_1.txt
 after U-Boot is compiled, copy the resulting binaries we need later to our tftpboot directory.
 
 
-tbot_ref:tc_lab_cp_file.py_tb_ctrl_1_1.txt
-tbot_ref:tc_lab_cp_file.py_tb_ctrl_2_1.txt
-tbot_ref:tc_lab_cp_file.py_tb_ctrl_3_1.txt
+tbot_ref:tc_workfd_scp.py_tb_ctrl_1_1.txt
+tbot_ref:tc_workfd_scp.py_tb_ctrl_2_1.txt
+tbot_ref:tc_workfd_scp.py_tb_ctrl_3_1.txt
 
 We also copy the u-boot.dtb file to our tftp directory, as we do some
 testing with it later.
 
-tbot_ref:tc_lab_cp_file.py_tb_ctrl_4_1.txt
+tbot_ref:tc_workfd_scp.py_tb_ctrl_4_1.txt
 
 .. raw:: pdf
 
