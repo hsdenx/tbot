@@ -19,4 +19,4 @@ set termoption noenhanced
 set output "output.jpg"
 
 i = 2
-plot 'stat.dat' using 2:xtic(1), for [i=3:3] '' using i
+plot '/home/pi/tbot2go/tbot/stat.dat' using 2:xtic(1), for [i=3:3] '' using i
