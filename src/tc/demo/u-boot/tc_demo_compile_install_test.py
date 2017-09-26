@@ -34,12 +34,28 @@
 #   else:
 #     call tc_ub_upd_uboot.py
 #     call tc_ub_upd_spl.py
+# - if tb.config.tc_demo_compile_install_test_spl_vers_file and/or
+#   tc_tb.config.demo_compile_install_test_ub_vers_file != ''
+#   check if the new installed version is the same
+#   as in the binary files, defined in
+#   tb.config.tc_demo_compile_install_test_ub_vers_file or
+#   tb.config.tc_demo_compile_install_test_spl_vers_file
 # - call tb.config.tc_demo_compile_install_test_name
 #     which should contain a testcase, which tests the new
 #     installed u-boot
 # End:
 
 from tbotlib import tbot
+
+try:
+    tc_demo_compile_install_test_ub_vers_file
+except:
+    tc_demo_compile_install_test_ub_vers_file = ''
+
+try:
+    tc_demo_compile_install_test_spl_vers_file
+except:
+    tc_demo_compile_install_test_spl_vers_file = ''
 
 try:
     tb.config.tc_demo_uboot_test_deploy
@@ -89,10 +105,21 @@ else:
 tb.eof_call_tc("tc_workfd_goto_uboot_code.py")
 
 # check U-Boot version
-tb.tc_ub_get_version_file = 'u-boot.bin'
-tb.tc_ub_get_version_string = 'U-Boot 20'
-tb.eof_call_tc("tc_ub_get_version.py")
-tb.uboot_vers = tb.config.tc_return
+if tb.config.tc_demo_compile_install_test_ub_vers_file != '':
+    tb.tc_ub_get_version_file = tb.config.tc_demo_compile_install_test_ub_vers_file
+    tb.tc_ub_get_version_string = 'U-Boot 20'
+    tb.eof_call_tc("tc_ub_get_version.py")
+    tb.uboot_vers = tb.config.tc_return
+else:
+    tb.uboot_vers = ''
+
+if tb.config.tc_demo_compile_install_test_spl_vers_file != '':
+    tb.tc_ub_get_version_file = tb.config.tc_demo_compile_install_test_spl_vers_file
+    tb.tc_ub_get_version_string = 'U-Boot SPL'
+    tb.eof_call_tc("tc_ub_get_version.py")
+    tb.spl_vers = tb.config.tc_return
+else:
+    tb.spl_vers = ''
 
 if tb.config.tc_demo_uboot_test_update != '':
     tb.eof_call_tc(tb.config.tc_demo_uboot_test_update)
@@ -102,6 +129,9 @@ else:
 
     # call upd_spl
     tb.eof_call_tc("tc_ub_upd_spl.py")
+
+# check if correct u-boot version is installed
+tb.eof_call_tc("tc_ub_check_version.py")
 
 # call tc_help
 tb.statusprint("start u-boot tests")
