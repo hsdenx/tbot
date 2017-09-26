@@ -40,6 +40,7 @@ tb.write_lx_cmd_check(tb.workfd, 'source oe-init-build-env build')
 
 # and bitbake what we want
 bitbake_cmd = [
+	"-q -q -q -c cleansstate core-image-minimal",
 	"-q -q -q core-image-minimal",
 ]
 for l in bitbake_cmd:
