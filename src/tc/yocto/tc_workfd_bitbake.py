@@ -44,7 +44,24 @@ if tb.config.tc_workfd_bitbake_machine != '':
     cmd = "ls -t tmp/log/cooker/" + ma + "/* | head -n1"
     tb.eof_write_cmd_get_line(tb.workfd, cmd)
 
+    self.event.create_event('main', 'tc_workfd_bitbake.py', 'SET_DOC_FILENAME', 'get_build_info')
     cmd = 'cat ' + tb.ret_write_cmd_get_line.rstrip()
-    tb.write_lx_cmd_check(tb.workfd, cmd)
+    tb.eof_write(tb.workfd, cmd)
+    searchlist = ['BB_VERSION', 'BUILD_SYS', 'NATIVELSBSTRING', 'TARGET_SYS',
+		'MACHINE', 'DISTRO_VERSION'
+	]
+    tmp = True
+    while tmp == True:
+        ret = tb.tbot_rup_and_check_strings(tb.workfd, searchlist)
+        if ret == 'prompt':
+            tmp = False
+        else:
+            val = searchlist[int(ret)]
+            ret = tb.tbot_expect_string(tb.workfd, '\n')
+            if ret == 'prompt':
+                tb.end_tc(False)
+            v = tb.buf.rstrip()
+            v = v.split('"')
+            tb.event.create_event('main', tb.config.boardname, "DUTS_" + val, v[1])
 
 tb.end_tc(True)
