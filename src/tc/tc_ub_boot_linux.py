@@ -20,7 +20,7 @@
 from tbotlib import tbot
 
 # here starts the real test
-logging.info("args: %s", tb.config.ub_boot_linux_cmd)
+logging.info("args: %s %s %s", tb.config.ub_boot_linux_cmd, tb.config.state_linux_timeout, tb.config.linux_prompt_default)
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
