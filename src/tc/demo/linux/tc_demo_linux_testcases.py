@@ -17,7 +17,8 @@
 #
 # - if tb.config.tc_board_bootmode_tc is set, call
 #   tb.config.tc_board_bootmode_tc
-# - boot a linux kernel
+# - boot a linux kernel if tb.config.tc_demo_linux_tc_boot_lx
+#   is set to 'yes' 
 # - get booted linux version
 # - grep through dmesg and check if strings in
 #   tb.config.tc_demo_linux_test_dmesg exist
@@ -33,26 +34,30 @@
 from tbotlib import tbot
 
 try:
+    tb.config.tc_demo_linux_tc_boot_lx
+except:
+    tb.config.tc_demo_linux_tc_boot_lx = 'yes'
+
+try:
     tb.config.tc_board_bootmode_tc
 except:
     tb.config.tc_board_bootmode_tc = ''
 
-logging.info("args: %s %s", tb.workfd.name, tb.config.tc_board_bootmode_tc)
+logging.info("args: %s %s %s", tb.workfd.name, tb.config.tc_board_bootmode_tc, tb.config.tc_demo_linux_tc_boot_lx)
 
-if tb.config.tc_board_bootmode_tc != '':
-    tb.config.tc_board_bootmode = 'normal'
-    tb.eof_call_tc(tb.config.tc_board_bootmode_tc)
+if tb.config.tc_demo_linux_tc_boot_lx == 'yes':
+    if tb.config.tc_board_bootmode_tc != '':
+        tb.config.tc_board_bootmode = 'normal'
+        tb.eof_call_tc(tb.config.tc_board_bootmode_tc)
 
-# call ubot setenv
-tb.set_board_state("u-boot")
-tb.eof_write_cmd(tb.c_con, "version")
+    # call ubot setenv
+    tb.set_board_state("u-boot")
+    tb.eof_write_cmd(tb.c_con, "version")
 
 save = tb.workfd
 tb.workfd = tb.c_con
 
-ret = tb.eof_call_tc("tc_lx_get_version.py")
-if ret == False:
-    tb.end_tc(False)
+tb.eof_call_tc("tc_lx_get_version.py")
 
 tb.statusprint("Linux vers: %s" % (tb.config.tc_return))
 
