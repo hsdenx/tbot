@@ -47,6 +47,7 @@ if tb.config.tc_board_bootmode_tc != '':
 tb.set_board_state("u-boot")
 tb.eof_write_cmd(tb.c_con, "version")
 
+save = tb.workfd
 tb.workfd = tb.c_con
 
 ret = tb.eof_call_tc("tc_lx_get_version.py")
@@ -107,4 +108,5 @@ if tc != '':
     for tcname in tc:
         tb.eof_call_tc(tcname)
 
+tb.workfd = save
 tb.end_tc(True)
