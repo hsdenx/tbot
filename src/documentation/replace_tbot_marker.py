@@ -171,13 +171,13 @@ class replace_tbot_marker(object):
         try:
             fl = open(self.options.tcpath + logfile, 'r')
         except:
-            print("Error: %s in line %d not found\n" %(self.options.tcpath + logfile, self.linenr))
+            print("Error : %s in line %d not found\n" %(self.options.tcpath + logfile, self.linenr))
             sys.exit(1)
         # write line by line + 2 ' ' before the original line
         # also remove all lines with '^C'
         # and replace 'ttbott>' with '$'
         ln = fl.readline()
-        pr_str = 'ttbott>'
+        replace_list = ['ttbott>', 'ttbott_compile>']
         i = 0
         while ln:
             found_line = False
@@ -188,11 +188,12 @@ class replace_tbot_marker(object):
                     break
             if found_line == True:
                 continue
-            if pr_str in ln:
-                pos = ln.find(pr_str)
-                pos += len(pr_str)
-                tmp = ln[pos:]
-                ln = '$' + tmp
+            for pr_str in replace_list:
+                if pr_str in ln:
+                    pos = ln.find(pr_str)
+                    pos += len(pr_str)
+                    tmp = ln[pos:]
+                    ln = '$' + tmp
             for ds in self.delete_list:
                 if ds in ln:
                     ln = ln.replace(ds, "")
@@ -229,7 +230,20 @@ class replace_tbot_marker(object):
 
     def get_next_line(self):
         self.line = self.fi.readline()
-        self.replace_duts()
+        if self.line != '':
+            # ignore comments
+            while (self.line[0] == '#'):
+                if len(self.line) == 1:
+                    self.linenr += 1
+                    self.line = self.fi.readline()
+                elif len(self.line) > 1:
+                    if self.line[1] != '#':
+                        self.linenr += 1
+                        self.line = self.fi.readline()
+                    else:
+                        # '####' lines are section markers
+                        break
+            self.replace_duts()
 
     def do_work(self):
         self.fi = open(self.options.ifile, 'r')
