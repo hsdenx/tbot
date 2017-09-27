@@ -56,7 +56,7 @@ if ret == False:
 tb.statusprint("Linux vers: %s" % (tb.config.tc_return))
 
 lx_vers = tb.config.tc_return.split()[0]
-tb.statusprint("linux checking Linux Version %s" % (lx_vers))
+tb.statusprint("Linux Version %s" % (lx_vers))
 
 # you can use now the lx_vers for differ between linux versions
 
