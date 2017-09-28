@@ -17,6 +17,7 @@ import os, sys
 import logging
 from optparse import OptionParser
 from tbotlib import tbot
+import signal
 
 try:
     tb
@@ -46,6 +47,13 @@ except:
     (options, args) = parser.parse_args()
     print("**** option lab: %s cfg: %s log: %s tc: %s v %d a %s" % (options.labfile, options.cfgfile, options.logfile, options.tc, options.verbose, options.arguments))
     tb = tbot(options.workdir, options.labfile, options.cfgfile, options.logfile, options.verbose, options.arguments)
+
+def signal_term_handler(signal, frame):
+    print ("GOT signal ", tb)
+    tb.log.error("WDT Timeout")
+    tb.end_tc(False)
+
+signal.signal(signal.SIGTERM, signal_term_handler)
 
 tb.starttestcase = options.tc
 ret = tb.call_tc(options.tc)
