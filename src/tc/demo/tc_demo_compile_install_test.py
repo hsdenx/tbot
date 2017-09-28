@@ -70,10 +70,12 @@ tb.eof_call_tc(tb.config.tc_demo_compile_install_test_name)
 
 # save working u-boot bin
 c = tb.workfd
+p = tb.config.tftpdir + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/"
 for f in tb.config.tc_demo_compile_install_test_files:
     tmp = f.replace('/', "_")
-    ta = r + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/latestworking-" + tmp
-    tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=f, t=ta)
+    sa = p + os.path.basename(f)
+    ta = p + "/latestworking-" + tmp
+    tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=sa, t=ta)
 
 # power off board at the end
 tb.eof_call_tc("tc_lab_poweroff.py")

@@ -92,23 +92,21 @@ tb.eof_call_tc("tc_ub_test_py.py")
 
 # save working u-boot bin
 c = tb.workfd
-so = "u-boot.bin"
-ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-latestworking.bin"
+p = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/"
+so = p + "u-boot.bin"
+ta = p + "u-boot-latestworking.bin"
 tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
-so = "System.map"
-ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-latestworking.System.map"
+so = p + "System.map"
+ta = p + "u-boot-latestworking.System.map"
 tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
-so = "u-boot.img"
-ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-latestworking-u-boot.img"
+so = p + "MLO"
+ta = p + "u-boot-latestworking-MLO"
 tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
-so = "MLO"
-ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-latestworking-MLO"
+so = p + "u-boot-spl.bin"
+ta = p + "u-boot-latestworking-spl.bin"
 tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
-so = "spl/u-boot-spl.bin"
-ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-latestworking-spl.bin"
-tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
-so = "spl/u-boot-spl.map"
-ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-latestworking-spl.System.map"
+so = p + "u-boot-spl.map"
+ta = p + "u-boot-latestworking-spl.System.map"
 tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
 
 tb.end_tc(True)
