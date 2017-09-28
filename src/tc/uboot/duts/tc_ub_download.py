@@ -35,12 +35,38 @@ cmdlist = [
 tb.eof_write_cmd_list(tb.c_con, cmdlist, create_doc_event=True)
 
 ret = tb.write_cmd_check(tb.c_con, "help loadb", "Unknown command", create_doc_event=True)
-if ret == False:
-    tb.eof_call_tc("tc_workfd_get_uboot_config_vars.py")
+if ret == True:
+    # we have no loadb cmd, exit
+    tb.end_tc(True)
 
-    tb.config.tc_uboot_load_bin_ram_addr = tb.config.tc_ub_memory_ram_ws_base.replace('0x', '')
-    tb.config.tc_uboot_load_bin_file = tb.config.tftprootdir + tb.config.tc_ub_tftp_path + '/u-boot.img'
-    tb.eof_call_tc("tc_uboot_load_bin_with_kermit.py")
-    tb.eof_write_cmd(tb.c_con, "imi " + tb.config.tc_uboot_load_bin_ram_addr, create_doc_event=True)
+tb.eof_call_tc("tc_workfd_get_uboot_config_vars.py")
+
+# check if u-boot.img file exists, if not
+save = tb.workfd
+tb.workfd = tb.c_ctrl
+tfile = tb.config.tftpdir + '/' + tb.config.tc_ub_tftp_path + '/u-boot.img'
+tb.config.tc_workfd_check_if_file_exists_name = tfile
+ret = tb.call_tc("tc_workfd_check_if_file_exist.py")
+if ret != True:
+    # check if u-boot.bin exists, if not end
+    binfile = tb.config.tftpdir + '/' + tb.config.tc_ub_tftp_path + '/u-boot.bin'
+    tb.config.tc_workfd_check_if_file_exists_name = binfile
+    ret = tb.call_tc("tc_workfd_check_if_file_exist.py")
+    if ret !=  True:
+        tb.workfd = save
+        tb.end_tc(True)
+
+    # if yes, create u-boot.img
+    cmd = 'mkimage -A arm -O u-boot -d ' + binfile + ' ' + tfile
+    ret = tb.write_lx_cmd_check(tb.workfd, cmd, endTC=False, split=tb.workfd.line_length / 2)
+    if ret != True:
+        tb.workfd = save
+        tb.end_tc(True)
+
+tb.workfd = save
+tb.config.tc_uboot_load_bin_ram_addr = tb.config.tc_ub_memory_ram_ws_base.replace('0x', '')
+tb.config.tc_uboot_load_bin_file = tfile
+tb.eof_call_tc("tc_uboot_load_bin_with_kermit.py")
+tb.eof_write_cmd(tb.c_con, "imi " + tb.config.tc_uboot_load_bin_ram_addr, create_doc_event=True)
 
 tb.end_tc(True)
