@@ -28,6 +28,7 @@ linux_prompt = 'ttbott> '
 setenv_name = 'Heiko'
 setenv_value = 'Schocher'
 ub_load_board_env_addr = '0x81000000'
+tc_ub_download_load = 'no'
 
 tc_lab_get_uboot_source_git_repo = "/home/git/u-boot.git"
 tc_lab_get_uboot_source_git_branch = "master"
