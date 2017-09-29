@@ -20,6 +20,11 @@
 
 from tbotlib import tbot
 
+try:
+    tb.config.tc_ub_download_load
+except:
+    tb.config.tc_ub_download_load = 'yes'
+
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
@@ -37,6 +42,9 @@ tb.eof_write_cmd_list(tb.c_con, cmdlist, create_doc_event=True)
 ret = tb.write_cmd_check(tb.c_con, "help loadb", "Unknown command", create_doc_event=True)
 if ret == True:
     # we have no loadb cmd, exit
+    tb.end_tc(True)
+
+if tb.config.tc_ub_download_load != 'yes':
     tb.end_tc(True)
 
 tb.eof_call_tc("tc_workfd_get_uboot_config_vars.py")
