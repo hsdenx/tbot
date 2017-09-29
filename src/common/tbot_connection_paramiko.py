@@ -36,7 +36,7 @@ class Connection(object):
         self.accept_all = True
         self.lastpos = 0
         # list of strings, which get ignored
-        self.ign = ['==>']
+        self.ign = ['==>', 'INIT: Id "O0" respawning too fast: disabled for 5 minutes']
         self.cnt_ign = len(self.ign)
         # list of strings, which are not allowed
         # ToDo make them configurable and make this
@@ -44,6 +44,7 @@ class Connection(object):
         self.check_error = True
         self.error = ['Resetting CPU']
         self.cnt_error = len(self.error)
+        self.send_prompt = False
 
     def open_paramiko(self, user, ip, passwd, port='22'):
         # look in paramiko/demos/demo_simple.py
@@ -226,13 +227,32 @@ class Connection(object):
         ret = self.send(cmd)
         if ret != True:
             return ret
-        ret = self.expect_string(cmd)
+        # from where comes the '\r' ?
+        ret = self.expect_string(cmd + '\r' + self.lineend)
         if ret == 'prompt':
             return False
         if ret == 'exception':
             return False
 
         return True
+
+    def sendcmd_prompt(self, cmd):
+        """send a string to the connection
+           add lineend, and check if string is
+           reread.
+
+        :param cmd: command to send
+        :return: True if cmd is reread False else
+        """
+        ret = self.send(cmd)
+        if ret != True:
+            return ret
+        if ret == 'exception':
+            return False
+        self.send_prompt = True
+
+        return True
+
 
     def expect_prompt(self):
         """expect prompt, search endless for prompt
@@ -352,50 +372,158 @@ class Connection(object):
         :return: 'none' if nothing is found,
                  else str(index) is found
         """
-        # print("CCCCCCCCCCCCCCCCCCCCCCCCC search string error", self.check_error, self.error, promptonly)
+        # if we need to check for error strings, this is
+        # first we search. If found we return immediately
         if self.check_error:
             reterr = self.search_one_strings(self.error)
             if reterr != 'none':
                 return 'error'
 
-        # if retsring before ign, return retstring
-        # if ign before retstring reutrn 'ign'
-        # print("CCCCCCCCCCCCCCCCCCCCCCCCC search string", se)
+        # search for the strings we want to find
+        # if we want to search for prompt only, do not search
         if promptonly == False:
             ret_str = self.search_one_strings(se)
             lp_str = self.lastpos
         else:
             ret_str = 'none'
+            lp_str = 0
 
-        # print("CCCCCCCCCCCCCCCCCCCCCCCCC search ign")
+        # we always check for strings we want to ignore
         ret_ign = self.search_one_strings(self.ign)
         lp_ign = self.lastpos
+        if ret_ign != 'none':
+            len_ign = len(self.ign[int(ret_ign)])
+            try:
+                print("ret_str ", ret_str, lp_str)
+            except:
+                pass
+            pos = self.lastpos
+        else:
+            len_ign = 0
 
-        # print("CCCCCCCCCCCCCCCCCCCCCCCCC", lp_str, lp_ign)
-        # print("CCCCCCCCCCCCCCCCCCCCCCCCC", ret_str, ret_ign)
-        if ret_str == 'none' and ret_ign != 'none':
-            self.copy_data(lp_ign)
-            return 'ign'
-        if ret_str != 'none' and ret_ign == 'none':
+        # also, check for prompt
+	ret_pro = self.search_one_strings(self._tolist(self.prompt))
+        if ret_pro == '0':
+            lp_pro = self.lastpos
+        else:
+            lp_pro = 0
+
+        # now, find out, what we return
+        logging.debug("----------------------------------------------------------------------")
+        logging.debug("con name ", self.name)
+        logging.debug("DATA ", self.data)
+        logging.debug("SE ", se)
+        logging.debug("IGN ", self.ign)
+        logging.debug("PROMPT ", self._tolist(self.prompt))
+        logging.debug("PRO ONLY ", promptonly, self.send_prompt)
+        logging.debug("STR ", lp_str, ret_str)
+        logging.debug("IGN ", lp_ign, ret_ign)
+        logging.debug("PRO ", lp_pro, ret_pro)
+
+        # check if we found nothing
+        if ret_str == 'none' and ret_ign == 'none' and ret_pro == 'none':
+            return 'none'
+
+        # the easy case: one catch
+
+        if ret_str != 'none' and ret_ign == 'none' and ret_pro == 'none':
             self.copy_data(lp_str)
             return ret_str
-        if ret_str != 'none' and ret_ign != 'none':
-            if lp_str >= lp_ign:
+
+        if ret_str == 'none' and ret_ign != 'none' and ret_pro == 'none':
+            if lp_ign > len_ign:
+                self.copy_data(lp_ign - len_ign)
+                return 'ign_pre'
+            self.copy_data(lp_ign)
+            return 'ign'
+
+        if ret_str == 'none' and ret_ign == 'none' and ret_pro != 'none':
+            if self.send_prompt == True:
+                self.copy_data(lp_pro)
+                return ret_pro
+            else:
+                self.copy_data(lp_pro)
+                self.tb.gotprompt = True
+                return 'prompt'
+
+        # two finds
+
+        if ret_str != 'none' and ret_ign != 'none' and ret_pro == 'none':
+            # first ign found ?
+            if lp_ign < lp_str:
+                # return ign
+                if lp_ign > len_ign:
+                    self.copy_data(lp_ign - len_ign)
+                    return 'ign_pre'
+
                 self.copy_data(lp_ign)
                 return 'ign'
             else:
                 self.copy_data(lp_str)
                 return ret_str
 
-        # if nothing found, check at the end for prompt
-	tmp = self.search_one_strings(self._tolist(self.prompt))
-        # print("CCCCCCCCCCCCCCCCCCCCCCCCC search for prompt end", tmp, self.lastpos)
-        if tmp == '0':
-            self.copy_data(self.lastpos)
+        if ret_str == 'none' and ret_ign != 'none' and ret_pro != 'none':
+            # ign found, before prompt
+            if lp_ign < lp_pro:
+                # return ign
+                if lp_ign > len_ign:
+                    self.copy_data(lp_ign - len_ign)
+                    return 'ign_pre'
+
+                self.copy_data(lp_ign)
+                return 'ign'
+            else:
+                self.copy_data(lp_pro)
+                self.tb.gotprompt = True
+                return 'prompt'
+
+        if ret_str != 'none' and ret_ign == 'none' and ret_pro != 'none':
+            # search strings found, before prompt
+            if lp_str < lp_pro:
+                self.copy_data(lp_str)
+                return ret_str
+            if lp_str == lp_pro:
+                # Ok, we search for prompt also in se
+                # This can happen when we want to switch
+                # between board modes.
+                # Simply return str
+                self.copy_data(lp_str)
+                return ret_str
+            else:
+                # puh, should only happen, when we set a new prompt ...
+                if self.send_prompt == True:
+                    self.copy_data(lp_pro)
+                    return ret_pro
+                else:
+                    logging.warn("May a problem, found prompt before string")
+                self.copy_data(lp_pro)
+                self.tb.gotprompt = True
+                return 'prompt'
+
+        # at last, we found all ...
+        if lp_ign < lp_str and lp_ign < lp_pro:
+                # return ign
+                if lp_ign > len_ign:
+                    self.copy_data(lp_ign - len_ign)
+                    return 'ign_pre'
+
+                self.copy_data(lp_ign)
+                return 'ign'
+
+        if lp_str < lp_ign and lp_str < lp_pro:
+            self.copy_data(lp_str)
+            return ret_str
+
+        if lp_pro < lp_ign and lp_pro < lp_str:
+            self.copy_data(lp_pro)
             self.tb.gotprompt = True
             return 'prompt'
 
-        return 'none'
+        logging.error("Reached end of __search_strings !! ")
+        logging.error("str  ", lp_str, ret_str)
+        logging.error("pro  ", lp_pro, ret_pro)
+        logging.error("ign  ", lp_ign, ret_ign)
+        logging.error("data ", self.data)
 
     def expect_string(self, string, promptonly = False):
         """expect a string
@@ -425,7 +553,7 @@ class Connection(object):
         loop = True
         while(loop == True):
             ret = self.__search_strings(se, promptonly)
-            # print("EEEEEEE expectstring ret", ret, self.data, self.logbuf)
+            # print("EEEEEEE expectstring ret", ret, self.data, self.logbuf, self.send_prompt)
             if ret == 'none':
                 tmp = self.lab_recv()
                 # print("CCCCC expectstring tmp", tmp, self.timeout, self.data)
@@ -438,31 +566,21 @@ class Connection(object):
             elif ret == 'ign':
                 self.tb.event.create_event_log(self, "ig", self.data)
                 continue
+            elif ret == 'ign_pre':
+                self.tb.event.create_event_log(self, "r", self.logbuf)
+                continue
             elif ret == 'error':
                 self.tb.event.create_event_log(self, "er", self.data)
                 self.tb.end_tc(False)
             elif ret == 'prompt':
                 self.tb.gotprompt = True
-                # look if it is really a prompt
-                if self.data != '':
-                    # not at the end, is it in first chars ?
-                    tmp = self.logbuf.find(self.prompt)
-                    # print("Prompt", len(self.data), tmp)
-                    if tmp == 0:
-                        loop = False
-                    if tmp == 1:
-                        tmp = self.logbuf.find('\n')
-                        # print("Prompt ret 1", len(self.data), tmp)
-                        if tmp == 0:
-                            loop = False
-                else:
-                    # look if prompt is at the end
-                    tmp = self.logbuf.find(self.prompt)
-                    if tmp == (len(self.logbuf) - len(self.prompt)):
-                        loop = False
-                    # print("Prompt data == 0", tmp, loop, len(self.logbuf), len(self.prompt))
-            else:
                 loop = False
+            else:
+                if self.send_prompt == False:
+                    loop = False
+                else:
+                    self.send_prompt = False
+                    self.tb.event.create_event_log(self, "r", self.logbuf)
         
         self.tb.event.create_event_log(self, "r", self.logbuf)
         # print("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC ret", ret)

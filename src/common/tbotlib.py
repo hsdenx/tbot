@@ -811,11 +811,11 @@ class tbot(object):
         if ptype == 'linux':
             cmd = header + prompt + end
             logging.debug("Prompt CMD:%s", cmd)
-            ret = c.sendcmd(cmd)
+            ret = c.sendcmd_prompt(cmd)
             if ret:
                 logging.info("set prompt:%s", cmd)
 
-        c.expect_prompt()
+        self.tbot_expect_prompt(c)
         try:
             c.termlength_set
         except:
