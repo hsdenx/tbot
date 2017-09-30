@@ -1,0 +1,5 @@
+^C
+hs@localhost [ 7:17:33] ttbott_compile> scp  u-boot.dtb pi@192.168.1.110:/srv/tftpboot//beagleboneblack/tbot/u-boot.dtb
+pi@192.168.1.110's password: 
+u-boot.dtb                                                                                                                                                              0%    0     0.0KB/s   --:-- ETAu-boot.dtb                                                                                                                                                            100%   44KB  44.0KB/s   00:00    
+hs@localhost [ 7:17:34] ttbott_compile> 
