@@ -26,4 +26,6 @@ tb.eof_call_tc("tc_connect_to_compilepc.py")
 
 tb.eof_call_tc("tc_demo_uboot_test.py")
 
+tb.config.create_documentation_auto = 'uboot'
+
 tb.end_tc(True)

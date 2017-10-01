@@ -106,6 +106,11 @@ class dashboard(object):
             logging.warn("DB not correct initialized.")
             return
 
+        try:
+            self.tb.config.create_documentation_auto
+        except:
+            self.tb.config.create_documentation_auto = 'no'
+
         evl = list(self.tb.event.event_list)
         self.dt = ''
         self.tool = 'unknown'
@@ -205,6 +210,50 @@ class dashboard(object):
             rem = self.linux_src_path + '/.config'
             loc = newdir + '/defconfig'
             self.tb.c_ctrl.copy_file(rem, loc)
+        if self.tb.config.create_documentation == 'yes':
+            while (1):
+                if self.tb.config.create_documentation_auto == 'no':
+                    break
+
+                if self.tb.config.create_documentation_auto == 'uboot':
+                    docname = "dulg_bbb.pdf"
+                    docscript = "make_doku_ub.sh"
+                    op = "/home/pi/tbot2go/documentation/u-boot/"
+                    logname = 'logfiles'
+                elif self.tb.config.create_documentation_auto == 'yocto':
+                    docname = "yocto_bbb.pdf"
+                    docscript = "make_doku_yocto.sh"
+                    op = "/home/pi/tbot2go/documentation/yocto/"
+                    logname = 'logfiles_get_and_bake'
+                else:
+                    break
+
+                # patch logfiles
+                cmd = "python2.7 " + self.tb.workdir + "/src/documentation/patch_logfiles.py -i " + self.tb.workdir + "/logfiles"
+                ret = os.system(cmd)
+                if ret != 0:
+                    print ("Patch files ", cmd, ret)
+                    break
+                # copy logfiles to doc dir
+                cmd = "python2.7 " + self.tb.workdir + "/src/documentation/copy_logfiles.py -i " + self.tb.workdir + "/logfiles -o " + op + logname
+                ret = os.system(cmd)
+                if ret != 0:
+                    print ("Copy files ", cmd, ret)
+                    break
+                # call make_docu
+                cmd = self.tb.workdir + "/src/documentation/" + docscript
+                ret = os.system(cmd)
+                if ret != 0:
+                    print("make doc ", cmd, ret)
+                    break
+                # copy to webdir
+                cmd = "cp " + op + "/pdf/" + docname + " " + newdir + "/doc.pdf"
+                ret = os.system(cmd)
+                if ret != 0:
+                    print("copy to webdir ", cmd, ret)
+                    break
+
+                break
 
         tmp = "cp " + self.tb.logfilen + " " + newdir + "/tbot.log"
         os.system(tmp)
