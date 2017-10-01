@@ -124,10 +124,10 @@ class events(object):
                 self.statistic.create_statfile()
             if (self.tb.config.create_html_log == 'yes'):
                 self.html_log.create_htmlfile()
-            if (self.tb.config.create_dashboard == 'yes'):
-                self.dashboard.insert_test_into_db()
             if (self.tb.config.create_documentation == 'yes'):
                 self.doc.create_docfiles()
+            if (self.tb.config.create_dashboard == 'yes'):
+                self.dashboard.insert_test_into_db()
 
     def create_event_log(self, c, dir, string):
         """create a log event
