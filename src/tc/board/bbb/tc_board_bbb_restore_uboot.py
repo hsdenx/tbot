@@ -31,7 +31,7 @@ try:
 except:
     tb.end_tc(False)
 
-tb.config.tc_board_bootmode = 'normal'
+tb.config.tc_board_bootmode = 'recovery'
 tb.eof_call_tc(tb.config.tc_board_bootmode_tc)
 
 tb.config.uboot_prompt = '=> '
@@ -60,7 +60,7 @@ tb.eof_call_tc("tc_ub_upd_uboot.py")
 # call upd_spl
 tb.eof_call_tc("tc_ub_upd_spl.py")
 
-tb.config.tc_board_bootmode = 'recovery'
+tb.config.tc_board_bootmode = 'normal'
 tb.eof_call_tc(tb.config.tc_board_bootmode_tc)
 
 tb.config.uboot_prompt = '=> '
