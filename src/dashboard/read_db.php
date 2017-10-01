@@ -80,6 +80,7 @@ echo "<tr bgcolor= #e67e22>";
   echo "<td> dot graph </td>";
   echo "<td> nice log </td>";
   echo "<td> test/py result </td>";
+  echo "<td> docu </td>";
   echo "<td> Logfile </td>";
   echo "</tr>\n";
 $count = 0;
@@ -122,6 +123,12 @@ while (($zeile = mysqli_fetch_array( $db_erg, MYSQLI_ASSOC)))
   } else {
     echo "<td> none </a> </td>";
   }
+  if (file_exists("../tbot/id_". $zeile['tbot_id'] ."/doc.pdf")) {
+    echo "<td> <a href='../tbot/id_". $zeile['tbot_id'] ."/doc.pdf'> pdf </a> </td>";
+  } else {
+    echo "<td> none </a> </td>";
+  }
+
   echo "<td> <a href='../tbot/id_". $zeile['tbot_id'] ."/tbot.log'> rawlog </a> </td>";
   echo "</tr>\n";
 }
