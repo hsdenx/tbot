@@ -35,6 +35,7 @@ tb.write_lx_cmd_check(tb.workfd, cmd)
 cmd = 'cat etc/version'
 tb.eof_write_cmd_get_line(tb.workfd, cmd)
 tb.config.tc_yocto_get_rootfs_from_tarball_rootfs_version = tb.ret_write_cmd_get_line.strip()
+tb.event.create_event('main', tb.config.boardname, "DUTS_YOCTO_VERSION", tb.config.tc_yocto_get_rootfs_from_tarball_rootfs_version)
 cmd = 'rm -rf etc/'
 tb.write_lx_cmd_check(tb.workfd, cmd)
 
