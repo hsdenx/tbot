@@ -99,6 +99,8 @@ class doc_backend(object):
     def create_docfiles(self):
         """create the files
         """
+        cmd = "rm -rf " + self.tb.workdir + '/logfiles/*'
+        os.system(cmd)
         evl = list(self.tb.event.event_list)
         self._analyse(evl, 'main')
         try:
