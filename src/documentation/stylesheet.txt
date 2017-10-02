@@ -288,6 +288,23 @@
       textColor: darkred
       alignment: TA_CENTER
 
+    shellvar:
+      parent: bodytext
+      textColor: red
+      alignment: TA_CENTER
+
+    filetext:
+      parent: bodytext
+      textColor: green
+      alignment: TA_CENTER
+
+    dirtext:
+      parent: bodytext
+      textColor: brown
+      alignment: TA_CENTER
+      commands: []
+             [BOX, [ 0, 0 ], [ -1, -1 ], 5, black ]
+
     redtext:
       parent: bodytext
       textColor: red
