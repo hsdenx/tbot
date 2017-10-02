@@ -101,6 +101,10 @@ class doc_backend(object):
         """
         evl = list(self.tb.event.event_list)
         self._analyse(evl, 'main')
+        try:
+            self.fd_duts.close()
+        except:
+            self.fd_duts = 'none'
 
     def _get_event_id(self, el):
         if el['id'] == 'Start':
