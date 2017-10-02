@@ -33,7 +33,8 @@ tlist = [
 	'tasks',
 	'Loading',
 	'NOTE',
-	'Initialising'
+	'Initialising',
+	'Running'
 ]
 tb.write_lx_cmd_check(tb.workfd, 'bitbake ' + tb.config.tc_workfd_bitbake_args, triggerlist=tlist)
 
@@ -47,7 +48,7 @@ if tb.config.tc_workfd_bitbake_machine != '':
     self.event.create_event('main', 'tc_workfd_bitbake.py', 'SET_DOC_FILENAME', 'get_build_info')
     cmd = 'cat ' + tb.ret_write_cmd_get_line.rstrip()
     tb.eof_write(tb.workfd, cmd)
-    searchlist = ['BB_VERSION', 'BUILD_SYS', 'NATIVELSBSTRING', 'TARGET_SYS',
+    searchlist = ['NOTE', 'BB_VERSION', 'BUILD_SYS', 'NATIVELSBSTRING', 'TARGET_SYS',
 		'MACHINE', 'DISTRO_VERSION'
 	]
     tmp = True
@@ -55,6 +56,8 @@ if tb.config.tc_workfd_bitbake_machine != '':
         ret = tb.tbot_rup_and_check_strings(tb.workfd, searchlist)
         if ret == 'prompt':
             tmp = False
+        elif ret == '0':
+            self.tbot_trigger_wdt()
         else:
             val = searchlist[int(ret)]
             ret = tb.tbot_expect_string(tb.workfd, '\n')
