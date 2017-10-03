@@ -51,6 +51,7 @@ except:
 
 def signal_term_handler(signal, frame):
     print ("GOT signal ", tb)
+    tb.event.create_event('main', tb.config.boardname, "WDT", False)
     tb.log.error("WDT Timeout")
     tb.end_tc(False)
 

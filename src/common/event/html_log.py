@@ -199,6 +199,8 @@ class html_log(object):
         self.fd.write('\n')
 
     def _get_event_id(self, el):
+        if el['id'] == 'WDT':
+            return el['id']
         if el['id'] == 'Boardname':
             return el['id']
         if el['id'] == 'BoardnameEnd':
@@ -271,7 +273,14 @@ class html_log(object):
                 # write end of tc block (name, status)
                 self._write_tc_end(name, status)
                 return
-                
+
+            if typ == 'WDT':
+                wdtstr = '\n\nWDT triggered\n\n'
+                conlog += wdtstr
+                ctrlog += wdtstr
+                cpclog += wdtstr
+                continue
+
             if typ == 'log':
                 # get list of tb_con log
                 # get list of tb_ctrl log

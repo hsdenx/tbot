@@ -10,6 +10,7 @@ Eventlist:
 
 Event-ID
 log            log content
+WDT            no log content
 Boardname      Name of board
 BoardnameEnd   End of tests for Boardname
 Start          Start of TC
