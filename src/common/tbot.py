@@ -15,38 +15,38 @@
 #
 import os, sys
 import logging
-from optparse import OptionParser
+import argparse
 from tbotlib import tbot
 import signal
 
 try:
     tb
 except:
-    parser = OptionParser()
-    parser.add_option("-c", "--cfgfile",
+    parser = argparse.ArgumentParser(description="tbot automate commandline")
+    parser.add_argument("-c", "--cfgfile",
            dest="cfgfile", default="none",
            help="the tbot board configfilename")
-    parser.add_option("-s", "--slabfile",
+    parser.add_argument("-s", "--slabfile",
            dest="labfile", default="none",
            help="the tbot lab configfilename")
-    parser.add_option("-a", "--arguments",
+    parser.add_argument("-a", "--arguments",
            dest="arguments", default="",
            help="arguments for the testcase")
-    parser.add_option("-l", "--logfile",
+    parser.add_argument("-l", "--logfile",
            dest="logfile", default="default",
            help="the tbot logfilename, if default, tbot creates a defaultnamelogfile")
-    parser.add_option("-t", "--testcase",
+    parser.add_argument("-t", "--testcase",
            dest="tc", default="none",
            help="the testcase which should be run")
-    parser.add_option("-v", "--verbose",
+    parser.add_argument("-v", "--verbose",
            action="store_true", dest="verbose", default=False,
            help="be verbose, print all read/write to stdout")
-    parser.add_option("-w", "--workdir",
+    parser.add_argument("-w", "--workdir",
            dest="workdir", default=os.getcwd(),
            help="set workdir, default os.getcwd()")
-    (options, args) = parser.parse_args()
-    print("**** option lab: %s cfg: %s log: %s tc: %s v %d a %s" % (options.labfile, options.cfgfile, options.logfile, options.tc, options.verbose, options.arguments))
-    tb = tbot(options.workdir, options.labfile, options.cfgfile, options.logfile, options.verbose, options.arguments)
+    args = parser.parse_args()
+    print("**** option lab: %s cfg: %s log: %s tc: %s v %d a %s" % (args.labfile, args.cfgfile, args.logfile, args.tc, args.verbose, args.arguments))
+    tb = tbot(args.workdir, args.labfile, args.cfgfile, args.logfile, args.verbose, args.arguments)
 
 def signal_term_handler(signal, frame):
     print ("GOT signal ", tb)
@@ -55,8 +55,8 @@ def signal_term_handler(signal, frame):
 
 signal.signal(signal.SIGTERM, signal_term_handler)
 
-tb.starttestcase = options.tc
-ret = tb.call_tc(options.tc)
+tb.starttestcase = args.tc
+ret = tb.call_tc(args.tc)
 if ret == False:
     tb.end_tc(False)
 
