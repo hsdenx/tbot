@@ -41,6 +41,7 @@ except:
     parser.add_argument("-v", "--verbose",
            action="store_true", dest="verbose", default=False,
            help="be verbose, print all read/write to stdout")
+    parser.add_argument('--version', action='version', version='%(prog)s 2017.10')
     parser.add_argument("-w", "--workdir",
            dest="workdir", default=os.getcwd(),
            help="set workdir, default os.getcwd()")
