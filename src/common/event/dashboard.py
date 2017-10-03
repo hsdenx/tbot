@@ -215,7 +215,32 @@ class dashboard(object):
                 if self.tb.config.create_documentation_auto == 'no':
                     break
 
-                if self.tb.config.create_documentation_auto == 'uboot':
+                if self.tb.config.create_documentation_auto == 'linux_top':
+                    file = "/src/files/top_plot_mem.sem"
+                    cmd = "gnuplot " + self.tb.workdir + file
+                    ret = os.system(cmd)
+                    if ret != 0:
+                        print ("Error gnuplot ", cmd, ret)
+                        break
+                    file = "/src/files/top_plot_cpu.sem"
+                    cmd = "gnuplot " + self.tb.workdir + file
+                    ret = os.system(cmd)
+                    if ret != 0:
+                        print ("Error gnuplot ", cmd, ret)
+                        break
+                    file = "/src/files/top_plot_load.sem"
+                    cmd = "gnuplot " + self.tb.workdir + file
+                    ret = os.system(cmd)
+                    if ret != 0:
+                        print ("Error gnuplot ", cmd, ret)
+                        break
+
+                    docname = "bbb_linux_top.pdf"
+                    docscript = "make_doku_bbb_top.sh"
+                    op = "/home/pi/tbot2go/documentation/linux_top/"
+                    logname = 'logfiles'
+                    
+                elif self.tb.config.create_documentation_auto == 'uboot':
                     docname = "dulg_bbb.pdf"
                     docscript = "make_doku_ub.sh"
                     op = "/home/pi/tbot2go/documentation/u-boot/"

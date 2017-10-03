@@ -1,0 +1,5 @@
+^C
+pi@raspberrypitbot2go [13:51:33] ttbott> [ ! -d "/work/tbot2go/tbot/" ] && echo "Does not exist"
+pi@raspberrypitbot2go [13:51:33] ttbott> ^C
+pi@raspberrypitbot2go [13:51:33] ttbott> cd /work/tbot2go/tbot/
+pi@raspberrypitbot2go [13:51:33] ttbott> 
