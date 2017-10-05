@@ -50,39 +50,39 @@ def state_lx_parse_input(tb, c, retry, sl):
                     i = 0
             continue
  
-        if ret == 'prompt':
+        elif ret == 'prompt':
             c.set_timeout(oldt)
             return True
 
-        if ret == '0':
+        elif ret == '0':
             # we got our tbot linux prompt
             c.set_prompt(tb.config.linux_prompt, 'linux')
             c.set_timeout(oldt)
             return True
 
-        if ret == '1':
+        elif ret == '1':
             # we got the default linux prompt
             tb.set_prompt(c, tb.config.linux_prompt, 'linux')
             c.set_timeout(oldt)
             return True
 
-        if ret == '2':
+        elif ret == '2':
             # we got u-boot prompt
             c.set_timeout(oldt)
             tb.eof_call_tc("tc_ub_boot_linux.py")
             return True
 
-        if ret == '3':
+        elif ret == '3':
             # we got login
             tb.write_stream(c, tb.config.linux_user, send_console_start=False)
             i = 0
 
-        if ret == '4':
+        elif ret == '4':
             # we got password
 	    tb.write_stream_passwd(c, tb.config.linux_user, tb.config.boardname)
             i = 0
 
-        if (ret == '5') or (ret == '6') or (ret == '7'):
+        elif (ret == '5') or (ret == '6') or (ret == '7'):
             # U-Boot autobooting, try to stop it
             tb.send_ctrl_c(c)
             i = 0
