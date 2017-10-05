@@ -511,6 +511,17 @@ class Connection(object):
                     return ret_pro
                 else:
                     logging.warn("May a problem, found prompt before string")
+                    logging.warn("----------------------------------------------------------------------")
+                    logging.warn("con name ", self.name)
+                    logging.warn("DATA ", self.data)
+                    logging.warn("SE ", se)
+                    logging.warn("IGN ", self.ign)
+                    logging.warn("PROMPT ", self._tolist(self.prompt))
+                    logging.warn("PRO ONLY ", promptonly, self.send_prompt)
+                    logging.warn("STR ", lp_str, ret_str)
+                    logging.warn("IGN ", lp_ign, ret_ign)
+                    logging.warn("PRO ", lp_pro, ret_pro)
+
                 self.copy_data(lp_pro)
                 self.tb.gotprompt = True
                 return 'prompt'
