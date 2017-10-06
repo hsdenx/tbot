@@ -35,8 +35,10 @@ if con == False:
     # do not set anything on compile PC
     tb.end_tc(True)
 
+# currently we do not setup anything here, but let this
+# testcase in code as an example
 # setup ip addr for eth0 interface
-cmd = 'sudo ifconfig eth0 down 192.168.3.1 up'
-tb.write_lx_sudo_cmd_check(tb.workfd, cmd, tb.config.user, tb.config.ip)
+#cmd = 'sudo ifconfig eth0 down 192.168.3.1 up'
+#tb.write_lx_sudo_cmd_check(tb.workfd, cmd, tb.config.user, tb.config.ip)
 
 tb.end_tc(True)
