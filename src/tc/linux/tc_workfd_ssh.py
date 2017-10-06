@@ -12,23 +12,28 @@
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_ssh.py
 #
 # login with ssh to tb.config.workfd_ssh_cmd and ssh options
 # tb.config.tc_workfd_ssh_opt.
 # This testcases expects
 # tb.config.workfd_ssh_cmd_prompt
 # as the prompt it get, after a succefull log in.
-# When logged in, set tbots linux prompt.
+# When logged in call
+# if tb.config.workfd_ssh_do_first == 'yes':
+#      tb.do_first_settings_after_login(c)
 #
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: workfd %s %s %s %s", tb.workfd.name, tb.config.workfd_ssh_cmd,
+try:
+    tb.config.workfd_ssh_do_first
+except:
+    tb.config.workfd_ssh_do_first = 'yes'
+
+logging.info("args: workfd %s %s %s %s %s", tb.workfd.name, tb.config.workfd_ssh_cmd,
              tb.config.tc_workfd_ssh_opt,
-             tb.config.workfd_ssh_cmd_prompt)
+             tb.config.workfd_ssh_cmd_prompt, tb.config.workfd_ssh_do_first)
 
 c = tb.workfd
 
@@ -70,5 +75,7 @@ while loop:
     elif tmp == 'prompt':
         tb.end_tc(False)
 
-tb.do_first_settings_after_login(c)
+if tb.config.workfd_ssh_do_first == 'yes':
+    tb.do_first_settings_after_login(c)
+
 tb.end_tc(True)
