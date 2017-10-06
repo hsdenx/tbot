@@ -45,14 +45,14 @@ Toolchain        used Toolchain
   tc_workfd_apply_patchwork_patches.py_
 .. _tc_workfd_apply_patchwork_patches.py: https://github.com/hsdenx/tbot/blob/testing/src/tc/linux/tc_workfd_apply_patchwork_patches.py
 
-===============  ============================
+===============  =====================================================
   Event-ID           content
-===============  ============================
+===============  =====================================================
 PW_NR            current patchwork patchnumber
 PW_CLEAN         current patchworknumber patch is clean or not
 PW_AA            current patchworknumber patch is already applied
 PW_APPLY         current patchworknumber patch is applies clean or not
-===============  ============================
+===============  =====================================================
 
   tc_lab_compile_uboot.py_
 .. _tc_lab_compile_uboot.py: https://github.com/hsdenx/tbot/blob/testing/src/tc/tc_lab_compile_uboot.py
