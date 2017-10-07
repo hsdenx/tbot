@@ -1,0 +1,4 @@
+^C                                                                                                                      
+hs@localhost [12:13:58] ttbott_compile> sed -i -- 's+TBOT_YOCTO_SSTATEDIR+'$TBOT_BASEDIR/yocto_sstate/bbb'+g' build/conf
+/local.conf                                                                                                             
+hs@localhost [12:13:58] ttbott_compile>                                                                                 

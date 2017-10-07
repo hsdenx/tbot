@@ -1,0 +1,10 @@
+^C                                                                                                                      
+hs@localhost [10:49:20] ttbott_compile> bitbake -q -q -q -c cleansstate core-image-minimal                              
+Running tasks (1 of 2)   0% |                                                                                           
+Running tasks (1 of 2)   0% |                                                                                           
+Running tasks (1 of 2)   0% |                                                                                           
+Running tasks (2 of 2)  50% |#####################################################################################      
+hs@localhost [10:49:35] ttbott_compile> ^C                                                                              
+hs@localhost [10:49:35] ttbott_compile> ls -t tmp/log/cooker/beaglebone/* | head -n1                                    
+tmp/log/cooker/beaglebone/20171010084921.log                                                                            
+hs@localhost [10:49:35] ttbott_compile>                                                                                 

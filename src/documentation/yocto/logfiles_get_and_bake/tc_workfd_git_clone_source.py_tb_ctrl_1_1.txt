@@ -1,0 +1,18 @@
+^C                                                                                                                
+hs@localhost [12:12:27] ttbott_compile> git clone ssh://pi@192.168.3.1:/home/pi/tbot2go/poky-patches patches-bbb  
+Cloning into 'patches-bbb'...                                                                                     
+pi@192.168.3.1's password:                                                                                        
+remote: Counting objects: 25, done.                                                                               
+remote: Compressing objects: 100% (24/24), done.                                                                  
+remote: Total 25 (delta 7), reused 0 (delta 0)                                                                    
+Receiving objects: 100% (25/25), 8.11 KiB | 0 bytes/s, done.                                                      
+Resolving deltas: 100% (7/7), done.                                                                               
+Checking connectivity... done.                                                                                    
+hs@localhost [12:12:28] ttbott_compile> ^C                                                                        
+hs@localhost [12:12:29] ttbott_compile> cd patches-bbb                                                            
+hs@localhost [12:12:29] ttbott_compile> ^C                                                                        
+hs@localhost [12:12:29] ttbott_compile> git checkout bbb-pyro                                                     
+Already on 'bbb-pyro'                                                                                             
+Your branch is up-to-date with 'origin/bbb-pyro'.                                                                 
+hs@localhost [12:12:30] ttbott_compile>                                                                           
+                                                                                                                  

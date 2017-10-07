@@ -1,0 +1,6 @@
+^C
+hs@localhost [10:50:51] ttbott_compile> scp  $TBOT_BASEDIR_YOCTO/build/tmp/deploy/images/beaglebone/core-image-minimal-beaglebone.tar.bz2 pi\
+> @192.168.3.1:/srv/tftpboot/beagleboneblack/tbot/yocto/core-image-minimal-beaglebone.tar.bz2
+pi@192.168.3.1's password: 
+core-image-minimal-beaglebone.tar.bz2                                                                                                                                   0%    0     0.0KB/s   --:-- ETAcore-image-minimal-beaglebone.tar.bz2                                                                                                                                  92%   13MB  13.2MB/s   00:00 ETAcore-image-minimal-beaglebone.tar.bz2                                                                                                                                 100%   14MB  14.3MB/s   00:01    
+hs@localhost [10:50:53] ttbott_compile> 

@@ -1,0 +1,15 @@
+^C
+hs@localhost [10:49:19] ttbott_compile> source oe-init-build-env build
+
+### Shell environment set up for builds. ###
+
+You can now run 'bitbake <target>'
+
+Common targets are:
+    core-image-minimal
+    core-image-sato
+    meta-toolchain
+    meta-ide-support
+
+You can also run generated qemu images with a command like 'runqemu qemux86'
+hs@localhost [10:49:20] ttbott_compile> 

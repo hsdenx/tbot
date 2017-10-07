@@ -1,0 +1,71 @@
+<INTERRUPT>
+=> <INTERRUPT>
+=> <INTERRUPT>
+=> setenv serverip 192.168.3.1
+=> <INTERRUPT>
+=> setenv netmask 255.255.255.0
+=> <INTERRUPT>
+=> setenv ipaddr 192.168.3.20
+=> <INTERRUPT>
+=> setenv load_addr_r 81000000
+=> <INTERRUPT>
+=> setenv cmp_addr_r 82000000
+=> <INTERRUPT>
+=> setenv mlofile beagleboneblack/tbot/MLO
+=> <INTERRUPT>
+=> setenv load_mlo tftp \${load_addr_r} \${mlofile}
+=> <INTERRUPT>
+=> setenv ubfile beagleboneblack/tbot/u-boot.img
+=> <INTERRUPT>
+=> setenv load_uboot tftp \${load_addr_r} \${ubfile}
+=> <INTERRUPT>
+=> setenv upd_mlo fatwrite mmc 1:1 \${load_addr_r} mlo \${filesize}
+=> <INTERRUPT>
+=> setenv upd_uboot fatwrite mmc 1:1 \${load_addr_r} u-boot.img \${filesize}
+=> <INTERRUPT>
+=> setenv cmp_mlo tftp \${cmp_addr_r} \${mlofile}\;cmp.b \${load_addr_r} \${cmp_addr_r} \${filesize}
+=> <INTERRUPT>
+=> setenv cmp_uboot tftp \${cmp_addr_r} \${ubfile}\;cmp.b \${load_addr_r} \${cmp_addr_r} \${filesize}
+=> <INTERRUPT>
+=> setenv tbot_upd_uboot run load_uboot\;run upd_uboot
+=> <INTERRUPT>
+=> setenv tbot_cmp_uboot run cmp_uboot
+=> <INTERRUPT>
+=> setenv tbot_upd_spl run load_mlo\;run upd_mlo
+=> <INTERRUPT>
+=> setenv tbot_cmp_spl run cmp_mlo
+=> <INTERRUPT>
+=> setenv console ttyS0,115200n8
+=> <INTERRUPT>
+=> setenv bootfile beagleboneblack/tbot/zImage
+=> <INTERRUPT>
+=> setenv fdtfile beagleboneblack/tbot/am335x-boneblack.dtb
+=> <INTERRUPT>
+=> setenv netmmcboot echo Booting from network ... with mmcargs ...\; setenv autoload no\; run netloadimage\; run netloadfdt\; run args_mmc\; bootz \${loadaddr} - \${fdtaddr}
+=> <INTERRUPT>
+=> setenv netdev eth0
+=> <INTERRUPT>
+=> setenv hostname bbb
+=> <INTERRUPT>
+=> setenv addip setenv bootargs \${bootargs} ip=\${ipaddr}:\${serverip}:\${gatewayip}:\${netmask}:\${hostname}:\${netdev}::off panic=1
+=> <INTERRUPT>
+=> setenv addcon setenv bootargs \${bootargs} console=\${console}
+=> <INTERRUPT>
+=> setenv addmisc setenv bootargs \${bootargs} loglevel=8
+=> <INTERRUPT>
+=> setenv addmtd setenv bootargs \${bootargs} \${mtdparts}
+=> <INTERRUPT>
+=> setenv rootpath /work/tbot2go/tbot/nfs/bbb
+=> <INTERRUPT>
+=> setenv nfsopts nfsvers=3 nolock rw
+=> <INTERRUPT>
+=> setenv nfsargs setenv bootargs \${bootargs} root=/dev/nfs rw nfsroot=\${serverip}:\${rootpath},\${nfsopts}
+=> <INTERRUPT>
+=> setenv net_nfs run netloadimage\; run netloadfdt\;run nfsargs addcon addip addmtd addmisc\;bootz \${loadaddr} - \${fdtaddr}
+=> <INTERRUPT>
+=> setenv mmcloadk ext2load mmc 0:2 \${loadaddr} /boot/zImage
+=> <INTERRUPT>
+=> setenv mmcloadfdt ext2load mmc 0:2 \${fdtaddr} /boot/am335x-boneblack.dtb
+=> <INTERRUPT>
+=> setenv mmc_mmc run mmcloadk\; run mmcloadfdt\;run args_mmc\;bootz \${loadaddr} - \${fdtaddr}
+=> 

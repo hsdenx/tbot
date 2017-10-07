@@ -1,0 +1,3 @@
+^C
+hs@localhost [10:49:17] ttbott_compile> export TBOT_BASEDIR_YOCTO=$TBOT_BASEDIR/yocto-am335x_evm
+hs@localhost [10:49:17] ttbott_compile> 

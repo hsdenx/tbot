@@ -1,0 +1,4 @@
+^C                                                                                                                      
+hs@localhost [12:13:55] ttbott_compile> sed -i -- 's+TBOT_YOCTO_PATH+'"$TBOT_BASEDIR_YOCTO"'+g' build/conf/bblayers.conf
+                                                                                                                        
+hs@localhost [12:13:55] ttbott_compile>                                                                                 

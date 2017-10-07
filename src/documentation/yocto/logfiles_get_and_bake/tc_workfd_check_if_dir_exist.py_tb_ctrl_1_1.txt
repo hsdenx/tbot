@@ -1,0 +1,3 @@
+^C
+hs@localhost [10:49:15] ttbott_compile> test -d $TBOT_BASEDIR
+hs@localhost [10:49:15] ttbott_compile> 

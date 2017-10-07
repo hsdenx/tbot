@@ -1,0 +1,120 @@
+<INTERRUPT>                                                       
+=> run mmc_mmc                                                    
+5656816 bytes read in 409 ms (13.2 MiB/s)                         
+34643 bytes read in 44 ms (768.6 KiB/s)                           
+## Flattened Device Tree blob at 88000000                         
+   Booting using the fdt blob at 0x88000000                       
+   Loading Device Tree to 8fff4000, end 8ffff752 ... OK           
+                                                                  
+Starting kernel ...                                               
+                                                                  
+                                                                  
+Poky (Yocto Project Reference Distro) 2.3.2 beaglebone /dev/ttyO0 
+                                                                  
+beaglebone login: root                                            
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+root@beaglebone:~# export PS1="\u@\h [\$(date +%k:%M:%S)] ttbott> " 
+root@beaglebone [ 8:50:34] ttbott>                                  

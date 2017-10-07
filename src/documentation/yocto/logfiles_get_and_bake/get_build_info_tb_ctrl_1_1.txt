@@ -1,0 +1,41 @@
+^C
+hs@localhost [10:49:35] ttbott_compile> cat tmp/log/cooker/beaglebone/20171010084921.log
+WARNING: Host distribution "fedora-21" has not been validated with this version of the build system; you may possibly experience unexpected failures. It is recommended that you use a tested distribution.
+NOTE: Resolving any missing task queue dependencies
+NOTE: preferred version 4.12% of linux-yocto not available (for item virtual/kernel)
+NOTE: versions of linux-yocto available: 4.1.43+gitAUTOINC+9f9c9a66ef_ce38fdb820 4.10.17+gitAUTOINC+40ee48ac09_c1d8c4408b 4.4.87+gitAUTOINC+804d2b3164_b71c7b786a 4.9.49+gitAUTOINC+6acae6f720_480ee599fb
+NOTE: preferred version 4.12% of linux-yocto not available (for item kernel-image-zimage)
+NOTE: versions of linux-yocto available: 4.1.43+gitAUTOINC+9f9c9a66ef_ce38fdb820 4.10.17+gitAUTOINC+40ee48ac09_c1d8c4408b 4.4.87+gitAUTOINC+804d2b3164_b71c7b786a 4.9.49+gitAUTOINC+6acae6f720_480ee599fb
+NOTE: preferred version 4.12% of linux-yocto not available (for item kernel-devicetree)
+NOTE: versions of linux-yocto available: 4.1.43+gitAUTOINC+9f9c9a66ef_ce38fdb820 4.10.17+gitAUTOINC+40ee48ac09_c1d8c4408b 4.4.87+gitAUTOINC+804d2b3164_b71c7b786a 4.9.49+gitAUTOINC+6acae6f720_480ee599fb
+NOTE: preferred version 4.12% of linux-yocto not available (for item kernel-image)
+NOTE: versions of linux-yocto available: 4.1.43+gitAUTOINC+9f9c9a66ef_ce38fdb820 4.10.17+gitAUTOINC+40ee48ac09_c1d8c4408b 4.4.87+gitAUTOINC+804d2b3164_b71c7b786a 4.9.49+gitAUTOINC+6acae6f720_480ee599fb
+NOTE: preferred version 4.12% of linux-yocto not available (for item kernel-base)
+NOTE: versions of linux-yocto available: 4.1.43+gitAUTOINC+9f9c9a66ef_ce38fdb820 4.10.17+gitAUTOINC+40ee48ac09_c1d8c4408b 4.4.87+gitAUTOINC+804d2b3164_b71c7b786a 4.9.49+gitAUTOINC+6acae6f720_480ee599fb
+
+Build Configuration:
+BB_VERSION        = "1.34.0"
+BUILD_SYS         = "x86_64-linux"
+NATIVELSBSTRING   = "universal-4.9"
+TARGET_SYS        = "arm-poky-linux-gnueabi"
+MACHINE           = "beaglebone"
+DISTRO            = "poky"
+DISTRO_VERSION    = "2.3.2"
+TUNE_FEATURES     = "arm armv7a vfp neon callconvention-hard cortexa8"
+TARGET_FPU        = "hard"
+meta              
+meta-poky         
+meta-yocto-bsp    = "pyro:fd36e62696b1393bf9c8f43614354e65f8842f0d"
+meta-networking   
+meta-oe           
+meta-python       = "pyro:5e82995148a2844c6f483ae5ddd1438d87ea9fb7"
+
+NOTE: Executing RunQueue Tasks
+NOTE: Running task 1 of 2 (/work/tbot2go/tbot//yocto-am335x_evm/meta/recipes-core/images/core-image-minimal.bb:do_clean)
+NOTE: recipe core-image-minimal-1.0-r0: task do_clean: Started
+NOTE: recipe core-image-minimal-1.0-r0: task do_clean: Succeeded
+NOTE: Running task 2 of 2 (/work/tbot2go/tbot//yocto-am335x_evm/meta/recipes-core/images/core-image-minimal.bb:do_cleansstate)
+NOTE: recipe core-image-minimal-1.0-r0: task do_cleansstate: Started
+NOTE: recipe core-image-minimal-1.0-r0: task do_cleansstate: Succeeded
+NOTE: Tasks Summary: Attempted 2 tasks of which 0 didn't need to be rerun and all succeeded.
+hs@localhost [10:49:36] ttbott_compile> 

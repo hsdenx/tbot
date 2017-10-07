@@ -1,0 +1,62 @@
+^C                                                                                                                      
+hs@localhost [10:50:38] ttbott_compile> tar tfv $TBOT_BASEDIR_YOCTO/build/tmp/deploy/images/beaglebone/core-image-minima
+l-beaglebone.tar.bz2 > gnlmpf                                                                                           
+hs@localhost [10:50:40] ttbott_compile> ^C                                                                              
+hs@localhost [10:50:40] ttbott_compile> grep devmem2 gnlmpf                                                             
+-rwxr-xr-x root/root      5640 2017-09-22 21:18 ./usr/bin/devmem2                                                       
+hs@localhost [10:50:41] ttbott_compile> ^C                                                                              
+hs@localhost [10:50:41] ttbott_compile> grep nano gnlmpf                                                                
+-rwxr-xr-x root/root    182472 2017-09-22 21:18 ./usr/bin/nano                                                          
+lrwxrwxrwx root/root         0 2017-09-22 21:17 ./usr/bin/rnano -> nano                                                 
+drwxr-xr-x root/root         0 2017-10-10 10:50 ./usr/share/nano/                                                       
+-rw-r--r-- root/root      2326 2017-09-22 21:17 ./usr/share/nano/lua.nanorc                                             
+-rw-r--r-- root/root      1473 2017-09-22 21:17 ./usr/share/nano/perl.nanorc                                            
+-rw-r--r-- root/root       794 2017-09-22 21:17 ./usr/share/nano/nftables.nanorc                                        
+-rw-r--r-- root/root      1189 2017-09-22 21:17 ./usr/share/nano/sh.nanorc                                              
+-rw-r--r-- root/root       231 2017-09-22 21:17 ./usr/share/nano/mgp.nanorc                                             
+-rw-r--r-- root/root       668 2017-09-22 21:17 ./usr/share/nano/javascript.nanorc                                      
+-rw-r--r-- root/root      1110 2017-09-22 21:17 ./usr/share/nano/rust.nanorc                                            
+-rw-r--r-- root/root      2158 2017-09-22 21:17 ./usr/share/nano/tcl.nanorc                                             
+-rw-r--r-- root/root      1358 2017-09-22 21:17 ./usr/share/nano/awk.nanorc                                             
+-rw-r--r-- root/root       466 2017-09-22 21:17 ./usr/share/nano/texinfo.nanorc                                         
+-rw-r--r-- root/root       837 2017-09-22 21:17 ./usr/share/nano/cmake.nanorc                                           
+-rw-r--r-- root/root       187 2017-09-22 21:17 ./usr/share/nano/mutt.nanorc                                            
+-rw-r--r-- root/root       790 2017-09-22 21:17 ./usr/share/nano/debian.nanorc                                          
+-rw-r--r-- root/root       557 2017-09-22 21:17 ./usr/share/nano/autoconf.nanorc                                        
+-rw-r--r-- root/root       891 2017-09-22 21:17 ./usr/share/nano/po.nanorc                                              
+-rw-r--r-- root/root       597 2017-09-22 21:17 ./usr/share/nano/patch.nanorc                                           
+-rw-r--r-- root/root      1420 2017-09-22 21:17 ./usr/share/nano/go.nanorc                                              
+-rw-r--r-- root/root       881 2017-09-22 21:17 ./usr/share/nano/json.nanorc                                            
+-rw-r--r-- root/root      3104 2017-09-22 21:17 ./usr/share/nano/postgresql.nanorc                                      
+-rw-r--r-- root/root       847 2017-09-22 21:17 ./usr/share/nano/ocaml.nanorc                                           
+-rw-r--r-- root/root      1226 2017-09-22 21:17 ./usr/share/nano/html.nanorc                                            
+-rw-r--r-- root/root      1777 2017-09-22 21:17 ./usr/share/nano/objc.nanorc                                            
+-rw-r--r-- root/root      1969 2017-09-22 21:17 ./usr/share/nano/fortran.nanorc                                         
+-rw-r--r-- root/root       655 2017-09-22 21:17 ./usr/share/nano/java.nanorc                                            
+-rw-r--r-- root/root      1678 2017-09-22 21:17 ./usr/share/nano/c.nanorc                                               
+-rw-r--r-- root/root       299 2017-09-22 21:17 ./usr/share/nano/makefile.nanorc                                        
+-rw-r--r-- root/root       604 2017-09-22 21:17 ./usr/share/nano/guile.nanorc                                           
+-rw-r--r-- root/root       176 2017-09-22 21:17 ./usr/share/nano/tex.nanorc                                             
+-rw-r--r-- root/root      1927 2017-09-22 21:17 ./usr/share/nano/spec.nanorc                                            
+-rw-r--r-- root/root       262 2017-09-22 21:17 ./usr/share/nano/default.nanorc                                         
+-rw-r--r-- root/root       711 2017-09-22 21:17 ./usr/share/nano/changelog.nanorc                                       
+-rw-r--r-- root/root       503 2017-09-22 21:17 ./usr/share/nano/xml.nanorc                                             
+-rw-r--r-- root/root      1083 2017-09-22 21:17 ./usr/share/nano/elisp.nanorc                                           
+-rw-r--r-- root/root       463 2017-09-22 21:17 ./usr/share/nano/man.nanorc                                             
+-rw-r--r-- root/root       884 2017-09-22 21:17 ./usr/share/nano/asm.nanorc                                             
+-rw-r--r-- root/root      2510 2017-09-22 21:17 ./usr/share/nano/nanorc.nanorc                                          
+-rw-r--r-- root/root       346 2017-09-22 21:17 ./usr/share/nano/css.nanorc                                             
+-rw-r--r-- root/root      1499 2017-09-22 21:17 ./usr/share/nano/ruby.nanorc                                            
+-rw-r--r-- root/root       793 2017-09-22 21:17 ./usr/share/nano/python.nanorc                                          
+-rw-r--r-- root/root      4166 2017-09-22 21:17 ./usr/share/nano/gentoo.nanorc                                          
+-rw-r--r-- root/root       683 2017-09-22 21:17 ./usr/share/nano/pov.nanorc                                             
+-rw-r--r-- root/root       723 2017-09-22 21:17 ./usr/share/nano/php.nanorc                                             
+-rw-r--r-- root/root       713 2017-09-22 21:17 ./usr/share/nano/groff.nanorc                                           
+hs@localhost [10:50:41] ttbott_compile> ^C                                                                              
+hs@localhost [10:50:43] ttbott_compile> grep mtd_debug gnlmpf                                                           
+-rwxr-xr-x root/root      9764 2017-09-22 21:17 ./usr/sbin/mtd_debug                                                    
+hs@localhost [10:50:43] ttbott_compile> ^C                                                                              
+hs@localhost [10:50:44] ttbott_compile> grep flash_erase gnlmpf                                                         
+-rwxr-xr-x root/root     30304 2017-09-22 21:17 ./usr/sbin/flash_erase                                                  
+-rwxr-xr-x root/root       150 2017-09-22 21:17 ./usr/sbin/flash_eraseall                                               
+hs@localhost [10:50:44] ttbott_compile>                                                                                 

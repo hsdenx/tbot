@@ -1,0 +1,3 @@
+^C                                                                      
+pi@raspberrypitbot2go [10:27:46] ttbott> test -d /sys/class/gpio/gpio2/ 
+pi@raspberrypitbot2go [10:27:46] ttbott>                                

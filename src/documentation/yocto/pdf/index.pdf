@@ -1,0 +1,884 @@
+%PDF-1.4
+%“Œ‹ž ReportLab Generated PDF document http://www.reportlab.com
+1 0 obj
+<< /F1 2 0 R /F2 3 0 R /F3 4 0 R /F4 10 0 R >>
+endobj
+2 0 obj
+<< /BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font >>
+endobj
+3 0 obj
+<< /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font >>
+endobj
+4 0 obj
+<< /BaseFont /Helvetica-BoldOblique /Encoding /WinAnsiEncoding /Name /F3 /Subtype /Type1 /Type /Font >>
+endobj
+5 0 obj
+<< /A << /S /URI /Type /Action /URI (https://de.wikipedia.org/wiki/ReStructuredText) >> /Border [ 0 0 0 ] /Rect [ 207.6428 529.0236 282.8688 541.0236 ] /Subtype /Link /Type /Annot >>
+endobj
+6 0 obj
+<< /A << /S /URI /Type /Action /URI (https://github.com/hsdenx/tbot) >> /Border [ 0 0 0 ] /Rect [ 344.4929 517.0236 361.1729 529.0236 ] /Subtype /Link /Type /Annot >>
+endobj
+7 0 obj
+<< /Annots [ 5 0 R 6 0 R ] /Contents 46 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 45 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 
+  /Trans <<  >> /Type /Page >>
+endobj
+8 0 obj
+<< /Contents 47 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 45 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+  /Type /Page >>
+endobj
+9 0 obj
+<< /Contents 48 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 45 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+  /Type /Page >>
+endobj
+10 0 obj
+<< /BaseFont /Courier /Encoding /WinAnsiEncoding /Name /F4 /Subtype /Type1 /Type /Font >>
+endobj
+11 0 obj
+<< /Contents 49 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 45 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+  /Type /Page >>
+endobj
+12 0 obj
+<< /Contents 50 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 45 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+  /Type /Page >>
+endobj
+13 0 obj
+<< /Contents 51 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 45 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+  /Type /Page >>
+endobj
+14 0 obj
+<< /Contents 52 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 45 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+  /Type /Page >>
+endobj
+15 0 obj
+<< /Contents 53 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 45 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+  /Type /Page >>
+endobj
+16 0 obj
+<< /A << /S /URI /Type /Action /URI (https://wiki.yoctoproject.org/wiki/Enable_sstate_cache) >> /Border [ 0 0 0 ] /Rect [ 62.69291 588.7736 301.1229 600.7736 ] /Subtype /Link /Type /Annot >>
+endobj
+17 0 obj
+<< /Annots [ 16 0 R ] /Contents 54 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 45 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 
+  /Trans <<  >> /Type /Page >>
+endobj
+18 0 obj
+<< /Contents 55 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 45 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+  /Type /Page >>
+endobj
+19 0 obj
+<< /Contents 56 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 45 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+  /Type /Page >>
+endobj
+20 0 obj
+<< /Outlines 22 0 R /PageLabels 57 0 R /PageMode /UseNone /Pages 45 0 R /Type /Catalog >>
+endobj
+21 0 obj
+<< /Author () /CreationDate (D:20170927174307+00'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20170927174307+00'00') /Producer (ReportLab PDF Library - www.reportlab.com) 
+  /Subject (\(unspecified\)) /Title (Yocto beagleboneblack Documentation) /Trapped /False >>
+endobj
+22 0 obj
+<< /Count 30 /First 23 0 R /Last 27 0 R /Type /Outlines >>
+endobj
+23 0 obj
+<< /Count 3 /Dest [ 7 0 R /XYZ 62.69291 653.0236 0 ] /First 24 0 R /Last 26 0 R /Next 27 0 R /Parent 22 0 R 
+  /Title (Abstract) >>
+endobj
+24 0 obj
+<< /Dest [ 7 0 R /XYZ 62.69291 583.0236 0 ] /Next 25 0 R /Parent 23 0 R /Title (About this Document) >>
+endobj
+25 0 obj
+<< /Dest [ 7 0 R /XYZ 62.69291 463.0236 0 ] /Next 26 0 R /Parent 23 0 R /Prev 24 0 R /Title (Introduction) >>
+endobj
+26 0 obj
+<< /Dest [ 8 0 R /XYZ 62.69291 765.0236 0 ] /Parent 23 0 R /Prev 25 0 R /Title (Disclaimer) >>
+endobj
+27 0 obj
+<< /Count 17 /Dest [ 9 0 R /XYZ 62.69291 765.0236 0 ] /First 28 0 R /Last 44 0 R /Parent 22 0 R /Prev 23 0 R 
+  /Title (Yocto) >>
+endobj
+28 0 obj
+<< /Dest [ 9 0 R /XYZ 62.69291 695.0236 0 ] /Next 29 0 R /Parent 27 0 R /Title (Current Versions) >>
+endobj
+29 0 obj
+<< /Count 8 /Dest [ 11 0 R /XYZ 62.69291 765.0236 0 ] /First 30 0 R /Last 35 0 R /Next 38 0 R /Parent 27 0 R 
+  /Prev 28 0 R /Title (Get yocto code for the beagleboneblack) >>
+endobj
+30 0 obj
+<< /Dest [ 11 0 R /XYZ 62.69291 723.0236 0 ] /Next 31 0 R /Parent 29 0 R /Title (Preparation) >>
+endobj
+31 0 obj
+<< /Count 1 /Dest [ 12 0 R /XYZ 62.69291 765.0236 0 ] /First 32 0 R /Last 32 0 R /Next 33 0 R /Parent 29 0 R 
+  /Prev 30 0 R /Title (local patches) >>
+endobj
+32 0 obj
+<< /Dest [ 13 0 R /XYZ 62.69291 765.0236 0 ] /Parent 31 0 R /Title (Yocto source) >>
+endobj
+33 0 obj
+<< /Count 1 /Dest [ 14 0 R /XYZ 62.69291 765.0236 0 ] /First 34 0 R /Last 34 0 R /Next 35 0 R /Parent 29 0 R 
+  /Prev 31 0 R /Title (Now get the needed layers:) >>
+endobj
+34 0 obj
+<< /Dest [ 14 0 R /XYZ 62.69291 729.0236 0 ] /Parent 33 0 R /Title (meta-openembedded:) >>
+endobj
+35 0 obj
+<< /Count 2 /Dest [ 15 0 R /XYZ 62.69291 765.0236 0 ] /First 36 0 R /Last 37 0 R /Parent 29 0 R /Prev 33 0 R 
+  /Title (Setup Build Environment) >>
+endobj
+36 0 obj
+<< /Dest [ 15 0 R /XYZ 62.69291 663.0236 0 ] /Next 37 0 R /Parent 35 0 R /Title (setup download directory) >>
+endobj
+37 0 obj
+<< /Dest [ 17 0 R /XYZ 62.69291 765.0236 0 ] /Parent 35 0 R /Prev 36 0 R /Title (setup shared state cache) >>
+endobj
+38 0 obj
+<< /Count 1 /Dest [ 18 0 R /XYZ 62.69291 765.0236 0 ] /First 39 0 R /Last 39 0 R /Next 40 0 R /Parent 27 0 R 
+  /Prev 29 0 R /Title (Generate Images) >>
+endobj
+39 0 obj
+<< /Dest [ 18 0 R /XYZ 62.69291 693.0236 0 ] /Parent 38 0 R /Title (core-image-minimal) >>
+endobj
+40 0 obj
+<< /Count 3 /Dest [ 18 0 R /XYZ 62.69291 627.0236 0 ] /First 41 0 R /Last 43 0 R /Next 44 0 R /Parent 27 0 R 
+  /Prev 38 0 R /Title (Install Images) >>
+endobj
+41 0 obj
+<< /Dest [ 18 0 R /XYZ 62.69291 585.0236 0 ] /Next 42 0 R /Parent 40 0 R /Title (install rootfs for NFS boot) >>
+endobj
+42 0 obj
+<< /Dest [ 18 0 R /XYZ 62.69291 549.0236 0 ] /Next 43 0 R /Parent 40 0 R /Prev 41 0 R /Title (sd card image) >>
+endobj
+43 0 obj
+<< /Dest [ 18 0 R /XYZ 62.69291 465.0236 0 ] /Parent 40 0 R /Prev 42 0 R /Title (boot the sd card rootfs image) >>
+endobj
+44 0 obj
+<< /Dest [ 18 0 R /XYZ 62.69291 399.0236 0 ] /Parent 27 0 R /Prev 40 0 R /Title (links) >>
+endobj
+45 0 obj
+<< /Count 11 /Kids [ 7 0 R 8 0 R 9 0 R 11 0 R 12 0 R 13 0 R 14 0 R 15 0 R 17 0 R 18 0 R 
+  19 0 R ] /Type /Pages >>
+endobj
+46 0 obj
+<< /Length 1694 >>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 62.69291 693.0236 cm
+q
+BT 1 0 0 1 0 42 Tm 67.39488 0 Td 36 TL /F2 30 Tf 0 0 0 rg (Yocto beagleboneblack) Tj T* 58.38 0 Td (Documentation) Tj T* -125.7749 0 Td ET
+Q
+Q
+q
+1 0 0 1 62.69291 623.0236 cm
+q
+BT 1 0 0 1 0 5 Tm 184.2449 0 Td 30 TL /F2 25 Tf 0 0 0 rg (Abstract) Tj T* -184.2449 0 Td ET
+Q
+Q
+q
+1 0 0 1 62.69291 559.0236 cm
+q
+BT 1 0 0 1 0 4 Tm 133.8349 0 Td 24 TL /F3 20 Tf 0 0 0 rg (About this Document) Tj T* -133.8349 0 Td ET
+Q
+Q
+q
+1 0 0 1 62.69291 517.0236 cm
+q
+BT 1 0 0 1 0 14 Tm .755984 Tw 12 TL /F1 10 Tf 0 0 0 rg (The documentation is written in ) Tj 0 0 .501961 rg (reStructuredText ) Tj 0 0 0 rg (and converted into a pdf document. Some parts of this) Tj T* 0 Tw (document are created automatically out of the log files from the ) Tj 0 0 .501961 rg (tbot ) Tj 0 0 0 rg (build process.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 499.0236 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (This document is generated for the beagleboneblack with yocto rootfs version) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 481.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (DUTS_YOCTO_VERSION) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 439.0236 cm
+q
+BT 1 0 0 1 0 4 Tm 176.6149 0 Td 24 TL /F3 20 Tf 0 0 0 rg (Introduction) Tj T* -176.6149 0 Td ET
+Q
+Q
+q
+1 0 0 1 62.69291 409.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (This document describes how to use yocto for the beagleboneblack) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 409.0236 cm
+Q
+q
+1 0 0 1 56.69291 56.69291 cm
+q
+BT 1 0 0 1 0 2 Tm 125.3199 0 Td 12 TL /F1 10 Tf 0 0 0 rg (Yocto beagleboneblack documentation - page 1 / 11) Tj T* -125.3199 0 Td ET
+Q
+Q
+ 
+endstream
+endobj
+47 0 obj
+<< /Length 1086 >>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 62.69291 741.0236 cm
+q
+BT 1 0 0 1 0 4 Tm 184.3649 0 Td 24 TL /F3 20 Tf 0 0 0 rg (Disclaimer) Tj T* -184.3649 0 Td ET
+Q
+Q
+q
+1 0 0 1 62.69291 663.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 50 Tm /F1 10 Tf 12 TL 2.13561 Tw (Use the information in this document at your own risk. DENX disavows any potential liability for the) Tj T* 0 Tw 2.162651 Tw (contents of this document. Use of the concepts, examples, and/or other content of this document is) Tj T* 0 Tw 1.203984 Tw (entirely at your own risk. All copyrights are owned by their owners, unless specifically noted otherwise.) Tj T* 0 Tw .041567 Tw (Use of a term in this document should not be regarded as affecting the validity of any trademark or service) Tj T* 0 Tw (mark. Naming of particular products or brands should not be seen as endorsements.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 663.0236 cm
+Q
+q
+1 0 0 1 56.69291 56.69291 cm
+q
+BT 1 0 0 1 0 2 Tm 125.3199 0 Td 12 TL /F1 10 Tf 0 0 0 rg (Yocto beagleboneblack documentation - page 2 / 11) Tj T* -125.3199 0 Td ET
+Q
+Q
+ 
+endstream
+endobj
+48 0 obj
+<< /Length 957 >>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 62.69291 735.0236 cm
+q
+BT 1 0 0 1 0 5 Tm 200.2199 0 Td 30 TL /F2 25 Tf 0 0 0 rg (Yocto) Tj T* -200.2199 0 Td ET
+Q
+Q
+q
+1 0 0 1 62.69291 671.0236 cm
+q
+BT 1 0 0 1 0 4 Tm 153.8149 0 Td 24 TL /F3 20 Tf 0 0 0 rg (Current Versions) Tj T* -153.8149 0 Td ET
+Q
+Q
+q
+1 0 0 1 62.69291 641.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Some infos from the yocto build system) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 623.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (bitbake version 1.34.0 yocto distro 2.3.2) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 605.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Collect here some infos yocto branch yocto version) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 605.0236 cm
+Q
+q
+1 0 0 1 56.69291 56.69291 cm
+q
+BT 1 0 0 1 0 2 Tm 125.3199 0 Td 12 TL /F1 10 Tf 0 0 0 rg (Yocto beagleboneblack documentation - page 3 / 11) Tj T* -125.3199 0 Td ET
+Q
+Q
+ 
+endstream
+endobj
+49 0 obj
+<< /Length 1766 >>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 62.69291 741.0236 cm
+q
+BT 1 0 0 1 0 4 Tm 44.89488 0 Td 24 TL /F3 20 Tf 0 0 0 rg (Get yocto code for the beagleboneblack) Tj T* -44.89488 0 Td ET
+Q
+Q
+q
+1 0 0 1 62.69291 705.0236 cm
+q
+BT 1 0 0 1 0 3 Tm 193.2674 0 Td 18 TL /F3 15 Tf 0 0 0 rg (Preparation) Tj T* -193.2674 0 Td ET
+Q
+Q
+q
+1 0 0 1 62.69291 675.0236 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (set shell variable ) Tj 1 0 0 rg (TBOT_BASEDIR ) Tj 0 0 0 rg (to our work directory, and if this directory does not exist, create it) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 657.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Export our workdirectory:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 616.0236 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 7.1 7.1 cm
+q
+0 0 0 RG
+1 w
+.960784 .960784 .862745 rg
+n -6 -6 467.6898 28.8 re B*
+Q
+q
+0 0 0 rg
+BT 1 0 0 1 0 9.8 Tm /F4 7 Tf 8.4 TL ($ export TBOT_BASEDIR=/work/tbot2go/tbot/) Tj T* ($) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+q
+1 0 0 1 62.69291 582.0236 cm
+q
+BT 1 0 0 1 0 14 Tm 1.766412 Tw 12 TL /F1 10 Tf 0 0 0 rg (set shell variable ) Tj 1 0 0 rg (TBOT_BASEDIR_YOCTO ) Tj 0 0 0 rg (to our yocto work directory, and if this directory does not) Tj T* 0 Tw (exist, create it) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 541.0236 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 7.1 7.1 cm
+q
+0 0 0 RG
+1 w
+.960784 .960784 .862745 rg
+n -6 -6 467.6898 28.8 re B*
+Q
+q
+0 0 0 rg
+BT 1 0 0 1 0 9.8 Tm /F4 7 Tf 8.4 TL ($ export TBOT_BASEDIR_YOCTO=$TBOT_BASEDIR/yocto-am335x_evm) Tj T* ($) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+q
+1 0 0 1 62.69291 531.0236 cm
+Q
+q
+1 0 0 1 56.69291 56.69291 cm
+q
+BT 1 0 0 1 0 2 Tm 125.3199 0 Td 12 TL /F1 10 Tf 0 0 0 rg (Yocto beagleboneblack documentation - page 4 / 11) Tj T* -125.3199 0 Td ET
+Q
+Q
+ 
+endstream
+endobj
+50 0 obj
+<< /Length 990 >>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 62.69291 747.0236 cm
+q
+BT 1 0 0 1 0 3 Tm 187.4249 0 Td 18 TL /F3 15 Tf 0 0 0 rg (local patches) Tj T* -187.4249 0 Td ET
+Q
+Q
+q
+1 0 0 1 62.69291 717.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (go to our work directory:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 642.4236 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 7.1 7.1 cm
+q
+0 0 0 RG
+1 w
+.960784 .960784 .862745 rg
+n -6 -6 467.6898 62.4 re B*
+Q
+q
+0 0 0 rg
+BT 1 0 0 1 0 43.4 Tm /F4 7 Tf 8.4 TL ($ ") Tj T* ($ stty cols 200) Tj T* ($ export TERM=vt200) Tj T* ($ echo $COLUMNS) Tj T* (200) Tj T* ($) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+q
+1 0 0 1 62.69291 620.4236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (First, get the patches we need with:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 620.4236 cm
+Q
+q
+1 0 0 1 56.69291 56.69291 cm
+q
+BT 1 0 0 1 0 2 Tm 125.3199 0 Td 12 TL /F1 10 Tf 0 0 0 rg (Yocto beagleboneblack documentation - page 5 / 11) Tj T* -125.3199 0 Td ET
+Q
+Q
+ 
+endstream
+endobj
+51 0 obj
+<< /Length 886 >>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 62.69291 750.0236 cm
+q
+BT 1 0 0 1 0 2.5 Tm 15 TL /F3 12.5 Tf 0 0 0 rg (Yocto source) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 720.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (After this, checkout the yocto source:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 702.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (go to our work directory:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 684.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (and check out the yocto code:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 666.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (and apply our local patches:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 666.0236 cm
+Q
+q
+1 0 0 1 56.69291 56.69291 cm
+q
+BT 1 0 0 1 0 2 Tm 125.3199 0 Td 12 TL /F1 10 Tf 0 0 0 rg (Yocto beagleboneblack documentation - page 6 / 11) Tj T* -125.3199 0 Td ET
+Q
+Q
+ 
+endstream
+endobj
+52 0 obj
+<< /Length 777 >>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 62.69291 747.0236 cm
+q
+BT 1 0 0 1 0 3 Tm 137.8349 0 Td 18 TL /F3 15 Tf 0 0 0 rg (Now get the needed layers:) Tj T* -137.8349 0 Td ET
+Q
+Q
+q
+1 0 0 1 62.69291 714.0236 cm
+q
+BT 1 0 0 1 0 2.5 Tm 15 TL /F3 12.5 Tf 0 0 0 rg (meta-openembedded:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 684.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (go to the yocto work directory:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 666.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (than get the layer:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 666.0236 cm
+Q
+q
+1 0 0 1 56.69291 56.69291 cm
+q
+BT 1 0 0 1 0 2 Tm 125.3199 0 Td 12 TL /F1 10 Tf 0 0 0 rg (Yocto beagleboneblack documentation - page 7 / 11) Tj T* -125.3199 0 Td ET
+Q
+Q
+ 
+endstream
+endobj
+53 0 obj
+<< /Length 1545 >>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 62.69291 747.0236 cm
+q
+BT 1 0 0 1 0 3 Tm 145.3499 0 Td 18 TL /F3 15 Tf 0 0 0 rg (Setup Build Environment) Tj T* -145.3499 0 Td ET
+Q
+Q
+q
+1 0 0 1 62.69291 717.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (now we have all layers, and can setup our build environment.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 699.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (and set the correct path in bblayers.conf:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 681.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (optional \(but recommended\), you can do the following 2 steps:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 648.0236 cm
+q
+BT 1 0 0 1 0 2.5 Tm 15 TL /F3 12.5 Tf 0 0 0 rg (setup download directory) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 606.0236 cm
+q
+BT 1 0 0 1 0 14 Tm 1.645984 Tw 12 TL /F1 10 Tf 0 0 0 rg (All source files, bitbake needs, are stored in the directory located through the config variable ) Tj 1 0 0 rg (DL_DIR) Tj T* 0 Tw 0 0 0 rg (replace the marker ) Tj 1 0 0 rg (TBOT_YOCTO_DLDIR ) Tj 0 0 0 rg (with the settings you use, for example:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 588.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (You can share this directory with other users, so source files need to be downloaded only once.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 588.0236 cm
+Q
+q
+1 0 0 1 56.69291 56.69291 cm
+q
+BT 1 0 0 1 0 2 Tm 125.3199 0 Td 12 TL /F1 10 Tf 0 0 0 rg (Yocto beagleboneblack documentation - page 8 / 11) Tj T* -125.3199 0 Td ET
+Q
+Q
+ 
+endstream
+endobj
+54 0 obj
+<< /Length 1916 >>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 62.69291 750.0236 cm
+q
+BT 1 0 0 1 0 2.5 Tm 15 TL /F3 12.5 Tf 0 0 0 rg (setup shared state cache) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 720.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Set up the directory for the shared state cache.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 690.0236 cm
+q
+BT 1 0 0 1 0 14 Tm 1.009983 Tw 12 TL /F1 10 Tf 0 0 0 rg (Add the correct path in the local.conf file, by replacing the ) Tj 1 0 0 rg (TBOT_YOCTO_SSTATEDIR ) Tj 0 0 0 rg (with the setting) Tj T* 0 Tw (you need.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 624.0236 cm
+q
+BT 1 0 0 1 0 50 Tm .313318 Tw 12 TL /F1 10 Tf 0 0 0 rg (Rebuilding everything from scratch needs a lot of time and resources. Therefore bitbake collects as much) Tj T* 0 Tw .01561 Tw (as possible information about each task and stores this information with a checksum. Poky now stores this) Tj T* 0 Tw .927633 Tw (information in the so called ) Tj 1 0 0 rg (shared state cache ) Tj 0 0 0 rg (and stores the output of each task in the ) Tj 1 0 0 rg (SSTATE_DIR) Tj 0 0 0 rg (.) Tj T* 0 Tw 1.156098 Tw (Now, whenever bitbake starts with a task, it checks if there is information about this task in the ) Tj 1 0 0 rg (shared) Tj T* 0 Tw (state cache ) Tj 0 0 0 rg (and if the checksum matches, it can use the stored output saved in the ) Tj 1 0 0 rg (SSTATE_DIR) Tj 0 0 0 rg (.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 606.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Find more information:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 588.0236 cm
+q
+0 0 .501961 rg
+0 0 .501961 RG
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (https://wiki.yoctoproject.org/wiki/Enable_sstate_cache) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 588.0236 cm
+Q
+q
+1 0 0 1 56.69291 56.69291 cm
+q
+BT 1 0 0 1 0 2 Tm 125.3199 0 Td 12 TL /F1 10 Tf 0 0 0 rg (Yocto beagleboneblack documentation - page 9 / 11) Tj T* -125.3199 0 Td ET
+Q
+Q
+ 
+endstream
+endobj
+55 0 obj
+<< /Length 2024 >>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 62.69291 741.0236 cm
+q
+BT 1 0 0 1 0 4 Tm 154.3549 0 Td 24 TL /F3 20 Tf 0 0 0 rg (Generate Images) Tj T* -154.3549 0 Td ET
+Q
+Q
+q
+1 0 0 1 62.69291 711.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Now we are ready to create the images with:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 675.0236 cm
+q
+BT 1 0 0 1 0 3 Tm 164.0924 0 Td 18 TL /F3 15 Tf 0 0 0 rg (core-image-minimal) Tj T* -164.0924 0 Td ET
+Q
+Q
+q
+1 0 0 1 62.69291 645.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (This generates the following images:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 603.0236 cm
+q
+BT 1 0 0 1 0 4 Tm 168.8049 0 Td 24 TL /F3 20 Tf 0 0 0 rg (Install Images) Tj T* -168.8049 0 Td ET
+Q
+Q
+q
+1 0 0 1 62.69291 567.0236 cm
+q
+BT 1 0 0 1 0 3 Tm 142.4399 0 Td 18 TL /F3 15 Tf 0 0 0 rg (install rootfs for NFS boot) Tj T* -142.4399 0 Td ET
+Q
+Q
+q
+1 0 0 1 62.69291 531.0236 cm
+q
+BT 1 0 0 1 0 3 Tm 184.5074 0 Td 18 TL /F3 15 Tf 0 0 0 rg (sd card image) Tj T* -184.5074 0 Td ET
+Q
+Q
+q
+1 0 0 1 62.69291 501.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (copy the sd card image into the nfs:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 483.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Then we boot with NFS as rootfs and burn the sd card image onto the sd card in the bbb:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 447.0236 cm
+q
+BT 1 0 0 1 0 3 Tm 129.5099 0 Td 18 TL /F3 15 Tf 0 0 0 rg (boot the sd card rootfs image) Tj T* -129.5099 0 Td ET
+Q
+Q
+q
+1 0 0 1 62.69291 417.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (check if the version of the rootfs is the same as we expect.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 375.0236 cm
+q
+BT 1 0 0 1 0 4 Tm 212.1549 0 Td 24 TL /F3 20 Tf 0 0 0 rg (links) Tj T* -212.1549 0 Td ET
+Q
+Q
+q
+1 0 0 1 62.69291 357.0236 cm
+Q
+q
+1 0 0 1 56.69291 56.69291 cm
+q
+BT 1 0 0 1 0 2 Tm 122.5399 0 Td 12 TL /F1 10 Tf 0 0 0 rg (Yocto beagleboneblack documentation - page 10 / 11) Tj T* -122.5399 0 Td ET
+Q
+Q
+ 
+endstream
+endobj
+56 0 obj
+<< /Length 257 >>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 62.69291 765.0236 cm
+Q
+q
+1 0 0 1 56.69291 56.69291 cm
+q
+BT 1 0 0 1 0 2 Tm 122.5399 0 Td 12 TL /F1 10 Tf 0 0 0 rg (Yocto beagleboneblack documentation - page 11 / 11) Tj T* -122.5399 0 Td ET
+Q
+Q
+ 
+endstream
+endobj
+57 0 obj
+<< /Nums [ 0 58 0 R 1 59 0 R 2 60 0 R 3 61 0 R 4 62 0 R 
+  5 63 0 R 6 64 0 R 7 65 0 R 8 66 0 R 9 67 0 R 
+  10 68 0 R ] >>
+endobj
+58 0 obj
+<< /S /D /St 1 >>
+endobj
+59 0 obj
+<< /S /D /St 2 >>
+endobj
+60 0 obj
+<< /S /D /St 3 >>
+endobj
+61 0 obj
+<< /S /D /St 4 >>
+endobj
+62 0 obj
+<< /S /D /St 5 >>
+endobj
+63 0 obj
+<< /S /D /St 6 >>
+endobj
+64 0 obj
+<< /S /D /St 7 >>
+endobj
+65 0 obj
+<< /S /D /St 8 >>
+endobj
+66 0 obj
+<< /S /D /St 9 >>
+endobj
+67 0 obj
+<< /S /D /St 10 >>
+endobj
+68 0 obj
+<< /S /D /St 11 >>
+endobj
+xref
+0 69
+0000000000 65535 f
+0000000075 00000 n
+0000000140 00000 n
+0000000250 00000 n
+0000000365 00000 n
+0000000487 00000 n
+0000000688 00000 n
+0000000873 00000 n
+0000001106 00000 n
+0000001315 00000 n
+0000001524 00000 n
+0000001633 00000 n
+0000001843 00000 n
+0000002053 00000 n
+0000002263 00000 n
+0000002473 00000 n
+0000002683 00000 n
+0000002893 00000 n
+0000003122 00000 n
+0000003332 00000 n
+0000003542 00000 n
+0000003651 00000 n
+0000003948 00000 n
+0000004026 00000 n
+0000004178 00000 n
+0000004301 00000 n
+0000004430 00000 n
+0000004544 00000 n
+0000004694 00000 n
+0000004814 00000 n
+0000005010 00000 n
+0000005126 00000 n
+0000005297 00000 n
+0000005401 00000 n
+0000005585 00000 n
+0000005695 00000 n
+0000005863 00000 n
+0000005992 00000 n
+0000006121 00000 n
+0000006294 00000 n
+0000006404 00000 n
+0000006576 00000 n
+0000006708 00000 n
+0000006839 00000 n
+0000006973 00000 n
+0000007083 00000 n
+0000007219 00000 n
+0000008970 00000 n
+0000010113 00000 n
+0000011126 00000 n
+0000012949 00000 n
+0000013995 00000 n
+0000014937 00000 n
+0000015770 00000 n
+0000017372 00000 n
+0000019345 00000 n
+0000021426 00000 n
+0000021739 00000 n
+0000021882 00000 n
+0000021919 00000 n
+0000021956 00000 n
+0000021993 00000 n
+0000022030 00000 n
+0000022067 00000 n
+0000022104 00000 n
+0000022141 00000 n
+0000022178 00000 n
+0000022215 00000 n
+0000022253 00000 n
+trailer
+<< /ID 
+ % ReportLab generated PDF document -- digest (http://www.reportlab.com)
+ [(\347\272l\301P\306XU\010\376\030iy\025\206\351) (\347\272l\301P\306XU\010\376\030iy\025\206\351)]
+ /Info 21 0 R /Root 20 0 R /Size 69 >>
+startxref
+22291
+%%EOF

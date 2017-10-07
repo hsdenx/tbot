@@ -1,0 +1,3 @@
+^C
+hs@localhost [10:49:18] ttbott_compile> test -d $TBOT_BASEDIR_YOCTO
+hs@localhost [10:49:18] ttbott_compile> 

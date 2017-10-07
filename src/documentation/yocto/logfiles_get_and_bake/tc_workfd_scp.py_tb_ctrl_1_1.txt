@@ -1,0 +1,6 @@
+^C
+hs@localhost [10:50:44] ttbott_compile> scp  $TBOT_BASEDIR_YOCTO/build/tmp/deploy/images/beaglebone//MLO pi@192.168.3.1:/srv/tftpboot/beagle\
+> boneblack/tbot/yocto/MLO
+pi@192.168.3.1's password: 
+MLO                                                                                                                                                                     0%    0     0.0KB/s   --:-- ETAMLO                                                                                                                                                                   100%   71KB  71.2KB/s   00:00    
+hs@localhost [10:50:45] ttbott_compile> 

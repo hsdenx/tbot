@@ -1,0 +1,3 @@
+^C
+pi@raspberrypitbot2go [ 6:25:49] ttbott> echo 0 > /sys/class/gpio/gpio4/value
+pi@raspberrypitbot2go [ 6:25:49] ttbott> 

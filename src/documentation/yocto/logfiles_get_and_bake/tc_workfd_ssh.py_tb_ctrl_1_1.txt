@@ -1,0 +1,11 @@
+^C                                                                 
+pi@raspberrypitbot2go [ 6:22:33] ttbott> ssh  hs@192.168.3.10      
+hs@192.168.3.10's password:                                        
+Last login: Tue Oct 10 10:31:07 2017 from 192.168.3.1              
+Welcome to Heikos Laptop                                           
+hs@localhost:~  $ export PS1="\u@\h [\$(date +%k:%M:%S)] ttbott> " 
+hs@localhost [10:49:11] ttbott> stty cols 200                      
+hs@localhost [10:49:11] ttbott> export TERM=vt200                  
+hs@localhost [10:49:11] ttbott> echo $COLUMNS                      
+200                                                                
+hs@localhost [10:49:12] ttbott>                                    

@@ -1,0 +1,5 @@
+^C
+hs@localhost [10:49:12] ttbott> [ ! -d "/work/tbot2go/tbot/" ] && echo "Does not exist"
+hs@localhost [10:49:12] ttbott> ^C
+hs@localhost [10:49:13] ttbott> cd /work/tbot2go/tbot/
+hs@localhost [10:49:13] ttbott> 

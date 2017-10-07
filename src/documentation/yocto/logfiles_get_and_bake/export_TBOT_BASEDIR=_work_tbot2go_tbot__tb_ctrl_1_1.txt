@@ -1,0 +1,3 @@
+^C
+hs@localhost [10:49:14] ttbott_compile> export TBOT_BASEDIR=/work/tbot2go/tbot/
+hs@localhost [10:49:14] ttbott_compile> 

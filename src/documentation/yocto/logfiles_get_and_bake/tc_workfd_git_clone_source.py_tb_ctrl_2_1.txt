@@ -1,0 +1,17 @@
+^C                                                                                                      
+hs@localhost [12:12:31] ttbott_compile> git clone git://git.yoctoproject.org/poky.git yocto-am335x_evm  
+Cloning into 'yocto-am335x_evm'...                                                                      
+remote: Counting objects: 380131, done.                                                                 
+remote: Compressing objects: 100% (91013/91013), done.                                                  
+remote: Total 380131 (delta 282791), reused 379811 (delta 282471)                                       
+Receiving objects: 100% (380131/380131), 136.52 MiB | 3.77 MiB/s, done.                                 
+Resolving deltas: 100% (282791/282791), done.                                                           
+Checking connectivity... done.                                                                          
+hs@localhost [12:13:21] ttbott_compile> ^C                                                              
+hs@localhost [12:13:22] ttbott_compile> cd yocto-am335x_evm                                             
+hs@localhost [12:13:22] ttbott_compile> ^C                                                              
+hs@localhost [12:13:22] ttbott_compile> git checkout pyro                                               
+Branch pyro set up to track remote branch pyro from origin.                                             
+Switched to a new branch 'pyro'                                                                         
+hs@localhost [12:13:23] ttbott_compile>                                                                 
+                                                                                                        

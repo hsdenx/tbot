@@ -1,0 +1,4 @@
+
+root@beaglebone [ 8:50:35] ttbott> cat /etc/version
+20171010084943
+root@beaglebone [ 8:50:35] ttbott> 

@@ -1,0 +1,13 @@
+
+root@beaglebone [ 8:50:28] ttbott> dmesg | grep mmc | grep SD
+[    3.343767] mmc0: new high speed SDHC card at address aaaa
+root@beaglebone [ 8:50:29] ttbott> 
+root@beaglebone [ 8:50:29] ttbott> dd if=/boot/core-image-minimal-beaglebone.wic of=/dev/mmcblk0 bs=4M
+23+1 records in
+23+1 records out
+97047552 bytes (97 MB, 93 MiB) copied, 12.6369 s, 7.7 MB/s
+root@beaglebone [ 8:50:42] ttbott> 
+root@beaglebone [ 8:50:42] ttbott> sync
+root@beaglebone [ 8:50:43] ttbott> 
+root@beaglebone [ 8:50:43] ttbott> sync
+root@beaglebone [ 8:50:44] ttbott> 

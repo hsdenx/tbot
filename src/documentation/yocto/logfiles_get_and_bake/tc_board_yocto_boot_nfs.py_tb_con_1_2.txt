@@ -1,0 +1,5 @@
+stty cols 200
+root@beaglebone [ 8:50:28] ttbott> export TERM=vt200
+root@beaglebone [ 8:50:28] ttbott> echo $COLUMNS
+
+root@beaglebone [ 8:50:28] ttbott> 

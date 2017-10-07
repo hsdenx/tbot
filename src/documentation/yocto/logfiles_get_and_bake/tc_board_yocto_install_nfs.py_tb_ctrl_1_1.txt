@@ -1,0 +1,3 @@
+^C
+pi@raspberrypitbot2go [ 6:25:35] ttbott> sudo cp /srv/tftpboot/beagleboneblack/tbot/yocto/core-image-minimal-beaglebone.wic /work/tbot2go/tbot/nfs/bbb/boot
+pi@raspberrypitbot2go [ 6:25:36] ttbott> 

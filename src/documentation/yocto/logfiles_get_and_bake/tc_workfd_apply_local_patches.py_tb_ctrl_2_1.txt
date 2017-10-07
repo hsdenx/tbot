@@ -1,0 +1,11 @@
+stty cols 200                                              
+hs@localhost [12:13:23] ttbott_compile> export TERM=vt200  
+hs@localhost [12:13:23] ttbott_compile> echo $COLUMNS      
+200                                                        
+hs@localhost [12:13:24] ttbott_compile> ^C                 
+hs@localhost [12:13:24] ttbott_compile> pwd                
+/work/tbot2go/tbot/yocto-am335x_evm                        
+hs@localhost [12:13:24] ttbott_compile> ^C                 
+hs@localhost [12:13:24] ttbott_compile> git describe --all 
+heads/pyro                                                 
+hs@localhost [12:13:25] ttbott_compile>                    

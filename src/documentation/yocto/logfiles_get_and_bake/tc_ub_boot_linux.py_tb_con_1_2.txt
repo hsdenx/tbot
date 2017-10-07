@@ -1,0 +1,414 @@
+<INTERRUPT>                                                                                                             
+=> run net_nfs                                                                                                          
+link up on port 0, speed 100, full duplex                                                                               
+Using ethernet@4a100000 device                                                                                          
+TFTP from server 192.168.3.1; our IP address is 192.168.3.20                                                            
+Filename 'beagleboneblack/tbot/zImage'.                                                                                 
+Load address: 0x82000000                                                                                                
+Loading: #################################################################                                              
+          #################################################################                                             
+          #################################################################                                             
+          #################################################################                                             
+          #################################################################                                             
+          #################################################################                                             
+          #################################################################                                             
+          #################################################################                                             
+          #################################################################                                             
+          #################################################################                                             
+          #################################################################                                             
+          #################################################################                                             
+          #################################################################                                             
+          #################################################################                                             
+          #################################################################                                             
+          #################################################################                                             
+          #################################################################                                             
+          #################################################################                                             
+          #################################################################                                             
+          #################################################################                                             
+          #################################################################                                             
+          #################################################################                                             
+          #################################################################                                             
+          #################################################################                                             
+          #################################################################                                             
+          #################################################################                                             
+          #################################################################                                             
+          #################################################################                                             
+          #################################################################                                             
+          #                                                                                                             
+          1.1 MiB/s                                                                                                     
+done                                                                                                                    
+Bytes transferred = 9653192 (934bc8 hex)                                                                                
+link up on port 0, speed 100, full duplex                                                                               
+Using ethernet@4a100000 device                                                                                          
+TFTP from server 192.168.3.1; our IP address is 192.168.3.20                                                            
+Filename 'beagleboneblack/tbot/am335x-boneblack.dtb'.                                                                   
+Load address: 0x88000000                                                                                                
+Loading: ############                                                                                                   
+          996.1 KiB/s                                                                                                   
+done                                                                                                                    
+Bytes transferred = 58161 (e331 hex)                                                                                    
+## Flattened Device Tree blob at 88000000                                                                               
+   Booting using the fdt blob at 0x88000000                                                                             
+   Loading Device Tree to 8ffee000, end 8ffff330 ... OK                                                                 
+                                                                                                                        
+Starting kernel ...                                                                                                     
+                                                                                                                        
+[    0.000000] Booting Linux on physical CPU 0x0                                                                        
+[    0.000000] Linux version 4.9.52 (hs@localhost.localdomain) (gcc version 4.9.0 (GCC) ) #1 SMP PREEMPT Fri Sep 29 10:5
+5:07 CEST 2017                                                                                                          
+[    0.000000] CPU: ARMv7 Processor [413fc082] revision 2 (ARMv7), cr=10c5387d                                          
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache                                 
+[    0.000000] OF: fdt:Machine model: TI AM335x BeagleBone Black                                                        
+[    0.000000] cma: Reserved 48 MiB at 0x9c800000                                                                       
+[    0.000000] Memory policy: Data cache writeback                                                                      
+[    0.000000] On node 0 totalpages: 130560                                                                             
+[    0.000000] free_area_init_node: node 0, pgdat c13e4040, node_mem_map df961000                                       
+[    0.000000]   Normal zone: 1148 pages used for memmap                                                                
+[    0.000000]   Normal zone: 0 pages reserved                                                                          
+[    0.000000]   Normal zone: 130560 pages, LIFO batch:31                                                               
+[    0.000000] CPU: All CPU(s) started in SVC mode.                                                                     
+[    0.000000] AM335X ES2.1 (sgx neon)                                                                                  
+[    0.000000] percpu: Embedded 15 pages/cpu @df92b000 s32000 r8192 d21248 u61440                                       
+[    0.000000] pcpu-alloc: s32000 r8192 d21248 u61440 alloc=15*4096                                                     
+[    0.000000] pcpu-alloc: [0] 0                                                                                        
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 129412                              
+[    0.000000] Kernel command line: root=/dev/nfs rw nfsroot=192.168.3.1:/work/tbot2go/tbot/nfs/bbb,nfsvers=3 nolock rw 
+console=ttyS0,115200n8 ip=192.168.3.20:192.168.3.1::255.255.255.0:bbb:eth0::off panic=1 mtdparts=nand.0:128k(NAND.SPL),1
+28k(NAND.SPL.backup1),128k(NAND.SPL.backup2),128k(NAND.SPL.backup3),256k(NAND.u-boot-spl-os),1m(NAND.u-boot),128k(NAND.u
+-boot-env),128k(NAND.u-boot-env.backup1),8m(NAND.kernel),-(NAND.file-system) loglevel=8                                 
+[    0.000000] PID hash table entries: 2048 (order: 1, 8192 bytes)                                                      
+[    0.000000] Dentry cache hash table entries: 65536 (order: 6, 262144 bytes)                                          
+[    0.000000] Inode-cache hash table entries: 32768 (order: 5, 131072 bytes)                                           
+[    0.000000] Memory: 447380K/522240K available (12288K kernel code, 1122K rwdata, 4224K rodata, 1024K init, 736K bss, 
+25708K reserved, 49152K cma-reserved, 0K highmem)                                                                       
+[    0.000000] Virtual kernel memory layout:                                                                            
+[    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)                                                        
+[    0.000000]     fixmap  : 0xffc00000 - 0xfff00000   (3072 kB)                                                        
+[    0.000000]     vmalloc : 0xe0000000 - 0xff800000   ( 504 MB)                                                        
+[    0.000000]     lowmem  : 0xc0000000 - 0xdfe00000   ( 510 MB)                                                        
+[    0.000000]     pkmap   : 0xbfe00000 - 0xc0000000   (   2 MB)                                                        
+[    0.000000]     modules : 0xbf000000 - 0xbfe00000   (  14 MB)                                                        
+[    0.000000]       .text : 0xc0008000 - 0xc0d00000   (13280 kB)                                                       
+[    0.000000]       .init : 0xc1200000 - 0xc1300000   (1024 kB)                                                        
+[    0.000000]       .data : 0xc1300000 - 0xc1418a00   (1123 kB)                                                        
+[    0.000000]        .bss : 0xc141a000 - 0xc14d2240   ( 737 kB)                                                        
+[    0.000000] Preemptible hierarchical RCU implementation.                                                             
+[    0.000Build-time adjustment of leaf fanout to 32.                                                                   
+[    0.000RCU restricting CPUs from NR_CPUS=2 to nr_cpu_ids=1.                                                          
+[    0.000000] RCU: Adjusting geometry for rcu_fanout_leaf=32, nr_cpu_ids=1                                             
+[    0.000000] NR_IRQS:16 nr_irqs:16 16                                                                                 
+[    0.000000] IRQ: Found an INTC at 0xfa200000 (revision 5.0) with 128 interrupts                                      
+[    0.000000] OMAP clockevent source: timer2 at 24000000 Hz                                                            
+[    0.000016] sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 89478484971ns                                
+[    0.000039] clocksource: timer1: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 79635851949 ns                
+[    0.000053] OMAP clocksource: timer1 at 24000000 Hz                                                                  
+[    0.000878] clocksource_probe: no matching clocksources found                                                        
+[    0.001362] Console: colour dummy device 80x30                                                                       
+[    0.001413] Calibrating delay loop... 995.32 BogoMIPS (lpj=1990656)                                                  
+[    0.046691] pid_max: default: 32768 minimum: 301                                                                     
+[    0.046995] Security Framework initialized                                                                           
+[    0.047013] Yama: becoming mindful.                                                                                  
+[    0.047056] AppArmor: AppArmor disabled by boot time parameter                                                       
+[    0.047273] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)                                              
+[    0.047287] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)                                         
+[    0.048505] CPU: Testing write buffer coherency: ok                                                                  
+[    0.048580] ftrace: allocating 38602 entries in 114 pages                                                            
+[    0.158605] CPU0: thread -1, cpu 0, socket -1, mpidr 0                                                               
+[    0.158763] Setting up static identity map for 0x80100000 - 0x80100060                                               
+[    0.206712] Brought up 1 CPUs                                                                                        
+[    0.206741] SMP: Total of 1 processors activated (995.32 BogoMIPS).                                                  
+[    0.206751] CPU: All CPU(s) started in SVC mode.                                                                     
+[    0.208347] devtmpfs: initialized                                                                                    
+[    0.231047] VFP support v0.3: implementor 41 architecture 3 part 30 variant c rev 3                                  
+[    0.231590] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns          
+[    0.231624] futex hash table entries: 256 (order: 2, 16384 bytes)                                                    
+[    0.235586] xor: measuring software checksum speed                                                                   
+[    0.274725]    arm4regs  :  1217.000 MB/sec                                                                          
+[    0.314677]    8regs     :  1090.000 MB/sec                                                                          
+[    0.354678]    32regs    :  1088.000 MB/sec                                                                          
+[    0.394678]    neon      :  1557.000 MB/sec                                                                          
+[    0.394688] xor: using function: neon (1557.000 MB/sec)                                                              
+[    0.394711] pinctrl core: initialized pinctrl subsystem                                                              
+[    0.396254] NET: Registered protocol family 16                                                                       
+[    0.399317] DMA: preallocated 256 KiB pool for atomic coherent allocations                                           
+[    0.425249] omap_hwmod: debugss: _wait_target_disable failed                                                         
+[    0.486722] cpuidle: using governor ladder                                                                           
+[    0.498705] cpuidle: using governor menu                                                                             
+[    0.507279] OMAP GPIO hardware version 0.1                                                                           
+[    0.528089] No ATAGs?                                                                                                
+[    0.528119] hw-breakpoint: debug architecture 0x4 unsupported.                                                       
+[    0.528417] omap4_sram_init:Unable to allocate sram needed to handle errata I688                                     
+[    0.528432] omap4_sram_init:Unable to get sram pool needed to handle errata I688                                     
+[    0.638735] raid6: int32x1  gen()   229 MB/s                                                                         
+[    0.706872] raid6: int32x1  xor()   176 MB/s                                                                         
+[    0.774739] raid6: int32x2  gen()   303 MB/s                                                                         
+[    0.842722] raid6: int32x2  xor()   199 MB/s                                                                         
+[    0.910887] raid6: int32x4  gen()   284 MB/s                                                                         
+[    0.978703] raid6: int32x4  xor()   199 MB/s                                                                         
+[    1.046869] raid6: int32x8  gen()   282 MB/s                                                                         
+[    1.090675] random: fast init done                                                                                   
+[    1.114706] raid6: int32x8  xor()   186 MB/s                                                                         
+[    1.182686] raid6: neonx1   gen()  1451 MB/s                                                                         
+[    1.250698] raid6: neonx1   xor()   842 MB/s                                                                         
+[    1.318704] raid6: neonx2   gen()  1876 MB/s                                                                         
+[    1.386693] raid6: neonx2   xor()  1187 MB/s                                                                         
+[    1.454686] raid6: neonx4   gen()  1916 MB/s                                                                         
+[    1.522694] raid6: neonx4   xor()  1197 MB/s                                                                         
+[    1.590688] raid6: neonx8   gen()  1183 MB/s                                                                         
+[    1.658693] raid6: neonx8   xor()   840 MB/s                                                                         
+[    1.658703] raid6: using algorithm neonx4 gen() 1916 MB/s                                                            
+[    1.658711] raid6: .... xor() 1197 MB/s, rmw enabled                                                                 
+[    1.658720] raid6: using intx1 recovery algorithm                                                                    
+[    1.668894] edma 49000000.edma: TI EDMA DMA engine driver                                                            
+[    1.673478] SCSI subsystem initialized                                                                               
+[    1.674861] libata version 3.00 loaded.                                                                              
+[    1.675244] usbcore: registered new interface driver usbfs                                                           
+[    1.675326] usbcore: registered new interface driver hub                                                             
+[    1.675450] usbcore: registered new device driver usb                                                                
+[    1.676059] omap_i2c 44e0b000.i2c: could not find pctldev for node /ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux
+_i2c0_pins, deferring probe                                                                                             
+[    1.676123] omap_i2c 4819c000.i2c: could not find pctldev for node /ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux
+_i2c2_pins, deferring probe                                                                                             
+[    1.676259] media: Linux media interface: v0.10                                                                      
+[    1.676320] Linux video capture interface: v2.00                                                                     
+[    1.676410] pps_core: LinuxPPS API ver. 1 registered                                                                 
+[    1.676420] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>                 
+[    1.676446] PTP clock support registered                                                                             
+[    1.677280] omap-mailbox 480c8000.mailbox: omap mailbox rev 0x400                                                    
+[    1.678860] NetLabel: Initializing                                                                                   
+[    1.678880] NetLabel:  domain hash size = 128                                                                        
+[    1.678888] NetLabel:  protocols = UNLABELED CIPSOv4                                                                 
+[    1.678971] NetLabel:  unlabeled traffic allowed by default                                                          
+[    1.679625] clocksource: Switched to clocksource timer1                                                              
+[    1.807780] VFS: Disk quotas dquot_6.6.0                                                                             
+[    1.807924] VFS: Dquot-cache hash table entries: 1024 (order 0, 4096 bytes)                                          
+[    1.822972] NET: Registered protocol family 2                                                                        
+[    1.824142] TCP established hash table entries: 4096 (order: 2, 16384 bytes)                                         
+[    1.824195] TCP bind hash table entries: 4096 (order: 3, 32768 bytes)                                                
+[    1.824256] TCP: Hash tables configured (established 4096 bind 4096)                                                 
+[    1.824332] UDP hash table entries: 256 (order: 1, 8192 bytes)                                                       
+[    1.824356] UDP-Lite hash table entries: 256 (order: 1, 8192 bytes)                                                  
+[    1.824565] NET: Registered protocol family 1                                                                        
+[    1.833505] RPC: Registered named UNIX socket transport module.                                                      
+[    1.833524] RPC: Registered udp transport module.                                                                    
+[    1.833532] RPC: Registered tcp transport module.                                                                    
+[    1.833539] RPC: Registered tcp NFSv4.1 backchannel transport module.                                                
+[    1.833557] PCI: CLS 0 bytes, default 64                                                                             
+[    1.834692] hw perfevents: enabled with armv7_cortex_a8 PMU driver, 5 counters available                             
+[    1.837536] audit: initializing netlink subsys (disabled)                                                            
+[    1.837635] audit: type=2000 audit(1.768:1): initialized                                                             
+[    1.843172] workingset: timestamp_bits=14 max_order=17 bucket_order=3                                                
+[    1.843345] zbud: loaded                                                                                             
+[    1.848724] NFS: Registering the id_resolver key type                                                                
+[    1.848772] Key type id_resolver registered                                                                          
+[    1.848781] Key type id_legacy registered                                                                            
+[    1.848801] nfs4filelayout_init: NFSv4 File Layout Driver Registering...                                             
+[    1.849203] fuse init (API version 7.26)                                                                             
+[    1.849647] orangefs_debugfs_init: called with debug mask: :none: :0:                                                
+[    1.849941] orangefs_init: module version upstream loaded                                                            
+[    1.849952] SGI XFS with ACLs, security attributes, realtime, no debug enabled                                       
+[    1.870344] Key type asymmetric registered                                                                           
+[    1.870368] Asymmetric key parser 'x509' registered                                                                  
+[    1.870504] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 246)                                     
+[    1.874806] io scheduler noop registered                                                                             
+[    1.874822] io scheduler deadline registered                                                                         
+[    1.874923] io scheduler cfq registered (default)                                                                    
+[    1.876879] pinctrl-single 44e10800.pinmux: 142 pins at pa f9e10800 size 568                                         
+[    1.880681] wkup_m3_ipc 44e11324.wkup_m3_ipc: could not get rproc handle                                             
+[    1.882106] Serial: 8250/16550 driver, 6 ports, IRQ sharing disabled                                                 
+[    1.885598] console [ttyS0] disabled                                                                                 
+[    1.885704] 44e09000.serial: ttyS0 at MMIO 0x44e09000 (irq = 158, base_baud = 3000000) is a 8250                     
+[    2.794925] console [ttyS0] enabled                                                                                  
+[    2.800132] [drm] Initialized                                                                                        
+[    2.807689] libphy: Fixed MDIO Bus: probed                                                                           
+[    2.863723] davinci_mdio 4a101000.mdio: davinci mdio revision 1.6                                                    
+[    2.869906] davinci_mdio 4a101000.mdio: detected phy mask fffffffe                                                   
+[    2.876511] davinci_mdio: dt: updated phy_id[0] from phy_mask[fffffffe]                                              
+[    2.888715] libphy: 4a101000.mdio: probed                                                                            
+[    2.892936] davinci_mdio 4a101000.mdio: phy[0]: device 4a101000.mdio:00, driver SMSC LAN8710/LAN8720                 
+[    2.903163] cpsw 4a100000.ethernet: Detected MACID = 6c:ec:eb:83:40:31                                               
+[    2.910084] cpsw 4a100000.ethernet: cpts: overflow check period 1250 (jiffies)                                       
+[    2.920762] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver                                               
+[    2.927450] ehci-pci: EHCI PCI platform driver                                                                       
+[    2.932032] ehci-platform: EHCI generic platform driver                                                              
+[    2.937527] ehci-omap: OMAP-EHCI Host Controller driver                                                              
+[    2.943386] usbcore: registered new interface driver usb-storage                                                     
+[    2.952015] 47401300.usb-phy supply vcc not found, using dummy regulator                                             
+[    2.964628] 47401b00.usb-phy supply vcc not found, using dummy regulator                                             
+[    2.975281] musb-hdrc musb-hdrc.1: MUSB HDRC host driver                                                             
+[    2.980762] musb-hdrc musb-hdrc.1: new USB bus registered, assigned bus number 1                                     
+[    2.988709] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002                                            
+[    2.995628] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1                                       
+[    3.002913] usb usb1: Product: MUSB HDRC host driver                                                                 
+[    3.007924] usb usb1: Manufacturer: Linux 4.9.52 musb-hcd                                                            
+[    3.013371] usb usb1: SerialNumber: musb-hdrc.1                                                                      
+[    3.018930] hub 1-0:1.0: USB hub found                                                                               
+[    3.022883] hub 1-0:1.0: 1 port detected                                                                             
+[    3.037514] mousedev: PS/2 mouse device common for all mice                                                          
+[    3.045990] omap_rtc 44e3e000.rtc: rtc core: registered 44e3e000.rtc as rtc0                                         
+[    3.054486] i2c /dev entries driver                                                                                  
+[    3.059922] omap_wdt: OMAP Watchdog Timer Rev 0x01: initial timeout 60 sec                                           
+[    3.068331] cpuidle: enable-method property 'ti,am3352' found operations                                             
+[    3.076214] omap_hsmmc 48060000.mmc: Got CD GPIO                                                                     
+[    3.161249] ledtrig-cpu: registered to indicate activity on CPUs                                                     
+[    3.169359] omap-aes 53500000.aes: OMAP AES hw accel rev: 3.2                                                        
+[    3.177610] omap-aes 53500000.aes: will run requests pump with realtime priority                                     
+[    3.187374] omap-sham 53100000.sham: hw accel on OMAP rev 4.3                                                        
+[    3.199006] hidraw: raw HID events driver (C) Jiri Kosina                                                            
+[    3.205531] usbcore: registered new interface driver usbhid                                                          
+[    3.211424] usbhid: USB HID core driver                                                                              
+[    3.216141] remoteproc remoteproc0: wkup_m3 is available                                                             
+[    3.224275] mmc0: host does not support reading read-only switch, assuming write-enable                              
+[    3.232492] NET: Registered protocol family 10                                                                       
+[    3.238510] mip6: Mobile IPv6                                                                                        
+[    3.238528] NET: Registered protocol family 17                                                                       
+[    3.238648] Key type dns_resolver registered                                                                         
+[    3.238653] mpls_gso: MPLS GSO support                                                                               
+[    3.238951] omap_voltage_late_init: Voltage driver support not added                                                 
+[    3.239476] PM: Cannot get wkup_m3_ipc handle                                                                        
+[    3.239903] ThumbEE CPU extension supported.                                                                         
+[    3.239927] Registering SWP/SWPB emulation handler                                                                   
+[    3.241112] registered taskstats version 1                                                                           
+[    3.241243] zswap: loaded using pool lzo/zbud                                                                        
+[    3.251307] mmc1: new high speed MMC card at address 0001                                                            
+[    3.252034] Btrfs loaded, crc32c=crc32c-generic                                                                      
+[    3.262261] mmcblk1: mmc1:0001 MMC04G 3.60 GiB                                                                       
+[    3.270108] mmcblk1boot0: mmc1:0001 MMC04G partition 1 2.00 MiB                                                      
+[    3.270397] Key type encrypted registered                                                                            
+[    3.287027] mmcblk1boot1: mmc1:0001 MMC04G partition 2 2.00 MiB                                                      
+[    3.293402]  mmcblk1: p1 p2                                                                                          
+[    3.343767] mmc0: new high speed SDHC card at address aaaa                                                           
+[    3.354447] mmcblk0: mmc0:aaaa SL16G 14.8 GiB                                                                        
+[    3.364768]  mmcblk0: p1 p2                                                                                          
+[    3.380484] input: tps65217_pwr_but as /devices/platform/ocp/44e0b000.i2c/i2c-0/0-0024/tps65217-pwrbutton/input/input
+0                                                                                                                       
+[    3.391865] tps65217 0-0024: TPS65217 ID 0xe version 1.2                                                             
+[    3.397748] at24 0-0050: 32768 byte 24c256 EEPROM, writable, 1 bytes/write                                           
+[    3.526505] tda998x 0-0070: found TDA19988                                                                           
+[    3.532121] tilcdc 4830e000.lcdc: bound 0-0070 (ops tda998x_ops)                                                     
+[    3.538238] [drm] Supports vblank timestamp caching Rev 2 (21.10.2013).                                              
+[    3.544911] [drm] No driver support for vblank timestamp query.                                                      
+[    3.551251] tilcdc 4830e000.lcdc: No connectors reported connected with modes                                        
+[    3.558490] [drm] Cannot find any crtc or sizes - going 1024x768                                                     
+[    3.573625] Console: switching to colour frame buffer device 128x48                                                  
+[    3.585271] tilcdc 4830e000.lcdc: fb0:  frame buffer device                                                          
+[    3.600767] omap_i2c 44e0b000.i2c: bus 0 rev0.11 at 400 kHz                                                          
+[    3.608624] at24 2-0054: 32768 byte 24c256 EEPROM, writable, 1 bytes/write                                           
+[    3.616100] at24 2-0055: 32768 byte 24c256 EEPROM, writable, 1 bytes/write                                           
+[    3.623431] at24 2-0056: 32768 byte 24c256 EEPROM, writable, 1 bytes/write                                           
+[    3.630731] at24 2-0057: 32768 byte 24c256 EEPROM, writable, 1 bytes/write                                           
+[    3.637739] omap_i2c 4819c000.i2c: bus 2 rev0.11 at 100 kHz                                                          
+[    3.644857] remoteproc remoteproc0: powering up wkup_m3                                                              
+[    3.650248] remoteproc remoteproc0: Booting fw image am335x-pm-firmware.elf, size 217148                             
+[    3.658693] remoteproc remoteproc0: remote processor wkup_m3 is now up                                               
+[    3.658709] wkup_m3_ipc 44e11324.wkup_m3_ipc: CM3 Firmware Version = 0x192                                           
+[    3.675493] bone_capemgr bone_capemgr: Baseboard: 'A335BNLT,00C0,414BBBK0180'                                        
+[    3.682869] bone_capemgr bone_capemgr: compatible-baseboard=ti,beaglebone-black - #slots=4                           
+[    3.716681] bone_capemgr bone_capemgr: slot #0: No cape found                                                        
+[    3.747672] bone_capemgr bone_capemgr: slot #1: No cape found                                                        
+[    3.780028] bone_capemgr bone_capemgr: slot #2: No cape found                                                        
+[    3.812678] bone_capemgr bone_capemgr: slot #3: No cape found                                                        
+[    3.818584] bone_capemgr bone_capemgr: initialized OK.                                                               
+[    3.826292] PM: bootloader does not support rtc-only!                                                                
+[    3.832602] omap_rtc 44e3e000.rtc: setting system clock to 2000-01-01 00:00:01 UTC (946684801)                       
+[    3.841457] of_cfs_init                                                                                              
+[    3.844123] of_cfs_init: OK                                                                                          
+[    3.861084] net eth0: initializing cpsw version 1.12 (0)                                                             
+[    3.866534] cpsw 4a100000.ethernet: initialized cpsw ale version 1.4                                                 
+[    3.873005] cpsw 4a100000.ethernet: ALE Table size 1024                                                              
+[    3.952233] SMSC LAN8710/LAN8720 4a101000.mdio:00: attached PHY driver [SMSC LAN8710/LAN8720] (mii_bus:phy_addr=4a101
+000.mdio:00, irq=-1)                                                                                                    
+[    3.972098] IPv6: ADDRCONF(NETDEV_UP): eth0: link is not ready                                                       
+[    6.020628] cpsw 4a100000.ethernet eth0: Link is Up - 100Mbps/Full - flow control rx/tx                              
+[    6.028845] IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready                                                  
+[    6.048046] IP-Config: Complete:                                                                                     
+[    6.051333]      device=eth0, hwaddr=6c:ec:eb:83:40:31, ipaddr=192.168.3.20, mask=255.255.255.0, gw=255.255.255.255  
+[    6.061929]      host=bbb, domain=, nis-domain=(none)                                                                
+[    6.067028]      bootserver=192.168.3.1, rootserver=192.168.3.1, rootpath=     nameserver0=238.0.0.0                 
+[    6.076642] PM: Hibernation image not present or could not be loaded.                                                
+[    6.111323] VFS: Mounted root (nfs filesystem) on device 0:16.                                                       
+[    6.118670] devtmpfs: mounted                                                                                        
+[    6.123287] Freeing unused kernel memory: 1024K                                                                      
+INIT: version 2.88 booting                                                                                              
+Starting udev                                                                                                           
+[    6.942212] udevd[134]: starting version 3.2.1                                                                       
+[    7.079549] udevd[135]: starting eudev-3.2.1                                                                         
+Populating dev cache                                                                                                    
+[   10.209882] random: crng init done                                                                                   
+Tue Oct 10 08:50:18 UTC 2017                                                                                            
+INIT: Entering runlevel: 5                                                                                              
+Configuring network interfaces... ifup skipped for nfsroot interface eth0                                               
+run-parts: /etc/network/if-pre-up.d/nfsroot: exit status 1                                                              
+Starting OpenBSD Secure Shell server: sshd                                                                              
+  generating ssh RSA key...                                                                                             
+  generating ssh ECDSA key...                                                                                           
+  generating ssh DSA key...                                                                                             
+  generating ssh ED25519 key...                                                                                         
+done.                                                                                                                   
+Starting syslogd/klogd: done                                                                                            
+                                                                                                                        
+Poky (Yocto Project Reference Distro) 2.3.2 beaglebone /dev/ttyS0                                                       
+                                                                                                                        
+beaglebone login:                                                                                                       
+root                                                                                                                    
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+root@beaglebone:~# export PS1="\u@\h [\$(date +%k:%M:%S)] ttbott> "                                                     
+root@beaglebone [ 8:50:28] ttbott>                                                                                      

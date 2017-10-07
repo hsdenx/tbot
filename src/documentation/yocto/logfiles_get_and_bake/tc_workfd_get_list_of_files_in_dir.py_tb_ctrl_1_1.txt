@@ -1,0 +1,7 @@
+^C                                                                                                       
+hs@localhost [12:13:25] ttbott_compile> find $TBOT_BASEDIR/patches-bbb/bbb-pyro -name  "*.patch" | sort  
+/work/tbot2go/tbot//patches-bbb/bbb-pyro/0001-beaglebone.conf-add-some-userspace-tools.patch             
+/work/tbot2go/tbot//patches-bbb/bbb-pyro/0002-beaglebone.conf-set-ttyS0-as-console.patch                 
+/work/tbot2go/tbot//patches-bbb/bbb-pyro/0003-u-boot-common_2017.01.inc-use-commit-64c4ffa9fa223f7.patch 
+/work/tbot2go/tbot//patches-bbb/bbb-pyro/0004-machine-beaglebone.conf-SERIAL_CONSOLES-115200-ttyS0.patch 
+hs@localhost [12:13:25] ttbott_compile>                                                                  

@@ -1,0 +1,70 @@
+^C
+hs@localhost [10:50:30] ttbott_compile> cat tmp/log/cooker/beaglebone/20171010084937.log
+WARNING: Host distribution "fedora-21" has not been validated with this version of the build system; you may possibly experience unexpected failures. It is recommended that you use a tested distribution.
+NOTE: Resolving any missing task queue dependencies
+NOTE: preferred version 4.12% of linux-yocto not available (for item virtual/kernel)
+NOTE: versions of linux-yocto available: 4.1.43+gitAUTOINC+9f9c9a66ef_ce38fdb820 4.10.17+gitAUTOINC+40ee48ac09_c1d8c4408b 4.4.87+gitAUTOINC+804d2b3164_b71c7b786a 4.9.49+gitAUTOINC+6acae6f720_480ee599fb
+NOTE: preferred version 4.12% of linux-yocto not available (for item kernel-devicetree)
+NOTE: versions of linux-yocto available: 4.1.43+gitAUTOINC+9f9c9a66ef_ce38fdb820 4.10.17+gitAUTOINC+40ee48ac09_c1d8c4408b 4.4.87+gitAUTOINC+804d2b3164_b71c7b786a 4.9.49+gitAUTOINC+6acae6f720_480ee599fb
+NOTE: preferred version 4.12% of linux-yocto not available (for item kernel-image)
+NOTE: versions of linux-yocto available: 4.1.43+gitAUTOINC+9f9c9a66ef_ce38fdb820 4.10.17+gitAUTOINC+40ee48ac09_c1d8c4408b 4.4.87+gitAUTOINC+804d2b3164_b71c7b786a 4.9.49+gitAUTOINC+6acae6f720_480ee599fb
+NOTE: preferred version 4.12% of linux-yocto not available (for item kernel-base)
+NOTE: versions of linux-yocto available: 4.1.43+gitAUTOINC+9f9c9a66ef_ce38fdb820 4.10.17+gitAUTOINC+40ee48ac09_c1d8c4408b 4.4.87+gitAUTOINC+804d2b3164_b71c7b786a 4.9.49+gitAUTOINC+6acae6f720_480ee599fb
+NOTE: preferred version 4.12% of linux-yocto not available (for item kernel-image-zimage)
+NOTE: versions of linux-yocto available: 4.1.43+gitAUTOINC+9f9c9a66ef_ce38fdb820 4.10.17+gitAUTOINC+40ee48ac09_c1d8c4408b 4.4.87+gitAUTOINC+804d2b3164_b71c7b786a 4.9.49+gitAUTOINC+6acae6f720_480ee599fb
+
+Build Configuration:
+BB_VERSION        = "1.34.0"
+BUILD_SYS         = "x86_64-linux"
+NATIVELSBSTRING   = "universal-4.9"
+TARGET_SYS        = "arm-poky-linux-gnueabi"
+MACHINE           = "beaglebone"
+DISTRO            = "poky"
+DISTRO_VERSION    = "2.3.2"
+TUNE_FEATURES     = "arm armv7a vfp neon callconvention-hard cortexa8"
+TARGET_FPU        = "hard"
+meta              
+meta-poky         
+meta-yocto-bsp    = "pyro:fd36e62696b1393bf9c8f43614354e65f8842f0d"
+meta-networking   
+meta-oe           
+meta-python       = "pyro:5e82995148a2844c6f483ae5ddd1438d87ea9fb7"
+
+NOTE: Executing SetScene Tasks
+NOTE: Executing RunQueue Tasks
+NOTE: Running noexec task 1506 of 2788 (/work/tbot2go/tbot//yocto-am335x_evm/meta/recipes-core/images/core-image-minimal.bb:do_fetch)
+NOTE: Running noexec task 1657 of 2788 (/work/tbot2go/tbot//yocto-am335x_evm/meta/recipes-core/images/core-image-minimal.bb:do_unpack)
+NOTE: Running noexec task 1662 of 2788 (/work/tbot2go/tbot//yocto-am335x_evm/meta/recipes-core/images/core-image-minimal.bb:do_patch)
+NOTE: Running task 1753 of 2788 (/work/tbot2go/tbot//yocto-am335x_evm/meta/recipes-core/images/core-image-minimal.bb:do_prepare_recipe_sysroot)
+NOTE: Running task 2075 of 2788 (/work/tbot2go/tbot//yocto-am335x_evm/meta/recipes-core/images/core-image-minimal.bb:do_populate_lic)
+NOTE: recipe core-image-minimal-1.0-r0: task do_prepare_recipe_sysroot: Started
+NOTE: recipe core-image-minimal-1.0-r0: task do_populate_lic: Started
+NOTE: recipe core-image-minimal-1.0-r0: task do_populate_lic: Succeeded
+NOTE: recipe core-image-minimal-1.0-r0: task do_prepare_recipe_sysroot: Succeeded
+NOTE: Running task 2780 of 2788 (/work/tbot2go/tbot//yocto-am335x_evm/meta/recipes-core/images/core-image-minimal.bb:do_rootfs)
+NOTE: recipe core-image-minimal-1.0-r0: task do_rootfs: Started
+NOTE: recipe core-image-minimal-1.0-r0: task do_rootfs: Succeeded
+NOTE: Running task 2781 of 2788 (/work/tbot2go/tbot//yocto-am335x_evm/meta/recipes-core/images/core-image-minimal.bb:do_image)
+NOTE: recipe core-image-minimal-1.0-r0: task do_image: Started
+NOTE: recipe core-image-minimal-1.0-r0: task do_image: Succeeded
+NOTE: Running task 2782 of 2788 (/work/tbot2go/tbot//yocto-am335x_evm/meta/recipes-core/images/core-image-minimal.bb:do_rootfs_wicenv)
+NOTE: Running task 2783 of 2788 (/work/tbot2go/tbot//yocto-am335x_evm/meta/recipes-core/images/core-image-minimal.bb:do_image_jffs2)
+NOTE: Running task 2784 of 2788 (/work/tbot2go/tbot//yocto-am335x_evm/meta/recipes-core/images/core-image-minimal.bb:do_image_tar)
+NOTE: recipe core-image-minimal-1.0-r0: task do_rootfs_wicenv: Started
+NOTE: recipe core-image-minimal-1.0-r0: task do_rootfs_wicenv: Succeeded
+NOTE: Running task 2785 of 2788 (/work/tbot2go/tbot//yocto-am335x_evm/meta/recipes-core/images/core-image-minimal.bb:do_image_wic)
+NOTE: recipe core-image-minimal-1.0-r0: task do_image_jffs2: Started
+NOTE: recipe core-image-minimal-1.0-r0: task do_image_tar: Started
+NOTE: recipe core-image-minimal-1.0-r0: task do_image_wic: Started
+NOTE: recipe core-image-minimal-1.0-r0: task do_image_jffs2: Succeeded
+NOTE: recipe core-image-minimal-1.0-r0: task do_image_tar: Succeeded
+NOTE: recipe core-image-minimal-1.0-r0: task do_image_wic: Succeeded
+NOTE: Running task 2786 of 2788 (/work/tbot2go/tbot//yocto-am335x_evm/meta/recipes-core/images/core-image-minimal.bb:do_image_complete)
+NOTE: recipe core-image-minimal-1.0-r0: task do_image_complete: Started
+NOTE: recipe core-image-minimal-1.0-r0: task do_image_complete: Succeeded
+NOTE: Running task 2787 of 2788 (/work/tbot2go/tbot//yocto-am335x_evm/meta/recipes-core/images/core-image-minimal.bb:do_image_qa)
+NOTE: recipe core-image-minimal-1.0-r0: task do_image_qa: Started
+NOTE: recipe core-image-minimal-1.0-r0: task do_image_qa: Succeeded
+NOTE: Running noexec task 2788 of 2788 (/work/tbot2go/tbot//yocto-am335x_evm/meta/recipes-core/images/core-image-minimal.bb:do_build)
+NOTE: Tasks Summary: Attempted 2788 tasks of which 2774 didn't need to be rerun and all succeeded.
+hs@localhost [10:50:31] ttbott_compile> 

@@ -1,0 +1,9 @@
+^C
+hs@localhost [10:51:12] ttbott_compile> tar xfvj $TBOT_BASEDIR_YOCTO/build/tmp/deploy/images/beaglebone/core-image-minimal-beaglebone.tar.bz2 ./etc/version
+./etc/version
+hs@localhost [10:51:14] ttbott_compile> ^C
+hs@localhost [10:51:14] ttbott_compile> cat etc/version
+20171010084943
+hs@localhost [10:51:15] ttbott_compile> ^C
+hs@localhost [10:51:15] ttbott_compile> rm -rf etc/
+hs@localhost [10:51:15] ttbott_compile> 

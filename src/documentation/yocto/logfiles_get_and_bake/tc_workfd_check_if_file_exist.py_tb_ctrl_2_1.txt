@@ -1,0 +1,3 @@
+^C
+hs@localhost [10:50:34] ttbott_compile> test -r $TBOT_BASEDIR_YOCTO/build/tmp/deploy/images/beaglebone//u-boot.img
+hs@localhost [10:50:34] ttbott_compile> 

@@ -1,0 +1,4 @@
+^C                                                                                                                      
+hs@localhost [12:13:56] ttbott_compile> sed -i -- 's+TBOT_YOCTO_DLDIR+'$TBOT_BASEDIR/yocto_dl_dir'+g' build/conf/local.c
+onf                                                                                                                     
+hs@localhost [12:13:57] ttbott_compile>                                                                                 

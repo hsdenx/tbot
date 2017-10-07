@@ -1,0 +1,17 @@
+^C                                                                                                                      
+hs@localhost [12:13:26] ttbott_compile> git am -3 /work/tbot2go/tbot//patches-bbb/bbb-pyro/0001-beaglebone.conf-add-some
+-userspace-tools.patch                                                                                                  
+Applying: beaglebone.conf: add some userspace tools                                                                     
+hs@localhost [12:13:26] ttbott_compile> ^C                                                                              
+hs@localhost [12:13:26] ttbott_compile> git am -3 /work/tbot2go/tbot//patches-bbb/bbb-pyro/0002-beaglebone.conf-set-ttyS
+0-as-console.patch                                                                                                      
+Applying: beaglebone.conf: set ttyS0 as console                                                                         
+hs@localhost [12:13:27] ttbott_compile> ^C                                                                              
+hs@localhost [12:13:27] ttbott_compile> git am -3 /work/tbot2go/tbot//patches-bbb/bbb-pyro/0003-u-boot-common_2017.01.in
+c-use-commit-64c4ffa9fa223f7.patch                                                                                      
+Applying: u-boot-common_2017.01.inc: use commit 64c4ffa9fa223f7ae8640f9c8f3044bfa0e3bfda                                
+hs@localhost [12:13:27] ttbott_compile> ^C                                                                              
+hs@localhost [12:13:28] ttbott_compile> git am -3 /work/tbot2go/tbot//patches-bbb/bbb-pyro/0004-machine-beaglebone.conf-
+SERIAL_CONSOLES-115200-ttyS0.patch                                                                                      
+Applying: machine/beaglebone.conf: SERIAL_CONSOLES = "115200;ttyS0 115200;ttyO0"                                        
+hs@localhost [12:13:28] ttbott_compile>                                                                                 

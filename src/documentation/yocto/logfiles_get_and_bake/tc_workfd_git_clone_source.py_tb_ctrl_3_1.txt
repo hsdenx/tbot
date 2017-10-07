@@ -1,0 +1,17 @@
+^C                                                                                                                
+hs@localhost [12:13:29] ttbott_compile> git clone git://git.openembedded.org/meta-openembedded meta-openembedded  
+Cloning into 'meta-openembedded'...                                                                               
+remote: Counting objects: 83362, done.                                                                            
+remote: Compressing objects: 100% (28080/28080), done.                                                            
+remote: Total 83362 (delta 51202), reused 83275 (delta 51127)                                                     
+Receiving objects: 100% (83362/83362), 27.47 MiB | 1.32 MiB/s, done.                                              
+Resolving deltas: 100% (51202/51202), done.                                                                       
+Checking connectivity... done.                                                                                    
+hs@localhost [12:13:49] ttbott_compile> ^C                                                                        
+hs@localhost [12:13:50] ttbott_compile> cd meta-openembedded                                                      
+hs@localhost [12:13:50] ttbott_compile> ^C                                                                        
+hs@localhost [12:13:50] ttbott_compile> git checkout pyro                                                         
+Branch pyro set up to track remote branch pyro from origin.                                                       
+Switched to a new branch 'pyro'                                                                                   
+hs@localhost [12:13:51] ttbott_compile>                                                                           
+                                                                                                                  
