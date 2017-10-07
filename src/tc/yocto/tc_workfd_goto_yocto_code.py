@@ -45,9 +45,11 @@ if tb.workfd.tc_workfd_goto_yocto_code_checked == False:
     tb.eof_call_tc("tc_workfd_goto_lab_source_dir.py")
     tb.config.yocto_fulldir_name = "$TBOT_BASEDIR/" + tb.config.yocto_name
 
+    tb.event.create_event('main', 'tc_workfd_goto_yocto_code.py', 'SET_DOC_FILENAME', 'set_yocto_env_var')
     tmp = 'export TBOT_BASEDIR_YOCTO=' + tb.config.yocto_fulldir_name
     tb.write_lx_cmd_check(tb.workfd, tmp)
 
+    tb.event.create_event('main', 'tc_workfd_goto_yocto_code.py', 'SET_DOC_FILENAME', 'check_yocto_dir_exist')
     tb.config.tc_workfd_check_if_dir_exists_name = '$TBOT_BASEDIR_YOCTO'
     ret = tb.call_tc("tc_workfd_check_if_dir_exist.py")
     if ret == False:
