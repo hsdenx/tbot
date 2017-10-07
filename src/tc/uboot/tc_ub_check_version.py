@@ -57,6 +57,7 @@ if tb.spl_vers == '':
     tb.end_tc(True)
 
 tmp = 'res'
+tb.c_con.set_check_error(False)
 tb.eof_write(c, tmp)
 searchlist = ['U-Boot SPL 20']
 tmp = True
@@ -77,6 +78,7 @@ while tmp == True:
         tmp = False
 
 tb.set_board_state("u-boot")
+tb.c_con.set_check_error(True)
 
 if ret == False:
     logging.warn("UB SPL Vers differ %s != %s", splvers, tb.spl_vers)

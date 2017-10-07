@@ -53,8 +53,10 @@ while tmp == True:
         tmp = False
 
 self.event.create_event('main', 'tc_ub_basic.py', 'SET_DOC_FILENAME', 'reset')
+tb.c_con.set_check_error(False)
 tb.eof_write(c, 'reset')
 tb.set_board_state("u-boot")
+tb.c_con.set_check_error(True)
 
 # restore our U-Boot Env we need
 tb.eof_call_tc("tc_ub_load_board_env.py")

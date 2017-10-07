@@ -47,6 +47,7 @@ while tmp == True:
         uvers = tmp.replace('\n','')
         tmp = True
 
+tb.c_con.set_check_error(False)
 tb.eof_write(c, 'res')
 searchlist = ['U-Boot SPL 20']
 tmp = True
@@ -62,6 +63,7 @@ while tmp == True:
         tmp = False
 
 tb.set_board_state("u-boot")
+tb.c_con.set_check_error(True)
 
 if uvers != 'undef':
     tb.event.create_event('main', tb.config.boardname, "DUTS_UBOOT_VERSION", uvers)

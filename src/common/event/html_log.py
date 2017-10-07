@@ -219,6 +219,8 @@ class html_log(object):
     def _get_event_id(self, el):
         if el['id'] == 'WDT':
             return el['id']
+        if el['id'] == 'ERROR_STRING':
+            return el['id']
         if el['id'] == 'Boardname':
             return el['id']
         if el['id'] == 'BoardnameEnd':
@@ -300,6 +302,13 @@ class html_log(object):
 
             if typ == 'WDT':
                 wdtstr = '\n\nWDT triggered\n\n'
+                conlog += wdtstr
+                ctrlog += wdtstr
+                cpclog += wdtstr
+                continue
+
+            if typ == 'ERROR_STRING':
+                wdtstr = '\n\nError String ' + el['val'] + ' found\n\n'
                 conlog += wdtstr
                 ctrlog += wdtstr
                 cpclog += wdtstr

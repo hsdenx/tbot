@@ -60,7 +60,9 @@ def u_boot_login(tb, state, retry):
     # problem, what sending to u-boot, to get back a prompt?
     logging.debug("------------------- u_boot_login")
     c = tb.c_con
+    tb.c_con.set_check_error(False)
     ret = u_boot_parse_input(tb, c, retry)
+    tb.c_con.set_check_error(True)
     return ret
 
 def u_boot_set_board_state(tb, state, retry):
@@ -88,6 +90,7 @@ def u_boot_set_board_state(tb, state, retry):
         # check, if we get a correct prompt
         ret = u_boot_login(tb, state, retry)
         if ret == True:
+            tb.gotprompt = True
             return True
 
     # now the easiest way ... simple power off/on
@@ -103,6 +106,7 @@ def u_boot_set_board_state(tb, state, retry):
 
     ret = u_boot_login(tb, state, retry)
     if ret == True:
+        tb.gotprompt = True
         return True
 
     logging.error("------------------- set board state failure end")

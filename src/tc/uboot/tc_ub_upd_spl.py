@@ -87,9 +87,6 @@ if ret != 'prompt':
 
 if tb.config.tc_ub_upd_spl_latest == 'no':
     # reset the board
-    tb.eof_write(c, "res")
-
-    # get u-boot login
-    tb.set_board_state("u-boot")
+    tb.eof_call_tc("tc_ub_reset.py")
 
 tb.end_tc(True)

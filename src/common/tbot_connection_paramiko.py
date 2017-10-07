@@ -42,7 +42,10 @@ class Connection(object):
         # ToDo make them configurable and make this
         # option enable/disable
         self.check_error = True
-        self.error = ['Resetting CPU']
+        # add here strings, which never should occur
+        # Here we set U-Boot strings, as we never want a reboot
+        # beside the reboots we want
+        self.error = ['Resetting CPU', 'Model:']
         self.cnt_error = len(self.error)
         self.send_prompt = False
 
@@ -392,6 +395,7 @@ class Connection(object):
         if self.check_error:
             reterr = self.search_one_strings(self.error)
             if reterr != 'none':
+                self.tb.event.create_event('main', self.tb.config.boardname, "ERROR_STRING", self.error[int(reterr)])
                 return 'error'
 
         # search for the strings we want to find
@@ -408,10 +412,6 @@ class Connection(object):
         lp_ign = self.lastpos
         if ret_ign != 'none':
             len_ign = len(self.ign[int(ret_ign)])
-            try:
-                print("ret_str ", ret_str, lp_str)
-            except:
-                pass
             pos = self.lastpos
         else:
             len_ign = 0

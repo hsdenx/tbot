@@ -42,6 +42,7 @@ def state_lx_parse_input(tb, c, retry, sl):
                 ret = tb.set_power_state(tb.config.boardlabpowername, "off")
                 if ret == False:
                     time.sleep(2)
+                    tb.c_con.set_check_error(False)
                     ret = tb.set_power_state(tb.config.boardlabpowername, "on")
                     # set old timeout (wait endless)
                     # if after a power on not comes at least U-Boot
@@ -52,24 +53,28 @@ def state_lx_parse_input(tb, c, retry, sl):
  
         elif ret == 'prompt':
             c.set_timeout(oldt)
+            tb.c_con.set_check_error(True)
             return True
 
         elif ret == '0':
             # we got our tbot linux prompt
             c.set_prompt(tb.config.linux_prompt, 'linux')
             c.set_timeout(oldt)
+            tb.c_con.set_check_error(True)
             return True
 
         elif ret == '1':
             # we got the default linux prompt
             tb.set_prompt(c, tb.config.linux_prompt, 'linux')
             c.set_timeout(oldt)
+            tb.c_con.set_check_error(True)
             return True
 
         elif ret == '2':
             # we got u-boot prompt
             c.set_timeout(oldt)
             tb.eof_call_tc("tc_ub_boot_linux.py")
+            tb.c_con.set_check_error(True)
             return True
 
         elif ret == '3':
@@ -85,6 +90,7 @@ def state_lx_parse_input(tb, c, retry, sl):
         elif (ret == '5') or (ret == '6') or (ret == '7'):
             # U-Boot autobooting, try to stop it
             tb.send_ctrl_c(c)
+            tb.c_con.set_check_error(True)
             i = 0
 
         i += 1
