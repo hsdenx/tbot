@@ -1097,7 +1097,7 @@ class tbot(object):
                 self.end_tc(False)
         return ret
 
-    def write_lx_sudo_cmd_check(self, c, command, user, board, endTC=True, start=True):
+    def write_lx_sudo_cmd_check(self, c, command, user, board, endTC=True, start=True, triggerlist=[]):
         """write a linux sudo command to console.
 
         - **parameters**, **types**, **return** and **return types**::
@@ -1109,10 +1109,12 @@ class tbot(object):
                with end_tc(False), else return True
         :param arg6: start boolean, True, send console start before the
         cmdstring.
+        :param arg7: triggerlist if != [] trigger wdt if strings in triggerlist found
+        cmdstring.
         :return: if linux cmd ended successful True, else False
         """
         self.eof_write(c, command, start)
-        searchlist = ['sudo']
+        searchlist = ['sudo'] + triggerlist
         tmp = True
         while tmp == True:
             ret = self.tbot_rup_and_check_strings(c, searchlist)
@@ -1120,6 +1122,8 @@ class tbot(object):
                 self.write_stream_passwd(c, user + '_sudo', board)
             elif ret == 'prompt':
                 tmp = False
+            else:
+                self.tbot_trigger_wdt()
 
         tmpfd = self.workfd
         self.workfd = c
