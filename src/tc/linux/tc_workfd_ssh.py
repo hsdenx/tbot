@@ -46,8 +46,9 @@ while loop:
     if tmp == '0':
         tb.eof_write(c, 'yes', start=False)
     elif tmp == '1':
+        buf = tb.buf.split('\n')[-1]
         # get the user name (before @) from scp output
-        tmp = tb.buf.split('@')
+        tmp = buf.split('@')
         try:
             tmp[1]
             # OK, there is a @
