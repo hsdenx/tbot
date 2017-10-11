@@ -324,6 +324,8 @@ class html_log(object):
                         conlog += loglin[2:]
                     if loglin.startswith("re "):
                         conlog += loglin[3:]
+                    if loglin.startswith("er "):
+                        conlog += loglin[2:]
                 if el['fname'] == 'tb_ctrl':
                     loglin = el['val']
                     if loglin.startswith("r "):
