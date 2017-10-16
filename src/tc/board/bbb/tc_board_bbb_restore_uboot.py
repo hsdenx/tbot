@@ -20,8 +20,8 @@
 # the emmc.
 #
 # To switch between botmodes we can use the PIN P8_43
-# attached to GND -> boot from emmc, floating -> boot
-# from sd card.
+# attached to GND -> boot from sd, floating -> boot
+# from emmc.
 
 import time
 from tbotlib import tbot
