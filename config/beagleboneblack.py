@@ -23,6 +23,7 @@ state_linux_timeout = 40
 
 linux_user = 'root'
 uboot_prompt = '=> '
+#uboot_prompt = 'U-Boot# '
 linux_prompt = 'ttbott> '
 uboot_autoboot_key = ' '
 # set timeout to 0.5 seconds
@@ -61,14 +62,18 @@ ub_load_board_env_set = [
 	'setenv load_mlo tftp \${load_addr_r} \${mlofile}',
 	'setenv ubfile ' + tftpboardname + '/' + ub_load_board_env_subdir +'/u-boot.img',
 	'setenv load_uboot tftp \${load_addr_r} \${ubfile}',
-	'setenv upd_mlo fatwrite mmc 1:1 \${load_addr_r} mlo \${filesize}',
-	'setenv upd_uboot fatwrite mmc 1:1 \${load_addr_r} u-boot.img \${filesize}',
-	'setenv cmp_mlo tftp \${cmp_addr_r} \${mlofile}\;cmp.b \${load_addr_r} \${cmp_addr_r} \${filesize}',
-	'setenv cmp_uboot tftp \${cmp_addr_r} \${ubfile}\;cmp.b \${load_addr_r} \${cmp_addr_r} \${filesize}',
-	'setenv tbot_upd_uboot run load_uboot\;run upd_uboot',
-	'setenv tbot_cmp_uboot run cmp_uboot',
-	'setenv tbot_upd_spl run load_mlo\;run upd_mlo',
-	'setenv tbot_cmp_spl run cmp_mlo',
+	'setenv upd_mlo mmc dev 0\;fatwrite mmc 0:1 \${load_addr_r} MLO \${filesize}',
+	'setenv upd_uboot mmc dev 0\;fatwrite mmc 0:1 \${load_addr_r} u-boot.img \${filesize}',
+	'setenv cmp_mlo fatload mmc 0:1 \${load_addr_r} MLO \${filesize}\;tftp \${cmp_addr_r} \${mlofile}\;cmp.b \${load_addr_r} \${cmp_addr_r} \${filesize}',
+	'setenv cmp_uboot fatload mmc 0:1 \${load_addr_r} u-boot.img\;tftp \${cmp_addr_r} \${ubfile}\;cmp.b \${load_addr_r} \${cmp_addr_r} \${filesize}',
+	'setenv tbot_upd_uboot run load_uboot\;run upd_uboot_emmc',
+	'setenv tbot_cmp_uboot run cmp_uboot_emmc',
+	'setenv tbot_upd_spl run load_mlo\;run upd_mlo_emmc',
+	'setenv tbot_cmp_spl run cmp_mlo_emmc',
+	'setenv upd_mlo_emmc mmc dev 1\;mmc write \${load_addr_r} 100 100',
+	'setenv upd_uboot_emmc mmc dev 1\;mmc erase 400 400\;mmc write \${load_addr_r} 300 600',
+	'setenv cmp_mlo_emmc mmc read \${cmp_addr_r} 100 100\;cmp.b \${load_addr_r} \${cmp_addr_r} \${filesize}',
+	'setenv cmp_uboot_emmc mmc read \${cmp_addr_r} 300 600\;cmp.b \${load_addr_r} \${cmp_addr_r} \${filesize}',
 	'setenv console ttyS0,115200n8',
 	'setenv bootfile ' + tftpboardname + '/' + ub_load_board_env_subdir +'/zImage',
 	'setenv fdtfile ' + tftpboardname + '/' + ub_load_board_env_subdir +'/am335x-boneblack.dtb',
@@ -83,9 +88,9 @@ ub_load_board_env_set = [
 	'setenv nfsopts nfsvers=3 nolock rw',
 	'setenv nfsargs setenv bootargs \${bootargs} root=/dev/nfs rw nfsroot=\${serverip}:\${rootpath},\${nfsopts}',
 	'setenv net_nfs run netloadimage\; run netloadfdt\;run nfsargs addcon addip addmtd addmisc\;bootz \${loadaddr} - \${fdtaddr}',
-	'setenv mmcloadk ext2load mmc 0:2 \${loadaddr} /boot/zImage',
-	'setenv mmcloadfdt ext2load mmc 0:2 \${fdtaddr} /boot/am335x-boneblack.dtb',
-	'setenv mmc_mmc run mmcloadk\; run mmcloadfdt\;run args_mmc\;bootz \${loadaddr} - \${fdtaddr}',
+	'setenv sdloadk ext2load mmc 0:2 \${loadaddr} /boot/zImage',
+	'setenv sdloadfdt ext2load mmc 0:2 \${fdtaddr} /boot/am335x-boneblack.dtb',
+	'setenv sd_sd run sdloadk\; run sdloadfdt\;run args_mmc\;bootz \${loadaddr} - \${fdtaddr}',
 	]
 
 setenv_name = 'Heiko'
