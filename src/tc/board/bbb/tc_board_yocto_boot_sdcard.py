@@ -34,7 +34,7 @@ tb.eof_call_tc("tc_lab_poweron.py")
 tb.set_board_state("u-boot")
 
 tb.config.linux_user = tb.config.linux_user_yoctorootfs
-tb.config.ub_boot_linux_cmd = 'run mmc_mmc'
+tb.config.ub_boot_linux_cmd = 'run sd_sd'
 tb.config.bbb_check_crng_init = 'no'
 tb.set_board_state("linux")
 
