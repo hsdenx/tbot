@@ -57,7 +57,18 @@ image on your own, see steps `install steps raspberry pi`_.
 bbb bootmmodes:
 ---------------
 
-normal (off) : we use emmc
+medium   linux  U-Boot
+......   .....  ......
+sd card  mmc0   MMC1
+emmc     mmc1   MMC2
+
+To switch between botmodes we can use the PIN P8_43
+attached to GND -> boot from sd, floating -> boot
+from emmc.
+
+So, we define here:
+
+normal (off) : we boot from emmc
 
 recovery (on): we boot from sd card
 
