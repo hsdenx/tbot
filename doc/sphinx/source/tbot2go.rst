@@ -57,10 +57,13 @@ image on your own, see steps `install steps raspberry pi`_.
 bbb bootmmodes:
 ---------------
 
-medium   linux  U-Boot
-......   .....  ......
-sd card  mmc0   MMC1
-emmc     mmc1   MMC2
+=======   =====  ======
+medium    linux  U-Boot
+=======   =====  ======
+sd card   mmc0   MMC1
+emmc      mmc1   MMC2
+=======   =====  ======
+
 
 To switch between botmodes we can use the PIN P8_43
 attached to GND -> boot from sd, floating -> boot
