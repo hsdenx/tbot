@@ -33,7 +33,7 @@ try:
 except:
     tb.config.tc_lab_prepare_tc_name = 'none'
 
-logging.info("args: workfd %s %s", tb.workfd, tb.config.tc_lab_prepare_tc_name)
+logging.info("args: workfd %s %s", tb.workfd.name, tb.config.tc_lab_prepare_tc_name)
 
 # first cd into our workdir
 tb.eof_call_tc("tc_workfd_goto_tbot_workdir.py")
