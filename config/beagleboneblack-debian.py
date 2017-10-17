@@ -1,7 +1,7 @@
 # config file for the beagelboneblack if we boot with
 # debian rootfs
 
-linux_prompt_default = '~$ '
+linux_prompt_default = '~# '
 linux_user = 'debian'
 linux_user_yoctorootfs = 'root'
 linux_user_nfsrootfs = linux_user_yoctorootfs
