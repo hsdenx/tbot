@@ -22,6 +22,7 @@ from tbotlib import tbot
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
+tb.workfd = tb.c_ctrl
 # delete old u-boot source tree
 tb.eof_call_tc("tc_workfd_rm_uboot_code.py")
 
@@ -29,7 +30,6 @@ tb.eof_call_tc("tc_workfd_rm_uboot_code.py")
 tb.statusprint("get u-boot source")
 tb.eof_call_tc("tc_lab_get_uboot_source.py")
 
-tb.workfd = tb.c_ctrl
 tb.eof_call_tc("tc_workfd_goto_uboot_code.py")
 if tb.config.tc_lab_get_uboot_source_git_repo == '/home/git/u-boot.git':
     tb.config.tc_workfd_apply_local_patches_dir = "/work/hs/tbot/patches/fipad_uboot_patches"
@@ -50,6 +50,8 @@ tb.statusprint("copy files")
 c = tb.workfd
 so = "u-boot.bin"
 ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir
+tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
+so = ".config"
 tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
 so = "System.map"
 tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
