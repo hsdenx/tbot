@@ -27,6 +27,11 @@
 from tbotlib import tbot
 
 try:
+    tb.config.tc_workfd_ssh_opt
+except:
+    tb.config.tc_workfd_ssh_opt = ''
+
+try:
     tb.config.workfd_ssh_do_first
 except:
     tb.config.workfd_ssh_do_first = 'yes'
