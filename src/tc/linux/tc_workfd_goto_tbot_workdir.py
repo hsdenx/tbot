@@ -26,6 +26,7 @@ tmp = '[ ! -d "' + tb.config.tc_workfd_work_dir + '" ] && echo "Does not exist"'
 tb.eof_write(tb.workfd, tmp)
 ret = tb.tbot_expect_string(tb.workfd, 'Does not exist')
 if ret != 'prompt':
+    tb.tbot_expect_prompt(tb.workfd)
     # directory does not exist, create it
     tmp = "mkdir -p " + tb.config.tc_workfd_work_dir
     tb.write_lx_cmd_check(tb.workfd, tmp)
