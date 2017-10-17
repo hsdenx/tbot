@@ -33,3 +33,4 @@ def set_labspecific(tb):
         tb.config.tc_workfd_connect_with_kermit_rlogin = 'rlogin metis bbb'
         tb.config.tc_lab_denx_disconnect_from_board_tc = 'tc_workfd_disconnect_with_kermit.py'
         tb.config.tc_board_bootmode_tc = 'tc_board_bbb_bootmode_labdenx.py'
+        tb.config.tc_lab_get_linux_source_git_reference = '/home/git/linux.git'
