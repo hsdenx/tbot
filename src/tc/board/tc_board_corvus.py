@@ -59,6 +59,9 @@ tb.eof_call_tc("tc_lab_compile_uboot.py")
 # copy files to tbot dir
 tb.statusprint("copy files")
 c = tb.workfd
+so = ".config"
+ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir
+tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
 so = "u-boot.bin"
 ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir
 tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
