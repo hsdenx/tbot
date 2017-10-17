@@ -22,14 +22,13 @@ from tbotlib import tbot
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
+tb.workfd = tb.c_ctrl
 # delete old u-boot source tree
 tb.eof_call_tc("tc_workfd_rm_uboot_code.py")
 
 # call get u-boot source
 tb.statusprint("get u-boot source")
 tb.eof_call_tc("tc_lab_get_uboot_source.py")
-
-tb.workfd = tb.c_ctrl
 
 # call set toolchain
 tb.statusprint("set toolchain")
@@ -55,6 +54,9 @@ so = "spl/u-boot-spl.bin"
 tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
 so = "spl/u-boot-spl.map"
 ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/u-boot-spl.map"
+tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
+so = ".config"
+ta = "/tftpboot/" + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/.config"
 tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=so, t=ta)
 
 tb.workfd = tb.c_ctrl

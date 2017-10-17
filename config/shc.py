@@ -9,6 +9,7 @@ wdt_timeout = '3600'
 
 uboot_prompt = 'U-Boot# '
 linux_prompt = 'ttbott> '
+state_linux_timeout = 10
 
 create_dot = 'yes'
 create_statistic = 'yes'
