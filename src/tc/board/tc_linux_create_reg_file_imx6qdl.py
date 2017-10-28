@@ -30,4 +30,13 @@ tb.config.tc_lx_readreg_mask = 0xffffffff
 tb.config.tc_lx_readreg_type = 'w'
 tb.eof_call_tc("tc_lx_create_reg_file.py")
 
+# CCM
+tb.config.tc_lx_create_reg_file_name = 'imx6qdl_ccm_module.reg'
+tb.config.tc_lx_create_reg_file_start = '0x020c4000'
+tb.config.tc_lx_create_reg_file_stop = '0x020c408c'
+tb.config.tc_lx_readreg_mask = 0xffffffff
+tb.config.tc_lx_readreg_type = 'w'
+tb.eof_call_tc("tc_lx_create_reg_file.py")
+
+
 tb.end_tc(True)
