@@ -110,13 +110,15 @@ if tb.config.tc_lx_readreg_type == 'b':
 
 #read register value
 pre = tb.config.devmem2_pre
+strings = ['Value at address', 'Read at address']
 for i in xrange(start, stop, step):
     tmp = pre + 'devmem2 ' + hex(i) + " " + tb.config.tc_lx_readreg_type
     tb.eof_write(c, tmp)
     ret = tb.tbot_expect_string(c, 'opened')
     if ret == 'prompt':
         tb.end_tc(False)
-    ret = tb.tbot_expect_string(c, 'Value at address')
+
+    ret = tbot_rup_and_check_strings(c, strings)
     if ret == 'prompt':
         tb.end_tc(False)
     ret = tb.tbot_expect_string(c, '\n')
