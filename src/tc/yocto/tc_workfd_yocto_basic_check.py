@@ -18,6 +18,8 @@
 # do basic yocto checks
 #
 # - check rootfs version
+#   only if tb.config.tc_workfd_yocto_basic_check_rootfsversion == 'yes'
+#   which is the default.
 # - check dmesg output
 #   check if strings defined in tb.config.tc_demo_yocto_test_checks
 #   are found in dmesg output
@@ -27,10 +29,17 @@
 
 from tbotlib import tbot
 
+try:
+    tb.config.tc_workfd_yocto_basic_check_rootfsversion
+except:
+    tb.config.tc_workfd_yocto_basic_check_rootfsversion = 'yes'
+
 # boot into linux
 tb.set_board_state("linux")
 
-tb.eof_call_tc("tc_workfd_yocto_check_rootfs_version.py")
+if tb.config.tc_workfd_yocto_basic_check_rootfsversion == 'yes':
+    tb.statusprint("checks yocto rootfs version")
+    tb.eof_call_tc("tc_workfd_yocto_check_rootfs_version.py")
 
 tb.statusprint("linux dmesg checks")
 for tb.config.tc_lx_dmesg_grep_name in tb.config.tc_demo_yocto_test_checks:
