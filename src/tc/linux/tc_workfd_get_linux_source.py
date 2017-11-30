@@ -15,16 +15,25 @@
 # start with
 # python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_get_linux_source.py
 # get Linux source tb.config.tc_lab_get_linux_source_git_repo with "git clone"
-# and go into the source tree. Apply patches if needed with:
+# and go into the source tree.
+# check out branch tc_lab_get_linux_source_git_branch if tc_lab_get_linux_source_git_commit_id == 'none'
+# else checkout commit tc_lab_get_linux_source_git_commit_id
+# Apply patches if needed with:
 # tc_lab_apply_patches.py and tc_workfd_apply_local_patches.py
 # End:
 
 from tbotlib import tbot
 
+try:
+    tb.config.tc_lab_get_linux_source_git_commit_id
+except:
+    tb.config.tc_lab_get_linux_source_git_commit_id = 'none'
+
 logging.info("args: workdfd: %s %s %s %s", tb.workfd.name, tb.config.tc_lab_get_linux_source_git_repo,
              tb.config.tc_lab_get_linux_source_git_branch, tb.config.tc_lab_apply_patches_dir)
 logging.info("args: %s %s ", tb.config.tc_lab_get_linux_source_git_reference,
              tb.config.tc_lab_get_linux_source_git_repo_user)
+logging.info("args: %s", tb.config.tc_lab_get_linux_source_git_commit_id)
 
 ret = tb.call_tc("tc_workfd_goto_linux_code.py")
 if ret == False:
@@ -62,9 +71,14 @@ if ret == False:
     tmp = "cd " + linux_name
     tb.write_lx_cmd_check(tb.workfd, tmp)
 
-    # check out a specific branch
-    tmp = "git checkout " + tb.config.tc_lab_get_linux_source_git_branch
-    tb.write_lx_cmd_check(tb.workfd, tmp)
+    if tb.config.tc_lab_get_linux_source_git_commit_id == 'none':
+        # check out a specific branch
+        tmp = "git checkout " + tb.config.tc_lab_get_linux_source_git_branch
+        tb.write_lx_cmd_check(tb.workfd, tmp)
+    else:
+        # check out commit id
+        tmp = "git reset --hard " + tb.config.tc_lab_get_linux_source_git_commit_id
+        tb.write_lx_cmd_check(tb.workfd, tmp)
 
 # check if there are patches to apply
 tb.eof_call_tc("tc_lab_apply_patches.py")
