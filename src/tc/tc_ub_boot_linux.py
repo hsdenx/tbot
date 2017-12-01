@@ -35,6 +35,7 @@ oldt = c.get_timeout()
 c.set_prompt(tb.config.linux_prompt_default, 'linux')
 c.set_timeout(tb.config.state_linux_timeout)
 
+first = 1
 got_login = 0
 sl = ['Last login:', 'login:', 'assword']
 loop = True
@@ -59,7 +60,12 @@ while (loop):
         loop = False
     if ret == 'exception':
         logging.warning('Timeout while trying to boot Linux')
-        c.set_timeout(oldt)
-        tb.end_tc(False)
+        if first == 1:
+            # send Ctrl-C
+            tb.send_ctrl_c(c)
+            first = 0
+        else:
+            c.set_timeout(oldt)
+            tb.end_tc(False)
 
 tb.end_tc(True)
