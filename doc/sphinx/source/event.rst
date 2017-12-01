@@ -174,10 +174,6 @@ DUTS:
   make from the logs tbot collected, DUTS specific textfiles, so the logs
   can integrated into the DULG
 
-xunit:
-
-  create xunit files for presenting the results in jenkins
-
 kernel CI:
 
   adapt to a format, so the testresults can be presented at kernel CI

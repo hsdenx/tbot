@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<slave>
+  <name>testslavetbot</name>
+  <description>tbot test slave</description>
+  <remoteFS>/home/hs/data/Entwicklung/beld/jenkins/remotedirslave</remoteFS>
+  <numExecutors>1</numExecutors>
+  <mode>NORMAL</mode>
+  <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
+  <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@1.22">
+    <host>192.168.1.106</host>
+    <port>22</port>
+    <credentialsId>911fa509-3789-4f03-96d7-2236ada71070</credentialsId>
+    <maxNumRetries>0</maxNumRetries>
+    <retryWaitTime>0</retryWaitTime>
+    <sshHostKeyVerificationStrategy class="hudson.plugins.sshslaves.verifiers.NonVerifyingKeyVerificationStrategy"/>
+  </launcher>
+  <label></label>
+  <nodeProperties/>
+  <userId>anonymous</userId>
+</slave>

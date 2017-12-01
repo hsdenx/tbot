@@ -107,6 +107,13 @@ class events(object):
             if (self.tb.config.create_html_log == 'yes'):
                 from html_log import html_log
                 self.html_log = html_log(self.tb, 'log/html_log.html')
+            try:
+                self.tb.config.create_junit
+            except:
+                self.tb.config.create_junit = 'no'
+            if (self.tb.config.create_junit == 'yes'):
+                from junit import junit_backend
+                self.junit = junit_backend(self.tb, 'log/tbot_results.xml')
             if (self.tb.config.create_documentation == 'yes'):
                 from documentation import doc_backend
                 self.ignoretclist = ['tc_workfd_check_cmd_success.py']
@@ -128,6 +135,8 @@ class events(object):
                 self.doc.create_docfiles()
             if (self.tb.config.create_dashboard == 'yes'):
                 self.dashboard.insert_test_into_db()
+            if (self.tb.config.create_junit == 'yes'):
+                self.junit.create_junit_file()
 
     def create_event_log(self, c, dir, string):
         """create a log event

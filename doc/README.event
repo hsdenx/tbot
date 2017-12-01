@@ -58,8 +58,9 @@ planned Event backends:
   Demo Output of the tc_board_smartweb.py TC:
   https://github.com/hsdenx/tbot/blob/event-devel/smartweb_demo.png
 
-- xunit:
-  create xunit files for presenting the results in jenkins
+- junit:
+  create junit xml files for presenting the results in jenkins
+  src/common/event/junit.py
 
 - statistic
   use gnuplot for a ploting some TC statistic results.

@@ -79,12 +79,6 @@ format ...
 
 and you can create a documentation with current logs.
 
-jenkins backend
----------------
-
-simple convert the collected events into jenkins format,
-so it is easy to integrate tbot into jenkins builds
-
 kernel-ci backend
 -----------------
 
