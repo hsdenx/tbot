@@ -33,8 +33,7 @@ tlist = [
 	'tasks',
 	'Loading',
 	'NOTE',
-	'Initialising',
-	'Running'
+	'recipe'
 ]
 
 if tb.config.tc_workfd_bitbake_machine != '':
