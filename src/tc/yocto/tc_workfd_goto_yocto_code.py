@@ -32,18 +32,30 @@ try:
 except:
     tb.workfd.tc_workfd_goto_yocto_code_checked = False
 
+try:
+    tb.workfd.tc_workfd_goto_yocto_code_path
+except:
+    tb.workfd.tc_workfd_goto_yocto_code_path = ''
+
 logging.info("args: %s %s %s", tb.workfd, tb.workfd.tc_workfd_goto_yocto_code_checked, tb.config.tc_workfd_goto_yocto_code_dirext)
+logging.info("args path: %s", tb.workfd.tc_workfd_goto_yocto_code_path)
 
 if tb.workfd.tc_workfd_goto_yocto_code_checked == False:
     # set some global config variables
     try:
         tb.config.yocto_name
     except:
-        tb.config.yocto_name = "yocto-" + tb.config.boardlabname + tb.config.tc_workfd_goto_yocto_code_dirext
+        if tb.workfd.tc_workfd_goto_yocto_code_path == '':
+            tb.config.yocto_name = "yocto-" + tb.config.boardlabname + tb.config.tc_workfd_goto_yocto_code_dirext
+        else:
+            tb.config.yocto_name = os.path.basename(tb.workfd.tc_workfd_goto_yocto_code_path)
 
     # first check, that we are in our base dir
     tb.eof_call_tc("tc_workfd_goto_lab_source_dir.py")
-    tb.config.yocto_fulldir_name = "$TBOT_BASEDIR/" + tb.config.yocto_name
+    if tb.workfd.tc_workfd_goto_yocto_code_path == '':
+        tb.config.yocto_fulldir_name = "$TBOT_BASEDIR/" + tb.config.yocto_name
+    else:
+        tb.config.yocto_fulldir_name = tb.workfd.tc_workfd_goto_yocto_code_path
 
     tb.event.create_event('main', 'tc_workfd_goto_yocto_code.py', 'SET_DOC_FILENAME', 'set_yocto_env_var')
     tmp = 'export TBOT_BASEDIR_YOCTO=' + tb.config.yocto_fulldir_name
