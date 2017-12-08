@@ -36,7 +36,14 @@ tlist = [
 	'Initialising',
 	'Running'
 ]
-tb.write_lx_cmd_check(tb.workfd, 'bitbake ' + tb.config.tc_workfd_bitbake_args, triggerlist=tlist)
+
+if tb.config.tc_workfd_bitbake_machine != '':
+    cmd = 'MACHINE=' + tb.config.tc_workfd_bitbake_machine + ' '
+else:
+    cmd = ''
+
+cmd += 'bitbake ' + tb.config.tc_workfd_bitbake_args
+tb.write_lx_cmd_check(tb.workfd, cmd, triggerlist=tlist)
 
 if tb.config.tc_workfd_bitbake_machine != '':
     # list newest file in tmp/log/cooker/<machine>/*
