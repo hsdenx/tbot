@@ -38,7 +38,7 @@ tb.eof_call_tc("tc_workfd_rm_uboot_code.py")
 tb.eof_call_tc("tc_lab_get_uboot_source.py")
 
 # call set toolchain
-tb.eof_call_tc("tc_lab_set_toolchain.py")
+tb.eof_call_tc("tc_workfd_set_toolchain.py")
 
 # apply local patches
 tb.workfd = tb.c_ctrl
