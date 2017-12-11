@@ -30,6 +30,15 @@ tc_workfd_apply_patchwork_patches_list_hand = [
 
 tc_workfd_compile_linux_mkimage = '/home/hs/u-boot/tools/mkimage'
 
+tc_workfd_set_toolchain_arch = 'arm'
+tc_workfd_set_toolchain_t_p = {
+'arm' : '/home/hs/toolchain/linaro/gcc-linaro-7.2.1-2017.11-i686_arm-linux-gnueabi/bin',
+}
+
+tc_workfd_set_toolchain_cr_co = {
+'arm' : 'arm-linux-gnueabi-',
+}
+
 # linux testcases
 tc_lab_get_linux_source_git_repo = '/home/hs/abb/imx6/linux'
 tc_lab_get_linux_source_git_branch = '20160517-v4.6-rc7'

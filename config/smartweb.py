@@ -41,7 +41,7 @@ uboot_get_parameter_file_list = ['.config', 'include/configs/smartweb.h', 'arch/
 
 tc_workfd_set_toolchain_arch = 'arm'
 tc_workfd_set_toolchain_t_p = {
-'arm' : '/opt/eldk-5.4/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-linux-gnueabi',
+'arm' : '/home/hs/toolchain/linaro/gcc-linaro-7.2.1-2017.11-i686_arm-linux-gnueabi/bin',
 }
 
 tc_workfd_set_toolchain_cr_co = {

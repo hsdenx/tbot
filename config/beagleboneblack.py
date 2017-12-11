@@ -43,7 +43,7 @@ tc_ub_i2c_help_with_bus = 'yes'
 # Toolchain
 tc_workfd_set_toolchain_arch = 'arm'
 tc_workfd_set_toolchain_t_p = {
-'arm' : '/home/hs/.buildman-toolchains/gcc-4.9.0-nolibc/arm-unknown-linux-gnueabi/bin',
+'arm' : '/home/hs/toolchain/linaro/gcc-linaro-7.2.1-2017.11-i686_arm-linux-gnueabi/bin',
 }
 
 tc_workfd_set_toolchain_cr_co = {
