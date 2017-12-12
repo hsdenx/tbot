@@ -510,17 +510,23 @@ class Connection(object):
                     self.copy_data(lp_pro)
                     return ret_pro
                 else:
-                    logging.warn("May a problem, found prompt before string")
-                    logging.warn("----------------------------------------------------------------------")
-                    logging.warn("con name ", self.name)
-                    logging.warn("DATA ", self.data)
-                    logging.warn("SE ", se)
-                    logging.warn("IGN ", self.ign)
-                    logging.warn("PROMPT ", self._tolist(self.prompt))
-                    logging.warn("PRO ONLY ", promptonly, self.send_prompt)
-                    logging.warn("STR ", lp_str, ret_str)
-                    logging.warn("IGN ", lp_ign, ret_ign)
-                    logging.warn("PRO ", lp_pro, ret_pro)
+                    #logging.warn("May a problem, found prompt before string")
+                    #logging.warn("----------------------------------------------------------------------")
+                    #logging.warn("con name ", self.name)
+                    #logging.warn("DATA ", self.data)
+                    #logging.warn("SE ", se)
+                    #logging.warn("IGN ", self.ign)
+                    #logging.warn("PROMPT ", self._tolist(self.prompt))
+                    #logging.warn("PRO ONLY ", promptonly, self.send_prompt)
+                    #logging.warn("STR ", lp_str, ret_str)
+                    #logging.warn("IGN ", lp_ign, ret_ign)
+                    #logging.warn("PRO ", lp_pro, ret_pro)
+                    # what to do here now
+                    # could happen if we search for '# L'
+                    # and prompt is '# ' ... so string is
+                    # the correct choice
+                    self.copy_data(lp_str)
+                    return ret_str
 
                 self.copy_data(lp_pro)
                 self.tb.gotprompt = True
