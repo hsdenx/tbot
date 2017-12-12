@@ -26,6 +26,9 @@ logging.info("args: %s %s %s %s", tb.workfd.name, tb.config.rootfs_tar_file, tb.
 cmd = 'sudo rm -rf ' + tb.config.nfs_subdir + '/*'
 tb.write_lx_sudo_cmd_check(tb.c_ctrl, cmd, tb.config.user, tb.config.ip)
 
+tb.config.tc_workfd_check_if_dir_exists_name = tb.config.nfs_subdir
+tb.config.tc_workfd_check_if_dir_exists_create = 'yes'
+tb.eof_call_tc("tc_workfd_check_if_dir_exist.py")
 cmd = 'cd ' + tb.config.nfs_subdir
 tb.write_lx_cmd_check(tb.c_ctrl, cmd)
 
