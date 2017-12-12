@@ -37,7 +37,7 @@ c.set_timeout(tb.config.state_linux_timeout)
 
 first = 1
 got_login = 0
-sl = ['Last login:', 'login:', 'assword', 'Starting kernel']
+sl = ['Last login:', 'login:', 'assword', 'Starting kernel', '# L']
 loop = True
 while (loop):
     ret = tb.tbot_rup_and_check_strings(c, sl)
@@ -54,6 +54,8 @@ while (loop):
 	    tb.write_stream_passwd(c, tb.config.linux_user, tb.config.boardname)
         continue
     if ret == '3':
+        tb.tbot_trigger_wdt()
+    if ret == '4':
         tb.tbot_trigger_wdt()
     if ret == 'prompt':
         # we are in linux
