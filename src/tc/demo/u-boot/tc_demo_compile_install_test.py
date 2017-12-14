@@ -81,6 +81,7 @@ except:
 
 logging.info("args: %s %s %s %s", tb.workfd.name, tb.config.tc_demo_uboot_test_deploy,
              tb.config.tc_demo_uboot_test_update, tb.config.tc_board_bootmode_tc)
+logging.info("args: %s", tb.config.tc_demo_compile_install_test_name)
 logging.info("args: %s", tb.config.tc_demo_compile_install_test_poweroff)
 
 if tb.config.tc_board_bootmode_tc != '':
@@ -145,7 +146,7 @@ tb.eof_call_tc("tc_ub_check_version.py")
 tb.statusprint("start u-boot tests")
 tb.eof_call_tc(tb.config.tc_demo_compile_install_test_name)
 
-if tb.config.tc_demo_uboot_test_deploy != '':
+if tb.config.tc_demo_uboot_test_deploy == '':
     # save working u-boot bin
     c = tb.c_ctrl
     p = tb.config.tftpdir + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/"
