@@ -43,6 +43,8 @@
 # - call tb.config.tc_demo_compile_install_test_name
 #     which should contain a testcase, which tests the new
 #     installed u-boot
+# - if tb.config.tc_demo_compile_install_test_poweroff == 'yes':
+#     power off board at the end.
 # End:
 
 from tbotlib import tbot
@@ -72,8 +74,14 @@ try:
 except:
     tb.config.tc_board_bootmode_tc = ''
 
+try:
+    tb.config.tc_demo_compile_install_test_poweroff
+except:
+    tb.config.tc_demo_compile_install_test_poweroff = 'yes'
+
 logging.info("args: %s %s %s %s", tb.workfd.name, tb.config.tc_demo_uboot_test_deploy,
              tb.config.tc_demo_uboot_test_update, tb.config.tc_board_bootmode_tc)
+logging.info("args: %s", tb.config.tc_demo_compile_install_test_poweroff)
 
 if tb.config.tc_board_bootmode_tc != '':
     tb.config.tc_board_bootmode = 'normal'
@@ -147,6 +155,7 @@ if tb.config.tc_demo_uboot_test_deploy != '':
         ta = p + "/latestworking-" + tmp
         tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=sa, t=ta)
 
-# power off board at the end
-tb.eof_call_tc("tc_lab_poweroff.py")
+if tb.config.tc_demo_compile_install_test_poweroff == 'yes':
+    # power off board at the end
+    tb.eof_call_tc("tc_lab_poweroff.py")
 tb.end_tc(True)
