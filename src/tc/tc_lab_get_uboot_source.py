@@ -52,6 +52,9 @@ if ret == False:
     tmp = "git describe --tags"
     tb.write_lx_cmd_check(tb.workfd, tmp)
 
+    # check if there are local patches to apply with git am
+    tb.eof_call_tc("tc_workfd_apply_local_patches.py")
+
     # check if there are patches to apply
     tb.eof_call_tc("tc_workfd_apply_patches.py")
 
