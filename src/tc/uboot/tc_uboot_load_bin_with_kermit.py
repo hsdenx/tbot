@@ -17,6 +17,10 @@
 # start tc:
 # load binary into ram with loadb
 #
+# if tb.config.tc_uboot_load_bin_with_kermit_possible != 'yes'
+# do nothing return True
+# default: 'yes'
+#
 # precondition:
 # kermit must be used
 #
@@ -46,6 +50,10 @@ tb.config.tc_uboot_load_bin_with_kermit_kermit_settings = [
     "set window 5",
 ]
 
+try:
+    tb.config.tc_uboot_load_bin_with_kermit_possible
+except:
+    tb.config.tc_uboot_load_bin_with_kermit_possible = 'yes'
 
 try:
     tb.config.tc_uboot_load_bin_ram_addr
@@ -59,6 +67,10 @@ except:
 
 logging.info("args: %s", tb.config.tc_uboot_load_bin_ram_addr)
 logging.info("args: %s", tb.config.tc_uboot_load_bin_file)
+logging.info("args: %s", tb.config.tc_uboot_load_bin_with_kermit_possible)
+
+if tb.config.tc_uboot_load_bin_with_kermit_possible != 'yes':
+    tb.end_tc(True)
 
 kermit_protocol = 'kermit'
 
