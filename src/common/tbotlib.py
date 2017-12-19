@@ -89,7 +89,10 @@ def tb_call_tc(func):
             # tb.log.exception(err)
             logging.info("End with exception calling fkt %s ret: %d", fname, tb._ret)
             # traceback.print_stack()
-            # sys.exit(1)
+            if tb.call_eof:
+                # if tb-call_eof is 1, a fkt call which ends with Failure
+                # ends tbot ...
+                sys.exit(1)
 
         tb._main -= 1
         tb.event.create_event(pfname, fname, "End", ret)
@@ -141,6 +144,7 @@ class tbot(object):
         self.tc_stack_arg = []
         self.donotlog = False
         self.in_state_linux = 0
+        self.call_eof = 0
 
         print("CUR WORK PATH: ", self.workdir)
         print("CFGFILE ", self.cfgfile)
