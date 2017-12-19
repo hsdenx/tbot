@@ -47,6 +47,7 @@ tc_ub_test_py_uboot_dir = tb.config.tc_lab_source_dir + "/u-boot-" + tb.config.b
 
 cmd = 'PATH=' + tb.config.tc_ub_test_py_hook_script_path + ':$PATH;PYTHONPATH=' + tc_ub_test_py_uboot_dir + ';./test/py/test.py --bd ' + tb.config.boardname + ' -s --build-dir .'
 tb.eof_write(c, cmd)
+c.set_check_error(False)
 searchlist = ['INTERNALERROR']
 tmp = True
 cmdsuccess = True
@@ -57,6 +58,7 @@ while tmp == True:
     if ret == 'prompt':
         tmp = False
 
+c.set_check_error(True)
 cmdsuccess = tb.call_tc("tc_workfd_check_cmd_success.py")
 logging.info("test/py: %s", cmdsuccess)
 ret = tb.connect_to_board(tb.config.boardlabname)
