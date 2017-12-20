@@ -55,12 +55,12 @@ except:
 try:
     tb.config.tc_xenomai_latency_datfile
 except:
-    tb.config.tc_xenomai_latency_datfile = tb.workdir + '/lat_tbot.dat'
+    tb.config.tc_xenomai_latency_datfile = 'lat_tbot.dat'
 
 try:
     tb.config.tc_xenomai_latency_datfile2
 except:
-    tb.config.tc_xenomai_latency_datfile2 = tb.workdir + '/latency_tbot.dat'
+    tb.config.tc_xenomai_latency_datfile2 = 'latency_tbot.dat'
 
 try:
     tb.config.tc_xenomai_latency_count
@@ -72,12 +72,18 @@ try:
 except:
     tb.config.tc_xenomai_latency_max = '42'
 
+try:
+    tb.config.tc_xenomai_latency_opt
+except:
+    tb.config.tc_xenomai_latency_opt = ''
+
 logging.info("arg: %s cmd: %s", tb.workfd.name, tb.config.tc_xenomai_latency_lcmd)
 logging.info("arg: tmpfile: %s", tb.config.tc_xenomai_latency_tmpfile)
 logging.info("arg: datfile: %s", tb.config.tc_xenomai_latency_datfile)
 logging.info("arg: datfile2: %s", tb.config.tc_xenomai_latency_datfile2)
 logging.info("arg: count: %s", tb.config.tc_xenomai_latency_count)
 logging.info("arg: max: %s", tb.config.tc_xenomai_latency_max)
+logging.info("arg: opt: %s", tb.config.tc_xenomai_latency_opt)
 
 tb.set_board_state("linux")
 save = tb.workfd
@@ -89,6 +95,9 @@ tb.eof_call_tc("tc_workfd_check_if_cmd_exist.py")
 cmd = tb.config.tc_xenomai_latency_lcmd
 if tb.config.tc_xenomai_latency_tmpfile != '':
     cmd += ' -g ' + tb.config.tc_xenomai_latency_tmpfile
+
+if tb.config.tc_xenomai_latency_opt != '':
+    cmd += ' ' + tb.config.tc_xenomai_latency_opt
 
 tb.eof_write(c, cmd)
 
@@ -113,6 +122,10 @@ while loop == True:
             if float(tb.config.tc_xenomai_latency_max) < float(rtd_dict['max']):
                 logging.error("latency max too bad: %s > %s", rtd_dict['max'], tb.config.tc_xenomai_latency_max)
                 result = False
+            if float(rtd_dict['overrun']) != 0:
+                logging.error("overrun ", float(rtd_dict['overrun']))
+                result = False
+
             count = count + 1
             
         # check end
@@ -126,7 +139,8 @@ while loop == True:
         loop = False
 
 max_count = count
-fd = open(tb.config.tc_xenomai_latency_datfile, 'w')
+df = tb.workdir + '/' + tb.config.tc_xenomai_latency_datfile
+fd = open(df, 'w')
 fd.write('step lat_min lat_avg lat_max overrun msw lat_best lat_worst\n')
 count = 0
 while (count < max_count):
@@ -135,16 +149,19 @@ while (count < max_count):
     count = count + 1
 fd.close()
 
-if tb.config.tc_xenomai_latency_datfile != '':
-    loc = os.path.basename(tb.config.tc_xenomai_latency_datfile) + '.loc'
+if df != '':
+    loc = tb.workdir + '/' + os.path.basename(df) + tb.config.tc_xenomai_latency_opt.replace(' ', '_') + '.loc'
     cmd = 'rm -rf ' + loc
     os.system(cmd)
-    tb.c_ctrl.copy_file(tb.config.tc_xenomai_latency_datfile, loc)
-    cmd = 'gnuplot -e \'input_file="' + loc + '";output_file="lat_tbot.png";graph_title="cuby latency statistic"\' src/files/balkenplot_lat_tbot.sem'
+    print("CMD ", cmd)
+    tb.c_ctrl.copy_file(df, loc)
+    of = tb.workdir + '/lat_tbot' + tb.config.tc_xenomai_latency_opt.replace(' ', '_') + '.png'
+    cmd = 'gnuplot -e \'input_file="' + loc + '";output_file="' + of + '";graph_title="cuby latency statistic"\' ' + tb.workdir + '/src/files/balkenplot_lat_tbot.sem'
     os.system(cmd)
 
 if tb.config.tc_xenomai_latency_datfile2 != '':
-    fd = open(tb.config.tc_xenomai_latency_datfile2, 'w')
+    of = tb.workdir + '/' + tb.config.tc_xenomai_latency_datfile2
+    fd = open(of, 'w')
     cmd = 'cat ' + tb.config.tc_xenomai_latency_tmpfile
     tb.eof_write(c, cmd)
     loop = True
@@ -158,11 +175,12 @@ if tb.config.tc_xenomai_latency_datfile2 != '':
     fd.close()
 
     # create png files (on host!)
-    loc = os.path.basename(tb.config.tc_xenomai_latency_datfile2) + '.loc'
+    loc = tb.workdir + '/' + os.path.basename(of) + tb.config.tc_xenomai_latency_opt.replace(' ', '_') + '.loc'
     cmd = 'rm -rf ' + loc
     os.system(cmd)
-    tb.c_ctrl.copy_file(tb.config.tc_xenomai_latency_datfile2, loc)
-    cmd = 'gnuplot -e \'input_file="' + loc + '";output_file="latency.png";graph_title="cuby latency"\' src/files/balkenplot_latency.sem'
+    tb.c_ctrl.copy_file(of, loc)
+    oft = tb.workdir + '/latency' + tb.config.tc_xenomai_latency_opt.replace(' ', '_') + '.png'
+    cmd = 'gnuplot -e \'input_file="' + loc + '";output_file="' + oft + '";graph_title="cuby latency"\' ' + tb.workdir + '/src/files/balkenplot_latency.sem'
     os.system(cmd)
 
 tb.workfd = save
