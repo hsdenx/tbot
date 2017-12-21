@@ -97,6 +97,11 @@ class doc_backend(object):
             self.fd_duts = 'none'
 
     def _create_pdf(self):
+        try:
+            self.tb.config.create_documentation_auto
+        except:
+            self.tb.config.create_documentation_auto = 'no'
+
         self.tb.config.create_documentation_op = ''
         if self.tb.config.create_documentation_auto == 'no':
             return

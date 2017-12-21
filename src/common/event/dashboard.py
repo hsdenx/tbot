@@ -106,11 +106,6 @@ class dashboard(object):
             logging.warn("DB not correct initialized.")
             return
 
-        try:
-            self.tb.config.create_documentation_auto
-        except:
-            self.tb.config.create_documentation_auto = 'no'
-
         evl = list(self.tb.event.event_list)
         self.dt = ''
         self.tool = 'unknown'
