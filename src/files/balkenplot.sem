@@ -16,7 +16,7 @@ set title "TC statistic"
 set grid ytics
 set terminal jpeg enhanced size 2048,768
 set termoption noenhanced
-set output "output.jpg"
+set output output_file
 
 i = 2
 plot '/home/pi/tbot2go/tbot/stat.dat' using 2:xtic(1), for [i=3:3] '' using i
