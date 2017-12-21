@@ -106,7 +106,10 @@ class junit_backend(object):
         """create the junit file
         """
         test_cases = []
-        self.testgrp = self.tb.starttestcase
+        try:
+            self.testgrp = self.tb.starttestcase
+        except:
+            return
         self._get_state()
         tc = TestCase(self.testgrp, self.testclass, 12, 'I am stdout!', 'I am stderr!')
         if self.error_string != '':
