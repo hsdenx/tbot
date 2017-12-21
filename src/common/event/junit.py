@@ -59,6 +59,7 @@ class junit_backend(object):
         self.junitfile = junitfile
         self.fd = open(self.tb.workdir + '/' + self.junitfile, 'w')
         self.testclass = 'tbot'
+        self.uboot_src_path = ''
 
     def _get_event_id(self, el):
         if el['id'] == 'WDT':
@@ -87,6 +88,8 @@ class junit_backend(object):
                 continue
             if el['typ'] != 'EVENT':
                 continue
+            if el['id'] == 'UBOOT_SRC_PATH':
+                self.uboot_src_path = el['val']
             eid = self._get_event_id(el)
             if eid == 'none':
                 continue
@@ -138,13 +141,15 @@ class junit_backend(object):
         tmp = "cp " + self.tb.logfilen + " " + newdirtmptbot + "tbot.log"
         os.system(tmp)
 
+        if self.uboot_src_path != '':
+            rem = self.uboot_src_path + '/.config'
+            loc = newdirtmptbot + '/defconfig'
+            self.tb.c_ctrl.copy_file(rem, loc)
         if (self.tb.config.create_statistic == 'yes'):
-            os.system("gnuplot " + self.tb.workdir + "/src/files/balkenplot.sem")
             tmp = "cp " + self.tb.workdir + "/output.jpg " + newdirtmptbot + "tbot_stat.jpg"
             os.system(tmp)
         if (self.tb.config.create_dot == 'yes'):
-            os.system("dot -Tpng " + self.tb.workdir + "/tc.dot > " + self.tb.workdir + "/tc.png")
-            tmp = "cp " + self.tb.workdir + "/tc.png " + newdirtmptbot + "/graph.png"
+            tmp = "cp " + self.tb.workdir + "/tc.png " + newdirtmptbot + "graph.png"
             os.system(tmp)
         if (self.tb.config.create_html_log == 'yes'):
             tmp = "cp " + self.tb.workdir + "/log/html_log.html " + newdirtmptbot + "/html_log.html"
