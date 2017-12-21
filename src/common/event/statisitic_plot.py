@@ -58,6 +58,7 @@ class statistic_plot_backend(object):
         self._write_table()
         self._write_bottom()
         self._close()
+        os.system("gnuplot " + self.tb.workdir + "/src/files/balkenplot.sem")
  
     def _write_header(self):
         self.fd.write('Name\tFail\tOk\n')

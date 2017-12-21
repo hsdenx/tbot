@@ -186,7 +186,6 @@ class dashboard(object):
             tmp = "cp " + self.tb.workdir + "/tc.png " + newdir + "/graph.png"
             os.system(tmp)
         if (self.tb.config.create_statistic == 'yes'):
-            os.system("gnuplot " + self.tb.workdir + "/src/files/balkenplot.sem")
             tmp = "cp " + self.tb.workdir + "/output.jpg " + newdir + "/statistic.jpg"
             os.system(tmp)
         if (self.tb.config.create_html_log == 'yes'):
