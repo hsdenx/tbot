@@ -43,6 +43,7 @@ class dot(object):
         self._write_table()
         self._write_bottom()
         self.fd.close()
+        os.system("dot -Tpng " + self.tb.workdir + "/tc.dot > " + self.tb.workdir + "/tc.png")
  
     def _write_header(self):
         self.fd.write('digraph tc_dot_output\n{\nrankdir=LR;\n')

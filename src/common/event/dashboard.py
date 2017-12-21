@@ -182,7 +182,6 @@ class dashboard(object):
         os.system("mkdir " + newdir)
         os.system("chmod 755 " + newdir)
         if (self.tb.config.create_dot == 'yes'):
-            os.system("dot -Tpng " + self.tb.workdir + "/tc.dot > " + self.tb.workdir + "/tc.png")
             tmp = "cp " + self.tb.workdir + "/tc.png " + newdir + "/graph.png"
             os.system(tmp)
         if (self.tb.config.create_statistic == 'yes'):
