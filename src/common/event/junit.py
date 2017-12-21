@@ -14,6 +14,7 @@
 import logging
 import sys
 import os
+import commands
 from junit_xml import TestSuite, TestCase
 
 class junit_backend(object):
@@ -129,7 +130,15 @@ class junit_backend(object):
         self.fd.close()
 
         # can we use here a jenkins env var ?
-        newdirtmp = '$WORKSPACE'
+        # no, as copy_file does not see $WORKSPACE
+        cmd = 'printenv WORKSPACE'
+        status, output = commands.getstatusoutput(cmd)
+        logging.info("jenkins status ", status)
+        logging.info("jenkins WORKSPACE ", output)
+        if status != 0:
+            return
+
+        newdirtmp = output
         newdirtmptbot = newdirtmp + '/' + self.testclass + '/'
         # check if newdirtmptbot exists
         # if not try to create it
