@@ -169,5 +169,8 @@ class junit_backend(object):
             tmp = "cp " + self.tb.workdir + "/log/multiplexed_tbotlog.css " + newdirtmptbot + "/multiplexed_tbotlog.css"
             os.system(tmp)
         if self.tb.config.create_documentation == 'yes':
-            tmp = "cp " + self.tb.workdir + "/src/documentation/u-boot/pdf/dulg_bbb.pdf " + newdirtmptbot + "/bbb.pdf"
-            os.system(tmp)
+            if self.tb.config.create_documentation_op != '':
+                op = self.tb.config.create_documentation_op
+                docname = self.tb.config.create_documentation_docname
+                tmp = "cp " + op + "/pdf/" + docname + " " + newdirtmptbot + "/" + docname
+                os.system(tmp)
