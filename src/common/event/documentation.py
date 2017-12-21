@@ -153,19 +153,19 @@ class doc_backend(object):
         cmd = "python2.7 " + self.tb.workdir + "/src/documentation/patch_logfiles.py -i " + self.tb.workdir + "/logfiles"
         ret = os.system(cmd)
         if ret != 0:
-            loggin.warn("Patch files ", cmd, ret)
+            logging.warn("Patch files %s %d", cmd, ret)
             return
         # copy logfiles to doc dir
         cmd = "python2.7 " + self.tb.workdir + "/src/documentation/copy_logfiles.py -i " + self.tb.workdir + "/logfiles -o " + op + logname
         ret = os.system(cmd)
         if ret != 0:
-            logging.warn("Copy files ", cmd, ret)
+            logging.warn("Copy files %s %d", cmd, ret)
             return
         # call make_docu
         cmd = self.tb.workdir + "/src/documentation/" + docscript
         ret = os.system(cmd)
         if ret != 0:
-            loggin.warn("make doc ", cmd, ret)
+            logging.warn("make doc %s %d", cmd, ret)
             return
         self.tb.config.create_documentation_op = op
         self.tb.config.create_documentation_docname = docname
