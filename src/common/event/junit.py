@@ -131,7 +131,6 @@ class junit_backend(object):
         # check if newdirtmptbot exists
         # if not try to create it
         tmp = 'mkdir ' + newdirtmptbot
-        print("MPTMPTMPTMPMPTM ", tmp)
         os.system(tmp)
         tmp = "cp " + self.tb.workdir + "/log/tbot_results.xml " + newdirtmp + "/tbot_results.xml"
         os.system(tmp)
