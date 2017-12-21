@@ -210,74 +210,14 @@ class dashboard(object):
             loc = newdir + '/defconfig'
             self.tb.c_ctrl.copy_file(rem, loc)
         if self.tb.config.create_documentation == 'yes':
-            while (1):
-                if self.tb.config.create_documentation_auto == 'no':
-                    break
-
-                if self.tb.config.create_documentation_auto == 'linux_top':
-                    file = "/src/files/top_plot_mem.sem"
-                    cmd = "gnuplot " + self.tb.workdir + file
-                    ret = os.system(cmd)
-                    if ret != 0:
-                        print ("Error gnuplot ", cmd, ret)
-                        break
-                    file = "/src/files/top_plot_cpu.sem"
-                    cmd = "gnuplot " + self.tb.workdir + file
-                    ret = os.system(cmd)
-                    if ret != 0:
-                        print ("Error gnuplot ", cmd, ret)
-                        break
-                    file = "/src/files/top_plot_load.sem"
-                    cmd = "gnuplot " + self.tb.workdir + file
-                    ret = os.system(cmd)
-                    if ret != 0:
-                        print ("Error gnuplot ", cmd, ret)
-                        break
-
-                    docname = "bbb_linux_top.pdf"
-                    docscript = "make_doku_bbb_top.sh"
-                    op = "/home/pi/tbot2go/documentation/linux_top/"
-                    logname = 'logfiles'
-                    
-                elif self.tb.config.create_documentation_auto == 'uboot':
-                    docname = "dulg_bbb.pdf"
-                    docscript = "make_doku_ub.sh"
-                    op = "/home/pi/tbot2go/documentation/u-boot/"
-                    logname = 'logfiles'
-                elif self.tb.config.create_documentation_auto == 'yocto':
-                    docname = "yocto_bbb.pdf"
-                    docscript = "make_doku_yocto.sh"
-                    op = "/home/pi/tbot2go/documentation/yocto/"
-                    logname = 'logfiles_get_and_bake'
-                else:
-                    break
-
-                # patch logfiles
-                cmd = "python2.7 " + self.tb.workdir + "/src/documentation/patch_logfiles.py -i " + self.tb.workdir + "/logfiles"
-                ret = os.system(cmd)
-                if ret != 0:
-                    print ("Patch files ", cmd, ret)
-                    break
-                # copy logfiles to doc dir
-                cmd = "python2.7 " + self.tb.workdir + "/src/documentation/copy_logfiles.py -i " + self.tb.workdir + "/logfiles -o " + op + logname
-                ret = os.system(cmd)
-                if ret != 0:
-                    print ("Copy files ", cmd, ret)
-                    break
-                # call make_docu
-                cmd = self.tb.workdir + "/src/documentation/" + docscript
-                ret = os.system(cmd)
-                if ret != 0:
-                    print("make doc ", cmd, ret)
-                    break
+            if self.tb.config.create_documentation_op != '':
+                op = self.tb.config.create_documentation_op
+                docname = self.tb.config.create_documentation_docname
                 # copy to webdir
                 cmd = "cp " + op + "/pdf/" + docname + " " + newdir + "/doc.pdf"
                 ret = os.system(cmd)
                 if ret != 0:
-                    print("copy to webdir ", cmd, ret)
-                    break
-
-                break
+                    logging.warn("dashboard copy to webdir ", cmd, ret)
 
         tmp = "cp " + self.tb.logfilen + " " + newdir + "/tbot.log"
         os.system(tmp)

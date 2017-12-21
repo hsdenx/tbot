@@ -96,6 +96,75 @@ class doc_backend(object):
         except:
             self.fd_duts = 'none'
 
+    def _create_pdf(self):
+        self.tb.config.create_documentation_op = ''
+        if self.tb.config.create_documentation_auto == 'no':
+            return
+
+        if self.tb.config.create_documentation_auto == 'linux_top':
+            file = "/src/files/top_plot_mem.sem"
+            cmd = "gnuplot " + self.tb.workdir + file
+            ret = os.system(cmd)
+            if ret != 0:
+                print ("Error gnuplot ", cmd, ret)
+                return
+            file = "/src/files/top_plot_cpu.sem"
+            cmd = "gnuplot " + self.tb.workdir + file
+            ret = os.system(cmd)
+            if ret != 0:
+                print ("Error gnuplot ", cmd, ret)
+                return
+            file = "/src/files/top_plot_load.sem"
+            cmd = "gnuplot " + self.tb.workdir + file
+            ret = os.system(cmd)
+            if ret != 0:
+                print ("Error gnuplot ", cmd, ret)
+                return
+
+            docname = "bbb_linux_top.pdf"
+            docscript = "make_doku_bbb_top.sh"
+            op = "/home/pi/tbot2go/documentation/linux_top/"
+            logname = 'logfiles'
+        elif self.tb.config.create_documentation_auto == 'uboot':
+            docname = "dulg_bbb.pdf"
+            docscript = "make_doku_ub.sh"
+            op = "/home/pi/tbot2go/documentation/u-boot/"
+            logname = 'logfiles'
+        elif self.tb.config.create_documentation_auto == 'cuby':
+            docname = "cuby_doc.pdf"
+            docscript = "make_doku_cuby.sh"
+            op = "/home/pi/tbot2go/documentation/cuby/"
+            logname = 'logfiles'
+        elif self.tb.config.create_documentation_auto == 'yocto':
+            docname = "yocto_bbb.pdf"
+            docscript = "make_doku_yocto.sh"
+            op = "/home/pi/tbot2go/documentation/yocto/"
+            logname = 'logfiles_get_and_bake'
+        else:
+            logging.warn("unknown create_documentation_auto value", self.tb.config.create_documentation_auto)
+            return
+
+        # patch logfiles
+        cmd = "python2.7 " + self.tb.workdir + "/src/documentation/patch_logfiles.py -i " + self.tb.workdir + "/logfiles"
+        ret = os.system(cmd)
+        if ret != 0:
+            loggin.warn("Patch files ", cmd, ret)
+            return
+        # copy logfiles to doc dir
+        cmd = "python2.7 " + self.tb.workdir + "/src/documentation/copy_logfiles.py -i " + self.tb.workdir + "/logfiles -o " + op + logname
+        ret = os.system(cmd)
+        if ret != 0:
+            logging.warn("Copy files ", cmd, ret)
+            return
+        # call make_docu
+        cmd = self.tb.workdir + "/src/documentation/" + docscript
+        ret = os.system(cmd)
+        if ret != 0:
+            loggin.warn("make doc ", cmd, ret)
+            return
+        self.tb.config.create_documentation_op = op
+        self.tb.config.create_documentation_docname = docname
+
     def create_docfiles(self):
         """create the files
         """
@@ -107,6 +176,7 @@ class doc_backend(object):
             self.fd_duts.close()
         except:
             self.fd_duts = 'none'
+        self._create_pdf()
 
     def _get_event_id(self, el):
         if el['id'] == 'Start':
