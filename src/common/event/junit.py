@@ -135,7 +135,7 @@ class junit_backend(object):
         tmp = "cp " + self.tb.workdir + "/log/tbot_results.xml " + newdirtmp + "/tbot_results.xml"
         os.system(tmp)
 
-        tmp = "cp " + self.tb.workdir + "/log/tbot_demo_linux_test.log " + newdirtmptbot + "tbot.log"
+        tmp = "cp " + self.tb.logfilen + " " + newdirtmptbot + "tbot.log"
         os.system(tmp)
 
         if (self.tb.config.create_statistic == 'yes'):
