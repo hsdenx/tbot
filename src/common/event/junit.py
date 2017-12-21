@@ -133,8 +133,8 @@ class junit_backend(object):
         # no, as copy_file does not see $WORKSPACE
         cmd = 'printenv WORKSPACE'
         status, output = commands.getstatusoutput(cmd)
-        logging.info("jenkins status ", status)
-        logging.info("jenkins WORKSPACE ", output)
+        logging.info("jenkins status %s", status)
+        logging.info("jenkins WORKSPACE %s", output)
         if status != 0:
             return
 
