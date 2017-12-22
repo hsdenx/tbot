@@ -155,7 +155,7 @@ class junit_backend(object):
 
         if self.uboot_src_path != '':
             rem = self.uboot_src_path + '/.config'
-            loc = newdirtmptbot + '/defconfig'
+            loc = newdirtmptbot + '/defconfig.txt'
             self.tb.c_ctrl.copy_file(rem, loc)
         if (self.tb.config.create_statistic == 'yes'):
             tmp = "cp " + self.tb.workdir + "/output.jpg " + newdirtmptbot + "tbot_stat.jpg"
