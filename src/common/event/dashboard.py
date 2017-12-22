@@ -196,7 +196,6 @@ class dashboard(object):
             self.tb.c_ctrl.copy_file(rem, loc)
         if self.uboot_src_path != '':
             rem = self.uboot_src_path + '/.config'
-            rem = self.tb.config.tftpdir + '/' + self.tb.config.tftpboardname + '/' + self.tb.config.ub_load_board_env_subdir + '/.config'
             loc = newdir + '/defconfig'
             self.tb.c_ctrl.copy_file(rem, loc)
         if self.linux_src_path != '':

@@ -39,7 +39,7 @@ tmp = "make " + defname
 tb.event.create_event('main', tb.config.boardname, "UBOOT_DEFCONFIG", defname)
 tb.write_lx_cmd_check(tb.workfd, tmp)
 if tb.workfd.name == 'tb_cpc':
-    tb.event.create_event('main', tb.config.boardname, "UBOOT_SRC_PATH", tb.config.tftpdir + '/' + tb.config.tftpboardname + '/' + tb.config.ub_load_board_env_subdir + '/.config')
+    tb.event.create_event('main', tb.config.boardname, "UBOOT_SRC_PATH", tb.config.tftpdir + '/' + tb.config.tftpboardname + '/' + tb.config.ub_load_board_env_subdir)
 else:
     tb.event.create_event('main', tb.config.boardname, "UBOOT_SRC_PATH", tb.config.tc_lab_source_dir + "/u-boot-" + tb.config.boardlabname)
 
