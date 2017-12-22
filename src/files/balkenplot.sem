@@ -11,12 +11,12 @@ set style data histograms
 set xtics border in scale 0,0 nomirror rotate by -45  offset character 0, 0, 0 autojustify
 set xtics  norangelimit font "arial,20"
 set xtics   ()
-set title "TC statistic" 
 
 set grid ytics
 set terminal jpeg enhanced size 2048,768
 set termoption noenhanced
 set output output_file
+set title graph_title
 
 i = 2
-plot '/home/pi/tbot2go/tbot/stat.dat' using 2:xtic(1), for [i=3:3] '' using i
+plot input_file using 2:xtic(1), for [i=3:3] '' using i

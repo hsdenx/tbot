@@ -51,6 +51,10 @@ class statistic_plot_backend(object):
     def create_statfile(self):
         """create the statistic file
         """
+        try:
+            title = self.tb.starttestcase
+        except:
+            return
         el = list(self.tb.event.event_list)
         self._analyse(el)
         # self._print_list()
@@ -58,7 +62,9 @@ class statistic_plot_backend(object):
         self._write_table()
         self._write_bottom()
         self._close()
-        os.system('gnuplot -e \'output_file="'+ self.tb.workdir + '/output.jpg"\' ' + self.tb.workdir + '/src/files/balkenplot.sem')
+        w = self.tb.workdir
+        cmd = 'gnuplot -e \'output_file="'+ w + '/output.jpg";input_file="' + w + '/stat.dat";graph_title="' + title + '"\' ' + w + '/src/files/balkenplot.sem'
+        os.system(cmd)
  
     def _write_header(self):
         self.fd.write('Name\tFail\tOk\n')
