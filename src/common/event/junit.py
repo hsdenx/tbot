@@ -15,6 +15,7 @@ import logging
 import sys
 import os
 import commands
+from time import gmtime, strptime, mktime
 from junit_xml import TestSuite, TestCase
 
 class junit_backend(object):
@@ -53,14 +54,41 @@ class junit_backend(object):
     - **parameters**, **types**, **return** and **return types**::
     :param arg1: tb
     :param arg2: filename which gets created, place tb.workdir
+    :param arg2: testcases, which are put into the xmls file
     """
-    def __init__(self, tb, junitfile):
+    def __init__(self, tb, junitfile, tclist, ignlist):
         self.tb = tb
         self.ev = self.tb.event
         self.junitfile = junitfile
         self.fd = open(self.tb.workdir + '/' + self.junitfile, 'w')
         self.testclass = 'tbot'
         self.uboot_src_path = ''
+        self.tclist = tclist
+        self.ignoretclist = ignlist
+        self.record_log = False
+
+    def _check_ignore_list(self, typ, name, evl):
+        if not 'Start' in typ:
+            return 'ok'
+
+        for ign in self.ignoretclist:
+            if ign == name:
+                # search until End event
+                el = 'start'
+                while el != '':
+                    el = self._get_next_event(evl)
+                    if el == '':
+                        continue
+                    if el['typ'] != 'EVENT':
+                        continue
+                    ntyp = self._get_event_id(el)
+                    if ntyp == 'none':
+                        continue
+                    newname = self._get_event_name(el)
+                    if newname == name and ntyp == 'End':
+                        return 'ignore'
+
+        return 'ok'
 
     def _get_event_id(self, el):
         if el['id'] == 'WDT':
@@ -69,6 +97,15 @@ class junit_backend(object):
             return el['id']
         if el['id'] == 'BoardnameEnd':
             return el['id']
+        if el['id'] == 'Start':
+            return el['id']
+        if el['id'] == 'StartFkt':
+            return el['id']
+        if el['id'] == 'End':
+            return el['id']
+        if el['id'] == 'log':
+            if self.record_log == True:
+                return el['id']
         return 'none'
 
     def _get_next_event(self, el):
@@ -78,6 +115,9 @@ class junit_backend(object):
         ret = el[0]
         el.pop(0)
         return ret
+
+    def _get_event_name(self, el):
+        return el['fname']
 
     def _get_state(self):
         evl = list(self.tb.event.event_list)
@@ -94,6 +134,7 @@ class junit_backend(object):
             eid = self._get_event_id(el)
             if eid == 'none':
                 continue
+            newname = self._get_event_name(el)
             if eid == 'WDT':
                 self.error_string += 'WDT triggered\n'
             if eid == 'ERROR_STRING':
@@ -101,6 +142,54 @@ class junit_backend(object):
             if eid == 'BoardnameEnd':
                 if el['val'] == 'False':
                     self.error_string += 'Failed\n'
+
+    def _get_testcases(self, testcases):
+        evl = list(self.tb.event.event_list)
+        el = 'start'
+        error_string = ''
+        logct = ''
+        tcname = ''
+        while el != '':
+            el = self._get_next_event(evl)
+            if el == '':
+                continue
+            if el['typ'] != 'EVENT':
+                continue
+            eid = self._get_event_id(el)
+            if eid == 'none':
+                continue
+            name = self._get_event_name(el)
+            ret = self._check_ignore_list(eid, name, evl)
+            if ret == 'ignore':
+                continue
+            if eid == 'WDT':
+                error_string += 'WDT triggered\n'
+            if eid == 'Start':
+                if self.tb.starttestcase == name:
+                    continue
+                if self.record_log == False:
+                    if name in self.tclist:
+                        self.record_log = True
+                        logct = ''
+                        tcname = name
+                        stime = strptime(el['time'], "%Y-%m-%d %H:%M:%S")
+            if eid == 'End':
+                if self.record_log == True and name == tcname:
+                    self.record_log = False
+                    etime = strptime(el['time'], "%Y-%m-%d %H:%M:%S")
+                    diff = mktime(etime) - mktime(stime)
+                    if el['val'] == 'False':
+                        error_string += 'Failed\n'
+                    tc = TestCase(self.testgrp, tcname.replace(".py", ""), float(diff), logct, '')
+                    if error_string != '':
+                        tc.add_error_info(error_string)
+                    testcases.append(tc)
+            if eid == 'log':
+                if self.record_log == True:
+                    logline = el['val']
+                    if logline[0] == 'r':
+                        logline = logline[2:]
+                        logct += logline
 
     def create_junit_file(self):
         """create the junit file
@@ -111,19 +200,11 @@ class junit_backend(object):
         except:
             return
         self._get_state()
-        tc = TestCase(self.testgrp, self.testclass, 12, 'I am stdout!', 'I am stderr!')
+        tc = TestCase(self.testgrp, self.testclass, 0, '', '')
         if self.error_string != '':
             tc.add_error_info(self.error_string)
         test_cases.append(tc)
-        # only example, how to add more results
-        # example for a bad result
-        #tc = TestCase(self.testgrp, 'Error-Message')
-        #tc.add_error_info("error message")
-        #test_cases.append(tc)
-        # example for a failure result
-        #tc = TestCase(slef.testgrp, 'Failure Message')
-        #tc.add_failure_info('This is a failure')
-        #test_cases.append(tc)
+        self._get_testcases(test_cases)
 
         ts = TestSuite("tbot test results", test_cases)
         # prettyprinting is on by default but can be disabled using prettyprint=False
