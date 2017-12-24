@@ -30,6 +30,27 @@ except:
 
 logging.info("arg: %s", tb.config.tc_ub_start_all_duts_start)
 
+tb.config.duts_junittclist = [
+"tc_ub_duts_version.py",
+"tc_ub_basic.py",
+"tc_ub_bdinfo.py",
+"tc_ub_boot.py",
+"tc_ub_coninfo.py",
+"tc_ub_download.py",
+"tc_ub_environment.py",
+"tc_ub_flinfo.py",
+"tc_ub_i2c_help.py",
+"tc_ub_memory.py",
+"tc_ub_run.py",
+"tc_ub_date.py",
+"tc_ub_dtt.py",
+"tc_ub_duts_source.py",
+"tc_ub_duts_fdt.py",
+"tc_ub_duts_go.py",
+"tc_ub_bdinfo.py",
+"tc_ub_duts_hush.py",
+]
+
 if tb.config.tc_ub_start_all_duts_start == False:
     tb.end_tc(True)
 

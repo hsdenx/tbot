@@ -89,6 +89,7 @@ class events(object):
                 from dot import dot
                 self.ignoretclist = ['tc_workfd_check_cmd_success.py',
                  'tc_lab_cp_file.py',
+                 'tc_dummy.py',
                  'tc_workfd_check_if_file_exist.py',
                  'tc_workfd_rm_file.py']
                 self.dot = dot(self.tb, 'tc.dot', self.ignoretclist)
@@ -96,6 +97,7 @@ class events(object):
                 from statisitic_plot import statistic_plot_backend
 		self.ignoretclist = ['tc_workfd_check_cmd_success.py',
                  'tc_lab_cp_file.py',
+                 'tc_dummy.py',
                  'tc_def_ub.py',
                  'tc_def_tbot.py',
                  'tc_workfd_check_if_file_exist.py',
@@ -116,11 +118,20 @@ class events(object):
                 try:
                     self.tb.config.junit_tclist
                 except:
-                    self.tb.config.junit_tclist = ['tc_lab_get_uboot_source.py', 'tc_workfd_set_toolchain.py', 'tc_workfd_compile_uboot.py', 'tc_workfd_connect_with_kermit.py']
+                    self.tb.config.junit_tclist = ['tc_lab_get_uboot_source.py',
+                     'tc_workfd_set_toolchain.py', 'tc_workfd_compile_uboot.py',
+                     'tc_workfd_connect_with_kermit.py', 'tc_ub_upd_uboot.py',
+                     'tc_ub_upd_spl.py', 'tc_ub_check_version.py']
+                    try:
+                        self.tb.config.junit_tclist.extend(self.tb.config.duts_junittclist)
+                    except:
+                        pass
                 try:
                     self.tb.config.junit_ignlist
                 except:
-                    self.tb.config.junit_ignlist = ['tc_workfd_check_cmd_success.py'] 
+                    self.tb.config.junit_ignlist = ['tc_workfd_check_cmd_success.py',
+                     'tc_dummy.py',
+                    ]
                 self.junit = junit_backend(self.tb, 'log/tbot_results.xml', self.tb.config.junit_tclist, self.tb.config.junit_ignlist)
             if (self.tb.config.create_documentation == 'yes'):
                 from documentation import doc_backend
