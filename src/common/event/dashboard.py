@@ -177,15 +177,15 @@ class dashboard(object):
         os.system("mkdir " + newdir)
         os.system("chmod 755 " + newdir)
         if (self.tb.config.create_dot == 'yes'):
-            tmp = "cp " + self.tb.workdir + "/tc.png " + newdir + "/graph.png"
+            tmp = "cp " + self.tb.resultdir + "/tc.png " + newdir + "/graph.png"
             os.system(tmp)
         if (self.tb.config.create_statistic == 'yes'):
-            tmp = "cp " + self.tb.workdir + "/output.jpg " + newdir + "/statistic.jpg"
+            tmp = "cp " + self.tb.resultdir + "/output.jpg " + newdir + "/statistic.jpg"
             os.system(tmp)
         if (self.tb.config.create_html_log == 'yes'):
-            tmp = "cp " + self.tb.workdir + "/log/html_log.html " + newdir + "/html_log.html"
+            tmp = "cp " + self.tb.resultdir + "/html_log.html " + newdir + "/html_log.html"
             os.system(tmp)
-            tmp = "cp " + self.tb.workdir + "/log/multiplexed_tbotlog.css " + newdir + "/multiplexed_tbotlog.css"
+            tmp = "cp " + self.tb.resultdir + "/multiplexed_tbotlog.css " + newdir + "/multiplexed_tbotlog.css"
             os.system(tmp)
         if self.testpypatch != '':
             rem = self.testpypatch + '/test-log.html'

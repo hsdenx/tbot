@@ -139,7 +139,7 @@ while loop == True:
         loop = False
 
 max_count = count
-df = tb.workdir + '/' + tb.config.tc_xenomai_latency_datfile
+df = tb.resultdir + '/' + tb.config.tc_xenomai_latency_datfile
 fd = open(df, 'w')
 fd.write('step lat_min lat_avg lat_max overrun msw lat_best lat_worst\n')
 count = 0
@@ -150,17 +150,17 @@ while (count < max_count):
 fd.close()
 
 if df != '':
-    loc = tb.workdir + '/' + os.path.basename(df) + tb.config.tc_xenomai_latency_opt.replace(' ', '_') + '.loc'
+    loc = tb.resultdir + '/' + os.path.basename(df) + tb.config.tc_xenomai_latency_opt.replace(' ', '_') + '.loc'
     cmd = 'rm -rf ' + loc
     os.system(cmd)
     print("CMD ", cmd)
     tb.c_ctrl.copy_file(df, loc)
-    of = tb.workdir + '/lat_tbot' + tb.config.tc_xenomai_latency_opt.replace(' ', '_') + '.png'
+    of = tb.resultdir + '/lat_tbot' + tb.config.tc_xenomai_latency_opt.replace(' ', '_') + '.png'
     cmd = 'gnuplot -e \'input_file="' + loc + '";output_file="' + of + '";graph_title="cuby latency statistic"\' ' + tb.workdir + '/src/files/balkenplot_lat_tbot.sem'
     os.system(cmd)
 
 if tb.config.tc_xenomai_latency_datfile2 != '':
-    of = tb.workdir + '/' + tb.config.tc_xenomai_latency_datfile2
+    of = tb.resultdir + '/' + tb.config.tc_xenomai_latency_datfile2
     fd = open(of, 'w')
     cmd = 'cat ' + tb.config.tc_xenomai_latency_tmpfile
     tb.eof_write(c, cmd)
@@ -175,11 +175,11 @@ if tb.config.tc_xenomai_latency_datfile2 != '':
     fd.close()
 
     # create png files (on host!)
-    loc = tb.workdir + '/' + os.path.basename(of) + tb.config.tc_xenomai_latency_opt.replace(' ', '_') + '.loc'
+    loc = tb.resultdir + '/' + os.path.basename(of) + tb.config.tc_xenomai_latency_opt.replace(' ', '_') + '.loc'
     cmd = 'rm -rf ' + loc
     os.system(cmd)
     tb.c_ctrl.copy_file(of, loc)
-    oft = tb.workdir + '/latency' + tb.config.tc_xenomai_latency_opt.replace(' ', '_') + '.png'
+    oft = tb.resultdir + '/latency' + tb.config.tc_xenomai_latency_opt.replace(' ', '_') + '.png'
     cmd = 'gnuplot -e \'input_file="' + loc + '";output_file="' + oft + '";graph_title="cuby latency"\' ' + tb.workdir + '/src/files/balkenplot_latency.sem'
     os.system(cmd)
 

@@ -120,6 +120,7 @@ class tbot(object):
         self.verbose = verbose
         self.cfgfile = cfgfile
         self.workdir = workdir
+        self.resultdir = workdir + '/result'
         self.arguments = arguments
         self.power_state = 'undef'
         self.tc_stack = []
@@ -198,6 +199,11 @@ class tbot(object):
 
         self._main = 0
         self._ret = False
+
+        # check for result dir and delete all content
+        self.resultdir += '-' + str(os.getpid())
+        os.system("mkdir -p " + self.resultdir)
+        os.system("rm -rf " + self.resultdir + "/*")
 
         self.con_loglevel = 25
         logging.addLevelName(self.con_loglevel, "CON")

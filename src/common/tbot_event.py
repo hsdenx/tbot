@@ -108,7 +108,7 @@ class events(object):
                 self.statistic = statistic_plot_backend(self.tb, 'stat.dat', self.ignoretclist)
             if (self.tb.config.create_html_log == 'yes'):
                 from html_log import html_log
-                self.html_log = html_log(self.tb, 'log/html_log.html')
+                self.html_log = html_log(self.tb, 'html_log.html')
             try:
                 self.tb.config.create_junit
             except:
@@ -132,7 +132,7 @@ class events(object):
                     self.tb.config.junit_ignlist = ['tc_workfd_check_cmd_success.py',
                      'tc_dummy.py',
                     ]
-                self.junit = junit_backend(self.tb, 'log/tbot_results.xml', self.tb.config.junit_tclist, self.tb.config.junit_ignlist)
+                self.junit = junit_backend(self.tb, 'tbot_results.xml', self.tb.config.junit_tclist, self.tb.config.junit_ignlist)
             if (self.tb.config.create_documentation == 'yes'):
                 from documentation import doc_backend
                 self.ignoretclist = ['tc_workfd_check_cmd_success.py']

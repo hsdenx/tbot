@@ -38,7 +38,7 @@ class statistic_plot_backend(object):
         self.tb = tb
         self.ev = self.tb.event
         self.fdfile = fdfile
-        self.fd = open(tb.workdir + '/' + fdfile, 'w')
+        self.fd = open(tb.resultdir + '/' + fdfile, 'w')
         self.tc_list = []
         self.ignoretclist = ignorelist
 
@@ -63,7 +63,8 @@ class statistic_plot_backend(object):
         self._write_bottom()
         self._close()
         w = self.tb.workdir
-        cmd = 'gnuplot -e \'output_file="'+ w + '/output.jpg";input_file="' + w + '/stat.dat";graph_title="' + title + '"\' ' + w + '/src/files/balkenplot.sem'
+        r = self.tb.resultdir
+        cmd = 'gnuplot -e \'output_file="'+ r + '/output.jpg";input_file="' + r + '/stat.dat";graph_title="' + title + '"\' ' + w + '/src/files/balkenplot.sem'
         os.system(cmd)
  
     def _write_header(self):

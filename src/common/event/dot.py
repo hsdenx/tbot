@@ -32,7 +32,7 @@ class dot(object):
         self.tb = tb
         self.ev = self.tb.event
         self.dotfile = dotfile
-        self.fd = open(self.tb.workdir + '/' + self.dotfile, 'w')
+        self.fd = open(self.tb.resultdir + '/' + self.dotfile, 'w')
         self.dotnr = 0
         self.ignoretclist = ignorelist
 
@@ -43,7 +43,8 @@ class dot(object):
         self._write_table()
         self._write_bottom()
         self.fd.close()
-        os.system("dot -Tpng " + self.tb.workdir + "/tc.dot > " + self.tb.workdir + "/tc.png")
+        w = self.tb.resultdir
+        os.system("dot -Tpng " + w + "/tc.dot > " + w + "/tc.png")
  
     def _write_header(self):
         self.fd.write('digraph tc_dot_output\n{\nrankdir=LR;\n')

@@ -34,7 +34,7 @@ class html_log(object):
         self.tb = tb
         self.ev = self.tb.event
         self.htmlfile = htmlfile
-        self.fd = open(self.tb.workdir + '/' + self.htmlfile, 'w')
+        self.fd = open(self.tb.resultdir + '/' + self.htmlfile, 'w')
         self.dotnr = 0
         self.htmlid = 0
 
@@ -45,6 +45,10 @@ class html_log(object):
         self._write_log()
         self._write_html_bottom()
         self.fd.close()
+        w = self.tb.workdir
+        r = self.tb.resultdir
+        cmd = 'cp ' + w + '/log/multiplexed_tbotlog.css ' + r
+        os.system(cmd)
  
     def _write_html_header(self):
         self.fd.write('<html>\n')

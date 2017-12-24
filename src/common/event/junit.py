@@ -60,7 +60,7 @@ class junit_backend(object):
         self.tb = tb
         self.ev = self.tb.event
         self.junitfile = junitfile
-        self.fd = open(self.tb.workdir + '/' + self.junitfile, 'w')
+        self.fd = open(self.tb.resultdir + '/' + self.junitfile, 'w')
         self.testclass = 'tbot'
         self.uboot_src_path = ''
         self.tclist = tclist
@@ -228,7 +228,7 @@ class junit_backend(object):
         # if not try to create it
         tmp = 'mkdir ' + newdirtmptbot
         os.system(tmp)
-        tmp = "cp " + self.tb.workdir + "/log/tbot_results.xml " + newdirtmp + "/tbot_results.xml"
+        tmp = "cp " + self.tb.resultdir + "/" + self.junitfile + " " + newdirtmp + "/" + self.junitfile
         os.system(tmp)
 
         tmp = "cp " + self.tb.logfilen + " " + newdirtmptbot + "tbot.log"
@@ -239,15 +239,15 @@ class junit_backend(object):
             loc = newdirtmptbot + '/defconfig.txt'
             self.tb.c_ctrl.copy_file(rem, loc)
         if (self.tb.config.create_statistic == 'yes'):
-            tmp = "cp " + self.tb.workdir + "/output.jpg " + newdirtmptbot + "tbot_stat.jpg"
+            tmp = "cp " + self.tb.resultdir + "/output.jpg " + newdirtmptbot + "tbot_stat.jpg"
             os.system(tmp)
         if (self.tb.config.create_dot == 'yes'):
-            tmp = "cp " + self.tb.workdir + "/tc.png " + newdirtmptbot + "graph.png"
+            tmp = "cp " + self.tb.resultdir + "/tc.png " + newdirtmptbot + "graph.png"
             os.system(tmp)
         if (self.tb.config.create_html_log == 'yes'):
-            tmp = "cp " + self.tb.workdir + "/log/html_log.html " + newdirtmptbot + "/html_log.html"
+            tmp = "cp " + self.tb.resultdir + "/html_log.html " + newdirtmptbot + "/html_log.html"
             os.system(tmp)
-            tmp = "cp " + self.tb.workdir + "/log/multiplexed_tbotlog.css " + newdirtmptbot + "/multiplexed_tbotlog.css"
+            tmp = "cp " + self.tb.resultdir + "/multiplexed_tbotlog.css " + newdirtmptbot + "/multiplexed_tbotlog.css"
             os.system(tmp)
         if self.tb.config.create_documentation == 'yes':
             if self.tb.config.create_documentation_op != '':
