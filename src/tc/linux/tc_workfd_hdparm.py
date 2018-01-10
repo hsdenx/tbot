@@ -36,12 +36,12 @@ if tb.config.tc_workfd_hdparm_path != 'none':
 cmd = tmp + 'hdparm -t ' + tb.config.tc_workfd_hdparm_dev
 
 tb.eof_write(c, cmd)
-searchlist = ["MB/sec"]
+searchlist = ["MB/sec", "kB/s"]
 tmp = True
 result = False
 while tmp == True:
     ret = tb.tbot_rup_and_check_strings(c, searchlist)
-    if ret == '0':
+    if ret == '0' or ret == '1':
         # extract value from line
         str1 = tb.buf.split('=')
         str1 = str1[1].strip(' ')
