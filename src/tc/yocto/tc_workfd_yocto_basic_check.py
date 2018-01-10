@@ -34,6 +34,11 @@ try:
 except:
     tb.config.tc_workfd_yocto_basic_check_rootfsversion = 'yes'
 
+try:
+    tb.config.tc_workfd_yocto_basic_check_board_specific
+except:
+    tb.config.tc_workfd_yocto_basic_check_board_specific = ''
+
 # boot into linux
 tb.set_board_state("linux")
 
@@ -52,5 +57,9 @@ if ret == True:
     tb.statusprint("linux register checks")
     for tb.config.tc_lx_create_reg_file_name in tb.config.tc_workfd_yocto_basic_check_regfiles:
         tb.eof_call_tc("tc_lx_check_reg_file.py")
+
+# call board specific checks
+if tb.config.tc_workfd_yocto_basic_check_board_specific != '':
+    tb.eof_call_tc(tb.config.tc_workfd_yocto_basic_check_board_specific)
 
 tb.end_tc(True)
