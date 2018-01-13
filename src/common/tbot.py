@@ -57,8 +57,13 @@ def signal_term_handler(signal, frame):
 
 signal.signal(signal.SIGTERM, signal_term_handler)
 
-tb.starttestcase = args.tc
-ret = tb.call_tc(args.tc)
+# testcase are without path, as tbot searches always
+# in tbot_workdir/src/tc for the testcase name
+# so remove eventually passed paths
+tcname = os.path.basename(args.tc)
+# save the name of our starttestcase
+tb.starttestcase = tcname
+ret = tb.call_tc(tcname)
 if ret == False:
     tb.end_tc(False)
 
