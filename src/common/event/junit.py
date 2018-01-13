@@ -189,6 +189,13 @@ class junit_backend(object):
                     logline = el['val']
                     if logline[0] == 'r':
                         logline = logline[2:]
+                        # convert to unicode
+                        # see
+                        # https://stackoverflow.com/questions/21129020/how-to-fix-unicodedecodeerror-ascii-codec-cant-decode-byte
+                        if isinstance(logline, str):
+                            logline = logline.decode('ascii', 'ignore').encode('ascii') #note: this removes the character and encodes back to string.
+                        elif isinstance(logline, unicode):
+                            logline = logline.encode('ascii', 'ignore') 
                         logct += logline
 
     def create_junit_file(self):
