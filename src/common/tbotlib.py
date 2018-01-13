@@ -118,6 +118,10 @@ class tbot(object):
     def __init__(self, workdir, labfile, cfgfile, logfilen, verbose, arguments):
         ## enable verbose output
         self.verbose = verbose
+        if '.py' in cfgfile:
+            cfgfile = cfgfile.replace('.py', '')
+        if '.py' in labfile:
+            labfile = labfile.replace('.py', '')
         self.cfgfile = cfgfile
         self.workdir = workdir
         self.resultdir = workdir + '/result'
@@ -141,9 +145,9 @@ class tbot(object):
 
         # load board config
         try:
-            self.config = importlib.import_module(cfgfile)
+            self.config = importlib.import_module(self.cfgfile)
         except ImportError:
-            print("board cfg file %s not found" % cfgfile)
+            print("board cfg file %s not found" % self.cfgfile)
             sys.exit(1)
 
         try:
