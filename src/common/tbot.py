@@ -61,6 +61,9 @@ signal.signal(signal.SIGTERM, signal_term_handler)
 # in tbot_workdir/src/tc for the testcase name
 # so remove eventually passed paths
 tcname = os.path.basename(args.tc)
+# if '.py' ending is missing, add it
+if not '.py' in tcname:
+    tcname = tcname + '.py'
 # save the name of our starttestcase
 tb.starttestcase = tcname
 ret = tb.call_tc(tcname)
