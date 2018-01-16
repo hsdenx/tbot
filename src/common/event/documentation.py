@@ -293,6 +293,7 @@ class doc_backend(object):
                     self.fd_duts = open(self.tb.workdir + '/logfiles/duts_settings.txt', 'w')
                 tmp = eid + '\t' +  el['val'] + '\n'
                 self.fd_duts.write(tmp)
+                continue
 
             newname = self._get_event_name(el)
             ret = self._check_ignore_list(eid, newname, evl)
