@@ -115,7 +115,7 @@ class tbot(object):
     :param arg4: name of logfile
     :param arg5: be verbose
     """
-    def __init__(self, workdir, labfile, cfgfile, logfilen, verbose, arguments):
+    def __init__(self, workdir, labfile, cfgfile, logfilen, verbose, arguments, tc, eventsim):
         ## enable verbose output
         self.verbose = verbose
         if '.py' in cfgfile:
@@ -124,8 +124,18 @@ class tbot(object):
             labfile = labfile.replace('.py', '')
         self.cfgfile = cfgfile
         self.workdir = workdir
+        self.eventsim = eventsim
         self.resultdir = workdir + '/result'
         self.arguments = arguments
+        # testcase are without path, as tbot searches always
+        # in tbot_workdir/src/tc for the testcase name
+        # so remove eventually passed paths
+        tcname = os.path.basename(tc)
+        # if '.py' ending is missing, add it
+        if not '.py' in tcname:
+            tcname = tcname + '.py'
+        # save the name of our starttestcase
+        self.starttestcase = tcname
         self.power_state = 'undef'
         self.tc_stack = []
         self.tc_stack_arg = []
@@ -237,8 +247,11 @@ class tbot(object):
         self.c_ctrl = Connection(self, "tb_ctrl")
 
         self.event = events(self, 'log/event.log')
-        self.event.create_event('main', self.config.boardname, "Boardname", True)
-        self.event.create_event('main', self.config.boardname, "DUTS_BOARDNAME", self.config.boardlabpowername)
+        self.event.create_event(self.starttestcase, self.config.boardname, "Boardname", True)
+        self.event.create_event(self.starttestcase, self.config.boardname, "DUTS_BOARDNAME", self.config.boardlabpowername)
+        if self.eventsim != 'none':
+            self.event.create_event(self.starttestcase, 'eventsim', "BoardnameEnd", False)
+            sys.exit(0)
 
         self.wdtdir = self.workdir + "/wdt"
         if not os.path.exists(self.wdtdir):
@@ -518,7 +531,7 @@ class tbot(object):
         except:
             pass
 
-        self.event.create_event('main', self.config.boardname, "BoardnameEnd", False)
+        self.event.create_event(self.starttestcase, self.config.boardname, "BoardnameEnd", False)
         logging.warn('End of TBOT: failure')
         # traceback.print_stack()
         self._ret = False
@@ -540,7 +553,7 @@ class tbot(object):
         self._ret = ret
         if self._main == 0:
             if self._ret:
-                self.event.create_event('main', self.config.boardname, "BoardnameEnd", True)
+                self.event.create_event(self.starttestcase, self.config.boardname, "BoardnameEnd", True)
                 logging.info('End of TBOT: success')
                 self.statusprint("End of TBOT: success")
                 self.cleanup()
@@ -1058,7 +1071,7 @@ class tbot(object):
         """
 
         if create_doc_event == True:
-            self.event.create_event('main', 'eof_write_cmd', 'SET_DOC_FILENAME', command.replace(" ", "_"))
+            self.event.create_event(self.starttestcase, 'eof_write_cmd', 'SET_DOC_FILENAME', command.replace(" ", "_"))
         self.eof_write(c, command, start, split)
         loop = True
         while loop == True:
@@ -1229,7 +1242,7 @@ class tbot(object):
         else False
         """
         if create_doc_event == True:
-            self.event.create_event('main', 'write_cmd_check', 'SET_DOC_FILENAME', cmd.replace(" ", "_"))
+            self.event.create_event(self.starttestcase, 'write_cmd_check', 'SET_DOC_FILENAME', cmd.replace(" ", "_"))
         self.eof_write(c, cmd, start)
         searchlist = [string]
         tmp = True

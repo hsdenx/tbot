@@ -82,6 +82,50 @@ class events(object):
 
         if id == 'BoardnameEnd':
             self.event_flush()
+            print("EVENTLOGFILE ", self.tb.eventsim)
+            if self.tb.eventsim != 'none':
+                try:
+                    self.fdsim = open(self.tb.workdir + '/' + self.tb.eventsim, 'r')
+                except:
+                    logging.warning("Could not create %s", self.tb.eventsim)
+                    sys.exit(1)
+                # delete old event list
+                self.event_list = []
+                # load saved event list
+                line = self.fdsim.readline()
+                cnt = 1
+                event = ''
+                id = ''
+                time = ''
+                pname = ''
+                name = ''
+                value = ''
+                while line:
+                    if 'EVENT' in line:
+                        # new event
+                        # save old to list if one
+                        if time != '':
+                            event = {'typ' : 'EVENT', 'time': time, 'id': str(id), 'pname' : str(pname), 'fname' : str(name), 'val' : str(value)}
+                            self.event_list.append(event)
+                        # get info from new line
+                        elements = line.split()
+                        time = elements[1] + ' ' + elements[2]
+                        id = elements[3]
+                        pname = elements[4]
+                        name = elements[5]
+                        elements = line.split(name)
+                        tmp = elements[1][1:]
+                        value = tmp[:-1]
+                    else:
+                        value += line[:-1]
+
+                    line = self.fdsim.readline()
+                    cnt += 1
+                    if not line:
+                        if event != '':
+                            event = {'typ' : 'EVENT', 'time': time, 'id': str(id), 'pname' : str(pname), 'fname' : str(name), 'val' : str(value)}
+                            self.event_list.append(event)
+
             if (self.tb.config.create_webpatch == 'yes'):
                 from web_patchwork import web_patchwork
                 self.webpatch = self.web_patchwork(self.tb, 'webpatch.html')

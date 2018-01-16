@@ -41,13 +41,16 @@ except:
     parser.add_argument("-v", "--verbose",
            action="store_true", dest="verbose", default=False,
            help="be verbose, print all read/write to stdout")
+    parser.add_argument("-e", "--event",
+           dest="eventsim", default='none',
+           help="open eventlogfile and run it")
     parser.add_argument('--version', action='version', version='%(prog)s 2017.10')
     parser.add_argument("-w", "--workdir",
            dest="workdir", default=os.getcwd(),
            help="set workdir, default os.getcwd()")
     args = parser.parse_args()
     print("**** option lab: %s cfg: %s log: %s tc: %s v %d a %s" % (args.labfile, args.cfgfile, args.logfile, args.tc, args.verbose, args.arguments))
-    tb = tbot(args.workdir, args.labfile, args.cfgfile, args.logfile, args.verbose, args.arguments)
+    tb = tbot(args.workdir, args.labfile, args.cfgfile, args.logfile, args.verbose, args.arguments, args.tc, args.eventsim)
 
 def signal_term_handler(signal, frame):
     print ("GOT signal ", tb)
@@ -57,16 +60,7 @@ def signal_term_handler(signal, frame):
 
 signal.signal(signal.SIGTERM, signal_term_handler)
 
-# testcase are without path, as tbot searches always
-# in tbot_workdir/src/tc for the testcase name
-# so remove eventually passed paths
-tcname = os.path.basename(args.tc)
-# if '.py' ending is missing, add it
-if not '.py' in tcname:
-    tcname = tcname + '.py'
-# save the name of our starttestcase
-tb.starttestcase = tcname
-ret = tb.call_tc(tcname)
+ret = tb.call_tc(tb.starttestcase)
 if ret == False:
     tb.end_tc(False)
 
