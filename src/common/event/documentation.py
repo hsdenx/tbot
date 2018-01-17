@@ -37,6 +37,12 @@ class doc_backend(object):
     You can set a own "testcasename" if you create the event:
     SET_DOC_FILENAME. 
 
+    You can set a own "testcasename" which collects all output
+    until the END SET_DOC_FILENAME_NOIRQ_END marker is found with
+    SET_DOC_FILENAME_NOIRQ. This is in experimental state,
+    and need some ideas, how to display output from different
+    connections.
+
     enable this backend with "create_documentation = 'yes'"
 
     created files are stored in tb.workdir + '/logfiles/
@@ -89,6 +95,7 @@ class doc_backend(object):
         self.ignoretclist = ignorelist
         # ignore lines which contain the follwoing strings
         self.striplist = tb.config.event_documentation_strip_list
+        self.set_noirq = False
 
     def __del__(self):
         try:
@@ -194,6 +201,10 @@ class doc_backend(object):
             return el['id']
         if el['id'] == 'SET_DOC_FILENAME':
             return el['id']
+        if el['id'] == 'SET_DOC_FILENAME_NOIRQ':
+            return el['id']
+        if el['id'] == 'SET_DOC_FILENAME_NOIRQ_END':
+            return el['id']
         if 'DUTS' in el['id']:
             return el['id']
         return 'none'
@@ -276,6 +287,8 @@ class doc_backend(object):
 	end = False
         interrupted = False
         while end != True:
+            if self.set_noirq == True:
+                filename = self.set_noirq_name
             el = self._get_next_event(evl)
             if el == '':
                 end = True
@@ -299,15 +312,32 @@ class doc_backend(object):
             ret = self._check_ignore_list(eid, newname, evl)
             if ret == 'ignore':
                 continue
-            if eid == 'Start':
+            if eid == 'Start' and self.set_noirq == False:
                 interrupted = True
                 self._analyse(evl, newname)
                 continue
-            if eid == 'SET_DOC_FILENAME':
+            if eid == 'SET_DOC_FILENAME' and self.set_noirq == False:
                 interrupted = True
                 self._analyse(evl, el['val'])
                 continue
-            if eid == 'End':
+            if eid == 'SET_DOC_FILENAME_NOIRQ' and self.set_noirq == False:
+                self.set_noirq = True
+                self.set_noirq_name = el['val']
+                self.set_noirq_tc_name = newname  
+                interrupted = True
+                self._analyse(evl, el['val'])
+                continue
+            if eid == 'SET_DOC_FILENAME_NOIRQ_END' and self.set_noirq == True:
+                if newname == self.set_noirq_tc_name:
+                    self.set_noirq = False
+                else:
+                    continue
+                try:
+                    fd.close()
+                except:
+                    print("filename noirq entry ", name, index)
+                return
+            if eid == 'End' and self.set_noirq == False:
                 try:
                     fd.close()
                 except:
@@ -337,6 +367,15 @@ class doc_backend(object):
                         else:
                             if l != '':
                                 logline += l
+
+                if self.set_noirq == True:
+                    if oldname == 'none':
+                        fd = open(self._create_fn(filename, newname, index, lnr), 'w')
+                    oldname = self.set_noirq_name
+                    # all in one log ... so different connections
+                    # are in one log ... here is some work ToDo
+                    newname = oldname
+                    interrupted = False
 
                 if oldname == 'none':
                     oldname = newname
