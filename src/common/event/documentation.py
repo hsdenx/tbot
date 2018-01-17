@@ -147,6 +147,11 @@ class doc_backend(object):
             docscript = "make_doku_cuby.sh"
             op = "/home/pi/tbot2go/documentation/cuby/"
             logname = 'logfiles'
+            # copy xenomai result images
+            cmd = "cp " + self.tb.resultdir + "/latency* " + op + "images"
+            ret = os.system(cmd)
+            if ret != 0:
+                logging.warn("Failed to copy xenomai image %s %d", cmd, ret)
         elif self.tb.config.create_documentation_auto == 'yocto':
             docname = "yocto_bbb.pdf"
             docscript = "make_doku_yocto.sh"
