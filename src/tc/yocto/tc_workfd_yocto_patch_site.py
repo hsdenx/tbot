@@ -24,6 +24,7 @@ from tbotlib import tbot
 logging.info("args: workdfd: %s", tb.workfd.name)
 
 tb.eof_call_tc("tc_workfd_goto_yocto_code.py")
+tb.event.create_event('main', 'tc_workfd_get_with_repo.py', 'SET_DOC_FILENAME_NOIRQ', 'repo_create_site.conf')
 p = '$TBOT_BASEDIR_YOCTO/build'
 tb.config.tc_workfd_check_if_dir_exists_name = p
 tb.eof_call_tc("tc_workfd_check_if_dir_exist.py")
@@ -50,5 +51,7 @@ val = '$TBOT_BASEDIR_YOCTO/meta-cuby/recipes-extended/images/files/cuby/swu-keys
 tbot_write_val2file(tb, fn, 'SWUPDATE_PRIVATE_KEY', val)
 val = '$TBOT_BASEDIR_YOCTO/meta-cuby/recipes-extended/images/files/cuby/swu-keys/passout'
 tbot_write_val2file(tb, fn, 'SWUPDATE_PASSWORD_FILE', val)
+
+tb.event.create_event('main', 'tc_workfd_get_with_repo.py', 'SET_DOC_FILENAME_NOIRQ_END', 'repo_create_site.conf')
 
 tb.end_tc(True)
