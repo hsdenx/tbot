@@ -40,6 +40,8 @@ class events(object):
         self.stack = []
         self.tb = tb
         self.logfile = logfile
+        self.logstart = 'EVVAL'
+        self.logend = 'EVEND'
 
         sys.path.append(tb.workdir +  "/src/common/event")
 
@@ -75,7 +77,7 @@ class events(object):
             self.stack.pop()
 
         time = strftime("%Y-%m-%d %H:%M:%S", gmtime())
-        tmp = "EVENT " + time + " " + str(id) + " " + str(pname) + " " + str(name) + " " + str(value) + "\n"
+        tmp = "EVENT " + time + " " + str(id) + " " + str(pname) + " " + str(name) + " " + self.logstart + str(value) + self.logend + "\n"
         self.fd.write(tmp)
         event = {'typ' : 'EVENT', 'time': time, 'id': str(id), 'pname' : str(pname), 'fname' : str(name), 'val' : str(value)}
         self.event_list.append(event)
@@ -101,30 +103,42 @@ class events(object):
                 name = ''
                 value = ''
                 while line:
+                    #print("LINE ", line)
                     if 'EVENT' in line:
                         # new event
-                        # save old to list if one
-                        if time != '':
-                            event = {'typ' : 'EVENT', 'time': time, 'id': str(id), 'pname' : str(pname), 'fname' : str(name), 'val' : str(value)}
-                            self.event_list.append(event)
                         # get info from new line
                         elements = line.split()
                         time = elements[1] + ' ' + elements[2]
                         id = elements[3]
                         pname = elements[4]
                         name = elements[5]
-                        elements = line.split(name)
-                        tmp = elements[1][1:]
-                        value = tmp[:-1]
+                        tmp = line.split(self.logstart)
+                        #print("TMP ", tmp)
+                        tmp = tmp[1]
+                        if self.logend in tmp:
+                            tmp = tmp.split(self.logend)
+                            value = tmp[0]
+                            #print("VAL END ", value)
+                            event = {'typ' : 'EVENT', 'time': time, 'id': str(id), 'pname' : str(pname), 'fname' : str(name), 'val' : str(value)}
+                            self.event_list.append(event)
+                        else:
+                            value = tmp
+                            #print("VAL S ", value)
                     else:
-                        value += line[:-1]
+                        if self.logend in line:
+                            tmp = line.split(self.logend)
+                            #print("found EVEND", tmp)
+                            value += tmp[0]
+                            #print("VAL END 2 ", value)
+                            event = {'typ' : 'EVENT', 'time': time, 'id': str(id), 'pname' : str(pname), 'fname' : str(name), 'val' : str(value)}
+                            self.event_list.append(event)
+                        else:
+                            # remove \n only and append to value
+                            value += line[:-1]
+                            #print("VAL A ", value)
 
                     line = self.fdsim.readline()
                     cnt += 1
-                    if not line:
-                        if event != '':
-                            event = {'typ' : 'EVENT', 'time': time, 'id': str(id), 'pname' : str(pname), 'fname' : str(name), 'val' : str(value)}
-                            self.event_list.append(event)
 
             if (self.tb.config.create_webpatch == 'yes'):
                 from web_patchwork import web_patchwork
@@ -218,7 +232,7 @@ class events(object):
             name = 'main'
 
         time = strftime("%Y-%m-%d %H:%M:%S", gmtime())
-        tmp = "EVENT " + time + " log " + name + " " + str(c.name) + " " + str(dir) + " " + string + "\n"
+        tmp = "EVENT " + time + " log " + name + " " + str(c.name) + " "+ self.logstart + str(dir) + " " + string + self.logend + "\n"
         self.fd.write(tmp)
         event = {'typ' : 'EVENT', 'time': time, 'id': 'log', 'pname' : str(name), 'fname' : str(c.name), 'val' : str(dir) + " " + string}
         self.event_list.append(event)
