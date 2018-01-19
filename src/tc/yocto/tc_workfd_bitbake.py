@@ -52,7 +52,7 @@ if tb.config.tc_workfd_bitbake_machine != '':
     tb.eof_write_cmd_get_line(tb.workfd, cmd)
 
     self.event.create_event('main', 'tc_workfd_bitbake.py', 'SET_DOC_FILENAME', 'get_build_info')
-    cmd = 'head -40 ' + tb.ret_write_cmd_get_line.rstrip()
+    cmd = 'head -60 ' + tb.ret_write_cmd_get_line.rstrip()
     tb.eof_write(tb.workfd, cmd)
     searchlist = ['NOTE', 'BB_VERSION', 'BUILD_SYS', 'NATIVELSBSTRING', 'TARGET_SYS',
 		'MACHINE', 'DISTRO_VERSION'
