@@ -1394,6 +1394,8 @@ class tbot(object):
         :return: 'prompt' if prompt found, True if string is found, else False
         """
         ret = c.expect_string(string)
+        if ret == '0':
+            ret = True
         self.buf = c.get_log()
         return ret
 
