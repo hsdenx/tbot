@@ -17,6 +17,8 @@
 #
 # set the toolchain, dependend on the architecture setting in
 # tb.config.tc_workfd_set_toolchain_arch
+# or source script set with tb.config.tc_workfd_set_toolchain_source
+# if tb.config.tc_workfd_set_toolchain_source != 'no'
 #
 # supported toolchains defined in
 # tb.config.tc_workfd_set_toolchain_t_p and tb.config.tc_workfd_set_toolchain_cr_co
@@ -31,13 +33,29 @@
 from tbotlib import tbot
 
 try:
+    tb.config.tc_workfd_set_toolchain_source
+except:
+    tb.config.tc_workfd_set_toolchain_source = 'none'
+
+try:
     tb.config.tc_workfd_set_toolchain_addlist
 except:
     tb.config.tc_workfd_set_toolchain_addlist = ''
 
+try:
+    tb.config.tc_workfd_set_toolchain_arch
+except:
+    tb.config.tc_workfd_set_toolchain_arch = 'notset'
+
 logging.info("args: %s %s %s", tb.workfd.name, tb.config.tc_workfd_set_toolchain_arch, tb.config.tc_workfd_set_toolchain_addlist)
+logging.info("args: %s", tb.config.tc_workfd_set_toolchain_source)
 
 c = tb.workfd
+
+if tb.config.tc_workfd_set_toolchain_source != 'none':
+    cmd = 'source ' + tb.config.tc_workfd_set_toolchain_source
+    tb.write_lx_cmd_check(c, cmd)
+    tb.end_tc(True)
 
 # set ARCH
 cmd = 'export ARCH=' + tb.config.tc_workfd_set_toolchain_arch
