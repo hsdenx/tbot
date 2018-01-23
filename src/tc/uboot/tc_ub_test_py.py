@@ -22,6 +22,11 @@
 # tb.config.tc_ub_test_py_hook_script_path
 #
 # you can disable this testcase with tb.config.tc_ub_test_py_start = 'no'
+#
+# may a configure file is needed, so create it with
+# tb.config.tc_ub_test_py_configfile. This variable contains
+# the config file, which gets created.
+#
 # End:
 
 from tbotlib import tbot
@@ -30,6 +35,11 @@ try:
     tb.config.tc_lab_compile_uboot_boardname
 except:
     tb.config.tc_lab_compile_uboot_boardname = tb.config.boardname
+
+try:
+    tb.config.tc_ub_test_py_configfile
+except:
+    tb.config.tc_ub_test_py_configfile = []
 
 logging.info("args: %s %s %s", tb.config.boardname, tb.config.boardlabname, tb.config.tc_ub_test_py_hook_script_path)
 logging.info("args: %s", tb.config.tc_lab_compile_uboot_boardname)
@@ -50,6 +60,18 @@ tb.eof_call_tc("tc_workfd_goto_uboot_code.py")
 
 tb.event.create_event('main', 'tc_ub_test_py.py', 'SET_DOC_FILENAME', 'test_py_start')
 tc_ub_test_py_uboot_dir = tb.config.tc_lab_source_dir + "/u-boot-" + tb.config.boardlabname
+
+# create config file if needed
+if tb.config.tc_ub_test_py_configfile != []:
+    cfgname = tb.config.tc_lab_compile_uboot_boardname.replace('-', '_')
+    fn = tc_ub_test_py_uboot_dir + '/test/py/u_boot_boardenv_' + cfgname + '.py'
+    opp = ' > '
+    for line in tb.config.tc_ub_test_py_configfile:
+        cmd = 'echo ' + line + opp + fn
+        tb.eof_write(c, cmd)
+        opp = ' >> '
+    cmd = 'cat ' + fn
+    tb.write_lx_cmd_check(c, cmd)
 
 cmd = 'PATH=' + tb.config.tc_ub_test_py_hook_script_path + ':$PATH;PYTHONPATH=' + tc_ub_test_py_uboot_dir + ';./test/py/test.py --bd ' + tb.config.tc_lab_compile_uboot_boardname + ' -s --build-dir .'
 tb.eof_write(c, cmd)
