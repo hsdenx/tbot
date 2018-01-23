@@ -34,6 +34,9 @@ se = tb.tc_ub_get_version_string
 cmd = 'strings -a ' + sf + ' | grep "' + se + '" --color=never'
 tb.eof_write_cmd_get_line(c, cmd)
 tb.config.tc_return = tb.ret_write_cmd_get_line.strip()
+if tb.config.tc_return[0] == 'V':
+    tb.config.tc_return = tb.config.tc_return[1:]
+
 tb.event.create_event('main', tb.config.boardname, "UBOOT_VERSION", tb.config.tc_return)
 
 tb.end_tc(True)

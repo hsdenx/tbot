@@ -48,13 +48,15 @@ while tmp == True:
         tmp = True
 
 tb.c_con.set_check_error(False)
-tb.eof_write(c, 'res')
-searchlist = ['U-Boot SPL 20']
+tb.write_stream(c, 'res')
+searchlist = ['U-Boot SPL 20', 'autoboot']
 tmp = True
 splvers = 'undef'
 while tmp == True:
     retu = tb.tbot_rup_and_check_strings(c, searchlist)
     if retu == 'prompt':
+        tmp = False
+    if retu == '1':
         tmp = False
     if retu == '0':
         tb.tbot_rup_and_check_strings(c, '\n')

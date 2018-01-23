@@ -54,7 +54,7 @@ while tmp == True:
 
 self.event.create_event('main', 'tc_ub_basic.py', 'SET_DOC_FILENAME', 'reset')
 tb.c_con.set_check_error(False)
-tb.eof_write(c, 'reset')
+tb.write_stream(c, 'reset')
 tb.set_board_state("u-boot")
 tb.c_con.set_check_error(True)
 
