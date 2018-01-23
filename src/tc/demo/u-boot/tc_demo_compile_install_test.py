@@ -50,14 +50,14 @@
 from tbotlib import tbot
 
 try:
-    tc_demo_compile_install_test_ub_vers_file
+    tb.config.tc_demo_compile_install_test_ub_vers_file
 except:
-    tc_demo_compile_install_test_ub_vers_file = ''
+    tb.config.tc_demo_compile_install_test_ub_vers_file = ''
 
 try:
-    tc_demo_compile_install_test_spl_vers_file
+    tb.config.tc_demo_compile_install_test_spl_vers_file
 except:
-    tc_demo_compile_install_test_spl_vers_file = ''
+    tb.config.tc_demo_compile_install_test_spl_vers_file = ''
 
 try:
     tb.config.tc_demo_uboot_test_deploy
