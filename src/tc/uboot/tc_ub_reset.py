@@ -24,7 +24,7 @@ from tbotlib import tbot
 tb.c_con.set_check_error(False)
 
 # reset the board
-tb.eof_write(tb.c_con, "res")
+tb.write_stream(tb.c_con, "res")
 tb.gotprompt = True
 
 # get u-boot login
