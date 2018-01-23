@@ -14,7 +14,8 @@
 # Description:
 # start with
 # python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_upd_spl.py
-# update new spl to board
+# update new spl to board if tb.config.tc_ub_upd_spl_withspl == 'yes'
+#
 # steps:
 # - load tbot u-boot env vars
 # - execute "run tbot_upd_spl"
@@ -26,12 +27,20 @@
 from tbotlib import tbot
 
 try:
+    tb.config.tc_ub_upd_spl_withspl
+except:
+    tb.config.tc_ub_upd_spl_withspl = 'yes'
+
+try:
     tb.config.tc_ub_upd_spl_ubvars
 except:
     tb.config.tc_ub_upd_spl_ubvars = ''
 
 
-logging.info("args: %s %s %s %s", tb.config.ub_load_board_env_addr, tb.config.ub_load_board_env_subdir, tb.config.tc_ub_upd_spl_latest, tb.config.tc_ub_upd_spl_ubvars)
+logging.info("args: %s %s %s %s %s", tb.config.ub_load_board_env_addr, tb.config.ub_load_board_env_subdir, tb.config.tc_ub_upd_spl_latest, tb.config.tc_ub_upd_spl_ubvars, tb.config.tc_ub_upd_spl_withspl)
+
+if tb.config.tc_ub_upd_spl_withspl != 'yes':
+    tb.end_tc(True)
 
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
