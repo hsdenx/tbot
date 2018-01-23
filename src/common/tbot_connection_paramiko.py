@@ -45,7 +45,7 @@ class Connection(object):
         # add here strings, which never should occur
         # Here we set U-Boot strings, as we never want a reboot
         # beside the reboots we want
-        self.error = ['Resetting CPU', 'Model:']
+        self.error = ['Resetting CPU', 'Model:', 'Bad trap at PC']
         self.cnt_error = len(self.error)
         self.send_prompt = False
 
