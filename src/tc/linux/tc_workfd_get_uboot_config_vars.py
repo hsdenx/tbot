@@ -47,6 +47,7 @@ if (tb.config.tc_ub_memory_ram_big == 'undef'):
     # Try to get CONFIG_SYS_ARCH
     tb.uboot_config_option = 'CONFIG_SYS_ARCH'
     tb.eof_call_tc("tc_workfd_get_uboot_config_string.py")
+    tb.config_result = tb.config_result.replace(" ", "")
     tb.event.create_event('main', tb.config.boardname, "DUTS_UBOOT_ARCH", tb.config_result)
     if tb.config_result == 'powerpc':
         tb.config.tc_ub_memory_ram_big = 'yes'
