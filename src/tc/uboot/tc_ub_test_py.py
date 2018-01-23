@@ -26,7 +26,13 @@
 
 from tbotlib import tbot
 
+try:
+    tb.config.tc_lab_compile_uboot_boardname
+except:
+    tb.config.tc_lab_compile_uboot_boardname = tb.config.boardname
+
 logging.info("args: %s %s %s", tb.config.boardname, tb.config.boardlabname, tb.config.tc_ub_test_py_hook_script_path)
+logging.info("args: %s", tb.config.tc_lab_compile_uboot_boardname)
 
 if tb.config.tc_ub_test_py_start == 'no':
     tb.end_tc(True)
@@ -45,7 +51,7 @@ tb.eof_call_tc("tc_workfd_goto_uboot_code.py")
 tb.event.create_event('main', 'tc_ub_test_py.py', 'SET_DOC_FILENAME', 'test_py_start')
 tc_ub_test_py_uboot_dir = tb.config.tc_lab_source_dir + "/u-boot-" + tb.config.boardlabname
 
-cmd = 'PATH=' + tb.config.tc_ub_test_py_hook_script_path + ':$PATH;PYTHONPATH=' + tc_ub_test_py_uboot_dir + ';./test/py/test.py --bd ' + tb.config.boardname + ' -s --build-dir .'
+cmd = 'PATH=' + tb.config.tc_ub_test_py_hook_script_path + ':$PATH;PYTHONPATH=' + tc_ub_test_py_uboot_dir + ';./test/py/test.py --bd ' + tb.config.tc_lab_compile_uboot_boardname + ' -s --build-dir .'
 tb.eof_write(c, cmd)
 c.set_check_error(False)
 searchlist = ['INTERNALERROR']
