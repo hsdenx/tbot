@@ -27,7 +27,15 @@ except:
     tb.workfd.tc_lab_source_dir_checked = False
 
 if tb.workfd.tc_lab_source_dir_checked == False:
-    tmp = 'export TBOT_BASEDIR=' + tb.config.tc_lab_source_dir
+    if tb.workfd.name == 'tb_cpc':
+        try:
+            tb.config.compile_pc_workdir
+        except:
+            tb.config.compile_pc_workdir = tb.config.tc_lab_source_dir
+
+        tmp = 'export TBOT_BASEDIR=' + tb.config.compile_pc_workdir
+    else:
+        tmp = 'export TBOT_BASEDIR=' + tb.config.tc_lab_source_dir
     tb.write_lx_cmd_check(tb.workfd, tmp, create_doc_event=True)
 
     self.event.create_event('main', 'tc_workfd_goto_lab_source_dir.py', 'SET_DOC_FILENAME', 'TBOT_BASEDIR_check_exist')
