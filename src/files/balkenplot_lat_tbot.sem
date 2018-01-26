@@ -1,7 +1,7 @@
 #
 # Run this gnuplot script with the command line:
 #
-# gnuplot -e 'input_file="lat_tbot.dat";output_file="lat_tbot.png";graph_title="cuby latency statistic"' src/files/balkenplot_lat_tbot.sem
+# gnuplot -e 'input_file="lat_tbot.dat";output_file="lat_tbot.png";graph_title="boardname latency statistic"' src/files/balkenplot_lat_tbot.sem
 #
 
 set terminal png size 900,700

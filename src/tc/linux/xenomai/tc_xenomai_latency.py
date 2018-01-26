@@ -156,7 +156,7 @@ if df != '':
     print("CMD ", cmd)
     tb.c_ctrl.copy_file(df, loc)
     of = tb.resultdir + '/lat_tbot' + tb.config.tc_xenomai_latency_opt.replace(' ', '_') + '.png'
-    cmd = 'gnuplot -e \'input_file="' + loc + '";output_file="' + of + '";graph_title="cuby latency statistic"\' ' + tb.workdir + '/src/files/balkenplot_lat_tbot.sem'
+    cmd = 'gnuplot -e \'input_file="' + loc + '";output_file="' + of + '";graph_title="' + tb.config.boardname + ' latency statistic"\' ' + tb.workdir + '/src/files/balkenplot_lat_tbot.sem'
     os.system(cmd)
 
 if tb.config.tc_xenomai_latency_datfile2 != '':
