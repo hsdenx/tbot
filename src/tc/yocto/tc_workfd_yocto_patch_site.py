@@ -17,9 +17,24 @@
 #
 # patch / create site.conf
 #
+# add SWUPDATE_PRIVATE_KEY if tb.config.tc_workfd_yocto_patch_site_swu_priv_key
+#  != 'none'
+# add SWUPDATE_PASSWORD_FILE if tb.config.tc_workfd_yocto_patch_site_swu_priv_passout
+#  != 'none'
+#
 # End:
 
 from tbotlib import tbot
+
+try:
+    tb.config.tc_workfd_yocto_patch_site_swu_priv_key
+except:
+    tb.config.tc_workfd_yocto_patch_site_swu_priv_key = 'none'
+
+try:
+    tb.config.tc_workfd_yocto_patch_site_swu_priv_passout
+except:
+    tb.config.tc_workfd_yocto_patch_site_swu_priv_passout = 'none'
 
 logging.info("args: workdfd: %s", tb.workfd.name)
 
@@ -47,10 +62,12 @@ def tbot_write_val2file(tb, filen, key, value):
     cmd = 'echo  ' + key + ' = \\"' + value + '\\" >> ' + filen
     tb.write_lx_cmd_check(tb.workfd, cmd)
 
-val = '$TBOT_BASEDIR_YOCTO/meta-cuby/recipes-extended/images/files/cuby/swu-keys/priv.pem'
-tbot_write_val2file(tb, fn, 'SWUPDATE_PRIVATE_KEY', val)
-val = '$TBOT_BASEDIR_YOCTO/meta-cuby/recipes-extended/images/files/cuby/swu-keys/passout'
-tbot_write_val2file(tb, fn, 'SWUPDATE_PASSWORD_FILE', val)
+if tb.config.tc_workfd_yocto_patch_site_swu_priv_key != 'none':
+    val = tb.config.tc_workfd_yocto_patch_site_swu_priv_key
+    tbot_write_val2file(tb, fn, 'SWUPDATE_PRIVATE_KEY', val)
+if tb.config.tc_workfd_yocto_patch_site_swu_priv_passout != 'none':
+    val = tb.config.tc_workfd_yocto_patch_site_swu_priv_passout
+    tbot_write_val2file(tb, fn, 'SWUPDATE_PASSWORD_FILE', val)
 
 tb.event.create_event('main', 'tc_workfd_get_with_repo.py', 'SET_DOC_FILENAME_NOIRQ_END', 'repo_create_site.conf')
 
