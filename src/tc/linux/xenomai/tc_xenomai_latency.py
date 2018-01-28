@@ -180,7 +180,7 @@ if tb.config.tc_xenomai_latency_datfile2 != '':
     os.system(cmd)
     tb.c_ctrl.copy_file(of, loc)
     oft = tb.resultdir + '/latency' + tb.config.tc_xenomai_latency_opt.replace(' ', '_') + '.png'
-    cmd = 'gnuplot -e \'input_file="' + loc + '";output_file="' + oft + '";graph_title="cuby latency"\' ' + tb.workdir + '/src/files/balkenplot_latency.sem'
+    cmd = 'gnuplot -e \'input_file="' + loc + '";output_file="' + oft + '";graph_title="' + tb.config.boardname + ' latency"\' ' + tb.workdir + '/src/files/balkenplot_latency.sem'
     os.system(cmd)
 
 tb.workfd = save
