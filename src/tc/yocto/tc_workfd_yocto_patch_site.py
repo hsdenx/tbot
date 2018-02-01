@@ -26,6 +26,8 @@
 #  != 'none'
 # add SWUPDATE_PUBLIC_KEY if tb.config.tc_workfd_yocto_patch_site_swu_pub_key
 #  != 'none'
+# add UB_KEY_PATH if tb.config.tc_workfd_yocto_patch_site_ub_key
+#  != 'none'
 # add DL_DIR if tb.config.tc_workfd_yocto_patch_site_dl_dir != 'none'
 # add SSTATE_DIR if tb.config.tc_workfd_yocto_patch_site_sstate_dir != 'none'
 # add SRC_LINUX_STABLE if tb.config.tc_workfd_yocto_patch_site_src_linux_stable != 'none'
@@ -74,6 +76,11 @@ try:
 except:
     tb.config.tc_workfd_yocto_patch_site_premirrors = 'none'
 
+try:
+    tb.config.tc_workfd_yocto_patch_site_ub_key
+except:
+    tb.config.tc_workfd_yocto_patch_site_ub_key = 'none'
+
 logging.info("args: workdfd: %s", tb.workfd.name)
 logging.info("args: default filepath: %s", tb.config.tc_workfd_yocto_patch_site_path_default_file)
 
@@ -113,7 +120,7 @@ if tb.config.tc_workfd_yocto_patch_site_swu_priv_passout != 'none':
     val = tb.config.tc_workfd_yocto_patch_site_swu_priv_passout
     tbot_write_val2file(tb, fn, 'SWUPDATE_PASSWORD_FILE', val)
 if tb.config.tc_workfd_yocto_patch_site_swu_pub_key != 'none':
-    val = tb.config.tc_workfd_yocto_patch_site_swu_priv_passout
+    val = tb.config.tc_workfd_yocto_patch_site_swu_pub_key
     tbot_write_val2file(tb, fn, 'SWUPDATE_PUBLIC_KEY', val)
 if tb.config.tc_workfd_yocto_patch_site_dl_dir != 'none':
     val = tb.config.tc_workfd_yocto_patch_site_dl_dir
@@ -124,6 +131,9 @@ if tb.config.tc_workfd_yocto_patch_site_sstate_dir != 'none':
 if tb.config.tc_workfd_yocto_patch_site_src_linux_stable != 'none':
     val = tb.config.tc_workfd_yocto_patch_site_src_linux_stable
     tbot_write_val2file(tb, fn, 'SRC_LINUX_STABLE', val)
+if tb.config.tc_workfd_yocto_patch_site_ub_key != 'none':
+    val = tb.config.tc_workfd_yocto_patch_site_ub_key
+    tbot_write_val2file(tb, fn, 'UB_KEY_PATH', val)
 
 if tb.config.tc_workfd_yocto_patch_site_premirrors != 'none':
     cmd = 'echo PREMIRRORS_prepend = \\"\\\  >> ' + fn
