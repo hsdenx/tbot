@@ -32,6 +32,8 @@ Buy:
 
   https://www.conrad.de/de/raspberry-pi-verbindungskabel-lk-cable-20-pcduino-raspberry-pi-a-b-b-arduino-1267839.html
 
+  you need for each relay / LED one cable.
+
 - Power adapter for the raspberry pi
 
 - SD card for the raspberry PI
