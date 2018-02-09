@@ -215,7 +215,7 @@ class tbot(object):
         self._ret = False
 
         # check for result dir and delete all content
-        self.resultdir += '-' + str(os.getpid())
+        self.resultdir += '/' + str(os.getpid())
         os.system("mkdir -p " + self.resultdir)
         os.system("rm -rf " + self.resultdir + "/*")
 
