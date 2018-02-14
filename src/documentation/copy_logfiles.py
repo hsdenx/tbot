@@ -47,9 +47,9 @@ class copy_logfiles(object):
                 # print(" COPY ", self.options.idir + '/' + s, self.options.odir + '/' + t)
                 shutil.copy2(self.options.idir + '/' + s, self.options.odir + '/' + t)
             else:
-                print("%s not found in odir %s" % (t, self.options.odir))
+                #print("%s not found in odir %s" % (t, self.options.odir))
                 if self.options.force:
-                    print("force")
+                    #print("force")
                     shutil.copy2(self.options.idir + '/' + s, self.options.odir + '/' + t)
                 pass
 

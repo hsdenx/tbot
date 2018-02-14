@@ -340,13 +340,15 @@ class doc_backend(object):
                 try:
                     fd.close()
                 except:
-                    print("filename noirq entry ", name, index)
+                    #print("filename noirq entry ", name, index)
+                    pass
                 return
             if eid == 'End' and self.set_noirq == False:
                 try:
                     fd.close()
                 except:
-                    print("filename no entry ", name, index)
+                    #print("filename no entry ", name, index)
+                    pass
                 return
             tmp = el['val'].split()
             if tmp[0] != 'r':
