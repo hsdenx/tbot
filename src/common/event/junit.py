@@ -251,6 +251,19 @@ class junit_backend(object):
         if (self.tb.config.create_dot == 'yes'):
             tmp = "cp " + self.tb.resultdir + "/tc.png " + newdirtmptbot + "graph.png"
             os.system(tmp)
+        # copy eventually created xenomai stats
+        try:
+            self.tb.config.tc_xenomai_latency_opt
+            files = ['lat_tbot-t2.png', 'lat_tbot.png', 'lat_tbot.dat.loc', 'lat_tbot.dat-t2.loc']
+            for f in files:
+                n = f
+                n = n.replace('lat_tbot', 'xenomai-latency')
+                if 'loc' in n:
+                    n = n.replace('loc', 'txt')
+                tmp = "cp " + self.tb.resultdir + '/' + f + ' ' + newdirtmptbot + n
+                os.system(tmp)
+        except:
+            pass
         if (self.tb.config.create_html_log == 'yes'):
             tmp = "cp " + self.tb.resultdir + "/html_log.html " + newdirtmptbot + "/html_log.html"
             os.system(tmp)
