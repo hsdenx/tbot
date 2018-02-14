@@ -144,59 +144,60 @@ class junit_backend(object):
                     self.error_string += 'Failed\n'
 
     def _get_testcases(self, testcases):
-        evl = list(self.tb.event.event_list)
-        el = 'start'
-        error_string = ''
-        logct = ''
-        tcname = ''
-        while el != '':
-            el = self._get_next_event(evl)
-            if el == '':
-                continue
-            if el['typ'] != 'EVENT':
-                continue
-            eid = self._get_event_id(el)
-            if eid == 'none':
-                continue
-            name = self._get_event_name(el)
-            ret = self._check_ignore_list(eid, name, evl)
-            if ret == 'ignore':
-                continue
-            if eid == 'WDT':
-                error_string += 'WDT triggered\n'
-            if eid == 'Start':
-                if self.tb.starttestcase == name:
+        for cur_tclist in self.tclist:
+            evl = list(self.tb.event.event_list)
+            el = 'start'
+            error_string = ''
+            logct = ''
+            tcname = ''
+            while el != '':
+                el = self._get_next_event(evl)
+                if el == '':
                     continue
-                if self.record_log == False:
-                    if name in self.tclist:
-                        self.record_log = True
-                        logct = ''
-                        tcname = name
-                        stime = strptime(el['time'], "%Y-%m-%d %H:%M:%S")
-            if eid == 'End':
-                if self.record_log == True and name == tcname:
-                    self.record_log = False
-                    etime = strptime(el['time'], "%Y-%m-%d %H:%M:%S")
-                    diff = mktime(etime) - mktime(stime)
-                    if el['val'] == 'False':
-                        error_string += 'Failed\n'
-                    tc = TestCase(self.testgrp, tcname.replace(".py", ""), float(diff), logct, '')
-                    if error_string != '':
-                        tc.add_error_info(error_string)
-                    testcases.append(tc)
-            if eid == 'log':
-                if self.record_log == True:
-                    logline = el['val']
-                    if logline[0] == 'r':
-                        logline = logline[2:]
-                        # convert to unicode
-                        # see
-                        # https://stackoverflow.com/questions/21129020/how-to-fix-unicodedecodeerror-ascii-codec-cant-decode-byte
-                        if isinstance(logline, str):
-                            logline = logline.decode('ascii', 'ignore').encode('ascii') #note: this removes the character and encodes back to string.
-                        elif isinstance(logline, unicode):
-                            logline = logline.encode('ascii', 'ignore') 
-                        logct += logline
+                if el['typ'] != 'EVENT':
+                    continue
+                eid = self._get_event_id(el)
+                if eid == 'none':
+                    continue
+                name = self._get_event_name(el)
+                ret = self._check_ignore_list(eid, name, evl)
+                if ret == 'ignore':
+                    continue
+                if eid == 'WDT':
+                    error_string += 'WDT triggered\n'
+                if eid == 'Start':
+                    if self.tb.starttestcase == name:
+                        continue
+                    if self.record_log == False:
+                        if name in cur_tclist:
+                            self.record_log = True
+                            logct = ''
+                            tcname = name
+                            stime = strptime(el['time'], "%Y-%m-%d %H:%M:%S")
+                if eid == 'End':
+                    if self.record_log == True and name == tcname:
+                        self.record_log = False
+                        etime = strptime(el['time'], "%Y-%m-%d %H:%M:%S")
+                        diff = mktime(etime) - mktime(stime)
+                        if el['val'] == 'False':
+                            error_string += 'Failed\n'
+                        tc = TestCase(self.testgrp, tcname.replace(".py", ""), float(diff), logct, '')
+                        if error_string != '':
+                            tc.add_error_info(error_string)
+                        testcases.append(tc)
+                if eid == 'log':
+                    if self.record_log == True:
+                        logline = el['val']
+                        if logline[0] == 'r':
+                            logline = logline[2:]
+                            # convert to unicode
+                            # see
+                            # https://stackoverflow.com/questions/21129020/how-to-fix-unicodedecodeerror-ascii-codec-cant-decode-byte
+                            if isinstance(logline, str):
+                                logline = logline.decode('ascii', 'ignore').encode('ascii') #note: this removes the character and encodes back to string.
+                            elif isinstance(logline, unicode):
+                                logline = logline.encode('ascii', 'ignore') 
+                            logct += logline
 
     def create_junit_file(self):
         """create the junit file
