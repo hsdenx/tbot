@@ -112,4 +112,8 @@ if tb.config.tc_workfd_yocto_patch_site_src_linux_stable != 'none':
 
 tb.event.create_event('main', 'tc_workfd_get_with_repo.py', 'SET_DOC_FILENAME_NOIRQ_END', 'repo_create_site.conf')
 
+tb.event.create_event('main', 'tc_workfd_get_with_repo.py', 'SET_DOC_FILENAME_NOIRQ', 'repo_dump_site.conf')
+tb.write_lx_cmd_check(tb.workfd, "cat " + fn)
+tb.event.create_event('main', 'tc_workfd_get_with_repo.py', 'SET_DOC_FILENAME_NOIRQ_END', 'repo_dump_site.conf')
+
 tb.end_tc(True)
