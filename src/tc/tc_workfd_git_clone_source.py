@@ -52,6 +52,7 @@ if tb.config.tc_lab_git_clone_source_git_reference != 'none':
 else:
     opt = ''
 
+tb.event.create_event('main', 'tc_workfd_git_clone_source.py', 'SET_DOC_FILENAME_NOIRQ', 'clone_' + repo_name)
 tmp = "git clone " + opt + tb.config.tc_lab_git_clone_source_git_repo + " " + repo_name
 tb.eof_write(tb.workfd, tmp)
 searchlist = ["Username", "assword", "Authentication failed", "Receiving", "yes"]
@@ -109,4 +110,5 @@ tb.config.tc_workfd_apply_local_patches_dir = tb.config.tc_lab_git_clone_apply_p
 # check if there are local "git am" patches to apply
 tb.eof_call_tc("tc_workfd_apply_local_patches.py")
 
+tb.event.create_event('main', 'tc_workfd_git_clone_source.py', 'SET_DOC_FILENAME_NOIRQ_END', 'clone_' + repo_name)
 tb.end_tc(True)
