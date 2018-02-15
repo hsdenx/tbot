@@ -21,6 +21,9 @@
 #  != 'none'
 # add SWUPDATE_PASSWORD_FILE if tb.config.tc_workfd_yocto_patch_site_swu_priv_passout
 #  != 'none'
+# add DL_DIR if tb.config.tc_workfd_yocto_patch_site_dl_dir != 'none'
+# add SSTATE_DIR if tb.config.tc_workfd_yocto_patch_site_sstate_dir != 'none'
+# add SRC_LINUX_STABLE if tb.config.tc_workfd_yocto_patch_site_src_linux_stable != 'none'
 #
 # End:
 
@@ -35,6 +38,21 @@ try:
     tb.config.tc_workfd_yocto_patch_site_swu_priv_passout
 except:
     tb.config.tc_workfd_yocto_patch_site_swu_priv_passout = 'none'
+
+try:
+    tb.config.tc_workfd_yocto_patch_site_dl_dir
+except:
+    tb.config.tc_workfd_yocto_patch_site_dl_dir = 'none'
+
+try:
+    tb.config.tc_workfd_yocto_patch_site_sstate_dir
+except:
+    tb.config.tc_workfd_yocto_patch_site_sstate_dir = 'none'
+
+try:
+    tb.config.tc_workfd_yocto_patch_site_src_linux_stable
+except:
+    tb.config.tc_workfd_yocto_patch_site_src_linux_stable = 'none'
 
 logging.info("args: workdfd: %s", tb.workfd.name)
 
@@ -68,6 +86,15 @@ if tb.config.tc_workfd_yocto_patch_site_swu_priv_key != 'none':
 if tb.config.tc_workfd_yocto_patch_site_swu_priv_passout != 'none':
     val = tb.config.tc_workfd_yocto_patch_site_swu_priv_passout
     tbot_write_val2file(tb, fn, 'SWUPDATE_PASSWORD_FILE', val)
+if tb.config.tc_workfd_yocto_patch_site_dl_dir != 'none':
+    val = tb.config.tc_workfd_yocto_patch_site_dl_dir
+    tbot_write_val2file(tb, fn, 'DL_DIR', val)
+if tb.config.tc_workfd_yocto_patch_site_sstate_dir != 'none':
+    val = tb.config.tc_workfd_yocto_patch_site_sstate_dir
+    tbot_write_val2file(tb, fn, 'SSTATE_DIR', val)
+if tb.config.tc_workfd_yocto_patch_site_src_linux_stable != 'none':
+    val = tb.config.tc_workfd_yocto_patch_site_src_linux_stable
+    tbot_write_val2file(tb, fn, 'SRC_LINUX_STABLE', val)
 
 tb.event.create_event('main', 'tc_workfd_get_with_repo.py', 'SET_DOC_FILENAME_NOIRQ_END', 'repo_create_site.conf')
 
