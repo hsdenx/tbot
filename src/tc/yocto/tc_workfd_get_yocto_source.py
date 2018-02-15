@@ -117,7 +117,9 @@ tb.config.tc_lab_git_clone_source_git_repo_user = tb.config.tc_workfd_get_yocto_
 
 tb.eof_call_tc("tc_workfd_goto_lab_source_dir.py")
 tb.config.tc_lab_git_clone_source_git_repo_name = tb.config.yocto_name
+tb.event.create_event('main', 'tc_workfd_get_yocto_source.py', 'SET_DOC_FILENAME_NOIRQ', 'clone_poky')
 tb.eof_call_tc("tc_workfd_git_clone_source.py")
+tb.event.create_event('main', 'tc_workfd_get_yocto_source.py', 'SET_DOC_FILENAME_NOIRQ_END', 'clone_poky')
 
 # now get more meta layers ...
 for l in tb.config.tc_workfd_get_yocto_source_layers:
