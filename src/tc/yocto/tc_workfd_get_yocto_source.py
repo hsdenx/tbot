@@ -19,8 +19,11 @@
 # tb.config.tc_workfd_get_yocto_patches_git_branch
 # check out commit ID:
 # tb.config.tc_workfd_get_yocto_git_commit_id
-# apply patches with "git am" from directory:
-# tb.config.tc_workfd_get_yocto_clone_apply_patches_git_am_dir
+#
+# if tb.config.tc_workfd_get_yocto_patches_git_repo != 'none'
+#   apply patches with "git am" from directory:
+#   tb.config.tc_workfd_get_yocto_clone_apply_patches_git_am_dir
+#
 # additionally define a reference for cloning:
 # tb.config.tc_workfd_get_yocto_source_git_reference
 # if a user/password for cloning is needed, define the user:
@@ -40,13 +43,21 @@
 #  'source_git_repo_name'
 # ]
 #
-# at the end overwrite yocto configuration found in
-# tb.config.tc_workfd_get_yocto_source_conf_dir
+# if tb.config.tc_workfd_get_yocto_source_autoconf == 'none'
+#     overwrite yocto configuration found in
+#     tb.config.tc_workfd_get_yocto_source_conf_dir
+# else
+#     try to autogenerate bblayers.conf and site.conf
 #
 # clones into directory tb.config.yocto_name
 # created with tc_workfd_goto_yocto_code.py
 #
 # End:
+
+try:
+    tb.config.tc_workfd_get_yocto_source_autoconf
+except:
+    tb.config.tc_workfd_get_yocto_source_autoconf = 'none'
 
 from tbotlib import tbot
 
@@ -57,6 +68,7 @@ logging.info("args: %s %s ", tb.config.tc_lab_git_clone_source_git_reference,
 logging.info("args: %s", tb.config.tc_workfd_get_yocto_source_conf_dir)
 logging.info("args: %s", tb.config.tc_workfd_get_yocto_patches_git_repo_name)
 logging.info("args: %s", tb.config.tc_workfd_get_yocto_source_layers)
+logging.info("args: %s", tb.config.tc_workfd_get_yocto_source_autoconf)
 
 ret = tb.call_tc("tc_workfd_goto_yocto_code.py")
 if ret == True:
@@ -74,12 +86,15 @@ if tb.config.tc_workfd_get_yocto_patches_git_repo != 'none':
     tb.config.tc_lab_git_clone_source_git_repo_user = ''
     tb.config.tc_lab_git_clone_source_git_repo_name = tb.config.tc_workfd_get_yocto_patches_git_repo_name
     tb.eof_call_tc("tc_workfd_git_clone_source.py")
+    tb.config.tc_lab_git_clone_apply_patches_dir = tb.config.tc_workfd_get_yocto_apply_patches_dir
+    tb.config.tc_lab_git_clone_apply_patches_git_am_dir = tb.config.tc_workfd_get_yocto_clone_apply_patches_git_am_dir
+else:
+    tb.config.tc_lab_git_clone_apply_patches_dir = 'none'
+    tb.config.tc_lab_git_clone_apply_patches_git_am_dir = 'none'
 
 tb.config.tc_lab_git_clone_source_git_repo = tb.config.tc_workfd_get_yocto_source_git_repo
 tb.config.tc_lab_git_clone_source_git_branch = tb.config.tc_workfd_get_yocto_source_git_branch
 tb.config.tc_lab_git_clone_source_git_commit_id = tb.config.tc_workfd_get_yocto_git_commit_id
-tb.config.tc_lab_git_clone_apply_patches_dir = tb.config.tc_workfd_get_yocto_apply_patches_dir
-tb.config.tc_lab_git_clone_apply_patches_git_am_dir = tb.config.tc_workfd_get_yocto_clone_apply_patches_git_am_dir
 tb.config.tc_lab_git_clone_source_git_reference = tb.config.tc_workfd_get_yocto_source_git_reference
 tb.config.tc_lab_git_clone_source_git_repo_user = tb.config.tc_workfd_get_yocto_source_git_repo_user
 
@@ -102,34 +117,40 @@ for l in tb.config.tc_workfd_get_yocto_source_layers:
 
 tb.write_lx_cmd_check(tb.workfd, 'source oe-init-build-env build')
 
-# now copy config
-src_dir = tb.config.tc_workfd_get_yocto_source_conf_dir
-trg_dir = tb.config.yocto_fulldir_name + '/build/conf/'
-files = ['bblayers.conf', 'local.conf']
-for f in files:
-    tmp = 'cp ' + src_dir + f + ' ' + trg_dir + f
+if tb.config.tc_workfd_get_yocto_source_autoconf == 'none':
+    # now copy config
+    src_dir = tb.config.tc_workfd_get_yocto_source_conf_dir
+    trg_dir = tb.config.yocto_fulldir_name + '/build/conf/'
+    files = ['bblayers.conf', 'local.conf']
+    for f in files:
+        tmp = 'cp ' + src_dir + f + ' ' + trg_dir + f
+        tb.write_lx_cmd_check(tb.workfd, tmp)
+
+    # replace TBOT_YOCTO_PATH in bblayers.conf with tb.config.yocto_fulldir_name
+    tmp = "sed -i -- 's+TBOT_YOCTO_PATH+'\"$TBOT_BASEDIR_YOCTO\"'+g' build/conf/bblayers.conf"
     tb.write_lx_cmd_check(tb.workfd, tmp)
 
-tb.eof_call_tc("tc_workfd_goto_yocto_code.py")
+    # setup yocto DL_DIR
+    if tb.config.tc_workfd_get_yocto_source_conf_dl_dir != 'none':
+        tb.config.tc_workfd_linux_mkdir_dir = tb.config.tc_workfd_get_yocto_source_conf_dl_dir
+        tb.eof_call_tc("tc_workfd_linux_mkdir.py")
 
-# replace TBOT_YOCTO_PATH in bblayers.conf with tb.config.yocto_fulldir_name
-tmp = "sed -i -- 's+TBOT_YOCTO_PATH+'\"$TBOT_BASEDIR_YOCTO\"'+g' build/conf/bblayers.conf"
-tb.write_lx_cmd_check(tb.workfd, tmp)
+        tmp = "sed -i -- 's+TBOT_YOCTO_DLDIR+'" + tb.config.tc_workfd_get_yocto_source_conf_dl_dir + "'+g' build/conf/local.conf"
+        tb.write_lx_cmd_check(tb.workfd, tmp)
 
-# setup yocto DL_DIR
-if tb.config.tc_workfd_get_yocto_source_conf_dl_dir != 'none':
-    tb.config.tc_workfd_linux_mkdir_dir = tb.config.tc_workfd_get_yocto_source_conf_dl_dir
-    tb.eof_call_tc("tc_workfd_linux_mkdir.py")
+    # setup yocto SSTATE_DIR
+    if tb.config.tc_workfd_get_yocto_source_conf_sstate_dir != 'none':
+        tb.config.tc_workfd_linux_mkdir_dir = tb.config.tc_workfd_get_yocto_source_conf_sstate_dir
+        tb.eof_call_tc("tc_workfd_linux_mkdir.py")
 
-    tmp = "sed -i -- 's+TBOT_YOCTO_DLDIR+'" + tb.config.tc_workfd_get_yocto_source_conf_dl_dir + "'+g' build/conf/local.conf"
-    tb.write_lx_cmd_check(tb.workfd, tmp)
-
-# setup yocto SSTATE_DIR
-if tb.config.tc_workfd_get_yocto_source_conf_sstate_dir != 'none':
-    tb.config.tc_workfd_linux_mkdir_dir = tb.config.tc_workfd_get_yocto_source_conf_sstate_dir
-    tb.eof_call_tc("tc_workfd_linux_mkdir.py")
-
-    tmp = "sed -i -- 's+TBOT_YOCTO_SSTATEDIR+'" + tb.config.tc_workfd_get_yocto_source_conf_sstate_dir + "'+g' build/conf/local.conf"
-    tb.write_lx_cmd_check(tb.workfd, tmp)
+        tmp = "sed -i -- 's+TBOT_YOCTO_SSTATEDIR+'" + tb.config.tc_workfd_get_yocto_source_conf_sstate_dir + "'+g' build/conf/local.conf"
+        tb.write_lx_cmd_check(tb.workfd, tmp)
+else:
+    tb.eof_call_tc("tc_workfd_goto_yocto_code.py")
+    tb.write_lx_cmd_check(tb.workfd, 'rm build/conf/bblayers.conf')
+    # autogenerate bblayers.conf
+    tb.eof_call_tc("tc_workfd_yocto_generate_bblayers.py")
+    # and site.conf
+    tb.eof_call_tc("tc_workfd_yocto_patch_site.py")
 
 tb.end_tc(True)
