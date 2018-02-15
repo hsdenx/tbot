@@ -72,6 +72,23 @@ logging.info("args: %s", tb.config.tc_workfd_get_yocto_source_autoconf)
 
 ret = tb.call_tc("tc_workfd_goto_yocto_code.py")
 if ret == True:
+    # sync all trees
+    # first poky
+    tb.event.create_event('main', 'tc_workfd_get_yocto_source.py', 'SET_DOC_FILENAME_NOIRQ', 'sync_poky')
+    tb.eof_call_tc("tc_workfd_goto_yocto_code.py")
+    tb.write_lx_cmd_check(tb.workfd, 'git fetch')
+    tb.write_lx_cmd_check(tb.workfd, 'git pull')
+    tb.event.create_event('main', 'tc_workfd_get_yocto_source.py', 'SET_DOC_FILENAME_NOIRQ_END', 'sync_poky')
+
+    # now all meta layers
+    for l in tb.config.tc_workfd_get_yocto_source_layers:
+        name = l[7]
+        tb.event.create_event('main', 'tc_workfd_get_yocto_source.py', 'SET_DOC_FILENAME_NOIRQ', 'sync_' + name)
+        tb.write_lx_cmd_check(tb.workfd, 'cd $TBOT_BASEDIR_YOCTO/' + name)
+        tb.write_lx_cmd_check(tb.workfd, 'git fetch')
+        tb.write_lx_cmd_check(tb.workfd, 'git pull')
+        tb.event.create_event('main', 'tc_workfd_get_yocto_source.py', 'SET_DOC_FILENAME_NOIRQ_END', 'sync_' + name)
+
     tb.end_tc(True)
 
 # get the patches for the yocto layers
