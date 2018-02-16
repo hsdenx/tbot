@@ -270,6 +270,8 @@ class junit_backend(object):
             os.system(tmp)
             tmp = "cp " + self.tb.resultdir + "/multiplexed_tbotlog.css " + newdirtmptbot + "/multiplexed_tbotlog.css"
             os.system(tmp)
+            tmp = "cp " + self.tb.resultdir + "/myscript.js " + newdirtmptbot + "/myscript.js"
+            os.system(tmp)
         if self.tb.config.create_documentation == 'yes':
             if self.tb.config.create_documentation_op != '':
                 op = self.tb.config.create_documentation_op
