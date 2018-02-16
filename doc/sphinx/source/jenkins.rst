@@ -148,3 +148,34 @@ press save
 
 Thats it!
 
+Tips
+====
+
+html_log does not work in Test Results
+--------------------------------------
+
+CSS is stripped out because of the Content Security Policy in Jenkins. (https://wiki.jenkins-ci.org/display/JENKINS/Configuring+Content+Security+Policy)
+
+The default rule is set to:
+
+::
+
+  sandbox; default-src 'none'; img-src 'self'; style-src 'self';
+
+This rule set results in the following:
+
+- No JavaScript allowed at all
+- No plugins (object/embed) allowed
+- No inline CSS, or CSS from other sites allowed
+- No images from other sites allowed
+- No frames allowed
+- No web fonts allowed
+- No XHR/AJAX allowed, etc.
+
+To relax this rule, go to Manage Jenkins->Script console and type in the following command:
+
+::
+
+  System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")
+
+and Press Run. If you see the output as 'Result:' below "Result" header then the protection disabled. Re-Run your build and you can see that the new HTML files archived will have the CSS enabled.
