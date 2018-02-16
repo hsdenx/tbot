@@ -26,6 +26,8 @@ class html_log(object):
 
     https://github.com/hsdenx/tbot/blob/testing/log/multiplexed_tbotlog.css
 
+    and "myscript.js" for local usage.
+
     - **parameters**, **types**, **return** and **return types**::
     :param arg1: tb
     :param arg2: filename which gets created, place tb.workdir
@@ -49,12 +51,15 @@ class html_log(object):
         r = self.tb.resultdir
         cmd = 'cp ' + w + '/log/multiplexed_tbotlog.css ' + r
         os.system(cmd)
+        cmd = 'cp ' + w + '/log/myscript.js ' + r
+        os.system(cmd)
  
     def _write_html_header(self):
         self.fd.write('<html>\n')
         self.fd.write('<head>\n')
         self.fd.write('<link rel="stylesheet" type="text/css" href="multiplexed_tbotlog.css">\n')
-        self.fd.write('<script src="http://code.jquery.com/jquery.min.js"></script>\n')
+        #self.fd.write('<script src="http://code.jquery.com/jquery.min.js"></script>\n')
+        self.fd.write('<script src="myscript.js"></script>\n')
         self.fd.write('<script>\n')
         self.fd.write('$(document).ready(function () {\n')
         self.fd.write('    // Add expand/contract buttons to all block headers\n')
