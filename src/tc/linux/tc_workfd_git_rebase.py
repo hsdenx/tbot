@@ -51,8 +51,6 @@ logging.info("arg: src path: %s", tb.config.tc_workfd_git_rebase_git_src_path)
 logging.info("arg: base branch: %s", tb.config.tc_workfd_git_rebase_git_base_branch)
 logging.info("arg: work branch: %s", tb.config.tc_workfd_git_rebase_git_work_branch)
 
-tb.set_board_state("linux")
-
 # save current pwd ?
 
 base = os.path.basename(tb.config.tc_workfd_git_rebase_git_src_path)
