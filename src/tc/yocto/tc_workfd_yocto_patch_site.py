@@ -27,7 +27,7 @@
 # add DL_DIR if tb.config.tc_workfd_yocto_patch_site_dl_dir != 'none'
 # add SSTATE_DIR if tb.config.tc_workfd_yocto_patch_site_sstate_dir != 'none'
 # add SRC_LINUX_STABLE if tb.config.tc_workfd_yocto_patch_site_src_linux_stable != 'none'
-#
+# add PREMIRRORS_prepend if tb.config.tc_workfd_yocto_patch_site_premirrors != 'none'
 # End:
 
 from tbotlib import tbot
@@ -61,6 +61,11 @@ try:
     tb.config.tc_workfd_yocto_patch_site_src_linux_stable
 except:
     tb.config.tc_workfd_yocto_patch_site_src_linux_stable = 'none'
+
+try:
+    tb.config.tc_workfd_yocto_patch_site_premirrors
+except:
+    tb.config.tc_workfd_yocto_patch_site_premirrors = 'none'
 
 logging.info("args: workdfd: %s", tb.workfd.name)
 logging.info("args: default filepath: %s", tb.config.tc_workfd_yocto_patch_site_path_default_file)
@@ -109,6 +114,20 @@ if tb.config.tc_workfd_yocto_patch_site_sstate_dir != 'none':
 if tb.config.tc_workfd_yocto_patch_site_src_linux_stable != 'none':
     val = tb.config.tc_workfd_yocto_patch_site_src_linux_stable
     tbot_write_val2file(tb, fn, 'SRC_LINUX_STABLE', val)
+
+if tb.config.tc_workfd_yocto_patch_site_premirrors != 'none':
+    cmd = 'echo PREMIRRORS_prepend = \\"\\\  >> ' + fn
+    tb.write_lx_cmd_check(tb.workfd, cmd)
+    # write values
+    tb.workfd.lab_write("cat >> " + fn + " << EOF")
+    for l in tb.config.tc_workfd_yocto_patch_site_premirrors:
+        tb.workfd.lab_write(l)
+
+    tb.workfd.lab_write("EOF")
+    tb.tbot_expect_prompt(tb.workfd)
+
+    cmd = 'echo \\"  >> ' + fn
+    tb.write_lx_cmd_check(tb.workfd, cmd)
 
 tb.event.create_event('main', 'tc_workfd_get_with_repo.py', 'SET_DOC_FILENAME_NOIRQ_END', 'repo_create_site.conf')
 
