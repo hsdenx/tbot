@@ -115,7 +115,7 @@ class Connection(object):
 
     def lab_write(self, string):
         if (len(string) > self.line_length):
-            logging.debug("%s tooo long to write %s > %s", self.name,
+            logging.error("%s tooo long to write %s > %s", self.name,
                           len(string), self.line_length)
             return False
 
