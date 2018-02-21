@@ -31,4 +31,5 @@ except AttributeError:
     tmp = tb.config.tc_workfd_work_dir + "/tmpfiles"
     tb.config.__dict__.update({'tc_workfd_tbotfiles_dir' : tmp})
 
+tb.gotprompt = True
 tb.end_tc(True)

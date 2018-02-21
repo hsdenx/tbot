@@ -73,6 +73,7 @@ while tmp == True:
             tb.enc_tc(False)
         tmp = 'U-Boot SPL 20' + tb.buf.replace('\r','')
         splvers = tmp.replace('\n','')
+        ret == False
         if splvers == tb.spl_vers:
             ret = True
         tmp = False
@@ -84,4 +85,5 @@ if ret == False:
     logging.warn("UB SPL Vers differ %s != %s", splvers, tb.spl_vers)
 
 
+tb.gotprompt = True
 tb.end_tc(ret)

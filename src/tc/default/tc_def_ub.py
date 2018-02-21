@@ -39,4 +39,5 @@ except AttributeError:
     tmp = tb.config.tc_ub_tftp_path + '/env.txt'
     tb.config.__dict__.update({'tc_ub_tftp_file_name' : tmp})
 
+tb.gotprompt = True
 tb.end_tc(True)
