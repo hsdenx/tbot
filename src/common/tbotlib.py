@@ -117,8 +117,10 @@ class tbot(object):
     :param arg3: board config file
     :param arg4: name of logfile
     :param arg5: be verbose
+    :param arg6: eventlogfile
+    :param arg7: used password file
     """
-    def __init__(self, workdir, labfile, cfgfile, logfilen, verbose, arguments, tc, eventsim):
+    def __init__(self, workdir, labfile, cfgfile, logfilen, verbose, arguments, tc, eventsim, pwfile):
         ## enable verbose output
         self.verbose = verbose
         if '.py' in cfgfile:
@@ -128,6 +130,7 @@ class tbot(object):
         self.cfgfile = cfgfile
         self.workdir = workdir
         self.eventsim = eventsim
+        self.pwfile = pwfile
         self.resultdir = workdir + '/result'
         self.arguments = arguments
         # testcase are without path, as tbot searches always
@@ -470,7 +473,7 @@ class tbot(object):
             return password if found
             end tc if not
         """
-        filename = self.workdir + "/password.py"
+        filename = self.workdir + "/" + self.pwfile
         try:
             fd = open(filename, 'r')
         except:
