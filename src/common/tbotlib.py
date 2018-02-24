@@ -851,7 +851,7 @@ class tbot(object):
         string = pack('h', 10)
         string = string[:1]
         logging.debug("send Ctrl-M %s", string)
-        self.write_stream(c, string)
+        c.send_raw(string)
         self.gotprompt = True
         return True
 
