@@ -187,6 +187,8 @@ class dashboard(object):
             os.system(tmp)
             tmp = "cp " + self.tb.resultdir + "/multiplexed_tbotlog.css " + newdir + "/multiplexed_tbotlog.css"
             os.system(tmp)
+            tmp = "cp " + self.tb.resultdir + "/myscript.js " + newdir + "/myscript.js"
+            os.system(tmp)
         if self.testpypatch != '':
             rem = self.testpypatch + '/test-log.html'
             loc = newdir + '/test-log.html'
