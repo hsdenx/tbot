@@ -112,6 +112,69 @@ $(document).ready(function () {
 </pre>
 </div>
 
+<!-- one testcase src/tc/board/bbb/tc_board_bbb_after_linux_booted.py -->
+<div class="stream block" id="src_tc_board_bbb_tc_board_bbb_after_linux_booted_py">
+<div class="stream-header block-header">src/tc/board/bbb/tc_board_bbb_after_linux_booted.py</div>
+<div class="stream-content block-content">
+<pre>
+#
+# nowadays after booting into linux there comes the message
+# "random: crng init done"
+#
+# This pos in, and may disturb a current running test ...
+#
+# so call this testcase after logging into linux
+# and wait until this string is read ...
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/board/bbb/tc_board_bbb_after_linux_booted.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/board/bbb/tc_board_bbb_after_linux_booted.py -->
+
+<!-- one testcase src/tc/board/bbb/tc_board_bbb_bootmode.py -->
+<div class="stream block" id="src_tc_board_bbb_tc_board_bbb_bootmode_py">
+<div class="stream-header block-header">src/tc/board/bbb/tc_board_bbb_bootmode.py</div>
+<div class="stream-content block-content">
+<pre>
+#
+# switch bootmode for the bbb
+#
+# - power off the board
+# - set bootmode
+#   2 states:
+#   normal: we use emmc
+#   recovery: we boot from sd card
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/board/bbb/tc_board_bbb_bootmode.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/board/bbb/tc_board_bbb_bootmode.py -->
+
+<!-- one testcase src/tc/board/bbb/tc_board_bbb_bootmode_labdenx.py -->
+<div class="stream block" id="src_tc_board_bbb_tc_board_bbb_bootmode_labdenx_py">
+<div class="stream-header block-header">src/tc/board/bbb/tc_board_bbb_bootmode_labdenx.py</div>
+<div class="stream-content block-content">
+<pre>
+#
+# switch bootmode for the bbb
+#
+# - power off the board
+# - set bootmode
+#   2 states:
+#   normal: we use sd card
+#   recovery: we boot from emmc
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/board/bbb/tc_board_bbb_bootmode_labdenx.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/board/bbb/tc_board_bbb_bootmode_labdenx.py -->
+
 <!-- one testcase src/tc/board/bbb/tc_board_bbb_restore_uboot.py -->
 <div class="stream block" id="src_tc_board_bbb_tc_board_bbb_restore_uboot_py">
 <div class="stream-header block-header">src/tc/board/bbb/tc_board_bbb_restore_uboot.py</div>
@@ -120,20 +183,26 @@ $(document).ready(function () {
 # start with
 # tbot.py -s lab_denx -c beagleboneblack -t <a href="#src_tc_demo_tc_demo_part1_py">tc_demo_part1.py</a> -l log/tbot_demo_part1.log -v
 #
-# we boot from sd card, if it is broken, we boot
-# from emmc and restore a known working uboot on
-# the sdcard.
+# we boot from emmc, if it is broken, we boot
+# from sdcard and restore a known working uboot on
+# the emmc.
 #
 # To switch between botmodes we can use the PIN P8_43
-# attached to GND -> boot from emmc, floating -> boot
-# from sd card.
+# attached to GND -> boot from sd, floating -> boot
+# from emmc.
 
 import time
 from tbotlib import tbot
 
-# switch to bootmode emmc
-<a href="#var_config_write_lx_cmd_check(tb_c_ctrl,">tb.write_lx_cmd_check(tb.c_ctrl,</a> 'relais   relsrv-02-02  1  on')
-<a href="#var_config_eof_call_tc("tc_lab_poweroff_py")">tb.eof_call_tc("tc_lab_poweroff.py")</a>
+try:
+    <a href="#var_config_tc_board_bootmode_tc">tb.config.tc_board_bootmode_tc</a>
+except:
+    <a href="#var_config_end_tc(False)">tb.end_tc(False)</a>
+
+<a href="#var_config_tc_board_bootmode">tb.config.tc_board_bootmode</a> = 'recovery'
+<a href="#var_config_eof_call_tc(tb_config_tc_board_bootmode_tc)">tb.eof_call_tc(tb.config.tc_board_bootmode_tc)</a>
+
+<a href="#var_config_uboot_prompt">tb.config.uboot_prompt</a> = '=> '
 time.sleep(2)
 <a href="#var_config_eof_call_tc("tc_lab_poweron_py")">tb.eof_call_tc("tc_lab_poweron.py")</a>
 <a href="#var_config_set_board_state("u-boot")">tb.set_board_state("u-boot")</a>
@@ -149,8 +218,9 @@ time.sleep(2)
 # set latest images
 import <a href="#_tc_ub_testfkt">tc_ub_testfkt</a>
 
-<a href="#_tc_ub_testfkt_ub_setenv(tb,">tc_ub_testfkt.ub_setenv(tb,</a> <a href="#var_config_c_con,">tb.c_con,</a> 'ubfile', 'bbb/tbot/latestworking-u-boot.img')
-<a href="#_tc_ub_testfkt_ub_setenv(tb,">tc_ub_testfkt.ub_setenv(tb,</a> <a href="#var_config_c_con,">tb.c_con,</a> 'mlofile', 'bbb/tbot/latestworking-MLO')
+p = <a href="#var_config_tftpdir">tb.config.tftpdir</a> + '/' + <a href="#var_config_tftpboardname">tb.config.tftpboardname</a> + '/' + <a href="#var_config_ub_load_board_env_subdir">tb.config.ub_load_board_env_subdir</a> + '/'
+ret = <a href="#_tc_ub_testfkt_ub_setenv(tb,">tc_ub_testfkt.ub_setenv(tb,</a> <a href="#var_config_c_con,">tb.c_con,</a> 'ubfile', p + 'latestworking-u-boot.img')
+<a href="#_tc_ub_testfkt_ub_setenv(tb,">tc_ub_testfkt.ub_setenv(tb,</a> <a href="#var_config_c_con,">tb.c_con,</a> 'mlofile', p + 'latestworking-MLO')
 
 # call upd_uboot
 <a href="#var_config_eof_call_tc("tc_ub_upd_uboot_py")">tb.eof_call_tc("tc_ub_upd_uboot.py")</a>
@@ -158,10 +228,10 @@ import <a href="#_tc_ub_testfkt">tc_ub_testfkt</a>
 # call upd_spl
 <a href="#var_config_eof_call_tc("tc_ub_upd_spl_py")">tb.eof_call_tc("tc_ub_upd_spl.py")</a>
 
+<a href="#var_config_tc_board_bootmode">tb.config.tc_board_bootmode</a> = 'normal'
+<a href="#var_config_eof_call_tc(tb_config_tc_board_bootmode_tc)">tb.eof_call_tc(tb.config.tc_board_bootmode_tc)</a>
 
-# switch to bootmode sdcard
-<a href="#var_config_write_lx_cmd_check(tb_c_ctrl,">tb.write_lx_cmd_check(tb.c_ctrl,</a> 'relais   relsrv-02-02  1  off')
-<a href="#var_config_eof_call_tc("tc_lab_poweroff_py")">tb.eof_call_tc("tc_lab_poweroff.py")</a>
+<a href="#var_config_uboot_prompt">tb.config.uboot_prompt</a> = '=> '
 time.sleep(2)
 <a href="#var_config_eof_call_tc("tc_lab_poweron_py")">tb.eof_call_tc("tc_lab_poweron.py")</a>
 <a href="#var_config_set_board_state("u-boot")">tb.set_board_state("u-boot")</a>
@@ -174,6 +244,180 @@ time.sleep(2)
 </div>
 <!-- end of one testcase src/tc/board/bbb/tc_board_bbb_restore_uboot.py -->
 
+<!-- one testcase src/tc/board/bbb/tc_board_deploy_beagleboneblack.py -->
+<div class="stream block" id="src_tc_board_bbb_tc_board_deploy_beagleboneblack_py">
+<div class="stream-header block-header">src/tc/board/bbb/tc_board_deploy_beagleboneblack.py</div>
+<div class="stream-content block-content">
+<pre>
+#
+# Copy the binaries from the compile PC
+# to the tftp directory on the lab PC
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/board/bbb/tc_board_deploy_beagleboneblack.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/board/bbb/tc_board_deploy_beagleboneblack.py -->
+
+<!-- one testcase src/tc/board/bbb/tc_board_deploy_lx_beagleboneblack.py -->
+<div class="stream block" id="src_tc_board_bbb_tc_board_deploy_lx_beagleboneblack_py">
+<div class="stream-header block-header">src/tc/board/bbb/tc_board_deploy_lx_beagleboneblack.py</div>
+<div class="stream-content block-content">
+<pre>
+#
+# Copy the linux binaries from the compile PC
+# to the tftp directory on the lab PC
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/board/bbb/tc_board_deploy_lx_beagleboneblack.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/board/bbb/tc_board_deploy_lx_beagleboneblack.py -->
+
+<!-- one testcase src/tc/board/bbb/tc_board_yocto_bbb_all.py -->
+<div class="stream block" id="src_tc_board_bbb_tc_board_yocto_bbb_all_py">
+<div class="stream-header block-header">src/tc/board/bbb/tc_board_yocto_bbb_all.py</div>
+<div class="stream-content block-content">
+<pre>
+#
+# call testcases:
+# - <a href="#src_tc_board_bbb_tc_board_yocto_get_and_bake_py">tc_board_yocto_get_and_bake.py</a>
+# - <a href="#src_tc_board_bbb_tc_board_yocto_install_nfs_py">tc_board_yocto_install_nfs.py</a>
+# - <a href="#src_tc_board_bbb_tc_board_yocto_boot_nfs_py">tc_board_yocto_boot_nfs.py</a>
+# - <a href="#src_tc_board_bbb_tc_board_yocto_boot_sdcard_py">tc_board_yocto_boot_sdcard.py</a>
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/board/bbb/tc_board_yocto_bbb_all.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/board/bbb/tc_board_yocto_bbb_all.py -->
+
+<!-- one testcase src/tc/board/bbb/tc_board_yocto_boot_nfs.py -->
+<div class="stream block" id="src_tc_board_bbb_tc_board_yocto_boot_nfs_py">
+<div class="stream-header block-header">src/tc/board/bbb/tc_board_yocto_boot_nfs.py</div>
+<div class="stream-content block-content">
+<pre>
+#
+# - set boot mode normal
+# - go into u-boot
+# - boot linux with "run net_nfs"
+# - call <a href="#src_tc_board_bbb_tc_board_yocto_install_sdcard_py">tc_board_yocto_install_sdcard.py</a>
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/board/bbb/tc_board_yocto_boot_nfs.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/board/bbb/tc_board_yocto_boot_nfs.py -->
+
+<!-- one testcase src/tc/board/bbb/tc_board_yocto_boot_sdcard.py -->
+<div class="stream block" id="src_tc_board_bbb_tc_board_yocto_boot_sdcard_py">
+<div class="stream-header block-header">src/tc/board/bbb/tc_board_yocto_boot_sdcard.py</div>
+<div class="stream-content block-content">
+<pre>
+#
+# - set jumper to normal
+# - boot sd card image
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/board/bbb/tc_board_yocto_boot_sdcard.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/board/bbb/tc_board_yocto_boot_sdcard.py -->
+
+<!-- one testcase src/tc/board/bbb/tc_board_yocto_boot_sdcard_recovery.py -->
+<div class="stream block" id="src_tc_board_bbb_tc_board_yocto_boot_sdcard_recovery_py">
+<div class="stream-header block-header">src/tc/board/bbb/tc_board_yocto_boot_sdcard_recovery.py</div>
+<div class="stream-content block-content">
+<pre>
+#
+# - set recovery mode
+# - boot with linux from tftp
+# - boot sd card image
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/board/bbb/tc_board_yocto_boot_sdcard_recovery.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/board/bbb/tc_board_yocto_boot_sdcard_recovery.py -->
+
+<!-- one testcase src/tc/board/bbb/tc_board_yocto_check_rootfs.py -->
+<div class="stream block" id="src_tc_board_bbb_tc_board_yocto_check_rootfs_py">
+<div class="stream-header block-header">src/tc/board/bbb/tc_board_yocto_check_rootfs.py</div>
+<div class="stream-content block-content">
+<pre>
+#
+# check if in booted rootfs, the rootfs version is the
+# same as in <a href="#var_config_tc_yocto_get_rootfs_from_tarball_rootfs_version">tb.config.tc_yocto_get_rootfs_from_tarball_rootfs_version</a>
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/board/bbb/tc_board_yocto_check_rootfs.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/board/bbb/tc_board_yocto_check_rootfs.py -->
+
+<!-- one testcase src/tc/board/bbb/tc_board_yocto_get_and_bake.py -->
+<div class="stream block" id="src_tc_board_bbb_tc_board_yocto_get_and_bake_py">
+<div class="stream-header block-header">src/tc/board/bbb/tc_board_yocto_get_and_bake.py</div>
+<div class="stream-content block-content">
+<pre>
+#
+# - go to compile PC
+# - goto lab source dir
+# - get yocto sources with <a href="#src_tc_yocto_tc_workfd_get_yocto_source_py">tc_workfd_get_yocto_source.py</a>
+# - bitbake it
+# - check if files we expect exist
+# - check tar content
+# - deploy files (copy to lab PC)
+# - get rootfs version
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/board/bbb/tc_board_yocto_get_and_bake.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/board/bbb/tc_board_yocto_get_and_bake.py -->
+
+<!-- one testcase src/tc/board/bbb/tc_board_yocto_install_nfs.py -->
+<div class="stream block" id="src_tc_board_bbb_tc_board_yocto_install_nfs_py">
+<div class="stream-header block-header">src/tc/board/bbb/tc_board_yocto_install_nfs.py</div>
+<div class="stream-content block-content">
+<pre>
+#
+# - set workfd to c_ctrl
+# - call <a href="#src_tc_yocto_tc_yocto_install_rootfs_as_nfs_py">tc_yocto_install_rootfs_as_nfs.py</a>
+# - if <a href="#var_config_rootfs_sdcard_file">tb.config.rootfs_sdcard_file</a> != ''
+#     copy sd card image into nfs
+# - restore old workfd
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/board/bbb/tc_board_yocto_install_nfs.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/board/bbb/tc_board_yocto_install_nfs.py -->
+
+<!-- one testcase src/tc/board/bbb/tc_board_yocto_install_sdcard.py -->
+<div class="stream block" id="src_tc_board_bbb_tc_board_yocto_install_sdcard_py">
+<div class="stream-header block-header">src/tc/board/bbb/tc_board_yocto_install_sdcard.py</div>
+<div class="stream-content block-content">
+<pre>
+#
+# - install sd card image onto sd card
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/board/bbb/tc_board_yocto_install_sdcard.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/board/bbb/tc_board_yocto_install_sdcard.py -->
+
 <div class="section-trailer block-trailer">src/tc/board/bbb</div>
 <div class="status-pass">
 <pre>
@@ -182,24 +426,6 @@ time.sleep(2)
 </div>
 </div>
 <!-- end of a testcase dir src/tc/board/bbb -->
-
-<!-- a testcase dir src_tc_board_cuby -->
-<div class="section block" id="src/tc/board/cuby">
-<div class="section-header block-header-dir">src/tc/board/cuby</div>
-<div class="section-content block-content">
-<div class="action">
-<pre>
-</pre>
-</div>
-
-<div class="section-trailer block-trailer">src/tc/board/cuby</div>
-<div class="status-pass">
-<pre>
-</pre>
-</div>
-</div>
-</div>
-<!-- end of a testcase dir src/tc/board/cuby -->
 
 <!-- one testcase src/tc/board/tc_board_aristainetos2.py -->
 <div class="stream block" id="src_tc_board_tc_board_aristainetos2_py">
@@ -739,6 +965,32 @@ time.sleep(2)
 </div>
 <!-- end of one testcase src/tc/board/tc_board_taurus.py -->
 
+<!-- one testcase src/tc/board/tc_board_thuban.py -->
+<div class="stream block" id="src_tc_board_tc_board_thuban_py">
+<div class="stream-header block-header">src/tc/board/tc_board_thuban.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/board/tc_board_thuban.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/board/tc_board_thuban.py -->
+
+<!-- one testcase src/tc/board/tc_board_thuban_test_uboot.py -->
+<div class="stream block" id="src_tc_board_tc_board_thuban_test_uboot_py">
+<div class="stream-header block-header">src/tc/board/tc_board_thuban_test_uboot.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/board/tc_board_thuban_test_uboot.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/board/tc_board_thuban_test_uboot.py -->
+
 <!-- one testcase src/tc/board/tc_board_tqm5200s_try_cur_ub.py -->
 <div class="stream block" id="src_tc_board_tc_board_tqm5200s_try_cur_ub_py">
 <div class="stream-header block-header">src/tc/board/tc_board_tqm5200s_try_cur_ub.py</div>
@@ -1014,6 +1266,291 @@ time.sleep(2)
 </pre>
 </div>
 
+<!-- a testcase dir src_tc_demo_linux -->
+<div class="section block" id="src/tc/demo/linux">
+<div class="section-header block-header-dir">src/tc/demo/linux</div>
+<div class="section-content block-content">
+<div class="action">
+<pre>
+</pre>
+</div>
+
+<!-- one testcase src/tc/demo/linux/tc_demo_compilepc_linux_compile.py -->
+<div class="stream block" id="src_tc_demo_linux_tc_demo_compilepc_linux_compile_py">
+<div class="stream-header block-header">src/tc/demo/linux/tc_demo_compilepc_linux_compile.py</div>
+<div class="stream-content block-content">
+<pre>
+#
+# - switch to compile PC (call <a href="#_tc_connect_to_compilepc_py)">tc_connect_to_compilepc.py)</a>
+# - call <a href="#src_tc_demo_linux_tc_demo_linux_compile_py">tc_demo_linux_compile.py</a>
+#
+# !! changes <a href="#var_config_workfd">tb.workfd</a> !!
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/demo/linux/tc_demo_compilepc_linux_compile.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/demo/linux/tc_demo_compilepc_linux_compile.py -->
+
+<!-- one testcase src/tc/demo/linux/tc_demo_compilepc_linux_test.py -->
+<div class="stream block" id="src_tc_demo_linux_tc_demo_compilepc_linux_test_py">
+<div class="stream-header block-header">src/tc/demo/linux/tc_demo_compilepc_linux_test.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# - switch to compile PC
+# - call <a href="#src_tc_demo_linux_tc_demo_linux_test_py">tc_demo_linux_test.py</a>
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/demo/linux/tc_demo_compilepc_linux_test.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/demo/linux/tc_demo_compilepc_linux_test.py -->
+
+<!-- one testcase src/tc/demo/linux/tc_demo_linux_compile.py -->
+<div class="stream block" id="src_tc_demo_linux_tc_demo_linux_compile_py">
+<div class="stream-header block-header">src/tc/demo/linux/tc_demo_linux_compile.py</div>
+<div class="stream-content block-content">
+<pre>
+#
+# - goto linux code
+# - compile it
+# - deploy it
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/demo/linux/tc_demo_linux_compile.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/demo/linux/tc_demo_linux_compile.py -->
+
+<!-- one testcase src/tc/demo/linux/tc_demo_linux_test.py -->
+<div class="stream block" id="src_tc_demo_linux_tc_demo_linux_test_py">
+<div class="stream-header block-header">src/tc/demo/linux/tc_demo_linux_test.py</div>
+<div class="stream-content block-content">
+<pre>
+#
+# - if <a href="#var_config_tc_board_bootmode_tc">tb.config.tc_board_bootmode_tc</a> is defined
+#   call tc <a href="#var_config_tc_board_bootmode_tc">tb.config.tc_board_bootmode_tc</a>
+#   (set bootmode for the board)
+# - call <a href="#src_tc_linux_tc_workfd_rm_linux_code_py">tc_workfd_rm_linux_code.py</a>
+# - call <a href="#src_tc_linux_tc_workfd_get_linux_source_py">tc_workfd_get_linux_source.py</a>
+# - call <a href="#src_tc_linux_tc_workfd_goto_linux_code_py">tc_workfd_goto_linux_code.py</a>
+# - call <a href="#src_tc_demo_linux_tc_demo_linux_compile_py">tc_demo_linux_compile.py</a>
+# - <a href="#src_tc_demo_linux_tc_demo_linux_testcases_py">tc_demo_linux_testcases.py</a>
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/demo/linux/tc_demo_linux_test.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/demo/linux/tc_demo_linux_test.py -->
+
+<!-- one testcase src/tc/demo/linux/tc_demo_linux_testcases.py -->
+<div class="stream block" id="src_tc_demo_linux_tc_demo_linux_testcases_py">
+<div class="stream-header block-header">src/tc/demo/linux/tc_demo_linux_testcases.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# tbot.py -s lab_denx -c beagleboneblack -t <a href="#src_tc_demo_linux_tc_demo_linux_testcases_py">tc_demo_linux_testcases.py</a>
+#
+# - if <a href="#var_config_tc_board_bootmode_tc">tb.config.tc_board_bootmode_tc</a> is set, call
+#   <a href="#var_config_tc_board_bootmode_tc">tb.config.tc_board_bootmode_tc</a>
+# - boot a linux kernel if <a href="#var_config_tc_demo_linux_tc_boot_lx">tb.config.tc_demo_linux_tc_boot_lx</a>
+#   is set to 'yes' 
+# - get booted linux version
+# - grep through dmesg and check if strings in
+#   <a href="#var_config_tc_demo_linux_test_dmesg">tb.config.tc_demo_linux_test_dmesg</a> exist
+# - check with devmem2 if the register values defined
+#   in the register files <a href="#var_config_tc_demo_linux_test_reg_files">tb.config.tc_demo_linux_test_reg_files</a>
+#   are identical with the values defined in the files
+# - start cmd defined in <a href="#var_config_tc_demo_linux_test_basic_cmd">tb.config.tc_demo_linux_test_basic_cmd</a>
+#   and check the returning strings.
+# - call testcase names defined in list <a href="#var_config_tc_demo_linux_tc_list">tb.config.tc_demo_linux_tc_list</a>
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/demo/linux/tc_demo_linux_testcases.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/demo/linux/tc_demo_linux_testcases.py -->
+
+<div class="section-trailer block-trailer">src/tc/demo/linux</div>
+<div class="status-pass">
+<pre>
+</pre>
+</div>
+</div>
+</div>
+<!-- end of a testcase dir src/tc/demo/linux -->
+
+<!-- a testcase dir src_tc_demo_u-boot -->
+<div class="section block" id="src/tc/demo/u-boot">
+<div class="section-header block-header-dir">src/tc/demo/u-boot</div>
+<div class="section-content block-content">
+<div class="action">
+<pre>
+</pre>
+</div>
+
+<!-- one testcase src/tc/demo/u-boot/tc_demo_compile_install_test.py -->
+<div class="stream block" id="src_tc_demo_u-boot_tc_demo_compile_install_test_py">
+<div class="stream-header block-header">src/tc/demo/u-boot/tc_demo_compile_install_test.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# tbot.py -c -s lab_denx -c demo -t <a href="#src_tc_demo_u-boot_tc_demo_compile_install_test_py">tc_demo_compile_install_test.py</a>
+# start tc:
+# - if <a href="#var_config_tc_board_bootmode_tc">tb.config.tc_board_bootmode_tc</a> is defined
+#   call tc <a href="#var_config_tc_board_bootmode_tc">tb.config.tc_board_bootmode_tc</a>
+#   (set bootmode for the board)
+# - go to uboot code with <a href="#src_tc_linux_tc_workfd_goto_uboot_code_py">tc_workfd_goto_uboot_code.py</a>
+# - set toolchain with <a href="#src_tc_tc_workfd_set_toolchain_py">tc_workfd_set_toolchain.py</a>
+# - compile source tree with <a href="#src_tc_tc_workfd_compile_uboot_py">tc_workfd_compile_uboot.py</a>
+# - if <a href="#var_config_tc_demo_uboot_test_deploy">tb.config.tc_demo_uboot_test_deploy</a> != ''
+#     call <a href="#var_config_tc_demo_uboot_test_deploy">tb.config.tc_demo_uboot_test_deploy</a>
+#   else
+#     copy files in list <a href="#var_config_tc_demo_compile_install_test_files">tb.config.tc_demo_compile_install_test_files</a>
+#     <a href="#var_config_tc_demo_compile_install_test_files">tb.config.tc_demo_compile_install_test_files</a> contains a list of files,
+#     which are copied to tftp directory
+#     <a href="#var_config_tftpdir">tb.config.tftpdir</a> + <a href="#var_config_tftpboardname">tb.config.tftpboardname</a> + '/' + <a href="#var_config_ub_load_board_env_subdir">tb.config.ub_load_board_env_subdir</a>
+# - get u-boot version from binary with <a href="#src_tc_uboot_tc_ub_get_version_py">tc_ub_get_version.py</a>
+# - if <a href="#var_config_tc_demo_uboot_test_update">tb.config.tc_demo_uboot_test_update</a> != '':
+#     call <a href="#var_config_tc_demo_uboot_test_update">tb.config.tc_demo_uboot_test_update</a>
+#   else:
+#     call <a href="#src_tc_uboot_tc_ub_upd_uboot_py">tc_ub_upd_uboot.py</a>
+#     call <a href="#src_tc_uboot_tc_ub_upd_spl_py">tc_ub_upd_spl.py</a>
+# - if <a href="#var_config_tc_demo_compile_install_test_spl_vers_file">tb.config.tc_demo_compile_install_test_spl_vers_file</a> and/or
+#   <a href="#_tc_tb_config_demo_compile_install_test_ub_vers_file">tc_tb.config.demo_compile_install_test_ub_vers_file</a> != ''
+#   check if the new installed version is the same
+#   as in the binary files, defined in
+#   <a href="#var_config_tc_demo_compile_install_test_ub_vers_file">tb.config.tc_demo_compile_install_test_ub_vers_file</a> or
+#   <a href="#var_config_tc_demo_compile_install_test_spl_vers_file">tb.config.tc_demo_compile_install_test_spl_vers_file</a>
+# - call <a href="#var_config_tc_demo_compile_install_test_name">tb.config.tc_demo_compile_install_test_name</a>
+#     which should contain a testcase, which tests the new
+#     installed u-boot
+# - if <a href="#var_config_tc_demo_compile_install_test_poweroff">tb.config.tc_demo_compile_install_test_poweroff</a> == 'yes':
+#     power off board at the end.
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/demo/u-boot/tc_demo_compile_install_test.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/demo/u-boot/tc_demo_compile_install_test.py -->
+
+<!-- one testcase src/tc/demo/u-boot/tc_demo_compilepc_compile_install_test.py -->
+<div class="stream block" id="src_tc_demo_u-boot_tc_demo_compilepc_compile_install_test_py">
+<div class="stream-header block-header">src/tc/demo/u-boot/tc_demo_compilepc_compile_install_test.py</div>
+<div class="stream-content block-content">
+<pre>
+#
+# call testcases
+# <a href="#src_tc_linux_tc_connect_to_compilepc_py">tc_connect_to_compilepc.py</a>
+# <a href="#src_tc_demo_u-boot_tc_demo_compile_install_test_py">tc_demo_compile_install_test.py</a>
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/demo/u-boot/tc_demo_compilepc_compile_install_test.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/demo/u-boot/tc_demo_compilepc_compile_install_test.py -->
+
+<!-- one testcase src/tc/demo/u-boot/tc_demo_compilepc_uboot_test.py -->
+<div class="stream block" id="src_tc_demo_u-boot_tc_demo_compilepc_uboot_test_py">
+<div class="stream-header block-header">src/tc/demo/u-boot/tc_demo_compilepc_uboot_test.py</div>
+<div class="stream-content block-content">
+<pre>
+#
+# - switch to compile PC (call <a href="#_tc_connect_to_compilepc_py)">tc_connect_to_compilepc.py)</a>
+# - call <a href="#src_tc_demo_u-boot_tc_demo_uboot_test_py">tc_demo_uboot_test.py</a>
+#
+# !! changes <a href="#var_config_workfd">tb.workfd</a> !!
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/demo/u-boot/tc_demo_compilepc_uboot_test.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/demo/u-boot/tc_demo_compilepc_uboot_test.py -->
+
+<!-- one testcase src/tc/demo/u-boot/tc_demo_get_ub_code.py -->
+<div class="stream block" id="src_tc_demo_u-boot_tc_demo_get_ub_code_py">
+<div class="stream-header block-header">src/tc/demo/u-boot/tc_demo_get_ub_code.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# python2.7 src/common/tbot.py -c tbot_board.cfg -t <a href="#src_tc_demo_u-boot_tc_demo_get_ub_code_py">tc_demo_get_ub_code.py</a>
+# start tc:
+# - rm old u-boot tree (if there is one)
+# - <a href="#src_tc_tc_lab_get_uboot_source_py">tc_lab_get_uboot_source.py</a>
+# - 
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/demo/u-boot/tc_demo_get_ub_code.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/demo/u-boot/tc_demo_get_ub_code.py -->
+
+<!-- one testcase src/tc/demo/u-boot/tc_demo_uboot_test.py -->
+<div class="stream block" id="src_tc_demo_u-boot_tc_demo_uboot_test_py">
+<div class="stream-header block-header">src/tc/demo/u-boot/tc_demo_uboot_test.py</div>
+<div class="stream-content block-content">
+<pre>
+#
+# call testcases
+# <a href="#src_tc_demo_u-boot_tc_demo_get_ub_code_py">tc_demo_get_ub_code.py</a>
+# <a href="#src_tc_demo_u-boot_tc_demo_compile_install_test_py">tc_demo_compile_install_test.py</a>
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/demo/u-boot/tc_demo_uboot_test.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/demo/u-boot/tc_demo_uboot_test.py -->
+
+<!-- one testcase src/tc/demo/u-boot/tc_demo_uboot_tests.py -->
+<div class="stream block" id="src_tc_demo_u-boot_tc_demo_uboot_tests_py">
+<div class="stream-header block-header">src/tc/demo/u-boot/tc_demo_uboot_tests.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# tbot.py -s lab_denx -c smartweb -t <a href="#src_tc_demo_u-boot_tc_demo_uboot_tests_py">tc_demo_uboot_tests.py</a>
+#
+# start all "standard" u-boot testcases
+#
+# - if <a href="#var_config_tc_demo_uboot_test_reg_files">tb.config.tc_demo_uboot_test_reg_files</a> contains
+#   a list of files, check for each file with testcase
+#   <a href="#src_tc_uboot_tc_ub_check_reg_file_py">tc_ub_check_reg_file.py</a> if the registersettings are
+#   correct.
+#
+# - start cmd defined in <a href="#var_config_tc_demo_uboot_test_basic_cmd">tb.config.tc_demo_uboot_test_basic_cmd</a>
+#   and check the returning strings.
+#
+# - <a href="#var_config_eof_call_tc("uboot_duts_tc_ub_start_all_duts_py")">tb.eof_call_tc("uboot/duts/tc_ub_start_all_duts.py")</a>
+#
+# - <a href="#var_config_eof_call_tc("tc_ub_test_py_py")">tb.eof_call_tc("tc_ub_test_py.py")</a>
+#
+# - call a list of testcases defined in
+#   <a href="#var_config_tc_demo_uboot_tc_list">tb.config.tc_demo_uboot_tc_list</a>
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/demo/u-boot/tc_demo_uboot_tests.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/demo/u-boot/tc_demo_uboot_tests.py -->
+
+<div class="section-trailer block-trailer">src/tc/demo/u-boot</div>
+<div class="status-pass">
+<pre>
+</pre>
+</div>
+</div>
+</div>
+<!-- end of a testcase dir src/tc/demo/u-boot -->
+
 <!-- one testcase src/tc/demo/tc_demo_can_part1.py -->
 <div class="stream block" id="src_tc_demo_tc_demo_can_part1_py">
 <div class="stream-header block-header">src/tc/demo/tc_demo_can_part1.py</div>
@@ -1046,70 +1583,6 @@ time.sleep(2)
 </div>
 <!-- end of one testcase src/tc/demo/tc_demo_can_part1.py -->
 
-<!-- one testcase src/tc/demo/tc_demo_compile_install_test.py -->
-<div class="stream block" id="src_tc_demo_tc_demo_compile_install_test_py">
-<div class="stream-header block-header">src/tc/demo/tc_demo_compile_install_test.py</div>
-<div class="stream-content block-content">
-<pre>
-# start with
-# tbot.py -c -s lab_denx -c demo -t <a href="#src_tc_demo_tc_demo_compile_install_test_py">tc_demo_compile_install_test.py</a>
-# start tc:
-# - compile source tree
-# - install bin on board
-# - call board uboot testcase <a href="#var_config_tc_demo_compile_install_test_name">tb.config.tc_demo_compile_install_test_name</a>
-# <a href="#var_config_tc_demo_compile_install_test_files">tb.config.tc_demo_compile_install_test_files</a> contains a list of files,
-# which are copied to
-# <a href="#var_config_tftprootdir">tb.config.tftprootdir</a> + <a href="#var_config_tftpboardname">tb.config.tftpboardname</a> + '/' + <a href="#var_config_ub_load_board_env_subdir">tb.config.ub_load_board_env_subdir</a>
-</pre>
-<div class="stream-trailer block-trailer">End stream: src/tc/demo/tc_demo_compile_install_test.py </div>
-<div class="status-pass"></div>
-</div>
-</div>
-<!-- end of one testcase src/tc/demo/tc_demo_compile_install_test.py -->
-
-<!-- one testcase src/tc/demo/tc_demo_get_ub_code.py -->
-<div class="stream block" id="src_tc_demo_tc_demo_get_ub_code_py">
-<div class="stream-header block-header">src/tc/demo/tc_demo_get_ub_code.py</div>
-<div class="stream-content block-content">
-<pre>
-# start with
-# python2.7 src/common/tbot.py -c tbot_board.cfg -t <a href="#src_tc_demo_tc_demo_get_ub_code_py">tc_demo_get_ub_code.py</a>
-# start tc:
-# - rm old u-boot tree (if there is one)
-# - <a href="#src_tc_tc_lab_get_uboot_source_py">tc_lab_get_uboot_source.py</a>
-# - 
-</pre>
-<div class="stream-trailer block-trailer">End stream: src/tc/demo/tc_demo_get_ub_code.py </div>
-<div class="status-pass"></div>
-</div>
-</div>
-<!-- end of one testcase src/tc/demo/tc_demo_get_ub_code.py -->
-
-<!-- one testcase src/tc/demo/tc_demo_linux_test.py -->
-<div class="stream block" id="src_tc_demo_tc_demo_linux_test_py">
-<div class="stream-header block-header">src/tc/demo/tc_demo_linux_test.py</div>
-<div class="stream-content block-content">
-<pre>
-# start with
-# tbot.py -s lab_denx -c beagleboneblack -t <a href="#src_tc_demo_tc_demo_linux_test_py">tc_demo_linux_test.py</a>
-# get linux code and compile it for a board, and boot the
-# resulting kernel, and do some basic tests:
-#
-# - grep through dmesg and check if strings in
-#   <a href="#var_config_tc_demo_linux_test_dmesg">tb.config.tc_demo_linux_test_dmesg</a> exist
-# - check with devmem2 if the register values defined
-#   in the register files <a href="#var_config_tc_demo_linux_test_reg_files">tb.config.tc_demo_linux_test_reg_files</a>
-#   are identical with the values defined in the files
-# - start cmd defined in <a href="#var_config_tc_demo_linux_test_basic_cmd">tb.config.tc_demo_linux_test_basic_cmd</a>
-#   and check the returning strings.
-#
-</pre>
-<div class="stream-trailer block-trailer">End stream: src/tc/demo/tc_demo_linux_test.py </div>
-<div class="status-pass"></div>
-</div>
-</div>
-<!-- end of one testcase src/tc/demo/tc_demo_linux_test.py -->
-
 <!-- one testcase src/tc/demo/tc_demo_part1.py -->
 <div class="stream block" id="src_tc_demo_tc_demo_part1_py">
 <div class="stream-header block-header">src/tc/demo/tc_demo_part1.py</div>
@@ -1118,8 +1591,10 @@ time.sleep(2)
 # start with
 # tbot.py -s lab_denx -c smartweb -t <a href="#src_tc_demo_tc_demo_part1_py">tc_demo_part1.py</a>
 # start tc:
-# - call <a href="#src_tc_demo_tc_demo_get_ub_code_py">tc_demo_get_ub_code.py</a>
-# - call <a href="#src_tc_demo_tc_demo_compile_install_test_py">tc_demo_compile_install_test.py</a>
+#
+# - set workfd to c_ctrl
+# - call <a href="#src_tc_demo_u-boot_tc_demo_uboot_test_py">tc_demo_uboot_test.py</a>
+#
 </pre>
 <div class="stream-trailer block-trailer">End stream: src/tc/demo/tc_demo_part1.py </div>
 <div class="status-pass"></div>
@@ -1135,8 +1610,8 @@ time.sleep(2)
 # start with
 # tbot.py -s lab_denx -c smartweb -t <a href="#src_tc_demo_tc_demo_part2_py">tc_demo_part2.py</a>
 # start tc:
-# - call <a href="#src_tc_demo_tc_demo_get_ub_code_py">tc_demo_get_ub_code.py</a>
-# - call <a href="#src_tc_demo_tc_demo_compile_install_test_py">tc_demo_compile_install_test.py</a>
+# - call <a href="#src_tc_demo_u-boot_tc_demo_get_ub_code_py">tc_demo_get_ub_code.py</a>
+# - call <a href="#src_tc_demo_u-boot_tc_demo_compile_install_test_py">tc_demo_compile_install_test.py</a>
 </pre>
 <div class="stream-trailer block-trailer">End stream: src/tc/demo/tc_demo_part2.py </div>
 <div class="status-pass"></div>
@@ -1158,21 +1633,6 @@ time.sleep(2)
 </div>
 </div>
 <!-- end of one testcase src/tc/demo/tc_demo_part3.py -->
-
-<!-- one testcase src/tc/demo/tc_demo_uboot_tests.py -->
-<div class="stream block" id="src_tc_demo_tc_demo_uboot_tests_py">
-<div class="stream-header block-header">src/tc/demo/tc_demo_uboot_tests.py</div>
-<div class="stream-content block-content">
-<pre>
-# start with
-# tbot.py -s lab_denx -c smartweb -t <a href="#src_tc_demo_tc_demo_uboot_tests_py">tc_demo_uboot_tests.py</a>
-# start all "standard" u-boot testcases
-</pre>
-<div class="stream-trailer block-trailer">End stream: src/tc/demo/tc_demo_uboot_tests.py </div>
-<div class="status-pass"></div>
-</div>
-</div>
-<!-- end of one testcase src/tc/demo/tc_demo_uboot_tests.py -->
 
 <div class="section-trailer block-trailer">src/tc/demo</div>
 <div class="status-pass">
@@ -1301,6 +1761,26 @@ time.sleep(2)
 </div>
 </div>
 <!-- end of a testcase dir src/tc/lab/denx -->
+
+<!-- one testcase src/tc/lab/tc_lab_power_onoff_gpio.py -->
+<div class="stream block" id="src_tc_lab_tc_lab_power_onoff_gpio_py">
+<div class="stream-header block-header">src/tc/lab/tc_lab_power_onoff_gpio.py</div>
+<div class="stream-content block-content">
+<pre>
+#
+# Switch on/off boardpower through a GPIO pin
+# from the lab PC
+#
+# define the gpio for powering on/off in your board config
+# file with for example:
+# gpio_power_on = gpo(21) # gpio number of gpio used to controll power of board
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/lab/tc_lab_power_onoff_gpio.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/lab/tc_lab_power_onoff_gpio.py -->
 
 <!-- one testcase src/tc/lab/tc_lab_prepare.py -->
 <div class="stream block" id="src_tc_lab_tc_lab_prepare_py">
@@ -1628,6 +2108,121 @@ time.sleep(2)
 </div>
 <!-- end of a testcase dir src/tc/linux/ubi -->
 
+<!-- a testcase dir src_tc_linux_xenomai -->
+<div class="section block" id="src/tc/linux/xenomai">
+<div class="section-header block-header-dir">src/tc/linux/xenomai</div>
+<div class="section-content block-content">
+<div class="action">
+<pre>
+</pre>
+</div>
+
+<!-- one testcase src/tc/linux/xenomai/tc_xenomai_common.py -->
+<div class="stream block" id="src_tc_linux_xenomai_tc_xenomai_common_py">
+<div class="stream-header block-header">src/tc/linux/xenomai/tc_xenomai_common.py</div>
+<div class="stream-content block-content">
+<pre>
+#
+# basic xenomai tests
+#
+# - simply call "cat /proc/xenomai/*"
+#
+# ToDo: call xeno-test
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/linux/xenomai/tc_xenomai_common.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/linux/xenomai/tc_xenomai_common.py -->
+
+<!-- one testcase src/tc/linux/xenomai/tc_xenomai_latency.py -->
+<div class="stream block" id="src_tc_linux_xenomai_tc_xenomai_latency_py">
+<div class="stream-header block-header">src/tc/linux/xenomai/tc_xenomai_latency.py</div>
+<div class="stream-content block-content">
+<pre>
+#
+# start latency command <a href="#var_config_tc_xenomai_latency_lcmd">tb.config.tc_xenomai_latency_lcmd</a> from the xenomai
+# tools. Use paramter -g for creating histogram to file
+# <a href="#var_config_tc_xenomai_latency_tmpfile">tb.config.tc_xenomai_latency_tmpfile</a> in gnuplot format.
+# Save this file into <a href="#var_config_tc_xenomai_latency_datfile2">tb.config.tc_xenomai_latency_datfile2</a>
+# on the lab PC.
+#
+# While latency test is running, extract the content of the
+# line starting with "RTD" into the file
+# <a href="#var_config_tc_xenomai_latency_datfile">tb.config.tc_xenomai_latency_datfile</a>
+#
+# This testcase runs the latency tool until <a href="#var_config_tc_xenomai_latency_count">tb.config.tc_xenomai_latency_count</a>
+# lines are read. While running it checks if the value
+# of the column "lat max" is lower than <a href="#var_config_tc_xenomai_latency_max">tb.config.tc_xenomai_latency_max</a>
+# Than this testcase ends with True, else Testcase ends with False.
+# 
+# At the end of this tetscase, it creates the png images
+# of the files <a href="#var_config_tc_xenomai_latency_datfile">tb.config.tc_xenomai_latency_datfile</a>
+# and <a href="#var_config_tc_xenomai_latency_datfile2">tb.config.tc_xenomai_latency_datfile2</a> on the host PC
+# using gnuplot tool.
+#
+# Therefore the files
+# src/files/balkenplot_lat_tbot.sem
+# src/files/balkenplot_latency.sem
+# are used.
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/linux/xenomai/tc_xenomai_latency.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/linux/xenomai/tc_xenomai_latency.py -->
+
+<div class="section-trailer block-trailer">src/tc/linux/xenomai</div>
+<div class="status-pass">
+<pre>
+</pre>
+</div>
+</div>
+</div>
+<!-- end of a testcase dir src/tc/linux/xenomai -->
+
+<!-- one testcase src/tc/linux/tb_workfd_check_if_process_run.py -->
+<div class="stream block" id="src_tc_linux_tb_workfd_check_if_process_run_py">
+<div class="stream-header block-header">src/tc/linux/tb_workfd_check_if_process_run.py</div>
+<div class="stream-content block-content">
+<pre>
+# check if process with name
+# <a href="#var_config_tc_workfd_check_if_process_run_name">tb.config.tc_workfd_check_if_process_run_name</a>
+# runs
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/linux/tb_workfd_check_if_process_run.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/linux/tb_workfd_check_if_process_run.py -->
+
+<!-- one testcase src/tc/linux/tc_connect_to_compilepc.py -->
+<div class="stream block" id="src_tc_linux_tc_connect_to_compilepc_py">
+<div class="stream-header block-header">src/tc/linux/tc_connect_to_compilepc.py</div>
+<div class="stream-content block-content">
+<pre>
+#
+# This testcase creates a third connection handle to the lab and uses
+# ssh to create a connection to a compile pc.
+# The third connection can then be used with <a href="#var_config_workfd">tb.workfd</a> and <a href="#var_config_c_cpc">tb.c_cpc</a>
+# to outsource resource hungry tasks like compiling.
+#
+# ! workfd is set after calling this testcase to the new connection !
+#
+# The vars <a href="#var_config_compile_pc_ip,">tb.config.compile_pc_ip,</a> <a href="#var_config_compile_pc_user">tb.config.compile_pc_user</a>
+# <a href="#var_config_connect_to_compilepc_ssh_opt,">tb.config.connect_to_compilepc_ssh_opt,</a> <a href="#var_config_connect_to_compilepc_ssh_cmd_prompt">tb.config.connect_to_compilepc_ssh_cmd_prompt</a>
+# could also be a list of strings.
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/linux/tc_connect_to_compilepc.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/linux/tc_connect_to_compilepc.py -->
+
 <!-- one testcase src/tc/linux/tc_git_get_branch_commit.py -->
 <div class="stream block" id="src_tc_linux_tc_git_get_branch_commit_py">
 <div class="stream-header block-header">src/tc/linux/tc_git_get_branch_commit.py</div>
@@ -1649,6 +2244,56 @@ time.sleep(2)
 </div>
 </div>
 <!-- end of one testcase src/tc/linux/tc_git_get_branch_commit.py -->
+
+<!-- one testcase src/tc/linux/tc_linux_top.py -->
+<div class="stream block" id="src_tc_linux_tc_linux_top_py">
+<div class="stream-header block-header">src/tc/linux/tc_linux_top.py</div>
+<div class="stream-content block-content">
+<pre>
+#
+# This testcase starts the linux "top" command
+# with the top cmdline arguments <a href="#var_config_tc_linux_top_count">tb.config.tc_linux_top_count</a>
+# and <a href="#var_config_tc_linux_top_sec">tb.config.tc_linux_top_sec</a>
+#
+# amd analyses the output and write them into the file
+# <a href="#var_config_tc_linux_top_filename">tb.config.tc_linux_top_filename</a> in a gnuplot format.
+#
+# used config vars.
+# <a href="#var_config_tc_linux_top_count">tb.config.tc_linux_top_count</a> top count argument
+#   default: '10'
+# <a href="#var_config_tc_linux_top_sec">tb.config.tc_linux_top_sec</a> top seconds argument
+#   default: '2'
+# <a href="#var_config_tc_linux_top_filename">tb.config.tc_linux_top_filename</a> filename where the results are stored
+#   default: 'top-stat.dat'
+#
+# create the images with gnuplot:
+#
+# gnuplot src/files/top_plot_mem.sem
+# result image
+# top-mem-output.jpg
+# gnuplot src/files/top_plot_cpu.sem
+# result image
+# top-cpu-output.jpg
+# gnuplot src/files/top_plot_load.sem
+# result image
+# top-load-output.jpg
+#
+# !! may you need to adapt path in src/files/top_plot*.sem files
+# ToDo: pass paramter workdir to gnuplot
+#
+# While at it, include a demo for adding it to the dashboard
+# backend and create a demo documentation.
+#
+# If you use this testcase in conjunction with other testcases
+# you should remove the line
+# <a href="#var_config_create_documentation_auto">tb.config.create_documentation_auto</a> = 'linux_top'
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/linux/tc_linux_top.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/linux/tc_linux_top.py -->
 
 <!-- one testcase src/tc/linux/tc_lx_bonnie.py -->
 <div class="stream block" id="src_tc_linux_tc_lx_bonnie_py">
@@ -2162,6 +2807,10 @@ time.sleep(2)
 # this tc returns always true, but sets
 # <a href="#var_config_tc_return">tb.config.tc_return</a> True or False, because we may not
 # want to end testcase failed, if dir not exists.
+#
+# if <a href="#var_config_tc_workfd_check_if_dir_exists_create">tb.config.tc_workfd_check_if_dir_exists_create</a> != 'no'
+# create the directory.
+#
 </pre>
 <div class="stream-trailer block-trailer">End stream: src/tc/linux/tc_workfd_check_if_dir_exist.py </div>
 <div class="status-pass"></div>
@@ -2304,6 +2953,21 @@ time.sleep(2)
 </div>
 <!-- end of one testcase src/tc/linux/tc_workfd_connect_with_kermit.py -->
 
+<!-- one testcase src/tc/linux/tc_workfd_connect_with_ssh.py -->
+<div class="stream block" id="src_tc_linux_tc_workfd_connect_with_ssh_py">
+<div class="stream-header block-header">src/tc/linux/tc_workfd_connect_with_ssh.py</div>
+<div class="stream-content block-content">
+<pre>
+#
+# connect wit ssh to board, and use it as console
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/linux/tc_workfd_connect_with_ssh.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/linux/tc_workfd_connect_with_ssh.py -->
+
 <!-- one testcase src/tc/linux/tc_workfd_cp_file.py -->
 <div class="stream block" id="src_tc_linux_tc_workfd_cp_file_py">
 <div class="stream-header block-header">src/tc/linux/tc_workfd_cp_file.py</div>
@@ -2337,6 +3001,35 @@ time.sleep(2)
 </div>
 </div>
 <!-- end of one testcase src/tc/linux/tc_workfd_create_ubi_rootfs.py -->
+
+<!-- one testcase src/tc/linux/tc_workfd_date.py -->
+<div class="stream block" id="src_tc_linux_tc_workfd_date_py">
+<div class="stream-header block-header">src/tc/linux/tc_workfd_date.py</div>
+<div class="stream-content block-content">
+<pre>
+#
+# just as a demo for the tbot workshop
+# simply show, how to send a cmd (in our case "date") to the
+# linux console on the DUT
+# (2 different possibilities)
+#
+# Then send again "date" and search for the string
+# "Mon" in the output of the date command, and end Testcase
+# with True, if found, else end TC with False.
+#
+# This testcase is a good starting point for writting
+# own testcases.
+#
+# You also can use this testcase for a fast tbot
+# test after tbot is installed.
+# See config/tbot_test.py for more info
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/linux/tc_workfd_date.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/linux/tc_workfd_date.py -->
 
 <!-- one testcase src/tc/linux/tc_workfd_disconnect_with_kermit.py -->
 <div class="stream block" id="src_tc_linux_tc_workfd_disconnect_with_kermit_py">
@@ -2377,7 +3070,10 @@ time.sleep(2)
 # start with
 # python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t <a href="#src_tc_linux_tc_workfd_get_linux_source_py">tc_workfd_get_linux_source.py</a>
 # get Linux source <a href="#var_config_tc_lab_get_linux_source_git_repo">tb.config.tc_lab_get_linux_source_git_repo</a> with "git clone"
-# and go into the source tree. Apply patches if needed with:
+# and go into the source tree.
+# check out branch <a href="#_tc_lab_get_linux_source_git_branch">tc_lab_get_linux_source_git_branch</a> if <a href="#_tc_lab_get_linux_source_git_commit_id">tc_lab_get_linux_source_git_commit_id</a> == 'none'
+# else checkout commit <a href="#_tc_lab_get_linux_source_git_commit_id">tc_lab_get_linux_source_git_commit_id</a>
+# Apply patches if needed with:
 # <a href="#src_tc_tc_lab_apply_patches_py">tc_lab_apply_patches.py</a> and <a href="#src_tc_linux_tc_workfd_apply_local_patches_py">tc_workfd_apply_local_patches.py</a>
 </pre>
 <div class="stream-trailer block-trailer">End stream: src/tc/linux/tc_workfd_get_linux_source.py </div>
@@ -2496,6 +3192,26 @@ time.sleep(2)
 </div>
 </div>
 <!-- end of one testcase src/tc/linux/tc_workfd_get_uboot_config_vars.py -->
+
+<!-- one testcase src/tc/linux/tc_workfd_git_rebase.py -->
+<div class="stream block" id="src_tc_linux_tc_workfd_git_rebase_py">
+<div class="stream-header block-header">src/tc/linux/tc_workfd_git_rebase.py</div>
+<div class="stream-content block-content">
+<pre>
+#
+# go into git source tree <a href="#var_config_tc_workfd_git_rebase_git_src_path">tb.config.tc_workfd_git_rebase_git_src_path</a>
+# checkout branch <a href="#var_config_tc_workfd_git_rebase_git_base_branch">tb.config.tc_workfd_git_rebase_git_base_branch</a>
+# call "git fetch" and "git pull"
+# checkout branch <a href="#var_config_tc_workfd_git_rebase_git_work_branch">tb.config.tc_workfd_git_rebase_git_work_branch</a>
+# and rebase <a href="#var_config_tc_workfd_git_rebase_git_work_branch">tb.config.tc_workfd_git_rebase_git_work_branch</a> with
+# <a href="#var_config_tc_workfd_git_rebase_git_base_branch">tb.config.tc_workfd_git_rebase_git_base_branch</a>
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/linux/tc_workfd_git_rebase.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/linux/tc_workfd_git_rebase.py -->
 
 <!-- one testcase src/tc/linux/tc_workfd_goto_lab_source_dir.py -->
 <div class="stream block" id="src_tc_linux_tc_workfd_goto_lab_source_dir_py">
@@ -2627,13 +3343,19 @@ time.sleep(2)
 <pre>
 # start with
 # python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t <a href="#src_tc_linux_tc_workfd_iperf_py">tc_workfd_iperf.py</a>
+#
 # make a minimal iperf check
 # starts an iperf server on <a href="#var_config_tc_workfd_c_sr">tb.tc_workfd_c_sr</a> connection
 #   with ip addr <a href="#var_config_tc_workfd_iperf_sip">tb.tc_workfd_iperf_sip</a>
 # starts an iperf "slave" on <a href="#var_config_tc_workfd_c_sl">tb.tc_workfd_c_sl</a>
 # waiting for the first result of iperf measure and
 # check if the resulting speed is bigger then
-# <a href="#var_config_tc_workfd_iperf_minval">tb.tc_workfd_iperf_minval</a>
+# <a href="#var_config_tc_workfd_iperf_minval">tb.config.tc_workfd_iperf_minval</a>
+#
+# if you have not the iperf cmd instead iperf 3, you can
+# set
+# <a href="#var_config_tc_workfd_c_sr_vers">tb.config.tc_workfd_c_sr_vers</a> or <a href="#var_config_tc_workfd_c_sl_vers">tb.config.tc_workfd_c_sl_vers</a>
+# to '3'
 </pre>
 <div class="stream-trailer block-trailer">End stream: src/tc/linux/tc_workfd_iperf.py </div>
 <div class="status-pass"></div>
@@ -2691,6 +3413,34 @@ time.sleep(2)
 </div>
 <!-- end of one testcase src/tc/linux/tc_workfd_linux_mkdir.py -->
 
+<!-- one testcase src/tc/linux/tc_workfd_lx_get_bc.py -->
+<div class="stream block" id="src_tc_linux_tc_workfd_lx_get_bc_py">
+<div class="stream-header block-header">src/tc/linux/tc_workfd_lx_get_bc.py</div>
+<div class="stream-content block-content">
+<pre>
+# get in linux bootcount value
+# if not found testcases end with failure
+# value returned in var <a href="#var_config_lx_bc">tb.lx_bc</a>
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/linux/tc_workfd_lx_get_bc.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/linux/tc_workfd_lx_get_bc.py -->
+
+<!-- one testcase src/tc/linux/tc_workfd_lx_set_bc.py -->
+<div class="stream block" id="src_tc_linux_tc_workfd_lx_set_bc_py">
+<div class="stream-header block-header">src/tc/linux/tc_workfd_lx_set_bc.py</div>
+<div class="stream-content block-content">
+<pre>
+# set in linux bootcount value <a href="#var_config_lx_bc">tb.lx_bc</a>
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/linux/tc_workfd_lx_set_bc.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/linux/tc_workfd_lx_set_bc.py -->
+
 <!-- one testcase src/tc/linux/tc_workfd_md5sum.py -->
 <div class="stream block" id="src_tc_linux_tc_workfd_md5sum_py">
 <div class="stream-header block-header">src/tc/linux/tc_workfd_md5sum.py</div>
@@ -2706,6 +3456,21 @@ time.sleep(2)
 </div>
 </div>
 <!-- end of one testcase src/tc/linux/tc_workfd_md5sum.py -->
+
+<!-- one testcase src/tc/linux/tc_workfd_rm_dir.py -->
+<div class="stream block" id="src_tc_linux_tc_workfd_rm_dir_py">
+<div class="stream-header block-header">src/tc/linux/tc_workfd_rm_dir.py</div>
+<div class="stream-content block-content">
+<pre>
+#
+# remove the path <a href="#var_config_tc_lab_rm_dir">tb.config.tc_lab_rm_dir</a>
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/linux/tc_workfd_rm_dir.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/linux/tc_workfd_rm_dir.py -->
 
 <!-- one testcase src/tc/linux/tc_workfd_rm_file.py -->
 <div class="stream block" id="src_tc_linux_tc_workfd_rm_file_py">
@@ -2763,7 +3528,20 @@ time.sleep(2)
 # start an scp transfer
 # <a href="#var_config_tc_workfd_scp_opt:">tb.config.tc_workfd_scp_opt:</a> scp options
 # <a href="#var_config_tc_workfd_scp_from:">tb.config.tc_workfd_scp_from:</a> from where
-# <a href="#var_config_tc_workfd_scp_to">tb.config.tc_workfd_scp_to</a>
+# <a href="#var_config_tc_workfd_scp_to:">tb.config.tc_workfd_scp_to:</a> to where
+#
+# If the scp command asks for  "password" the testcase extracts
+# the user and ip from scp output "user@ip's password:"
+# and writes the password it find in password.py with
+#
+# <a href="#var_config_write_stream_passwd(tb_workfd,">tb.write_stream_passwd(tb.workfd,</a> user, ip)
+#
+# to the scp command ... if no user and or ip
+# is found ... scp command fails and so the testcase.
+#
+# An errorneous scp command exits with an error code.
+# check this error code when scp command finished,
+# and return True, if no error, else False.
 #
 </pre>
 <div class="stream-trailer block-trailer">End stream: src/tc/linux/tc_workfd_scp.py </div>
@@ -2772,15 +3550,38 @@ time.sleep(2)
 </div>
 <!-- end of one testcase src/tc/linux/tc_workfd_scp.py -->
 
+<!-- one testcase src/tc/linux/tc_workfd_set_gpio.py -->
+<div class="stream block" id="src_tc_linux_tc_workfd_set_gpio_py">
+<div class="stream-header block-header">src/tc/linux/tc_workfd_set_gpio.py</div>
+<div class="stream-content block-content">
+<pre>
+# Sets a GPIO through sysfs gpio high/low
+#
+# Call like this:
+# <a href="#var_config_eof_call_tc("tc_workfd_set_gpio_py",">tb.eof_call_tc("tc_workfd_set_gpio.py",</a> highlow='high', gpio=gpioname)
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/linux/tc_workfd_set_gpio.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/linux/tc_workfd_set_gpio.py -->
+
 <!-- one testcase src/tc/linux/tc_workfd_ssh.py -->
 <div class="stream block" id="src_tc_linux_tc_workfd_ssh_py">
 <div class="stream-header block-header">src/tc/linux/tc_workfd_ssh.py</div>
 <div class="stream-content block-content">
 <pre>
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t <a href="#src_tc_linux_tc_workfd_ssh_py">tc_workfd_ssh.py</a>
-# login with ssh to <a href="#var_config_workfd_ssh_cmd">tb.workfd_ssh_cmd</a> and set new ssh prompt
+#
+# login with ssh to <a href="#var_config_workfd_ssh_cmd">tb.config.workfd_ssh_cmd</a> and ssh options
+# <a href="#var_config_tc_workfd_ssh_opt_">tb.config.tc_workfd_ssh_opt.</a>
+# This testcases expects
 # <a href="#var_config_workfd_ssh_cmd_prompt">tb.config.workfd_ssh_cmd_prompt</a>
+# as the prompt it get, after a succefull log in.
+# When logged in call
+# if <a href="#var_config_workfd_ssh_do_first">tb.config.workfd_ssh_do_first</a> == 'yes':
+#      <a href="#var_config_do_first_settings_after_login(c)">tb.do_first_settings_after_login(c)</a>
+#
 </pre>
 <div class="stream-trailer block-trailer">End stream: src/tc/linux/tc_workfd_ssh.py </div>
 <div class="status-pass"></div>
@@ -3142,6 +3943,10 @@ time.sleep(2)
 # start with
 # python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t <a href="#src_tc_uboot_duts_tc_ub_start_all_duts_py">tc_ub_start_all_duts.py</a>
 # start all DUTS tests
+#
+# only start the DUTS testcases, if <a href="#var_config_tc_ub_start_all_duts_start">tb.config.tc_ub_start_all_duts_start</a>
+# is set to True (default)
+#
 </pre>
 <div class="stream-trailer block-trailer">End stream: src/tc/uboot/duts/tc_ub_start_all_duts.py </div>
 <div class="status-pass"></div>
@@ -3198,10 +4003,10 @@ time.sleep(2)
 <div class="stream-header block-header">src/tc/uboot/tc_ub_check_version.py</div>
 <div class="stream-content block-content">
 <pre>
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t <a href="#src_tc_uboot_tc_ub_check_version_py">tc_ub_check_version.py</a>
+#
 # check if the current running U-Boot vers == <a href="#var_config_uboot_vers">tb.uboot_vers</a>
 # and SPL vers == <a href="#var_config_spl_vers">tb.spl_vers</a>
+#
 </pre>
 <div class="stream-trailer block-trailer">End stream: src/tc/uboot/tc_ub_check_version.py </div>
 <div class="status-pass"></div>
@@ -3406,6 +4211,21 @@ time.sleep(2)
 </div>
 <!-- end of one testcase src/tc/uboot/tc_ub_dfu_random_default.py -->
 
+<!-- one testcase src/tc/uboot/tc_ub_get_bc.py -->
+<div class="stream block" id="src_tc_uboot_tc_ub_get_bc_py">
+<div class="stream-header block-header">src/tc/uboot/tc_ub_get_bc.py</div>
+<div class="stream-content block-content">
+<pre>
+# get in uboot bootcount value
+# if not found testcases end with failure
+# value returned in var <a href="#var_config_ub_bc">tb.ub_bc</a>
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/uboot/tc_ub_get_bc.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/uboot/tc_ub_get_bc.py -->
+
 <!-- one testcase src/tc/uboot/tc_ub_get_filesize.py -->
 <div class="stream block" id="src_tc_uboot_tc_ub_get_filesize_py">
 <div class="stream-header block-header">src/tc/uboot/tc_ub_get_filesize.py</div>
@@ -3479,12 +4299,32 @@ time.sleep(2)
 #
 # else TC executes the steps described in 'task'
 #
+# <a href="#var_config_ub_load_board_env_testcase">tb.config.ub_load_board_env_testcase</a> != ''
+# call a board specific testcase, whichs name is defined in
+# <a href="#var_config_ub_load_board_env_testcase">tb.config.ub_load_board_env_testcase</a> for setting U-Boot
+# Env. If this testcase succeeds, end True.
 </pre>
 <div class="stream-trailer block-trailer">End stream: src/tc/uboot/tc_ub_load_board_env.py </div>
 <div class="status-pass"></div>
 </div>
 </div>
 <!-- end of one testcase src/tc/uboot/tc_ub_load_board_env.py -->
+
+<!-- one testcase src/tc/uboot/tc_ub_reset.py -->
+<div class="stream block" id="src_tc_uboot_tc_ub_reset_py">
+<div class="stream-header block-header">src/tc/uboot/tc_ub_reset.py</div>
+<div class="stream-content block-content">
+<pre>
+#
+# simply call U-Boots reset command
+# This testcase works only on the console connection c_con
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/uboot/tc_ub_reset.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/uboot/tc_ub_reset.py -->
 
 <!-- one testcase src/tc/uboot/tc_ub_setenv.py -->
 <div class="stream block" id="src_tc_uboot_tc_ub_setenv_py">
@@ -3542,6 +4382,11 @@ time.sleep(2)
 # <a href="#var_config_tc_ub_test_py_hook_script_path">tb.config.tc_ub_test_py_hook_script_path</a>
 #
 # you can disable this testcase with <a href="#var_config_tc_ub_test_py_start">tb.config.tc_ub_test_py_start</a> = 'no'
+#
+# may a configure file is needed, so create it with
+# <a href="#var_config_tc_ub_test_py_configfile_">tb.config.tc_ub_test_py_configfile.</a> This variable contains
+# the config file, which gets created.
+#
 </pre>
 <div class="stream-trailer block-trailer">End stream: src/tc/uboot/tc_ub_test_py.py </div>
 <div class="status-pass"></div>
@@ -3758,7 +4603,8 @@ time.sleep(2)
 <pre>
 # start with
 # python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t <a href="#src_tc_uboot_tc_ub_upd_spl_py">tc_ub_upd_spl.py</a>
-# update new spl to board
+# update new spl to board if <a href="#var_config_tc_ub_upd_spl_withspl">tb.config.tc_ub_upd_spl_withspl</a> == 'yes'
+#
 # steps:
 # - load tbot u-boot env vars
 # - execute "run tbot_upd_spl"
@@ -3932,6 +4778,10 @@ time.sleep(2)
 # start tc:
 # load binary into ram with loadb
 #
+# if <a href="#var_config_tc_uboot_load_bin_with_kermit_possible">tb.config.tc_uboot_load_bin_with_kermit_possible</a> != 'yes'
+# do nothing return True
+# default: 'yes'
+#
 # precondition:
 # kermit must be used
 #
@@ -4026,6 +4876,65 @@ time.sleep(2)
 </div>
 <!-- end of one testcase src/tc/yocto/tc_workfd_bitbake.py -->
 
+<!-- one testcase src/tc/yocto/tc_workfd_check_repo_cmd.py -->
+<div class="stream block" id="src_tc_yocto_tc_workfd_check_repo_cmd_py">
+<div class="stream-header block-header">src/tc/yocto/tc_workfd_check_repo_cmd.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t <a href="#src_tc_yocto_tc_workfd_check_repo_cmd_py">tc_workfd_check_repo_cmd.py</a>
+#
+# check if repo cmd exists, if not try to set
+# PATH variable stored in <a href="#var_config_tc_workfd_repo_path">tb.config.tc_workfd_repo_path</a>
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/yocto/tc_workfd_check_repo_cmd.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/yocto/tc_workfd_check_repo_cmd.py -->
+
+<!-- one testcase src/tc/yocto/tc_workfd_get_with_repo.py -->
+<div class="stream block" id="src_tc_yocto_tc_workfd_get_with_repo_py">
+<div class="stream-header block-header">src/tc/yocto/tc_workfd_get_with_repo.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t <a href="#src_tc_yocto_tc_workfd_get_with_repo_py">tc_workfd_get_with_repo.py</a>
+#
+# get yocto code with repo tool and configure sources
+#
+# - check if repo command exists
+#   if not try to set path to it, if <a href="#var_config_tc_workfd_repo_path">tb.config.tc_workfd_repo_path</a>
+#   is set, else failure
+#
+# - goto repo code
+#   if dir $TBOT_BASEDIR_REPO does not exist create it
+#   - call "repo init" with variables
+#     <a href="#var_config_tc_workfd_get_with_repo_u">tb.config.tc_workfd_get_with_repo_u</a>
+#     <a href="#var_config_tc_workfd_get_with_repo_m">tb.config.tc_workfd_get_with_repo_m</a>
+#     <a href="#var_config_tc_workfd_get_with_repo_b">tb.config.tc_workfd_get_with_repo_b</a>
+#
+# - get newest sources with "repo sync"
+#
+# - setup environment with samples from meta-
+#   <a href="#var_config_tc_workfd_get_with_repo_metaname">tb.config.tc_workfd_get_with_repo_metaname</a>
+#   default: 'beld'
+#
+# - check if build exists, if not create it and
+#   set DL_DIR and SSTATE_DIR in local.conf with the
+#   values from <a href="#var_config_tc_workfd_get_yocto_source_conf_dl_dir">tb.config.tc_workfd_get_yocto_source_conf_dl_dir</a>
+#   and <a href="#var_config_tc_workfd_get_yocto_source_conf_sstate_dir">tb.config.tc_workfd_get_yocto_source_conf_sstate_dir</a>
+#
+#   and setup site.conf with specific settings
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/yocto/tc_workfd_get_with_repo.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/yocto/tc_workfd_get_with_repo.py -->
+
 <!-- one testcase src/tc/yocto/tc_workfd_get_yocto_source.py -->
 <div class="stream block" id="src_tc_yocto_tc_workfd_get_yocto_source_py">
 <div class="stream-header block-header">src/tc/yocto/tc_workfd_get_yocto_source.py</div>
@@ -4038,8 +4947,11 @@ time.sleep(2)
 # <a href="#var_config_tc_workfd_get_yocto_patches_git_branch">tb.config.tc_workfd_get_yocto_patches_git_branch</a>
 # check out commit ID:
 # <a href="#var_config_tc_workfd_get_yocto_git_commit_id">tb.config.tc_workfd_get_yocto_git_commit_id</a>
-# apply patches with "git am" from directory:
-# <a href="#var_config_tc_workfd_get_yocto_clone_apply_patches_git_am_dir">tb.config.tc_workfd_get_yocto_clone_apply_patches_git_am_dir</a>
+#
+# if <a href="#var_config_tc_workfd_get_yocto_patches_git_repo">tb.config.tc_workfd_get_yocto_patches_git_repo</a> != 'none'
+#   apply patches with "git am" from directory:
+#   <a href="#var_config_tc_workfd_get_yocto_clone_apply_patches_git_am_dir">tb.config.tc_workfd_get_yocto_clone_apply_patches_git_am_dir</a>
+#
 # additionally define a reference for cloning:
 # <a href="#var_config_tc_workfd_get_yocto_source_git_reference">tb.config.tc_workfd_get_yocto_source_git_reference</a>
 # if a user/password for cloning is needed, define the user:
@@ -4059,8 +4971,11 @@ time.sleep(2)
 #  'source_git_repo_name'
 # ]
 #
-# at the end overwrite yocto configuration found in
-# <a href="#var_config_tc_workfd_get_yocto_source_conf_dir">tb.config.tc_workfd_get_yocto_source_conf_dir</a>
+# if <a href="#var_config_tc_workfd_get_yocto_source_autoconf">tb.config.tc_workfd_get_yocto_source_autoconf</a> == 'none'
+#     overwrite yocto configuration found in
+#     <a href="#var_config_tc_workfd_get_yocto_source_conf_dir">tb.config.tc_workfd_get_yocto_source_conf_dir</a>
+# else
+#     try to autogenerate bblayers.conf and site.conf
 #
 # clones into directory <a href="#var_config_yocto_name">tb.config.yocto_name</a>
 # created with <a href="#src_tc_yocto_tc_workfd_goto_yocto_code_py">tc_workfd_goto_yocto_code.py</a>
@@ -4071,6 +4986,27 @@ time.sleep(2)
 </div>
 </div>
 <!-- end of one testcase src/tc/yocto/tc_workfd_get_yocto_source.py -->
+
+<!-- one testcase src/tc/yocto/tc_workfd_goto_repo_code.py -->
+<div class="stream block" id="src_tc_yocto_tc_workfd_goto_repo_code_py">
+<div class="stream-header block-header">src/tc/yocto/tc_workfd_goto_repo_code.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t <a href="#src_tc_yocto_tc_workfd_goto_repo_code_py">tc_workfd_goto_repo_code.py</a>
+#
+# switch into yocto source <a href="#var_config_tc_lab_source_dir">tb.config.tc_lab_source_dir</a> + "/repo-" + <a href="#var_config_boardlabname">tb.config.boardlabname</a>
+#
+# set <a href="#var_config_repo_name">tb.config.repo_name</a> to "repo-" + <a href="#var_config_boardlabname">tb.config.boardlabname</a>
+# and <a href="#var_config_repo_fulldir_name">tb.config.repo_fulldir_name</a> to <a href="#var_config_tc_lab_source_dir">tb.config.tc_lab_source_dir</a> + "/" + <a href="#var_config_repo_name">tb.config.repo_name</a>
+# and set $TBOT_BASEDIR_REPO to <a href="#var_config_repo_fulldir_name">tb.config.repo_fulldir_name</a>
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/yocto/tc_workfd_goto_repo_code.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/yocto/tc_workfd_goto_repo_code.py -->
 
 <!-- one testcase src/tc/yocto/tc_workfd_goto_yocto_code.py -->
 <div class="stream block" id="src_tc_yocto_tc_workfd_goto_yocto_code_py">
@@ -4101,6 +5037,8 @@ time.sleep(2)
 # do basic yocto checks
 #
 # - check rootfs version
+#   only if <a href="#var_config_tc_workfd_yocto_basic_check_rootfsversion">tb.config.tc_workfd_yocto_basic_check_rootfsversion</a> == 'yes'
+#   which is the default.
 # - check dmesg output
 #   check if strings defined in <a href="#var_config_tc_demo_yocto_test_checks">tb.config.tc_demo_yocto_test_checks</a>
 #   are found in dmesg output
@@ -4131,6 +5069,48 @@ time.sleep(2)
 </div>
 <!-- end of one testcase src/tc/yocto/tc_workfd_yocto_check_rootfs_version.py -->
 
+<!-- one testcase src/tc/yocto/tc_workfd_yocto_generate_bblayers.py -->
+<div class="stream block" id="src_tc_yocto_tc_workfd_yocto_generate_bblayers_py">
+<div class="stream-header block-header">src/tc/yocto/tc_workfd_yocto_generate_bblayers.py</div>
+<div class="stream-content block-content">
+<pre>
+# create bblayer.conf file
+# 
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/yocto/tc_workfd_yocto_generate_bblayers.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/yocto/tc_workfd_yocto_generate_bblayers.py -->
+
+<!-- one testcase src/tc/yocto/tc_workfd_yocto_patch_site.py -->
+<div class="stream block" id="src_tc_yocto_tc_workfd_yocto_patch_site_py">
+<div class="stream-header block-header">src/tc/yocto/tc_workfd_yocto_patch_site.py</div>
+<div class="stream-content block-content">
+<pre>
+# start with
+# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t <a href="#src_tc_yocto_tc_workfd_yocto_patch_site_py">tc_workfd_yocto_patch_site.py</a>
+#
+# patch / create site.conf
+#
+# if <a href="#var_config_tc_workfd_yocto_patch_site_path_default_file">tb.config.tc_workfd_yocto_patch_site_path_default_file</a> != 'none'
+# use this file as default
+#
+# add SWUPDATE_PRIVATE_KEY if <a href="#var_config_tc_workfd_yocto_patch_site_swu_priv_key">tb.config.tc_workfd_yocto_patch_site_swu_priv_key</a>
+#  != 'none'
+# add SWUPDATE_PASSWORD_FILE if <a href="#var_config_tc_workfd_yocto_patch_site_swu_priv_passout">tb.config.tc_workfd_yocto_patch_site_swu_priv_passout</a>
+#  != 'none'
+# add DL_DIR if <a href="#var_config_tc_workfd_yocto_patch_site_dl_dir">tb.config.tc_workfd_yocto_patch_site_dl_dir</a> != 'none'
+# add SSTATE_DIR if <a href="#var_config_tc_workfd_yocto_patch_site_sstate_dir">tb.config.tc_workfd_yocto_patch_site_sstate_dir</a> != 'none'
+# add SRC_LINUX_STABLE if <a href="#var_config_tc_workfd_yocto_patch_site_src_linux_stable">tb.config.tc_workfd_yocto_patch_site_src_linux_stable</a> != 'none'
+# add PREMIRRORS_prepend if <a href="#var_config_tc_workfd_yocto_patch_site_premirrors">tb.config.tc_workfd_yocto_patch_site_premirrors</a> != 'none'
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/yocto/tc_workfd_yocto_patch_site.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/yocto/tc_workfd_yocto_patch_site.py -->
+
 <!-- one testcase src/tc/yocto/tc_yocto_get_rootfs_from_tarball.py -->
 <div class="stream block" id="src_tc_yocto_tc_yocto_get_rootfs_from_tarball_py">
 <div class="stream-header block-header">src/tc/yocto/tc_yocto_get_rootfs_from_tarball.py</div>
@@ -4149,6 +5129,22 @@ time.sleep(2)
 </div>
 </div>
 <!-- end of one testcase src/tc/yocto/tc_yocto_get_rootfs_from_tarball.py -->
+
+<!-- one testcase src/tc/yocto/tc_yocto_install_rootfs_as_nfs.py -->
+<div class="stream block" id="src_tc_yocto_tc_yocto_install_rootfs_as_nfs_py">
+<div class="stream-header block-header">src/tc/yocto/tc_yocto_install_rootfs_as_nfs.py</div>
+<div class="stream-content block-content">
+<pre>
+#
+# - install <a href="#var_config_rootfs_tar_file">tb.config.rootfs_tar_file</a> in path <a href="#var_config_tc_yocto_install_rootfs_as_nfs_path">tb.config.tc_yocto_install_rootfs_as_nfs_path</a>
+#   into <a href="#var_config_nfs_subdir">tb.config.nfs_subdir</a>
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/yocto/tc_yocto_install_rootfs_as_nfs.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/yocto/tc_yocto_install_rootfs_as_nfs.py -->
 
 <div class="section-trailer block-trailer">src/tc/yocto</div>
 <div class="status-pass">
@@ -4184,6 +5180,24 @@ time.sleep(2)
 </div>
 <!-- end of one testcase src/tc/tc_board_git_bisect.py -->
 
+<!-- one testcase src/tc/tc_dummy.py -->
+<div class="stream block" id="src_tc_tc_dummy_py">
+<div class="stream-header block-header">src/tc/tc_dummy.py</div>
+<div class="stream-content block-content">
+<pre>
+# This is only a dummy testcase, with which you can start
+# to write a testcase.
+#
+# which explains what your testcase do and how, which
+# variables it uses.
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/tc_dummy.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/tc_dummy.py -->
+
 <!-- one testcase src/tc/tc_lab_apply_patches.py -->
 <div class="stream block" id="src_tc_tc_lab_apply_patches_py">
 <div class="stream-header block-header">src/tc/tc_lab_apply_patches.py</div>
@@ -4191,7 +5205,11 @@ time.sleep(2)
 <pre>
 # start with
 # python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t <a href="#src_tc_tc_lab_apply_patches_py">tc_lab_apply_patches.py</a>
-# apply patches to source
+#
+# set workfd to c_ctrl
+# call  <a href="#src_tc_tc_workfd_apply_patches_py">tc_workfd_apply_patches.py</a>
+# restore old workfd
+#
 </pre>
 <div class="stream-trailer block-trailer">End stream: src/tc/tc_lab_apply_patches.py </div>
 <div class="status-pass"></div>
@@ -4206,7 +5224,11 @@ time.sleep(2)
 <pre>
 # start with
 # python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t <a href="#src_tc_tc_lab_compile_uboot_py">tc_lab_compile_uboot.py</a>
-# compile u-boot
+#
+# set workfd to c_ctrl
+# call <a href="#src_tc_tc_workfd_compile_uboot_py">tc_workfd_compile_uboot.py</a>
+# restore old workfd
+#
 </pre>
 <div class="stream-trailer block-trailer">End stream: src/tc/tc_lab_compile_uboot.py </div>
 <div class="status-pass"></div>
@@ -4237,8 +5259,10 @@ time.sleep(2)
 <pre>
 # start with
 # python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t <a href="#src_tc_tc_lab_get_uboot_source_py">tc_lab_get_uboot_source.py</a>
+#
 # get U-Boot source
 # and go into the source tree
+#
 </pre>
 <div class="stream-trailer block-trailer">End stream: src/tc/tc_lab_get_uboot_source.py </div>
 <div class="status-pass"></div>
@@ -4305,6 +5329,37 @@ time.sleep(2)
 </div>
 </div>
 <!-- end of one testcase src/tc/tc_lab_set_toolchain.py -->
+
+<!-- one testcase src/tc/tc_test_bootcounter.py -->
+<div class="stream block" id="src_tc_tc_test_bootcounter_py">
+<div class="stream-header block-header">src/tc/tc_test_bootcounter.py</div>
+<div class="stream-content block-content">
+<pre>
+# Test U-Boot / Linux bootcounter functionality
+# - go into U-Boot
+# - get bootcounter value
+# - reset
+# - get bootcounter value (must be previous + 1)
+# - reset
+# - get bootcounter value (must be previous + 1)
+# - boot linux
+# - get bootcounter value (must be the same as in U-Boot)
+# - set bootcounter value in linux
+# - power off the board
+# - power on the board
+# - go into U-Boot
+# - get bootcounter value (must be +1 the value set in linux)
+# - power off the board
+# - power on the board
+# - go into U-Boot
+# - get bootcounter value (must be 1)
+
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/tc_test_bootcounter.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/tc_test_bootcounter.py -->
 
 <!-- one testcase src/tc/tc_ub_boot_linux.py -->
 <div class="stream block" id="src_tc_tc_ub_boot_linux_py">
@@ -4389,16 +5444,44 @@ time.sleep(2)
 <pre>
 # start with
 # python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t <a href="#src_tc_tc_workfd_set_toolchain_py">tc_workfd_set_toolchain.py</a>
+#
 # set the toolchain, dependend on the architecture setting in
 # <a href="#var_config_tc_workfd_set_toolchain_arch">tb.config.tc_workfd_set_toolchain_arch</a>
+# or source script set with <a href="#var_config_tc_workfd_set_toolchain_source">tb.config.tc_workfd_set_toolchain_source</a>
+# if <a href="#var_config_tc_workfd_set_toolchain_source">tb.config.tc_workfd_set_toolchain_source</a> != 'no'
+#
 # supported toolchains defined in
 # <a href="#var_config_tc_workfd_set_toolchain_t_p">tb.config.tc_workfd_set_toolchain_t_p</a> and <a href="#var_config_tc_workfd_set_toolchain_cr_co">tb.config.tc_workfd_set_toolchain_cr_co</a>
+#
+# set also the ARCH environment variable with the value from
+# <a href="#var_config_tc_workfd_set_toolchain_arch">tb.config.tc_workfd_set_toolchain_arch</a>
+#
+# Add a list of also executed cmds in <a href="#var_config_tc_workfd_set_toolchain_addlist">tb.config.tc_workfd_set_toolchain_addlist</a>
+#
 </pre>
 <div class="stream-trailer block-trailer">End stream: src/tc/tc_workfd_set_toolchain.py </div>
 <div class="status-pass"></div>
 </div>
 </div>
 <!-- end of one testcase src/tc/tc_workfd_set_toolchain.py -->
+
+<!-- one testcase src/tc/tc_workfd_write_cmd_check.py -->
+<div class="stream block" id="src_tc_tc_workfd_write_cmd_check_py">
+<div class="stream-header block-header">src/tc/tc_workfd_write_cmd_check.py</div>
+<div class="stream-content block-content">
+<pre>
+#
+# Wrap a testcase around <a href="#var_config_write_cmd_check_">tb.write_cmd_check.</a>
+#
+# This testcase can be called via
+# <a href="#var_config_call_tc('tc_workfd_write_cmd_check_py',">tb.call_tc('tc_workfd_write_cmd_check.py',</a> cmd='foo', string='bar').
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/tc_workfd_write_cmd_check.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/tc_workfd_write_cmd_check.py -->
 
 <div class="section-trailer block-trailer">src/tc</div>
 <div class="status-pass">
@@ -4820,19 +5903,6 @@ boardlabpowername = 'config.boardname'
 </div>
 </div>
 <!-- end of one default var boardlabpowername  -->
-
-<!-- one default var tftprootdir -->
-<div class="stream block" id="var_config_tftprootdir">
-<div class="stream-header block-header">tftprootdir</div>
-<div class="stream-content block-content">
-<pre>
-tftprootdir='/tftpboot/'
-</pre>
-<div class="stream-trailer block-trailer">End stream: tftprootdir </div>
-<div class="status-pass"></div>
-</div>
-</div>
-<!-- end of one default var tftprootdir -->
 
 <!-- one default var tftpboardrootdir -->
 <div class="stream block" id="var_config_tftpboardrootdir">
@@ -6282,6 +7352,19 @@ workfd_ssh_cmd_prompt = '$'
 </div>
 </div>
 <!-- end of one default var workfd_ssh_cmd_prompt  -->
+
+<!-- one default var workfd_ssh_cmd_opt  -->
+<div class="stream block" id="var_config_workfd_ssh_cmd_opt">
+<div class="stream-header block-header">workfd_ssh_cmd_opt </div>
+<div class="stream-content block-content">
+<pre>
+workfd_ssh_cmd_opt = ''
+</pre>
+<div class="stream-trailer block-trailer">End stream: workfd_ssh_cmd_opt  </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one default var workfd_ssh_cmd_opt  -->
 
 <!-- one default var linux_prompt_default  -->
 <div class="stream block" id="var_config_linux_prompt_default">

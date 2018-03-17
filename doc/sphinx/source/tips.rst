@@ -128,7 +128,7 @@ and start the top testcase, for example for the BBB board:
 
 ::
 
-  tbot.py -s lab_tbot2go-ssh -c cuby -t tc_linux_top.py -l log/tbot_linux_top.log -v
+  tbot.py -s lab_tbot2go-ssh -c beagleboneblack -t tc_linux_top.py -l log/tbot_linux_top.log -v
 
 This creates the gnuplot input file "top-stat.dat".
 
