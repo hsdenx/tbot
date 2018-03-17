@@ -1,3 +1,5 @@
+.. include:: special.rst
+
 =============
 tbot overview
 =============
@@ -118,16 +120,11 @@ root (don;t forget to create it, if you want to use it)
 fast test
 +++++++++
 
-add the tbot src/common directory to your PATH, so tbot.py can
-called from your commandlint or do
+add the tbot :filename:`src/common` directory to your :varname:`PATH`, so tbot.py can
+called from your commandline or replace :filename:`tbot.py` with :filename:`python2.7 src/common/tbot.py`
+for the following example ...
 
-python2.7 src/common/tbot.py
-
-instead
-
-tbot.py for the following examples ...
-
-Adapt in config/tbot_test.py the variable connect_with_ssh_user to
+Adapt in :filename:`config/tbot_test.py` the variable :varname:`connect_with_ssh_user` to
 your real username on the machine where you have tbot installed.
 
 We use for this fast test the machine where we have installed
@@ -136,20 +133,21 @@ be run.
 
 Later you can adapt the config files step by step.
 
-
-Adapt in password-test.py the password (or public key file) for your
+Adapt in :filename:`password-test.py` the password (or public key file) for your
 user.
 
 As an example testcase we use
 
-src/tc/linux/tc_workfd_date.py                                                                                                                                              62,1           67%
+https://github.com/hsdenx/tbot/blob/master/src/tc/linux/tc_workfd_date.py
 
 which show for a demo how to send the date command in some ways,
 and parse the output from the date command ...
 
 start tbot with:
 
-tbot.py -s lab_test -c tbot_test -t tc_workfd_date -l log/tbot_pi_test -v -p password-test.py
+::
+
+  tbot.py -s lab_test -c tbot_test -t tc_workfd_date -l log/tbot_pi_test -v -p password-test.py
 
 create VLAB
 +++++++++++
