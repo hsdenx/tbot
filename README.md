@@ -32,11 +32,17 @@ Options:
                         the tbot board configfilename
   -s LABFILE, --slabfile=LABFILE
                         the tbot lab configfilename
+  -a ARGUMENTS, --arguments ARGUMENTS
+                        arguments for the testcase
   -l LOGFILE, --logfile=LOGFILE
                         the tbot logfilename, if default, tbot creates a
                         defaultnamelogfile
   -t TC, --testcase=TC  the testcase which should be run
   -v, --verbose         be verbose, print all read/write to stdout
+  -e EVENTSIM, --event EVENTSIM
+                        open eventlogfile and run it
+  -p PWFILE, --pwfile PWFILE
+                        used password file
   -w WORKDIR, --workdir=WORKDIR
                         set workdir, default os.getcwd()
 ```

@@ -32,6 +32,10 @@ Usage
                           defaultnamelogfile
     -t TC, --testcase=TC  the testcase which should be run
     -v, --verbose         be verbose, print all read/write to stdout
+    -e EVENTSIM, --event EVENTSIM
+                          open eventlogfile and run it
+    -p PWFILE, --pwfile PWFILE
+                          used password file
     -w WORKDIR, --workdir=WORKDIR
                           set workdir, default os.getcwd()
 
@@ -110,6 +114,42 @@ prepare a directory for storing the logfiles
 and pass it with the commandline option "-l"
 to tbot. Default is the directory "log" in the tbot
 root (don;t forget to create it, if you want to use it)
+
+fast test
++++++++++
+
+add the tbot src/common directory to your PATH, so tbot.py can
+called from your commandlint or do
+
+python2.7 src/common/tbot.py
+
+instead
+
+tbot.py for the following examples ...
+
+Adapt in config/tbot_test.py the variable connect_with_ssh_user to
+your real username on the machine where you have tbot installed.
+
+We use for this fast test the machine where we have installed
+tbot also as lab PC and as board, where the (linux tests only) can
+be run.
+
+Later you can adapt the config files step by step.
+
+
+Adapt in password-test.py the password (or public key file) for your
+user.
+
+As an example testcase we use
+
+src/tc/linux/tc_workfd_date.py                                                                                                                                              62,1           67%
+
+which show for a demo how to send the date command in some ways,
+and parse the output from the date command ...
+
+start tbot with:
+
+tbot.py -s lab_test -c tbot_test -t tc_workfd_date -l log/tbot_pi_test -v -p password-test.py
 
 create VLAB
 +++++++++++
