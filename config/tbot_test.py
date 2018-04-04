@@ -14,7 +14,7 @@
 # tbot.py -s lab_test -c tbot_test -t tc_workfd_date -l log/tbot_pi_test -v -p password-test.py
 #
 boardname = 'pi'
-connect_with_ssh_user = 'pi'
+connect_with_ssh_user = 'hs'
 connect_with_ssh_ip = 'localhost'
 uboot_prompt = '=> '
 linux_prompt = 'ttbott> '

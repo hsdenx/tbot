@@ -124,7 +124,7 @@ add the tbot :filename:`src/common` directory to your :varname:`PATH`, so tbot.p
 called from your commandline or replace :filename:`tbot.py` with :filename:`python2.7 src/common/tbot.py`
 for the following example ...
 
-Adapt in :filename:`config/tbot_test.py` the variable :varname:`connect_with_ssh_user` to
+Adapt in the board config file :filename:`config/tbot_test.py` the variable :varname:`connect_with_ssh_user` to
 your real username on the machine where you have tbot installed.
 
 We use for this fast test the machine where we have installed
@@ -135,6 +135,9 @@ Later you can adapt the config files step by step.
 
 Adapt in :filename:`password-test.py` the password (or public key file) for your
 user.
+
+Adapt in the lab config file :filename:`config/lab_test.py` the :varname:`tc_workfd_work_dir` to
+a directory which tbot can use as work directory.
 
 As an example testcase we use
 

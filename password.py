@@ -11,10 +11,9 @@ elif (board == 'pollux.denx.org'):
         print("Please change %s password for user %s\n" % (board, user))
         password = 'putherethepasswd'
 # passwords for the boards
-elif (board == 'smartweb'):
-    if (user == 'root'):
-        password = '\n'
-        print("Please change %s password for user %s\n" % (board, user))
+elif (board == 'localhost'):
+    if (user == 'hs'):
+        password = 'DEINPASSWORD'
 elif (board == 'am335x_evm'):
     if (user == 'debian'):
         password = 'temppwd'
