@@ -84,4 +84,5 @@ while loop:
 if tb.config.workfd_ssh_do_first == 'yes':
     tb.do_first_settings_after_login(c)
 
+tb.gotprompt = True
 tb.end_tc(True)
