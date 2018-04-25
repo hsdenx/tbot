@@ -54,8 +54,17 @@ cmdlist_setenv_3 = [
 "setenv cons_opts"
 ]
 
+try:
+    tb.config.tc_ub_environment
+except:
+    tb.config.tc_ub_environment = 'yes'
+
 tb.eof_write_cmd_list(tb.c_con, cmdlist, create_doc_event=True)
-tb.eof_write_cmd_list(tb.c_con, cmdlist_saveenv, create_doc_event=True)
+
+if tb.config.tc_ub_environment == 'yes':
+    tb.eof_write_cmd_list(tb.c_con, cmdlist_saveenv, create_doc_event=True)
+else:
+    tb.eof_write_cmd(tb.c_con, "help saveenv", create_doc_event=True)
 
 tb.event.create_event('main', 'tc_ub_environment.py', 'SET_DOC_FILENAME', 'help_setenv')
 tb.eof_write_cmd(tb.c_con, "help setenv")
