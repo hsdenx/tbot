@@ -7,6 +7,8 @@ tbot Tips/Tricks/Hints
 
 This section collect Tips/Tricks/hints for tbot usage.
 
+.. _more_readable_verbose_output:
+
 more readable verbose output
 ----------------------------
 

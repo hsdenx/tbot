@@ -47,6 +47,7 @@ Demo
 click on the gif to see the full video on youtube
 
 .. image:: image/demo.gif
+
 https://youtu.be/zfjpj3DLsx4
 
 demo video for a CAN bus testcase:
@@ -127,23 +128,30 @@ for the following example ...
 Adapt in the board config file :filename:`config/tbot_test.py` the variable :varname:`connect_with_ssh_user` to
 your real username on the machine where you have tbot installed.
 
+.. image:: image/installation/username.png
+
 We use for this fast test the machine where we have installed
 tbot also as lab PC and as board, where the (linux tests only) can
 be run.
 
-Later you can adapt the config files step by step.
+Later you can adapt the config files step by step, or move tbot to another
+machine...
 
 Adapt in :filename:`password-test.py` the password (or public key file) for your
 user.
 
+.. image:: image/installation/password.png
+
 Adapt in the lab config file :filename:`config/lab_test.py` the :varname:`tc_workfd_work_dir` to
 a directory which tbot can use as work directory.
+
+.. image:: image/installation/workdir.png
 
 As an example testcase we use
 
 https://github.com/hsdenx/tbot/blob/master/src/tc/linux/tc_workfd_date.py
 
-which show for a demo how to send the date command in some ways,
+which show for a demo how to send the linux date command in some ways,
 and parse the output from the date command ...
 
 start tbot with:
@@ -151,6 +159,184 @@ start tbot with:
 ::
 
   tbot.py -s lab_test -c tbot_test -t tc_workfd_date -l log/tbot_pi_test -v -p password-test.py
+
+You should see a running tbot...
+
+Now there are 2 more steps we need:
+
+- adapt to a boards console (serial or ssh, If you want to test bootloader you need serial)
+- Power On/Off the board
+
+Our fast test worked, because we did a linux testcase on a linux machine, and tbot
+connected with ssh to the board under test ...
+
+Console setup
++++++++++++++
+
+As an example we connect a usb2serial adapter to our PC we play currently with tbot,
+and use the kermit terminal tool. (You do not need kermit, but the tbot testcase
+already exists ...)
+
+choose kermit
+.............
+
+.. image:: image/installation/serial_kermit.png
+
+setup kermit paramters
+......................
+
+Search for your serial adapter:
+
+.. image:: image/installation/serial.png
+
+and set the serial line you will use in config/tbot_test.py.
+
+.. image:: image/installation/serial_kermit_line.png
+
+
+There are a lot of more possible parameters for kermit. For more
+details look into the testcase:
+
+https://github.com/hsdenx/tbot/blob/master/src/tc/linux/tc_workfd_connect_with_kermit.py
+
+BTW: tbot_test.py is now your tbot board config file for your board, you
+should rename it into a better name ... but for this installation guide
+we do not rename this file (same for the lab config file lab_test.py)
+
+Before we try to connect to the board, and say we execute a U-Boot testcase,
+we must say tbot, how the U-Boot prompt from the board looks like ... default
+is "=> ". !! space is needed !!
+
+.. image:: image/installation/serial_kermit_ubprompt.png
+
+same for the linux prompt after a login:
+
+.. image:: image/installation/serial_kermit_lxprompt.png
+
+Now lets try a U-Boot testcase:
+
+::
+
+  tbot.py -s lab_test -c tbot_test -t tc_ub_setenv.py -l log/tbot_pi_test -v -p password-test.py
+
+tbot should now connect with kermit to the boards console,
+and try to get into U-Boot. After that, it should set
+the Environmentvariable "Heiko" to the value "Schocher"
+
+see testcase
+https://github.com/hsdenx/tbot/blob/master/src/tc/uboot/tc_ub_setenv.py
+
+The testcase uses the variables:
+
+tb.config.setenv_name
+tb.config.setenv_value
+
+You can set them for example in the board config file:
+
+.. image:: image/installation/ub_setenv.png
+
+to other values (Or call this testcase from another testcase and set
+this vars before calling tc_ub_setenv.py...)
+
+(Yes I know ... it would be better to pass vars through function parameters ...)
+
+If tbot does not find a U-Boot prompt, it tries to power off the board
+and power it on ... as we do a fast setup, tbot uses for powering on/off
+the "interactive" testcase:
+
+https://github.com/hsdenx/tbot/blob/master/src/tc/lab/denx/tc_lab_interactive_power.py
+
+which prints a countdown on the cmdline, and you must power on or off
+the board ...
+
+As we want to automate all tasks, we have to do
+
+Power On/Off setup
+++++++++++++++++++
+
+There are a lot of ways to automate the power on/off tasks. As tbot uses
+a testcase for it, you should be able to implement all cmdline based
+versions ...
+
+What we have already in tbot:
+
+- interactive:
+
+  https://github.com/hsdenx/tbot/blob/master/src/tc/lab/denx/tc_lab_interactive_power.py
+
+- gpio (connect a relay to it)
+
+  https://github.com/hsdenx/tbot/blob/master/src/tc/lab/tc_lab_power_onoff_gpio.py
+
+- gembird power controller
+
+  see: :ref:`adapt_gembird`
+
+  https://github.com/hsdenx/tbot/blob/master/src/tc/lab/tc_lab_sispmctl_set_power_state.py
+
+  https://github.com/hsdenx/tbot/blob/master/src/tc/lab/tc_lab_sispmctl_get_variables.py
+
+  https://github.com/hsdenx/tbot/blob/master/src/tc/lab/tc_lab_sispmctl_get_power_state.py
+
+- sainsmart usb relay
+
+  https://www.sainsmart.com/products/4-channel-5v-usb-relay-module
+
+  see: :ref:`tbot_switch_bootmodes`
+
+  https://github.com/hsdenx/tbot/blob/master/src/tc/lab/tc_lab_usb_relay_power.py
+
+  https://github.com/hsdenx/tbot/blob/master/src/tc/linux/relay/tc_linux_relay_simple_set.py
+
+
+Let us decide for the sainsmart USB relay:
+
+This needs a simple c tool, which is in tbots sourcce code
+Compile simple.c from
+
+https://github.com/hsdenx/tbot/blob/master/src/files/relay/
+
+and install it into /usr/bin
+
+::
+
+  $ gcc -o simple simple.c -L. -lftd2xx -Wl,-rpath /usr/local/lib
+
+This needs libftdi installed: http://www.ftdichip.com/Drivers/D2XX.htm
+
+Hint: You must remove ftdio_sio module, which gets loaded when attaching the sainsmart USB relay to get simple working.
+
+Now say tbot, to use this:
+
+.. image:: image/installation/usb_relay.png
+
+Remark: I can only use simple with "sudo", so I have to enable sudo useage for the
+testcase ...
+
+We must also define a port for our board, we do this in testcase
+
+.. image:: image/installation/usb_relay_port.png
+
+And yes, we should have this configurable through a config variable ...
+send patches!
+
+BTW: Our board has a name(currently "pi"), we set it in our board config file
+
+.. image:: image/installation/boardname.png
+
+This name is used in a lot of testcases. As you can have more than
+one board of the same type in your lab, but you need for example
+for powering on/off a unique name, you can set for each board
+a "boardlabpowername"...
+
+Now, you are ready for using tbot and start testcases.
+
+You should read now :ref:`guide_to_use_tbot_with_the_bbb`
+as there is also described, how to setup tbot backends.
+
+If you want a jenkins integration read:
+
+:ref:`setup_jenkins_with_tbot`
 
 create VLAB
 +++++++++++

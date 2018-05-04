@@ -1,3 +1,5 @@
+.. _guide_to_use_tbot_with_the_bbb:
+
 ==============================
 Guide to use tbot with the BBB
 ==============================
@@ -166,6 +168,8 @@ wants to cd into tbots workdirectory. So you *need* to adapt the config variable
 
 to the settings on your LabPC! Otherwise tbot fails on startup.
 
+.. _adapt_gembird:
+
 Adapt settings for Gembird Powercontroller
 ------------------------------------------
 
@@ -277,7 +281,7 @@ Try a first small U-Boot testcase. Simply set an U-Boots Environment variable.
 .. image:: image/guide/guide_first_run.png
 
 If you want to see, what tbot is doing, enable the verbose "-v" option from tbot.
-See also hint `more readable verbose output`_.
+See also hint :ref:`more_readable_verbose_output`.
 
 Also you can look into the logfile log/tbot.log (filename passed with tbots option "-l")
 
@@ -653,6 +657,8 @@ can disable them in the file config/beagleboneblack.py
 
 The messages "ERROR - TC ends without prompt read" you can ignore,
 as we issue 2 times a reset to the board. If I find time, I fix this.
+
+.. _tbot_switch_bootmodes:
 
 tbot switch bootmodes on the beagleboneblack
 --------------------------------------------

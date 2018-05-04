@@ -1,3 +1,5 @@
+.. _setup_jenkins_with_tbot:
+
 =======================
 Setup jenkins with tbot
 =======================
