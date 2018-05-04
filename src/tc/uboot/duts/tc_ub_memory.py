@@ -85,7 +85,7 @@ tb.tc_workfd_generate_random_file_name = tb.config.tftpdir + '/' + tb.config.tc_
 tb.tc_workfd_generate_random_file_length = '1048576'
 tb.eof_call_tc("tc_workfd_generate_random_file.py")
 tb.config.tc_ub_tftp_file_addr = tb.config.tc_ub_memory_ram_ws_base
-tb.config.tc_ub_tftp_file_name = tb.tc_workfd_generate_random_file_name
+tb.config.tc_ub_tftp_file_name = tb.config.tc_ub_tftp_path + "/random"
 tb.eof_call_tc("tc_ub_tftp_file.py")
 tb.config.tc_ub_tftp_file_addr = tb.config.tc_ub_memory_ram_ws_base_alt
 tb.eof_call_tc("tc_ub_tftp_file.py")
