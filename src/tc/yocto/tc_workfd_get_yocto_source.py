@@ -89,6 +89,23 @@ if ret == True:
         tb.write_lx_cmd_check(tb.workfd, 'git pull')
         tb.event.create_event('main', 'tc_workfd_get_yocto_source.py', 'SET_DOC_FILENAME_NOIRQ_END', 'sync_' + name)
 
+    # print site.conf
+    p = '$TBOT_BASEDIR_YOCTO/build/conf/'
+    fn = p + 'site.conf'
+    tb.event.create_event('main', 'tc_workfd_get_with_repo.py', 'SET_DOC_FILENAME_NOIRQ', 'repo_dump_site.conf')
+    tb.write_lx_cmd_check(tb.workfd, "cat " + fn)
+    tb.event.create_event('main', 'tc_workfd_get_with_repo.py', 'SET_DOC_FILENAME_NOIRQ_END', 'repo_dump_site.conf')
+    # print local.conf
+    fn = p + 'local.conf'
+    tb.event.create_event('main', 'tc_workfd_get_with_repo.py', 'SET_DOC_FILENAME_NOIRQ', 'repo_dump_local.conf')
+    tb.write_lx_cmd_check(tb.workfd, "cat " + fn)
+    tb.event.create_event('main', 'tc_workfd_get_with_repo.py', 'SET_DOC_FILENAME_NOIRQ_END', 'repo_dump_local.conf')
+    # print bblayers.conf
+    fn = p + 'bblayers.conf'
+    tb.event.create_event('main', 'tc_workfd_get_with_repo.py', 'SET_DOC_FILENAME_NOIRQ', 'repo_dump_bblayers.conf')
+    tb.write_lx_cmd_check(tb.workfd, "cat " + fn)
+    tb.event.create_event('main', 'tc_workfd_get_with_repo.py', 'SET_DOC_FILENAME_NOIRQ_END', 'repo_dump_bblayers.conf')
+
     tb.end_tc(True)
 
 # get the patches for the yocto layers
