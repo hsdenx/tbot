@@ -105,5 +105,10 @@ if ret == False:
 
     # step 6: patch/create site.conf
     tb.eof_call_tc("tc_workfd_yocto_patch_site.py")
+else:
+    # print current used site.conf
+    tb.event.create_event('main', 'tc_workfd_get_with_repo.py', 'SET_DOC_FILENAME_NOIRQ', 'repo_dump_site.conf')
+    tb.write_lx_cmd_check(tb.workfd, "cat " + fn)
+    tb.event.create_event('main', 'tc_workfd_get_with_repo.py', 'SET_DOC_FILENAME_NOIRQ_END', 'repo_dump_site.conf')
 
 tb.end_tc(True)
