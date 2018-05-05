@@ -47,10 +47,15 @@ for l in bitbake_cmd:
     tb.config.tc_workfd_bitbake_args = l
     tb.eof_call_tc("tc_workfd_bitbake.py")
 
+# get used xenomai version
+tb.eof_write_cmd_get_line(tb.workfd, 'ls tmp/work/cortexa8hf-neon-poky-linux-gnueabi/xenomai/')
+tb.event.create_event('main', tb.config.boardname, "DUTS_XENOMAI_VERSION", tb.ret_write_cmd_get_line.rstrip())
+
 # check if files we expect exist
 for l in tb.config.yocto_check_result_files:
     tb.config.tc_workfd_check_if_file_exists_name = l
     tb.eof_call_tc("tc_workfd_check_if_file_exist.py")
+
 
 # now test some content of the images
 tb.config.tc_workfd_check_tar_content_endtc_onerror = True
