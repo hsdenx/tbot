@@ -1471,7 +1471,7 @@ class tbot(object):
             elif ret == 'prompt':
                 tmp = False
 
-        if ret == False:
+        if result == False:
             self.end_tc(False)
 
         return True
