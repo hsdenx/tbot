@@ -70,9 +70,8 @@ else:
 
 cons = zip(ips, users, opts, prompts)
 
-print ("CONS ", cons)
 for con in cons:
-    cur_p = tb.workfd.get_prompt_type
+    cur_p = tb.workfd.get_prompt()
 
     if cur_p != tb.config.compile_pc_prompt:
         # we are not @ compile PC
