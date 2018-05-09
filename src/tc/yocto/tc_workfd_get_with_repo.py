@@ -60,6 +60,11 @@ try:
 except:
     tb.config.builddir = "$TBOT_BASEDIR_YOCTO/build_" + tb.config.tc_workfd_bitbake_machine + "/"
 
+try:
+    tb.config.tc_workfd_get_with_repo_sync
+except:
+    tb.config.tc_workfd_get_with_repo_sync = 'yes'
+
 logging.info("args: workdfd: %s", tb.workfd.name)
 logging.info("args: repo u: %s", tb.config.tc_workfd_get_with_repo_u)
 logging.info("args: repo m: %s", tb.config.tc_workfd_get_with_repo_m)
@@ -68,6 +73,7 @@ logging.info("args: repo target: %s", tb.config.tc_workfd_get_with_repo_target)
 logging.info("args: meta name: %s", tb.config.tc_workfd_get_with_repo_metaname)
 logging.info("args: builddir: %s", tb.config.builddir)
 logging.info("args: machine: %s", tb.config.tc_workfd_bitbake_machine)
+logging.info("args: : %s", tb.config.tc_workfd_get_with_repo_sync)
 
 # check if we have the repo cmd installed
 # if not try to set PATH (if tb.config.tc_workfd_repo_path is set)
@@ -87,7 +93,8 @@ if ret == False:
     tb.write_lx_cmd_check(tb.workfd, cmd, triggerlist=['objects', 'deltas'])
 
 # step 3: repo sync
-tb.write_lx_cmd_check(tb.workfd, 'repo sync', triggerlist=['objects', 'deltas', 'done', 'project'], create_doc_event=True)
+if tb.config.tc_workfd_get_with_repo_sync == 'yes':
+    tb.write_lx_cmd_check(tb.workfd, 'repo sync', triggerlist=['objects', 'deltas', 'done', 'project'], create_doc_event=True)
 
 # step 4:configure project
 # goto yocto code
