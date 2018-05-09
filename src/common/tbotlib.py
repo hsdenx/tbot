@@ -214,6 +214,11 @@ class tbot(object):
                 print("value ", value)
                 sys.exit(1)
 
+        # overwrite config arguments with cmdline arguments
+        # pass the arguments in json format
+        # -a '{"var1" : "value1", "var2" : "value2"}'
+        self.overwrite_config_arguments()
+
         now = datetime.datetime.now()
         # load config file
         if logfilen == 'default':
@@ -306,6 +311,19 @@ class tbot(object):
         for ins in self.insert_cfg.__dict__.items():
             if not ins[0].startswith('__'):
                 self.config.__dict__.update({ins[0] : ins[1]})
+
+    def overwrite_config_arguments(self):
+        if not self.arguments:
+            return
+        import json
+        data = json.loads(self.arguments)
+        for key, value in data.iteritems():
+            for ov in self.config.__dict__.items():
+                if not ov[0].startswith('__'):
+                    if ov[0] == key:
+                        self.config.__dict__.update({ov[0] : value})
+
+        return
 
     def overwrite_config(self, filename):
         try:
