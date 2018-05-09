@@ -180,6 +180,23 @@ class tbot(object):
         # load default settigs ...
         self.overwrite_config('default_vars')
 
+        # test if we have a board setup function
+        call_board_setup = False
+        try:
+            self.config.set_boardsetup
+            call_board_setup = True
+        except:
+            print("no set_board_setup")
+
+	if call_board_setup:
+            try:
+                self.config.set_boardsetup(self)
+            except:
+                type, value, traceback = sys.exc_info()
+                print("type ", type)
+                print("value ", value)
+                sys.exit(1)
+
         # test if we have a lab specific board setup
         call_specific = False
         try:
