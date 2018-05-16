@@ -47,8 +47,8 @@ logging.info("args: %s", tb.config.tc_lab_compile_uboot_boardname)
 if tb.config.tc_ub_test_py_start == 'no':
     tb.end_tc(True)
 
-# set board state for which the tc is valid
-tb.set_board_state("u-boot")
+# power off the board. test.py should start from scratch
+tb.eof_call_tc("tc_lab_poweroff.py")
 
 tb.disconnect_from_board(tb.config.boardlabname)
 
