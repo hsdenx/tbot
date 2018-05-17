@@ -30,13 +30,17 @@ class junit_backend(object):
 
        install jenkins plugin:
          - execute shell script with another user (not jenkins)
+
            - setup a ssh agent, which connects you to the machine
              which runs tbot (You also need this, if jenkins
              is running on the same machine, or tbot runs with
              user jenkins ...)
+
          - storing ssh credentials (for connecting to tbot machine)
+
            https://plugins.jenkins.io/ssh-credentials
          - storing attachments in jenkins (results from tbot backends)
+
            https://wiki.jenkins.io/display/JENKINS/JUnit+Attachments+Plugin
 
        resulting xml file is stored from tbot into
@@ -47,8 +51,8 @@ class junit_backend(object):
 
        make sure, jenkins set the environment variable $WORKSPACE !
 
-       Running Jenkins behind Apache
-       follow the instructions on:
+       Running Jenkins behind Apache follow the instructions on:
+
        https://wiki.jenkins.io/display/JENKINS/Running+Jenkins+behind+Apache
 
     - **parameters**, **types**, **return** and **return types**::

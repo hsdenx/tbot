@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# tbot.py -s lab_denx -c cuby -t tc_workfd_yocto_check_rootfs_version.py
+# tbot.py -s lab_denx -c boardname -t tc_workfd_yocto_check_rootfs_version.py
 #
 # check if the current /etc/version on the target rootfs is the
 # same as in tb.onfig.tc_yocto_get_rootfs_from_tarball

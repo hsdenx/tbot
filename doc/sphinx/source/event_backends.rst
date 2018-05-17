@@ -45,3 +45,12 @@ statistic_plot
     :undoc-members:
     :inherited-members:
     :show-inheritance:
+
+jenkins
+-------
+
+.. automodule:: junit
+    :members:
+    :undoc-members:
+    :inherited-members:
+    :show-inheritance:

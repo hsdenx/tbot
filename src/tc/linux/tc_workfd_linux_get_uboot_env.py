@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# tbot.py -s lab_denx -c cuby -t tc_workfd_linux_get_uboot_env.py
+# tbot.py -s lab_denx -c boardname -t tc_workfd_linux_get_uboot_env.py
 # read U-Boot Environment variable from tb.config.linux_get_uboot_env_name
 # from linux with fw_printenv, and save the value in tb.config.linux_get_uboot_env_value
 # End:

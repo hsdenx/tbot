@@ -194,9 +194,7 @@ tc_lab_git_clone_source_git_repo_user = ''
 tc_lab_git_clone_source_git_repo_name = 'none'
 tc_workfd_get_yocto_source_layers = [
 ['git://git.openembedded.org/meta-openembedded', 'morty', '659d9d3f52bad33d7aa1c63e25681d193416d76e', 'none', 'none', 'none', '', 'meta-openembedded'],
-['https://github.com/meta-qt5/meta-qt5.git', 'morty', '9aa870eecf6dc7a87678393bd55b97e21033ab48', 'none', '/work/hs/ssi/patches/20161220/qt5', 'none', '', 'meta-qt5'],
 ['https://github.com/sbabic/meta-swupdate.git', 'master', 'b3abfa78d04b88b88bcef6f5be9f2adff1293544', 'none', 'none', 'none', '', 'meta-swupdate'],
-['git@gitlab.denx.de:ssi/meta-cuby.git', '20161220', 'none', 'none', 'none', 'none', '', 'meta-cuby'],
 ]
 tc_workfd_get_yocto_source_conf_dl_dir = 'none'
 tc_workfd_get_yocto_source_conf_sstate_dir = 'none'

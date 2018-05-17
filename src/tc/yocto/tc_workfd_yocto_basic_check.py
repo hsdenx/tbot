@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# tbot.py -s lab_denx -c cuby -t tc_workfd_yocto_basic_check.py
+# tbot.py -s lab_denx -c boardname -t tc_workfd_yocto_basic_check.py
 #
 # do basic yocto checks
 #

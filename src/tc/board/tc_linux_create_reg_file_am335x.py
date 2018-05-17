@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# tbot.py -s lab_denx -c cuby -t tc_linux_create_reg_file_am335x.py
+# tbot.py -s lab_denx -c boardname -t tc_linux_create_reg_file_am335x.py
 # create a regfile for am335x SoC registers
 # End:
 

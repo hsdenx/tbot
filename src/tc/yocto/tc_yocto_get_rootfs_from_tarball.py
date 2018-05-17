@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# tbot.py -s lab_denx -c cuby -t tc_yocto_get_rootfs_from_tarball.py
+# tbot.py -s lab_denx -c boardname -t tc_yocto_get_rootfs_from_tarball.py
 #
 # get rootfs version from rootfs tar ball filepath and name stored in
 # tb.config.tc_yocto_get_rootfs_from_tarball

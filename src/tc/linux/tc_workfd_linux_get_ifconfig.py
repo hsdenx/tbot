@@ -13,7 +13,7 @@
 #
 # Description:
 # start with
-# tbot.py -s lab_denx -c cuby -t tc_workfd_linux_get_ifconfig.py
+# tbot.py -s lab_denx -c boardname -t tc_workfd_linux_get_ifconfig.py
 # read from tb.config.linux_get_ifconfig_dev the current
 # ip addr and save it in tb.config.linux_get_ifconfig_ip
 # broadcast and save it in tb.config.linux_get_ifconfig_broadcast

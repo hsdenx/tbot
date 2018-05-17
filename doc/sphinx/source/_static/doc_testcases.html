@@ -1029,7 +1029,7 @@ time.sleep(2)
 <div class="stream-content block-content">
 <pre>
 # start with
-# tbot.py -s lab_denx -c cuby -t <a href="#src_tc_board_tc_linux_create_reg_file_am335x_py">tc_linux_create_reg_file_am335x.py</a>
+# tbot.py -s lab_denx -c boardname -t <a href="#src_tc_board_tc_linux_create_reg_file_am335x_py">tc_linux_create_reg_file_am335x.py</a>
 # create a regfile for am335x SoC registers
 </pre>
 <div class="stream-trailer block-trailer">End stream: src/tc/board/tc_linux_create_reg_file_am335x.py </div>
@@ -1910,6 +1910,31 @@ time.sleep(2)
 </div>
 </div>
 <!-- end of one testcase src/tc/lab/tc_lab_sispmctl_set_power_state.py -->
+
+<!-- one testcase src/tc/lab/tc_lab_usb_relay_power.py -->
+<div class="stream block" id="src_tc_lab_tc_lab_usb_relay_power_py">
+<div class="stream-header block-header">src/tc/lab/tc_lab_usb_relay_power.py</div>
+<div class="stream-content block-content">
+<pre>
+# power on / off the board <a href="#var_config_boardlabpowername">tb.config.boardlabpowername</a>
+# with testcase <a href="#src_tc_linux_relay_tc_linux_relay_simple_set_py">tc_linux_relay_simple_set.py</a>
+#
+# simple util must be installed, source see
+# src/files/relay/simple.c
+#
+# adapt dependend on <a href="#var_config_boardlabpowername">tb.config.boardlabpowername</a>
+# which port you use..
+#
+# If you have more than one USB relay from sainsmart
+# adapt simple.c to work with the serial ID, and adapt
+# also <a href="#var_config_tc_linux_relay_simple_set_cmd">tb.config.tc_linux_relay_simple_set_cmd</a>
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/lab/tc_lab_usb_relay_power.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/lab/tc_lab_usb_relay_power.py -->
 
 <div class="section-trailer block-trailer">src/tc/lab</div>
 <div class="status-pass">
@@ -3369,7 +3394,7 @@ time.sleep(2)
 <div class="stream-content block-content">
 <pre>
 # start with
-# tbot.py -s lab_denx -c cuby -t <a href="#src_tc_linux_tc_workfd_linux_get_ifconfig_py">tc_workfd_linux_get_ifconfig.py</a>
+# tbot.py -s lab_denx -c boardname -t <a href="#src_tc_linux_tc_workfd_linux_get_ifconfig_py">tc_workfd_linux_get_ifconfig.py</a>
 # read from <a href="#var_config_linux_get_ifconfig_dev">tb.config.linux_get_ifconfig_dev</a> the current
 # ip addr and save it in <a href="#var_config_linux_get_ifconfig_ip">tb.config.linux_get_ifconfig_ip</a>
 # broadcast and save it in <a href="#var_config_linux_get_ifconfig_broadcast">tb.config.linux_get_ifconfig_broadcast</a>
@@ -3387,7 +3412,7 @@ time.sleep(2)
 <div class="stream-content block-content">
 <pre>
 # start with
-# tbot.py -s lab_denx -c cuby -t <a href="#src_tc_linux_tc_workfd_linux_get_uboot_env_py">tc_workfd_linux_get_uboot_env.py</a>
+# tbot.py -s lab_denx -c boardname -t <a href="#src_tc_linux_tc_workfd_linux_get_uboot_env_py">tc_workfd_linux_get_uboot_env.py</a>
 # read U-Boot Environment variable from <a href="#var_config_linux_get_uboot_env_name">tb.config.linux_get_uboot_env_name</a>
 # from linux with fw_printenv, and save the value in <a href="#var_config_linux_get_uboot_env_value">tb.config.linux_get_uboot_env_value</a>
 </pre>
@@ -4921,9 +4946,9 @@ time.sleep(2)
 #   <a href="#var_config_tc_workfd_get_with_repo_metaname">tb.config.tc_workfd_get_with_repo_metaname</a>
 #   default: 'beld'
 #
-# - check if build exists, if not create it and
-#   set DL_DIR and SSTATE_DIR in local.conf with the
-#   values from <a href="#var_config_tc_workfd_get_yocto_source_conf_dl_dir">tb.config.tc_workfd_get_yocto_source_conf_dl_dir</a>
+# - check if build directory "build_" + <a href="#var_config_tc_workfd_bitbake_machine">tb.config.tc_workfd_bitbake_machine</a>
+#   exists, if not create it and set DL_DIR and SSTATE_DIR in local.conf
+#   with the values from <a href="#var_config_tc_workfd_get_yocto_source_conf_dl_dir">tb.config.tc_workfd_get_yocto_source_conf_dl_dir</a>
 #   and <a href="#var_config_tc_workfd_get_yocto_source_conf_sstate_dir">tb.config.tc_workfd_get_yocto_source_conf_sstate_dir</a>
 #
 #   and setup site.conf with specific settings
@@ -5032,7 +5057,7 @@ time.sleep(2)
 <div class="stream-content block-content">
 <pre>
 # start with
-# tbot.py -s lab_denx -c cuby -t <a href="#src_tc_yocto_tc_workfd_yocto_basic_check_py">tc_workfd_yocto_basic_check.py</a>
+# tbot.py -s lab_denx -c boardname -t <a href="#src_tc_yocto_tc_workfd_yocto_basic_check_py">tc_workfd_yocto_basic_check.py</a>
 #
 # do basic yocto checks
 #
@@ -5057,7 +5082,7 @@ time.sleep(2)
 <div class="stream-content block-content">
 <pre>
 # start with
-# tbot.py -s lab_denx -c cuby -t <a href="#src_tc_yocto_tc_workfd_yocto_check_rootfs_version_py">tc_workfd_yocto_check_rootfs_version.py</a>
+# tbot.py -s lab_denx -c boardname -t <a href="#src_tc_yocto_tc_workfd_yocto_check_rootfs_version_py">tc_workfd_yocto_check_rootfs_version.py</a>
 #
 # check if the current /etc/version on the target rootfs is the
 # same as in <a href="#var_config_onfig_tc_yocto_get_rootfs_from_tarball">tb.onfig.tc_yocto_get_rootfs_from_tarball</a>
@@ -5100,6 +5125,10 @@ time.sleep(2)
 #  != 'none'
 # add SWUPDATE_PASSWORD_FILE if <a href="#var_config_tc_workfd_yocto_patch_site_swu_priv_passout">tb.config.tc_workfd_yocto_patch_site_swu_priv_passout</a>
 #  != 'none'
+# add SWUPDATE_PUBLIC_KEY if <a href="#var_config_tc_workfd_yocto_patch_site_swu_pub_key">tb.config.tc_workfd_yocto_patch_site_swu_pub_key</a>
+#  != 'none'
+# add UB_KEY_PATH if <a href="#var_config_tc_workfd_yocto_patch_site_ub_key">tb.config.tc_workfd_yocto_patch_site_ub_key</a>
+#  != 'none'
 # add DL_DIR if <a href="#var_config_tc_workfd_yocto_patch_site_dl_dir">tb.config.tc_workfd_yocto_patch_site_dl_dir</a> != 'none'
 # add SSTATE_DIR if <a href="#var_config_tc_workfd_yocto_patch_site_sstate_dir">tb.config.tc_workfd_yocto_patch_site_sstate_dir</a> != 'none'
 # add SRC_LINUX_STABLE if <a href="#var_config_tc_workfd_yocto_patch_site_src_linux_stable">tb.config.tc_workfd_yocto_patch_site_src_linux_stable</a> != 'none'
@@ -5117,7 +5146,7 @@ time.sleep(2)
 <div class="stream-content block-content">
 <pre>
 # start with
-# tbot.py -s lab_denx -c cuby -t <a href="#src_tc_yocto_tc_yocto_get_rootfs_from_tarball_py">tc_yocto_get_rootfs_from_tarball.py</a>
+# tbot.py -s lab_denx -c boardname -t <a href="#src_tc_yocto_tc_yocto_get_rootfs_from_tarball_py">tc_yocto_get_rootfs_from_tarball.py</a>
 #
 # get rootfs version from rootfs tar ball filepath and name stored in
 # <a href="#var_config_tc_yocto_get_rootfs_from_tarball">tb.config.tc_yocto_get_rootfs_from_tarball</a>
@@ -5179,6 +5208,19 @@ time.sleep(2)
 </div>
 </div>
 <!-- end of one testcase src/tc/tc_board_git_bisect.py -->
+
+<!-- one testcase src/tc/tc_cp_and_start_script.py -->
+<div class="stream block" id="src_tc_tc_cp_and_start_script_py">
+<div class="stream-header block-header">src/tc/tc_cp_and_start_script.py</div>
+<div class="stream-content block-content">
+<pre>
+#
+</pre>
+<div class="stream-trailer block-trailer">End stream: src/tc/tc_cp_and_start_script.py </div>
+<div class="status-pass"></div>
+</div>
+</div>
+<!-- end of one testcase src/tc/tc_cp_and_start_script.py -->
 
 <!-- one testcase src/tc/tc_dummy.py -->
 <div class="stream block" id="src_tc_tc_dummy_py">
@@ -7763,9 +7805,7 @@ tc_lab_git_clone_source_git_repo_name = 'none'
 <pre>
 tc_workfd_get_yocto_source_layers = [
 ['git://git.openembedded.org/meta-openembedded', 'morty', '659d9d3f52bad33d7aa1c63e25681d193416d76e', 'none', 'none', 'none', '', 'meta-openembedded'],
-['https://github.com/meta-qt5/meta-qt5.git', 'morty', '9aa870eecf6dc7a87678393bd55b97e21033ab48', 'none', '/work/hs/ssi/patches/20161220/qt5', 'none', '', 'meta-qt5'],
 ['https://github.com/sbabic/meta-swupdate.git', 'master', 'b3abfa78d04b88b88bcef6f5be9f2adff1293544', 'none', 'none', 'none', '', 'meta-swupdate'],
-['git@gitlab.denx.de:ssi/meta-cuby.git', '20161220', 'none', 'none', 'none', 'none', '', 'meta-cuby'],
 ]
 </pre>
 <div class="stream-trailer block-trailer">End stream: tc_workfd_get_yocto_source_layers  </div>

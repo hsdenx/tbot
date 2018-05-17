@@ -110,20 +110,81 @@ LINUX_SRC_PATH   path, where Linux source is located
 SET_DOC_FILENAME  set a name for the logfile
 ================  ============================
 
-==================  ============================
-  Event-ID           content
-==================  ============================
-DUTS_UBOOT_VERSION  U-Boot version 'undef' if not found
-DUTS_SPL_VERSION    SPL version, 'undef' if not found
-DUTS_BOARDNAME      tb.config.boardlabpowername
+DUTS variables
+--------------
 
-When activating the documentation backend, this values
+When activating the documentation backend, the `DUTS_` values
 are saved in the file: self.tb.workdir + '/logfiles/duts_settings.txt'
 
-You can later use them to make your document board independent.
+You can later use them in your board documentation.
 
   tc_ub_duts_version.py_
-.. _tc_workfd_compile_linux.py: https://github.com/hsdenx/tbot/blob/master/src/tc/uboot/duts/tc_ub_duts_version.py
+.. _tc_ub_duts_version.py: https://github.com/hsdenx/tbot/blob/master/src/tc/uboot/duts/tc_ub_duts_version.py
+
+==================  ===================================
+  Event-ID           content
+==================  ===================================
+DUTS_UBOOT_VERSION  U-Boot version 'undef' if not found
+DUTS_SPL_VERSION    SPL version, 'undef' if not found
+==================  ===================================
+
+  tc_linux_top.py_
+.. _tc_linux_top.py: https://github.com/hsdenx/tbot/blob/master/src/tc/linux/tc_linux_top.py
+
+====================  ===================================
+  Event-ID            content
+====================  ===================================
+DUTS_LINUX_TOP_COUNT  | tb.config.tc_linux_top_count
+                      | How many times top cycles measured
+DUTS_LINUX_TOP_SEC    | tb.config.tc_linux_top_sec
+                      | Intervall between 2 measurements
+====================  ===================================
+
+  tc_workfd_get_uboot_config_vars.py_
+.. _tc_workfd_get_uboot_config_vars.py: https://github.com/hsdenx/tbot/blob/master/src/tc/linux/tc_workfd_get_uboot_config_vars.py
+
+get some values from U-Boot configuration into tbot variables
+
+=========================  ======================================
+  Event-ID                 content
+=========================  ======================================
+DUTS_UBOOT_SDRAM_BASE      | tb.config.tc_ub_memory_ram_ws_base
+                           | SDRAM base
+DUTS_UBOOT_SDRAM_BASE_ALT  | tb.config.tc_ub_memory_ram_ws_base_alt
+                           | Alternate SDRAM base
+DUTS_UBOOT_ARCH            | tb.config.uboot_arch
+                           | U-Boot architecture
+=========================  ======================================
+
+  tc_workfd_bitbake.py_
+.. _tc_workfd_bitbake.py: https://github.com/hsdenx/tbot/blob/master/src/tc/yocto/tc_workfd_bitbake.py
+
+extract content of newest file tmp/log/cooker/<machine>/
+
+=========================  ======================================
+  Event-ID                 content
+=========================  ======================================
+DUTS_NOTE                  notes from bitbake
+DUTS_BB_VERSION            bitbake version
+DUTS_BUILD_SYS             build system
+DUTS_NATIVELSBSTRING       native lsb string
+DUTS_TARGET_SYS            target system
+DUTS_MACHINE               machine
+DUTS_DISTRO_VERSION        distro version
+=========================  ======================================
+
+  tc_yocto_get_rootfs_from_tarball.py_
+.. _tc_yocto_get_rootfs_from_tarball.py: https://github.com/hsdenx/tbot/blob/master/src/tc/yocto/tc_yocto_get_rootfs_from_tarball.py
+
+extract the yocto version in `/etc/version` from a rootfs tarball.
+
+=========================  ======================================
+  Event-ID                 content
+=========================  ======================================
+DUTS_YOCTO_VERSION         | tb.config.tc_yocto_get_rootfs_from_tarball_rootfs_version
+                           | found yocto version in /etc/version
+=========================  ======================================
+
 
 demos
 =====
@@ -165,14 +226,26 @@ see a raw example:
 
   http://xeidos.ddns.net/tbot/id_171/graph.png
 
+jenkins
+-------
+
+  jenkins_
+.. _jenkins: https://github.com/hsdenx/tbot/blob/master/src/common/event/junit.py
+
+create a junit xml file, which jenkins understands.
+
+http://xeidos.ddns.net/jenkins
+
+username: bbb
+
+password: bbb
+
+To see an example jenkins integration for the BBB building current yocto pyro,
+current mainline U-Boot, current LTS 4.14 xenomai patched kernel, with xenomai
+tools.
 
 planned Event backends:
 =======================
-
-DUTS:
-
-  make from the logs tbot collected, DUTS specific textfiles, so the logs
-  can integrated into the DULG
 
 kernel CI:
 
