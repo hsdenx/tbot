@@ -16,3 +16,8 @@ older versions of documentation
 =======
 
 `2017.08 <http://www.tbot.tools/old/201708/main.html>`_
+
+2017.10
+=======
+
+`2017.10 <http://www.tbot.tools/old/201710/main.html>`_
