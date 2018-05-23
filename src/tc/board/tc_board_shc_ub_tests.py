@@ -19,10 +19,13 @@
 
 from tbotlib import tbot
 
-# set board state for which the tc is valid
-tb.set_board_state("u-boot")
-
 tb.workfd = tb.c_ctrl
+
+tb.eof_call_tc("tc_lab_poweroff.py")
+
+# set board state for which the tc is valid
+# tb.set_board_state("u-boot")
+
 # delete old u-boot source tree
 tb.eof_call_tc("tc_workfd_rm_uboot_code.py")
 

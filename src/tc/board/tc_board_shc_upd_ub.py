@@ -23,6 +23,21 @@ from tbotlib import tbot
 logging.info("typ: %s", tb.config.tc_board_shc_upd_ub_typ)
 
 #set board state for which the tc is valid
+
+# set bootmode to the other bootdevice
+# so we boot with a working U-Boot and install
+# the new U-Boot to our bootdevice we want to
+# test
+tmp = 'relais   relsrv-08-01  4  off'
+tb.write_lx_cmd_check(tb.workfd, tmp)
+if tb.config.tc_board_shc_upd_ub_typ == 'eMMC':
+    # set bootmode sd
+    tmp = 'relais   relsrv-08-01  3  on'
+elif tb.config.tc_board_shc_upd_ub_typ == 'SD':
+    # set bootmode emmc
+    tmp = 'relais   relsrv-08-01  3  off'
+tb.write_lx_cmd_check(tb.workfd, tmp)
+
 tb.set_board_state("linux")
 
 tb.workfd = tb.c_con
