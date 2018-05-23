@@ -318,11 +318,16 @@ class tbot(object):
         import json
         data = json.loads(self.arguments)
         for key, value in data.iteritems():
+            found = False
             for ov in self.config.__dict__.items():
                 if not ov[0].startswith('__'):
                     if ov[0] == key:
                         self.config.__dict__.update({ov[0] : value})
-
+                        found = True
+            if found == False:
+                # new item
+                self.config.__dict__.update({key : value})
+                
         return
 
     def overwrite_config(self, filename):
