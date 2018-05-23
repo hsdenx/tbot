@@ -26,7 +26,7 @@ from tbotlib import tbot
 try:
     tb.config.tc_ub_start_all_duts_start
 except:
-    tb.config.tc_ub_start_all_duts_start = True
+    tb.config.tc_ub_start_all_duts_start = 'yes'
 
 logging.info("arg: %s", tb.config.tc_ub_start_all_duts_start)
 
@@ -51,7 +51,7 @@ tb.config.duts_junittclist = [
 "tc_ub_duts_hush.py",
 ]
 
-if tb.config.tc_ub_start_all_duts_start == False:
+if tb.config.tc_ub_start_all_duts_start == 'no':
     tb.end_tc(True)
 
 dutslist = [
