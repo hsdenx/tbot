@@ -130,10 +130,11 @@ if ret != '0':
     tb.end_tc(False)
 
 if tb.config.tc_workfd_connect_with_kermit_rlogin != 'none':
-    searchlist = ['----------------------------------------------------']
+    searchlist = ['----------------------------------------------------', '\n']
     oldt = tb.workfd.get_timeout()
     tb.workfd.set_timeout(5)
     tmp = True
+    cnt = 0
     while tmp == True:
         ret = tb.tbot_rup_and_check_strings(tb.workfd, searchlist)
         if ret == '0':
@@ -143,6 +144,13 @@ if tb.config.tc_workfd_connect_with_kermit_rlogin != 'none':
             tb.eof_write_cmd(tb.workfd, 'exit', start=False)
             tb.gotprompt = True
             tb.end_tc(False)
+        if ret == '1':
+            if cnt > -1:
+                cnt += 1
+                if cnt > 100:
+                    logging.warn("Seems board emits endless chars, try to poweroff")
+                    tb.eof_call_tc("tc_lab_poweroff.py")
+                    cnt = -1
         else:
             tmp = False
     tb.workfd.set_timeout(oldt)
