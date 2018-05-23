@@ -31,7 +31,7 @@ except:
            help="the tbot lab configfilename")
     parser.add_argument("-a", "--arguments",
            dest="arguments", default="",
-           help="arguments for the testcase")
+           help="arguments for the testcase, pass the arguments in json format, '{\"var1\" : \"value1\", \"var2\" : \"value2\"}'")
     parser.add_argument("-l", "--logfile",
            dest="logfile", default="default",
            help="the tbot logfilename, if default, tbot creates a defaultnamelogfile")

@@ -19,26 +19,31 @@ Usage
 ::
 
   $ tbot.py --help
-  Usage: tbot.py [options]
+  usage: tbot.py [-h] [-c CFGFILE] [-s LABFILE] [-a ARGUMENTS] [-l LOGFILE]
+               [-t TC] [-v] [-e EVENTSIM] [-p PWFILE] [--version] [-w WORKDIR]
 
-  Options:
+  tbot automate commandline
+
+  optional arguments:
     -h, --help            show this help message and exit
-    -c CFGFILE, --cfgfile=CFGFILE
+    -c CFGFILE, --cfgfile CFGFILE
                           the tbot board configfilename
-    -s LABFILE, --slabfile=LABFILE
+    -s LABFILE, --slabfile LABFILE
                           the tbot lab configfilename
-    -a ARGUMENTS, --arguments=ARGUMENTS
-                          arguments for the testcase
-    -l LOGFILE, --logfile=LOGFILE
+    -a ARGUMENTS, --arguments ARGUMENTS
+                          arguments for the testcase, pass the arguments in json
+                          format, '{"var1" : "value1", "var2" : "value2"}'
+    -l LOGFILE, --logfile LOGFILE
                           the tbot logfilename, if default, tbot creates a
                           defaultnamelogfile
-    -t TC, --testcase=TC  the testcase which should be run
+    -t TC, --testcase TC  the testcase which should be run
     -v, --verbose         be verbose, print all read/write to stdout
     -e EVENTSIM, --event EVENTSIM
                           open eventlogfile and run it
     -p PWFILE, --pwfile PWFILE
                           used password file
-    -w WORKDIR, --workdir=WORKDIR
+    --version             show program's version number and exit
+    -w WORKDIR, --workdir WORKDIR
                           set workdir, default os.getcwd()
 
 Demo
