@@ -89,12 +89,17 @@ while tmp == True:
 c.set_check_error(True)
 cmdsuccess = tb.call_tc("tc_workfd_check_cmd_success.py")
 logging.info("test/py: %s", cmdsuccess)
+
+# power off board at end
+tb.eof_call_tc("tc_lab_poweroff.py")
+import time
+time.sleep(2)
+
 ret = tb.connect_to_board(tb.config.boardlabname)
 if ret == False:
     tb.workfd = savefd
     tb.end_tc(ret)
 
-tb.set_board_state("u-boot")
 tb.workfd = savefd
 
 tb.event.create_event('main', tb.config.boardname, "UBOOT_TEST_PY", tc_ub_test_py_uboot_dir)
