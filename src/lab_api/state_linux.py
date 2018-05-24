@@ -92,6 +92,9 @@ def state_lx_parse_input(tb, c, retry, sl):
             tb.send_ctrl_c(c)
             tb.c_con.set_check_error(True)
             i = 0
+        else:
+            # if we have trigger strings, we land here
+            i = 0
 
         i += 1
 
@@ -104,6 +107,11 @@ def linux_set_board_state(tb, state, retry):
     if tb.in_state_linux:
         return True
 
+    try:
+        tb.config.state_linux_trigger_list
+    except:
+        tb.config.state_linux_trigger_list = []
+
     ret = False
     tmp = "switch state to " + state
     logging.info(tmp)
@@ -113,6 +121,8 @@ def linux_set_board_state(tb, state, retry):
     tb.send_ctrl_c(c)
     sl = [tb.config.linux_prompt, tb.config.linux_prompt_default, tb.config.uboot_prompt, 'login', 'assword', 'Autobooting in', 'noautoboot',  'autoboot']
     sl = sl + tb.config.uboot_strings
+    sl = sl + tb.config.state_linux_trigger_list
+
     state_lx_parse_input(tb, c, retry, sl)
 
     #terminal line length

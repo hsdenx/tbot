@@ -38,31 +38,36 @@ c.set_timeout(tb.config.state_linux_timeout)
 first = 1
 got_login = 0
 sl = ['Last login:', 'login:', 'assword', 'Starting kernel', '# L']
+try:
+    sl = sl + tb.config.state_linux_trigger_list
+except:
+    pass
+
 loop = True
 while (loop):
     ret = tb.tbot_rup_and_check_strings(c, sl)
     if ret == '0':
         tmp = True
         continue
-    if ret == '1':
+    elif ret == '1':
         # login
         tb.write_stream(c, tb.config.linux_user, send_console_start=False)
         got_login = 1
         continue
-    if ret == '2':
+    elif ret == '2':
         if got_login:
 	    tb.write_stream_passwd(c, tb.config.linux_user, tb.config.boardname)
         continue
-    if ret == '3':
+    elif ret == '3':
         tb.tbot_trigger_wdt()
-    if ret == '4':
+    elif ret == '4':
         tb.tbot_trigger_wdt()
-    if ret == 'prompt':
+    elif ret == 'prompt':
         # we are in linux
         tb.set_prompt(c, tb.config.linux_prompt, 'linux')
         c.set_timeout(oldt)
         loop = False
-    if ret == 'exception':
+    elif ret == 'exception':
         logging.warning('Timeout while trying to boot Linux')
         if first == 1:
             # send Ctrl-C
@@ -71,5 +76,9 @@ while (loop):
         else:
             c.set_timeout(oldt)
             tb.end_tc(False)
+    else:
+        # if we have trigger strings, we land here
+        tb.tbot_trigger_wdt()
+
 
 tb.end_tc(True)
