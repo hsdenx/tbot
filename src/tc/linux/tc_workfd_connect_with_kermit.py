@@ -158,4 +158,6 @@ if tb.config.tc_workfd_connect_with_kermit_rlogin != 'none':
 tb.gotprompt = True
 # set now U-Boot prompt ?
 tb.workfd.set_prompt(tb.config.uboot_prompt, 'u-boot')
+tb.in_state_linux = False
+tb.workfd.termlength_set = False
 tb.end_tc(True)
