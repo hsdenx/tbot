@@ -12,28 +12,25 @@
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_grep.py
+#
 # search string tb.tc_workfd_grep_string in file tb.tc_workfd_grep_file
+# grep options configurable through tb.config.tc_workfd_grep_option
+# default '--color=never'
+#
 # End:
 
 from tbotlib import tbot
 
+try:
+    tb.config.tc_workfd_grep_option
+except:
+    tb.config.tc_workfd_grep_option = '--color=never'
+
 logging.info("args: workfd: %s %s %s", tb.workfd.name, tb.tc_workfd_grep_file, tb.tc_workfd_grep_string)
 
 c = tb.workfd
-result = False
 
-tmp = 'cat ' + tb.tc_workfd_grep_file + ' | grep --color=never ' + tb.tc_workfd_grep_string
-tb.eof_write(c, tmp)
+cmd = 'cat ' + tb.tc_workfd_grep_file + ' | grep ' + tb.config.tc_workfd_grep_option + ' ' + tb.tc_workfd_grep_string
+tb.write_lx_cmd_check(c, cmd)
 
-searchlist = [tb.tc_workfd_grep_string]
-tmp = True
-while tmp == True:
-    ret = tb.tbot_rup_and_check_strings(c, searchlist)
-    if ret == 'prompt':
-        tmp = False
-    if ret == '0':
-        result = True
-
-tb.end_tc(result)
+tb.end_tc(True)
