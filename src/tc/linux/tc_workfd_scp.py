@@ -45,12 +45,14 @@ c = tb.workfd
 cmd = 'scp ' + tb.config.tc_workfd_scp_opt + ' ' + tb.config.tc_workfd_scp_from + ' ' + tb.config.tc_workfd_scp_to
 tb.eof_write(c, cmd, split=c.line_length / 2)
 loop = True
-s = ['Are you sure', 'password', 'ETA', '\n']
+s = ['Are you sure', 'Do you want to', 'password', 'ETA', '\n']
 while loop:
     tmp = tb.tbot_rup_and_check_strings(c, s)
     if tmp == '0':
         tb.eof_write(c, 'yes', start=False)
-    elif tmp == '1':
+    if tmp == '1':
+        tb.eof_write(c, 'y', start=False)
+    elif tmp == '2':
         # get the user name (before @) from scp output
         tmp = tb.buf.split('@')
         try:
@@ -75,9 +77,9 @@ while loop:
                 # no ip, same as no user ...
                 ip = ''
         tb.write_stream_passwd(tb.workfd, user, ip)
-    elif tmp == '2':
-        tb.tbot_trigger_wdt()
     elif tmp == '3':
+        tb.tbot_trigger_wdt()
+    elif tmp == '4':
         tb.tbot_trigger_wdt()
     elif tmp == 'prompt':
         loop = False
