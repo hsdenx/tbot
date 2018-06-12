@@ -118,7 +118,7 @@ for i in xrange(start, stop, step):
     if ret == 'prompt':
         tb.end_tc(False)
 
-    ret = tbot_rup_and_check_strings(c, strings)
+    ret = tb.tbot_rup_and_check_strings(c, strings)
     if ret == 'prompt':
         tb.end_tc(False)
     ret = tb.tbot_expect_string(c, '\n')
