@@ -95,7 +95,7 @@ Please use 'git send- email' to send the generated patches to the ML to bypass c
 
 
 ```sh
-$ python2.7 doc/doc_tc.py
+$ python2.7 doc/doc_rst.py
 ```
 Building html docs with sphinx:
 
