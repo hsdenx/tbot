@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s lab_denx -s labconfigname -c boardconfigname -t tc_ub_create_imx28_reg_file.py
 #
 # creates U-Boot register dump files for an imx28 based board.
 # using testcase tc_ub_create_reg_file.py
