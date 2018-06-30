@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_testfkt.py
 #
 # This testcase is for demonstration of using functions in
 # testcases, and use them from other testcases.
