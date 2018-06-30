@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_check_reg_file.py
 # checks if the default values in reg file tb.config.tc_ub_create_reg_file_name
 # on the tbot host in tb.workdir have the same values, as the
 # registers on the board
@@ -13,7 +11,7 @@
 
 from tbotlib import tbot
 
-logging.info("args: %s", tb.config.tc_ub_create_reg_file_name)
+tb.define_variable('tc_ub_create_reg_file_name', '')
 
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
