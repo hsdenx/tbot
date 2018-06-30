@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_set_toolchain.py
 #
 # set the toolchain, dependend on the architecture setting in
 # tb.config.tc_workfd_set_toolchain_arch
@@ -17,27 +15,43 @@
 #
 # Add a list of also executed cmds in tb.config.tc_workfd_set_toolchain_addlist
 #
+# used variables
+#
+# - tb.config.tc_workfd_set_toolchain_source
+#| if != 'none' call "source tb.config.tc_workfd_set_toolchain_source"
+#| default: 'none'
+#
+# - tb.config.tc_workfd_set_toolchain_arch
+#| architecture set with "export ARCH=tb.config.tc_workfd_set_toolchain_arch"
+#| default: 'not set'
+#
+# - tb.config.tc_workfd_set_toolchain_addlist
+#| list of commands which get called additionally
+#| default: 'none'
+#
+# - tb.config.tc_workfd_set_toolchain_t_p
+#| dictionary: keys   = architecture names
+#|             values = path to toolchains
+#| default: ''
+#| example: https://github.com/hsdenx/tbot/blob/master/config/uboot_kconfig_check.py#L57
+#
+# - tb.config.tc_workfd_set_toolchain_cr_co
+#| dictionary: keys   = architecture names
+#|             values = cross compiler prefixes
+#| default: ''
+#| example: https://github.com/hsdenx/tbot/blob/master/config/uboot_kconfig_check.py#L77
+#
 # End:
 
 from tbotlib import tbot
 
-try:
-    tb.config.tc_workfd_set_toolchain_source
-except:
-    tb.config.tc_workfd_set_toolchain_source = 'none'
+tb.define_variable('tc_workfd_set_toolchain_source', 'none')
+tb.define_variable('tc_workfd_set_toolchain_arch', 'not set')
+tb.define_variable('tc_workfd_set_toolchain_addlist', 'none')
+tb.define_variable('tc_workfd_set_toolchain_t_p', '')
+tb.define_variable('tc_workfd_set_toolchain_cr_co', '')
 
-try:
-    tb.config.tc_workfd_set_toolchain_addlist
-except:
-    tb.config.tc_workfd_set_toolchain_addlist = ''
-
-try:
-    tb.config.tc_workfd_set_toolchain_arch
-except:
-    tb.config.tc_workfd_set_toolchain_arch = 'notset'
-
-logging.info("args: %s %s %s", tb.workfd.name, tb.config.tc_workfd_set_toolchain_arch, tb.config.tc_workfd_set_toolchain_addlist)
-logging.info("args: %s", tb.config.tc_workfd_set_toolchain_source)
+logging.info("args: %s", tb.workfd.name)
 
 c = tb.workfd
 
@@ -49,18 +63,6 @@ if tb.config.tc_workfd_set_toolchain_source != 'none':
 # set ARCH
 cmd = 'export ARCH=' + tb.config.tc_workfd_set_toolchain_arch
 tb.write_lx_cmd_check(c, cmd)
-
-try:
-    tb.config.tc_workfd_set_toolchain_t_p
-except:
-    logging.error("tb.config.tc_workfd_set_toolchain_t_p not set")
-    tb.end_tc(False)
-
-try:
-    tb.config.tc_workfd_set_toolchain_cr_co
-except:
-    logging.error("tb.config.tc_workfd_set_toolchain_cr_co not set")
-    tb.end_tc(False)
 
 if tb.config.tc_workfd_set_toolchain_arch in tb.config.tc_workfd_set_toolchain_t_p:
     path = tb.config.tc_workfd_set_toolchain_t_p[tb.config.tc_workfd_set_toolchain_arch]
@@ -90,7 +92,7 @@ if ret == False:
 tmp = 'export CROSS_COMPILE=' + cross
 tb.eof_write_cmd(c, tmp)
 
-if tb.config.tc_workfd_set_toolchain_addlist != '':
+if tb.config.tc_workfd_set_toolchain_addlist != 'none':
     for cmd in tb.config.tc_workfd_set_toolchain_addlist:
         tb.eof_write_cmd(c, cmd)
 
