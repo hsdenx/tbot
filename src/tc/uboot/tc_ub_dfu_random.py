@@ -1,12 +1,12 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_dfu_random.py
 # test a U-Boot dfu alt setting tb.config.tc_ub_dfu_dfu_util_alt_setting
 # Therefore write a random file with size tb.config.tc_ub_dfu_rand_size
 # to it, reread it and compare it. TC fails if files differ
 # (If readen file is longer, this is no error!)
+#
+# random file is created in tb.config.lab_tmp_dir
 #
 # If dfu-util is not installed on the lab PC, set
 # tb.config.tc_ub_dfu_dfu_util_ssh for connecting with ssh to a PC
@@ -15,14 +15,30 @@
 # you have a self compiled version of it.
 # Set tb.config.tc_ub_dfu_rand_ubcmd for the executed command on
 # U-Boot shell for getting into DFU mode
+#
+# used variables
+#
+# - tb.config.tc_ub_dfu_dfu_util_ssh
+#| if != 'none' connect with ssh to a PC, where
+#| dfu-util is installed.
+#| default: 'none'
+#
+# - tb.config.tc_ub_dfu_rand_size
+#| size in bytes of created random file
+#| default: ''
+#
+# - tb.config.tc_ub_dfu_rand_ubcmd
+#| U-Boot command for starting dfu
+#| default: ''
+#
 # End:
 
 from tbotlib import tbot
 
-# here starts the real test
-logging.info("args: %s %s %s %s %s", tb.config.tc_ub_dfu_dfu_util_path,
-	tb.config.tc_ub_dfu_dfu_util_ssh, tb.config.tc_ub_dfu_dfu_util_alt_setting,
-	tb.config.tc_ub_dfu_rand_size, tb.config.tc_ub_dfu_rand_ubcmd)
+tb.define_variable('tc_ub_dfu_dfu_util_ssh', 'none')
+tb.define_variable('lab_tmp_dir', '')
+tb.define_variable('tc_ub_dfu_rand_size', '')
+tb.define_variable('tc_ub_dfu_rand_ubcmd', '')
 
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
