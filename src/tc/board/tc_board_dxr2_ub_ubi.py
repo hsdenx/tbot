@@ -78,9 +78,9 @@ if tb.ub_filesize != tb.tc_ub_ubi_read_len:
     tb.end_tc(False)
 
 #compare the both files ...
-tb.tc_ub_cmp_addr1 = tb.config.tc_ub_tftp_file_addr
-tb.tc_ub_cmp_addr2 = tb.tc_ub_ubi_read_addr
-tb.tc_ub_cmp_len = tb.ub_filesize
+tb.config.tc_ub_cmp_addr1 = tb.config.tc_ub_tftp_file_addr
+tb.config.tc_ub_cmp_addr2 = tb.tc_ub_ubi_read_addr
+tb.config.tc_ub_cmp_len = tb.ub_filesize
 tb.eof_call_tc("tc_ub_cmp.py")
 
 #now do some ubifs tests
@@ -110,9 +110,9 @@ tb.eof_call_tc("tc_ub_get_filesize.py")
 tmp = "ubifsload " + tb.tc_ub_ubi_read_addr + " /boot/ubi_random"
 tbot_ub_write_cmd_check(tb, tmp)
 
-tb.tc_ub_cmp_addr1 = tb.config.tc_ub_tftp_file_addr
-tb.tc_ub_cmp_addr2 = tb.tc_ub_ubi_read_addr
-tb.tc_ub_cmp_len = tb.ub_filesize
+tb.config.tc_ub_cmp_addr1 = tb.config.tc_ub_tftp_file_addr
+tb.config.tc_ub_cmp_addr2 = tb.tc_ub_ubi_read_addr
+tb.config.tc_ub_cmp_len = tb.ub_filesize
 tb.eof_call_tc("tc_ub_cmp.py")
 
 tb.end_tc(True)

@@ -53,9 +53,9 @@ tb.tc_ub_ubi_read_len = tb.config.tc_ub_ubi_write_len
 tb.eof_call_tc("tc_ub_ubi_read.py")
 
 # cmp if all bytes are the same
-tb.tc_ub_cmp_addr1 = tb.tc_ub_ubi_read_addr
-tb.tc_ub_cmp_addr2 = tb.config.tc_ub_tftp_file_addr
-tb.tc_ub_cmp_len = tb.config.tc_ub_ubi_write_len
+tb.config.tc_ub_cmp_addr1 = tb.tc_ub_ubi_read_addr
+tb.config.tc_ub_cmp_addr2 = tb.config.tc_ub_tftp_file_addr
+tb.config.tc_ub_cmp_len = tb.config.tc_ub_ubi_write_len
 tb.eof_call_tc("tc_ub_cmp.py")
 
 # mount ubifs
@@ -88,9 +88,9 @@ tb.tc_ub_ubi_read_len = tb.config.tc_ub_ubi_write_len
 tb.eof_call_tc("tc_ub_ubi_read.py")
 
 # cmp if all bytes are the same
-tb.tc_ub_cmp_addr1 = tb.tc_ub_ubi_read_addr
-tb.tc_ub_cmp_addr2 = tb.config.tc_ub_tftp_file_addr
-tb.tc_ub_cmp_len = tb.config.tc_ub_ubi_write_len
+tb.config.tc_ub_cmp_addr1 = tb.tc_ub_ubi_read_addr
+tb.config.tc_ub_cmp_addr2 = tb.config.tc_ub_tftp_file_addr
+tb.config.tc_ub_cmp_len = tb.config.tc_ub_ubi_write_len
 tb.eof_call_tc("tc_ub_cmp.py")
 
 
@@ -119,9 +119,9 @@ tb.tc_ub_ubi_read_len = tb.config.tc_ub_ubi_write_len
 tb.eof_call_tc("tc_ub_ubi_read.py")
 
 # cmp if all bytes are the same
-tb.tc_ub_cmp_addr1 = tb.tc_ub_ubi_read_addr
-tb.tc_ub_cmp_addr2 = tb.config.tc_ub_tftp_file_addr
-tb.tc_ub_cmp_len = tb.config.tc_ub_ubi_write_len
+tb.config.tc_ub_cmp_addr1 = tb.tc_ub_ubi_read_addr
+tb.config.tc_ub_cmp_addr2 = tb.config.tc_ub_tftp_file_addr
+tb.config.tc_ub_cmp_len = tb.config.tc_ub_ubi_write_len
 tb.eof_call_tc("tc_ub_cmp.py")
 
 # power off board at the end

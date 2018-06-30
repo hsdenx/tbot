@@ -34,9 +34,9 @@ cmdlist = [
 ]
 tb.eof_write_cmd_list(tb.c_con, cmdlist)
 
-tb.tc_ub_cmp_addr1 = tb.tc_board_flea3_nor_ram_addr_alt
-tb.tc_ub_cmp_addr2 = tb.tc_board_flea3_nor_ram_addr
-tb.tc_ub_cmp_len = tb.tc_board_flea3_nor_start_len
+tb.config.tc_ub_cmp_addr1 = tb.tc_board_flea3_nor_ram_addr_alt
+tb.config.tc_ub_cmp_addr2 = tb.tc_board_flea3_nor_ram_addr
+tb.config.tc_ub_cmp_len = tb.tc_board_flea3_nor_start_len
 tb.eof_call_tc("tc_ub_cmp.py")
 
 tb.set_board_state("linux")

@@ -1,21 +1,36 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_cmp.py
-# - compare 2 the contents of tb.tc_ub_cmp_addr1 with tb.tc_ub_cmp_addr2
-# bytes tb.tc_ub_cmp_len length
+# compare the contents of tb.config.tc_ub_cmp_addr1 with
+# tb.config.tc_ub_cmp_addr2 of tb.config.tc_ub_cmp_len
+# bytes length
+#
+# used variables
+#
+# - tb.config.tc_ub_cmp_addr1
+#| address one
+#| default: ''
+#
+# - tb.config.tc_ub_cmp_addr2
+#| address one
+#| default: ''
+#
+# - tb.config.tc_ub_cmp_len
+#| length of bytes which get compared
+#| default: ''
+#
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: %s %s %s", tb.tc_ub_cmp_addr1, tb.tc_ub_cmp_addr2,
-             tb.tc_ub_cmp_len)
+tb.define_variable('tc_ub_cmp_addr1', '')
+tb.define_variable('tc_ub_cmp_addr2', '')
+tb.define_variable('tc_ub_cmp_len', '')
 
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
-tmp = "cmp.b " + tb.tc_ub_cmp_addr1 + " " + tb.tc_ub_cmp_addr2 + " " + tb.tc_ub_cmp_len
+tmp = "cmp.b " + tb.config.tc_ub_cmp_addr1 + " " + tb.config.tc_ub_cmp_addr2 + " " + tb.config.tc_ub_cmp_len
 c = tb.c_con
 tb.eof_write(c, tmp)
 
