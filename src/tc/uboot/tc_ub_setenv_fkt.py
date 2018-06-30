@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s lab_denx -c beagleboneblack -t tc_ub_setenv_fkt.py
 # set U-Boot Environmentvariable tb.config.setenv_name with value
 # tb.config.setenv_value
 #
@@ -18,8 +16,6 @@
 
 from tbotlib import tbot
 
-# here starts the real test
-logging.info("testcase arg: %s %s", tb.config.setenv_name, tb.config.setenv_value)
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
