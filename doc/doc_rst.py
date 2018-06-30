@@ -139,14 +139,44 @@ class create_doc(object):
             new = 'var_config_' + new
         return new
 
+    def find_all(self, a_str, sub):
+        start = 0
+        while True:
+            start = a_str.find(sub, start)
+            if start == -1: return
+            yield start
+            start += len(sub)
+
     def add_link_2_testcase(self, line):
         if ('tbot.py' in line):
             return line
 
-        if not ('.py' in line):
+        if not ('.py' in line) and not ('tb.config.' in line):
             return line
 
+        orgline = line
+        # refer to testcase
         line = line.replace('.py', '_py_')
+        # add reference for variables
+        # variables are defined with beginning '- '
+        if line[0] == '-':
+            rest = line.replace('- tb.config.', '')
+            rest = rest.strip()
+            newline = '.. ' + '_tb.config.' + rest + ':\n'
+            newline += '\n'
+            newline += orgline
+            line = newline
+        else:
+            found = list(self.find_all(line, 'tb.config.'))
+            while found:
+                for f in found:
+                    tmp = line[int(f):]
+                    tmp = tmp.split()[0]
+                    line = line.replace(tmp, tmp.replace('tb.config.', 'tb_config_') + '_')
+                    break
+                found = list(self.find_all(line, 'tb.config.'))
+            line = line.replace('tb_config_', 'tb.config.')
+
         return line
 
     def get_file_description(self, filen):
@@ -159,12 +189,17 @@ class create_doc(object):
                 found = 0
             else:
                 if found == 1:
+                    newline = True
                     line = line.replace('#', '')
                     line = line.lstrip()
+                    if len(line):
+                        if line[0] == '-' or line[0] == '|':
+                            newline = False
                     line = line.replace('*', '\\*')
                     line = self.add_link_2_testcase(line)
                     self.fd.write(line)
-                    self.fd.write('\n')
+                    if newline:
+                        self.fd.write('\n')
 
         f.close()
         return
