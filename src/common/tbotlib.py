@@ -388,12 +388,15 @@ class tbot(object):
         if found == False:
             # new item
             if defvalue != '':
+                if defvalue[0] == '[' or defvalue[0] == '{':
+                    import ast
+                    # convert string to list or dictionary
+                    defvalue = ast.literal_eval(defvalue)
                 self.config.__dict__.update({name : defvalue})
                 logging.info("default %s = %s", name, defvalue)
             else:
                 logging.error("var %s not set! Ending TC False", name)
                 self.end_tc(False)
-
         else:
             logging.info("%s = %s", name, value)
 
