@@ -113,7 +113,6 @@ tc_workfd_connect_with_kermit_sudo = "none"
 tc_workfd_connect_with_kermit_rlogin = "none"
 kermit_line = '/dev/ttyUSB0'
 kermit_speed = '115200'
-tc_ub_tftp_file_addr = 'config.ub_load_board_env_addr'
 tc_lab_denx_power_tc = 'tc_lab_denx_power.py'
 tc_lab_denx_get_power_state_tc = 'tc_lab_denx_get_power_state.py'
 tc_lab_denx_connect_to_board_tc = 'tc_lab_denx_connect_to_board.py'

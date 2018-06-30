@@ -1,15 +1,25 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_tftp_file.py
 # load file tb.config.tc_ub_tftp_file_name to tb.config.tc_ub_tftp_file_addr
 # with tftp command in uboot
+#
+# used variables
+#
+# - tb.config.tc_ub_tftp_file_addr
+#| ram address to which the file gets loaded
+#| default: tb.config.ub_load_board_env_addr
+#
+# - tb.config.tc_ub_tftp_file_name
+#| file name for the tftp command
+#| default: ''
+#
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: %s %s %s", tb.config.boardname, tb.config.tc_ub_tftp_file_addr, tb.config.tc_ub_tftp_file_name)
+tb.define_variable('tc_ub_tftp_file_addr', tb.config.ub_load_board_env_addr)
+tb.define_variable('tc_ub_tftp_file_name', '')
 
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
