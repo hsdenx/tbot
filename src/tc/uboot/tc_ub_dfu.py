@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_dfu.py
 # test dfu
 # - use dfu-util in tb.config.tc_ub_dfu_dfu_util_path
 # - upload file tb.config.tc_ub_dfu_dfu_util_alt_setting to
@@ -10,14 +8,29 @@
 # - download it back to the board
 # - upload it again
 # - and compare the two files
+#
+# used variables
+#
+# - tb.config.tc_ub_dfu_dfu_util_path
+#| path to dfu-util program
+#| default: '/home/hs/zug/dfu-util'
+#
+# - tb.config.tc_ub_dfu_dfu_util_alt_setting
+#| alt setting for dfu command
+#| default: 'Linux'
+#
+# - tb.config.tc_ub_dfu_dfu_util_downloadfile
+#| file with full path which is used as temporary file
+#| in this testcase.
+#| default: ''
+#
 # End:
 
 from tbotlib import tbot
 
-# here starts the real test
-logging.info("args: %s %s %s", tb.config.tc_ub_dfu_dfu_util_path,
-             tb.config.tc_ub_dfu_dfu_util_alt_setting,
-             tb.config.tc_ub_dfu_dfu_util_downloadfile)
+tb.define_variable('tc_ub_dfu_dfu_util_path', '/home/hs/zug/dfu-util')
+tb.define_variable('tc_ub_dfu_dfu_util_alt_setting', 'Linux')
+tb.define_variable('tc_ub_dfu_dfu_util_downloadfile', '')
 
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
