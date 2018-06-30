@@ -8,15 +8,23 @@
 # which explains what your testcase do and how, which
 # variables it uses.
 #
+# used variables
+#
+# - varname
+#|  some text, which describes the function of the variable
+#|  default: 'default value'
+#
 # End:
 
 from tbotlib import tbot
 
-# always add some logging info for example which variables
-# your testcase uses
-# don;t forget to define a default value for a new config variable
-# if it makes sense
-logging.info("arg: ")
+# add variables for your testcase with
+tb.define_variable('varname', 'default value')
+# also logging is done with this function
+# access the variable with tb.config.varname
+
+# add some logging info with
+# logging.info("arg: ")
 
 # compile, install and do tests
 # call other testcases with

@@ -46,33 +46,10 @@
 # End:
 from tbotlib import tbot
 
-try:
-    tb.config.board_git_bisect_get_source_tc
-except:
-    tb.config.board_git_bisect_get_source_tc = 'tc_lab_get_uboot_source.py'
-
-try:
-    tb.config.board_git_bisect_call_tc
-except:
-    tb.config.board_git_bisect_call_tc = 'tc_board_tqm5200s_ub_comp_install.py'
-
-try:
-    tb.config.board_git_bisect_good_commit
-except:
-    tb.config.board_git_bisect_good_commit = 'f9860cf'
-
-try:
-    tb.config.board_git_bisect_patches =
-except:
-    tb.config.board_git_bisect_patches = 'none'
-
-try:
-    tb.config.board_git_bisect_restore
-except:
-    tb.config.board_git_bisect_restore = 'none'
-
-logging.info("args: %s %s %s %s", tb.config.board_git_bisect_get_source_tc, tb.config.board_git_bisect_call_tc, tb.config.board_git_bisect_good_commit, tb.config.board_git_bisect_patches)
-logging.info("restore: %s", tb.config.board_git_bisect_restore)
+tb.define_variable('board_git_bisect_get_source_tc', 'tc_lab_get_uboot_source.py')
+tb.define_variable('board_git_bisect_good_commit', 'f9860cf')
+tb.define_variable('board_git_bisect_patches', 'none')
+tb.define_variable('board_git_bisect_restore', 'none')
 
 #call get u-boot source
 tb.statusprint("get source tree")

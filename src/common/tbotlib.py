@@ -369,6 +369,36 @@ class tbot(object):
         except:
             pass
 
+    def define_variable(self, name, defvalue):
+        """ Set a new variable with name and default value defvalue.
+        Also do the necessary logging for the variable.
+        If var is not found and defvalue is '', end Testcase with False!
+        - **parameters**, **types**, **return** and **return types**::
+        :param arg1: name of the new variable
+        :param arg2: default value of the new variable. If '' and
+                     variable does not exist, exit with enc_tc(False)
+        :return: True if power state is on, else False
+        """
+        found = False
+        for ov in self.config.__dict__.items():
+            if not ov[0].startswith('__'):
+                if ov[0] == name:
+                    value = ov[1]
+                    found = True
+        if found == False:
+            # new item
+            if defvalue != '':
+                self.config.__dict__.update({name : defvalue})
+                logging.info("default %s = %s", name, defvalue)
+            else:
+                logging.error("var %s not set! Ending TC False", name)
+                self.end_tc(False)
+
+        else:
+            logging.info("%s = %s", name, value)
+
+        return True
+
     def get_power_state(self, boardname):
         """ Get powerstate of the board in the lab
 

@@ -18,15 +18,24 @@
 # test after tbot is installed.
 # See config/tbot_test.py for more info
 #
+# don;t forget to describe here variables you use in
+# your testcase. Format
+#
+# - varname
+#|  some text, which describes the function of the variable
+#|  default: and of course, say what is the default value
+#
 # End:
 
 from tbotlib import tbot
 
-# always add some logging info for example which variables
-# your testcase uses
-# don;t forget to define a default value for a new config variable
-# if it makes sense
-logging.info("arg: ")
+# add variables for your testcase with
+# tb.define_variable('varname', 'default value')
+# also logging is done with this function
+# access the variable with tb.config.varname
+
+# add logging info with
+# logging.info("arg: ")
 
 # set board into state linux
 tb.set_board_state("linux")
