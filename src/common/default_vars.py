@@ -30,8 +30,6 @@ tftpboardname = 'config.boardname'
 boardlabname = 'config.boardname'
 boardlabpowername = 'config.boardname'
 tftpboardrootdir = ''
-tc_ub_dfu_dfu_util_path = "/home/hs/zug/dfu-util"
-tc_ub_dfu_dfu_util_alt_setting = "Linux"
 tc_lab_source_dir = "/work/hs/tbot"
 tc_lab_toolchain_rev = "5.4"
 tc_lab_toolchain_name = "armv5te"
@@ -133,23 +131,6 @@ tc_lx_trigger_wdt_cmd = '/home/hs/wdt &'
 tc_workfd_create_ubi_rootfs_path = '/opt/eldk-5.4/armv7a-hf/rootfs-minimal-mtdutils'
 tc_workfd_create_ubi_rootfs_target = '/tftpboot/dxr2/tbot/rootfs-minimal.ubifs'
 tc_ub_i2c_help_with_bus = 'no'
-dfu_test_sizes_default = [
-        64 - 1,
-        64,
-        64 + 1,
-        128 - 1,
-        128,
-        128 + 1,
-        960 - 1,
-        960,
-        960 + 1,
-        4096 - 1,
-        4096,
-        4096 + 1,
-        1024 * 1024 - 1,
-        1024 * 1024,
-        8 * 1024 * 1024,
-    ]
 workfd_ssh_cmd_prompt = '$'
 workfd_ssh_cmd_opt = ''
 linux_prompt_default = 'root@generic-armv7a-hf:~# '
