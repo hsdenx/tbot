@@ -81,7 +81,6 @@ lab_bdi_upd_uboot_bdi_era = 'era'
 lab_bdi_upd_uboot_bdi_prog = 'prog 0xfc000000'
 lab_bdi_upd_uboot_bdi_file = '/tftpboot/tqm5200s/tbot/u-boot.bin'
 lab_bdi_upd_uboot_bdi_run = [{'cmd':'res run', 'val':'resetting target passed'}]
-tc_lab_apply_patches_dir =  'none'
 tc_ubi_cmd_path = "/work/tbot/mtd-utils"
 tc_ubi_mtd_dev = "/dev/mtd4"
 tc_ubi_ubi_dev = "/dev/ubi0"

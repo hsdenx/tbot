@@ -1,14 +1,17 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lab_apply_patches.py
-# apply patches to source
+# apply patches in tb.config.tc_lab_apply_patches_dir
+#
+# - tb.config.tc_lab_apply_patches_dir
+#   path to directory which contains the patches
+#   default: 'none'
+#
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: %s", tb.config.tc_lab_apply_patches_dir)
+tb.define_variable('tc_lab_apply_patches_dir', 'none')
 
 if tb.config.tc_lab_apply_patches_dir == 'none':
     tb.end_tc(True)
