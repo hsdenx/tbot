@@ -174,14 +174,6 @@ tc_workfd_can_util_dir = '/home/hs/can-utils'
 tc_workfd_hdparm_path = '/home/hs/shc/hdparm-9.50/'
 tc_workfd_hdparm_dev = '/dev/mmcblk1'
 tc_workfd_hdparm_min = '12.0'
-tc_lab_git_clone_source_git_repo = 'git://git.yoctoproject.org/poky.git'
-tc_lab_git_clone_source_git_branch = 'morty'
-tc_lab_git_clone_source_git_commit_id = '73454473d7c286c41ee697f74052fed03c79f9f5'
-tc_lab_git_clone_apply_patches_dir = 'none'
-tc_lab_git_clone_apply_patches_git_am_dir = '/work/hs/ssi/patches/20161220/morty'
-tc_lab_git_clone_source_git_reference = 'none'
-tc_lab_git_clone_source_git_repo_user = ''
-tc_lab_git_clone_source_git_repo_name = 'none'
 tc_workfd_get_yocto_source_layers = [
 ['git://git.openembedded.org/meta-openembedded', 'morty', '659d9d3f52bad33d7aa1c63e25681d193416d76e', 'none', 'none', 'none', '', 'meta-openembedded'],
 ['https://github.com/sbabic/meta-swupdate.git', 'master', 'b3abfa78d04b88b88bcef6f5be9f2adff1293544', 'none', 'none', 'none', '', 'meta-swupdate'],

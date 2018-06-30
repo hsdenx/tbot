@@ -1,33 +1,72 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_git_clone_source.py
 # get source from git repo tb.config.tc_lab_git_clone_source_git_repo with "git clone"
 # and go into the source tree. 
 # check out branch tb.config.tc_lab_git_clone_source_git_branch
-# and Apply patches if needed with:
+# and apply patches if needed with:
 # tc_lab_apply_patches.py and patches from directory
 # tb.config.tc_lab_git_clone_apply_patches_dir
 # use as reference tb.config.tc_lab_git_clone_source_git_reference
 # if != 'none'
+#
 # You can give the repo a name with setting
 # tb.config.tc_lab_git_clone_source_git_repo_name
 # != 'none'
-# If you need a user/password for clining, you can define
+#
+# If you need a user/password for cloning, you can define
 # the username through:
 # tb.config.tc_lab_git_clone_source_git_repo_user
 # define the password for this in password.py
 # boardname in password.py is used as tb.config.tc_lab_git_clone_source_git_repo
+#
+# used variables
+#
+# - tb.config.tc_lab_git_clone_source_git_repo
+#| git url
+#| default: 'git://git.yoctoproject.org/poky.git'
+#
+# - tb.config.tc_lab_git_clone_source_git_branch
+#| branch which get checked out after cloning
+#| default: 'morty'
+#
+# - tb.config.tc_lab_git_clone_source_git_commit_id
+#| commit id which gets checked out if value != 'none'
+#| default: 'none'
+#
+# - tb.config.tc_lab_git_clone_apply_patches_dir
+#| directory with patches for applying with
+#| testcase tc_lab_apply_patches.py
+#| default: 'none'
+#
+# - tb.config.tc_lab_git_clone_apply_patches_git_am_dir
+#| directory with patches for applying with
+#| testcase tc_workfd_apply_local_patches.py
+#| default: 'none'
+#
+# - tb.config.tc_lab_git_clone_source_git_reference
+#| default: 'none'
+#
+# - tb.config.tc_lab_git_clone_source_git_repo_user
+#| default: ''
+#
+# - tb.config.tc_lab_git_clone_source_git_repo_name
+#| default: 'none'
+#
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: workdfd: %s %s %s %s", tb.workfd.name, tb.config.tc_lab_git_clone_source_git_repo,
-             tb.config.tc_lab_git_clone_source_git_branch, tb.config.tc_lab_git_clone_apply_patches_dir)
-logging.info("args: %s %s ", tb.config.tc_lab_git_clone_source_git_reference,
-             tb.config.tc_lab_git_clone_source_git_repo_user)
-logging.info("args: %s ", tb.config.tc_lab_git_clone_source_git_repo_name)
+tb.define_variable('tc_lab_git_clone_source_git_repo', 'git://git.yoctoproject.org/poky.git')
+tb.define_variable('tc_lab_git_clone_source_git_branch', 'morty')
+tb.define_variable('tc_lab_git_clone_source_git_commit_id', 'none')
+tb.define_variable('tc_lab_git_clone_apply_patches_dir', 'none')
+tb.define_variable('tc_lab_git_clone_apply_patches_git_am_dir', 'none')
+tb.define_variable('tc_lab_git_clone_source_git_reference', 'none')
+tb.define_variable('tc_lab_git_clone_source_git_repo_user', '')
+tb.define_variable('tc_lab_git_clone_source_git_repo_name', 'none')
+
+logging.info("args: workdfd: %s", tb.workfd.name)
 
 if tb.config.tc_lab_git_clone_source_git_repo_name != 'none':
     repo_name = tb.config.tc_lab_git_clone_source_git_repo_name
