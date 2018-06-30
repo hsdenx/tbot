@@ -104,16 +104,16 @@ tb.eof_call_tc("tc_workfd_goto_uboot_code.py")
 
 # check U-Boot version
 if tb.config.tc_demo_compile_install_test_ub_vers_file != '':
-    tb.tc_ub_get_version_file = tb.config.tc_demo_compile_install_test_ub_vers_file
-    tb.tc_ub_get_version_string = 'U-Boot 20'
+    tb.config.tc_ub_get_version_file = tb.config.tc_demo_compile_install_test_ub_vers_file
+    tb.config.tc_ub_get_version_string = 'U-Boot 20'
     tb.eof_call_tc("tc_ub_get_version.py")
     tb.uboot_vers = tb.config.tc_return
 else:
     tb.uboot_vers = ''
 
 if tb.config.tc_demo_compile_install_test_spl_vers_file != '':
-    tb.tc_ub_get_version_file = tb.config.tc_demo_compile_install_test_spl_vers_file
-    tb.tc_ub_get_version_string = 'U-Boot SPL'
+    tb.config.tc_ub_get_version_file = tb.config.tc_demo_compile_install_test_spl_vers_file
+    tb.config.tc_ub_get_version_string = 'U-Boot SPL'
     tb.eof_call_tc("tc_ub_get_version.py")
     tb.spl_vers = tb.config.tc_return
 else:
