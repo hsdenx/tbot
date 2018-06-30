@@ -1,28 +1,62 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_create_reg_file.py
-# creates a reg file tb.tc_ub_create_reg_file_name on the tbot host
+# creates a reg file tb.config.tc_ub_create_reg_file_name on the tbot host
 # in tb.workdir
-# read from tb.tc_ub_create_reg_file_start to tb.tc_ub_create_reg_file_stop
-# and writes the results in the regfile tb.tc_ub_create_reg_file_name
+# read from tb.config.tc_ub_create_reg_file_start to tb.config.tc_ub_create_reg_file_stop
+# and writes the results in the regfile tb.config.tc_ub_create_reg_file_name
 # format of the regfile:
 # regaddr mask type defval
 # This reg file can be used as a default file, how the
 # registers must be setup, check it with testcase
 # tc_ub_check_reg_file.py
 # ToDo: use the file from the lab host, not the tbot host
+#
+# used variables
+#
+# - tb.config.tc_ub_create_reg_file_name
+#| filename of regfile which gets created
+#| complete path: tb.workdir + "/" + tb.config.tc_ub_create_reg_file_name
+#| default: ''
+#
+# - tb.config.tc_ub_create_reg_file_start
+#| start addresse from which a register dump gets created
+#| default: ''
+#
+# - tb.config.tc_ub_create_reg_file_stop
+#| stop addresse to which a register dump gets created
+#| default: ''
+#
+# - tb.config.tc_ub_readreg_mask
+#| mask which gets written as default into register dump file
+#| default:
+#
+# - tb.config.tc_ub_readreg_type
+#| u-boot types of md command
+#| 'l', 'w' or 'b'
+#| default: ''
+#
+# - tb.config.tc_ub_create_reg_file_mode
+#| filemode, for file which gets created
+#| default:
+#
+# - tb.config.tc_ub_create_reg_file_comment
+#| if != 'none' add a comment line with content of this variable
+#| preceeded by a '#'
+#| default: 'none'
+#
 # End:
 
 import datetime
 from tbotlib import tbot
 
-logging.info("args: %s %s %s %s %s %s %s", tb.config.tc_ub_create_reg_file_name,
-             tb.config.tc_ub_create_reg_file_start,
-             tb.config.tc_ub_create_reg_file_stop,
-             tb.config.tc_ub_readreg_mask, tb.config.tc_ub_readreg_type,
-             tb.config.tc_ub_create_reg_file_mode, tb.config.tc_ub_create_reg_file_comment)
+tb.define_variable('tc_ub_create_reg_file_name', '')
+tb.define_variable('tc_ub_create_reg_file_start', '')
+tb.define_variable('tc_ub_create_reg_file_stop', '')
+tb.define_variable('tc_ub_readreg_mask', '')
+tb.define_variable('tc_ub_readreg_type', '')
+tb.define_variable('tc_ub_create_reg_file_mode', '')
+tb.define_variable('tc_ub_create_reg_file_comment', 'none')
 
 #set board state for which the tc is valid
 tb.set_board_state("u-boot")
@@ -48,7 +82,7 @@ tmp = tmp.replace('\n','')
 vers = tmp.lstrip()
 tb.tbot_expect_prompt(c)
 
-if tb.config.tc_ub_create_reg_file_comment != '':
+if tb.config.tc_ub_create_reg_file_comment != 'none':
     fd.write('# ' + tb.config.tc_ub_create_reg_file_comment + '\n')
 fd.write("# Date: " + datetime.datetime.now().ctime() + "\n")
 fd.write("# U-Boot    : %s\n" % vers)
