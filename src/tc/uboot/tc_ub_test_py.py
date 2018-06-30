@@ -1,11 +1,12 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_test_py.py
 # call test/py from u-boot source
+# - power off the board
 # - disconnect console
+# - goto u-boot code with testcase tc_workfd_goto_uboot_code.py
 # - call test/py
+# - power off the board
 # - connect back to console
 # test/py hookscript directory:
 # tb.config.tc_ub_test_py_hook_script_path
@@ -16,22 +17,33 @@
 # tb.config.tc_ub_test_py_configfile. This variable contains
 # the config file, which gets created.
 #
+# at the end create event with ID UBOOT_TEST_PY
+#
+# used variables
+#
+# - tb.config.tc_ub_test_py_hook_script_path
+#| full path to hook scripts for test/py
+#| default: '$HOME/testframework/hook-scripts'
+#
+# - tb.config.tc_ub_test_py_configfile
+#| list of strings with configsettings for test/py
+#| default: '[]'
+#
+# - tb.config.tc_ub_test_py_start
+#| if 'no' do not start test/py
+#| default: 'yes'
+#
 # End:
 
 from tbotlib import tbot
 
-try:
-    tb.config.tc_lab_compile_uboot_boardname
-except:
-    tb.config.tc_lab_compile_uboot_boardname = tb.config.boardname
+tb.define_variable('tc_ub_test_py_hook_script_path', '$HOME/testframework/hook-scripts')
+tb.define_variable('tc_ub_test_py_configfile', '[]')
+tb.define_variable('tc_ub_test_py_start', 'yes')
 
-try:
-    tb.config.tc_ub_test_py_configfile
-except:
-    tb.config.tc_ub_test_py_configfile = []
-
-logging.info("args: %s %s %s", tb.config.boardname, tb.config.boardlabname, tb.config.tc_ub_test_py_hook_script_path)
+logging.info("args: %s %s", tb.config.boardname, tb.config.boardlabname)
 logging.info("args: %s", tb.config.tc_lab_compile_uboot_boardname)
+logging.info("args: %s", tb.config.tc_lab_source_dir)
 
 if tb.config.tc_ub_test_py_start == 'no':
     tb.end_tc(True)
