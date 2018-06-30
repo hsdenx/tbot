@@ -27,7 +27,6 @@ tftpboardrootdir = ''
 tc_lab_source_dir = "/work/hs/tbot"
 tc_lab_toolchain_rev = "5.4"
 tc_lab_toolchain_name = "armv5te"
-tc_ub_ubi_load_name = "kernel"
 tc_ub_ubi_prep_partname = "ubi"
 tc_ub_ubi_prep_offset = "none"
 tc_ub_ubi_load_addr = "14000000"

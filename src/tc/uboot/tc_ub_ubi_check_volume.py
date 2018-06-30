@@ -1,14 +1,18 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_ubi_check_volume.py
-# - checks if ubi volume tb.config.tc_ub_ubi_load_name exists
+# checks if ubi volume tb.config.tc_ub_ubi_load_name exists
+#
+# used variables
+#
+# - tb.config.tc_ub_ubi_load_name
+#| volume name
+#| default: 'kernel'
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: %s %s", tb.config.tc_ub_ubi_load_addr, tb.config.tc_ub_ubi_load_name)
+tb.define_variable('tc_ub_ubi_load_name', 'kernel')
 
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
