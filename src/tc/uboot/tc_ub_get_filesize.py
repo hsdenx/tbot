@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_get_filesize.py
 # simple get the content of U-Boot env variable filesize
 # and store it in tb.ub_filesize
 # End:
