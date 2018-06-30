@@ -1,11 +1,25 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lab_get_uboot_source.py
 #
 # get U-Boot source
 # and go into the source tree
+#
+# used variables
+#
+# - tb.config.tc_lab_get_uboot_source_git_repo
+#|  repo to clone
+#|  default: '/home/git/u-boot.git'
+#
+# - tb.config.tc_lab_get_uboot_source_git_branch
+#|  branch which get checked out
+#|  default: master
+#
+# - tb.config.tc_get_ub_source_reference
+#|  reference which get used when cloning
+#|  if 'none' no "--reference=..." option is
+#|  used for "git clone"
+#|  default: 'none'
 #
 # End:
 
@@ -15,6 +29,18 @@ try:
     tb.config.tc_get_ub_source_reference
 except:
     tb.config.tc_get_ub_source_reference = 'none'
+
+try:
+    tb.config.tc_lab_get_uboot_source_git_repo
+except:
+    tb.config.tc_lab_get_uboot_source_git_repo = '/home/git/u-boot.git'
+
+try:
+    tb.config.tc_lab_get_uboot_source_git_branch
+except:
+    tb.config.tc_lab_get_uboot_source_git_branch = 'master'
+
+logging.info("arg: %s %s %s", tb.config.tc_lab_get_uboot_source_git_repo, tb.config.tc_lab_get_uboot_source_git_branch, tb.config.tc_get_ub_source_reference)
 
 ret = tb.call_tc("tc_workfd_goto_uboot_code.py")
 if ret == False:

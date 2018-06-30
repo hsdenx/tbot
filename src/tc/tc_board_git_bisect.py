@@ -1,19 +1,43 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -c tbot_tqm5200s.cfg -t tc_board_git_bisect.py
 # get a source code with tc tb.config.board_git_bisect_get_source_tc
 # and start a "git bisect" session
+#
 # current commit is bad
+#
 # good commit id is defined through tb.config.board_git_bisect_good_commit
+#
 # tc for testing good or bad is tb.config.board_git_bisect_call_tc
+#
 # if you have some local patches, which needs to be applied
 # each git bisect step, set tb.config.board_git_bisect_patches
 #
 # if you need to restore your board after a failure, set the
 # variable tb.config.board_git_bisect_restore to the tc name
-# which restores the board.
+# which restores the board after each step
+#
+# used variables
+#
+# - tb.config.board_git_bisect_get_source_tc
+#|  testcase which gets called for changing into the git source
+#|  code.
+#
+# - tb.config.board_git_bisect_call_tc
+#|  testcase, which gets called for finding out, if current
+#|  checked out state of the source is good or bad
+#
+# - tb.config.board_git_bisect_good_commit
+#|  last know good commit id
+#
+# - tb.config.board_git_bisect_patches
+#|  patches, which get applied in each step fo git bisect
+#
+# - tb.config.board_git_bisect_restore
+#|  name of testcase, which gets called after each step, for
+#|  restoring your board. Used for example, if you bisect
+#|  u-boot and you break with bad source code your board.
+#
 # End:
 from tbotlib import tbot
 
