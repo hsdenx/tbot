@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s lab_denx -s labconfigname -c boardconfigname -t tc_ub_create_am335x_reg_file.py
 #
 # creates U-Boot register dump files for an am335x based board.
 # using testcase tc_ub_create_reg_file.py
@@ -24,14 +22,12 @@
 # into files found in src/files/
 # create for your board a subdir in the directory,
 # and move the new created files into it, so you have
-# them as a base for comparing further use.
+# them as a base for comparing further.
 #
 # End:
 
 import datetime
 from tbotlib import tbot
-
-logging.info("args: none")
 
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
