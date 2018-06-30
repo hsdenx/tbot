@@ -1,12 +1,28 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_compile_uboot.py
 # compile u-boot
+#
+# used variables
+# - tb.config.tc_lab_compile_uboot_export_path
+#| if != 'none' add in PATH the string from this variable
+#| default: 'none'
+#
+# - tb.config.tc_lab_compile_uboot_boardname
+#| Name used for defconfig
+#| default: tb.config.boardname
+#
+# - tb.config.tc_lab_compile_uboot_makeoptions
+#| option string used for calling make
+#| default: '-j4'
+#
 # End:
 
 from tbotlib import tbot
+
+tb.define_variable('tc_lab_compile_uboot_export_path', 'none')
+tb.define_variable('tc_lab_compile_uboot_boardname', tb.config.boardname)
+tb.define_variable('tc_lab_compile_uboot_makeoptions', '-j4')
 
 tb.eof_call_tc("tc_workfd_goto_uboot_code.py")
 
