@@ -1,25 +1,32 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_upd_uboot.py
 # update new uboot to board
 # steps:
-# - load tbot u-boot env vars
+# - load tbot u-boot env vars if tb.config.tc_ub_upd_uboot_latest == 'no'
 # - execute "run tbot_upd_uboot"
 # - execute "run tbot_cmp_uboot"
 # - reset board
 # - get u-boot
+#
+# used variables
+#
+# - tb.config.tc_ub_upd_uboot_ubvars
+#| additionaly printed U-Boot Environmnet variables, if != 'none'
+#| default: 'none'
+#
+# - tb.config.tc_ub_upd_uboot_latest
+#| if == 'no' load U-Boot Environment with testcase
+#| tc_ub_load_board_env.py
+#| default: 'no'
+#
 # End:
 
 from tbotlib import tbot
 
-try:
-    tb.config.tc_ub_upd_uboot_ubvars
-except:
-    tb.config.tc_ub_upd_uboot_ubvars = ''
-
-logging.info("args: %s %s %s %s", tb.config.ub_load_board_env_addr, tb.config.ub_load_board_env_subdir, tb.config.tc_ub_upd_uboot_latest, tb.config.tc_ub_upd_uboot_ubvars)
+tb.define_variable('tc_ub_upd_uboot_ubvars', 'none')
+tb.define_variable('tc_ub_upd_uboot_latest', 'no')
+logging.info("args: %s %s", tb.config.ub_load_board_env_addr, tb.config.ub_load_board_env_subdir)
 
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
@@ -34,7 +41,10 @@ c = tb.c_con
 # hush shell, best to run if then else with echoing
 # OK ...
 tb.event.create_event('main', 'tc_ub_upd_uboot.py', 'SET_DOC_FILENAME', 'print_upd_uboot')
-tb.eof_write_cmd(c, "print tbot_upd_uboot " + tb.config.tc_ub_upd_uboot_ubvars)
+cmd = 'print tbot_upd_uboot'
+if tb.config.tc_ub_upd_uboot_ubvars != 'none':
+    cmd = cmd + ' ' + tb.config.tc_ub_upd_uboot_ubvars
+tb.eof_write_cmd(c, cmd)
 upd_fail = True
 i = 0
 retry = 2
