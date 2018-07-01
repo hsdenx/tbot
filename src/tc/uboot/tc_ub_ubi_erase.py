@@ -1,10 +1,8 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_ubi_erase.py
-# - erase an ubi device
-#   execute U-Boot Env tbot_ubi_erase
+# erase an ubi device
+# execute U-Boot Env tbot_ubi_erase
 # End:
 
 from tbotlib import tbot
