@@ -145,7 +145,7 @@ class create_doc(object):
             yield start
             start += len(sub)
 
-    def add_link_2_testcase(self, line):
+    def add_link_2_testcase(self, line, varlist):
         if ('tbot.py' in line):
             return line
 
@@ -159,12 +159,13 @@ class create_doc(object):
         line = line.replace('httpnochange', '.py#')
         # add reference for variables
         # variables are defined with beginning '- '
-        if line[0] == '-':
+        if line[0] == '-' and varlist == True:
             rest = line.replace('- tb.config.', '')
             rest = rest.strip()
             newline = '.. ' + '_tb.config.' + rest + ':\n'
             newline += '\n'
             newline += orgline
+            newline += '\n'
             line = newline
         else:
             found = list(self.find_all(line, 'tb.config.'))
@@ -182,6 +183,7 @@ class create_doc(object):
     def get_file_description(self, filen):
         f = open(self.workdir + '/' + filen, 'r')
         found = 0
+        varlist = False
         for line in f:
             if 'Description:' in line:
                 found = 1
@@ -189,6 +191,8 @@ class create_doc(object):
                 found = 0
             else:
                 if found == 1:
+                    if 'used variable' in line:
+                        varlist = True
                     newline = True
                     line = line.replace('#', '', 1)
                     line = line.lstrip()
@@ -196,7 +200,7 @@ class create_doc(object):
                         if line[0] == '-' or line[0] == '|':
                             newline = False
                     line = line.replace('*', '\\*')
-                    line = self.add_link_2_testcase(line)
+                    line = self.add_link_2_testcase(line, varlist)
                     self.fd.write(line)
                     if newline:
                         self.fd.write('\n')
