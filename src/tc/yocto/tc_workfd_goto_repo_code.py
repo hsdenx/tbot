@@ -1,37 +1,53 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_goto_repo_code.py
 #
-# switch into yocto source tb.config.tc_lab_source_dir + "/repo-" + tb.config.boardlabname
+# switch into yocto source directory $TBOT_BASEDIR_REPO
+# created with repo tool.
+#
+# Which is tb.config.tc_lab_source_dir + "/repo-" + tb.config.boardlabname
 #
 # set tb.config.repo_name to "repo-" + tb.config.boardlabname
 # and tb.config.repo_fulldir_name to tb.config.tc_lab_source_dir + "/" + tb.config.repo_name
 # and set $TBOT_BASEDIR_REPO to tb.config.repo_fulldir_name
 #
+# used variables
+#
+# - tb.config.tc_workfd_goto_repo_code_dirext
+#| if != 'none' add this string to tb.config.repo_name
+#| default: 'none'
+#
+# - tb.config.tc_workfd_goto_repo_code_checked
+#| variable at runtime set, do not set it from a config file
+#| marker, if setup for this testcase is already done.
+#
+# - tb.config.repo_name
+#| set to to "repo-" + tb.config.boardlabname
+#
+# - tb.config.repo_fulldir_name
+#| set to tb.config.tc_lab_source_dir + "/" + tb.config.repo_name
+#
 # End:
 
 from tbotlib import tbot
 
-try:
-    tb.config.tc_workfd_goto_repo_code_dirext
-except:
-    tb.config.tc_workfd_goto_repo_code_dirext = ''
+tb.define_variable('tc_workfd_goto_repo_code_dirext', 'none')
 
 try:
     tb.config.tc_workfd_goto_repo_code_checked
 except:
     tb.config.tc_workfd_goto_repo_code_checked = False
 
-logging.info("args: %s %s %s", tb.workfd, tb.config.tc_workfd_goto_repo_code_checked, tb.config.tc_workfd_goto_repo_code_dirext)
+logging.info("args: %s %s", tb.workfd, tb.config.tc_workfd_goto_repo_code_checked)
 
 if tb.config.tc_workfd_goto_repo_code_checked == False:
     # set some global config variables
     try:
         tb.config.repo_name
     except:
-        tb.config.repo_name = "repo-" + tb.config.boardlabname + tb.config.tc_workfd_goto_repo_code_dirext
+        tb.config.repo_name = "repo-" + tb.config.boardlabname
+        if tb.config.tc_workfd_goto_repo_code_dirext != 'none':
+            tb.config.repo_name = tb.config.repo_name + tb.config.tc_workfd_goto_repo_code_dirext
 
     # first check, that we are in our base dir
     tb.eof_call_tc("tc_workfd_goto_lab_source_dir.py")
