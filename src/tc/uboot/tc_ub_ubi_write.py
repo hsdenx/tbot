@@ -1,15 +1,30 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_ubi_write.py
-# - write image @ tb.config.tc_ub_ubi_write_addr to ubi volume
-#   tb.config.tc_ub_ubi_write_vol_name with len tb.config.tc_ub_ubi_write_len
+# write image @ tb.config.tc_ub_ubi_write_addr to ubi volume
+# tb.config.tc_ub_ubi_write_vol_name with len tb.config.tc_ub_ubi_write_len
+#
+# used variables
+#
+# - tb.config.tc_ub_ubi_write_addr
+#| RAM address of image, which gets written into ubi volume
+#| default: '14000000'
+#
+# - tb.config.tc_ub_ubi_write_vol_name
+#| ubi volume name in which the image gets written
+#| default: tb.config.tc_ub_ubi_create_vol_name
+#
+# - tb.config.tc_ub_ubi_write_len
+#| length in bytes which gets written into ubi volume
+#| default: '0xc00000'
+#
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: %s %s %s", tb.config.tc_ub_ubi_write_addr, tb.config.tc_ub_ubi_write_vol_name, tb.config.tc_ub_ubi_write_len)
+tb.define_variable('tc_ub_ubi_write_addr', '14000000')
+tb.define_variable('tc_ub_ubi_write_vol_name', tb.config.tc_ub_ubi_create_vol_name)
+tb.define_variable('tc_ub_ubi_write_len', '0xc00000')
 
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
