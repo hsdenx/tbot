@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s lab_denx -c fipad -t tc_uboot_ext2load.py
 #
 # load a file from ext2 into ram with ext2ls cmd.
 # check if the file has crc32 checksum 0x2144df1c
@@ -20,48 +18,37 @@
 #
 # !! Don;t forget Big into little endian conversion
 #
-# used vars:
-# tc_uboot_ext2load_interface = 'usb'
-# tc_uboot_ext2load_dev = '0:1'
-# tc_uboot_ext2load_addr = '10000000'
-# tc_uboot_ext2load_file = '/test.bin'
-# tc_uboot_ext2load_check = 'no'
-#   if 'yes' check if the file tc_uboot_ext2load_file
-#   has the checksum 0x2144df1c
+# used variables
+#
+# - tb.config.tc_uboot_ext2load_check
+#| if == 'no' do not check crc
+#| default: 'no'
+#
+# - tb.config.tc_uboot_ext2load_file
+#| name of file, which gets loaded
+#| default: '/test.bin'
+#
+# - tb.config.tc_uboot_ext2load_addr
+#| RAM address to which the file get loaded
+#| default: '10000000'
+#
+# - tb.config.tc_uboot_ext2load_dev
+#| device from which the file get loaded
+#| default: '0:1'
+#
+# - tb.config.tc_uboot_ext2load_interface
+#| device from which the file get loaded
+#| default: 'usb'
+#
 # End:
 
 from tbotlib import tbot
 
-try:
-    tb.config.tc_uboot_ext2load_interface
-except:
-    tb.config.tc_uboot_ext2load_interface = 'usb'
-
-try:
-    tb.config.tc_uboot_ext2load_dev
-except:
-    tb.config.tc_uboot_ext2load_dev = '0:1'
-
-try:
-    tb.config.tc_uboot_ext2load_addr
-except:
-    tb.config.tc_uboot_ext2load_addr = '10000000'
-
-try:
-    tb.config.tc_uboot_ext2load_file
-except:
-    tb.config.tc_uboot_ext2load_file = '/test.bin'
-
-try:
-    tb.config.tc_uboot_ext2load_check
-except:
-    tb.config.tc_uboot_ext2load_check = 'no'
-
-# here starts the real test
-logging.info("testcase arg: %s %s %s %s %s",
-  tb.config.tc_uboot_ext2load_interface, tb.config.tc_uboot_ext2load_dev,
-  tb.config.tc_uboot_ext2load_addr, tb.config.tc_uboot_ext2load_file,
-  tb.config.tc_uboot_ext2load_check)
+tb.define_variable('tc_uboot_ext2load_check', 'no')
+tb.define_variable('tc_uboot_ext2load_file', '/test.bin')
+tb.define_variable('tc_uboot_ext2load_addr', '10000000')
+tb.define_variable('tc_uboot_ext2load_dev', '0:1')
+tb.define_variable('tc_uboot_ext2load_interface', 'usb')
 
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
