@@ -4,16 +4,26 @@
 #
 # simple call bitbake with tb.config.tc_workfd_bitbake_args
 #
-# if tb.config.tc_workfd_bitbake_machine is set, also cat
+# if tb.config.tc_workfd_bitbake_machine is != 'none', also cat
 # the content of the newest file in tmp/log/cooker/" + tb.config.tc_workfd_bitbake_machine + "/*
+#
+# used variables:
+#
+# - tb.config.tc_workfd_bitbake_machine
+#| if != 'none' add "MACHINE=tb.config.tc_workfd_bitbake_machine " bofore
+#| bitbake command.
+#| default: 'none'
+#
+# - tb.config.tc_workfd_bitbake_args
+#| arguments for bitbake command
+#| default: ''
+#
 # End:
 
 from tbotlib import tbot
 
-try:
-    tb.config.tc_workfd_bitbake_machine
-except:
-    tb.config.tc_workfd_bitbake_machine = ''
+tb.define_variable('tc_workfd_bitbake_machine', 'none')
+tb.define_variable('tc_workfd_bitbake_args', '')
 
 logging.info("args: %s %s", tb.workfd, tb.config.tc_workfd_bitbake_args)
 
@@ -25,7 +35,7 @@ tlist = [
 	'recipe'
 ]
 
-if tb.config.tc_workfd_bitbake_machine != '':
+if tb.config.tc_workfd_bitbake_machine != 'none':
     cmd = 'MACHINE=' + tb.config.tc_workfd_bitbake_machine + ' '
 else:
     cmd = ''
@@ -33,7 +43,7 @@ else:
 cmd += 'bitbake ' + tb.config.tc_workfd_bitbake_args
 tb.write_lx_cmd_check(tb.workfd, cmd, triggerlist=tlist)
 
-if tb.config.tc_workfd_bitbake_machine != '':
+if tb.config.tc_workfd_bitbake_machine != 'none':
     # list newest file in tmp/log/cooker/<machine>/*
     ma = tb.config.tc_workfd_bitbake_machine
 
