@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s lab_denx -c uboot_kconfig_check -t tc_uboot_check_kconfig.py
 #
 # check for all boards, if a patch changes the u-boot binary
 # If U-boot binary changed by the patch this testcase fails.
@@ -41,6 +39,20 @@
 #   - calculate md5sum again
 #   - calculate md5sums
 #   - check if they are the same
+#
+# used variables:
+#
+# - tb.config.tc_uboot_check_kconfig_preparepatch
+#| full path to directory, which contains patch
+#| to patch U-Boot to produce reproducible builds
+#| default: ''
+#
+# - tb.config.tc_uboot_check_kconfig_read_sumfile
+#| fix value 'none'
+#
+# - tb.config.tc_uboot_check_kconfig_create_sumfile
+#| fix value 'md5sum.txt'
+#
 # End:
 
 import os
@@ -49,7 +61,7 @@ from tbotlib import tbot
 tb.config.tc_uboot_check_kconfig_create_sumfile = 'md5sum.txt'
 tb.config.tc_uboot_check_kconfig_read_sumfile = 'none'
 
-logging.info("args: %s", tb.config.tc_uboot_check_kconfig_preparepatch)
+tb.define_variable('tc_uboot_check_kconfig_preparepatch', '')
 
 #set board state for which the tc is valid
 tb.set_board_state("lab")
