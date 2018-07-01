@@ -1,9 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# tbot.py -c -s lab_denx -c nero -t tc_uboot_load_bin_with_kermit.py
-# start tc:
 # load binary into ram with loadb
 #
 # if tb.config.tc_uboot_load_bin_with_kermit_possible != 'yes'
@@ -23,11 +20,45 @@
 # you must get back something like this:
 # ## Total Size      = 0x00050bc0 = 330688 Bytes
 # ## Start Addr      = 0x81000000
+#
+# used variables
+#
+# - tb.config.tc_uboot_load_bin_with_kermit_possible
+#| if != 'yes' return True, do nothing
+#| default: 'yes'
+#
+# - tb.config.tc_uboot_load_bin_ram_addr
+#| RAM address to which file get loaded
+#| default: '81000000'
+#
+# - tb.config.tc_uboot_load_bin_file
+#| filename which get loaded with kermit
+#| default: '/home/alka/tbot/nero-images/u-boot.img'
+#
+# - tb.config.tc_uboot_load_bin_with_kermit_kermit_settings
+#| kermit settings, known to work good
+#| default: 
+#| [
+#|    "set carrier-watch off",
+#|     "set handshake none",
+#|     "set flow-control none",
+#|     "robust",
+#|     "set file type bin",
+#|     "set file name lit",
+#|     "set rec pack 100",
+#|     "set send pack 100",
+#|     "set window 5",
+#| ]'
+#
 # End:
 
 from tbotlib import tbot
 
-tb.config.tc_uboot_load_bin_with_kermit_kermit_settings = [
+tb.define_variable('tc_uboot_load_bin_with_kermit_possible', 'yes')
+tb.define_variable('tc_uboot_load_bin_ram_addr', '81000000')
+tb.define_variable('tc_uboot_load_bin_file', '/home/alka/tbot/nero-images/u-boot.img')
+tb.define_variable('tc_uboot_load_bin_with_kermit_kermit_settings', '
+[
     "set carrier-watch off",
     "set handshake none",
     "set flow-control none",
@@ -37,26 +68,7 @@ tb.config.tc_uboot_load_bin_with_kermit_kermit_settings = [
     "set rec pack 100",
     "set send pack 100",
     "set window 5",
-]
-
-try:
-    tb.config.tc_uboot_load_bin_with_kermit_possible
-except:
-    tb.config.tc_uboot_load_bin_with_kermit_possible = 'yes'
-
-try:
-    tb.config.tc_uboot_load_bin_ram_addr
-except:
-    tb.config.tc_uboot_load_bin_ram_addr = '81000000'
-
-try:
-    tb.config.tc_uboot_load_bin_file
-except:
-    tb.config.tc_uboot_load_bin_file = '/home/alka/tbot/nero-images/u-boot.img '
-
-logging.info("args: %s", tb.config.tc_uboot_load_bin_ram_addr)
-logging.info("args: %s", tb.config.tc_uboot_load_bin_file)
-logging.info("args: %s", tb.config.tc_uboot_load_bin_with_kermit_possible)
+]')
 
 if tb.config.tc_uboot_load_bin_with_kermit_possible != 'yes':
     tb.end_tc(True)
