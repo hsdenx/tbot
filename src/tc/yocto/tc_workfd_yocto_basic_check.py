@@ -1,32 +1,46 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# tbot.py -s lab_denx -c boardname -t tc_workfd_yocto_basic_check.py
 #
 # do basic yocto checks
 #
 # - check rootfs version
-#   only if tb.config.tc_workfd_yocto_basic_check_rootfsversion == 'yes'
-#   which is the default.
+#|   only if tb.config.tc_workfd_yocto_basic_check_rootfsversion == 'yes'
+#|   which is the default.
 # - check dmesg output
-#   check if strings defined in tb.config.tc_demo_yocto_test_checks
-#   are found in dmesg output
+#|   check if strings defined in tb.config.tc_demo_yocto_test_checks
+#|   are found in dmesg output
 # - check if devmem2 tool is in rootfs, if so, do register checks
+#
+# used variables
+#
+# - tb.config.tc_workfd_yocto_basic_check_rootfsversion
+#| if 'yes' check rootfs version with testcase
+#| tc_workfd_yocto_check_rootfs_version.py
+#| default: 'yes'
+#
+# - tb.config.tc_workfd_yocto_basic_check_board_specific
+#| if != 'none, call testcase with this name
+#| default: 'none'
+#
+# - tb.config.tc_demo_yocto_test_checks
+#| list of strings, which must be in 'dmesg' output
+#| default: '[]'
+#
+# - tb.config.tc_workfd_yocto_basic_check_regfiles
+#| list of filenames, which contain register dumps.
+#| This registerdumps are checked with testcase
+#| tc_lx_check_reg_file.py if devmem2 command exists.
+#| default: '[]'
 #
 # End:
 
 from tbotlib import tbot
 
-try:
-    tb.config.tc_workfd_yocto_basic_check_rootfsversion
-except:
-    tb.config.tc_workfd_yocto_basic_check_rootfsversion = 'yes'
-
-try:
-    tb.config.tc_workfd_yocto_basic_check_board_specific
-except:
-    tb.config.tc_workfd_yocto_basic_check_board_specific = ''
+tb.define_variable('tc_workfd_yocto_basic_check_rootfsversion', 'yes')
+tb.define_variable('tc_workfd_yocto_basic_check_board_specific', 'none')
+tb.define_variable('tc_demo_yocto_test_checks', '[]')
+tb.define_variable('tc_workfd_yocto_basic_check_regfiles', '[]')
 
 # boot into linux
 tb.set_board_state("linux")
@@ -48,7 +62,7 @@ if ret == True:
         tb.eof_call_tc("tc_lx_check_reg_file.py")
 
 # call board specific checks
-if tb.config.tc_workfd_yocto_basic_check_board_specific != '':
+if tb.config.tc_workfd_yocto_basic_check_board_specific != 'none':
     tb.eof_call_tc(tb.config.tc_workfd_yocto_basic_check_board_specific)
 
 tb.end_tc(True)
