@@ -1,18 +1,29 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# tbot.py -s lab_denx -c boardname -t tc_yocto_get_rootfs_from_tarball.py
 #
 # get rootfs version from rootfs tar ball filepath and name stored in
 # tb.config.tc_yocto_get_rootfs_from_tarball
 # and store versionstring in variable:
 # tb.config.tc_yocto_get_rootfs_from_tarball_rootfs_version
+#
+# creates event ID DUTS_YOCTO_VERSION
+#
+# used variables:
+#
+# - tb.config.tc_yocto_get_rootfs_from_tarball
+#| filename of tar.gz or tar.bz2 rootfsfile
+#| default: ''
+#
+# - tb.config.tc_yocto_get_rootfs_from_tarball_rootfs_version
+#| created while running tc_yocto_get_rootfs_from_tarball.py
+#| contains the content of '/etc/version' of a yocto builded rootfs
+#
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: workfd %s %s", tb.workfd.name, tb.config.tc_yocto_get_rootfs_from_tarball)
+logging.info("args: workfd %s", tb.workfd.name)
 
 if 'tar.bz2' in tb.config.tc_yocto_get_rootfs_from_tarball:
     opt = 'xfvj '
