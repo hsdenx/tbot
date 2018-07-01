@@ -1,11 +1,11 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_get_yocto_source.py
 # get yocto source tb.config.tc_workfd_get_yocto_patches_git_repo with "git clone"
+#
 # check out branch:
 # tb.config.tc_workfd_get_yocto_patches_git_branch
+#
 # check out commit ID:
 # tb.config.tc_workfd_get_yocto_git_commit_id
 #
@@ -21,16 +21,6 @@
 #
 # get other layers defined in the list:
 # tb.config.tc_workfd_get_yocto_source_layers
-# one element contains the follwoing list element:
-# ['git repo',
-#  'git branch',
-#  'git commit id',
-#  'apply_patches_dir'
-#  'apply_patches_git_am_dir',
-#  'source_git_reference',
-#  'source_git_repo_user',
-#  'source_git_repo_name'
-# ]
 #
 # if tb.config.tc_workfd_get_yocto_source_autoconf == 'none'
 #     overwrite yocto configuration found in
@@ -41,23 +31,96 @@
 # clones into directory tb.config.yocto_name
 # created with tc_workfd_goto_yocto_code.py
 #
+# used variables
+#
+# - tb.config.tc_workfd_get_yocto_source_autoconf
+#| if  'none' copy config files from tb.config.tc_workfd_get_yocto_source_conf_dir
+#| default: 'none'
+#
+# - tb.config.tc_workfd_get_yocto_source_conf_dir
+#| path, in which yocto configurations file are found
+#| default: 'not defined'
+#
+# - tb.config.tc_workfd_get_yocto_patches_git_repo
+#| path to git repo with yocto patches
+#| default: ''
+#
+# - tb.config.tc_workfd_get_yocto_patches_git_branch
+#| branch which get checked out in tb.config.tc_workfd_get_yocto_patches_git_repo
+#| default: ''
+#
+# - tb.config.tc_workfd_get_yocto_patches_git_repo_name
+#| name the repo with the patches gets
+#| default: ''
+#
+# - tb.config.tc_workfd_get_yocto_source_git_repo
+#| git url, to yocto code
+#| default: 'git://git.yoctoproject.org/poky.git'
+#
+# - tb.config.tc_workfd_get_yocto_source_git_branch
+#| branch which gets checked out
+#| default: 'pyro'
+#
+# - tb.config.tc_workfd_get_yocto_git_commit_id
+#| if != 'none' commit ID to which tree gets resettet
+#| default: 'none'
+#
+# - tb.config.tc_workfd_get_yocto_source_layers
+#| list of meta layers, which get checked out
+#| one element contains the following list element:
+#| ['git repo',
+#|  'git branch',
+#|  'git commit id',
+#|  'apply_patches_dir'
+#|  'apply_patches_git_am_dir',
+#|  'source_git_reference',
+#|  'source_git_repo_user',
+#|  'source_git_repo_name'
+#| ]
+#|
+#| default: "
+#| [
+#| ['git://git.openembedded.org/meta-openembedded', 'morty', '659d9d3f52bad33d7aa1c63e25681d193416d76e', 'none', 'none', 'none', '', 'meta-openembedded'],
+#| ['https://github.com/sbabic/meta-swupdate.git', 'master', 'b3abfa78d04b88b88bcef6f5be9f2adff1293544', 'none', 'none', 'none', '', 'meta-swupdate'],
+#| ]
+#| "
+#
+# - tb.config.tc_workfd_get_yocto_source_conf_dl_dir
+#| path to yocto download directory.
+#| If != 'none' testcase checks if exists, if not
+#| create it. Also patch local.conf
+#| default: 'none'
+#
+# - tb.config.tc_workfd_get_yocto_source_conf_sstate_dir
+#| path to sstate directory.
+#| If != 'none' testcase checks if exists, if not
+#| create it. Also patch local.conf
+#| default: 'none'
+#
 # End:
-
-try:
-    tb.config.tc_workfd_get_yocto_source_autoconf
-except:
-    tb.config.tc_workfd_get_yocto_source_autoconf = 'none'
 
 from tbotlib import tbot
 
-logging.info("args: workdfd: %s %s %s %s", tb.workfd.name, tb.config.tc_workfd_get_yocto_patches_git_repo,
-             tb.config.tc_workfd_get_yocto_patches_git_branch, tb.config.tc_lab_git_clone_apply_patches_dir)
-logging.info("args: %s %s ", tb.config.tc_lab_git_clone_source_git_reference,
-             tb.config.tc_lab_git_clone_source_git_repo_user)
-logging.info("args: %s", tb.config.tc_workfd_get_yocto_source_conf_dir)
-logging.info("args: %s", tb.config.tc_workfd_get_yocto_patches_git_repo_name)
-logging.info("args: %s", tb.config.tc_workfd_get_yocto_source_layers)
-logging.info("args: %s", tb.config.tc_workfd_get_yocto_source_autoconf)
+tb.define_variable('tc_workfd_get_yocto_patches_git_repo', '')
+tb.define_variable('tc_workfd_get_yocto_patches_git_branch', '')
+tb.define_variable('tc_workfd_get_yocto_patches_git_repo_name', '')
+tb.define_variable('tc_workfd_get_yocto_source_git_repo', 'git://git.yoctoproject.org/poky.git')
+tb.define_variable('tc_workfd_get_yocto_source_git_branch', 'pyro')
+tb.define_variable('tc_workfd_get_yocto_git_commit_id', 'none')
+tb.define_variable('tc_workfd_get_yocto_source_git_reference', '')
+tb.define_variable('tc_workfd_get_yocto_source_git_repo_user', '')
+tb.define_variable('tc_workfd_get_yocto_source_layers', " \
+[ \
+['git://git.openembedded.org/meta-openembedded', 'morty', '659d9d3f52bad33d7aa1c63e25681d193416d76e', 'none', 'none', 'none', '', 'meta-openembedded'], \
+['https://github.com/sbabic/meta-swupdate.git', 'master', 'b3abfa78d04b88b88bcef6f5be9f2adff1293544', 'none', 'none', 'none', '', 'meta-swupdate'], \
+] \
+")
+tb.define_variable('tc_workfd_get_yocto_source_autoconf', 'none')
+tb.define_variable('tc_workfd_get_yocto_source_conf_dir', 'not defined')
+tb.define_variable('tc_workfd_get_yocto_source_conf_dl_dir', 'none')
+tb.define_variable('tc_workfd_get_yocto_source_conf_sstate_dir', 'none')
+
+logging.info("args: workdfd: %s", tb.workfd.name)
 
 ret = tb.call_tc("tc_workfd_goto_yocto_code.py")
 if ret == True:

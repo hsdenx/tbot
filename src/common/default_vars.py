@@ -132,11 +132,5 @@ tc_workfd_can_util_dir = '/home/hs/can-utils'
 tc_workfd_hdparm_path = '/home/hs/shc/hdparm-9.50/'
 tc_workfd_hdparm_dev = '/dev/mmcblk1'
 tc_workfd_hdparm_min = '12.0'
-tc_workfd_get_yocto_source_layers = [
-['git://git.openembedded.org/meta-openembedded', 'morty', '659d9d3f52bad33d7aa1c63e25681d193416d76e', 'none', 'none', 'none', '', 'meta-openembedded'],
-['https://github.com/sbabic/meta-swupdate.git', 'master', 'b3abfa78d04b88b88bcef6f5be9f2adff1293544', 'none', 'none', 'none', '', 'meta-swupdate'],
-]
-tc_workfd_get_yocto_source_conf_dl_dir = 'none'
-tc_workfd_get_yocto_source_conf_sstate_dir = 'none'
 tc_demo_compile_install_test_name = 'tc_ub_help.py'
 tb_set_after_linux = ''
