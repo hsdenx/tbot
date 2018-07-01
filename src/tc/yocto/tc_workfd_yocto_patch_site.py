@@ -1,82 +1,68 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_yocto_patch_site.py
 #
 # patch / create site.conf
 #
-# if tb.config.tc_workfd_yocto_patch_site_path_default_file != 'none'
-# use this file as default
+# used variables:
 #
-# add SWUPDATE_PRIVATE_KEY if tb.config.tc_workfd_yocto_patch_site_swu_priv_key
-#  != 'none'
-# add SWUPDATE_PASSWORD_FILE if tb.config.tc_workfd_yocto_patch_site_swu_priv_passout
-#  != 'none'
-# add SWUPDATE_PUBLIC_KEY if tb.config.tc_workfd_yocto_patch_site_swu_pub_key
-#  != 'none'
-# add UB_KEY_PATH if tb.config.tc_workfd_yocto_patch_site_ub_key
-#  != 'none'
-# add DL_DIR if tb.config.tc_workfd_yocto_patch_site_dl_dir != 'none'
-# add SSTATE_DIR if tb.config.tc_workfd_yocto_patch_site_sstate_dir != 'none'
-# add SRC_LINUX_STABLE if tb.config.tc_workfd_yocto_patch_site_src_linux_stable != 'none'
-# add PREMIRRORS_prepend if tb.config.tc_workfd_yocto_patch_site_premirrors != 'none'
+# - tb.config.tc_workfd_yocto_patch_site_path_default_file
+#| if != 'none' use this file as default
+#| default: 'none'
+#
+# - tb.config.tc_workfd_yocto_patch_site_swu_priv_key
+#| if != 'none' add SWUPDATE_PRIVATE_KEY if tb.config.tc_workfd_yocto_patch_site_swu_priv_key
+#| default: 'none'
+#
+# - tb.config.tc_workfd_yocto_patch_site_swu_priv_passout
+#| if != 'none'
+#| add SWUPDATE_PASSWORD_FILE if tb.config.tc_workfd_yocto_patch_site_swu_priv_passout
+# -
+#| if != 'none'
+#| add SWUPDATE_PUBLIC_KEY if tb.config.tc_workfd_yocto_patch_site_swu_pub_key
+#| default: 'none'
+#
+# - tb.config.tc_workfd_yocto_patch_site_ub_key
+#| if != 'none'
+#| add UB_KEY_PATH if tb.config.tc_workfd_yocto_patch_site_ub_key
+#| default: 'none'
+#
+# - tb.config.tc_workfd_yocto_patch_site_dl_dir
+#| if != 'none'
+#| add DL_DIR if tb.config.tc_workfd_yocto_patch_site_dl_dir
+#| default: 'none'
+#
+# - tb.config.tc_workfd_yocto_patch_site_sstate_dir
+#| if != 'none'
+#| add SSTATE_DIR if tb.config.tc_workfd_yocto_patch_site_sstate_dir
+#| default: 'none'
+#
+# - tb.config.tc_workfd_yocto_patch_site_src_linux_stable
+#| if != 'none'
+#| add SRC_LINUX_STABLE if tb.config.tc_workfd_yocto_patch_site_src_linux_stable
+#| default: 'none'
+#
+# - tb.config.tc_workfd_yocto_patch_site_premirrors
+#| if != 'none'
+#| add PREMIRRORS_prepend if tb.config.tc_workfd_yocto_patch_site_premirrors
+#| default: 'none'
+#
 # End:
 
 from tbotlib import tbot
 
-try:
-    tb.config.tc_workfd_yocto_patch_site_path_default_file
-except:
-    tb.config.tc_workfd_yocto_patch_site_path_default_file = 'none'
-
-try:
-    tb.config.tc_workfd_yocto_patch_site_swu_priv_key
-except:
-    tb.config.tc_workfd_yocto_patch_site_swu_priv_key = 'none'
-
-try:
-    tb.config.tc_workfd_yocto_patch_site_swu_priv_passout
-except:
-    tb.config.tc_workfd_yocto_patch_site_swu_priv_passout = 'none'
-
-try:
-    tb.config.tc_workfd_yocto_patch_site_swu_pub_key
-except:
-    tb.config.tc_workfd_yocto_patch_site_swu_pub_key = 'none'
-
-try:
-    tb.config.tc_workfd_yocto_patch_site_dl_dir
-except:
-    tb.config.tc_workfd_yocto_patch_site_dl_dir = 'none'
-
-try:
-    tb.config.tc_workfd_yocto_patch_site_sstate_dir
-except:
-    tb.config.tc_workfd_yocto_patch_site_sstate_dir = 'none'
-
-try:
-    tb.config.tc_workfd_yocto_patch_site_src_linux_stable
-except:
-    tb.config.tc_workfd_yocto_patch_site_src_linux_stable = 'none'
-
-try:
-    tb.config.tc_workfd_yocto_patch_site_premirrors
-except:
-    tb.config.tc_workfd_yocto_patch_site_premirrors = 'none'
-
-try:
-    tb.config.tc_workfd_yocto_patch_site_ub_key
-except:
-    tb.config.tc_workfd_yocto_patch_site_ub_key = 'none'
-
-try:
-    tb.config.builddir
-except:
-    tb.config.builddir = "$TBOT_BASEDIR_YOCTO/build/"
+tb.define_variable('tc_workfd_yocto_patch_site_path_default_file', 'none')
+tb.define_variable('tc_workfd_yocto_patch_site_swu_priv_key', 'none')
+tb.define_variable('tc_workfd_yocto_patch_site_swu_priv_passout', 'none')
+tb.define_variable('tc_workfd_yocto_patch_site_swu_pub_key', 'none')
+tb.define_variable('tc_workfd_yocto_patch_site_dl_dir', 'none')
+tb.define_variable('tc_workfd_yocto_patch_site_sstate_dir', 'none')
+tb.define_variable('tc_workfd_yocto_patch_site_src_linux_stable', 'none')
+tb.define_variable('tc_workfd_yocto_patch_site_premirrors', 'none')
+tb.define_variable('tc_workfd_yocto_patch_site_ub_key', 'none')
+tb.define_variable('builddir', '$TBOT_BASEDIR_YOCTO/build/')
 
 logging.info("args: workdfd: %s", tb.workfd.name)
-logging.info("args: default filepath: %s", tb.config.tc_workfd_yocto_patch_site_path_default_file)
 
 tb.eof_call_tc("tc_workfd_goto_yocto_code.py")
 tb.event.create_event('main', 'tc_workfd_get_with_repo.py', 'SET_DOC_FILENAME_NOIRQ', 'repo_create_site.conf')
