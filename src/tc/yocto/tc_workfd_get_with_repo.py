@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_get_with_repo.py
 #
 # get yocto code with repo tool and configure sources
 #
@@ -10,7 +8,7 @@
 #   if not try to set path to it, if tb.config.tc_workfd_repo_path
 #   is set, else failure
 #
-# - goto repo code
+# - goto repo code with testcase tc_workfd_goto_repo_code.py
 #   if dir $TBOT_BASEDIR_REPO does not exist create it
 #   - call "repo init" with variables
 #     tb.config.tc_workfd_get_with_repo_u
@@ -21,7 +19,6 @@
 #
 # - setup environment with samples from meta-
 #   tb.config.tc_workfd_get_with_repo_metaname
-#   default: 'beld'
 #
 # - check if build directory "build_" + tb.config.tc_workfd_bitbake_machine
 #   exists, if not create it and set DL_DIR and SSTATE_DIR in local.conf
@@ -30,39 +27,59 @@
 #
 #   and setup site.conf with specific settings
 #
+# used variables:
+#
+# - tb.config.tc_workfd_get_with_repo_metaname
+#| name for meta layer, from which samples get used for
+#| setting up bitbake with 'TEMPLATECONF=meta-' + tb.config.tc_workfd_get_with_repo_metaname
+#| default: 'beld'
+#
+# - tb.config.builddir
+#| bitbake builddir. If it exists, only dump site.conf
+#| If dir not exist, setup up this directory
+#| default: "$TBOT_BASEDIR_YOCTO/build_" + tb.config.tc_workfd_bitbake_machine + "/"
+#
+# - tb.config.tc_workfd_get_with_repo_sync
+#| call 'repo sync' if yes
+#| default: 'yes'
+#
+# - tb.config.tc_workfd_get_with_repo_u
+#| '-u' paramter for repo command
+#| default: ''
+#
+# - tb.config.tc_workfd_get_with_repo_m
+#| '-m' paramter for repo command
+#| default: ''
+#
+# - tb.config.tc_workfd_get_with_repo_b
+#| '-b' paramter for repo command
+#| default: ''
+#
+# - tb.config.tc_workfd_get_with_repo_target
+#| target directory, where source is found after "repo sync"
+#| '$TBOT_BASEDIR_REPO/' + tb.config.tc_workfd_get_with_repo_target
+#| default: ''
+#
 # End:
 
 from tbotlib import tbot
 
-try:
-    tb.config.tc_workfd_get_with_repo_metaname
-except:
-    tb.config.tc_workfd_get_with_repo_metaname = 'beld'
-
+# set a default tb.config.tc_workfd_bitbake_machine
 try:
     tb.config.tc_workfd_bitbake_machine
 except:
     tb.config.tc_workfd_bitbake_machine = tb.config.boardname
 
-try:
-    tb.config.builddir
-except:
-    tb.config.builddir = "$TBOT_BASEDIR_YOCTO/build_" + tb.config.tc_workfd_bitbake_machine + "/"
-
-try:
-    tb.config.tc_workfd_get_with_repo_sync
-except:
-    tb.config.tc_workfd_get_with_repo_sync = 'yes'
-
 logging.info("args: workdfd: %s", tb.workfd.name)
-logging.info("args: repo u: %s", tb.config.tc_workfd_get_with_repo_u)
-logging.info("args: repo m: %s", tb.config.tc_workfd_get_with_repo_m)
-logging.info("args: repo b: %s", tb.config.tc_workfd_get_with_repo_b)
-logging.info("args: repo target: %s", tb.config.tc_workfd_get_with_repo_target)
-logging.info("args: meta name: %s", tb.config.tc_workfd_get_with_repo_metaname)
-logging.info("args: builddir: %s", tb.config.builddir)
 logging.info("args: machine: %s", tb.config.tc_workfd_bitbake_machine)
-logging.info("args: : %s", tb.config.tc_workfd_get_with_repo_sync)
+
+tb.define_variable('tc_workfd_get_with_repo_metaname', 'beld')
+tb.define_variable('builddir', "$TBOT_BASEDIR_YOCTO/build_" + tb.config.tc_workfd_bitbake_machine + "/")
+tb.define_variable('tc_workfd_get_with_repo_sync', 'yes')
+tb.define_variable('tc_workfd_get_with_repo_u', '')
+tb.define_variable('tc_workfd_get_with_repo_m', '')
+tb.define_variable('tc_workfd_get_with_repo_b', '')
+tb.define_variable('tc_workfd_get_with_repo_target', '')
 
 # check if we have the repo cmd installed
 # if not try to set PATH (if tb.config.tc_workfd_repo_path is set)
