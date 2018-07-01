@@ -2,14 +2,31 @@
 #
 # Description:
 #
-# - install tb.config.rootfs_tar_file in path tb.config.tc_yocto_install_rootfs_as_nfs_path
-#   into tb.config.nfs_subdir
+# install tb.config.rootfs_tar_file from path tb.config.tc_yocto_install_rootfs_as_nfs_path
+# into tb.config.nfs_subdir
+#
+# used variables
+#
+# - tb.config.rootfs_tar_file
+#| tar file with rootfs content
+#| default: ''
+#
+# - tb.config.tc_yocto_install_rootfs_as_nfs_path
+#| path to testcase finds file tb.config.rootfs_tar_file
+#| default: ''
+#
+# - tb.config.nfs_subdir
+#| nfs path
+#| default: ''
 #
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: %s %s %s %s", tb.workfd.name, tb.config.rootfs_tar_file, tb.config.tc_yocto_install_rootfs_as_nfs_path, tb.config.nfs_subdir)
+tb.define_variable('rootfs_tar_file', '')
+tb.define_variable('tc_yocto_install_rootfs_as_nfs_path', '')
+tb.define_variable('nfs_subdir', '')
+logging.info("args: %s", tb.workfd.name)
 
 # remove all files from nfs dir
 cmd = 'sudo rm -rf ' + tb.config.nfs_subdir + '/*'
