@@ -1,22 +1,37 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_ubi_read.py
-# - read ubi volume tb.config.tc_ub_ubi_prep_offset to tb.tc_ub_ubi_read_addr
-# with len tb.tc_ub_ubi_read_len
+# read ubi volume tb.config.tc_ub_ubi_prep_offset to tb.config.tc_ub_ubi_read_addr
+# with len tb.config.tc_ub_ubi_read_len
+#
+# used variables
+#
+# - tb.config.tc_ub_ubi_read_addr
+#| ram address for 'ubi read'
+#| default: ''
+#
+# - tb.config.tc_ub_ubi_read_vol_name
+#| ubi volume name, which get read into ram
+#| default: ''
+#
+# - tb.config.tc_ub_ubi_read_len
+#| length in bytes for 'ubi read'
+#| default: ''
+#
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: %s %s %s", tb.tc_ub_ubi_read_addr, tb.tc_ub_ubi_read_vol_name, tb.tc_ub_ubi_read_len)
+tb.define_variable('tc_ub_ubi_read_addr', '')
+tb.define_variable('tc_ub_ubi_read_vol_name', '')
+tb.define_variable('tc_ub_ubi_read_len', '')
 
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
-tmp = "ubi read " + tb.tc_ub_ubi_read_addr + " " + tb.tc_ub_ubi_read_vol_name
-if tb.tc_ub_ubi_read_len != 'none':
-    tmp += ' ' + tb.tc_ub_ubi_read_len
+tmp = "ubi read " + tb.config.tc_ub_ubi_read_addr + " " + tb.config.tc_ub_ubi_read_vol_name
+if tb.config.tc_ub_ubi_read_len != 'none':
+    tmp += ' ' + tb.config.tc_ub_ubi_read_len
 
 c = tb.c_con
 tb.eof_write(c, tmp)

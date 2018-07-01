@@ -65,21 +65,21 @@ tb.config.tc_ub_ubi_write_len = tb.ub_filesize
 tb.eof_call_tc("tc_ub_ubi_write.py")
 
 #compare rootfs
-tb.tc_ub_ubi_read_vol_name = tb.config.tc_ub_ubi_write_vol_name
-tb.tc_ub_ubi_read_len = tb.config.tc_ub_ubi_write_len
+tb.config.tc_ub_ubi_read_vol_name = tb.config.tc_ub_ubi_write_vol_name
+tb.config.tc_ub_ubi_read_len = tb.config.tc_ub_ubi_write_len
 tb.eof_call_tc("tc_ub_ubi_read.py")
 
 tb.config.tc_ub_tftp_file_addr = '80000000'
 tb.config.tc_ub_tftp_file_name = tb.config.tc_workfd_create_ubi_rootfs_target
 tb.eof_call_tc("tc_ub_tftp_file.py")
 
-if tb.ub_filesize != tb.tc_ub_ubi_read_len:
-    logging.info("Buggy filesize %s %s", tb.ub_filesize, tb.tc_ub_ubi_read_len)
+if tb.ub_filesize != tb.config.tc_ub_ubi_read_len:
+    logging.info("Buggy filesize %s %s", tb.ub_filesize, tb.config.tc_ub_ubi_read_len)
     tb.end_tc(False)
 
 #compare the both files ...
 tb.config.tc_ub_cmp_addr1 = tb.config.tc_ub_tftp_file_addr
-tb.config.tc_ub_cmp_addr2 = tb.tc_ub_ubi_read_addr
+tb.config.tc_ub_cmp_addr2 = tb.config.tc_ub_ubi_read_addr
 tb.config.tc_ub_cmp_len = tb.ub_filesize
 tb.eof_call_tc("tc_ub_cmp.py")
 
@@ -98,20 +98,20 @@ tbot_ub_write_cmd_check(tb, tmp)
 tmp = "ubifsls /boot"
 tbot_ub_write_cmd_check(tb, tmp)
 
-tmp = "ubifsload " + tb.tc_ub_ubi_read_addr + " /creation_time"
+tmp = "ubifsload " + tb.config.tc_ub_ubi_read_addr + " /creation_time"
 tbot_ub_write_cmd_check(tb, tmp)
-tmp = "md " + tb.tc_ub_ubi_read_addr
+tmp = "md " + tb.config.tc_ub_ubi_read_addr
 tbot_ub_write_cmd_check(tb, tmp)
 
 tb.config.tc_ub_tftp_file_name = '/tftpboot/dxr2/tbot/ubi_random'
 tb.eof_call_tc("tc_ub_tftp_file.py")
 tb.eof_call_tc("tc_ub_get_filesize.py")
 
-tmp = "ubifsload " + tb.tc_ub_ubi_read_addr + " /boot/ubi_random"
+tmp = "ubifsload " + tb.config.tc_ub_ubi_read_addr + " /boot/ubi_random"
 tbot_ub_write_cmd_check(tb, tmp)
 
 tb.config.tc_ub_cmp_addr1 = tb.config.tc_ub_tftp_file_addr
-tb.config.tc_ub_cmp_addr2 = tb.tc_ub_ubi_read_addr
+tb.config.tc_ub_cmp_addr2 = tb.config.tc_ub_ubi_read_addr
 tb.config.tc_ub_cmp_len = tb.ub_filesize
 tb.eof_call_tc("tc_ub_cmp.py")
 

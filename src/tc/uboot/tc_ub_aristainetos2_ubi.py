@@ -47,13 +47,13 @@ tb.config.tc_ub_ubi_write_vol_name = 'rootfs'
 tb.eof_call_tc("tc_ub_ubi_write.py")
 
 # read file from ubi volume
-tb.tc_ub_ubi_read_addr = '11000000'
-tb.tc_ub_ubi_read_vol_name = tb.config.tc_ub_ubi_write_vol_name
-tb.tc_ub_ubi_read_len = tb.config.tc_ub_ubi_write_len
+tb.config.tc_ub_ubi_read_addr = '11000000'
+tb.config.tc_ub_ubi_read_vol_name = tb.config.tc_ub_ubi_write_vol_name
+tb.config.tc_ub_ubi_read_len = tb.config.tc_ub_ubi_write_len
 tb.eof_call_tc("tc_ub_ubi_read.py")
 
 # cmp if all bytes are the same
-tb.config.tc_ub_cmp_addr1 = tb.tc_ub_ubi_read_addr
+tb.config.tc_ub_cmp_addr1 = tb.config.tc_ub_ubi_read_addr
 tb.config.tc_ub_cmp_addr2 = tb.config.tc_ub_tftp_file_addr
 tb.config.tc_ub_cmp_len = tb.config.tc_ub_ubi_write_len
 tb.eof_call_tc("tc_ub_cmp.py")
@@ -82,13 +82,13 @@ tb.eof_call_tc("tc_ub_get_filesize.py")
 tb.config.tc_ub_ubi_write_len = tb.ub_filesize
 
 # read file from ubi volume
-tb.tc_ub_ubi_read_addr = '11000000'
-tb.tc_ub_ubi_read_vol_name = tb.config.tc_ub_ubi_write_vol_name
-tb.tc_ub_ubi_read_len = tb.config.tc_ub_ubi_write_len
+tb.config.tc_ub_ubi_read_addr = '11000000'
+tb.config.tc_ub_ubi_read_vol_name = tb.config.tc_ub_ubi_write_vol_name
+tb.config.tc_ub_ubi_read_len = tb.config.tc_ub_ubi_write_len
 tb.eof_call_tc("tc_ub_ubi_read.py")
 
 # cmp if all bytes are the same
-tb.config.tc_ub_cmp_addr1 = tb.tc_ub_ubi_read_addr
+tb.config.tc_ub_cmp_addr1 = tb.config.tc_ub_ubi_read_addr
 tb.config.tc_ub_cmp_addr2 = tb.config.tc_ub_tftp_file_addr
 tb.config.tc_ub_cmp_len = tb.config.tc_ub_ubi_write_len
 tb.eof_call_tc("tc_ub_cmp.py")
@@ -113,13 +113,13 @@ tb.config.tc_ub_ubi_write_vol_name = 'kernel'
 tb.eof_call_tc("tc_ub_ubi_write.py")
 
 # read file from kernel partition
-tb.tc_ub_ubi_read_addr = '11000000'
-tb.tc_ub_ubi_read_vol_name = tb.config.tc_ub_ubi_write_vol_name
-tb.tc_ub_ubi_read_len = tb.config.tc_ub_ubi_write_len
+tb.config.tc_ub_ubi_read_addr = '11000000'
+tb.config.tc_ub_ubi_read_vol_name = tb.config.tc_ub_ubi_write_vol_name
+tb.config.tc_ub_ubi_read_len = tb.config.tc_ub_ubi_write_len
 tb.eof_call_tc("tc_ub_ubi_read.py")
 
 # cmp if all bytes are the same
-tb.config.tc_ub_cmp_addr1 = tb.tc_ub_ubi_read_addr
+tb.config.tc_ub_cmp_addr1 = tb.config.tc_ub_ubi_read_addr
 tb.config.tc_ub_cmp_addr2 = tb.config.tc_ub_tftp_file_addr
 tb.config.tc_ub_cmp_len = tb.config.tc_ub_ubi_write_len
 tb.eof_call_tc("tc_ub_cmp.py")
