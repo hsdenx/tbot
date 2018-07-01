@@ -1,23 +1,22 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_start_all_duts.py
 # start all DUTS tests
 #
 # only start the DUTS testcases, if tb.config.tc_ub_start_all_duts_start
 # is set to True (default)
 #
+# used variables
+#
+# - tb.config.tc_ub_start_all_duts_start
+#| if 'yes' start all duts testcases
+#| default: 'yes'
+#
 # End:
 
 from tbotlib import tbot
 
-try:
-    tb.config.tc_ub_start_all_duts_start
-except:
-    tb.config.tc_ub_start_all_duts_start = 'yes'
-
-logging.info("arg: %s", tb.config.tc_ub_start_all_duts_start)
+tb.define_variable('tc_ub_start_all_duts_start', 'yes')
 
 tb.config.duts_junittclist = [
 "tc_ub_duts_version.py",

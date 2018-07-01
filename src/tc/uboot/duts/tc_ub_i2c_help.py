@@ -1,12 +1,19 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_i2c_help.py
 # simple prints "help i2c" cmd
+#
+# used variables
+#
+# - tb.config.tc_ub_i2c_help_with_bus
+#| if 'yes' i2c help output with "i2c bus"
+#| default: 'no'
+#
 # End:
 
 from tbotlib import tbot
+
+tb.define_variable('tc_ub_i2c_help_with_bus', 'no')
 
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")

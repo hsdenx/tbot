@@ -6,6 +6,7 @@
 # used in src/documentation/u-boot-script.rst
 #
 # based on the DULG chapter:
+#
 # http://www.denx.de/wiki/view/DULG/CommandLineParsing
 #
 # End:

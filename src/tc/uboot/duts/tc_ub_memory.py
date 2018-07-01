@@ -1,22 +1,16 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_memory.py
 # convert duts tests from:
+#
 # http://git.denx.de/?p=duts.git;a=blob;f=testsystems/dulg/testcases/10_UBootMemory.tc;h=f5fb055499db17c322859215ab489cefb063ac47;hb=101ddd5dbd547d5046363358d560149d873b238a
 #
-# disable "base" only command with
-# tb.config.tc_ub_memory_base = 'no'
-# default: 'yes'
 # End:
 
 from tbotlib import tbot
 
 tb.eof_call_tc("tc_workfd_get_uboot_config_vars.py")
 
-logging.info("args: %s %s %s", tb.config.tc_ub_memory_ram_ws_base, tb.config.tc_ub_memory_ram_ws_base_alt,
-             tb.config.tc_ub_memory_ram_big)
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
 

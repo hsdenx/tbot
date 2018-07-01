@@ -11,10 +11,41 @@
 # tb.config.tc_ub_memory_ram_ws_base_alt = tc_ub_memory_ram_ws_base + 0x100000
 # tb.config.tc_ub_memory_ram_big depended on CONFIG_SYS_ARCH
 # if CONFIG_SYS_ARCH == powerpc than yes else no
-# 
+#
+# used variables
+#
+# - tb.config.tc_ub_memory_ram_ws_base
+#| base address for memory tests in RAM
+#| if 'undef' testcase tc_workfd_get_uboot_config_vars.py
+#| try to detect a good value from U-Boot config
+#| default: 'undef'
+#
+# - tb.config.tc_ub_memory_ram_ws_base_alt
+#| alternate address in RAM for memory tests
+#| if 'undef' testcase tc_workfd_get_uboot_config_vars.py
+#| try to detect a good value from U-Boot config
+#| default: 'undef'
+#
+# - tb.config.tc_ub_memory_ram_big
+#| big or little endian
+#| if 'undef' testcase tc_workfd_get_uboot_config_vars.py
+#| try to detect a good value from U-Boot config
+#| default: 'undef'
+#
+# - tb.config.tc_ub_memory_base
+#| only output the content of the 'help base' and
+#| 'base' and 'md tb.config.tc_ub_memory_ram_ws_base 0xc'
+#| command.
+#| default: 'yes'
+#
 # End:
 
 from tbotlib import tbot
+
+tb.define_variable('tc_ub_memory_ram_ws_base', 'undef')
+tb.define_variable('tc_ub_memory_ram_ws_base_alt', 'undef')
+tb.define_variable('tc_ub_memory_ram_big', 'undef')
+tb.define_variable('tc_ub_memory_base', 'yes')
 
 if (tb.config.tc_ub_memory_ram_ws_base == 'undef'):
     # Try to get the SDRAM Base

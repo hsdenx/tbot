@@ -1,13 +1,11 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_duts_version.py
 #
 # execute U-Boots "version" cmd, and create event
-# DUTS_UBOOT_VERSION
-# DUTS_SPL_VERSION
-# DUTS_BOARDNAME = tb.config.boardlabpowername
+# - DUTS_UBOOT_VERSION
+# - DUTS_SPL_VERSION
+# - DUTS_BOARDNAME = tb.config.boardlabpowername
 #
 # End:
 

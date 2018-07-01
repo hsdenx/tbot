@@ -1,18 +1,20 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_download.py
 # convert duts tests from:
+#
 # http://git.denx.de/?p=duts.git;a=blob;f=testsystems/dulg/testcases/15_UBootCmdGroupDownload.tc;h=8e58d53add90b680ef7a1300894d2392f90d9824;hb=101ddd5dbd547d5046363358d560149d873b238a
+#
+# used variables
+#
+# - tb.config.tc_ub_download_load
+#| if != 'yes' do only show help output
+#| default: 'yes'
 # End:
 
 from tbotlib import tbot
 
-try:
-    tb.config.tc_ub_download_load
-except:
-    tb.config.tc_ub_download_load = 'yes'
+tb.define_variable('tc_ub_download_load', 'yes')
 
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")

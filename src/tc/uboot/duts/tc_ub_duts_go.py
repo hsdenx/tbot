@@ -1,9 +1,8 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_duts_go.py
 # do the commands needed for:
+#
 # http://www.denx.de/wiki/view/DULG/UBootCmdGroupExec#Section_5.9.4.3.
 # U-Boots go command
 #
