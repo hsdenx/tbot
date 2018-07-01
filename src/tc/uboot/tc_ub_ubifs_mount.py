@@ -1,14 +1,19 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_ubifs_mount.py
-# - mount ubifs tb.config.tc_ub_ubifs_volume_name
+# mount ubifs tb.config.tc_ub_ubifs_volume_name
+#
+# used variables
+#
+# - tb.config.tc_ub_ubifs_volume_name
+#| ubifs volume name which gets mounted with 'ubifsmount'
+#| default: 'ubi:rootfs'
+#
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: %s", tb.config.tc_ub_ubifs_volume_name)
+tb.define_variable('tc_ub_ubifs_volume_name', 'ubi:rootfs')
 
 #set board state for which the tc is valid
 tb.set_board_state("u-boot")
