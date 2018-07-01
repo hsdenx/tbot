@@ -3,14 +3,20 @@
 # Description:
 # create bblayer.conf file
 # 
+# used variables
+#
+# - tb.config.tc_workfd_yocto_generate_bblayers_openembedded_layers
+#| used meta layers from meta-openembedded
+#| default: "['meta-networking']"
+#
+# - tb.config.tc_workfd_yocto_generate_bblayers_xenomai_layers
+#| used meta layers from meta-xenomai
+#| default: '[]'
+#
 # End:
 
-try:
-    tb.config.tc_workfd_yocto_generate_bblayers_openembedded_layers
-except:
-    tb.config.tc_workfd_yocto_generate_bblayers_openembedded_layers = [
-        'meta-networking'
-    ]
+tb.define_variable('tc_workfd_yocto_generate_bblayers_openembedded_layers', "['meta-networking']")
+tb.define_variable('tc_workfd_yocto_generate_bblayers_xenomai_layers', "[]")
 
 from tbotlib import tbot
 
