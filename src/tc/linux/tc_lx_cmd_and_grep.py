@@ -46,15 +46,15 @@ c = tb.workfd
 # set board state for which the tc is valid
 tb.set_board_state("linux")
 
-tb.tc_workfd_grep_file = 'gnlmpf'
+tb.config.tc_workfd_grep_file = 'gnlmpf'
 cmds = tb.config.tc_lx_cmd_and_grep["cmds"]
 for cmd in cmds:
-    lxcmd = cmd + ' > ' + tb.tc_workfd_grep_file
+    lxcmd = cmd + ' > ' + tb.config.tc_workfd_grep_file
     tb.write_lx_cmd_check(c, lxcmd)
     for string in tb.config.tc_lx_cmd_and_grep[cmd]:
-        tb.tc_workfd_grep_string = '"' + string + '"'
+        tb.config.tc_workfd_grep_string = '"' + string + '"'
         tb.eof_call_tc("tc_workfd_grep.py")
 
-    tb.write_lx_cmd_check(c, 'rm ' + tb.tc_workfd_grep_file)
+    tb.write_lx_cmd_check(c, 'rm ' + tb.config.tc_workfd_grep_file)
 
 tb.end_tc(True)

@@ -99,8 +99,8 @@ if ret == False:
         tb.write_lx_cmd_check(tb.workfd, cmd)
 
 def tbot_write_val2file(tb, filen, key, value):
-    tb.tc_workfd_grep_file = filen
-    tb.tc_workfd_grep_string = key
+    tb.config.tc_workfd_grep_file = filen
+    tb.config.tc_workfd_grep_string = key
     ret = tb.call_tc("tc_workfd_grep.py")
     if ret == True:
         return

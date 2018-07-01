@@ -165,7 +165,7 @@ else:
         tb.write_lx_cmd_check(tb.workfd, tmp)
         tmp = "make " + board + "_defconfig"
         tb.write_lx_cmd_check(tb.workfd, tmp)
-        tb.tc_workfd_grep_file = '.config'
+        tb.config.tc_workfd_grep_file = '.config'
         ret = tb.call_tc("tc_uboot_get_arch.py")
         if ret == False:
             not_checked.append(board)
