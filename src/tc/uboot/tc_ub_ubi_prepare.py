@@ -1,17 +1,34 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_ub_ubi_prepare.py
-# - ubi prepare
-#   execute "ubi part" ith tb.config.tc_ub_ubi_prep_partname
-#   if tb.config.tc_ub_ubi_prep_offset != 'none'
-#   with offset tb.config.tc_ub_ubi_prep_offset
+# preparation for ubi tests
+#
+# load U-Boot Env with tc_ub_load_board_env.py
+#
+# check if an ubi partition is attached, if so detach it
+#
+# execute "ubi part" with tb.config.tc_ub_ubi_prep_partname
+# if tb.config.tc_ub_ubi_prep_offset != 'none'
+# with offset tb.config.tc_ub_ubi_prep_offset
+#
+# and detach it
+#
+# used variables:
+#
+# - tb.config.tc_ub_ubi_prep_partname
+#| mtd partition name, which is used for ubi
+#| default: 'ubi'
+#
+# - tb.config.tc_ub_ubi_prep_offset
+#| ubi pyhsical VID header offset for 'ubi part' command
+#| default: 'none'
+#
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: %s %s", tb.config.tc_ub_ubi_prep_partname, tb.config.tc_ub_ubi_prep_offset)
+tb.define_variable('tc_ub_ubi_prep_partname', 'ubi')
+tb.define_variable('tc_ub_ubi_prep_offset', 'none')
 
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
