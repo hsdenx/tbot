@@ -3,7 +3,6 @@
 
 debug = False
 debugstatus = False
-uboot_strings = ['Autobooting in', 'noautoboot',  'autoboot', 'EOF', 'RomBOOT']
 uboot_autoboot_key = ''
 state_uboot_timeout = 1
 tb_power_state = 'undef'

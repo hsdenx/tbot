@@ -5,6 +5,10 @@
 #
 # used variables
 #
+# - tb.config.uboot_strings
+#| Strings found when U-Boot is booting
+#| default: "['Autobooting in', 'noautoboot',  'autoboot', 'EOF', 'RomBOOT']"
+#
 # - tb.config.tc_lab_source_dir
 #| tbot source directory on lab PC
 #| default: '/work/hs/tbot'
@@ -25,6 +29,7 @@
 
 from tbotlib import tbot
 
+tb.define_variable('uboot_strings', "['Autobooting in', 'noautoboot',  'autoboot', 'EOF', 'RomBOOT']")
 tb.define_variable('tc_lab_source_dir', '/work/hs/tbot')
 tb.define_variable('tc_workfd_work_dir', tb.config.tc_lab_source_dir)
 tb.define_variable('tc_workfd_tbotfiles_dir', tb.config.tc_workfd_work_dir + '/tmpfiles')
