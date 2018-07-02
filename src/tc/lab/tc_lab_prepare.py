@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lab_prepare.py
 #
 # when logging into a lab, do some basic setup
 # - go into workdir
@@ -13,16 +11,20 @@
 #   and set the variable tb.config.tc_lab_prepare_tc_name
 #   with the name you give your testcase for lab specific setup.
 #
+# used variables
+#
+# - tb.config.tc_lab_prepare_tc_name
+#| call testcase with this name for settings up lab specific
+#| tasks.
+#| default: 'none'
+#
 # End:
 
 from tbotlib import tbot
 
-try:
-    tb.config.tc_lab_prepare_tc_name
-except:
-    tb.config.tc_lab_prepare_tc_name = 'none'
+tb.define_variable('tc_lab_prepare_tc_name', 'none')
 
-logging.info("args: workfd %s %s", tb.workfd.name, tb.config.tc_lab_prepare_tc_name)
+logging.info("args: workfd %s", tb.workfd.name)
 
 # first cd into our workdir
 tb.eof_call_tc("tc_workfd_goto_tbot_workdir.py")

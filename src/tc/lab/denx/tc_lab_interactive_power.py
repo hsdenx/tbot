@@ -1,9 +1,11 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lab_denx_power.py
-# power on/off the board from hand
+# power on/off the board tb.config.boardlabpowername manually
+#
+# You will see a countdown from 3 to 1
+#
+# Than you have to power on or off the board manually
 # End:
 
 from tbotlib import tbot

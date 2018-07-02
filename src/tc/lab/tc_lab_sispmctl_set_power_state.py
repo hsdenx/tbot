@@ -1,20 +1,16 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lab_sispmctl_set_power_state.py
-# power on/off the board
+# power on/off the board with Gembird Silver Shiels
 #
-# get the power state of the board through sispmctl
+# get the power state of the board through sispmctl tool
 # and save it in tb.power_state
 # find more information for the Gembird Silver Shield PM power controller:
 # http://sispmctl.sourceforge.net/
 #
-# use testcase "tc_lab_sispmctl_get_variables.py" for setting
-# the serial and the index you need for the specific board.
-#
-# This file is an example for a setup, you need to adapt
-# this to your needs.
+# use testcase tc_lab_sispmctl_get_variables.py for setting
+# the tb.config.gembird_serial and tb.config.gembird_index
+# you need for the specific board.
 #
 # End:
 

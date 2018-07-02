@@ -9,6 +9,12 @@
 # file with for example:
 # gpio_power_on = gpo(21) # gpio number of gpio used to controll power of board
 #
+# used variables
+#
+# - tb.config.gpio_power_on
+#| gpio pin used for powering on / off the board
+#| default: ''
+#
 # End:
 
 from tbotlib import tbot

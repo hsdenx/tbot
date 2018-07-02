@@ -1,11 +1,21 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lab_sispmctl_get_variables.py
 # get serial and index for tb.config.boardlabpowername for
 # controlling the Gembird Silver Shield PM power controller
 # and save it in tb.config.gembird_serial and tb.config.gembird_index
+#
+# used variables
+#
+# - tb.config.gembird_serial
+#| setup at runtime of testcase tc_lab_sispmctl_get_variables.py
+#| contains the serial number of the gembird controller
+#| to which the tb.config.boardlabpowername is connected
+#
+# - tb.config.gembird_index
+#| setup at runtime of testcase tc_lab_sispmctl_get_variables.py
+#| contains the device index of the gembird controller
+#| to which the tb.config.boardlabpowername is connected
 #
 # End:
 

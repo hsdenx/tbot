@@ -1,7 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
 #
 # do setup needed for the pi in tbot2go mode, when used as
 # lapPC

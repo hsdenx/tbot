@@ -1,9 +1,8 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lab_denx_connect_to_board.py
-# connect to board with connect
+# connect to board tb.config.boardlabname with
+# connect script
 # End:
 
 from tbotlib import tbot
