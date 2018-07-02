@@ -30,7 +30,7 @@ from tbotlib import tbot
 
 tb.define_variable('tc_ub_dfu_dfu_util_path', '/home/hs/zug/dfu-util')
 tb.define_variable('tc_ub_dfu_dfu_util_alt_setting', 'Linux')
-tb.define_variable('tc_ub_dfu_dfu_util_downloadfile', '')
+tb.define_variable('tc_ub_dfu_dfu_util_downloadfile', tb.config.lab_tmp_dir)
 
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
