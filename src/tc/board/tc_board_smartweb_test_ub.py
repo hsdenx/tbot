@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# tbot.py -s lab_denx -c smartweb -t tc_board_smartweb.py
 # start all ub testcases for the smartweb board
 # End:
 

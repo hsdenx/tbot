@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -c tbot_dxr2_uboot.cfg -t tc_board_dxr2_uboot_patchwork.py
 # dxr2 check all patches with patchworknumber > default_nr
 # in patchwork, if it is checkpatch clean and applies to
 # current mainline without errors

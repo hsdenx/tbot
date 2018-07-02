@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# tbot.py -s lab_denx -c mcx -t tc_board_mcx.py
 # start all testcases for the mcx board linux stable and linux-ml
 # End:
 

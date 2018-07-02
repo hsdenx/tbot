@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# tbot.py -s lab_denx -c dxr2 -t tc_board_dxr2_linux.py
 # start all linux testcases for the dxr2 board
 # End:
 

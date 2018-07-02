@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# tbot.py -s lab_denx -c sigmatek-nand -t tc_board_sigmatek-nand.py
 # On the sigmatek-nand board we have problems with a crash in U-boot
 # We do:
 # - wait until linux state is reached

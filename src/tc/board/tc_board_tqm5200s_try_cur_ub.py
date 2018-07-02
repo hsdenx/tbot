@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# tbot.py -s lab_denx -c tqm5200s -t tc_board_tqm5200s_try_cur_ub.py
 # remove current u-boot code on the lab PC
 # then call tc tc_board_tqm5200s_ub_comp_install.py
 # End:

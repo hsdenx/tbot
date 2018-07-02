@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -c tbot_sirius_dds.cfg -t tc_board_sirius_dds.py
 # On the sirius board we have problems with ubifs
 # on nand flash and power cuts. So this is a special
 # testcase for this board. We do:

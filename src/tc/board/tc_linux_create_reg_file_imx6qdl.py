@@ -1,9 +1,7 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# tbot.py -s lab_denx -c aristainetos2 -t tc_linux_create_reg_file_imx6qdl.py
-# create a regfile for am335x SoC registers
+# create a regfile for imx6qdl SoC registers
 # End:
 
 from tbotlib import tbot

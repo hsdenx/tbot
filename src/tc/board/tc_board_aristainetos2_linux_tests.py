@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# tbot.py -s lab_denx -c aristainetos2 -t tc_board_aristainetos2_linux_tests.py
 # start all linux testcases for the aristainetos2 board
 # End:
 

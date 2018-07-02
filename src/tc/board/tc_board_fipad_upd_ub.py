@@ -1,31 +1,29 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# tbot.py -s lab_denx -c fipad -t tc_board_fipad_upd_ub.py
 # update SPL and u-boot.img on the SPI NOR or the MMC0
 # card, and boot it ...
 # End:
 
 from tbotlib import tbot
 
-logging.info("typ: %s", tb.tc_board_fipad_upd_ub_typ)
+logging.info("typ: %s", tb.config.tc_board_fipad_upd_ub_typ)
 
 tb.workfd = tb.c_con
 # update on SPI or MMC0
-if tb.tc_board_fipad_upd_ub_typ == 'MMC0':
+if tb.config.tc_board_fipad_upd_ub_typ == 'MMC0':
     tb.eof_call_tc("tc_board_fipad_upd_ub_mmc.py")
-elif tb.tc_board_fipad_upd_ub_typ == 'SPI':
+elif tb.config.tc_board_fipad_upd_ub_typ == 'SPI':
     tb.eof_call_tc("tc_board_fipad_upd_ub_spi.py")
 else:
-    logging.error("typ %s not supported", tb.tc_board_fipad_upd_ub_typ)
+    logging.error("typ %s not supported", tb.config.tc_board_fipad_upd_ub_typ)
     tb.end_tc(True)
 
 # set bootmode
 tb.workfd = tb.c_ctrl
-if tb.tc_board_fipad_upd_ub_typ == 'MMC0':
+if tb.config.tc_board_fipad_upd_ub_typ == 'MMC0':
     tmp = 'relais   relsrv-02-01  1  on'
-elif tb.tc_board_fipad_upd_ub_typ == 'SPI':
+elif tb.config.tc_board_fipad_upd_ub_typ == 'SPI':
     tmp = 'relais   relsrv-02-01  1  off'
 tb.write_lx_cmd_check(tb.workfd, tmp)
 

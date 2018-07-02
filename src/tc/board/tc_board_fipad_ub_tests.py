@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# tbot.py -s lab_denx -c fipad -t tc_board_fipad_ub_tests.py
 # start all U-Boot testcases for the fipad board
 # End:
 
@@ -65,7 +63,7 @@ tb.eof_call_tc("tc_ub_get_version.py")
 tb.uboot_vers = tb.config.tc_return
 
 # update U-Boot
-tb.tc_board_fipad_upd_ub_typ = 'MMC0'
+tb.config.tc_board_fipad_upd_ub_typ = 'MMC0'
 tb.eof_call_tc("tc_board_fipad_upd_ub.py")
 
 tb.workfd = tb.c_con

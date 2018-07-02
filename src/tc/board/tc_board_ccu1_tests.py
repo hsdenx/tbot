@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# tbot.py -s lab_denx -c ccu1 -t tc_board_ccu1_tests.py
 # start all testcases for the ccu1 board
 # End:
 

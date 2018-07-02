@@ -1,7 +1,26 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
+# trigger a bug in old U-Boot ubi implementation
+# and test, if with current U-Boot this bug does
+# not appear anymore.
+#
+# boot into linux and install a buggy nand image
+#
+# go into u-boot and start an old u-boot binary,
+# which has the bug, which leads into a reset
+#
+# After the reset, the new U-Boot is booted.
+#
+# run 'ubi part rootfs 2048' which repairs the buggy
+# nand and no U-Boot reset should ocur.
+#
+# after the new U-Boot has repaired the nand, the old
+# U-Boot should also work again.
+#
+# call testcase tc_demo_uboot_tests.py for doing
+# U-Boot standard tests.
+#
 # End:
 
 from tbotlib import tbot

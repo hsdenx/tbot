@@ -1,9 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# tbot.py -s lab_denx -c smartweb -t tc_board_smartweb.py
-#
 # remove, clone current mainline U-Boot, then
 # start tc_board_smartweb_test_ub.py
 # End:

@@ -1,7 +1,9 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
+# get u-boot code with tc_demo_get_ub_code.py
+#
+# and call testcase tc_demo_compile_install_test.py
 # End:
 
 from tbotlib import tbot

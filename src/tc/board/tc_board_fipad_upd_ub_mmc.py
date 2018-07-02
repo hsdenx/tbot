@@ -1,14 +1,12 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# tbot.py -s lab_denx -c fipad -t tc_board_fipad_upd_ub_mmc.py
 # update SPL and u-boot.img on the MMC0
 # End:
 
 from tbotlib import tbot
 
-logging.info("typ: %s", tb.tc_board_fipad_upd_ub_typ)
+logging.info("typ: %s", tb.config.tc_board_fipad_upd_ub_typ)
 
 # set board state for which the tc is valid
 tb.set_board_state("linux")

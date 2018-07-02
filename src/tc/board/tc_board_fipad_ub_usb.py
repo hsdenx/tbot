@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s lab_denx -c fipad -t tc_board_fipad_ub_usb.py
 #
 # do some simple usb test
 # - usb start
@@ -12,19 +10,17 @@
 # - load test.bin from this partition with ext2load
 # - check if test.bin has the crc32 sum 0x2144df1c
 #
-# used vars:
-# tb.config.tc_uboot_usb_info_expect = [
-#    'Hub,  USB Revision 2.0',
-#    'Mass Storage,  USB Revision 2.0',
-#    'SMI Corporation USB DISK AA04012900007453',
-#    'Vendor: 0x090c  Product 0x1000 Version 17.0'
-# ]
-# tb.config.tc_board_fipad_uboot_ext2load_files = ['test.bin']
-#   list of files which get load and crc32 tested
+# used variables
+#
+# - tb.config.tc_board_fipad_uboot_ext2load_files
+#| list of files which get load and crc32 tested
+#| default: '[]'
+#
 # End:
 
 from tbotlib import tbot
 
+tb.define_variable('tc_board_fipad_uboot_ext2load_files', '[]')
 tb.eof_call_tc("tc_uboot_usb_start.py")
 tb.eof_call_tc("tc_uboot_usb_info.py")
 

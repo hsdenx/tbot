@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# tbot.py -s lab_denx -c shc -t tc_board_shc_upd_ub.py
 # update MLO and u-boot.img on the SD card or the eMMC
 # card, and boot it ...
 # End:

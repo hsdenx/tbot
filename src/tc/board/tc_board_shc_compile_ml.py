@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# tbot.py -s lab_denx -c shc -t tc_board_shc_compile_ml.py
 # compile ML linux kernel for the shc board
 # End:
 

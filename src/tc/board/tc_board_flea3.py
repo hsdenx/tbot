@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# tbot.py -s lab_denx -c flea3 -t tc_board_flea3.py
 # start all testcases for the flea3 board
 # currently only test the nor unprotect with linux
 # End:

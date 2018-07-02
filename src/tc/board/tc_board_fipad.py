@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# tbot.py -s lab_denx -c fipad -t tc_board_fipad.py
 # start all U-Boot/linux testcases for the fipad board
 # End:
 

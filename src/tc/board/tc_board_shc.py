@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# tbot.py -s lab_denx -c shc -t tc_board_shc.py
 # start all testcases for the shc board linux and linux-stable
 # End:
 

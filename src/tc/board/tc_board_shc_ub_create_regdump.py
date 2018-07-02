@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# tbot.py -s lab_denx -c shc -t tc_board_shc_ub_create_regdump.py
 # create a uboot regdump for all interesting registers
 # on the shc board
 # End:

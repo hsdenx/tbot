@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# tbot.py -s lab_denx -c taurus -t tc_board_taurus.py
 # start all testcases for the taurus board
 # End:
 
