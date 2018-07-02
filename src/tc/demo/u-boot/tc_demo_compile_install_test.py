@@ -109,9 +109,10 @@ else:
     tb.statusprint("copy files")
     c = tb.workfd
 
-    for f in tb.config.tc_demo_compile_install_test_files:
-        ta = r + tb.config.tftpboardname + '/' + tb.config.ub_load_board_env_subdir
-        tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=f, t=ta)
+    if tb.config.tc_demo_compile_install_test_files != 'none':
+        for f in tb.config.tc_demo_compile_install_test_files:
+            ta = r + tb.config.tftpboardname + '/' + tb.config.ub_load_board_env_subdir
+            tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=f, t=ta)
 
 tb.eof_call_tc("tc_workfd_goto_uboot_code.py")
 
@@ -153,11 +154,12 @@ if tb.config.tc_demo_uboot_test_deploy == 'none':
     # save working u-boot bin
     c = tb.c_ctrl
     p = tb.config.tftpdir + tb.config.tftpboardname + "/" + tb.config.ub_load_board_env_subdir + "/"
-    for f in tb.config.tc_demo_compile_install_test_files:
-        tmp = f.replace('/', "_")
-        sa = p + os.path.basename(f)
-        ta = p + "/latestworking-" + tmp
-        tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=sa, t=ta)
+    if tb.config.tc_demo_compile_install_test_files != 'none':
+        for f in tb.config.tc_demo_compile_install_test_files:
+            tmp = f.replace('/', "_")
+            sa = p + os.path.basename(f)
+            ta = p + "/latestworking-" + tmp
+            tb.eof_call_tc("tc_lab_cp_file.py", ch=c, s=sa, t=ta)
 
 if tb.config.tc_demo_compile_install_test_poweroff == 'yes':
     # power off board at the end

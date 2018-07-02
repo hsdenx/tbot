@@ -2,27 +2,35 @@
 #
 # Description:
 #
-# - goto linux code
-# - compile it
-# - deploy it
+# - goto linux code with testcase tc_workfd_goto_linux_code.py
+# - compile with testcase tc_workfd_compile_linux.py
+# - deploy it. If tb.config.tc_demo_linux_test_deploy != 'none'
+#|  call boardspecific testcase for deploying linux sources.
+#|  else copy files from "$TBOT_BASEDIR_LINUX/arch/arm/boot/"
+#|  to tb.config.tftpboardname + '/' + tb.config.ub_load_board_env_subdir
+#
+# used variables
+#
+# - tb.config.tc_demo_linux_test_deploy
+#| contains the testcasename which get called for deploying linux
+#| default: 'none'
 #
 # End:
 
 from tbotlib import tbot
 
-try:
-    tb.config.tc_demo_linux_test_deploy
-except:
-    tb.config.tc_demo_linux_test_deploy = ''
+tb.define_variable('tc_demo_linux_test_deploy', 'none')
 
-logging.info("args: %s %s", tb.workfd.name, tb.config.tc_demo_linux_test_deploy)
+logging.info("args: %s", tb.workfd.name)
+logging.info("args: %s", tb.config.tc_workfd_compile_linux_make_target)
+logging.info("args: %s", tb.config.tc_workfd_compile_linux_dt_name)
 
 tb.eof_call_tc("tc_workfd_goto_linux_code.py")
 
 # compile it
 tb.eof_call_tc("tc_workfd_compile_linux.py")
 
-if tb.config.tc_demo_linux_test_deploy != '':
+if tb.config.tc_demo_linux_test_deploy != 'none':
     tb.eof_call_tc(tb.config.tc_demo_linux_test_deploy)
     tb.end_tc(True)
 

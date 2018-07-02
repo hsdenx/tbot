@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# tbot.py -s lab_denx -c beagleboneblack -t tc_demo_linux_testcases.py
 #
 # - if tb.config.tc_board_bootmode_tc is set, call
 #   tb.config.tc_board_bootmode_tc
@@ -18,21 +16,48 @@
 #   and check the returning strings.
 # - call testcase names defined in list tb.config.tc_demo_linux_tc_list
 #
+# used variables
+#
+# - tb.config.tc_demo_linux_tc_boot_lx
+#| if == 'yes' boot a linux kernel
+#| default: 'yes'
+#
+# - tb.config.tc_demo_linux_test_dmesg
+#| list of strings, which must be in dmesg
+#| default: 'none'
+#
+# - tb.config.tc_demo_linux_test_reg_files
+#| list of register filenames, which get
+#| checked with testcase tc_lx_check_reg_file.py
+#| default: 'none'
+#
+# - tb.config.tc_demo_linux_test_basic_cmd
+#| list of dictionary with key = 'cmd' and value = 'val'
+#| command in 'cmd gets executed and checked if string in 'val'
+#| is found. if 'val' == 'undef', no check, only command is
+#| executed.
+#| default: 'none'
+#
+# - tb.config.tc_demo_linux_tc_list
+#| list of testcasenames, which get called
+#| default: 'none'
+#
 # End:
 
 from tbotlib import tbot
 
-try:
-    tb.config.tc_demo_linux_tc_boot_lx
-except:
-    tb.config.tc_demo_linux_tc_boot_lx = 'yes'
+tb.define_variable('tc_demo_linux_tc_boot_lx', 'yes')
+tb.define_variable('tc_demo_linux_test_dmesg', 'none')
+tb.define_variable('tc_demo_linux_test_reg_files', 'none')
+tb.define_variable('tc_demo_linux_test_basic_cmd', 'none')
+tb.define_variable('tc_demo_linux_tc_list', 'none')
 
 try:
     tb.config.tc_board_bootmode_tc
 except:
     tb.config.tc_board_bootmode_tc = ''
 
-logging.info("args: %s %s %s", tb.workfd.name, tb.config.tc_board_bootmode_tc, tb.config.tc_demo_linux_tc_boot_lx)
+logging.info("args: %s %s", tb.workfd.name, tb.config.tc_board_bootmode_tc)
 
 if tb.config.tc_demo_linux_tc_boot_lx == 'yes':
     if tb.config.tc_board_bootmode_tc != '':
@@ -58,33 +83,21 @@ tb.statusprint("Linux Version %s" % (lx_vers))
 tb.set_board_state("linux")
 
 # dmesg checks
-try:
+if tb.config.tc_demo_linux_test_dmesg != 'none':
     check = tb.config.tc_demo_linux_test_dmesg
-except:
-    check = ''
-
-if check != '':
     tb.statusprint("linux dmesg checks")
     for tb.config.tc_lx_dmesg_grep_name in check:
         tb.eof_call_tc("tc_lx_dmesg_grep.py")
 
 # register checks
-try:
+if tb.config.tc_demo_linux_test_reg_files != 'none':
     files = tb.config.tc_demo_linux_test_reg_files
-except:
-    files = ''
-if (files != ''):
-    tb.statusprint("start register check")
     for tb.config.tc_lx_create_reg_file_name in files:
         tb.eof_call_tc("tc_lx_check_reg_file.py")
 
 # do some basic tests
-try:
+if tb.config.tc_demo_linux_test_basic_cmd != 'none':
     bcmd = tb.config.tc_demo_linux_test_basic_cmd
-except:
-    bcmd = ''
-
-if bcmd != '':
     tb.statusprint("start basic checks")
     for bl in bcmd:
         if bl["val"] == 'undef':
@@ -92,12 +105,8 @@ if bcmd != '':
         else:
             tb.eof_write_cmd_check(tb.c_con, bl["cmd"], bl["val"])
 
-try:
+if tb.config.tc_demo_linux_tc_list != 'none':
     tc = tb.config.tc_demo_linux_tc_list
-except:
-    tc = ''
-
-if tc != '':
     tb.statusprint("Call board specific testcases")
     for tcname in tc:
         tb.eof_call_tc(tcname)
