@@ -21,7 +21,7 @@ linux_prompt = 'ttbott> '
 #tc_lab_denx_disconnect_from_board_tc = 'tc_workfd_disconnect_with_kermit.py'
 
 # variables used in testcases
-#board_has_debugger = 1
+#board_has_debugger = 'yes'
 #lab_bdi_upd_uboot_bdi_prompt = 'P2041#0>'
 #lab_bdi_upd_uboot_bdi_cmd = 'telnet bdi15'
 

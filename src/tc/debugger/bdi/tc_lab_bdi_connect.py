@@ -1,9 +1,7 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lab_bdi_connect.py
-# connect to the BDI if tb.config.board_has_debugger != 0
+# connect to the BDI if tb.config.board_has_debugger == 'yes'
 # - send to workfd tb.config.lab_bdi_upd_uboot_bdi_cmd
 # - set BDI prompt tb.config.lab_bdi_upd_uboot_bdi_prompt
 # - wait for BDI prompt
@@ -14,7 +12,7 @@ from tbotlib import tbot
 logging.info("args: %s %s %s", tb.config.board_has_debugger, tb.workfd.name,
              tb.config.lab_bdi_upd_uboot_bdi_prompt)
 
-if tb.config.board_has_debugger == 0:
+if tb.config.board_has_debugger != 'yes':
     tb.end_tc(False)
 
 c = tb.workfd

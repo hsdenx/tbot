@@ -31,7 +31,7 @@ tc_lab_get_uboot_source_git_branch = "master"
 tc_lab_compile_uboot_boardname = 'TQM5200S'
 tc_lab_toolchain_rev = '5.4'
 tc_lab_toolchain_name= 'powerpc'
-board_has_debugger = 1
+board_has_debugger = 'yes'
 
 tc_ub_memory_ram_ws_base = '0x100000'
 tc_ub_memory_ram_ws_base_alt = '0x200000'

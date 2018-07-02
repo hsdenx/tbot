@@ -9,7 +9,5 @@
 
 from tbotlib import tbot
 
-tb.call_tc('tc_def_tbot.py')
-
 tb.gotprompt = True
 tb.end_tc(True)

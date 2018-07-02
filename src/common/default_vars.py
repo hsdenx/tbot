@@ -50,7 +50,6 @@ tc_lx_regulator_nrs = ['0 regulator-dummy -', '1 hsusb1_vbus 5000000',
 		'2 vmmc 3300000', '3 pbias_mmc_omap2430 3000000',
 		'4 DCDC1 1200000', '5 DCDC2 3300000', '6 DCDC3 1800000',
 		'7 LDO1 1800000', '8 LDO2 3300000']
-board_has_debugger = 0
 lab_bdi_upd_uboot_bdi_cmd = 'telnet bdi6'
 lab_bdi_upd_uboot_bdi_prompt = 'BDI>'
 lab_bdi_upd_uboot_bdi_era = 'era'

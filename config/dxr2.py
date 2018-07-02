@@ -22,7 +22,7 @@ create_dashboard = 'yes'
 create_html_log = 'yes'
 
 # variables used in testcases
-# board_has_debugger = 1
+# board_has_debugger = 'yes'
 # lab_bdi_upd_uboot_bdi_prompt = 'AM335x-EVM>'
 # lab_bdi_upd_uboot_bdi_cmd = 'telnet bdi19'
 

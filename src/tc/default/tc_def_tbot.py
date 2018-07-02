@@ -17,6 +17,10 @@
 #| place for tbot to store tempfiles on labor PC
 #| default: tb.config.tc_workfd_work_dir + '/tmpfiles'
 #
+# - tb.config.board_has_debugger
+#| if 'yes' board has a debugger
+#| default: 'no'
+#
 # End:
 
 from tbotlib import tbot
@@ -24,6 +28,7 @@ from tbotlib import tbot
 tb.define_variable('tc_lab_source_dir', '/work/hs/tbot')
 tb.define_variable('tc_workfd_work_dir', tb.config.tc_lab_source_dir)
 tb.define_variable('tc_workfd_tbotfiles_dir', tb.config.tc_workfd_work_dir + '/tmpfiles')
+tb.define_variable('board_has_debugger', 'no')
 
 tb.gotprompt = True
 tb.end_tc(True)

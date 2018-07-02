@@ -10,7 +10,7 @@
 
 from tbotlib import tbot
 
-logging.info("args: %s %s %s", tb.config.board_has_debugger, tb.workfd.name,
+logging.info("args: %s %s ", tb.workfd.name,
              tb.config.lab_bdi_upd_uboot_bdi_prompt)
 
 c = tb.workfd

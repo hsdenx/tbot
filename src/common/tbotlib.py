@@ -282,6 +282,8 @@ class tbot(object):
         self.check_open_fd(self.c_ctrl)
         self.check_open_fd(self.c_con)
 
+        self.call_tc('tc_def_tbot.py')
+
         # try to get the console of the board
         ret = self.connect_to_board(self.config.boardname)
         if ret == False:
@@ -586,7 +588,7 @@ class tbot(object):
         - **parameters**, **types**, **return** and **return types**::
         :return: True
         """
-        if self.config.board_has_debugger:
+        if self.config.board_has_debugger == 'yes':
             self.eof_call_tc("tc_lab_bdi_connect.py")
             self.eof_call_tc("tc_lab_bdi_run.py")
             self.eof_call_tc("tc_lab_bdi_disconnect.py")
