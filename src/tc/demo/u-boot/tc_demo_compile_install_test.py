@@ -21,7 +21,7 @@
 #|     call tc_ub_upd_uboot.py
 #|     call tc_ub_upd_spl.py
 # - if tb.config.tc_demo_compile_install_test_spl_vers_file and/or
-#|   tc_tb.config.demo_compile_install_test_ub_vers_file != ''
+#|   tb.config.tc_demo_compile_install_test_ub_vers_file != ''
 #|   check if the new installed version is the same
 #|   as in the binary files, defined in
 #|   tb.config.tc_demo_compile_install_test_ub_vers_file or
@@ -63,6 +63,14 @@
 #| to test the new installed u-boot
 #| default: 'none'
 #
+# - tb.config.tc_demo_compile_install_test_files
+#| list of files which get copied into tftpdirectory
+#| default: 'none'
+#
+# - tb.config.tc_demo_uboot_test_update
+#| if != 'none' testcasename which gets called for updating U-Boot
+#| default: 'none'
+#
 # End:
 
 from tbotlib import tbot
@@ -73,6 +81,8 @@ tb.define_variable('tc_demo_uboot_test_deploy', 'none')
 tb.define_variable('tc_board_bootmode_tc', 'none')
 tb.define_variable('tc_demo_compile_install_test_poweroff', 'yes')
 tb.define_variable('tc_demo_compile_install_test_name', 'tc_ub_help.py')
+tb.define_variable('tc_demo_compile_install_test_files', 'none')
+tb.define_variable('tc_demo_uboot_test_update', 'none')
 
 logging.info("args: %s", tb.workfd.name)
 

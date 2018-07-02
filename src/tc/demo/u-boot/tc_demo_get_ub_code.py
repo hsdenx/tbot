@@ -1,12 +1,8 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -c tbot_board.cfg -t tc_demo_get_ub_code.py
-# start tc:
 # - rm old u-boot tree (if there is one)
 # - tc_lab_get_uboot_source.py
-# - 
 # End:
 
 from tbotlib import tbot
