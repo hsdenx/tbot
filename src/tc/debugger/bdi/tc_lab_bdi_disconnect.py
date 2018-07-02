@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lab_bdi_disconnect.py
 # disconnect from the BDI
 # - send bdi command "quit"
 # - set tb.config.linux_prompt

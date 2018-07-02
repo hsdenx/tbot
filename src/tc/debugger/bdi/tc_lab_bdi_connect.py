@@ -5,12 +5,25 @@
 # - send to workfd tb.config.lab_bdi_upd_uboot_bdi_cmd
 # - set BDI prompt tb.config.lab_bdi_upd_uboot_bdi_prompt
 # - wait for BDI prompt
+#
+# used variables
+#
+# - tb.config.lab_bdi_upd_uboot_bdi_cmd
+#| command for connecting to BDI
+#| default: 'telnet bdi6'
+#
+# - tb.config.lab_bdi_upd_uboot_bdi_prompt
+#| BDI prompt string
+#| default: 'BDI>'
+#
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: %s %s %s", tb.config.board_has_debugger, tb.workfd.name,
-             tb.config.lab_bdi_upd_uboot_bdi_prompt)
+tb.define_variable('lab_bdi_upd_uboot_bdi_cmd', 'telnet bdi6')
+tb.define_variable('lab_bdi_upd_uboot_bdi_prompt', 'BDI>')
+
+logging.info("args: %s %s", tb.config.board_has_debugger, tb.workfd.name)
 
 if tb.config.board_has_debugger != 'yes':
     tb.end_tc(False)

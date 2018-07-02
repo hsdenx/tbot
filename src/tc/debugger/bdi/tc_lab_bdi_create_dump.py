@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lab_bdi_create_dump.py
 #
 # check if we are on the BDI already, if not switch to it
 # with tc_lab_bdi_connect.py
@@ -13,14 +11,41 @@
 #   tb.config.tc_lab_bdi_create_dump_mask and stepsize
 #   tb.config.tc_lab_bdi_create_dump_type into the file
 #   tb.config.tc_lab_bdi_create_dump_filename
+#
+# used variables
+#
+# - tb.config.tc_lab_bdi_create_dump_filename
+#| filename, to witch registers get dumped
+#| default: ''
+#
+# - tb.config.tc_lab_bdi_create_dump_start
+#| register start address from which dump gets created
+#| default: ''
+#
+# - tb.config.tc_lab_bdi_create_dump_stop
+#| register stop address to which dump gets created
+#| default: ''
+#
+# - tb.config.tc_lab_bdi_create_dump_mask
+#| default mask, which get added
+#| default: ''
+#
+# - tb.config.tc_lab_bdi_create_dump_type
+#| type with which registers get read
+#| default: ''
+#
 # End:
 
 from tbotlib import tbot
 
+tb.define_variable('tc_lab_bdi_create_dump_filename', '')
+tb.define_variable('tc_lab_bdi_create_dump_start', '')
+tb.define_variable('tc_lab_bdi_create_dump_stop', '')
+tb.define_variable('tc_lab_bdi_create_dump_mask', '')
+tb.define_variable('tc_lab_bdi_create_dump_type', '')
 tb.workfd = tb.c_ctrl
 
 logging.info("args: %s", tb.workfd.name)
-logging.info("args: %s %s %s %s %s", tb.config.tc_lab_bdi_create_dump_filename, tb.config.tc_lab_bdi_create_dump_start, tb.config.tc_lab_bdi_create_dump_stop, tb.config.tc_lab_bdi_create_dump_mask, tb.config.tc_lab_bdi_create_dump_type)
 
 c = tb.workfd
 

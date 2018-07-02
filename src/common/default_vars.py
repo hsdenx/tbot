@@ -50,12 +50,6 @@ tc_lx_regulator_nrs = ['0 regulator-dummy -', '1 hsusb1_vbus 5000000',
 		'2 vmmc 3300000', '3 pbias_mmc_omap2430 3000000',
 		'4 DCDC1 1200000', '5 DCDC2 3300000', '6 DCDC3 1800000',
 		'7 LDO1 1800000', '8 LDO2 3300000']
-lab_bdi_upd_uboot_bdi_cmd = 'telnet bdi6'
-lab_bdi_upd_uboot_bdi_prompt = 'BDI>'
-lab_bdi_upd_uboot_bdi_era = 'era'
-lab_bdi_upd_uboot_bdi_prog = 'prog 0xfc000000'
-lab_bdi_upd_uboot_bdi_file = '/tftpboot/tqm5200s/tbot/u-boot.bin'
-lab_bdi_upd_uboot_bdi_run = [{'cmd':'res run', 'val':'resetting target passed'}]
 tc_ubi_cmd_path = "/work/tbot/mtd-utils"
 tc_ubi_mtd_dev = "/dev/mtd4"
 tc_ubi_ubi_dev = "/dev/ubi0"

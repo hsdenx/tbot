@@ -1,19 +1,35 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lab_bdi_upd_uboot.py
 # update u-boot with BDI
 # - send BDI cmd: "res halt"
 # - send BDI cmd: "era"
 # - send BDI cmd:
 #   tb.config.lab_bdi_upd_uboot_bdi_prog + ' ' + tb.config.lab_bdi_upd_uboot_bdi_file + ' BIN'
 # - send BDI cmd: tb.config.lab_bdi_upd_uboot_bdi_run
+#
+# used variables
+#
+# - tb.config.lab_bdi_upd_uboot_bdi_era
+#| command for erasing
+#| default: 'era'
+#
+# - tb.config.lab_bdi_upd_uboot_bdi_prog
+#| command for programming
+#| default: 'prog 0xfc000000'
+#
+# - tb.config.lab_bdi_upd_uboot_bdi_file
+#| filename, which get programmed
+#| default: '/tftpboot/tqm5200s/tbot/u-boot.bin'
+#
 # End:
 from tbotlib import tbot
 
+tb.define_variable('lab_bdi_upd_uboot_bdi_era', 'era')
+tb.define_variable('lab_bdi_upd_uboot_bdi_prog', 'prog 0xfc000000')
+tb.define_variable('lab_bdi_upd_uboot_bdi_file', '/tftpboot/tqm5200s/tbot/u-boot.bin')
+
 logging.info("args: %s %s", tb.config.lab_bdi_upd_uboot_bdi_cmd, tb.config.lab_bdi_upd_uboot_bdi_prompt)
-logging.info("%s %s %s", tb.config.lab_bdi_upd_uboot_bdi_era, tb.config.lab_bdi_upd_uboot_bdi_prog, tb.config.lab_bdi_upd_uboot_bdi_file)
 logging.info("%s", tb.config.lab_bdi_upd_uboot_bdi_run)
 
 c = tb.workfd

@@ -1,18 +1,24 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lab_bdi_upd_uboot.py
 # BDI run
 # - send "res halt" to workfd
 # - send BDI cmd tb.config.lab_bdi_upd_uboot_bdi_run
+#
+# used variables
+#
+# - tb.config.lab_bdi_upd_uboot_bdi_run
+#| command for resetting U-Boot
+#| default: "[{'cmd':'res run', 'val':'resetting target passed'}]"
+#
 # End:
 
 from tbotlib import tbot
 from lab_bdi import bdi_class
 
-logging.info("args: %s %s %s", tb.workfd.name,
-             tb.config.lab_bdi_upd_uboot_bdi_prompt, tb.config.lab_bdi_upd_uboot_bdi_run)
+tb.define_variable('lab_bdi_upd_uboot_bdi_run', "[{'cmd':'res run', 'val':'resetting target passed'}]")
+logging.info("args: %s %s", tb.workfd.name,
+             tb.config.lab_bdi_upd_uboot_bdi_prompt)
 
 c = tb.workfd
 
