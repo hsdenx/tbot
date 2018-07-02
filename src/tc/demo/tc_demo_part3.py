@@ -1,9 +1,7 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# tbot.py -s lab_denx -c smartweb -t tc_demo_part3.py
-# start tc:
+# start tc: tc_board_git_bisect.py
 # End:
 
 from tbotlib import tbot

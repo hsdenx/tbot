@@ -1,10 +1,8 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -c tbot_board.cfg -t tc_demo_can_part1.py
-# start tc:
 # starts a can demo
+#
 # For this demo the fipad board in the denx lab is used.
 # To test the CAN bus we have in the DENX lab installed a PC, called
 # CANPC to which a PEAK CAN adapter is attached, which then is connected

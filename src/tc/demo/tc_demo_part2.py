@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# tbot.py -s lab_denx -c smartweb -t tc_demo_part2.py
 # start tc:
 # - call tc_demo_get_ub_code.py
 # - call tc_demo_compile_install_test.py
