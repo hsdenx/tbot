@@ -49,14 +49,6 @@ tc_lx_regulator_nrs = ['0 regulator-dummy -', '1 hsusb1_vbus 5000000',
 		'2 vmmc 3300000', '3 pbias_mmc_omap2430 3000000',
 		'4 DCDC1 1200000', '5 DCDC2 3300000', '6 DCDC3 1800000',
 		'7 LDO1 1800000', '8 LDO2 3300000']
-tc_ubi_cmd_path = "/work/tbot/mtd-utils"
-tc_ubi_mtd_dev = "/dev/mtd4"
-tc_ubi_ubi_dev = "/dev/ubi0"
-tc_ubi_min_io_size = "1024"
-tc_ubi_max_leb_cnt = "100"
-tc_ubi_leb_size = "126976"
-tc_ubi_vid_hdr_offset = "default"
-tc_lx_ubi_format_filename = "/home/hs/ccu1/ecl-image-usbc.ubi"
 tc_workfd_apply_patchwork_patches_list = []
 tc_workfd_apply_patchwork_patches_list_hand = []
 tc_workfd_apply_patchwork_patches_blacklist = []
