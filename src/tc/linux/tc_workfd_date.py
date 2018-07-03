@@ -21,7 +21,7 @@
 # don;t forget to describe here variables you use in
 # your testcase. Format
 #
-# - varname
+# - tb.config.varname
 #|  some text, which describes the function of the variable
 #|  default: and of course, say what is the default value
 #

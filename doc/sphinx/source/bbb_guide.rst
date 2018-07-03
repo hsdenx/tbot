@@ -805,6 +805,9 @@ tbot write a testcase
 ToDo
 
 - copy a already existing one
+| https://github.com/hsdenx/tbot/blob/master/src/tc/tc_dummy.py
+| https://github.com/hsdenx/tbot/blob/master/src/tc/linux/tc_workfd_date.py
+
 - modify it for your needs
 
 tbot function name glossar
