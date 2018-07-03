@@ -1,12 +1,10 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_linux_relay_set.py
 # set relay port with the simple cmd to state
 # find the c source code for the simple cmd in src/files/relay/simple.c
 #
-# tb.config.tc_linux_relay_simple_set_sudo if 'yes' "sudo" is perpended to
+# tb.config.tc_linux_relay_simple_set_sudo if 'yes' "sudo" is prwpended to
 # tb.config.tc_linux_relay_simple_set_cmd and if password is needed, password
 # is searched in password.py with board = tb.config.ip and user = tb.config.user + '_sudo'
 #
@@ -16,7 +14,7 @@ from tbotlib import tbot
 
 tb.workfd = tb.c_ctrl
 
-logging.info("args: %s %s %s", tb.workfd.name, tb.config.tc_linux_relay_simple_set_sudo, tb.config.tc_linux_relay_simple_set_cmd)
+logging.info("args: %s", tb.workfd.name)
 
 if tb.config.tc_linux_relay_simple_set_sudo != 'none':
     pre = 'sudo '

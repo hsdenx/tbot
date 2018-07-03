@@ -1,13 +1,13 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_linux_relay_set.py
 # set relay port tb.config.tc_linux_relay_set_port to state
 # tb.config.tc_linux_relay_set_state.
 #
 # you need to adapt tc_linux_relay_get_config.py, which does
 # the mapping from port/state to your specific lab settings.
+#
+# used variables
 #
 # End:
 
@@ -31,8 +31,8 @@ if __name__ == "tbotlib":
         port = tb.arguments.split()[0]
         state = tb.arguments.split()[1]
     else:
-        port = tb.config.tc_linux_relay_set_port
-        state = tb.config.tc_linux_relay_set_state
+        loggin.error("Please set port / state")
+        tb.end_tc(False)
 
     ret = linux_relay_set_port(tb, tb.c_ctrl, port, state)
     tb.end_tc(ret)
