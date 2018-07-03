@@ -2,7 +2,7 @@
 #
 # Description:
 #
-# switch bootmode for the bbb
+# switch bootmode for the bbb in the denx vlab
 #
 # - power off the board
 # - set bootmode
