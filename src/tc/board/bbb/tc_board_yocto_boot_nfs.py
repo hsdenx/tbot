@@ -7,16 +7,27 @@
 # - boot linux with "run net_nfs"
 # - call tc_board_yocto_install_sdcard.py
 #
+# used variables
+#
+# - tb.config.linux_user_nfsrootfs
+#| nfs rootfs username
+#| default: ''
+#
+# - tb.config.linux_prompt_default_nfsrootfs
+#| default prompt from nfs rootfs
+#| default: ''
+#
 # End:
 
 from tbotlib import tbot
 
+logging.info("args: %s %s", tb.workfd.name, tb.config.tc_board_bootmode_tc)
 try:
     tb.config.tc_board_bootmode_tc
 except:
     tb.end_tc(False)
-
-logging.info("args: %s %s", tb.workfd.name, tb.config.tc_board_bootmode_tc)
+tb.define_variable('linux_user_nfsrootfs', '')
+tb.define_variable('linux_prompt_default_nfsrootfs', '')
 
 tb.config.tc_board_bootmode = 'normal'
 tb.eof_call_tc(tb.config.tc_board_bootmode_tc)
