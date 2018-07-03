@@ -10,16 +10,18 @@
 # so call this testcase after logging into linux
 # and wait until this string is read ...
 #
+#
+# used variables
+#
+# - tb.config.bbb_check_crng_init
+#| wait for string "crng init"
+#| default: 'yes'
+#
 # End:
 
 from tbotlib import tbot
 
-try:
-    tb.config.bbb_check_crng_init
-except:
-    tb.config.bbb_check_crng_init = 'yes'
-
-logging.info("args: %s", tb.config.bbb_check_crng_init)
+tb.define_variable('bbb_check_crng_init', 'yes')
 
 if tb.config.bbb_check_crng_init == 'yes':
     tb.c_con.expect_string('crng init')
