@@ -2,7 +2,11 @@
 #
 # Description:
 #
-# - install sd card image onto sd card
+# install sd card image from
+# /boot/ + tb.config.rootfs_sdcard_file into
+# of=/dev/mmcblk + devnr
+#
+# devnr gets detected with 'dmesg | grep mmc | grep SD'
 #
 # End:
 
@@ -11,14 +15,12 @@ from tbotlib import tbot
 tb.config.bbb_check_crng_init = 'no'
 tb.set_board_state("linux")
 
-print("data ", tb.c_con.data)
 # get sd card device
 # dmesg | grep mmc | grep SD
 # [    3.339339] mmc0: new high speed SDHC card at address aaaa
 cmd = 'dmesg | grep mmc | grep SD'
 tb.eof_write_cmd_get_line(tb.c_con, cmd)
 
-print("data ", tb.c_con.data)
 dev = tb.ret_write_cmd_get_line.split(':')[0]
 if ']' in dev:
     dev = dev.split(']')[1]
