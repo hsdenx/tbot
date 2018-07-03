@@ -3,12 +3,13 @@
 # Description:
 #
 # switch bootmode for the bbb
+# in the lab tbot2go.
 #
 # - power off the board
 # - set bootmode
-#   2 states:
-#   normal: we use emmc
-#   recovery: we boot from sd card
+#|   2 states:
+#|   normal: we use emmc
+#|   recovery: we boot from sd card
 #
 # End:
 
