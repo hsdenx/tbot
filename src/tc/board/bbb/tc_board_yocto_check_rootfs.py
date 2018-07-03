@@ -5,6 +5,10 @@
 # check if in booted rootfs, the rootfs version is the
 # same as in tb.config.tc_yocto_get_rootfs_from_tarball_rootfs_version
 #
+# If tb.config.tc_yocto_get_rootfs_from_tarball_rootfs_version is not set
+# try to get it from tb.config.yocto_results_dir_lab + tb.config.rootfs_tar_file
+# with testcase tc_yocto_get_rootfs_from_tarball.py
+#
 # End:
 
 from tbotlib import tbot
