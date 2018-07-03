@@ -12,12 +12,7 @@
 
 from tbotlib import tbot
 
-try:
-    tb.config.tc_xenomai_latency_lcmd
-except:
-    tb.config.tc_xenomai_latency_lcmd = '/usr/xenomai/bin/latency'
-
-logging.info("arg: %s cmd: %s", tb.workfd.name, tb.config.tc_xenomai_latency_lcmd)
+logging.info("arg: %s", tb.workfd.name)
 
 tb.set_board_state("linux")
 save = tb.workfd

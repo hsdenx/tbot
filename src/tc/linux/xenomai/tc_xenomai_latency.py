@@ -16,6 +16,8 @@
 # lines are read. While running it checks if the value
 # of the column "lat max" is lower than tb.config.tc_xenomai_latency_max
 # Than this testcase ends with True, else Testcase ends with False.
+#
+# If the value from column 'overrun' != 0 Testcase fails.
 # 
 # At the end of this tetscase, it creates the png images
 # of the files tb.config.tc_xenomai_latency_datfile
@@ -27,52 +29,53 @@
 # src/files/balkenplot_latency.sem
 # are used.
 #
+# used variables
+#
+# - tb.config.tc_xenomai_latency_lcmd
+#| latency command
+#| default: '/usr/xenomai/bin/latency'
+#
+# - tb.config.tc_xenomai_latency_tmpfile
+#| if != 'none' add paramter "-g" to latency command
+#| with filename tb.config.tc_xenomai_latency_tmpfile
+#| default: '/tmp/latency.dat'
+#
+# - tb.config.tc_xenomai_latency_datfile
+#| name of latency results file on lab PC
+#| default: 'lat_tbot.dat'
+#
+# - tb.config.tc_xenomai_latency_datfile2
+#| name of latency results file on Host PC
+#| default: 'latency_tbot.dat'
+#
+# - tb.config.tc_xenomai_latency_count
+#| number of lines containing 'RTD' read, before
+#| Testcase ends latency command.
+#| default: '100'
+#
+# - tb.config.tc_xenomai_latency_max
+#| maximum value which is allowed in latency output column
+#| 'max'. If a value > tb.config.tc_xenomai_latency_max
+#| Testcase fails with error.
+#| default: '42'
+#
+# - tb.config.tc_xenomai_latency_opt
+#| latency options added to tb.config.tc_xenomai_latency_lcmd
+#| default: 'none'
+#
 # End:
 
 from tbotlib import tbot
 
-try:
-    tb.config.tc_xenomai_latency_lcmd
-except:
-    tb.config.tc_xenomai_latency_lcmd = '/usr/xenomai/bin/latency'
+tb.define_variable('tc_xenomai_latency_lcmd', '/usr/xenomai/bin/latency')
+tb.define_variable('tc_xenomai_latency_tmpfile', '/tmp/latency.dat')
+tb.define_variable('tc_xenomai_latency_datfile', 'lat_tbot.dat')
+tb.define_variable('tc_xenomai_latency_datfile2', 'latency_tbot.dat')
+tb.define_variable('tc_xenomai_latency_count', '100')
+tb.define_variable('tc_xenomai_latency_max', '42')
+tb.define_variable('tc_xenomai_latency_opt', 'none')
 
-try:
-    tb.config.tc_xenomai_latency_tmpfile
-except:
-    tb.config.tc_xenomai_latency_tmpfile = '/tmp/latency.dat'
-
-try:
-    tb.config.tc_xenomai_latency_datfile
-except:
-    tb.config.tc_xenomai_latency_datfile = 'lat_tbot.dat'
-
-try:
-    tb.config.tc_xenomai_latency_datfile2
-except:
-    tb.config.tc_xenomai_latency_datfile2 = 'latency_tbot.dat'
-
-try:
-    tb.config.tc_xenomai_latency_count
-except:
-    tb.config.tc_xenomai_latency_count = '100'
-
-try:
-    tb.config.tc_xenomai_latency_max
-except:
-    tb.config.tc_xenomai_latency_max = '42'
-
-try:
-    tb.config.tc_xenomai_latency_opt
-except:
-    tb.config.tc_xenomai_latency_opt = ''
-
-logging.info("arg: %s cmd: %s", tb.workfd.name, tb.config.tc_xenomai_latency_lcmd)
-logging.info("arg: tmpfile: %s", tb.config.tc_xenomai_latency_tmpfile)
-logging.info("arg: datfile: %s", tb.config.tc_xenomai_latency_datfile)
-logging.info("arg: datfile2: %s", tb.config.tc_xenomai_latency_datfile2)
-logging.info("arg: count: %s", tb.config.tc_xenomai_latency_count)
-logging.info("arg: max: %s", tb.config.tc_xenomai_latency_max)
-logging.info("arg: opt: %s", tb.config.tc_xenomai_latency_opt)
+logging.info("arg: %s", tb.workfd.name)
 
 tb.set_board_state("linux")
 save = tb.workfd
@@ -82,10 +85,10 @@ tb.config.tc_workfd_check_if_cmd_exist_cmdname = tb.config.tc_xenomai_latency_lc
 tb.eof_call_tc("tc_workfd_check_if_cmd_exist.py")
 
 cmd = tb.config.tc_xenomai_latency_lcmd
-if tb.config.tc_xenomai_latency_tmpfile != '':
+if tb.config.tc_xenomai_latency_tmpfile != 'none':
     cmd += ' -g ' + tb.config.tc_xenomai_latency_tmpfile
 
-if tb.config.tc_xenomai_latency_opt != '':
+if tb.config.tc_xenomai_latency_opt != 'none':
     cmd += ' ' + tb.config.tc_xenomai_latency_opt
 
 tb.eof_write(c, cmd)
