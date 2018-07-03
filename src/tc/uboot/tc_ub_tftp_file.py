@@ -4,27 +4,9 @@
 # load file tb.config.tc_ub_tftp_file_name to tb.config.tc_ub_tftp_file_addr
 # with tftp command in uboot
 #
-# used variables
-#
-# - tb.config.tc_ub_tftp_file_addr
-#| ram address to which the file gets loaded
-#| default: tb.config.ub_load_board_env_addr
-#
-# - tb.config.tc_ub_tftp_file_name
-#| file name for the tftp command
-#| default: ''
-#
-# - tb.config.tc_ub_tftp_path
-#| tftp boot directory path for tftp U-Boot command
-#| default: tb.config.tftpboardname + '/' + tb.config.ub_load_board_env_subdir
-#
 # End:
 
 from tbotlib import tbot
-
-tb.define_variable('tc_ub_tftp_path', tb.config.tftpboardname + '/' + tb.config.ub_load_board_env_subdir)
-tb.define_variable('tc_ub_tftp_file_addr', tb.config.ub_load_board_env_addr)
-tb.define_variable('tc_ub_tftp_file_name', tb.config.tc_ub_tftp_path + '/env.txt')
 
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
