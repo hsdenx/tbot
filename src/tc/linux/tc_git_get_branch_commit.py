@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -c tbot.cfg -t tc_git_get_branch_commit.py
 # get current branch, commit from git tree in directory
 # tb.config.tc_git_get_branch_commit_tree
 #
@@ -11,11 +9,30 @@
 # tb.config.tc_git_get_branch_commit_branch
 # tb.config.tc_git_get_branch_commit_commit
 #
+# used variables
+#
+# - tb.config.tc_git_get_branch_commit_tree
+#|  path to the git tree, for which infos get collected
+#|  default: ''
+#
+# - tb.config.tc_git_get_branch_commit_dirty
+#| is tree tb.config.tc_git_get_branch_commit_tree dirty
+#| default: no default, get set on runtime of tc_git_get_branch_commit.py
+#
+# - tb.config.tc_git_get_branch_commit_branch
+#| current branch of tree tb.config.tc_git_get_branch_commit_tree
+#| default: no default, get set on runtime of tc_git_get_branch_commit.py
+#
+# - tb.config.tc_git_get_branch_commit_commit
+#| current commit of tree tb.config.tc_git_get_branch_commit_tree
+#| default: no default, get set on runtime of tc_git_get_branch_commit.py
+#
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: %s %s", tb.workfd, tb.config.tc_git_get_branch_commit_tree)
+tb.define_variable('tc_git_get_branch_commit_tree', '')
+logging.info("args: %s", tb.workfd)
 
 c = tb.workfd
 
