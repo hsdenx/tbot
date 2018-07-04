@@ -13,13 +13,33 @@
 # tb.config.connect_to_compilepc_ssh_opt, tb.config.connect_to_compilepc_ssh_cmd_prompt
 # could also be a list of strings.
 #
+# used variables
+#
+# - tb.config.compile_pc_ip
+#| ip address to the compile PC
+#| default: ''
+#
+# - tb.config.compile_pc_user
+#| login user name of compile PC
+#| default:
+#
+# - tb.config.connect_to_compilepc_ssh_opt
+#| ssh options for the ssh command for logging into compile PC
+#| default:
+#
+# - tb.config.connect_to_compilepc_ssh_cmd_prompt
+#| prompt of the compile PC, after login
+#| default:
+#
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: workfd %s %s %s %s %s", tb.workfd.name, tb.config.compile_pc_ip, tb.config.compile_pc_user,
-             tb.config.connect_to_compilepc_ssh_opt,
-             tb.config.connect_to_compilepc_ssh_cmd_prompt)
+tb.define_variable('compile_pc_ip', '')
+tb.define_variable('compile_pc_user', '')
+tb.define_variable('connect_to_compilepc_ssh_opt', '')
+tb.define_variable('connect_to_compilepc_ssh_cmd_prompt', '')
+logging.info("args: workfd %s", tb.workfd.name)
 
 tb.set_board_state('lab')
 
