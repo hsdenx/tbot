@@ -1,21 +1,24 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# check if process with name
+# check if proces with name
 # tb.config.tc_workfd_check_if_process_run_name
 # runs
+#
+# used variables
+#
+# - tb.config.tc_workfd_check_if_process_run_name
+#| check if process with name tb.config.tc_workfd_check_if_process_run_name
+#| runs.
+#| default: 'none'
 #
 # End:
 
 from tbotlib import tbot
 
-try:
-    tb.config.tc_workfd_check_if_process_run_name
-except:
-    tb.config.tc_workfd_check_if_process_run_name = 'none'
+tb.define_variable('tc_workfd_check_if_process_run_name', 'none')
 
-
-logging.info("args: workfd %s %s", tb.workfd.name, tb.config.tc_workfd_check_if_process_run_name)
+logging.info("args: workfd %s", tb.workfd.name)
 
 tb.eof_write_cmd_get_line(tb.workfd, "ps | grep " + tb.config.tc_workfd_check_if_process_run_name + " | wc -l")
 
