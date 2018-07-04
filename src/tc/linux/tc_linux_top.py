@@ -6,16 +6,8 @@
 # with the top cmdline arguments tb.config.tc_linux_top_count
 # and tb.config.tc_linux_top_sec
 #
-# amd analyses the output and write them into the file
+# and analyses the output and write them into the file
 # tb.config.tc_linux_top_filename in a gnuplot format.
-#
-# used config vars.
-# tb.config.tc_linux_top_count top count argument
-#   default: '10'
-# tb.config.tc_linux_top_sec top seconds argument
-#   default: '2'
-# tb.config.tc_linux_top_filename filename where the results are stored
-#   default: 'top-stat.dat'
 #
 # create the images with gnuplot:
 #
@@ -39,27 +31,31 @@
 # you should remove the line
 # tb.config.create_documentation_auto = 'linux_top'
 #
+# used variables
+#
+# - tb.config.tc_linux_top_count
+#| top count argument
+#| default: '10'
+#
+# - tb.config.tc_linux_top_sec
+#| top seconds argument
+#| default: '2'
+#
+# - tb.config.tc_linux_top_filename
+#| filename where the results are stored
+#| default: 'top-stat.dat'
+#
+#
 # End:
 
 from tbotlib import tbot
 import re
 
-try:
-    tb.config.tc_linux_top_count
-except:
-    tb.config.tc_linux_top_count = '100'
+tb.define_variable('tc_linux_top_count', '100')
+tb.define_variable('tc_linux_top_sec', '2')
+tb.define_variable('tc_linux_top_filename', 'top-stat.dat')
 
-try:
-    tb.config.tc_linux_top_sec
-except:
-    tb.config.tc_linux_top_sec = '2'
-
-try:
-    tb.config.tc_linux_top_filename
-except:
-    tb.config.tc_linux_top_filename = 'top-stat.dat'
-
-logging.info("arg: %s %s %s %s", tb.workfd.name, tb.config.tc_linux_top_count, tb.config.tc_linux_top_sec, tb.config.tc_linux_top_filename)
+logging.info("arg: %s", tb.workfd.name)
 
 self.event.create_event('main', self.config.boardname, "DUTS_LINUX_TOP_COUNT", tb.config.tc_linux_top_count)
 self.event.create_event('main', self.config.boardname, "DUTS_LINUX_TOP_SEC", tb.config.tc_linux_top_sec)
