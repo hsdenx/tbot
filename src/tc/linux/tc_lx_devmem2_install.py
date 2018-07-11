@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lx_devmem2_install.py
 # get devmem2 source from www.lartmaker.nl/lartware/port/devmem2.c
 # and install it
 # End:
