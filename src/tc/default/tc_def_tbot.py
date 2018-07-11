@@ -25,6 +25,10 @@
 #| if 'yes' board has a debugger
 #| default: 'no'
 #
+# - tb.config.lab_tmp_dir
+#| directory on lab PC, where tbot stores temporary files.
+#| default: '/var/tmp'
+#
 # End:
 
 from tbotlib import tbot
@@ -34,6 +38,15 @@ tb.define_variable('tc_lab_source_dir', '/work/hs/tbot')
 tb.define_variable('tc_workfd_work_dir', tb.config.tc_lab_source_dir)
 tb.define_variable('tc_workfd_tbotfiles_dir', tb.config.tc_workfd_work_dir + '/tmpfiles')
 tb.define_variable('board_has_debugger', 'no')
+tb.define_variable('lab_tmp_dir', '/var/tmp')
+
+# set all path variables with an ending os.sep
+if not tb.config.lab_tmp_dir.endwith(os.sep):
+    tb.config.lab_tmp_dir + os.sep
+if not tb.config.tc_lab_source_dir.endwith(os.sep):
+    tb.config.tc_lab_source_dir + os.sep
+if not tb.config.tc_workfd_work_dir.endwith(os.sep):
+    tb.config.tc_workfd_work_dir + os.sep
 
 tb.gotprompt = True
 tb.end_tc(True)
