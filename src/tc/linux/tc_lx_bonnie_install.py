@@ -1,14 +1,16 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lx_bonnie_install.py
 # get bonnie source and install it
+#
+# go into tbot workdir with tc_workfd_goto_tbot_workdir.py
+# check, if bonnie++ is installed.
+#
+# if not, try to download and install it.
+#
 # End:
 
 from tbotlib import tbot
-
-logging.info("args: %s", tb.config.tc_workfd_work_dir)
 
 # set board state for which the tc is valid
 tb.set_board_state("linux")

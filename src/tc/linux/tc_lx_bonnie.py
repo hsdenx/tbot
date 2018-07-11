@@ -1,17 +1,28 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lx_bonnie.py
 # run a bonnie test, if timer tc_workfd_check_tc_time.py timed out
-# - try to install bonnie if not is installed tc_lx_bonnie_install.py
+# - if bonnie is not installed, try to install bonnie with
+#|  tc_lx_bonnie_install.py
 # - start bonnie on device tb.config.tc_lx_bonnie_dev with
-#   size tb.config.tc_lx_bonnie_sz
+#|   size tb.config.tc_lx_bonnie_sz
+#
+# used variables
+#
+# - tb.config.tc_lx_bonnie_dev
+#| device used for bonnie
+#| default: '/dev/sda1'
+#
+# - tb.config.tc_lx_bonnie_sz
+#| bonnie size
+#| default: '968'
+#
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: %s %s", tb.config.tc_lx_bonnie_dev, tb.config.tc_lx_bonnie_sz)
+tb.define_variable('tc_lx_bonnie_dev', '/dev/sda1')
+tb.define_variable('tc_lx_bonnie_sz', '968')
 
 # set board state for which the tc is valid
 tb.set_board_state("linux")
