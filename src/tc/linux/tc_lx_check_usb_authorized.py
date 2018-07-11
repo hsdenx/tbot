@@ -1,15 +1,20 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lx_check_usb_authorized.py
 # check if usb device tb.config.tc_lx_check_usb_authorized needs authorizing
+#
+# used variables
+#
+# - tb.config.tc_lx_check_usb_authorized
+#| usb device string
+#| default: 'usb 1-1'
+#
 # End:
 
 import time
 from tbotlib import tbot
 
-logging.info("%s", tb.config.tc_lx_check_usb_authorized)
+tb.define_variable('tc_lx_check_usb_authorized', 'usb 1-1')
 
 # set board state for which the tc is valid
 tb.set_board_state("linux")

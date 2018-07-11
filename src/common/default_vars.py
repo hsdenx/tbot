@@ -34,7 +34,6 @@ tc_lx_eeprom_wp_sz = "4096"
 tc_lx_eeprom_wp_obs = "32"
 tc_lx_eeprom_wp_wc = "128"
 tc_lx_cpufreq_frequences = ['294']
-tc_lx_check_usb_authorized = 'usb 1-1'
 tc_workfd_check_if_file_exists_name = "bonnie++-1.03e.tgz"
 tc_workfd_check_if_dir_exists_name = "mtd-utils"
 tc_lx_dmesg_grep_name = "zigbee"
