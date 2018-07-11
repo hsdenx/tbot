@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lx_check_reg_file.py
 # checks if the default values in reg file tb.config.tc_lx_create_reg_file_name
 # on the tbot host in tb.workdir have the same values, as the
 # registers on the board. Needs devmem2 installed.
@@ -16,14 +14,18 @@
 # bin to the rootfs, and start it with 'sudo ...'
 #
 # ToDo: use the file from the lab host, not the tbot host
+#
+# used variables
+#
+# - tb.config.devmem2_pre
+#| path to devmem2 command
+#| default: ''
+#
 # End:
 
 from tbotlib import tbot
 
-try:
-    tb.config.devmem2_pre
-except:
-    tb.config.devmem2_pre = ''
+tb.define_variable('devmem2_pre', '')
 
 logging.info("args: %s", tb.config.tc_lx_create_reg_file_name)
 

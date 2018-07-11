@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lx_create_reg_file.py
 # creates a reg file tb.config.tc_lx_create_reg_file_name on the tbot host
 # in tb.workdir
 # read from tb.config.tc_lx_create_reg_file_start to tb.config.tc_lx_create_reg_file_stop
@@ -20,18 +18,41 @@
 # bin to the rootfs, and start it with 'sudo ...'
 #
 # ToDo: use the file from the lab host, not the tbot host
+#
+# used variables
+#
+# - tb.config.tc_lx_create_reg_file_name
+#| name of the register file
+#| default: 'pinmux.reg'
+#
+# - tb.config.tc_lx_create_reg_file_start
+#| start address of registerdump
+#| default: '0x44e10800'
+#
+# - tb.config.tc_lx_create_reg_file_stop
+#| end address for register dump
+#| default: '0x44e10a34'
+#
+# - tb.config.tc_lx_readreg_mask
+#| used mask
+#| default: '0xffffffff'
+#
+# - tb.config.tc_lx_readreg_type
+#| devmem2 type for reading register
+#| default: 'w'
+#
 # End:
 
 from tbotlib import tbot
 
 tb.workfd = tb.c_con
 
-try:
-    tb.config.devmem2_pre
-except:
-    tb.config.devmem2_pre = ''
-
-logging.info("args: %s %s %s %s %s %s", tb.config.tc_lx_create_reg_file_name, tb.config.tc_lx_create_reg_file_start, tb.config.tc_lx_create_reg_file_stop, tb.config.tc_lx_readreg_mask, tb.config.tc_lx_readreg_type, tb.config.devmem2_pre)
+tb.define_variable('tc_lx_create_reg_file_name', 'pinmux.reg')
+tb.define_variable('tc_lx_create_reg_file_start', '0x44e10800')
+tb.define_variable('tc_lx_create_reg_file_stop', '0x44e10a34')
+tb.define_variable('tc_lx_readreg_mask', '0xffffffff')
+tb.define_variable('tc_lx_readreg_type', 'w')
+tb.define_variable('devmem2_pre', '')
 
 # set board state for which the tc is valid
 tb.set_board_state("linux")

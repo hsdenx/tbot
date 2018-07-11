@@ -38,11 +38,6 @@ tc_lx_check_usb_authorized = 'usb 1-1'
 tc_workfd_check_if_file_exists_name = "bonnie++-1.03e.tgz"
 tc_workfd_check_if_dir_exists_name = "mtd-utils"
 tc_lx_dmesg_grep_name = "zigbee"
-tc_lx_readreg_mask = "0x000000ff"
-tc_lx_readreg_type = "w"
-tc_lx_create_reg_file_name = "pinmux.reg"
-tc_lx_create_reg_file_start = "0x44e10800"
-tc_lx_create_reg_file_stop = "0x44e10a34"
 tc_lx_regulator_nrs = ['0 regulator-dummy -', '1 hsusb1_vbus 5000000',
 		'2 vmmc 3300000', '3 pbias_mmc_omap2430 3000000',
 		'4 DCDC1 1200000', '5 DCDC2 3300000', '6 DCDC3 1800000',
