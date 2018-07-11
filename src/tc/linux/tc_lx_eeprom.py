@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lx_eeprom.py
 # Test an eeprom:
 # - read the content from eeprom @ tb.config.tc_lx_eeprom_tmp_dir
 #   with "cat" into tmpfile
@@ -13,13 +11,49 @@
 # - reread it
 # - compare it with original
 # - restore original eeprom content at end
+#
+# used variables
+#
+# - tb.config.tc_lx_eeprom_file
+#| linux path to eeprom
+#| default: '/sys/class/i2c-dev/i2c-0/device/0-0050/eeprom'
+#
+# - tb.config.tc_lx_eeprom_tmp_dir
+#| temp directory, where eeprom content get stored
+#| default: tb.config.lab_tmp_dir
+#
+# - tb.config.tc_lx_eeprom_wp_gpio
+#| if 'none' check only if eeprom is readable
+#| else check also if wp pin tb.config.tc_lx_eeprom_wp_gpio works
+#| default: 'none'
+#
+# - tb.config.tc_lx_eeprom_wp_val
+#| gpio protected state '0' or '1'
+#| default: '0'
+#
+# - tb.config.tc_lx_eeprom_wp_sz
+#| size of eeprom test
+#| default: '4096'
+#
+# - tb.config.tc_lx_eeprom_wp_obs
+#| dd obs size for writting into eeprom
+#| default: '32'
+#
+# - tb.config.tc_lx_eeprom_wp_wc
+#| dd count size for writting into eeprom
+#| default: '128'
+#
 # End:
 
 from tbotlib import tbot
 
-# here starts the real test
-logging.info("args: %s %s %s", tb.config.tc_lx_eeprom_file, tb.config.tc_lx_eeprom_tmp_dir, tb.config.tc_lx_eeprom_wp_gpio)
-logging.info("args: %s %s %s %s", tb.config.tc_lx_eeprom_wp_val, tb.config.tc_lx_eeprom_wp_sz, tb.config.tc_lx_eeprom_wp_obs, tb.config.tc_lx_eeprom_wp_wc)
+tb.define_variable('tc_lx_eeprom_file', '/sys/class/i2c-dev/i2c-0/device/0-0050/eeprom')
+tb.define_variable('tc_lx_eeprom_tmp_dir', tb.config.lab_tmp_dir)
+tb.define_variable('tc_lx_eeprom_wp_gpio', 'none')
+tb.define_variable('tc_lx_eeprom_wp_val', '0')
+tb.define_variable('tc_lx_eeprom_wp_sz', '4096')
+tb.define_variable('tc_lx_eeprom_wp_obs', '32')
+tb.define_variable('tc_lx_eeprom_wp_wc', '128')
 
 # set board state for which the tc is valid
 tb.set_board_state("linux")
