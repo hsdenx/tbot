@@ -1,15 +1,20 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lx_cpufreq.py
 # check if frequencies in tb.config.tc_lx_cpufreq_frequences
 # are possible to set with cpufreq-info
+#
+# used variables
+#
+# - tb.config.tc_lx_cpufreq_frequences
+#| list of frequencies
+#| default: "['294']"
+#
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: %s", tb.config.tc_lx_cpufreq_frequences)
+tb.define_variable('tc_lx_cpufreq_frequences', "['294']")
 
 def change_freq(tb, c, freq):
     # cpufreq-set -g performance
