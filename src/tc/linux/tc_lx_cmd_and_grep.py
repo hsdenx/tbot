@@ -7,39 +7,44 @@
 # for each command save the output in a temporary file, and
 # search that all strings in key="cmd" are in the temporary file.
 #
-# example tb.config.tc_lx_cmd_and_grep
-# tc_lx_cmd_and_grep = {"cmds" : ["cat /proc/partitions",
-# 				"cat /proc/mounts"],
-# 		"cat /proc/partitions" :
-#			[
-#				"mmcblk0p1",
-#				"mmcblk0p2",
-#			]
-# 		,
-# 		"cat /proc/mounts" : [
-# 			"/ squashfs ro,noatime 0 0",
-# 			"tmp /tmp tmpfs rw,relatime 0 0",
-# 		]}
+# used variables
 #
-# This will do:
-# - "cat /proc/partitions > gnlmpf"
-# - search if gnlmpf contains the strings "mmcblk0p1" and "mmcblk0p2"
-# - "cat /proc/mounts > gnlmpf"
-# - search if gnlmpf contains the strings
-#   "/ squashfs ro,noatime 0 0"
-#   "tmp /tmp tmpfs rw,relatime 0 0"
+# - tb.config.tc_lx_cmd_and_grep
+#| dictionary with key="cmds" value is a list of commands.
+#| Each command get exectuted and in the command output
+#| the list of strings stored in the dictionary with the
+#| key=command get searched.
+#|
+#| example tb.config.tc_lx_cmd_and_grep
+#| tc_lx_cmd_and_grep = {"cmds" : ["cat /proc/partitions",
+#| 				"cat /proc/mounts"],
+#| 		"cat /proc/partitions" :
+#|			[
+#|				"mmcblk0p1",
+#|				"mmcblk0p2",
+#|			]
+#| 		,
+#| 		"cat /proc/mounts" : [
+#| 			"/ squashfs ro,noatime 0 0",
+#| 			"tmp /tmp tmpfs rw,relatime 0 0",
+#| 		]}
+#|
+#| This will do:
+#| - "cat /proc/partitions > gnlmpf"
+#| - search if gnlmpf contains the strings "mmcblk0p1" and "mmcblk0p2"
+#| - "cat /proc/mounts > gnlmpf"
+#| - search if gnlmpf contains the strings
+#|   "/ squashfs ro,noatime 0 0"
+#|   "tmp /tmp tmpfs rw,relatime 0 0"
+#|
 #
 # End:
 
 from tbotlib import tbot
 
-try:
-    tb.config.tc_lx_cmd_and_grep
-except:
-    logging.warn("not configured, please set tb.config.tc_lx_cmd_and_grep")
-    tb.end_tc(False)
+tb.define_variable('tc_lx_cmd_and_grep', '')
 
-logging.info("args: workfd: %s %s", tb.workfd.name, tb.config.tc_lx_cmd_and_grep)
+logging.info("args: workfd: %s", tb.workfd.name)
 
 c = tb.workfd
 
