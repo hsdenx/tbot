@@ -1,11 +1,9 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lx_mtdutils_install.py
 # check if mtdutils are installed. If not, clone the code with
 # git clone git://git.infradead.org/mtd-utils.git mtd-utils
-# and install it
+# and install it into tb.config.tc_workfd_work_dir
 # End:
 
 from tbotlib import tbot
