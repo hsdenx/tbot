@@ -1,16 +1,30 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lx_gpio.py
 # set in linux gpio tb.config.tc_lx_gpio_nr to direction tb.config.tc_lx_gpio_dir
 # and value tb.config.tc_lx_gpio_val
+#
+# used variables
+#
+# - tb.config.tc_lx_gpio_nr
+#| gpio number
+#| default: '69'
+#
+# - tb.config.tc_lx_gpio_dir
+#| direction to witch gpio get set 'in' or 'out'
+#| default: 'out'
+#
+# - tb.config.tc_lx_gpio_val
+#| state of gpio '0' or '1'
+#| default: '1'
+#
 # End:
 
 from tbotlib import tbot
 
-# here starts the real test
-logging.info("args: %s %s %s", tb.config.tc_lx_gpio_nr, tb.config.tc_lx_gpio_dir, tb.config.tc_lx_gpio_val)
+tb.define_variable('tc_lx_gpio_nr', '69')
+tb.define_variable('tc_lx_gpio_dir', 'out')
+tb.define_variable('tc_lx_gpio_val', '1')
 
 # set board state for which the tc is valid
 tb.set_board_state("linux")
