@@ -20,14 +20,17 @@
 # - tb.config.tc_ubi_min_io_size
 #| ubi minimum io size
 #| http://www.linux-mtd.infradead.org/faq/ubi.html#L_find_min_io_size
+#| may you detect them with testcase tc_lx_get_ubi_parameters.py
 #| default: '1024'
 #
 # - tb.config.tc_ubi_max_leb_cnt
 #| used leb number
+#| may you detect them with testcase tc_lx_get_ubi_parameters.py
 #| default: '100'
 #
 # - tb.config.tc_ubi_leb_size
 #| http://www.linux-mtd.infradead.org/faq/ubi.html#L_find_min_io_size
+#| may you detect them with testcase tc_lx_get_ubi_parameters.py
 #| default: '126976'
 #
 # - tb.config.tc_ubi_vid_hdr_offset
