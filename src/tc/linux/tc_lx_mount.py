@@ -1,16 +1,26 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lx_mount.py
 # mount device tb.config.tc_lx_mount_dev with fs type tb.config.tc_lx_mount_fs_type
 # to tb.config.tc_lx_mount_dir
+#
+# used variables
+#
+# - tb.config.tc_lx_mount_dev
+#| device which get mounted
+#| default: '/dev/sda1'
+#
+# - tb.config.tc_lx_mount_fs_type
+#| fs type for mount command
+#| default: 'ext4'
+#
 # End:
 
 from tbotlib import tbot
 
-# here starts the real test
-logging.info("dev: %s fs_type: %s dir: %s", tb.config.tc_lx_mount_dev, tb.config.tc_lx_mount_fs_type, tb.config.tc_lx_mount_dir)
+tb.define_variable('tc_lx_mount_dev', '/dev/sda1')
+tb.define_variable('tc_lx_mount_fs_type', )
+logging.info("d%s", tb.config.tc_lx_mount_dir)
 
 # set board state for which the tc is valid
 tb.set_board_state("linux")

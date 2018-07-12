@@ -283,6 +283,7 @@ class tbot(object):
         self.check_open_fd(self.c_con)
 
         self.call_tc('tc_def_tbot.py')
+        self.call_tc('tc_def_lx.py')
 
         # try to get the console of the board
         ret = self.connect_to_board(self.config.boardname)
