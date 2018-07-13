@@ -4,22 +4,24 @@
 #
 # connect wit ssh to board, and use it as console
 #
+# used variables
+#
+# - tb.config.connect_with_ssh_user
+#| username for connecting to boards "console"
+#| default: 'root'
+#
+# - tb.config.connect_with_ssh_ip
+#| ip to connect with
+#| default: '192.168.3.23'
+#
 # End:
 
 from tbotlib import tbot
 
-try:
-    tb.config.connect_with_ssh_user
-except:
-    tb.config.connect_with_ssh_user = 'root'
-
-try:
-    tb.config.connect_with_ssh_ip
-except:
-    tb.config.connect_with_ssh_ip = '192.168.3.23'
-
+tb.define_variable('connect_with_ssh_user', 'root')
+tb.define_variable('connect_with_ssh_ip', '192.168.3.23')
 logging.info("args: workdfd: %s", tb.workfd)
-logging.info("args: %s %s %s", tb.config.connect_with_ssh_user, tb.config.connect_with_ssh_ip, tb.config.linux_prompt_default)
+logging.info("args: %s", tb.config.linux_prompt_default)
 
 save = tb.workfd
 tb.workfd = tb.c_con
