@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_connect_with_kermit.py
 # connect with kermit to serials board console
 # - if tb.config.tc_workfd_connect_with_kermit_ssh != 'none'
 #   connect first with ssh to another PC (where kermit is started)
@@ -19,20 +17,55 @@
 #   user:  tb.config.user + '_kermit'
 #   board: tb.config.boardname
 #
+#
+# used variables
+#
+# - tb.config.kermit_line
+#| used serial linux device
+#| default: '/dev/ttyUSB0'
+#
+# - tb.config.kermit_speed
+#| serial line speed
+#| default: '115200'
+#
+# - tb.config.tc_workfd_connect_with_kermit_ssh
+#| call tc_workfd_ssh.py with
+#| tb.config.workfd_ssh_cmd = tb.config.tc_workfd_connect_with_kermit_ssh
+#| default: 'none'
+#
+# - tb.config.tc_workfd_connect_with_kermit_sudo
+#| use sudo for kermit
+#| default: 'none'
+#
+# - tb.config.tc_workfd_connect_with_kermit_rlogin
+#| rlogin string for kermit. If != 'none'
+#| do not 'set line', 'set speed' and 'connect'
+#| default: 'none'
+#
+# - tb.config.tc_workfd_connect_with_kermit_settings
+#| list of additionally kermit parameter, which get
+#| set after 'set line' and 'set speed'
+#| default: '["set carrier-watch off",
+#|        "set handshake none",
+#|        "set flow-control none",
+#|        "robust",
+#|        "set file type bin",
+#|        "set file name lit",
+#|        "set rec pack 1000",
+#|        "set send pack 1000",
+#|        "set window 5",
+#|    ]'
+#
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: workdfd: %s", tb.workfd)
-logging.info("args: ssh: %s", tb.config.tc_workfd_connect_with_kermit_ssh)
-logging.info("args: sudo: %s", tb.config.tc_workfd_connect_with_kermit_sudo)
-logging.info("args: kermit: %s %s", tb.config.kermit_line, tb.config.kermit_speed)
-
-try:
-    tb.config.tc_workfd_connect_with_kermit_settings
-except:
-    tb.config.tc_workfd_connect_with_kermit_settings = [
-        "set carrier-watch off",
+tb.define_variable('tc_workfd_connect_with_kermit_ssh', 'none')
+tb.define_variable('tc_workfd_connect_with_kermit_sudo', 'none')
+tb.define_variable('tc_workfd_connect_with_kermit_rlogin', 'none')
+tb.define_variable('kermit_line', '/dev/ttyUSB0')
+tb.define_variable('kermit_speed', '115200')
+tb.define_variable('tc_workfd_connect_with_kermit_settings', '[ "set carrier-watch off",
         "set handshake none",
         "set flow-control none",
         "robust",
@@ -41,7 +74,8 @@ except:
         "set rec pack 1000",
         "set send pack 1000",
         "set window 5",
-    ]
+    ]')
+logging.info("args: workdfd: %s", tb.workfd)
 
 if tb.config.tc_workfd_connect_with_kermit_ssh != 'none':
     tb.config.workfd_ssh_cmd = tb.config.tc_workfd_connect_with_kermit_ssh
