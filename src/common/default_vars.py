@@ -23,10 +23,6 @@ tc_lab_toolchain_name = "armv5te"
 tc_lx_gpio_val = '1'
 tc_workfd_check_if_file_exists_name = "bonnie++-1.03e.tgz"
 tc_workfd_check_if_dir_exists_name = "mtd-utils"
-tc_lx_regulator_nrs = ['0 regulator-dummy -', '1 hsusb1_vbus 5000000',
-		'2 vmmc 3300000', '3 pbias_mmc_omap2430 3000000',
-		'4 DCDC1 1200000', '5 DCDC2 3300000', '6 DCDC3 1800000',
-		'7 LDO1 1800000', '8 LDO2 3300000']
 tc_workfd_apply_patchwork_patches_list = []
 tc_workfd_apply_patchwork_patches_list_hand = []
 tc_workfd_apply_patchwork_patches_blacklist = []

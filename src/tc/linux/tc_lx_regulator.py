@@ -1,15 +1,25 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lx_regulator.py
 # check if regulators in tb.config.tc_lx_regulator_nrs exist, and have
 # the correct microvolts settings.
+#
+# used variables
+#
+# - tb.config.tc_lx_regulator_nrs
+#| list of regulator strings. one string has 3 values
+#| seperated by a space:
+#| regulator_number name microvoltsvalue
+#| default:
+#
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: %s", tb.config.tc_lx_regulator_nrs)
+tb.define_variable('tc_lx_regulator_nrs', "['0 regulator-dummy -', '1 hsusb1_vbus 5000000',
+                '2 vmmc 3300000', '3 pbias_mmc_omap2430 3000000',
+                '4 DCDC1 1200000', '5 DCDC2 3300000', '6 DCDC3 1800000',
+                '7 LDO1 1800000', '8 LDO2 3300000']")
 
 tb.set_board_state("linux")
 
