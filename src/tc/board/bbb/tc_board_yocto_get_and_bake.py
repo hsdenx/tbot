@@ -47,7 +47,7 @@ for l in tb.config.yocto_check_result_files:
 
 
 # now test some content of the images
-tb.config.tc_workfd_check_tar_content_endtc_onerror = True
+tb.config.tc_workfd_check_tar_content_endtc_onerror = 'yes'
 tb.eof_call_tc("tc_workfd_check_tar_content.py")
 
 for f in tb.config.tc_board_yocto_deploy_files:

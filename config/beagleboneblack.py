@@ -181,7 +181,7 @@ tc_workfd_get_yocto_source_layers = [
 ['git://git.openembedded.org/meta-openembedded', 'pyro', 'none', 'none', 'none', 'none', '', 'meta-openembedded'],
 ]
 
-tc_workfd_check_tar_content_endtc_onerror = 'False'
+tc_workfd_check_tar_content_endtc_onerror = 'no'
 rootfs_tar_file = 'core-image-minimal-beaglebone.tar.bz2'
 rootfs_sdcard_file = 'core-image-minimal-beaglebone.wic'
 tc_workfd_check_tar_content_path = yocto_results_dir + rootfs_tar_file
