@@ -27,7 +27,6 @@ tc_workfd_apply_patchwork_patches_list_hand = []
 tc_workfd_apply_patchwork_patches_blacklist = []
 tc_workfd_get_patchwork_number_list_order = '-delegate'
 tc_workfd_rm_file_name = 'none'
-tc_workfd_cd_name = 'none'
 tc_lab_get_linux_source_git_repo = "/home/git/linux.git"
 tc_lab_get_linux_source_git_repo_user = 'anonymous'
 tc_lab_get_linux_source_git_branch = "master"
