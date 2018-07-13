@@ -5,16 +5,20 @@
 # check, if all strings in tb.config.tc_lx_ps_grep are
 # in ps output.
 #
+#
+# used variables
+#
+# - tb.config.tc_lx_ps_grep
+#| list of strings, which must be in ps output
+#| default: '[]'
+#
 # End:
 
 from tbotlib import tbot
 
-try:
-    tb.config.tc_lx_ps_grep
-except:
-    tb.config.tc_lx_ps_grep = []
+tb.define_variable('tc_lx_ps_grep', '[]')
 
-logging.info("args: workfd: %s %s", tb.workfd.name, tb.config.tc_lx_ps_grep)
+logging.info("args: workfd: %s", tb.workfd.name)
 
 c = tb.workfd
 
