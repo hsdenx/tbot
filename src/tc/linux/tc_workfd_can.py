@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_can.py
 #
 # minimal can test:
 # starts a new connection named tb_canm. This connection runs
@@ -29,13 +27,49 @@
 # - get rid of tb.config.tc_workfd_can_iproute_dir and tb.config.tc_workfd_can_util_dir
 #   (add the commands to rootfs ...)
 # - support different can devices on the CAN PC and board
+#
+# used variables
+#
+# - tb.config.tc_workfd_can_ssh
+#| if != 'no' first ssh to PC on which we have can adapter
+#| default: 'no'
+#
+# - tb.config.tc_workfd_can_ssh_prompt
+#| default login prompt after login
+#| default: '$'
+#
+# - tb.config.tc_workfd_can_su
+#| do we nned sudo for can utilities
+#| default: 'no'
+#
+# - tb.config.tc_workfd_can_iproute_dir
+#| path to iproute2 utilities
+#| default: '/home/hs/iproute2'
+#
+# - tb.config.tc_workfd_can_util_dir
+#| path to can utilities
+#| default: '/home/hs/can-utils'
+#
+# - tb.config.tc_workfd_can_dev
+#| can device used
+#| default: 'can0'
+#
+# - tb.config.tc_workfd_can_bitrate
+#| can bitrate used for test
+#| default: '500000'
+#
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: workfd %s %s %s %s", tb.workfd.name, tb.config.tc_workfd_can_ssh, tb.config.tc_workfd_can_ssh_prompt, tb.config.tc_workfd_can_su)
-logging.info("args: workfd %s %s", tb.config.tc_workfd_can_iproute_dir, tb.config.tc_workfd_can_util_dir)
-logging.info("args: workfd %s %s", tb.config.tc_workfd_can_dev, tb.config.tc_workfd_can_bitrate)
+tb.define_variable('tc_workfd_can_ssh', 'no')
+tb.define_variable('tc_workfd_can_ssh_prompt', '$')
+tb.define_variable('tc_workfd_can_su', 'no')
+tb.define_variable('tc_workfd_can_iproute_dir', '/home/hs/iproute2')
+tb.define_variable('tc_workfd_can_util_dir', '/home/hs/can-utils')
+tb.define_variable('tc_workfd_can_dev', 'can0')
+tb.define_variable('tc_workfd_can_bitrate', '500000')
+logging.info("args: workfd %s", tb.workfd.name)
 
 tb.set_board_state("linux")
 
