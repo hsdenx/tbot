@@ -1,21 +1,40 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_apply_local_patches.py
 # apply patches from directory tb.config.tc_workfd_apply_local_patches_dir
 # with 'git am -3' to the source in current directory.
+#
+# if tb.config.tc_workfd_apply_local_patches_dir == 'none'
+# do nothing.
+#
 # if tb.config.tc_workfd_apply_local_patches_checkpatch_cmd != 'none'
 # check the patches with the checkpatch cmd tb.config.tc_workfd_apply_local_patches_checkpatch_cmd
 # before applying.
+#
+# used variables
+#
+# - tb.config.tc_workfd_apply_local_patches_dir
+#| path to patches which testcase should apply with "git am -3"
+#| default: 'none'
+#
+# - tb.config.tc_workfd_apply_local_patches_checkpatch_cmd
+#| if != 'none' contains command for checking patch
+#| for styling errors (normaly with checkpatch)
+#| default: 'none'
+#
+# - tb.config.tc_workfd_apply_local_patches_checkpatch_cmd_strict
+#| if 'yes' return testcase with failure if checkpatch finds
+#| errors.
+#| default: 'no'
+#
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: workfd: %s %s %s %s", tb.workfd,
-             tb.config.tc_workfd_apply_local_patches_dir,
-             tb.config.tc_workfd_apply_local_patches_checkpatch_cmd,
-             tb.config.tc_workfd_apply_local_patches_checkpatch_cmd_strict)
+tb.define_variable('tc_workfd_apply_local_patches_dir', 'none')
+tb.define_variable('tc_workfd_apply_local_patches_checkpatch_cmd', 'none')
+tb.define_variable('tc_workfd_apply_local_patches_checkpatch_cmd_strict', 'no')
+logging.info("args: workfd: %s", tb.workfd)
 
 if tb.config.tc_workfd_apply_local_patches_dir == 'none':
    tb.end_tc(True)
