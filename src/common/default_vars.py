@@ -11,7 +11,6 @@ wdt_timeout = '120' # wdt timeout after 2 minutes
 state_linux_timeout = 4
 labsshprompt = '$ '
 tc_return = True
-tc_workfd_check_if_cmd_exist_cmdname = 'none'
 ub_boot_linux_cmd = 'run tbot_boot_linux'
 do_connect_to_board = True
 tftpboardname = 'config.boardname'

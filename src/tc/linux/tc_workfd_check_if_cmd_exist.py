@@ -1,15 +1,21 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_check_if_cmd_exist.py
-# check if a command exists
+# check if a command tb.config.tc_workfd_check_if_cmd_exist_cmdname
+# exists
+#
+# used variables
+#
+# - tb.config.tc_workfd_check_if_cmd_exist_cmdname
+#| command name which gets checked
+#| default: 'none'
+#
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: workfd %s %s", tb.workfd,
-             tb.config.tc_workfd_check_if_cmd_exist_cmdname)
+tb.define_variable('tc_workfd_check_if_cmd_exist_cmdname', 'none')
+logging.info("args: workfd %s", tb.workfd)
 
 tmp = 'command -v ' + tb.config.tc_workfd_check_if_cmd_exist_cmdname + ' >/dev/null 2>&1 || { echo >&2 "not installed.";}'
 tb.eof_write(tb.workfd, tmp)
