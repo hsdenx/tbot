@@ -43,11 +43,11 @@ tb.eof_call_tc("tc_ub_ubi_info.py")
 #create rootfs (needed for ubifs tests, also for linux tests)
 tb.workfd = tb.c_ctrl
 tb.eof_call_tc("tc_workfd_generate_random_file.py")
-tb.tc_workfd_cp_file_a = tb.tc_workfd_generate_random_file_name
-tb.tc_workfd_cp_file_b = tb.config.tc_workfd_create_ubi_rootfs_path + '/boot/ubi_random'
+tb.config.tc_workfd_cp_file_from = tb.tc_workfd_generate_random_file_name
+tb.config.tc_workfd_cp_file_to = tb.config.tc_workfd_create_ubi_rootfs_path + '/boot/ubi_random'
 tb.eof_call_tc("tc_workfd_sudo_cp_file.py")
-tb.tc_workfd_cp_file_a = tb.tc_workfd_generate_random_file_name
-tb.tc_workfd_cp_file_b = tb.tc_board_dxr2_ub_ubi_rootfs_randomfile_path
+tb.config.tc_workfd_cp_file_from = tb.tc_workfd_generate_random_file_name
+tb.config.tc_workfd_cp_file_to = tb.tc_board_dxr2_ub_ubi_rootfs_randomfile_path
 tb.eof_call_tc("tc_workfd_sudo_cp_file.py")
 tb.eof_call_tc("tc_workfd_create_ubi_rootfs.py")
 
