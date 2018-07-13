@@ -27,7 +27,7 @@ tb.define_variable('tc_lx_bonnie_sz', '968')
 # set board state for which the tc is valid
 tb.set_board_state("linux")
 
-tb.tc_workfd_check_tc_time_tcname = 'bonnie'
+tb.config.tc_workfd_check_tc_time_tcname = 'bonnie'
 savefd = tb.workfd
 tb.workfd = tb.c_ctrl
 ret = tb.call_tc("tc_workfd_check_tc_time.py")

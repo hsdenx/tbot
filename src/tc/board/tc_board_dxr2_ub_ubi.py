@@ -17,8 +17,8 @@ tb.eof_write_cmd(tb.c_con, "mtdparts")
 # all 30 days, erase the nand
 savefd = tb.workfd
 tb.workfd = tb.c_ctrl
-tb.tc_workfd_check_tc_time_timeout = 60 * 60 * 24 * 30
-tb.tc_workfd_check_tc_time_tcname = 'dxr2_ub_ubi'
+tb.config.tc_workfd_check_tc_time_timeout = '2592000'
+tb.config.tc_workfd_check_tc_time_tcname = 'dxr2_ub_ubi'
 ret = tb.call_tc("tc_workfd_check_tc_time.py")
 if ret == True:
     tb.eof_call_tc("tc_ub_ubi_erase.py")

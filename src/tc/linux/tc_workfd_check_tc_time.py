@@ -1,25 +1,35 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_check_tc_time.py
 # check if time for a special testcase is expired.
 # some testcases (like writting in a flash) are not good for
 # execute them every day, so give them a timeout. This testcase
 # checks, if the testcases is ready for a new run.
 # False means time is not expired
 # True means time is expired
+#
+# used variables
+#
+# - tb.config.tc_workfd_check_tc_time_tcname
+#| tc name
+#| default: ''
+#
+# - tb.config.tc_workfd_check_tc_time_timeout
+#| timeout in seconds
+#| default: '2592000' which is 30 days
+#
 # End:
 
 from tbotlib import tbot
 import time
 
+tb.define_variable('tc_workfd_check_tc_time_tcname', '')
+tb.define_variable('tc_workfd_check_tc_time_timeout', '2592000')
 logging.info("args: workdfd: %s %s", tb.workfd, tb.config.tc_workfd_tbotfiles_dir)
-logging.info("args: %s %s %s", tb.config.boardname, tb.tc_workfd_check_tc_time_tcname,
-             tb.tc_workfd_check_tc_time_timeout)
+logging.info("args: %s %s", tb.config.boardname)
 
 # set board state for which the tc is valid
-timefile = tb.config.tc_workfd_tbotfiles_dir + "/" + "workfd_check_tc_time_" + tb.config.boardname + "_" + tb.tc_workfd_check_tc_time_tcname
+timefile = tb.config.tc_workfd_tbotfiles_dir + "/" + "workfd_check_tc_time_" + tb.config.boardname + "_" + tb.config.tc_workfd_check_tc_time_tcname
 
 c = tb.workfd
 tb.set_term_length(c)
@@ -61,9 +71,9 @@ while(ret):
 
 tb.tbot_expect_prompt(c)
 curtime = int(time.time())
-logging.info("cur %d ftime: %d + timeout: %d", curtime, filetime, tb.tc_workfd_check_tc_time_timeout)
+logging.info("cur %d ftime: %d + timeout: %s", curtime, filetime, tb.config.tc_workfd_check_tc_time_timeout)
 # if not expired end False
-if curtime < filetime + tb.tc_workfd_check_tc_time_timeout:
+if curtime < filetime + int(tb.config.tc_workfd_check_tc_time_timeout):
     tb.end_tc(False)
 
 # else write new time and end True
