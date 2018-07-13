@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_apply_patchwork_patches.py
 # apply patchworkpatches from list:
 # tb.config.tc_workfd_apply_patchwork_patches_list:
 # to source in current directory.
@@ -11,14 +9,30 @@
 # - PW_CLEAN: is it checkpatch clean
 # - PW_AA: already applied
 # - PW_APPLY: apply it clean to source
+#
+# used variables
+#
+# - tb.config.tc_workfd_apply_patchwork_patches_list
+#| list of patchwork numbers, which should be used with
+#| testcasetc_workfd_apply_patchwork_patches.py
+#| default: '[]'
+#
+# - tb.config.tc_workfd_apply_patchwork_patches_checkpatch_cmd
+#| command with which the patches get checked
+#| default: 'none'
+#
+# - tb.config.tc_workfd_apply_patchwork_patches_eof
+#| if 'yes' end testcase with failure, if applying fails.
+#| default: 'yes'
+#
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: workfd: %s %s %s %s", tb.workfd,
-             tb.config.tc_workfd_apply_patchwork_patches_list,
-             tb.config.tc_workfd_apply_patchwork_patches_checkpatch_cmd,
-             tb.config.tc_workfd_apply_patchwork_patches_eof)
+tb.define_variable('tc_workfd_apply_patchwork_patches_list', '[]')
+tb.define_variable('tc_workfd_apply_patchwork_patches_checkpatch_cmd', 'none')
+tb.define_variable('tc_workfd_apply_patchwork_patches_eof', 'yes')
+logging.info("args: workfd: %s", tb.workfd)
 
 def apply_one_patch(tb, nr):
     tb.config.tc_workfd_rm_file_name = 'mbox'
