@@ -20,7 +20,6 @@ tftpboardrootdir = ''
 tc_lab_toolchain_rev = "5.4"
 tc_lab_toolchain_name = "armv5te"
 tc_lx_gpio_val = '1'
-tc_workfd_check_if_file_exists_name = "bonnie++-1.03e.tgz"
 tc_workfd_apply_patchwork_patches_list_hand = []
 tc_workfd_apply_patchwork_patches_blacklist = []
 tc_workfd_get_patchwork_number_list_order = '-delegate'
