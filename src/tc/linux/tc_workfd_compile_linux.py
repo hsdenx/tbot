@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_compile_linux.py
 # compile linux:
 # - set toolchain with tc_lab_set_toolchain.py
 # - if tb.config.tc_workfd_compile_linux_clean == 'yes'
@@ -23,22 +21,79 @@
 # - if tb.config.tc_workfd_compile_linux_append_dt != 'no'
 #   append dtb to kernel image
 # tb.config.tc_workfd_compile_linux_boardname _defconfig
+#
+# used variables
+#
+# - tb.config.tc_workfd_compile_linux_clean
+#| if 'yes' call 'make mrproper'
+#| default: 'yes'
+#
+# - tb.config.tc_workfd_compile_linux_load_addr
+#| if != 'no' add LOADADDR= before make
+#| default: 'no'
+#
+# - tb.config.tc_workfd_compile_linux_makeoptions
+#| string of makeoptions
+#| default: 'none'
+#
+# - tb.config.tc_workfd_compile_linux_make_target
+#| make target normally zImage or uImage
+#| default: 'uImage'
+#
+# - tb.config.tc_workfd_compile_linux_fit_its_file
+#| if != 'no' create fit image
+#| its file is tb.config.tc_workfd_compile_linux_fit_its_file
+#| output file is tb.config.tc_workfd_compile_linux_fit_file
+#| default: 'no'
+#
+# - tb.config.tc_workfd_compile_linux_fit_file
+#| output file name if creating fit image
+#| default: 'no'
+#
+# - tb.config.tc_workfd_compile_linux_boardname
+#| name for the used defconfig (without '_defconfig')
+#| default: tb.config.boardname
+#
+# - tb.config.tc_workfd_compile_linux_modules
+#| if != 'none' build modules
+#| default: 'none'
+#
+# - tb.config.tc_workfd_compile_linux_modules_path
+#| if != 'none' contains modules path for 'make modules_install' step
+#| INSTALL_MOD_PATH=tb.config.tc_workfd_compile_linux_modules_path
+#| default: 'none'
+#
+# - tb.config.tc_workfd_compile_linux_dt_name
+#| contains a string or a list of strings of
+#| dtb targets
+#| default: 'none'
+#
+# - tb.config.tc_workfd_compile_linux_append_dt
+#| if != 'no' append tb.config.tc_workfd_compile_linux_dt_name
+#| to 'z' + tb.config.tc_workfd_compile_linux_append_dt
+#| default: 'no'
+#
+# - tb.config.tc_workfd_compile_linux_mkimage
+#| path to mkimage tool (incl. mkimage)
+#| default: '/home/hs/i2c/u-boot/tools/mkimage'
+#
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: workdfd: %s %s", tb.workfd.name, tb.config.tc_workfd_compile_linux_clean)
-logging.info("args: %s", tb.config.tc_workfd_compile_linux_load_addr)
-logging.info("args: %s", tb.config.tc_workfd_compile_linux_makeoptions)
-logging.info("args: %s", tb.config.tc_workfd_compile_linux_make_target)
-logging.info("args: %s %s", tb.config.tc_workfd_compile_linux_fit_its_file, \
-             tb.config.tc_workfd_compile_linux_fit_file)
-logging.info("args: %s %s", tb.config.tc_workfd_compile_linux_boardname, \
-             tb.config.tc_workfd_compile_linux_modules)
-logging.info("args: %s %s", tb.config.tc_workfd_compile_linux_dt_name, \
-             tb.config.tc_workfd_compile_linux_modules_path)
-logging.info("args: %s %s", tb.config.tc_workfd_compile_linux_append_dt, \
-             tb.config.tc_workfd_compile_linux_mkimage)
+tb.define_variable('tc_workfd_compile_linux_clean', 'yes')
+tb.define_variable('tc_workfd_compile_linux_load_addr', 'no')
+tb.define_variable('tc_workfd_compile_linux_makeoptions', 'none')
+tb.define_variable('tc_workfd_compile_linux_make_target', 'uImage')
+tb.define_variable('tc_workfd_compile_linux_fit_its_file', 'no')
+tb.define_variable('tc_workfd_compile_linux_fit_file', 'no')
+tb.define_variable('tc_workfd_compile_linux_boardname', tb.config.boardname)
+tb.define_variable('tc_workfd_compile_linux_modules', 'none')
+tb.define_variable('tc_workfd_compile_linux_modules_path', 'none')
+tb.define_variable('tc_workfd_compile_linux_dt_name', 'none')
+tb.define_variable('tc_workfd_compile_linux_append_dt', 'no')
+tb.define_variable('tc_workfd_compile_linux_mkimage', '/home/hs/i2c/u-boot/tools/mkimage')
+logging.info("args: workdfd: %s", tb.workfd.name)
 
 tb.set_term_length(tb.workfd)
 
@@ -64,12 +119,16 @@ tb.write_lx_cmd_check(tb.workfd, tmp)
 tb.event.create_event('main', tb.config.boardname, "LINUX_DEFCONFIG", tb.config.tc_workfd_compile_linux_boardname)
 tb.event.create_event('main', tb.config.boardname, "LINUX_SRC_PATH", tb.config.tc_lab_source_dir + "/linux-" + tb.config.boardlabname)
 
-tmp = "make" + ld + " " + tb.config.tc_workfd_compile_linux_makeoptions + " " + tb.config.tc_workfd_compile_linux_make_target
+opt = ''
+if tb.config.tc_workfd_compile_linux_makeoptions != 'none':
+    opt = tb.config.tc_workfd_compile_linux_makeoptions
+
+tmp = "make" + ld + " " + opt + " " + tb.config.tc_workfd_compile_linux_make_target
 tb.write_lx_cmd_check(tb.workfd, tmp, triggerlist=['CC'])
 
 # compile modules (if wanted)
 if tb.config.tc_workfd_compile_linux_modules != 'none':
-    tmp = "make" + ld + " " + tb.config.tc_workfd_compile_linux_makeoptions + " modules"
+    tmp = "make" + ld + " " + opt + " modules"
     tb.write_lx_cmd_check(tb.workfd, tmp, triggerlist=['CC'])
     # install modules (if wanted)
     if tb.config.tc_workfd_compile_linux_modules_path != 'none':
