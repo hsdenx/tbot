@@ -104,6 +104,8 @@ class create_doc(object):
             print("ERROR do not know level ", self.level)
 
     def write_rst_header(self):
+        self.fd.write('.. include:: special.rst\n')
+        self.fd.write('\n')
         self.write_title('Testcases Documentation')
         self.fd.write('\n')
         self.fd.write('Simply a documentation for all testcases, found in ' + self.subdir + '\n')
@@ -191,8 +193,9 @@ class create_doc(object):
                 found = 0
             else:
                 if found == 1:
-                    if 'used variable' in line:
+                    if 'used variables' in line:
                         varlist = True
+                        line = line.replace('used variables', ':usedvar:`used variables`')
                     newline = True
                     line = line.replace('#', '', 1)
                     line = line.lstrip()

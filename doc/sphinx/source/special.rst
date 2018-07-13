@@ -2,3 +2,4 @@
 
 .. role:: varname
 .. role:: filename
+.. role:: usedvar
