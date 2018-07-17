@@ -1,16 +1,13 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_connect_with_kermit.py
 # disconnect from a kermit connection
+# and set linux prompt.
 # End:
 
 from tbotlib import tbot
 
 logging.info("args: workdfd: %s", tb.workfd)
-logging.info("args: ssh: %s", tb.config.tc_workfd_connect_with_kermit_ssh)
-logging.info("args: kermit: %s %s", tb.config.kermit_line, tb.config.kermit_speed)
 
 string = pack('h', 28)
 string = string[:1]
