@@ -91,14 +91,14 @@ if ret != 'prompt':
     tb.end_tc(False)
 
 # create random file
-tb.tc_workfd_generate_random_file_name = tb.config.lab_tmp_dir + 'random'
-tb.tc_workfd_generate_random_file_length = tb.config.tc_ub_dfu_rand_size
+tb.config.tc_workfd_generate_random_file_name = tb.config.lab_tmp_dir + 'random'
+tb.config.tc_workfd_generate_random_file_length = tb.config.tc_ub_dfu_rand_size
 tb.eof_call_tc("tc_workfd_generate_random_file.py");
 
 ###########################################
 # download it to the board
 logging.info("download file")
-tmp = dfu_cmd + " -a " + tb.config.tc_ub_dfu_dfu_util_alt_setting + " -D " + tb.tc_workfd_generate_random_file_name
+tmp = dfu_cmd + " -a " + tb.config.tc_ub_dfu_dfu_util_alt_setting + " -D " + tb.config.tc_workfd_generate_random_file_name
 tb.eof_write(ctrl, tmp)
 
 dfu_check_one(tb, ctrl, 'Claiming')
@@ -143,7 +143,7 @@ tb.tbot_expect_prompt(c)
 #############################
 # now diff the files
 logging.info("diff files")
-tmp = "cmp " + tb.tc_workfd_generate_random_file_name + " " + tb.config.lab_tmp_dir + "gnlmpf"
+tmp = "cmp " + tb.config.tc_workfd_generate_random_file_name + " " + tb.config.lab_tmp_dir + "gnlmpf"
 tb.eof_write(ctrl, tmp)
 searchlist = ["EOF", "differ"]
 tmp = True
