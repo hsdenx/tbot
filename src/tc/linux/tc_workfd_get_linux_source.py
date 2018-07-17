@@ -1,28 +1,47 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_get_linux_source.py
 # get Linux source tb.config.tc_lab_get_linux_source_git_repo with "git clone"
 # and go into the source tree.
 # check out branch tc_lab_get_linux_source_git_branch if tc_lab_get_linux_source_git_commit_id == 'none'
 # else checkout commit tc_lab_get_linux_source_git_commit_id
 # Apply patches if needed with:
 # tc_lab_apply_patches.py and tc_workfd_apply_local_patches.py
+#
+# used variables
+#
+# - tb.config.tc_lab_get_linux_source_git_repo
+#| git repo to checkout
+#| default: '/home/git/linux.git'
+#
+# - tb.config.tc_lab_get_linux_source_git_branch
+#| branch which get checkout
+#| default: 'master'
+#
+# - tb.config.tc_lab_get_linux_source_git_reference
+#| if != 'none' add --reference option to git clone
+#| default: 'none'
+#
+# - tb.config.tc_lab_get_linux_source_git_commit_id
+#| if != 'none' checkout commit id instead branch
+#| default: 'none'
+#
+# - tb.config.tc_lab_get_linux_source_git_repo_user
+#| if a username is needed for cloning
+#| password comes from password.py
+#| default: 'none'
+#
 # End:
 
 from tbotlib import tbot
 
-try:
-    tb.config.tc_lab_get_linux_source_git_commit_id
-except:
-    tb.config.tc_lab_get_linux_source_git_commit_id = 'none'
+tb.define_variable('tc_lab_get_linux_source_git_repo', '/home/git/linux.git')
+tb.define_variable('tc_lab_get_linux_source_git_branch', 'master')
+tb.define_variable('tc_lab_get_linux_source_git_reference', 'none')
+tb.define_variable('tc_lab_get_linux_source_git_repo_user', 'anonymous')
+tb.define_variable('tc_lab_get_linux_source_git_commit_id', 'none')
 
-logging.info("args: workdfd: %s %s %s %s", tb.workfd.name, tb.config.tc_lab_get_linux_source_git_repo,
-             tb.config.tc_lab_get_linux_source_git_branch, tb.config.tc_lab_apply_patches_dir)
-logging.info("args: %s %s ", tb.config.tc_lab_get_linux_source_git_reference,
-             tb.config.tc_lab_get_linux_source_git_repo_user)
-logging.info("args: %s", tb.config.tc_lab_get_linux_source_git_commit_id)
+logging.info("args: workdfd: %s %s", tb.workfd.name, tb.config.tc_lab_apply_patches_dir)
 
 ret = tb.call_tc("tc_workfd_goto_linux_code.py")
 if ret == False:
