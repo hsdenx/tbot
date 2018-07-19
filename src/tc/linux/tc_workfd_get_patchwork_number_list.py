@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_get_patchwork_number_list.py
 # get a list of patchworknumbers
 # which are delegated to specific user
 # tb.config.workfd_get_patchwork_number_user
@@ -15,15 +13,32 @@
 # tb.config.tc_workfd_apply_patchwork_patches_blacklist
 # also you can set the patch order with:
 # tb.config.tc_workfd_get_patchwork_number_list_order
+#
+# used variables
+#
+# - tb.config.workfd_get_patchwork_number_user
+#| patchwork username
+#| default: 'hs'
+#
+# - tb.config.tc_workfd_apply_patchwork_patches_blacklist
+#| patchwork numbers, which get ignored
+#| default: '[]'
+#
+# - tb.config.tc_workfd_get_patchwork_number_list_order
+#| ?order= parameter for request patchwork page
+#| default: '-delegate'
+#
 # End:
 
 from tbotlib import tbot
 import urllib2  # the lib that handles the url stuff
 import urllib, sys
 
-logging.info("args: workfd: %s %s %s %s", tb.workfd, tb.config.workfd_get_patchwork_number_user,
-             tb.config.tc_workfd_apply_patchwork_patches_blacklist,
-             tb.config.tc_workfd_get_patchwork_number_list_order)
+tb.define_variable('workfd_get_patchwork_number_user', 'hs')
+tb.define_variable('tc_workfd_apply_patchwork_patches_blacklist', '[]')
+tb.define_variable('tc_workfd_get_patchwork_number_list_order', '-delegate')
+tb.define_variable('tc_workfd_apply_patchwork_patches_list_hand', '[]')
+logging.info("args: workfd: %s", tb.workfd)
 
 tb.config.tc_workfd_apply_patchwork_patches_list = []
 tb.config.tc_workfd_apply_patchwork_patches_list_title = []
