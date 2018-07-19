@@ -13,6 +13,19 @@
 #| value set from various testcases.
 #| used as return value.
 #
+#
+# - tb.config.uboot_get_parameter_file_list
+#| list of files, where TC searches for the define
+#| used by: tc_workfd_get_uboot_config_string.py
+#| tc_workfd_get_uboot_config_hex.py
+#| default: ''
+#
+# - tb.config.uboot_config_option
+#| config option which get searched
+#| used by: tc_workfd_get_uboot_config_string.py
+#| tc_workfd_get_uboot_config_hex.py
+#| default: ''
+#
 # End:
 
 from tbotlib import tbot

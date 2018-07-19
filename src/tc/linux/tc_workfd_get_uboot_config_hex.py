@@ -1,13 +1,7 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_get_uboot_config_hex.py
 # get a hex parameter from U-Boot configuration
-# Input:
-# tb.config.uboot_get_parameter_file_list: list of files, where TC searches
-#   for the define
-# tb.uboot_config_option: config option which get searched
 #
 # return value:
 # TC ends True, if hex value found, else False
@@ -17,7 +11,7 @@
 from tbotlib import tbot
 
 logging.info("args: workfd: %s %s %s", tb.workfd.name, tb.config.uboot_get_parameter_file_list,
-             tb.uboot_config_option)
+             tb.config.uboot_config_option)
 
 c = tb.workfd
 tb.set_term_length(c)
@@ -35,16 +29,16 @@ def search_define(tb, c):
     for filename in tb.config.uboot_get_parameter_file_list:
         if tb.config_found == True:
             break
-        tmp = 'cat ' + filename + ' | grep --color=never ' + tb.uboot_config_option
+        tmp = 'cat ' + filename + ' | grep --color=never ' + tb.config.uboot_config_option
         tb.eof_write(c, tmp)
-        searchlist = [tb.uboot_config_option]
+        searchlist = [tb.config.uboot_config_option]
         tmp = True
         while tmp == True:
             ret = tb.tbot_rup_and_check_strings(c, searchlist)
             if ret == 'prompt':
                 tmp = False
             if ret == '0' and tb.config_found == False:
-                string = 'define\s' + tb.uboot_config_option
+                string = 'define\s' + tb.config.uboot_config_option
                 p = re.search(string, tb.buf)
                 if p == None:
                     continue
@@ -78,7 +72,7 @@ search_define(tb, c)
 if tb.needs_retry == True:
     tb.config_found = False
     tb.needs_retry = False
-    tb.uboot_config_option = tb.config_result
+    tb.config.uboot_config_option = tb.config_result
     search_define(tb, c)
 
 logging.info("return %s", tb.config_result)
