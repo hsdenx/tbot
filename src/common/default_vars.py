@@ -24,7 +24,6 @@ tc_workfd_apply_patchwork_patches_list_hand = []
 tc_workfd_apply_patchwork_patches_blacklist = []
 tc_workfd_get_patchwork_number_list_order = '-delegate'
 tc_workfd_rm_file_name = 'none'
-tc_workfd_get_list_of_files_mask = '*'
 workfd_get_patchwork_number_user = 'hs'
 workfd_get_patchwork_number_list_order = '-delegate'
 tc_lab_denx_power_tc = 'tc_lab_denx_power.py'

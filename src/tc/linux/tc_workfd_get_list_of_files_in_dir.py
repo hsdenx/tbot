@@ -1,16 +1,26 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_get_list_of_files_in_dir.py
-# get a list of files from directory tb.tc_workfd_get_list_of_files_dir
+# get a list of files from directory tb.config.tc_workfd_get_list_of_files_dir
 # tb.config.tc_workfd_get_list_of_files_mask
+#
+# used variables
+#
+# - tb.config.tc_workfd_get_list_of_files_dir
+#| directory in which files get searched
+#| default: ''
+#
+# - tb.config.tc_workfd_get_list_of_files_mask
+#| find expression
+#| default: '*'
+#
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: workfd: %s %s %s", tb.workfd, tb.tc_workfd_get_list_of_files_dir,
-             tb.config.tc_workfd_get_list_of_files_mask)
+tb.define_variable('tc_workfd_get_list_of_files_dir', '')
+tb.define_variable('tc_workfd_get_list_of_files_mask', '*')
+logging.info("args: workfd: %s", tb.workfd)
 
 c = tb.c_con
 tb.buf = c.get_log()

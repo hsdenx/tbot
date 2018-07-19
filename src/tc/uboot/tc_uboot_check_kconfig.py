@@ -133,7 +133,7 @@ if tb.config.tc_uboot_check_kconfig_read_sumfile != 'none':
     fd.close()
 
 else:
-    tb.tc_workfd_get_list_of_files_dir = 'configs'
+    tb.config.tc_workfd_get_list_of_files_dir = 'configs'
     tb.config.tc_workfd_get_list_of_files_mask = '*_defconfig'
     tb.eof_call_tc("tc_workfd_get_list_of_files_in_dir.py")
 
@@ -141,7 +141,7 @@ else:
     for name in tb.list_of_files:
         tmp = name.split('_defconfig')
         tmp = tmp[0]
-        tmp = tmp.split(tb.tc_workfd_get_list_of_files_dir + '/')
+        tmp = tmp.split(tb.config.tc_workfd_get_list_of_files_dir + '/')
         tmp = tmp[1]
         tb.tc_lab_compile_uboot_list_boardlist.append(tmp)
 
