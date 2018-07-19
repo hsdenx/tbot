@@ -9,36 +9,29 @@
 # and rebase tb.config.tc_workfd_git_rebase_git_work_branch with
 # tb.config.tc_workfd_git_rebase_git_base_branch
 #
+# used variables
+#
+# - tb.config.tc_workfd_git_rebase_git_src_path
+#| path to source tree
+#| default: ''
+#
+# - tb.config.tc_workfd_git_rebase_git_base_branch
+#| branch name, which get rebased against tb.config.tc_workfd_git_rebase_git_work_branch
+#| default: ''
+#
+# - tb.config.tc_workfd_git_rebase_git_work_branch
+#| branch name with which tb.config.tc_workfd_git_rebase_git_base_branch gets rebased
+#| default: ''
+#
 # End:
 
 from tbotlib import tbot
 
-try:
-    tb.config.tc_workfd_git_rebase_git_src_path
-except:
-    logging.error("tb.config.tc_workfd_git_rebase_git_src_path not set")
-    tb.end_tc(False)
+tb.define_variable('tc_workfd_git_rebase_git_src_path', '')
+tb.define_variable('tc_workfd_git_rebase_git_base_branch', '')
+tb.define_variable('tc_workfd_git_rebase_git_work_branch', '')
 
-try:
-    tb.config.tc_workfd_git_rebase_git_base_branch
-except:
-    logging.error("tb.config.tc_workfd_git_rebase_git_base_branch not set")
-    tb.end_tc(False)
-
-try:
-    tb.config.tc_workfd_git_rebase_git_work_branch
-except:
-    logging.error("tb.config.tc_workfd_git_rebase_git_work_branch not set")
-    tb.end_tc(False)
-
-# always add some logging info for example which variables
-# your testcase uses
-# don;t forget to define a default value for a new config variable
-# if it makes sense
 logging.info("arg: %s", tb.workfd.name)
-logging.info("arg: src path: %s", tb.config.tc_workfd_git_rebase_git_src_path)
-logging.info("arg: base branch: %s", tb.config.tc_workfd_git_rebase_git_base_branch)
-logging.info("arg: work branch: %s", tb.config.tc_workfd_git_rebase_git_work_branch)
 
 # save current pwd ?
 
