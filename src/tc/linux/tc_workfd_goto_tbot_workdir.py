@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_goto_tbot_workdir.py
 # go into the tbot work dir tb.config.tc_workfd_work_dir
 # if not exist, create it
 # End:
