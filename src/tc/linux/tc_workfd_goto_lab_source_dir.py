@@ -1,10 +1,12 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_goto_lab_source_dir.py
 # switch into lab PC source directory tb.config.tc_lab_source_dir
 # set TBOT_BASEDIR to tb.config.tc_lab_source_dir
+#
+# if workfd == 'tb_cpc' go into workdirectory
+# on compile PC, and set there TBOT_BASEDIR to tb.config.compile_pc_workdir
+#
 # End:
 
 from tbotlib import tbot
@@ -17,11 +19,6 @@ except:
 
 if tb.workfd.tc_lab_source_dir_checked == False:
     if tb.workfd.name == 'tb_cpc':
-        try:
-            tb.config.compile_pc_workdir
-        except:
-            tb.config.compile_pc_workdir = tb.config.tc_lab_source_dir
-
         tmp = 'export TBOT_BASEDIR=' + tb.config.compile_pc_workdir
     else:
         tmp = 'export TBOT_BASEDIR=' + tb.config.tc_lab_source_dir
