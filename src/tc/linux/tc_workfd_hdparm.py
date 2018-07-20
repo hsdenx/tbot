@@ -1,19 +1,34 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_hdparm.py
 # make a minimal hdparm check
 # call hdparm -t tb.config.tc_workfd_hdparm_dev
 # and check if read speed is greater than tb.config.tc_workfd_hdparm_min
 # It is possible to add a PATH tb.config.tc_workfd_hdparm_path
 # where hdparm is installed
 # Testcase fails if readen speed is <= tb.config.tc_workfd_hdparm_min
+#
+# used variables
+#
+# - tb.config.tc_workfd_hdparm_path
+#| path to hdparm utility
+#| default: '/home/hs/shc/hdparm-9.50/'
+#
+# - tb.config.tc_workfd_hdparm_dev
+#| hdparm device "-t tb.config.tc_workfd_hdparm_dev"
+#| default: '/dev/mmcblk1'
+#
+# - tb.config.tc_workfd_hdparm_min
+#| Testcase fails if readen speed is <= tb.config.tc_workfd_hdparm_min
+#| default: '12.0'
+#
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: workfd %s %s %s", tb.config.tc_workfd_hdparm_path, tb.config.tc_workfd_hdparm_dev, tb.config.tc_workfd_hdparm_min)
+tb.define_variable('tc_workfd_hdparm_path', '/home/hs/shc/hdparm-9.50/')
+tb.define_variable('tc_workfd_hdparm_dev', '/dev/mmcblk1')
+tb.define_variable('tc_workfd_hdparm_min', '12.0')
 
 tb.set_board_state("linux")
 

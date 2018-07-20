@@ -38,7 +38,4 @@ create_html_log = 'no'
 create_documentation = 'no'
 event_documentation_strip_list = []
 switch_su_board = 'lab'
-tc_workfd_hdparm_path = '/home/hs/shc/hdparm-9.50/'
-tc_workfd_hdparm_dev = '/dev/mmcblk1'
-tc_workfd_hdparm_min = '12.0'
 tb_set_after_linux = ''
