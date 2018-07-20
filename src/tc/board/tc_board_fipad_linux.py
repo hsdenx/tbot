@@ -168,16 +168,16 @@ tb.statusprint("tc_fipad can check")
 tb.eof_call_tc("tc_workfd_can.py")
 
 # iperf checks
-tb.tc_workfd_iperf_minval = 90
+tb.config.tc_workfd_iperf_minval = 90
 tb.statusprint("tc_fipad iperf check")
-tb.tc_workfd_iperf_sip = '192.168.20.97'
-tb.tc_workfd_c_sr = tb.c_con
-tb.tc_workfd_c_sl = tb.c_ctrl
+tb.config.tc_workfd_iperf_sip = '192.168.20.97'
+tb.config.tc_workfd_c_sr = tb.c_con
+tb.config.tc_workfd_c_sl = tb.c_ctrl
 tb.eof_call_tc("tc_workfd_iperf.py")
 
-tb.tc_workfd_iperf_sip = '192.168.1.1'
-tb.tc_workfd_c_sr = tb.c_ctrl
-tb.tc_workfd_c_sl = tb.c_con
+tb.config.tc_workfd_iperf_sip = '192.168.1.1'
+tb.config.tc_workfd_c_sr = tb.c_ctrl
+tb.config.tc_workfd_c_sl = tb.c_con
 tb.eof_call_tc("tc_workfd_iperf.py")
 
 # power off board at the end

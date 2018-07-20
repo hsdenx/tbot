@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_iperf.py
 #
 # make a minimal iperf check
 # starts an iperf server on tb.tc_workfd_c_sr connection
@@ -16,30 +14,55 @@
 # set
 # tb.config.tc_workfd_c_sr_vers or tb.config.tc_workfd_c_sl_vers
 # to '3'
+#
+# used variables
+#
+# - tb.config.tc_workfd_c_sr
+#| tbot connection where iperf server is started
+#| default: ''
+#
+# - tb.config.tc_workfd_c_sl
+#| tbot connection where iperf slave is started
+#| default: ''
+#| default: ''
+#
+# - tb.config.tc_workfd_iperf_sip
+#| iperf server ip used for iperf slave
+#| default: ''
+#
+# - tb.config.tc_workfd_iperf_minval
+#| if iperf result is greater than tb.config.tc_workfd_iperf_minval
+#| testcase tc_workfd_iperf.py returns True
+#| default: ''
+#
+# - tb.config.tc_workfd_c_sr_vers
+#| iperf version
+#| default: ''
+#
+# - tb.config.tc_workfd_c_sl_vers
+#| iperf version
+#| default: ''
+#
 # End:
 
 from tbotlib import tbot
 
-try:
-    tb.config.tc_workfd_c_sr_vers
-except:
-    tb.config.tc_workfd_c_sr_vers = ''
+tb.define_variable('tc_workfd_c_sr', '')
+tb.define_variable('tc_workfd_c_sl', '')
+tb.define_variable('tc_workfd_iperf_sip', '')
+tb.define_variable('tc_workfd_iperf_minval', '')
+tb.define_variable('tc_workfd_c_sr_vers', '')
+tb.define_variable('tc_workfd_c_sl_vers', '')
 
-try:
-    tb.config.tc_workfd_c_sl_vers
-except:
-    tb.config.tc_workfd_c_sl_vers = ''
-
-logging.info("args: workfd %s %s %s %s", tb.tc_workfd_c_sr.name, tb.tc_workfd_c_sl.name, tb.tc_workfd_iperf_sip, tb.config.tc_workfd_iperf_minval)
-logging.info("args: %s %s", tb.config.tc_workfd_c_sr_vers, tb.config.tc_workfd_c_sl_vers)
+logging.info("args: workfd %s %s", tb.config.tc_workfd_c_sr.name, tb.config.tc_workfd_c_sl.name)
 
 tb.set_board_state("linux")
 
-c_s = tb.tc_workfd_c_sr
-c_t = tb.tc_workfd_c_sl
+c_s = tb.config.tc_workfd_c_sr
+c_t = tb.config.tc_workfd_c_sl
 
 cmd_sr = 'iperf' + tb.config.tc_workfd_c_sr_vers + ' -s'
-cmd_sl = 'iperf' + tb.config.tc_workfd_c_sl_vers + ' -c ' + tb.tc_workfd_iperf_sip
+cmd_sl = 'iperf' + tb.config.tc_workfd_c_sl_vers + ' -c ' + tb.config.tc_workfd_iperf_sip
 
 tb.eof_write(c_s, cmd_sr)
 searchlist = ["Server listening", "TCP window size"]
