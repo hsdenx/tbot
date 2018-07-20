@@ -1,12 +1,18 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_goto_linux_code.py
 # switch into linux source tb.config.tc_lab_source_dir + "/linux-" + tb.config.boardlabname
 # set tb.config.linux_name to "linux-" + tb.config.boardlabname
 # and tb.config.linux_fulldir_name to tb.config.tc_lab_source_dir + "/" + tb.config.linux_name
 # and set $TBOT_BASEDIR_LINUX to tb.config.linux_fulldir_name
+#
+# used variables
+#
+# - tb.config.linux_name
+#| "linux-" + tb.config.boardlabname
+#| directory in lab source dir
+#| default: get set from tc_workfd_goto_linux_code.py
+#
 # End:
 
 from tbotlib import tbot

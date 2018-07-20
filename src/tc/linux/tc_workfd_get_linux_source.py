@@ -45,14 +45,13 @@ logging.info("args: workdfd: %s %s", tb.workfd.name, tb.config.tc_lab_apply_patc
 
 ret = tb.call_tc("tc_workfd_goto_linux_code.py")
 if ret == False:
-    linux_name = "linux-" + tb.config.boardlabname
     tb.eof_call_tc("tc_workfd_goto_lab_source_dir.py")
     # clone linux git
     if tb.config.tc_lab_get_linux_source_git_reference != 'none':
         opt = '--reference=' + tb.config.tc_lab_get_linux_source_git_reference + ' '
     else:
         opt = ''
-    tmp = "git clone " + opt + tb.config.tc_lab_get_linux_source_git_repo + " " + linux_name
+    tmp = "git clone " + opt + tb.config.tc_lab_get_linux_source_git_repo + " " + tb.config.linux_name
     tb.eof_write(tb.workfd, tmp)
     searchlist = ["Username", "Password", "Authentication failed", "Receiving"] # add here error cases
     tmp = True
@@ -76,7 +75,7 @@ if ret == False:
 
     tb.eof_call_tc("tc_workfd_check_cmd_success.py")
 
-    tmp = "cd " + linux_name
+    tmp = "cd " + tb.config.linux_name
     tb.write_lx_cmd_check(tb.workfd, tmp)
 
     if tb.config.tc_lab_get_linux_source_git_commit_id == 'none':
