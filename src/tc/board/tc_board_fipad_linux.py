@@ -152,10 +152,10 @@ for bl in basiclist:
         tb.eof_write_cmd_check(tb.c_con, bl["cmd"], bl["val"])
 
 # Test spitest module
-tb.tc_workfd_insmod_mpath = '/home/hs/fipad/modules/lib/modules'
-tb.tc_workfd_insmod_module_path = 'kernel/drivers/char/bosch'
-tb.tc_workfd_insmod_module = 'spitest'
-tb.tc_workfd_insmod_module_checks = ['spitest spi0.0: gpio 26 reserved', 'spitest spi0.0: gpio 105 reserved', 'spitest spi0.0: gpio 27 reserved']
+tb.config.tc_workfd_insmod_mpath = '/home/hs/fipad/modules/lib/modules'
+tb.config.tc_workfd_insmod_module_path = 'kernel/drivers/char/bosch'
+tb.config.tc_workfd_insmod_module = 'spitest'
+tb.config.tc_workfd_insmod_module_checks = ['spitest spi0.0: gpio 26 reserved', 'spitest spi0.0: gpio 105 reserved', 'spitest spi0.0: gpio 27 reserved']
 tb.eof_call_tc("tc_workfd_insmod.py")
 
 # regulator tests
