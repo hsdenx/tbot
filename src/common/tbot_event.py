@@ -229,7 +229,7 @@ class events(object):
         # flush, so we have written all log data in error case
         self.fd.flush()
         os.fsync(self.fd)
-        if dir == 'r' or dir == 're' or dir == 'ig' or dir == 'er':
+        if dir == 'r' or dir == 're' or dir == 'ig' or dir == 'er' or dir == 'rf':
             se = string.rstrip()
             se = se.lstrip()
             self.tb.con_log("%s: %s", c.name, se)
