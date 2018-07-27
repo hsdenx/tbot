@@ -207,7 +207,7 @@ else:
         ret = tb.call_tc("tc_workfd_check_if_file_exist.py")
         if ret == True:
             # calc md5sum
-            tb.tc_workfd_md5sum_name = tb.config.tc_workfd_check_if_file_exists_name
+            tb.config.tc_workfd_md5sum_name = tb.config.tc_workfd_check_if_file_exists_name
             tb.call_tc("tc_workfd_md5sum.py")
             uboot_md5sum = tb.tc_workfd_md5sum_sum
         # check if spl/u-boot-spl.bin
@@ -215,7 +215,7 @@ else:
         ret = tb.call_tc("tc_workfd_check_if_file_exist.py")
         if ret == True:
             # calc md5sum
-            tb.tc_workfd_md5sum_name = tb.config.tc_workfd_check_if_file_exists_name
+            tb.config.tc_workfd_md5sum_name = tb.config.tc_workfd_check_if_file_exists_name
             tb.call_tc("tc_workfd_md5sum.py")
             uboot_spl_md5sum = tb.tc_workfd_md5sum_sum
 
@@ -281,7 +281,7 @@ for board in tb.tc_lab_check_uboot_list_boardlist:
     ret = tb.call_tc("tc_workfd_check_if_file_exist.py")
     if ret == True:
         # calc md5sum
-        tb.tc_workfd_md5sum_name = tb.config.tc_workfd_check_if_file_exists_name
+        tb.config.tc_workfd_md5sum_name = tb.config.tc_workfd_check_if_file_exists_name
         tb.call_tc("tc_workfd_md5sum.py")
         uboot_patched_md5sum = tb.tc_workfd_md5sum_sum
     # check if spl/u-boot-spl.bin
@@ -289,7 +289,7 @@ for board in tb.tc_lab_check_uboot_list_boardlist:
     ret = tb.call_tc("tc_workfd_check_if_file_exist.py")
     if ret == True:
         # calc md5sum
-        tb.tc_workfd_md5sum_name = tb.config.tc_workfd_check_if_file_exists_name
+        tb.config.tc_workfd_md5sum_name = tb.config.tc_workfd_check_if_file_exists_name
         tb.call_tc("tc_workfd_md5sum.py")
         uboot_spl_patched_md5sum = tb.tc_workfd_md5sum_sum
 

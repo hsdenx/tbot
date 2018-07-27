@@ -1,18 +1,24 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_md5sum.py
-# calculate md5sum of file tb.tc_workfd_md5sum_name , and store it in
+# calculate md5sum of file tb.config.tc_workfd_md5sum_name , and store it in
 # tb.tc_workfd_md5sum_sum
+#
+# used variables
+#
+# - tb.config.tc_workfd_md5sum_name
+#| path with filename, for which md5sum gets calculated
+#| default:
+#
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: workfd %s %s", tb.workfd.name, tb.tc_workfd_md5sum_name)
+tb.define_variable('tc_workfd_md5sum_name', '')
+logging.info("args: workfd %s %s", tb.workfd.name, tb.config.tc_workfd_md5sum_name)
 
 c = tb.workfd
-cmd = 'md5sum ' + tb.tc_workfd_md5sum_name
+cmd = 'md5sum ' + tb.config.tc_workfd_md5sum_name
 tb.eof_write(c, cmd)
 searchlist = ["\n"]
 tmp = True
