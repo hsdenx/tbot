@@ -1,12 +1,32 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# tbot.py -s lab_denx -c boardname -t tc_workfd_linux_get_ifconfig.py
 # read from tb.config.linux_get_ifconfig_dev the current
 # ip addr and save it in tb.config.linux_get_ifconfig_ip
 # broadcast and save it in tb.config.linux_get_ifconfig_broadcast
 # mask and save it in tb.config.linux_get_ifconfig_mask
+#
+# used variables
+#
+# - tb.config.linux_get_ifconfig_dev
+#| network device, for which ip, mask and broadcast address get detected.
+#| default: ''
+#
+# - tb.config.linux_get_ifconfig_ip
+#| set from testcase tc_workfd_linux_get_ifconfig.py
+#| contains current ip address from tb.config.linux_get_ifconfig_dev
+#| default:
+#
+# - tb.config.linux_get_ifconfig_broadcast
+#| set from testcase tc_workfd_linux_get_ifconfig.py
+#| contains current broadcast address from tb.config.linux_get_ifconfig_dev
+#| default:
+#
+# - tb.config.linux_get_ifconfig_mask
+#| set from testcase tc_workfd_linux_get_ifconfig.py
+#| contains current mask from tb.config.linux_get_ifconfig_dev
+#| default:
+#
 # End:
 
 from tbotlib import tbot
@@ -15,7 +35,8 @@ tb.config.linux_get_ifconfig_dev = 'eth0'
 tb.workfd = tb.c_con
 tb.set_board_state("linux")
 
-logging.info("args: workfd %s %s", tb.workfd.name, tb.config.linux_get_ifconfig_dev)
+tb.define_variable('linux_get_ifconfig_dev', '')
+logging.info("args: workfd %s", tb.workfd.name)
 
 c = tb.workfd
 dev = tb.config.linux_get_ifconfig_dev
