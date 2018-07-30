@@ -395,6 +395,10 @@ class tbot(object):
                     import ast
                     # convert string to list or dictionary
                     defvalue = ast.literal_eval(defvalue)
+                if defvalue == 'False':
+                    defvalue = False
+                if defvalue == 'True':
+                    defvalue = True
                 self.config.__dict__.update({name : defvalue})
                 logging.info("default %s = %s", name, defvalue)
             else:
