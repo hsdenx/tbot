@@ -22,7 +22,7 @@ tc_lab_denx_get_power_state_tc = 'tc_dummy.py'
 compile_pc_ip = '192.168.3.10'
 compile_pc_user= 'hs'
 compile_pc_prompt = 'ttbott_compile> '
-connect_to_compilepc_ssh_opt = ''
+connect_to_compilepc_ssh_opt = 'none'
 connect_to_compilepc_ssh_cmd_prompt = '$ '
 
 state_linux_timeout = 6

@@ -11,27 +11,46 @@
 # if tb.config.workfd_ssh_do_first == 'yes':
 #      tb.do_first_settings_after_login(c)
 #
+#
+# used variables
+#
+# - tb.config.workfd_ssh_cmd
+#| ssh command string
+#| default:
+#
+# - tb.config.workfd_ssh_cmd_prompt
+#| prompt after successful ssh
+#| default: '$'
+#
+# - tb.config.workfd_ssh_opt
+#| option string for ssh
+#| default: 'none'
+#
+# - tb.config.workfd_ssh_do_first
+#| if == 'yes', call
+#|     tb.do_first_settings_after_login(c)
+#| after successful login.
+#| default: 'yes'
+#
 # End:
 
 from tbotlib import tbot
 
-try:
-    tb.config.tc_workfd_ssh_opt
-except:
-    tb.config.tc_workfd_ssh_opt = ''
+tb.define_variable('workfd_ssh_cmd', '')
+tb.define_variable('workfd_ssh_cmd_prompt', '$')
+tb.define_variable('workfd_ssh_opt', 'none')
+tb.define_variable('workfd_ssh_do_first', 'yes')
 
-try:
-    tb.config.workfd_ssh_do_first
-except:
-    tb.config.workfd_ssh_do_first = 'yes'
-
-logging.info("args: workfd %s %s %s %s %s", tb.workfd.name, tb.config.workfd_ssh_cmd,
-             tb.config.tc_workfd_ssh_opt,
-             tb.config.workfd_ssh_cmd_prompt, tb.config.workfd_ssh_do_first)
+logging.info("args: workfd %s", tb.workfd.name)
 
 c = tb.workfd
 
-cmd = 'ssh ' + tb.config.tc_workfd_ssh_opt + ' ' + tb.config.workfd_ssh_cmd
+if tb.config.tc_workfd_ssh_opt == 'none':
+    opt = ''
+else:
+    opt = tb.config.tc_workfd_ssh_opt
+
+cmd = 'ssh ' + opt + ' ' + tb.config.workfd_ssh_cmd
 tb.eof_write(c, cmd)
 loop = True
 s = ['Are you sure', 'assword', tb.config.workfd_ssh_cmd_prompt]
