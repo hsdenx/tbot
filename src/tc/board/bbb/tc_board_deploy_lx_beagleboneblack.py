@@ -11,7 +11,7 @@ from tbotlib import tbot
 
 logging.info("arg: %s", tb.workfd.name)
 
-tb.config.tc_workfd_scp_opt = ''
+tb.config.tc_workfd_scp_opt = 'none'
 # zImage
 tb.config.tc_workfd_scp_from = "$TBOT_BASEDIR_LINUX/arch/arm/boot/zImage"
 tb.config.tc_workfd_scp_to = tb.config.user + '@' + tb.config.ip + ':' + tb.config.tftpdir + '/' + tb.config.tftpboardname + '/' + tb.config.ub_load_board_env_subdir + '/zImage'

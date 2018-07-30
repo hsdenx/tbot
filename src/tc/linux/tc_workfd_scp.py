@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s lab_denx -c exceet -t tc_workfd_scp.py
 #
 # start an scp transfer
 # tb.config.tc_workfd_scp_opt: scp options
@@ -22,16 +20,38 @@
 # check this error code when scp command finished,
 # and return True, if no error, else False.
 #
+#
+# used variables
+#
+# - tb.config.tc_workfd_scp_opt
+#| if != 'none' contains scp option string
+#| default: 'none'
+#
+# - tb.config.tc_workfd_scp_from
+#| string from where scp copy
+#| default: ''
+#
+# - tb.config.tc_workfd_scp_to
+#| string to where scp copy
+#| default: ''
+#
 # End:
 
 from tbotlib import tbot
 
+tb.define_variable('tc_workfd_scp_opt', '')
+tb.define_variable('tc_workfd_scp_from', '')
+tb.define_variable('tc_workfd_scp_to', '')
 logging.info("args: workfd %s", tb.workfd.name)
-logging.info("args: %s %s %s", tb.config.tc_workfd_scp_opt, tb.config.tc_workfd_scp_from, tb.config.tc_workfd_scp_to)
 
 c = tb.workfd
 
-cmd = 'scp ' + tb.config.tc_workfd_scp_opt + ' ' + tb.config.tc_workfd_scp_from + ' ' + tb.config.tc_workfd_scp_to
+if tb.config.tc_workfd_scp_opt == 'none':
+    opt = ''
+else:
+    opt = tb.config.tc_workfd_scp_opt
+
+cmd = 'scp ' + opt + ' ' + tb.config.tc_workfd_scp_from + ' ' + tb.config.tc_workfd_scp_to
 tb.eof_write(c, cmd, split=c.line_length / 2)
 loop = True
 s = ['Are you sure', 'Do you want to', 'password', 'ETA', '\n']

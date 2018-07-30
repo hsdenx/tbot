@@ -51,7 +51,7 @@ tb.config.tc_workfd_check_tar_content_endtc_onerror = 'yes'
 tb.eof_call_tc("tc_workfd_check_tar_content.py")
 
 for f in tb.config.tc_board_yocto_deploy_files:
-    tb.config.tc_workfd_scp_opt = ''
+    tb.config.tc_workfd_scp_opt = 'none'
     tb.config.tc_workfd_scp_from = f
     tb.config.tc_workfd_scp_to = tb.config.user + '@' + tb.config.ip + ':' + tb.config.yocto_results_dir_lab + os.path.basename(f)
     tb.eof_call_tc('tc_workfd_scp.py')
