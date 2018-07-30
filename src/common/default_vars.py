@@ -1,14 +1,6 @@
 # This file contains default values for all
 # variables testcases use ...
 
-tc_return = True
-ub_boot_linux_cmd = 'run tbot_boot_linux'
-do_connect_to_board = True
-tftpboardname = 'config.boardname'
-boardlabname = 'config.boardname'
-boardlabpowername = 'config.boardname'
-tftpboardrootdir = ''
-tc_lx_gpio_val = '1'
 tc_lab_denx_power_tc = 'tc_lab_denx_power.py'
 tc_lab_denx_get_power_state_tc = 'tc_lab_denx_get_power_state.py'
 tc_lab_denx_connect_to_board_tc = 'tc_lab_denx_connect_to_board.py'

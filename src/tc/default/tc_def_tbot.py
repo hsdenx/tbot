@@ -69,10 +69,45 @@
 #| prompt after login into lab with ssh
 #| default: '$ '
 #
+# - tb.config.tc_return
+#| used as return value from testcases
+#| default: 'True'
+#
+# - tb.config.ub_boot_linux_cmd
+#| bootcommand for booting linux
+#| default: 'run tbot_boot_linux'
+#
+# - tb.config.do_connect_to_board
+#| connect to boards console on tbot start
+#| default: 'True'
+#
+# - tb.config.tftpboardname
+#| tftp subdir name for board
+#| default: tb.config.boardname
+#
+# - tb.config.boardlabname
+#| boardsname in the lab
+#| default: tb.config.boardname
+#
+# - tb.config.boardlabpowername
+#| boards name in the lab for power on/off
+#| default: tb.config.boardname
+#
+# - tb.config.tftpboardrootdir
+#| root path for tftp directory (if needed for u-boot)
+#| default: 'none'
+#
 # End:
 
 from tbotlib import tbot
 
+tb.define_variable('tftpboardrootdir', 'none')
+tb.define_variable('tftpboardname', tb.config.boardname)
+tb.define_variable('boardlabname', tb.config.boardname)
+tb.define_variable('boardlabpowername', tb.config.boardname)
+tb.define_variable('do_connect_to_board', 'True')
+tb.define_variable('ub_boot_linux_cmd', 'run tbot_boot_linux')
+tb.define_variable('tc_return', 'True')
 tb.define_variable('labsshprompt', '$ ')
 tb.define_variable('state_linux_timeout', '4')
 tb.define_variable('wdt_timeout', '120')

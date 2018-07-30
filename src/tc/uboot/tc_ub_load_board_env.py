@@ -84,7 +84,10 @@ if (tb.config.tc_ub_boot_linux_load_env == 'set') or (tb.config.tc_ub_boot_linux
     if tb.config.tc_ub_boot_linux_load_env == 'setend':
         tb.end_tc(True)
 
-r = tb.config.tftpboardrootdir
+if tb.config.tftpboardrootdir != 'none':
+    r = tb.config.tftpboardrootdir
+else:
+    r = ''
 tb.config.tc_ub_tftp_file_addr = tb.config.ub_load_board_env_addr
 tb.config.tc_ub_tftp_file_name = r + tb.config.tftpboardname + '/' + tb.config.ub_load_board_env_subdir + '/env.txt'
 
