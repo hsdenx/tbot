@@ -33,10 +33,28 @@
 #| tbots workdirectory on compile PC
 #| default: tb.config.tc_lab_source_dir
 #
+# - tb.config.debug
+#| If 'True' enable debugprint() output
+#| default: 'False'
+#
+# - tb.config.debugstatus
+#| If 'True' enable statusprintf() output
+#| default: 'False'
+#
+# - tb.config.state_uboot_timeout
+#| u-boot read timeout in seconds (float)
+#| default: '1'
+#
+# - tb.config.uboot_autoboot_key
+#| U-Boots autoboot key, send if autoboot is read, and != 'none'
+#| default: 'none'
+#
 # End:
 
 from tbotlib import tbot
 
+tb.define_variable('debug', 'False')
+tb.define_variable('debugstatus', 'False')
 tb.define_variable('uboot_strings', "['Autobooting in', 'noautoboot',  'autoboot', 'EOF', 'RomBOOT']")
 tb.define_variable('tc_lab_source_dir', '/work/hs/tbot')
 tb.define_variable('tc_workfd_work_dir', tb.config.tc_lab_source_dir)

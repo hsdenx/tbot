@@ -11,7 +11,7 @@ def u_boot_parse_input(tb, c, retry):
     sl = tb.config.uboot_strings
     i = 0
     oldt = c.get_timeout()
-    c.set_timeout(tb.config.state_uboot_timeout)
+    c.set_timeout(float(tb.config.state_uboot_timeout))
     while(i < retry):
         ret = tb.tbot_rup_and_check_strings(c, sl)
         if ret == '0':
@@ -25,7 +25,7 @@ def u_boot_parse_input(tb, c, retry):
             ret = tb.write_stream(c, "noautoboot", send_console_start=False)
             i = 0
         if ret == '2':
-            if tb.config.uboot_autoboot_key != '':
+            if tb.config.uboot_autoboot_key != 'none':
 		c.send_raw(tb.config.uboot_autoboot_key)
             else:
                 tb.send_ctrl_m(c)
