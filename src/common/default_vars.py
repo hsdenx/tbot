@@ -1,11 +1,6 @@
 # This file contains default values for all
 # variables testcases use ...
 
-tb_power_state = 'undef'
-term_line_length = '200'
-wdt_timeout = '120' # wdt timeout after 2 minutes
-state_linux_timeout = 4
-labsshprompt = '$ '
 tc_return = True
 ub_boot_linux_cmd = 'run tbot_boot_linux'
 do_connect_to_board = True

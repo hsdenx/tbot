@@ -7,7 +7,7 @@ debug=False
 debugstatus=True
 loglevel='INFO'
 wdt_timeout = '5000'
-state_linux_timeout = 8
+state_linux_timeout = '8'
 
 uboot_prompt = '=> '
 linux_prompt = 'ttbott> '

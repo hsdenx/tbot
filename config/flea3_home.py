@@ -15,7 +15,6 @@ loglevel ='INFO'
 uboot_prompt = '=> '
 linux_prompt = 'ttbott> '
 
-labsshprompt = '$ '
 kermit_line = '/dev/ttyUSB1'
 
 # set connect testcase (as it is with kermit, not with connect)

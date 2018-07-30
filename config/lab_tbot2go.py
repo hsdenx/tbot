@@ -9,8 +9,6 @@ channel_timeout=1
 loglevel = 'INFO'
 lab_tmp_dir = '/var/tmp'
 
-labsshprompt = '$ ' # first prompt after logging into lab pc via ssh
-
 gpio_power_on = gpo(4) # gpio number of gpio used to controll power of board
 jumper = gpo(2)
 kermit_line = '/dev/serial/by-id/usb-Prolific_Technology_Inc._USB-Serial_Controller-if00-port0'
@@ -25,7 +23,7 @@ compile_pc_prompt = 'ttbott_compile> '
 connect_to_compilepc_ssh_opt = 'none'
 connect_to_compilepc_ssh_cmd_prompt = '$ '
 
-state_linux_timeout = 6
+state_linux_timeout = '6'
 
 tftpdir = '/srv/tftpboot/'
 tc_lab_source_dir = '/work/tbot2go/tbot/'

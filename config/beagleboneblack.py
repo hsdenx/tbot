@@ -19,7 +19,7 @@ yocto_results_dir = '$TBOT_BASEDIR_YOCTO/build/tmp/deploy/images/beaglebone/'
 yocto_results_dir_lab = '/srv/tftpboot/beagleboneblack/tbot/yocto/'
 nfs_subdir = '/work/tbot2go/tbot/nfs/bbb'
 
-state_linux_timeout = 40
+state_linux_timeout = '40'
 
 linux_user = 'root'
 uboot_prompt = '=> '

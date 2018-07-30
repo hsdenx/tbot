@@ -49,10 +49,35 @@
 #| U-Boots autoboot key, send if autoboot is read, and != 'none'
 #| default: 'none'
 #
+# - tb.config.tb_power_state
+#| last read powerstate
+#| default: 'undef'
+#
+# - tb.config.term_line_length
+#| maximal line length of terminal
+#| default: '200'
+#
+# - tb.config.wdt_timeout
+#| wdt timeout in seconds
+#| default: '120'
+#
+# - tb.config.state_linux_timeout
+#| linux timeout in seconds when reading from channel
+#| default: '4'
+#
+# - tb.config.labsshprompt
+#| prompt after login into lab with ssh
+#| default: '$ '
+#
 # End:
 
 from tbotlib import tbot
 
+tb.define_variable('labsshprompt', '$ ')
+tb.define_variable('state_linux_timeout', '4')
+tb.define_variable('wdt_timeout', '120')
+tb.define_variable('term_line_length', '200')
+tb.define_variable('tb_power_state', 'undef')
 tb.define_variable('debug', 'False')
 tb.define_variable('debugstatus', 'False')
 tb.define_variable('uboot_strings', "['Autobooting in', 'noautoboot',  'autoboot', 'EOF', 'RomBOOT']")

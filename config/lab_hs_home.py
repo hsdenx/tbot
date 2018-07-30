@@ -8,7 +8,6 @@ keepalivetimeout=1
 channel_timeout=0.5
 loglevel = 'INFO'
 tftpdir = '/var/lib//tftpboot'
-labsshprompt = '$ '
 kermit_line = '/dev/ttyUSB1'
 
 tc_workfd_work_dir = '/work/hs/tbot'

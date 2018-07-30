@@ -11,7 +11,7 @@ def state_lx_parse_input(tb, c, retry, sl):
     ctrlc_send = 0
     ctrlm_send = 0
     oldt = c.get_timeout()
-    c.set_timeout(tb.config.state_linux_timeout)
+    c.set_timeout(float(tb.config.state_linux_timeout))
     while(i < retry):
         ret = tb.tbot_rup_and_check_strings(c, sl)
         # print("PPPPPPPPPPPP", i, retry, ret, sl, c.data, c.logbuf, ctrlc_send)
