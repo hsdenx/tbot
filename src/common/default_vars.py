@@ -20,7 +20,6 @@ tftpboardrootdir = ''
 tc_lab_toolchain_rev = "5.4"
 tc_lab_toolchain_name = "armv5te"
 tc_lx_gpio_val = '1'
-tc_workfd_rm_file_name = 'none'
 tc_lab_denx_power_tc = 'tc_lab_denx_power.py'
 tc_lab_denx_get_power_state_tc = 'tc_lab_denx_get_power_state.py'
 tc_lab_denx_connect_to_board_tc = 'tc_lab_denx_connect_to_board.py'
