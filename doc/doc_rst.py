@@ -20,7 +20,6 @@ class create_doc(object):
     def create_htmlfile(self):
         self.write_rst_header()
         self.write_doc()
-        self.write_doc_defaultvar()
         self.write_rst_bottom()
         self.fd.close()
  
@@ -265,52 +264,6 @@ class create_doc(object):
 
     def write_doc(self):
         self.write_onedocdir(self.subdir)
-
-    def write_one_defaultvar(self, name, value):
-        if name == '' and value == '':
-            return
-
-        self.fd.write('.. _tb.config.' + name + ':\n')
-        self.fd.write('\n')
-        self.fd.write('tb.config.' + name + '\n')
-        self.fd.write('\n')
-        self.fd.write('default value: ' + value + '\n')
-        self.fd.write('\n')
-        self.fd.write('------------------------------------------------\n')
-        self.fd.write('\n')
-        
-    def write_docdir_var(self, dirp):
-        self.write_title('Defaultvariables Documentation')
-        self.fd.write('\n')
-        self.fd.write('Variables in ' + dirp + '\n')
-        self.fd.write('\n')
-        f = open(self.workdir + '/' + dirp, 'r')
-        line = 'start'
-        value = ''
-        name = ''
-        while line:
-            line = f.readline()
-            tmp = line.split()
-            if tmp == []:
-                continue
-            if tmp[0][0] == '#':
-                continue
-
-            try:
-                if tmp[1] == '=':
-                    self.write_one_defaultvar(name, value)
-                    name = tmp[0]
-                    value = line.replace(name + ' = ', '')
-                else:
-                    value = value + line
-            except:
-                value = value + line
-
-        f.close()
-        return
-
-    def write_doc_defaultvar(self):
-        self.write_docdir_var('src/common/default_vars.py')
 
 doc = create_doc('src/tc/')
 doc.create_htmlfile()

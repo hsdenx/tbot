@@ -156,29 +156,12 @@ class events(object):
             if (self.tb.config.create_html_log == 'yes'):
                 from html_log import html_log
                 self.html_log = html_log(self.tb, 'html_log.html')
-            try:
-                self.tb.config.create_junit
-            except:
-                self.tb.config.create_junit = 'no'
             if (self.tb.config.create_junit == 'yes'):
                 from junit import junit_backend
                 try:
-                    self.tb.config.junit_tclist
+                    self.tb.config.junit_tclist.extend(self.tb.config.duts_junittclist)
                 except:
-                    self.tb.config.junit_tclist = ['tc_lab_get_uboot_source.py',
-                     'tc_workfd_set_toolchain.py', 'tc_workfd_compile_uboot.py',
-                     'tc_workfd_connect_with_kermit.py', 'tc_ub_upd_uboot.py',
-                     'tc_ub_upd_spl.py', 'tc_ub_check_version.py']
-                    try:
-                        self.tb.config.junit_tclist.extend(self.tb.config.duts_junittclist)
-                    except:
-                        pass
-                try:
-                    self.tb.config.junit_ignlist
-                except:
-                    self.tb.config.junit_ignlist = ['tc_workfd_check_cmd_success.py',
-                     'tc_dummy.py',
-                    ]
+                    pass
                 self.junit = junit_backend(self.tb, 'tbot_results.xml', self.tb.config.junit_tclist, self.tb.config.junit_ignlist)
             if (self.tb.config.create_documentation == 'yes'):
                 from documentation import doc_backend

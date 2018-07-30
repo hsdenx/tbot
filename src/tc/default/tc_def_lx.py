@@ -9,11 +9,6 @@
 #|  path where testcase tc_lx_mount.py mounts
 #|  default: '/home/hs/mnt'
 #
-# - tb.config.tc_return
-#| value set from various testcases.
-#| used as return value.
-#
-#
 # - tb.config.uboot_get_parameter_file_list
 #| list of files, where TC searches for the define
 #| used by: tc_workfd_get_uboot_config_string.py
