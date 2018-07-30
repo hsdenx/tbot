@@ -1,14 +1,21 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 # Description:
-# start with
-# python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_workfd_switch_su.py
-# switch to superuser
+# switch to superuser with user 'root' and password
+# tb.config.switch_su_board
+#
+# used variables
+#
+# - tb.config.switch_su_board
+#| boardname with which password get searched in password file.
+#| default: 'lab'
+#
 # End:
 
 from tbotlib import tbot
 
-logging.info("args: workfd %s %s", tb.workfd.name, tb.config.switch_su_board)
+tb.define_variable('switch_su_board', 'lab')
+logging.info("args: workfd %s", tb.workfd.name)
 
 c = tb.workfd
 #switch to root

@@ -34,5 +34,4 @@ create_webpatch = 'no'
 create_html_log = 'no'
 create_documentation = 'no'
 event_documentation_strip_list = []
-switch_su_board = 'lab'
 tb_set_after_linux = ''
