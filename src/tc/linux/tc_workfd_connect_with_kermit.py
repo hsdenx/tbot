@@ -65,16 +65,16 @@ tb.define_variable('tc_workfd_connect_with_kermit_sudo', 'none')
 tb.define_variable('tc_workfd_connect_with_kermit_rlogin', 'none')
 tb.define_variable('kermit_line', '/dev/ttyUSB0')
 tb.define_variable('kermit_speed', '115200')
-tb.define_variable('tc_workfd_connect_with_kermit_settings', '[ "set carrier-watch off",
-        "set handshake none",
-        "set flow-control none",
-        "robust",
-        "set file type bin",
-        "set file name lit",
-        "set rec pack 1000",
-        "set send pack 1000",
-        "set window 5",
-    ]')
+tb.define_variable('tc_workfd_connect_with_kermit_settings', '[ "set carrier-watch off", \
+ "set handshake none", \
+ "set flow-control none", \
+ "robust", \
+ "set file type bin", \
+ "set file name lit", \
+ "set rec pack 1000", \
+  "set send pack 1000", \
+  "set window 5", \
+]')
 logging.info("args: workdfd: %s", tb.workfd)
 
 if tb.config.tc_workfd_connect_with_kermit_ssh != 'none':
