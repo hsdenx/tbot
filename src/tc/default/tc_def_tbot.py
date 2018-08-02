@@ -243,11 +243,11 @@ tb.define_variable('lab_tmp_dir', '/var/tmp')
 tb.define_variable('compile_pc_workdir', tb.config.tc_lab_source_dir)
 
 # set all path variables with an ending os.sep
-if not tb.config.lab_tmp_dir.endwith(os.sep):
+if not tb.config.lab_tmp_dir.endswith(os.sep):
     tb.config.lab_tmp_dir + os.sep
-if not tb.config.tc_lab_source_dir.endwith(os.sep):
+if not tb.config.tc_lab_source_dir.endswith(os.sep):
     tb.config.tc_lab_source_dir + os.sep
-if not tb.config.tc_workfd_work_dir.endwith(os.sep):
+if not tb.config.tc_workfd_work_dir.endswith(os.sep):
     tb.config.tc_workfd_work_dir + os.sep
 
 tb.gotprompt = True
