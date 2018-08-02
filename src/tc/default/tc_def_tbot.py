@@ -202,12 +202,8 @@ tb.define_variable('user', '')
 tb.define_variable('boardname', '')
 tb.define_variable('linux_prompt', '')
 tb.define_variable('tb_set_after_linux', 'none')
-tb.define_variable('junit_ignlist', "['tc_workfd_check_cmd_success.py',
-                     'tc_dummy.py']")
-tb.define_variable('junit_tclist', "['tc_lab_get_uboot_source.py',
-                     'tc_workfd_set_toolchain.py', 'tc_workfd_compile_uboot.py',
-                     'tc_workfd_connect_with_kermit.py', 'tc_ub_upd_uboot.py',
-                     'tc_ub_upd_spl.py', 'tc_ub_check_version.py']")
+tb.define_variable('junit_ignlist', "['tc_workfd_check_cmd_success.py', 'tc_dummy.py']")
+tb.define_variable('junit_tclist', "['tc_lab_get_uboot_source.py', 'tc_workfd_set_toolchain.py', 'tc_workfd_compile_uboot.py', 'tc_workfd_connect_with_kermit.py', 'tc_ub_upd_uboot.py', 'tc_ub_upd_spl.py', 'tc_ub_check_version.py']")
 tb.define_variable('create_junit', 'no')
 tb.define_variable('event_documentation_strip_list', '[]')
 tb.define_variable('create_documentation', 'no')
