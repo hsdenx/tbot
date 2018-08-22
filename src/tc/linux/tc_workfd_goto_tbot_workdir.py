@@ -7,7 +7,7 @@
 
 from tbotlib import tbot
 
-logging.info("args: workfd: %s %s", tb.workfd, tb.config.tc_workfd_work_dir)
+logging.info("args: workfd: %s %s", tb.workfd.name, tb.config.tc_workfd_work_dir)
 
 tmp = '[ ! -d "' + tb.config.tc_workfd_work_dir + '" ] && echo "Does not exist"'
 tb.eof_write(tb.workfd, tmp)
