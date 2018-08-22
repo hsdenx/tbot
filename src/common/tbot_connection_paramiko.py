@@ -156,13 +156,14 @@ class Connection(object):
            self.ssh.close()
 
     def set_timeout(self, timeout):
-        self.timeout = timeout
         if timeout != None:
-            self.channel_timeout = timeout
+            self.channel_timeout = float(timeout)
             self.channel.settimeout(self.channel_timeout)
+            self.timeout = float(timeout)
         else:
             self.channel_timeout = self.default_channel_timeout
             self.channel.settimeout(self.channel_timeout)
+            self.timeout = None
 
     def get_timeout(self):
         return self.timeout
