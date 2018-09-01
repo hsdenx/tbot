@@ -3,7 +3,7 @@
 # Description:
 #
 # login with ssh to tb.config.workfd_ssh_cmd and ssh options
-# tb.config.tc_workfd_ssh_opt.
+# tb.config.workfd_ssh_opt.
 # This testcases expects
 # tb.config.workfd_ssh_cmd_prompt
 # as the prompt it get, after a succefull log in.
@@ -45,10 +45,10 @@ logging.info("args: workfd %s", tb.workfd.name)
 
 c = tb.workfd
 
-if tb.config.tc_workfd_ssh_opt == 'none':
+if tb.config.workfd_ssh_opt == 'none':
     opt = ''
 else:
-    opt = tb.config.tc_workfd_ssh_opt
+    opt = tb.config.workfd_ssh_opt
 
 cmd = 'ssh ' + opt + ' ' + tb.config.workfd_ssh_cmd
 tb.eof_write(c, cmd)

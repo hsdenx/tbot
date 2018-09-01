@@ -26,7 +26,7 @@ logging.info("args: %s", tb.config.linux_prompt_default)
 save = tb.workfd
 tb.workfd = tb.c_con
 tb.config.workfd_ssh_cmd = tb.config.connect_with_ssh_user + '@' + tb.config.connect_with_ssh_ip
-tb.config.tc_workfd_ssh_opt = 'none'
+tb.config.workfd_ssh_opt = 'none'
 tb.config.workfd_ssh_cmd_prompt = tb.config.linux_prompt_default
 tb.config.workfd_ssh_do_first = 'no'
 tb.eof_call_tc("tc_workfd_ssh.py")

@@ -86,7 +86,7 @@ for con in cons:
         # we are not @ compile PC
         # go to compile PC
         tb.config.workfd_ssh_cmd = con[1] + '@' + con[0]
-        tb.config.tc_workfd_ssh_opt = con[2]
+        tb.config.workfd_ssh_opt = con[2]
         tb.config.workfd_ssh_cmd_prompt = con[3]
         tb.eof_call_tc("tc_workfd_ssh.py")
         # we should set in tc_workfd_ssh.py the new prompt !
