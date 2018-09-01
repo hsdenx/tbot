@@ -27,7 +27,7 @@ tb.buf = c.get_log()
 
 tb.list_of_files = []
 
-tb.eof_write(tb.workfd, 'find ' + tb.tc_workfd_get_list_of_files_dir +
+tb.eof_write(tb.workfd, 'find ' + tb.config.tc_workfd_get_list_of_files_dir +
              ' -name  "' + tb.config.tc_workfd_get_list_of_files_mask + '"' +
              ' | sort')
 
