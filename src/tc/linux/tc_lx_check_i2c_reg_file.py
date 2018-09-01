@@ -14,8 +14,8 @@
 # used variables:
 #
 # - tb.config.i2c_pre
-#   string added before 'i2cget' command
-#   default: ''
+#|  string added before 'i2cget' command
+#|  default: ''
 #
 # - tb.config.tc_lx_create_i2c_reg_file_name
 #|  register dump file name
@@ -24,9 +24,8 @@
 
 from tbotlib import tbot
 
-tb.define_variable('config.i2c_pre', '')
-
-logging.info("args: %s", tb.config.tc_lx_create_i2c_reg_file_name)
+logging.info("args: i2c_pre: %s", tb.config.i2c_pre)
+logging.info("args: tc_lx_create_i2c_reg_file_name: %s", tb.config.tc_lx_create_i2c_reg_file_name)
 
 # set board state for which the tc is valid
 tb.set_board_state("linux")

@@ -11,6 +11,36 @@
 # into file with name
 # tb.config.tc_lx_create_i2c_reg_file_name
 #
+# used variables
+#
+# - tb.config.tc_lx_create_i2c_reg_file_name
+#| filename to which registerdump get written
+#| default: 'i2c_dump.txt'
+#
+# - tb.config.tc_lx_create_i2c_reg_file_start
+#| start offset from which get read
+#| default: '0x0'
+#
+# - tb.config.tc_lx_create_i2c_reg_file_stop
+#| stop offset until to which get read
+#| default: '0x10'
+#
+# - tb.config.tc_lx_create_i2c_reg_file_bus
+#| i2c bus number from which get read
+#| default: '0x0'
+#
+# - tb.config.tc_lx_create_i2c_reg_file_addr
+#| i2c address from which get read
+#| default: '0x8'
+#
+# - tb.config.tc_lx_i2c_readreg_mask
+#| mask which get written into dump file
+#| default: ''
+#
+# - tb.config.tc_lx_i2c_readreg_type
+#| read type (types from i2c_get util)
+#| default: 'b'
+#
 # End:
 
 from tbotlib import tbot
@@ -18,48 +48,15 @@ from tbotlib import tbot
 save = tb.workfd
 tb.workfd = tb.c_con
 
-try:
-    tb.config.i2c_pre
-except:
-    tb.config.i2c_pre = ''
+tb.define_variable('tc_lx_create_i2c_reg_file_name', 'i2c_dump.txt')
+tb.define_variable('tc_lx_create_i2c_reg_file_start', '0x0')
+tb.define_variable('tc_lx_create_i2c_reg_file_stop', '0x10')
+tb.define_variable('tc_lx_i2c_readreg_mask', '0xff')
+tb.define_variable('tc_lx_i2c_readreg_type', 'b')
+tb.define_variable('tc_lx_create_i2c_reg_file_bus', '0x0')
+tb.define_variable('tc_lx_create_i2c_reg_file_addr', '0x8')
 
-try:
-    tb.config.tc_lx_create_i2c_reg_file_name
-except:
-    tb.config.tc_lx_create_i2c_reg_file_name = "i2c_dump.txt"
-
-try:
-    tb.config.tc_lx_create_i2c_reg_file_start
-except:
-    tb.config.tc_lx_create_i2c_reg_file_start = '0x0'
-
-try:
-    tb.config.tc_lx_create_i2c_reg_file_stop
-except:
-    tb.config.tc_lx_create_i2c_reg_file_stop = '0x10'
-
-try:
-    tb.config.tc_lx_i2c_readreg_mask
-except:
-    tb.config.tc_lx_i2c_readreg_mask = '0xff'
-
-try:
-    tb.config.tc_lx_i2c_readreg_type
-except:
-    tb.config.tc_lx_i2c_readreg_type = 'b'
-
-try:
-    tb.config.tc_lx_create_i2c_reg_file_bus
-except:
-    tb.config.tc_lx_create_i2c_reg_file_bus = '0x0'
-
-try:
-    tb.config.tc_lx_create_i2c_reg_file_addr
-except:
-    tb.config.tc_lx_create_i2c_reg_file_addr = '0x08'
-
-logging.info("args: %s %s %s %s %s %s", tb.config.tc_lx_create_i2c_reg_file_name, tb.config.tc_lx_create_i2c_reg_file_start, tb.config.tc_lx_create_i2c_reg_file_stop, tb.config.tc_lx_i2c_readreg_mask, tb.config.tc_lx_i2c_readreg_type, tb.config.i2c_pre)
-logging.info("args: bus: %s addr: %s", tb.config.tc_lx_create_i2c_reg_file_bus, tb.config.tc_lx_create_i2c_reg_file_addr)
+logging.info("args: %s", tb.config.i2c_pre)
 
 # set board state for which the tc is valid
 tb.set_board_state("linux")
