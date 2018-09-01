@@ -24,13 +24,13 @@
 # used variables:
 #
 # - tb.config.tbot_src_dirname
-#   path, where tbot installs programs used from tbot
-#   on the lab pc
-#   default = 'src/'
+#|  path, where tbot installs programs used from tbot
+#|  on the lab pc
+#|   default = 'src/'
 #
 # - tb.config.tbot_src_path
-#   full path to src directory
-#   default = tb.config.tc_workfd_work_dir + tb.config.tbot_src_dirname
+#|  full path to src directory
+#|  default = tb.config.tc_workfd_work_dir + tb.config.tbot_src_dirname
 #
 # End:
 
@@ -38,17 +38,10 @@ from tbotlib import tbot
 
 tb.workfd = tb.c_ctrl
 
-try:
-    tb.config.tbot_src_dirname
-except:
-    tb.config.tbot_src_dirname = 'src/'
+tb.define_variable('tbot_src_dirname', 'src/')
+tb.define_variable('tbot_src_path', tb.config.tc_workfd_work_dir + tb.config.tbot_src_dirname)
 
-try:
-    tb.config.tbot_src_path
-except:
-    tb.config.tbot_src_path = tb.config.tc_workfd_work_dir + tb.config.tbot_src_dirname
-
-logging.info("arg: %s %s %s", tb.workfd.name, tb.config.tbot_src_dirname, tb.config.tbot_src_path)
+logging.info("arg: %s", tb.workfd.name)
 
 try:
     # if we have already imx_usb installed, break
