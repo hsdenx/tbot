@@ -18,17 +18,17 @@
 # used variables:
 #
 # - tb.config.tc_linux_imx_usb_loader_install_path
-#   path to imx_usb_loader utility.
-#   default: If not set, try to install imx_usb_loader
-#   utility with tc_linux_imx_usb_loader_install.py
+#|  path to imx_usb_loader utility.
+#|  default: If not set, try to install imx_usb_loader
+#|  utility with tc_linux_imx_usb_loader_install.py
 #
 # - tb.config.tc_linux_imx_usb_loader_boot_uboot_files
-#   list of files, which get loaded with imx_usb_loader
-#   default:
-#   [
-#        'SPL',
-#       'u-boot-fit.img'
-#   ]
+#|  list of files, which get loaded with imx_usb_loader
+#|  default:
+#|  [
+#|       'SPL',
+#|      'u-boot-fit.img'
+#|  ]
 #
 # End:
 
@@ -41,16 +41,9 @@ try:
 except:
     tb.eof_call_tc("tc_linux_imx_usb_loader_install.py")
 
-try:
-    tb.config.tc_linux_imx_usb_loader_boot_uboot_files
-except:
-    tb.config.tc_linux_imx_usb_loader_boot_uboot_files = [
-        'SPL',
-        'u-boot-fit.img'
-    ]
+tb.define_variable('tc_linux_imx_usb_loader_boot_uboot_files', '["SPL", "u-boot-fit.img"]')
 
 logging.info("arg: %s %s", tb.workfd.name, tb.config.tc_linux_imx_usb_loader_install_path)
-logging.info("args: %s", tb.config.tc_linux_imx_usb_loader_boot_uboot_files)
 
 # power off the board
 tb.eof_call_tc("tc_lab_poweroff.py")
