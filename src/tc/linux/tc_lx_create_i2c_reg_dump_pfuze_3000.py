@@ -8,19 +8,14 @@
 # used variables:
 #
 # - tb.config.tc_lx_create_i2c_reg_dump_pfuze_3000_bus
-#   i2c bus number on which the pfuze3000 is connected to.
-#   default: '0x0'
+#|  i2c bus number on which the pfuze3000 is connected to.
+#|  default: '0x0'
 #
 # End:
 
 from tbotlib import tbot
 
-try:
-    tb.config.tc_lx_create_i2c_reg_dump_pfuze_3000_bus
-except:
-    tb.config.tc_lx_create_i2c_reg_dump_pfuze_3000_bus = '0x0'
-
-logging.info("args: bus: %s", tb.config.tc_lx_create_i2c_reg_dump_pfuze_3000_bus)
+tb.define_variable('tc_lx_create_i2c_reg_dump_pfuze_3000_bus', '0x0')
 
 tb.config.tc_lx_create_i2c_reg_file_bus = tb.config.tc_lx_create_i2c_reg_dump_pfuze_3000_bus
 tb.config.tc_lx_create_i2c_reg_file_addr = '0x08'
