@@ -57,18 +57,7 @@ from tbotlib import tbot
 tb.define_variable('tc_uboot_load_bin_with_kermit_possible', 'yes')
 tb.define_variable('tc_uboot_load_bin_ram_addr', '81000000')
 tb.define_variable('tc_uboot_load_bin_file', '/home/alka/tbot/nero-images/u-boot.img')
-tb.define_variable('tc_uboot_load_bin_with_kermit_kermit_settings', '
-[
-    "set carrier-watch off",
-    "set handshake none",
-    "set flow-control none",
-    "robust",
-    "set file type bin",
-    "set file name lit",
-    "set rec pack 100",
-    "set send pack 100",
-    "set window 5",
-]')
+tb.define_variable('tc_uboot_load_bin_with_kermit_kermit_settings', '["set carrier-watch off", "set handshake none", "set flow-control none", "robust", "set file type bin", "set file name lit", "set rec pack 100", "set send pack 100", "set window 5"]')
 
 if tb.config.tc_uboot_load_bin_with_kermit_possible != 'yes':
     tb.end_tc(True)
