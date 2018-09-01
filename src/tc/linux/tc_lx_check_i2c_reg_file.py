@@ -18,16 +18,13 @@
 #   default: ''
 #
 # - tb.config.tc_lx_create_i2c_reg_file_name
-#   register dump file name
+#|  register dump file name
 #
 # End:
 
 from tbotlib import tbot
 
-try:
-    tb.config.i2c_pre
-except:
-    tb.config.i2c_pre = ''
+tb.define_variable('config.i2c_pre', '')
 
 logging.info("args: %s", tb.config.tc_lx_create_i2c_reg_file_name)
 
