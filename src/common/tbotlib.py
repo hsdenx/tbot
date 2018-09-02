@@ -380,6 +380,11 @@ class tbot(object):
         :param arg1: name of the new variable
         :param arg2: default value of the new variable. If '' and
                      variable does not exist, exit with enc_tc(False)
+                     reserved values:
+                     True  : variable is set to True
+                     False : variable is set to False
+                     start with "[" or "{" -> convert to list or dictionary
+                     "empty" : variable is set to ''
         :return: True if power state is on, else False
         """
         found = False
@@ -395,6 +400,8 @@ class tbot(object):
                     import ast
                     # convert string to list or dictionary
                     defvalue = ast.literal_eval(defvalue)
+                if defvalue == 'empty':
+                    defvalue = ''
                 if defvalue == 'False':
                     defvalue = False
                 if defvalue == 'True':
