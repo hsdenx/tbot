@@ -251,6 +251,7 @@ class tbot(object):
         logging.info('Started logging @  %s', now.strftime("%Y-%m-%d %H:%M"))
         logging.info('working directory %s', self.workdir)
         logging.info('testcase directory %s', self.tc_dir)
+        logging.info('result directory %s', self.resultdir)
 
 	self.logstdout = logging.StreamHandler(sys.stdout)
 	self.logstdout.setLevel(logging.WARNING)
