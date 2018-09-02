@@ -88,8 +88,11 @@ cmd = tb.config.tc_xenomai_latency_lcmd
 if tb.config.tc_xenomai_latency_tmpfile != 'none':
     cmd += ' -g ' + tb.config.tc_xenomai_latency_tmpfile
 
-if tb.config.tc_xenomai_latency_opt != 'none':
-    cmd += ' ' + tb.config.tc_xenomai_latency_opt
+opt = tb.config.tc_xenomai_latency_opt
+if opt != 'none':
+    cmd += ' ' + opt
+else:
+    opt = ''
 
 tb.eof_write(c, cmd)
 
@@ -142,12 +145,12 @@ while (count < max_count):
 fd.close()
 
 if df != '':
-    loc = tb.resultdir + '/' + os.path.basename(df) + tb.config.tc_xenomai_latency_opt.replace(' ', '_') + '.loc'
+    loc = tb.resultdir + '/' + os.path.basename(df) + opt.replace(' ', '_') + '.loc'
     cmd = 'rm -rf ' + loc
     os.system(cmd)
     print("CMD ", cmd)
     tb.c_ctrl.copy_file(df, loc)
-    of = tb.resultdir + '/lat_tbot' + tb.config.tc_xenomai_latency_opt.replace(' ', '_') + '.png'
+    of = tb.resultdir + '/lat_tbot' + opt.replace(' ', '_') + '.png'
     cmd = 'gnuplot -e \'input_file="' + loc + '";output_file="' + of + '";graph_title="' + tb.config.boardname + ' latency statistic"\' ' + tb.workdir + '/src/files/balkenplot_lat_tbot.sem'
     os.system(cmd)
 
@@ -167,11 +170,11 @@ if tb.config.tc_xenomai_latency_datfile2 != '':
     fd.close()
 
     # create png files (on host!)
-    loc = tb.resultdir + '/' + os.path.basename(of) + tb.config.tc_xenomai_latency_opt.replace(' ', '_') + '.loc'
+    loc = tb.resultdir + '/' + os.path.basename(of) + opt.replace(' ', '_') + '.loc'
     cmd = 'rm -rf ' + loc
     os.system(cmd)
     tb.c_ctrl.copy_file(of, loc)
-    oft = tb.resultdir + '/latency' + tb.config.tc_xenomai_latency_opt.replace(' ', '_') + '.png'
+    oft = tb.resultdir + '/latency' + opt.replace(' ', '_') + '.png'
     cmd = 'gnuplot -e \'input_file="' + loc + '";output_file="' + oft + '";graph_title="' + tb.config.boardname + ' latency"\' ' + tb.workdir + '/src/files/balkenplot_latency.sem'
     os.system(cmd)
 
