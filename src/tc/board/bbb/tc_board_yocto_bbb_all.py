@@ -24,7 +24,7 @@ tb.eof_call_tc("tc_board_yocto_install_nfs.py")
 tb.eof_call_tc("tc_board_yocto_boot_nfs.py")
 tb.eof_call_tc("tc_board_yocto_boot_sdcard.py")
 
-tb.config.state_linux_timeout = tb.config.state_linux_timeout / 2
+tb.config.state_linux_timeout = str(float(tb.config.state_linux_timeout) / 2)
 tb.config.tc_demo_linux_tc_boot_lx = 'no'
 #tb.eof_call_tc("tc_demo_linux_testcases.py")
 
