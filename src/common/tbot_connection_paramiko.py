@@ -426,15 +426,15 @@ class Connection(object):
 
         # now, find out, what we return
         logging.debug("----------------------------------------------------------------------")
-        logging.debug("con name ", self.name)
-        logging.debug("DATA ", self.data)
-        logging.debug("SE ", se)
-        logging.debug("IGN ", self.ign)
-        logging.debug("PROMPT ", self._tolist(self.prompt))
-        logging.debug("PRO ONLY ", promptonly, self.send_prompt)
-        logging.debug("STR ", lp_str, ret_str)
-        logging.debug("IGN ", lp_ign, ret_ign)
-        logging.debug("PRO ", lp_pro, ret_pro)
+        logging.debug("con name %s", self.name)
+        logging.debug("DATA %s", self.data)
+        logging.debug("SE %s", se)
+        logging.debug("IGN %s", self.ign)
+        logging.debug("PROMPT %s", self._tolist(self.prompt))
+        logging.debug("PRO ONLY %s %s", promptonly, self.send_prompt)
+        logging.debug("STR %s %s", lp_str, ret_str)
+        logging.debug("IGN %s %s", lp_ign, ret_ign)
+        logging.debug("PRO %s %s", lp_pro, ret_pro)
 
         # check if we found nothing
         if ret_str == 'none' and ret_ign == 'none' and ret_pro == 'none':
