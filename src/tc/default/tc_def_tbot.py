@@ -177,7 +177,7 @@
 #| Call the "junit" backend after tbot finsihed
 #| default: 'no'
 #
-# - tb.config.config.junit_tclist
+# - tb.config.junit_tclist
 #| list of testcasenames, for which the logfile get delivered to jenkins
 #| default: "['tc_lab_get_uboot_source.py',
 #|            'tc_workfd_set_toolchain.py', 'tc_workfd_compile_uboot.py',
@@ -231,6 +231,8 @@ tb.define_variable('labsshprompt', '$ ')
 tb.define_variable('state_linux_timeout', '4')
 tb.define_variable('wdt_timeout', '120')
 tb.define_variable('term_line_length', '200')
+tb.define_variable('state_uboot_timeout', '1')
+tb.define_variable('uboot_autoboot_key', 'none')
 tb.define_variable('tb_power_state', 'undef')
 tb.define_variable('debug', 'False')
 tb.define_variable('debugstatus', 'False')
