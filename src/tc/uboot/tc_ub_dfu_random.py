@@ -47,9 +47,9 @@ def dfu_check_one(tb, ctrl, string):
     ret = tb.tbot_expect_string(ctrl, string)
     if ret == 'prompt':
         tb.send_ctrl_c_con()
-        tb.tb_expect_prompt(tb.c_con)
+        tb.tbot_expect_prompt(tb.c_con)
         tb.eof_write(ctrl, 'exit')
-        tb.tb_expect_prompt(ctrl)
+        tb.tbot_expect_prompt(ctrl)
         tb.end_tc(False)
 
 # load U-Boot environment variables for tbot
