@@ -71,6 +71,7 @@ if tb.config.tc_ub_test_py_configfile != []:
         cmd = 'echo ' + line + opp + fn
         tb.eof_write(c, cmd)
         opp = ' >> '
+    tb.tbot_expect_prompt(c)
     cmd = 'cat ' + fn
     tb.write_lx_cmd_check(c, cmd)
 
