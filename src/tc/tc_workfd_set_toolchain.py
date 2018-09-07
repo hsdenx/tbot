@@ -48,8 +48,6 @@ from tbotlib import tbot
 tb.define_variable('tc_workfd_set_toolchain_source', 'none')
 tb.define_variable('tc_workfd_set_toolchain_arch', 'not set')
 tb.define_variable('tc_workfd_set_toolchain_addlist', 'none')
-tb.define_variable('tc_workfd_set_toolchain_t_p', '')
-tb.define_variable('tc_workfd_set_toolchain_cr_co', '')
 
 logging.info("args: %s", tb.workfd.name)
 
@@ -59,6 +57,9 @@ if tb.config.tc_workfd_set_toolchain_source != 'none':
     cmd = 'source ' + tb.config.tc_workfd_set_toolchain_source
     tb.write_lx_cmd_check(c, cmd)
     tb.end_tc(True)
+
+tb.define_variable('tc_workfd_set_toolchain_t_p', '')
+tb.define_variable('tc_workfd_set_toolchain_cr_co', '')
 
 # set ARCH
 cmd = 'export ARCH=' + tb.config.tc_workfd_set_toolchain_arch
