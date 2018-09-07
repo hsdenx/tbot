@@ -166,9 +166,6 @@ class tbot(object):
         # load lab settigs ...
         self.overwrite_config(labfile)
 
-        # load default settigs ...
-        self.overwrite_config('default_vars')
-
         # test if we have a board setup function
         call_board_setup = False
         try:
@@ -267,7 +264,6 @@ class tbot(object):
 
         self.event = events(self, 'log/event.log')
         self.event.create_event(self.starttestcase, self.config.boardname, "Boardname", True)
-        self.event.create_event(self.starttestcase, self.config.boardname, "DUTS_BOARDNAME", self.config.boardlabpowername)
         if self.eventsim != 'none':
             self.event.create_event(self.starttestcase, 'eventsim', "BoardnameEnd", False)
             sys.exit(0)
@@ -279,12 +275,14 @@ class tbot(object):
         self.wdtfile = self.wdtdir + "/" + self.cfgfile + ".wdt"
         self.tbot_start_wdt()
 
+        self.call_tc('tc_def_tbot.py')
+        self.call_tc('tc_def_lx.py')
+
+        self.event.create_event(self.starttestcase, self.config.boardname, "DUTS_BOARDNAME", self.config.boardlabpowername)
+
         # try to connect with ssh
         self.check_open_fd(self.c_ctrl)
         self.check_open_fd(self.c_con)
-
-        self.call_tc('tc_def_tbot.py')
-        self.call_tc('tc_def_lx.py')
 
         # try to get the console of the board
         ret = self.connect_to_board(self.config.boardname)
