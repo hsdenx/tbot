@@ -703,18 +703,6 @@ start all U-Boot testcases for the shc board
 
 ------------------------------------------------
 
-.. _tc_board_shc_uboot_git_bisect_py:
-
-board/tc_board_shc_uboot_git_bisect.py
-======================================
-
-https://github.com/hsdenx/tbot/blob/master/src/tc/board/tc_board_shc_uboot_git_bisect.py
-
-start git bisect for the shc board
-
-
-------------------------------------------------
-
 .. _tc_board_shc_upd_ub_py:
 
 board/tc_board_shc_upd_ub.py
@@ -1134,6 +1122,13 @@ simple set default values for linux testcases
 :usedvar:`used variables`
 
 
+.. _tb.config.i2c_pre:
+
+- tb.config.i2c_pre
+
+|  string added before 'i2cget' command
+|  default: ''
+
 .. _tb.config.tc_lx_mount_dir:
 
 - tb.config.tc_lx_mount_dir
@@ -1483,9 +1478,9 @@ simple set default values for tbot
 | Call the "junit" backend after tbot finsihed
 | default: 'no'
 
-.. _tb.config.config.junit_tclist:
+.. _tb.config.junit_tclist:
 
-- tb.config.config.junit_tclist
+- tb.config.junit_tclist
 
 | list of testcasenames, for which the logfile get delivered to jenkins
 | default: "['tc_lab_get_uboot_source_py_',
@@ -1537,6 +1532,13 @@ simple set default values for U-Boot testcases
 
 | file name for the tftp command
 | default: ''
+
+.. _tb.config.ub_load_board_env_subdir:
+
+- tb.config.ub_load_board_env_subdir
+
+| subdirectory, where tbot finds boards u-boot env
+| default: 'tbot'
 
 .. _tb.config.tc_ub_tftp_path:
 
@@ -2146,102 +2148,6 @@ Than you have to power on or off the board manually
 ------------------------------------------------
 
 
-.. _tc_lab_kmtronic_get_power_state_py:
-
-lab/tc_lab_kmtronic_get_power_state.py
-======================================
-
-https://github.com/hsdenx/tbot/blob/master/src/tc/lab/tc_lab_kmtronic_get_power_state.py
-
-start with
-
-python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lab_kmtronic_get_power_state.py
-
-power on/off the board
-
-
-get the power state of the board attached to a kmtronic usb relay:
-
-
-http://info.kmtronic.com/kmtronic-usb-relay-test-software.html
-
-
-and save it in tb.power_state
-
-
-use testcase "tc_lab_kmtronic_get_variables_py_" for setting
-
-the serial and the index you need for the specific board.
-
-
-This file is an example for a setup, you need to adapt
-
-this to your needs.
-
-
-
-------------------------------------------------
-
-.. _tc_lab_kmtronic_get_variables_py:
-
-lab/tc_lab_kmtronic_get_variables.py
-====================================
-
-https://github.com/hsdenx/tbot/blob/master/src/tc/lab/tc_lab_kmtronic_get_variables.py
-
-start with
-
-python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lab_kmtronic_get_variables.py
-
-get tty device tb.config.kmtronic_dev_ and
-
-tb.config.kmtronic_addr_
-
-for the kmtronic usb relay, see:
-
-
-http://info.kmtronic.com/kmtronic-usb-relay-test-software.html
-
-
-
-------------------------------------------------
-
-.. _tc_lab_kmtronic_set_power_state_py:
-
-lab/tc_lab_kmtronic_set_power_state.py
-======================================
-
-https://github.com/hsdenx/tbot/blob/master/src/tc/lab/tc_lab_kmtronic_set_power_state.py
-
-start with
-
-python2.7 src/common/tbot.py -s labconfigname -c boardconfigname -t tc_lab_kmtronic_set_power_state.py
-
-power on/off the board
-
-
-get the power state of the board attached to a kmtronic usb relay:
-
-
-http://info.kmtronic.com/kmtronic-usb-relay-test-software.html
-
-
-and save it in tb.power_state
-
-
-use testcase "tc_lab_kmtronic_get_variables_py_" for setting
-
-the serial and the index you need for the specific board.
-
-
-This file is an example for a setup, you need to adapt
-
-this to your needs.
-
-
-
-------------------------------------------------
-
 .. _tc_lab_power_onoff_gpio_py:
 
 lab/tc_lab_power_onoff_gpio.py
@@ -2515,6 +2421,241 @@ get relay tbot configuration
 
 | testcase which get called for setting the relay
 | default: 'tc_linux_relay_simple_set_py_'
+
+
+------------------------------------------------
+
+.. _tc_linux_relay_pyrelayctl_get_py:
+
+linux/relay/tc_linux_relay_pyrelayctl_get.py
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+https://github.com/hsdenx/tbot/blob/master/src/tc/linux/relay/tc_linux_relay_pyrelayctl_get.py
+
+get state of relay port
+
+tb.config.tc_linux_relay_pyrelayctl_device_
+
+tb.config.tc_linux_relay_pyrelayctl_port_
+
+
+with the pyrelayctl cmd
+
+and set state in
+
+tb.config.tc_linux_relay_pyrelayctl_get_state_
+
+"on", "off" or "undef"
+
+
+find the c source code for the pyrelayctl cmd here:
+
+
+git clone https://github.com/xypron/pyrelayctl.git
+
+
+install python3-usb
+
+apt-get install python3-usb
+
+
+python3 setup_py_ build
+
+sudo python3 setup_py_ install
+
+
+add file /lib/udev/rules.d/60-relayctl.rules
+
+SUBSYSTEM=="usb", ATTR{idVendor}=="0403", ATTR{idProduct}=="6001", GROUP="relayctl", MODE="660", ENV{MODALIAS}="ignore"
+
+
+(execute udevadm control --reload-rules)
+
+
+
+------------------------------------------------
+
+.. _tc_linux_relay_pyrelayctl_get_power_py:
+
+linux/relay/tc_linux_relay_pyrelayctl_get_power.py
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+https://github.com/hsdenx/tbot/blob/master/src/tc/linux/relay/tc_linux_relay_pyrelayctl_get_power.py
+
+get tb.power_state of the relay port with the testcases
+
+tc_linux_relay_pyrelayctl_get_py_
+
+
+:usedvar:`used variables`:
+
+
+.. _tb.config.tc_linux_relay_pyrelayctl_getconfig:
+
+- tb.config.tc_linux_relay_pyrelayctl_getconfig
+
+testcase name which gets called for getting pyrelayctl
+
+configuration
+
+
+.. _tb.config.tc_linux_relay_pyrelayctl_get_state:
+
+- tb.config.tc_linux_relay_pyrelayctl_get_state
+
+contains current state of the relay
+
+
+
+------------------------------------------------
+
+.. _tc_linux_relay_pyrelayctl_getcfg_py:
+
+linux/relay/tc_linux_relay_pyrelayctl_getcfg.py
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+https://github.com/hsdenx/tbot/blob/master/src/tc/linux/relay/tc_linux_relay_pyrelayctl_getcfg.py
+
+
+set tb.config.tc_linux_relay_pyrelayctl_device_ and
+
+tb.config.tc_linux_relay_pyrelayctl_port_ dependend
+
+on tb.config.boardlabpowername_
+
+
+for usage with testcase
+
+tc_linux_relay_pyrelayctl_set_power_py_ and
+
+tc_linux_relay_pyrelayctl_get_power_py_ 
+
+
+:usedvar:`used variables`:
+
+
+.. _tb.config.boardlabpowername:
+
+- tb.config.boardlabpowername
+
+boards name in the lab.
+
+
+returns:
+
+
+.. _tb.config.tc_linux_relay_pyrelayctl_device:
+
+- tb.config.tc_linux_relay_pyrelayctl_device
+
+device used with pyrelayctl command.
+
+
+.. _tb.config.tc_linux_relay_pyrelayctl_port:
+
+- tb.config.tc_linux_relay_pyrelayctl_port
+
+port used with pyrealyctl command.
+
+
+
+------------------------------------------------
+
+.. _tc_linux_relay_pyrelayctl_set_py:
+
+linux/relay/tc_linux_relay_pyrelayctl_set.py
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+https://github.com/hsdenx/tbot/blob/master/src/tc/linux/relay/tc_linux_relay_pyrelayctl_set.py
+
+set relay port with the pyrelayctl cmd to state
+
+find the c source code for the pyrelayctl cmd here:
+
+
+git clone https://github.com/xypron/pyrelayctl.git
+
+
+install python3-usb
+
+apt-get install python3-usb
+
+
+python3 setup_py_ build
+
+sudo python3 setup_py_ install
+
+
+add file /lib/udev/rules.d/60-relayctl.rules
+
+SUBSYSTEM=="usb", ATTR{idVendor}=="0403", ATTR{idProduct}=="6001", GROUP="relayctl", MODE="660", ENV{MODALIAS}="ignore"
+
+
+(execute udevadm control --reload-rules)
+
+
+:usedvar:`used variables`:
+
+
+.. _tb.config.tc_linux_relay_pyrelayctl_state:
+
+- tb.config.tc_linux_relay_pyrelayctl_state
+
+state which get set
+
+
+.. _tb.config.tc_linux_relay_pyrelayctl_device:
+
+- tb.config.tc_linux_relay_pyrelayctl_device
+
+device on which state get set
+
+
+.. _tb.config.tc_linux_relay_pyrelayctl_port:
+
+- tb.config.tc_linux_relay_pyrelayctl_port
+
+port on the device for which the state get set
+
+
+
+------------------------------------------------
+
+.. _tc_linux_relay_pyrelayctl_set_power_py:
+
+linux/relay/tc_linux_relay_pyrelayctl_set_power.py
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+https://github.com/hsdenx/tbot/blob/master/src/tc/linux/relay/tc_linux_relay_pyrelayctl_set_power.py
+
+set relay port with the pyrelayctl cmd to state
+
+tb.power_state with testcase
+
+tc_linux_relay_pyrelayctl_set_py_
+
+
+relay info set from testcase
+
+tb.config.tc_linux_relay_pyrelayctl_getconfig_
+
+
+:usedvar:`used variables`:
+
+
+.. _tb.config.tc_linux_relay_pyrelayctl_getconfig:
+
+- tb.config.tc_linux_relay_pyrelayctl_getconfig
+
+used testcase name for getting pyrelayctl configuration
+
+
+.. _tb.config.tc_linux_relay_pyrelayctl_state:
+
+- tb.config.tc_linux_relay_pyrelayctl_state
+
+current state for the relay on device and port
+
 
 
 ------------------------------------------------
@@ -2995,6 +3136,125 @@ tb.config.tc_git_get_branch_commit_commit_
 
 ------------------------------------------------
 
+.. _tc_linux_imx_usb_loader_boot_uboot_py:
+
+linux/tc_linux_imx_usb_loader_boot_uboot.py
+===========================================
+
+https://github.com/hsdenx/tbot/blob/master/src/tc/linux/tc_linux_imx_usb_loader_boot_uboot.py
+
+
+install SPL and u-boot image with imx_usb_installer
+
+which is installed in tb.config.tc_linux_imx_usb_loader_install_path_
+
+
+first check if tb.config.tc_linux_imx_usb_loader_install_path_
+
+is defined, if not, try to get it with testcase
+
+tc_linux_imx_usb_loader_install_py_
+
+
+if we find a imx usb loader installation, try to
+
+load files in tb.config.tc_linux_imx_usb_loader_boot_uboot_files_
+
+from tb.config.tftpdir_ + tb.config.boardname_
+
+and get into state "u-boot" after all files loaded
+
+succesfully.
+
+
+:usedvar:`used variables`:
+
+
+.. _tb.config.tc_linux_imx_usb_loader_install_path:
+
+- tb.config.tc_linux_imx_usb_loader_install_path
+
+|  path to imx_usb_loader utility.
+|  default: If not set, try to install imx_usb_loader
+|  utility with tc_linux_imx_usb_loader_install_py_
+
+.. _tb.config.tc_linux_imx_usb_loader_boot_uboot_files:
+
+- tb.config.tc_linux_imx_usb_loader_boot_uboot_files
+
+|  list of files, which get loaded with imx_usb_loader
+|  default:
+|  [
+|       'SPL',
+|      'u-boot-fit.img'
+|  ]
+
+
+------------------------------------------------
+
+.. _tc_linux_imx_usb_loader_install_py:
+
+linux/tc_linux_imx_usb_loader_install.py
+========================================
+
+https://github.com/hsdenx/tbot/blob/master/src/tc/linux/tc_linux_imx_usb_loader_install.py
+
+
+checks if tb.config.tc_linux_imx_usb_loader_install_path_ is already
+
+set. If so, we have a correct installation of imx_usb_loader
+
+and path to imx_usb is stored in tb.config.tc_linux_imx_usb_loader_install_path_
+
+
+If tb.config.tc_linux_imx_usb_loader_install_path_ is not set,
+
+set tb.config.tc_linux_imx_usb_loader_install_path_ to
+
+tb.config.tc_linux_imx_usb_loader_install_path_ = tb.config.tbot_src_path_ + 'imx_usb_loader/'
+
+and check if directory exists. If True, we assume that there is
+
+a correct imx_usb installation and return
+
+
+If tb.config.tc_linux_imx_usb_loader_install_path_
+
+does not exist, try to clone imx_usb_loader from
+
+https://github.com/boundarydevices/imx_usb_loader
+
+and set it up for our needs, and compile it.
+
+We use for vid:pid the setting in
+
+tb.config.tc_linux_imx_usb_loader_install_vid_pid_
+
+
+be sure, libusb is installed on your system.
+
+
+:usedvar:`used variables`:
+
+
+.. _tb.config.tbot_src_dirname:
+
+- tb.config.tbot_src_dirname
+
+|  path, where tbot installs programs used from tbot
+|  on the lab pc
+|   default = 'src/'
+
+.. _tb.config.tbot_src_path:
+
+- tb.config.tbot_src_path
+
+|  full path to src directory
+|  default = tb.config.tc_workfd_work_dir_ + tb.config.tbot_src_dirname_
+
+
+------------------------------------------------
+
 .. _tc_linux_top_py:
 
 linux/tc_linux_top.py
@@ -3137,27 +3397,45 @@ if not, try to download and install it.
 
 ------------------------------------------------
 
-.. _tc_lx_check_devmem2_py:
+.. _tc_lx_check_i2c_reg_file_py:
 
-linux/tc_lx_check_devmem2.py
-============================
+linux/tc_lx_check_i2c_reg_file.py
+=================================
 
-https://github.com/hsdenx/tbot/blob/master/src/tc/linux/tc_lx_check_devmem2.py
+https://github.com/hsdenx/tbot/blob/master/src/tc/linux/tc_lx_check_i2c_reg_file.py
 
-simply check, if we have the devmem2 cmd
+checks if the default values in reg file tb.config.tc_lx_create_i2c_reg_file_name_
 
-if not, try to find it
+on the tbot host in tb.workdir have the same values, as the
+
+the values on the board.
 
 
-:usedvar:`used variables`
+bus and addr of the i2c device comes from the register
+
+file.
 
 
-.. _tb.config.tc_lx_check_devmem2_path:
+you should create the register file with testcase
 
-- tb.config.tc_lx_check_devmem2_path
+tc_lx_create_i2c_reg_file_py_
 
-| path to devmem2 command
-| default: '/home/debian'
+
+:usedvar:`used variables`:
+
+
+.. _tb.config.i2c_pre:
+
+- tb.config.i2c_pre
+
+|  string added before 'i2cget' command
+|  default: ''
+
+.. _tb.config.tc_lx_create_i2c_reg_file_name:
+
+- tb.config.tc_lx_create_i2c_reg_file_name
+
+|  register dump file name
 
 
 ------------------------------------------------
@@ -3348,6 +3626,113 @@ count = tb.tc_lx_dummy_file_count
 
 | dd count paramter
 | default: ''
+
+
+------------------------------------------------
+
+.. _tc_lx_create_i2c_reg_dump_pfuze_3000_py:
+
+linux/tc_lx_create_i2c_reg_dump_pfuze_3000.py
+=============================================
+
+https://github.com/hsdenx/tbot/blob/master/src/tc/linux/tc_lx_create_i2c_reg_dump_pfuze_3000.py
+
+create with i2cget tool a register dump of
+
+pfuze3000 on bus
+
+tb.config.tc_lx_create_i2c_reg_dump_pfuze_3000_bus_
+
+
+:usedvar:`used variables`:
+
+
+.. _tb.config.tc_lx_create_i2c_reg_dump_pfuze_3000_bus:
+
+- tb.config.tc_lx_create_i2c_reg_dump_pfuze_3000_bus
+
+|  i2c bus number on which the pfuze3000 is connected to.
+|  default: '0x0'
+
+
+------------------------------------------------
+
+.. _tc_lx_create_i2c_reg_file_py:
+
+linux/tc_lx_create_i2c_reg_file.py
+==================================
+
+https://github.com/hsdenx/tbot/blob/master/src/tc/linux/tc_lx_create_i2c_reg_file.py
+
+create with i2cget tool a register dump of
+
+i2c device on bus tb.config.tc_lx_create_i2c_reg_file_bus_
+
+with addr tb.config.tc_lx_create_i2c_reg_file_bus_
+
+
+dump registers from tb.config.tc_lx_create_i2c_reg_file_start_
+
+until tb.config.tc_lx_create_i2c_reg_file_stop_
+
+with accessmode tb.config.tc_lx_i2c_readreg_type_
+
+into file with name
+
+tb.config.tc_lx_create_i2c_reg_file_name_
+
+
+:usedvar:`used variables`
+
+
+.. _tb.config.tc_lx_create_i2c_reg_file_name:
+
+- tb.config.tc_lx_create_i2c_reg_file_name
+
+| filename to which registerdump get written
+| default: 'i2c_dump.txt'
+
+.. _tb.config.tc_lx_create_i2c_reg_file_start:
+
+- tb.config.tc_lx_create_i2c_reg_file_start
+
+| start offset from which get read
+| default: '0x0'
+
+.. _tb.config.tc_lx_create_i2c_reg_file_stop:
+
+- tb.config.tc_lx_create_i2c_reg_file_stop
+
+| stop offset until to which get read
+| default: '0x10'
+
+.. _tb.config.tc_lx_create_i2c_reg_file_bus:
+
+- tb.config.tc_lx_create_i2c_reg_file_bus
+
+| i2c bus number from which get read
+| default: '0x0'
+
+.. _tb.config.tc_lx_create_i2c_reg_file_addr:
+
+- tb.config.tc_lx_create_i2c_reg_file_addr
+
+| i2c address from which get read
+| default: '0x8'
+
+.. _tb.config.tc_lx_i2c_readreg_mask:
+
+- tb.config.tc_lx_i2c_readreg_mask
+
+| mask which get written into dump file
+| default: ''
+
+.. _tb.config.tc_lx_i2c_readreg_type:
+
+- tb.config.tc_lx_i2c_readreg_type
+
+| read type (types from i2c_get util)
+| default: 'b'
 
 
 ------------------------------------------------
@@ -5662,7 +6047,7 @@ https://github.com/hsdenx/tbot/blob/master/src/tc/linux/tc_workfd_ssh.py
 
 login with ssh to tb.config.workfd_ssh_cmd_ and ssh options
 
-tb.config.tc_workfd_ssh_opt._
+tb.config.workfd_ssh_opt._
 
 This testcases expects
 
@@ -5840,21 +6225,6 @@ http://git.denx.de/?p=duts.git;a=blob;f=testsystems/dulg/testcases/15_UBootDate.
 
 ------------------------------------------------
 
-.. _tc_ub_diskboothelp_py:
-
-uboot/duts/tc_ub_diskboothelp.py
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-
-https://github.com/hsdenx/tbot/blob/master/src/tc/uboot/duts/tc_ub_diskboothelp.py
-
-convert duts tests from:
-
-
-http://git.denx.de/?p=duts.git;a=blob;f=testsystems/dulg/testcases/15_UBootIde.tc;h=03c2a05b75c6f9f6fc257fa84a2220f965567699;hb=101ddd5dbd547d5046363358d560149d873b238a
-
-
-------------------------------------------------
-
 .. _tc_ub_download_py:
 
 uboot/duts/tc_ub_download.py
@@ -6002,21 +6372,6 @@ http://git.denx.de/?p=duts.git;a=blob;f=testsystems/dulg/testcases/10_UBootEnvir
 
 ------------------------------------------------
 
-.. _tc_ub_flash_py:
-
-uboot/duts/tc_ub_flash.py
-,,,,,,,,,,,,,,,,,,,,,,,,,
-
-https://github.com/hsdenx/tbot/blob/master/src/tc/uboot/duts/tc_ub_flash.py
-
-convert duts tests from:
-
-
-http://git.denx.de/?p=duts.git;a=blob;f=testsystems/dulg/testcases/15_UBootFlashTest.tc;h=6eea72c8e9f3f4739a76ff59bb2e9a7c693aedd9;hb=101ddd5dbd547d5046363358d560149d873b238a
-
-
-------------------------------------------------
-
 .. _tc_ub_flinfo_py:
 
 uboot/duts/tc_ub_flinfo.py
@@ -6051,21 +6406,6 @@ simple prints "help i2c" cmd
 
 | if 'yes' i2c help output with "i2c bus"
 | default: 'no'
-
-
-------------------------------------------------
-
-.. _tc_ub_ide_py:
-
-uboot/duts/tc_ub_ide.py
-,,,,,,,,,,,,,,,,,,,,,,,
-
-https://github.com/hsdenx/tbot/blob/master/src/tc/uboot/duts/tc_ub_ide.py
-
-convert duts tests from:
-
-
-http://git.denx.de/?p=duts.git;a=blob;f=testsystems/dulg/testcases/15_UBootIde.tc;h=03c2a05b75c6f9f6fc257fa84a2220f965567699;hb=101ddd5dbd547d5046363358d560149d873b238a
 
 
 ------------------------------------------------
