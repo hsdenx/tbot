@@ -9,7 +9,7 @@
 
 from tbotlib import tbot
 
-logging.info("args: workfd %s %s", tb.workfd.name, tb.config.tc_workfd_check_if_dir_exists_name)
+logging.info("args: workfd %s", tb.workfd.name)
 
 con = True
 try:
