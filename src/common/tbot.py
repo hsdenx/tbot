@@ -36,7 +36,7 @@ except:
     parser.add_argument("-p", "--pwfile",
            dest="pwfile", default='password.py',
            help="used password file")
-    parser.add_argument('--version', action='version', version='%(prog)s 2018.05')
+    parser.add_argument('--version', action='version', version='%(prog)s 2018.09')
     parser.add_argument("-w", "--workdir",
            dest="workdir", default=os.getcwd(),
            help="set workdir, default os.getcwd()")
