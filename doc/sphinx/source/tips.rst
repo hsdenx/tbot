@@ -148,3 +148,35 @@ example
 .. image:: image/tips/top-mem-output.jpg
    :scale: 50 %
 
+.. _use_aliases:
+
+use aliases
+-----------
+
+add in your .bash_rc
+
+::
+
+  if [ -f ~/.bash_aliases_tbot ]; then
+      . ~/.bash_aliases_tbot
+  fi
+
+and add the file ".bash_aliases_tbot" in your home directory, here
+an example:
+
+::
+
+  alias tb_bbb_xenomai="tbot.py -w /home/pi/tbot2go/tbot -s lab_tbot2go -c beagleboneblack-yocto -t tc_board_yocto_bbb_all.py -l log/tbot-bbb-yocto-all.log -v"  
+  alias tb_bbb_setenv="tbot.py -w /home/pi/tbot2go/tbot -s lab_tbot2go -c beagleboneblack-yocto -t tc_ub_load_board_env.py -l log/tbot_bb_set_ub_env -v"
+  alias tb_bbb_ub="tbot.py -w /home/pi/tbot2go/tbot -s lab_tbot2go -c beagleboneblack-yocto -t tc_demo_compilepc_uboot_test.py -l log/tbot_bb_demo_compilepc_uboot_test.log -v"
+
+
+Than you can use "tb_bbb_xenomai" from your cmdline, without knowing all the parameters, and
+you can start tbot easier from for example jenkins. If you change the paramters, you only
+have to edit the alias file, and do not have to touch jenkins.
+
+Also, it is now easier to pass testcase parameters:
+
+::
+
+  tb_bbb_setenv -a "{'variable name' : 'variable value'}"  
