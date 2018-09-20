@@ -22,6 +22,9 @@ create_html_log = 'yes'
 setenv_name = 'Heiko'
 setenv_value = 'Schocher'
 ub_load_board_env_addr = '0x12000000'
+tc_ub_ubi_write_addr = '14000000'
+tc_ub_ubi_create_vol_name = 'rootfs'
+
 tc_lab_get_uboot_source_git_repo = "/home/git/u-boot.git"
 tc_lab_get_uboot_source_git_branch = "master"
 tc_workfd_apply_patchwork_patches_checkpatch_cmd = 'scripts/checkpatch.pl'

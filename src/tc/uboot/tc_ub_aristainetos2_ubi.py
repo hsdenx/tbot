@@ -43,7 +43,6 @@ tb.config.tc_ub_ubi_write_len = tb.ub_filesize
 
 # write it in ubi volume
 tb.config.tc_ub_ubi_write_len = tb.ub_filesize
-tb.config.tc_ub_ubi_write_vol_name = 'rootfs'
 tb.eof_call_tc("tc_ub_ubi_write.py")
 
 # read file from ubi volume
