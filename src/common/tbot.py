@@ -37,11 +37,20 @@ except:
            dest="pwfile", default='password.py',
            help="used password file")
     parser.add_argument('--version', action='version', version='%(prog)s 2018.09')
-    parser.add_argument("-w", "--workdir",
-           dest="workdir", default=os.getcwd(),
-           help="set workdir, default os.getcwd()")
     args = parser.parse_args()
-    print("**** option lab: %s cfg: %s log: %s tc: %s v %d a %s" % (args.labfile, args.cfgfile, args.logfile, args.tc, args.verbose, args.arguments))
+
+    args.workdir = os.path.abspath(  # Convert into absolute path string
+        os.path.join(  # Current file's grandparent directory
+            os.path.join(  # Current file's parent directory
+                os.path.dirname(  # Current file's directory
+                    os.path.abspath(__file__)  # Current file path
+                ),
+                os.pardir
+            ),
+            os.pardir
+        )
+    )
+    print("**** option w: %s lab: %s cfg: %s log: %s tc: %s v %d a %s" % (args.workdir, args.labfile, args.cfgfile, args.logfile, args.tc, args.verbose, args.arguments))
     tb = tbot(args.workdir, args.labfile, args.cfgfile, args.logfile, args.verbose, args.arguments, args.tc, args.eventsim, args.pwfile)
 
 def signal_term_handler(signal, frame):

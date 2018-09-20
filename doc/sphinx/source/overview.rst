@@ -43,8 +43,6 @@ Usage
     -p PWFILE, --pwfile PWFILE
                           used password file
     --version             show program's version number and exit
-    -w WORKDIR, --workdir WORKDIR
-                          set workdir, default os.getcwd()
 
 Demo
 ====
