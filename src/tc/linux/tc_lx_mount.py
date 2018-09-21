@@ -19,7 +19,7 @@
 from tbotlib import tbot
 
 tb.define_variable('tc_lx_mount_dev', '/dev/sda1')
-tb.define_variable('tc_lx_mount_fs_type', )
+tb.define_variable('tc_lx_mount_fs_type', 'ext4')
 logging.info("d%s", tb.config.tc_lx_mount_dir)
 
 # set board state for which the tc is valid
