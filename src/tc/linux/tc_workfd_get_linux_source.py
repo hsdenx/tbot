@@ -41,7 +41,7 @@ tb.define_variable('tc_lab_get_linux_source_git_reference', 'none')
 tb.define_variable('tc_lab_get_linux_source_git_repo_user', 'anonymous')
 tb.define_variable('tc_lab_get_linux_source_git_commit_id', 'none')
 
-logging.info("args: workdfd: %s %s", tb.workfd.name, tb.config.tc_lab_apply_patches_dir)
+logging.info("args: %s", tb.config.tc_lab_apply_patches_dir)
 
 ret = tb.call_tc("tc_workfd_goto_linux_code.py")
 if ret == False:

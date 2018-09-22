@@ -17,8 +17,8 @@ from tbotlib import tbot
 from lab_bdi import bdi_class
 
 tb.define_variable('lab_bdi_upd_uboot_bdi_run', "[{'cmd':'res run', 'val':'resetting target passed'}]")
-logging.info("args: %s %s", tb.workfd.name,
-             tb.config.lab_bdi_upd_uboot_bdi_prompt)
+
+logging.info("args: %s", tb.config.lab_bdi_upd_uboot_bdi_prompt)
 
 c = tb.workfd
 

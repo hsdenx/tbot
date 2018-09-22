@@ -21,8 +21,6 @@
 
 from tbotlib import tbot
 
-logging.info("args: %s", tb.workfd.name)
-
 tb.eof_call_tc("tc_workfd_goto_lab_source_dir.py")
 
 try:

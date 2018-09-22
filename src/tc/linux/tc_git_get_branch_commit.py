@@ -32,7 +32,6 @@
 from tbotlib import tbot
 
 tb.define_variable('tc_git_get_branch_commit_tree', '')
-logging.info("args: %s", tb.workfd)
 
 c = tb.workfd
 

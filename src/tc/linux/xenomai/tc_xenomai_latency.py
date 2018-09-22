@@ -75,8 +75,6 @@ tb.define_variable('tc_xenomai_latency_count', '100')
 tb.define_variable('tc_xenomai_latency_max', '42')
 tb.define_variable('tc_xenomai_latency_opt', 'none')
 
-logging.info("arg: %s", tb.workfd.name)
-
 tb.set_board_state("linux")
 save = tb.workfd
 tb.workfd = tb.c_con

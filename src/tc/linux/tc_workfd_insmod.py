@@ -33,8 +33,6 @@ tb.define_variable('tc_workfd_insmod_module', '')
 tb.define_variable('tc_workfd_insmod_mpath', '')
 tb.define_variable('tc_workfd_insmod_module_path', '')
 tb.define_variable('tc_workfd_insmod_module_checks', '')
-# here starts the real test
-logging.info("args: %s", tb.workfd.name)
 
 # set board state for which the tc is valid
 tb.set_board_state("linux")

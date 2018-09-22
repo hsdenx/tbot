@@ -8,8 +8,7 @@
 
 from tbotlib import tbot
 
-logging.info("args: %s %s ", tb.workfd.name,
-             tb.config.lab_bdi_upd_uboot_bdi_prompt)
+logging.info("args: %s", tb.config.lab_bdi_upd_uboot_bdi_prompt)
 
 c = tb.workfd
 

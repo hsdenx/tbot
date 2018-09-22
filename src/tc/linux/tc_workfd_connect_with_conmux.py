@@ -7,8 +7,6 @@
 
 from tbotlib import tbot
 
-logging.info("args: workdfd: %s", tb.workfd)
-
 tmp = "conmux-console " + tb.config.boardlabname
 ret = tb.write_stream(tb.workfd, tmp)
 if not ret:

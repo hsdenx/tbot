@@ -17,7 +17,7 @@ arg = tb.check_args(args)
 command = arg.get('cmd')
 string = arg.get('string')
 
-logging.info("args: workfd %s %s %s", tb.workfd.name, command, string)
+logging.info("args: %s %s", command, string)
 
 tb.eof_write_cmd_check(tb.workfd, command, string)
 

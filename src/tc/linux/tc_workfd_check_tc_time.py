@@ -25,8 +25,8 @@ import time
 
 tb.define_variable('tc_workfd_check_tc_time_tcname', '')
 tb.define_variable('tc_workfd_check_tc_time_timeout', '2592000')
-logging.info("args: workdfd: %s %s", tb.workfd, tb.config.tc_workfd_tbotfiles_dir)
-logging.info("args: %s %s", tb.config.boardname)
+logging.info("args: %s", tb.config.tc_workfd_tbotfiles_dir)
+logging.info("args: %s", tb.config.boardname)
 
 # set board state for which the tc is valid
 timefile = tb.config.tc_workfd_tbotfiles_dir + "/" + "workfd_check_tc_time_" + tb.config.boardname + "_" + tb.config.tc_workfd_check_tc_time_tcname

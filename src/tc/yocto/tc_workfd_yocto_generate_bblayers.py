@@ -20,8 +20,6 @@ tb.define_variable('tc_workfd_yocto_generate_bblayers_xenomai_layers', "[]")
 
 from tbotlib import tbot
 
-logging.info("args: workdfd: %s", tb.workfd.name)
-
 tb.eof_call_tc("tc_workfd_goto_yocto_code.py")
 tb.event.create_event('main', 'tc_workfd_get_with_repo.py', 'SET_DOC_FILENAME_NOIRQ', 'repo_create_bblayers.conf')
 p = '$TBOT_BASEDIR_YOCTO/build'

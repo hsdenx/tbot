@@ -16,7 +16,6 @@
 from tbotlib import tbot
 
 tb.define_variable('tc_lx_ps_partitions', '[]')
-logging.info("args: workfd: %s", tb.workfd.name)
 
 c = tb.workfd
 

@@ -69,7 +69,6 @@ tb.define_variable('tc_workfd_can_iproute_dir', '/home/hs/iproute2')
 tb.define_variable('tc_workfd_can_util_dir', '/home/hs/can-utils')
 tb.define_variable('tc_workfd_can_dev', 'can0')
 tb.define_variable('tc_workfd_can_bitrate', '500000')
-logging.info("args: workfd %s", tb.workfd.name)
 
 tb.set_board_state("linux")
 

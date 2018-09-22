@@ -75,7 +75,6 @@ tb.define_variable('tc_workfd_connect_with_kermit_settings', '[ "set carrier-wat
   "set send pack 1000", \
   "set window 5", \
 ]')
-logging.info("args: workdfd: %s", tb.workfd)
 
 if tb.config.tc_workfd_connect_with_kermit_ssh != 'none':
     tb.config.workfd_ssh_cmd = tb.config.tc_workfd_connect_with_kermit_ssh

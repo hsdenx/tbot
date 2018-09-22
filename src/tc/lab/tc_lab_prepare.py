@@ -24,8 +24,6 @@ from tbotlib import tbot
 
 tb.define_variable('tc_lab_prepare_tc_name', 'none')
 
-logging.info("args: workfd %s", tb.workfd.name)
-
 # first cd into our workdir
 tb.eof_call_tc("tc_workfd_goto_tbot_workdir.py")
 

@@ -43,7 +43,7 @@ except:
 
 tb.define_variable('tc_linux_imx_usb_loader_boot_uboot_files', '["SPL", "u-boot-fit.img"]')
 
-logging.info("arg: %s %s", tb.workfd.name, tb.config.tc_linux_imx_usb_loader_install_path)
+logging.info("arg: %s", tb.config.tc_linux_imx_usb_loader_install_path)
 
 # power off the board
 tb.eof_call_tc("tc_lab_poweroff.py")

@@ -18,7 +18,6 @@ from tbotlib import tbot
 
 tb.define_variable('tc_workfd_cp_file_from', '')
 tb.define_variable('tc_workfd_cp_file_to', '')
-logging.info("args: workfd %s", tb.workfd)
 
 tmp = "cp " + tb.config.tc_workfd_cp_file_from + " " + tb.config.tc_workfd_cp_file_to
 tb.write_lx_cmd_check(tb.workfd, tmp)

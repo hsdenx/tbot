@@ -15,7 +15,7 @@
 from tbotlib import tbot
 
 tb.define_variable('tc_workfd_md5sum_name', '')
-logging.info("args: workfd %s %s", tb.workfd.name, tb.config.tc_workfd_md5sum_name)
+logging.info("args: %s", tb.config.tc_workfd_md5sum_name)
 
 c = tb.workfd
 cmd = 'md5sum ' + tb.config.tc_workfd_md5sum_name

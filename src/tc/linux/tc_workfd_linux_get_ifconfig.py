@@ -36,7 +36,6 @@ tb.workfd = tb.c_con
 tb.set_board_state("linux")
 
 tb.define_variable('linux_get_ifconfig_dev', '')
-logging.info("args: workfd %s", tb.workfd.name)
 
 c = tb.workfd
 dev = tb.config.linux_get_ifconfig_dev

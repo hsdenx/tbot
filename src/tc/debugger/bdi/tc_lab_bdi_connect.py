@@ -23,7 +23,7 @@ from tbotlib import tbot
 tb.define_variable('lab_bdi_upd_uboot_bdi_cmd', 'telnet bdi6')
 tb.define_variable('lab_bdi_upd_uboot_bdi_prompt', 'BDI>')
 
-logging.info("args: %s %s", tb.config.board_has_debugger, tb.workfd.name)
+logging.info("args: %s", tb.config.board_has_debugger)
 
 if tb.config.board_has_debugger != 'yes':
     tb.end_tc(False)

@@ -55,8 +55,6 @@ tb.define_variable('tc_linux_top_count', '100')
 tb.define_variable('tc_linux_top_sec', '2')
 tb.define_variable('tc_linux_top_filename', 'top-stat.dat')
 
-logging.info("arg: %s", tb.workfd.name)
-
 self.event.create_event('main', self.config.boardname, "DUTS_LINUX_TOP_COUNT", tb.config.tc_linux_top_count)
 self.event.create_event('main', self.config.boardname, "DUTS_LINUX_TOP_SEC", tb.config.tc_linux_top_sec)
 

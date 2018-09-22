@@ -28,7 +28,7 @@ try:
 except:
     tb.config.tc_linux_relay_pyrelayctl_getconfig = 'tc_linux_relay_pyrelayctl_getcfg.py'
 
-logging.info("args: %s %s %s", tb.workfd.name, tb.power_state, tb.config.tc_linux_relay_pyrelayctl_getconfig)
+logging.info("args: %s %s", tb.power_state, tb.config.tc_linux_relay_pyrelayctl_getconfig)
 
 tb.eof_call_tc(tb.config.tc_linux_relay_pyrelayctl_getconfig)
 

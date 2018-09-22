@@ -120,8 +120,6 @@ tb.define_variable('tc_workfd_get_yocto_source_conf_dir', 'not defined')
 tb.define_variable('tc_workfd_get_yocto_source_conf_dl_dir', 'none')
 tb.define_variable('tc_workfd_get_yocto_source_conf_sstate_dir', 'none')
 
-logging.info("args: workdfd: %s", tb.workfd.name)
-
 ret = tb.call_tc("tc_workfd_goto_yocto_code.py")
 if ret == True:
     # sync all trees

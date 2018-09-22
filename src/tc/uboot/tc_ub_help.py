@@ -9,7 +9,7 @@
 from tbotlib import tbot
 
 searchlist = ["?       - alias for 'help'", "bdinfo  - print Board Info structure"]
-logging.info("args: %s %s", tb.workfd.name, searchlist)
+logging.info("args: %s", searchlist)
 
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")

@@ -20,7 +20,6 @@ from tbotlib import tbot
 
 tb.define_variable('connect_with_ssh_user', 'root')
 tb.define_variable('connect_with_ssh_ip', '192.168.3.23')
-logging.info("args: workdfd: %s", tb.workfd)
 logging.info("args: %s", tb.config.linux_prompt_default)
 
 save = tb.workfd

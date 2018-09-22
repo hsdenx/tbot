@@ -20,8 +20,6 @@
 
 from tbotlib import tbot
 
-logging.info("arg: %s", tb.workfd.name)
-
 # set board state for which the tc is valid
 tb.set_board_state("lab")
 

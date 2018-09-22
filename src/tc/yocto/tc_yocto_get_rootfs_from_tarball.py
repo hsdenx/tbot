@@ -23,8 +23,6 @@
 
 from tbotlib import tbot
 
-logging.info("args: workfd %s", tb.workfd.name)
-
 if 'tar.bz2' in tb.config.tc_yocto_get_rootfs_from_tarball:
     opt = 'xfvj '
 else:

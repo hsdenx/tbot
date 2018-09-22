@@ -42,7 +42,7 @@ try:
 except:
     tb.workfd.tc_workfd_goto_yocto_code_path = ''
 
-logging.info("args: %s %s", tb.workfd.name, tb.workfd.tc_workfd_goto_yocto_code_checked)
+logging.info("args: %s", tb.workfd.tc_workfd_goto_yocto_code_checked)
 logging.info("args path: %s", tb.workfd.tc_workfd_goto_yocto_code_path)
 
 if tb.workfd.tc_workfd_goto_yocto_code_checked == False:

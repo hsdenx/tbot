@@ -8,9 +8,6 @@
 from tbotlib import tbot
 import re
 
-# here starts the real test
-logging.info("args: %s", tb.workfd.name)
-
 # get all default values
 tb.eof_call_tc("tc_lx_ubi_def.py")
 

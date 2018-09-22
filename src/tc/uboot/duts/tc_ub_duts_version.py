@@ -11,8 +11,6 @@
 
 from tbotlib import tbot
 
-logging.info("args: %s", tb.workfd.name)
-
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
 

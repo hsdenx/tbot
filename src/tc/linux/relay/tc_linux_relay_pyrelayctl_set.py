@@ -32,7 +32,7 @@
 
 from tbotlib import tbot
 
-logging.info("args: %s state %s", tb.workfd.name, tb.config.tc_linux_relay_pyrelayctl_state)
+logging.info("args: state %s", tb.config.tc_linux_relay_pyrelayctl_state)
 logging.info("args: device %s port %s", tb.config.tc_linux_relay_pyrelayctl_device, tb.config.tc_linux_relay_pyrelayctl_port)
 
 path = '/work/tbot2go/tbot/src/pyrelayctl/examples/'

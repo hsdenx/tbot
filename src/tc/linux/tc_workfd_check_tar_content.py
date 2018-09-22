@@ -29,7 +29,6 @@ from tbotlib import tbot
 tb.define_variable('tc_workfd_check_tar_content_path', '')
 tb.define_variable('tc_workfd_check_tar_content_elements', '')
 tb.define_variable('tc_workfd_check_tar_content_endtc_onerror', 'yes')
-logging.info("args: workfd %s", tb.workfd.name)
 
 tmp = 'tar tfv ' + tb.config.tc_workfd_check_tar_content_path + ' > gnlmpf'
 tb.write_lx_cmd_check(tb.workfd, tmp)

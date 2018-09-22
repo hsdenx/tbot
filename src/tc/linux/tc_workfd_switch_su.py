@@ -15,7 +15,6 @@
 from tbotlib import tbot
 
 tb.define_variable('switch_su_board', 'lab')
-logging.info("args: workfd %s", tb.workfd.name)
 
 c = tb.workfd
 #switch to root

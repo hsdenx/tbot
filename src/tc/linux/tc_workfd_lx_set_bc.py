@@ -7,7 +7,7 @@
 
 from tbotlib import tbot
 
-logging.info("args: workfd %s %s %s", tb.workfd.name, tb.config.tc_workfd_lx_get_bc_file, tb.lx_bc)
+logging.info("args: %s %s", tb.config.tc_workfd_lx_get_bc_file, tb.lx_bc)
 
 tb.set_board_state("linux")
 c = tb.workfd

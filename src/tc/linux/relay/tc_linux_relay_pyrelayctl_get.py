@@ -29,7 +29,6 @@
 
 from tbotlib import tbot
 
-logging.info("args: %s", tb.workfd.name)
 logging.info("args: device %s port %s", tb.config.tc_linux_relay_pyrelayctl_device, tb.config.tc_linux_relay_pyrelayctl_port)
 
 path = '/work/tbot2go/tbot/src/pyrelayctl/examples/'

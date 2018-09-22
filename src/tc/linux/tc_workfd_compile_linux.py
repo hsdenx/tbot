@@ -93,7 +93,6 @@ tb.define_variable('tc_workfd_compile_linux_modules_path', 'none')
 tb.define_variable('tc_workfd_compile_linux_dt_name', 'none')
 tb.define_variable('tc_workfd_compile_linux_append_dt', 'no')
 tb.define_variable('tc_workfd_compile_linux_mkimage', '/home/hs/i2c/u-boot/tools/mkimage')
-logging.info("args: workdfd: %s", tb.workfd.name)
 
 tb.set_term_length(tb.workfd)
 

@@ -28,8 +28,6 @@ tb.define_variable('tc_workfd_grep_file', '')
 tb.define_variable('tc_workfd_grep_string', '')
 tb.define_variable('tc_workfd_grep_option', '--color=never')
 
-logging.info("args: workfd: %s", tb.workfd.name)
-
 c = tb.workfd
 
 cmd = 'cat ' + tb.config.tc_workfd_grep_file + ' | grep ' + tb.config.tc_workfd_grep_option + ' ' + tb.config.tc_workfd_grep_string

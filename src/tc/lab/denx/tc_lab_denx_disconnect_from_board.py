@@ -7,7 +7,7 @@
 
 from tbotlib import tbot
 
-logging.info("args: %s %s", tb.workfd.name, tb.config.boardlabname)
+logging.info("args: %s", tb.config.boardlabname)
 
 # what do we need to send ???
 tmp = ''

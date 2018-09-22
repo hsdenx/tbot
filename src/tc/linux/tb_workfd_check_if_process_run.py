@@ -18,8 +18,6 @@ from tbotlib import tbot
 
 tb.define_variable('tc_workfd_check_if_process_run_name', 'none')
 
-logging.info("args: workfd %s", tb.workfd.name)
-
 tb.eof_write_cmd_get_line(tb.workfd, "ps | grep " + tb.config.tc_workfd_check_if_process_run_name + " | wc -l")
 
 line = tb.ret_write_cmd_get_line.replace('\r\n', '')

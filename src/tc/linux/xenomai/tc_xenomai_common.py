@@ -12,8 +12,6 @@
 
 from tbotlib import tbot
 
-logging.info("arg: %s", tb.workfd.name)
-
 tb.set_board_state("linux")
 save = tb.workfd
 tb.workfd = tb.c_con

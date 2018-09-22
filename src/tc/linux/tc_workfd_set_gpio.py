@@ -15,7 +15,7 @@ args = ['highlow', 'gpio']
 arg = tb.check_args(args)
 gpiotemp = arg.get('gpio')
 
-logging.info("arg: %s %s %s", tb.workfd.name, gpiotemp, arg.get('highlow'))
+logging.info("arg: %s %s", gpiotemp, arg.get('highlow'))
 
 try:
     gpiotemp.exported

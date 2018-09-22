@@ -45,8 +45,6 @@ tb.define_variable('tc_lab_bdi_create_dump_mask', '')
 tb.define_variable('tc_lab_bdi_create_dump_type', '')
 tb.workfd = tb.c_ctrl
 
-logging.info("args: %s", tb.workfd.name)
-
 c = tb.workfd
 
 # check if we are in the BDI

@@ -42,7 +42,6 @@ from tbotlib import tbot
 tb.define_variable('tc_workfd_scp_opt', '')
 tb.define_variable('tc_workfd_scp_from', '')
 tb.define_variable('tc_workfd_scp_to', '')
-logging.info("args: workfd %s", tb.workfd.name)
 
 c = tb.workfd
 

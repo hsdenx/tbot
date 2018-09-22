@@ -41,8 +41,6 @@ tb.workfd = tb.c_ctrl
 tb.define_variable('tbot_src_dirname', 'src/')
 tb.define_variable('tbot_src_path', tb.config.tc_workfd_work_dir + tb.config.tbot_src_dirname)
 
-logging.info("arg: %s", tb.workfd.name)
-
 try:
     # if we have already imx_usb installed, break
     tb.config.tc_linux_imx_usb_loader_install_path

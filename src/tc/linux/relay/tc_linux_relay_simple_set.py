@@ -14,8 +14,6 @@ from tbotlib import tbot
 
 tb.workfd = tb.c_ctrl
 
-logging.info("args: %s", tb.workfd.name)
-
 if tb.config.tc_linux_relay_simple_set_sudo != 'none':
     pre = 'sudo '
 else:

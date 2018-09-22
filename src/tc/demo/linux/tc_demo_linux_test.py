@@ -20,7 +20,7 @@ try:
 except:
     tb.config.tc_board_bootmode_tc = ''
 
-logging.info("args: %s %s", tb.workfd.name, tb.config.tc_board_bootmode_tc)
+logging.info("args: %s", tb.config.tc_board_bootmode_tc)
 
 if tb.config.tc_board_bootmode_tc != '':
     tb.config.tc_board_bootmode = 'normal'

@@ -49,8 +49,6 @@ tb.define_variable('tc_workfd_set_toolchain_source', 'none')
 tb.define_variable('tc_workfd_set_toolchain_arch', 'not set')
 tb.define_variable('tc_workfd_set_toolchain_addlist', 'none')
 
-logging.info("args: %s", tb.workfd.name)
-
 c = tb.workfd
 
 if tb.config.tc_workfd_set_toolchain_source != 'none':

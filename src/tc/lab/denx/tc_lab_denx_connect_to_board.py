@@ -7,7 +7,7 @@
 
 from tbotlib import tbot
 
-logging.info("args: %s %s", tb.workfd.name, tb.config.boardlabname)
+logging.info("args: %s", tb.config.boardlabname)
 
 tmp = "connect " + tb.config.boardlabname
 tb.eof_write(tb.workfd, tmp, start=False)

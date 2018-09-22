@@ -14,7 +14,6 @@
 from tbotlib import tbot
 
 tb.define_variable('tc_workfd_check_if_file_exists_name', 'bonnie++-1.03e.tgz')
-logging.info("args: workfd %s", tb.workfd.name)
 
 tmp = 'test -r ' + tb.config.tc_workfd_check_if_file_exists_name
 tb.write_lx_cmd_check(tb.workfd, tmp)

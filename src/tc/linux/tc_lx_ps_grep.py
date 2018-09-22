@@ -18,8 +18,6 @@ from tbotlib import tbot
 
 tb.define_variable('tc_lx_ps_grep', '[]')
 
-logging.info("args: workfd: %s", tb.workfd.name)
-
 c = tb.workfd
 
 # set board state for which the tc is valid

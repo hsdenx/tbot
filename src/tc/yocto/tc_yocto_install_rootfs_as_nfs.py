@@ -26,7 +26,6 @@ from tbotlib import tbot
 tb.define_variable('rootfs_tar_file', '')
 tb.define_variable('tc_yocto_install_rootfs_as_nfs_path', '')
 tb.define_variable('nfs_subdir', '')
-logging.info("args: %s", tb.workfd.name)
 
 # remove all files from nfs dir
 cmd = 'sudo rm -rf ' + tb.config.nfs_subdir + '/*'

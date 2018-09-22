@@ -31,8 +31,6 @@ tb.define_variable('tc_workfd_git_rebase_git_src_path', '')
 tb.define_variable('tc_workfd_git_rebase_git_base_branch', '')
 tb.define_variable('tc_workfd_git_rebase_git_work_branch', '')
 
-logging.info("arg: %s", tb.workfd.name)
-
 # save current pwd ?
 
 base = os.path.basename(tb.config.tc_workfd_git_rebase_git_src_path)

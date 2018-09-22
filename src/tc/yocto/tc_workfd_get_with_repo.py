@@ -70,7 +70,6 @@ try:
 except:
     tb.config.tc_workfd_bitbake_machine = tb.config.boardname
 
-logging.info("args: workdfd: %s", tb.workfd.name)
 logging.info("args: machine: %s", tb.config.tc_workfd_bitbake_machine)
 
 tb.define_variable('tc_workfd_get_with_repo_metaname', 'beld')

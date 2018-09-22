@@ -5,7 +5,6 @@
 # End:
 
 from tbotlib import tbot
-logging.info("args: workfd %s", tb.workfd.name)
 
 # we can not check if we are in linux, as this deletes
 # the state of the last command...

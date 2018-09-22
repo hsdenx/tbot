@@ -39,7 +39,6 @@ tb.define_variable('compile_pc_ip', '')
 tb.define_variable('compile_pc_user', '')
 tb.define_variable('connect_to_compilepc_ssh_opt', '')
 tb.define_variable('connect_to_compilepc_ssh_cmd_prompt', '')
-logging.info("args: workfd %s", tb.workfd.name)
 
 tb.set_board_state('lab')
 

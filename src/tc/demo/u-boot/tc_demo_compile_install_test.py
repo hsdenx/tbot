@@ -84,8 +84,6 @@ tb.define_variable('tc_demo_compile_install_test_name', 'tc_ub_help.py')
 tb.define_variable('tc_demo_compile_install_test_files', 'none')
 tb.define_variable('tc_demo_uboot_test_update', 'none')
 
-logging.info("args: %s", tb.workfd.name)
-
 if tb.config.tc_board_bootmode_tc != 'none':
     tb.config.tc_board_bootmode = 'normal'
     tb.eof_call_tc(tb.config.tc_board_bootmode_tc)

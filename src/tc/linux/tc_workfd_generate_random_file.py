@@ -20,7 +20,6 @@ from tbotlib import tbot
 
 tb.define_variable('tc_workfd_generate_random_file_name', '')
 tb.define_variable('tc_workfd_generate_random_file_length', '')
-logging.info("args: workfd %s", tb.workfd.name)
 
 tmp = "dd if=/dev/urandom of=" + tb.config.tc_workfd_generate_random_file_name + " bs=1 count=" + tb.config.tc_workfd_generate_random_file_length
 tb.write_lx_cmd_check(tb.workfd, tmp)

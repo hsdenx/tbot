@@ -10,7 +10,7 @@
 
 from tbotlib import tbot
 
-logging.info("args: workfd: %s %s %s", tb.workfd.name, tb.config.uboot_get_parameter_file_list,
+logging.info("args: %s %s", tb.config.uboot_get_parameter_file_list,
              tb.config.uboot_config_option)
 
 c = tb.workfd

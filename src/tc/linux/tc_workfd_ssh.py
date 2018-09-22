@@ -41,8 +41,6 @@ tb.define_variable('workfd_ssh_cmd_prompt', '$')
 tb.define_variable('workfd_ssh_opt', 'none')
 tb.define_variable('workfd_ssh_do_first', 'yes')
 
-logging.info("args: workfd %s", tb.workfd.name)
-
 c = tb.workfd
 
 if tb.config.workfd_ssh_opt == 'none':

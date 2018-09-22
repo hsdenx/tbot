@@ -66,8 +66,6 @@ tb.define_variable('tc_lab_git_clone_source_git_reference', 'none')
 tb.define_variable('tc_lab_git_clone_source_git_repo_user', '')
 tb.define_variable('tc_lab_git_clone_source_git_repo_name', 'none')
 
-logging.info("args: workdfd: %s", tb.workfd.name)
-
 if tb.config.tc_lab_git_clone_source_git_repo_name != 'none':
     repo_name = tb.config.tc_lab_git_clone_source_git_repo_name
 else:

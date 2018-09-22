@@ -8,7 +8,7 @@
 
 from tbotlib import tbot
 
-logging.info("arg: %s %s", tb.workfd.name, tb.config.tc_lab_rm_dir)
+logging.info("arg: %s", tb.config.tc_lab_rm_dir)
 
 tb.set_board_state("lab")
 if tb.workfd.name == "tb_con":

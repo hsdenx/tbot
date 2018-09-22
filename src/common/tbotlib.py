@@ -1045,6 +1045,10 @@ class tbot(object):
 
         self.event.create_event(pfname, tcname, "Start", True)
         try:
+            try:
+                logging.info("workfd = %s", self.workfd.name)
+            except:
+                pass
             self.calltestcase = tcname
             exec(fd)
         except SystemExit:

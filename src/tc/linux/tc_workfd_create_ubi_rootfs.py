@@ -23,7 +23,6 @@ from tbotlib import tbot
 
 tb.define_variable('tc_workfd_create_ubi_rootfs_path', '/opt/eldk-5.4/armv7a-hf/rootfs-minimal-mtdutils')
 tb.define_variable('tc_workfd_create_ubi_rootfs_target', '/tftpboot/dxr2/tbot/rootfs-minimal.ubifs')
-logging.info("args: workdfd: %s", tb.workfd.name)
 logging.info("args: %s %s %s", tb.config.tc_ubi_min_io_size, tb.config.tc_ubi_leb_size, tb.config.tc_ubi_max_leb_cnt)
 tb.eof_call_tc("tc_workfd_switch_su.py")
 

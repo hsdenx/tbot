@@ -21,7 +21,6 @@ from tbotlib import tbot
 
 tb.define_variable('tc_demo_linux_test_deploy', 'none')
 
-logging.info("args: %s", tb.workfd.name)
 logging.info("args: %s", tb.config.tc_workfd_compile_linux_make_target)
 logging.info("args: %s", tb.config.tc_workfd_compile_linux_dt_name)
 
