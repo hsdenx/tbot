@@ -29,6 +29,10 @@
 #| path with filename to bootcounter file
 #| default: '/sys/devices/soc0/soc/2100000.aips-bus/21a0000.i2c/i2c-0/0-0008/bootcount'
 #
+# - tb.config.devmem2_pre
+#| if != 'none' added to devmem2 command
+#| default: 'none'
+#
 # End:
 
 from tbotlib import tbot
@@ -41,7 +45,7 @@ except:
     tb.define_variable('tc_lx_mount_dir', '/home/hs/mnt')
     tb.define_variable('tc_workfd_lx_get_bc_file', '/sys/devices/soc0/soc/2100000.aips-bus/21a0000.i2c/i2c-0/0-0008/bootcount')
     tb.define_variable('i2c_pre', 'empty')
-
+    tb.define_variable('devmem2_pre', 'none')
 
 tb.config.tc_def_lx_set = 'yes'
 tb.gotprompt = True

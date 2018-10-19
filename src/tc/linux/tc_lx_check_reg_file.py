@@ -25,14 +25,16 @@
 
 from tbotlib import tbot
 
-tb.define_variable('devmem2_pre', '')
-
 logging.info("args: %s", tb.config.tc_lx_create_reg_file_name)
+logging.info("args: %s", tb.config.devmem2_pre)
 
 # set board state for which the tc is valid
 tb.set_board_state("linux")
 
-pre = tb.config.devmem2_pre
+pre = ''
+if tb.config.devmem2_pre != 'none':
+    pre = tb.config.devmem2_pre
+
 c = tb.c_con
 fname = tb.workdir + "/" + tb.config.tc_lx_create_reg_file_name
 try:

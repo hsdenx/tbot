@@ -52,7 +52,6 @@ tb.define_variable('tc_lx_create_reg_file_start', '0x44e10800')
 tb.define_variable('tc_lx_create_reg_file_stop', '0x44e10a34')
 tb.define_variable('tc_lx_readreg_mask', '0xffffffff')
 tb.define_variable('tc_lx_readreg_type', 'w')
-tb.define_variable('devmem2_pre', '')
 
 # set board state for which the tc is valid
 tb.set_board_state("linux")
@@ -119,7 +118,10 @@ if tb.config.tc_lx_readreg_type == 'b':
     step = 1
 
 #read register value
-pre = tb.config.devmem2_pre
+pre = ''
+if tb.config.devmem2_pre != 'none':
+    pre = tb.config.devmem2_pre
+
 strings = ['Value at address', 'Read at address']
 for i in xrange(start, stop, step):
     tmp = pre + 'devmem2 ' + hex(i) + " " + tb.config.tc_lx_readreg_type
