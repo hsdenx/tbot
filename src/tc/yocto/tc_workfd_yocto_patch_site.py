@@ -47,6 +47,16 @@
 #| add PREMIRRORS_prepend if tb.config.tc_workfd_yocto_patch_site_premirrors
 #| default: 'none'
 #
+# - tb.config.tc_workfd_yocto_patch_site_key_dir
+#| if != 'none'
+#| add KEY_DIR if tb.config.tc_workfd_yocto_patch_site_key_dir
+#| default: 'none'
+#
+# - tb.config.tc_workfd_yocto_patch_site_key_desc
+#| if != 'none'
+#| add KEY_DESC if tb.config.tc_workfd_yocto_patch_site_key_desc
+#| default: 'none'
+#
 # End:
 
 from tbotlib import tbot
@@ -60,6 +70,8 @@ tb.define_variable('tc_workfd_yocto_patch_site_sstate_dir', 'none')
 tb.define_variable('tc_workfd_yocto_patch_site_src_linux_stable', 'none')
 tb.define_variable('tc_workfd_yocto_patch_site_premirrors', 'none')
 tb.define_variable('tc_workfd_yocto_patch_site_ub_key', 'none')
+tb.define_variable('tc_workfd_yocto_patch_site_key_dir', 'none')
+tb.define_variable('tc_workfd_yocto_patch_site_key_desc', 'none')
 tb.define_variable('builddir', '$TBOT_BASEDIR_YOCTO/build/')
 
 tb.eof_call_tc("tc_workfd_goto_yocto_code.py")
@@ -112,6 +124,12 @@ if tb.config.tc_workfd_yocto_patch_site_src_linux_stable != 'none':
 if tb.config.tc_workfd_yocto_patch_site_ub_key != 'none':
     val = tb.config.tc_workfd_yocto_patch_site_ub_key
     tbot_write_val2file(tb, fn, 'UB_KEY_PATH', val)
+if tb.config.tc_workfd_yocto_patch_site_key_dir != 'none':
+    val = tb.config.tc_workfd_yocto_patch_site_key_dir
+    tbot_write_val2file(tb, fn, 'KEY_DIR', val)
+if tb.config.tc_workfd_yocto_patch_site_key_desc != 'none':
+    val = tb.config.tc_workfd_yocto_patch_site_key_desc
+    tbot_write_val2file(tb, fn, 'KEY_DESC', val)
 
 if tb.config.tc_workfd_yocto_patch_site_premirrors != 'none':
     cmd = 'echo PREMIRRORS_prepend = \\"\\\  >> ' + fn
