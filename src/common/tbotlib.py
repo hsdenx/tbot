@@ -285,6 +285,8 @@ class tbot(object):
         self.check_open_fd(self.c_ctrl)
         self.check_open_fd(self.c_con)
 
+        self.call_tc('tc_def_yocto.py')
+
         # try to get the console of the board
         ret = self.connect_to_board(self.config.boardname)
         if ret == False:

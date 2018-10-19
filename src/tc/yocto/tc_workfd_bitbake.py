@@ -9,11 +9,6 @@
 #
 # used variables:
 #
-# - tb.config.tc_workfd_bitbake_machine
-#| if != 'none' add "MACHINE=tb.config.tc_workfd_bitbake_machine " bofore
-#| bitbake command.
-#| default: 'none'
-#
 # - tb.config.tc_workfd_bitbake_args
 #| arguments for bitbake command
 #| default: ''
@@ -22,10 +17,9 @@
 
 from tbotlib import tbot
 
-tb.define_variable('tc_workfd_bitbake_machine', 'none')
 tb.define_variable('tc_workfd_bitbake_args', '')
 
-logging.info("args: %s %s", tb.workfd, tb.config.tc_workfd_bitbake_args)
+logging.info("args: %s", tb.config.tc_workfd_bitbake_args)
 
 tlist = [
 	'pid',

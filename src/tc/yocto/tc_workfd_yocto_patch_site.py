@@ -72,11 +72,10 @@ tb.define_variable('tc_workfd_yocto_patch_site_premirrors', 'none')
 tb.define_variable('tc_workfd_yocto_patch_site_ub_key', 'none')
 tb.define_variable('tc_workfd_yocto_patch_site_key_dir', 'none')
 tb.define_variable('tc_workfd_yocto_patch_site_key_desc', 'none')
-tb.define_variable('builddir', '$TBOT_BASEDIR_YOCTO/build/')
 
 tb.eof_call_tc("tc_workfd_goto_yocto_code.py")
 tb.event.create_event('main', 'tc_workfd_get_with_repo.py', 'SET_DOC_FILENAME_NOIRQ', 'repo_create_site.conf')
-p = tb.config.builddir
+p = tb.config.yocto_builddir
 tb.config.tc_workfd_check_if_dir_exists_name = p
 tb.eof_call_tc("tc_workfd_check_if_dir_exist.py")
 

@@ -34,11 +34,6 @@
 #| setting up bitbake with 'TEMPLATECONF=meta-' + tb.config.tc_workfd_get_with_repo_metaname
 #| default: 'beld'
 #
-# - tb.config.builddir
-#| bitbake builddir. If it exists, only dump site.conf
-#| If dir not exist, setup up this directory
-#| default: "$TBOT_BASEDIR_YOCTO/build_" + tb.config.tc_workfd_bitbake_machine + "/"
-#
 # - tb.config.tc_workfd_get_with_repo_sync
 #| call 'repo sync' if yes
 #| default: 'yes'
@@ -64,16 +59,9 @@
 
 from tbotlib import tbot
 
-# set a default tb.config.tc_workfd_bitbake_machine
-try:
-    tb.config.tc_workfd_bitbake_machine
-except:
-    tb.config.tc_workfd_bitbake_machine = tb.config.boardname
-
 logging.info("args: machine: %s", tb.config.tc_workfd_bitbake_machine)
 
 tb.define_variable('tc_workfd_get_with_repo_metaname', 'beld')
-tb.define_variable('builddir', "$TBOT_BASEDIR_YOCTO/build_" + tb.config.tc_workfd_bitbake_machine + "/")
 tb.define_variable('tc_workfd_get_with_repo_sync', 'yes')
 tb.define_variable('tc_workfd_get_with_repo_u', '')
 tb.define_variable('tc_workfd_get_with_repo_m', '')
@@ -108,7 +96,7 @@ tb.event.create_event('main', 'tc_workfd_get_with_repo.py', 'SET_DOC_FILENAME', 
 tb.eof_call_tc("tc_workfd_goto_yocto_code.py")
 
 # check if builddir exists, if not configure
-tb.config.tc_workfd_check_if_dir_exists_name = tb.config.builddir
+tb.config.tc_workfd_check_if_dir_exists_name = tb.config.yocto_builddir
 ret = tb.call_tc("tc_workfd_check_if_dir_exist.py")
 if ret == False:
     tb.event.create_event('main', 'tc_workfd_get_with_repo.py', 'SET_DOC_FILENAME', 'repo_templateconf')
@@ -132,7 +120,7 @@ if ret == False:
 else:
     # print current used site.conf
     tb.event.create_event('main', 'tc_workfd_get_with_repo.py', 'SET_DOC_FILENAME_NOIRQ', 'repo_dump_site.conf')
-    tb.write_lx_cmd_check(tb.workfd, "cat " + tb.config.builddir + "conf/site.conf")
+    tb.write_lx_cmd_check(tb.workfd, "cat " + tb.config.yocto_builddir + "conf/site.conf")
     tb.event.create_event('main', 'tc_workfd_get_with_repo.py', 'SET_DOC_FILENAME_NOIRQ_END', 'repo_dump_site.conf')
 
 tb.end_tc(True)
