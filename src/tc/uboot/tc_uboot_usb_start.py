@@ -14,7 +14,7 @@
 
 from tbotlib import tbot
 
-tb.define_variable('tc_uboot_usb_start_expect', 'Storage Device(s) found')
+tb.define_variable('tc_uboot_usb_start_expect', '["Storage Device(s) found"]')
 
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
