@@ -25,6 +25,10 @@
 #| tbot source directory on lab PC
 #| default: '/work/hs/tbot'
 #
+# - tb.config.tc_lab_tftp_dir
+#| path to tftp directory on lab PC
+#| default: '/srv/tftpboot/' + tb.config.boardname
+#
 # - tb.config.tc_workfd_work_dir
 #| tbots workdirectory on labor PC
 #| default: tb.config.tc_lab_source_dir
@@ -251,6 +255,12 @@ if not tb.config.tc_lab_source_dir.endswith(os.sep):
     tb.config.tc_lab_source_dir + os.sep
 if not tb.config.tc_workfd_work_dir.endswith(os.sep):
     tb.config.tc_workfd_work_dir + os.sep
+try:
+    tb.config.tc_lab_tftp_dir
+except:
+    tb.config.tc_lab_tftp_dir = '/srv/tftpboot/' + tb.config.boardname
+if not tb.config.tc_lab_tftp_dir.endswith(os.sep):
+    tb.config.tc_lab_tftp_dir + os.sep
 
 tb.gotprompt = True
 tb.end_tc(True)
