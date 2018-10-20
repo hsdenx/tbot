@@ -401,10 +401,21 @@ class tbot(object):
                     defvalue = ast.literal_eval(defvalue)
                 if defvalue == 'empty':
                     defvalue = ''
-                if defvalue == 'False':
+                elif defvalue == 'False':
                     defvalue = False
-                if defvalue == 'True':
+                elif defvalue == 'True':
                     defvalue = True
+                elif 'tb.config.' in defvalue:
+                    found = False
+                    defv = defvalue.replace('tb.config.', '')
+                    for t in self.config.__dict__.items():
+                        if not t[0].startswith('__'):
+                            if t[0] == defv:
+                                defvalue = t[1]
+                                found = True
+                    if not found:
+                        logging.error("Could not find: %s\n", defvalue)
+                        self.end_tc(False)
                 self.config.__dict__.update({name : defvalue})
                 logging.info("default %s = %s", name, defvalue)
             else:
