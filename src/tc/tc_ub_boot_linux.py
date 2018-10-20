@@ -3,11 +3,21 @@
 # Description:
 # - load u-boot environment with testcase "tc_ub_load_board_env.py"
 # - execute u-boot cmd tb.config.ub_boot_linux_cmd
+#
+# used variables
+#
+# - tb.config.tc_ub_boot_linux_cycle
+#| count of timeout cycles until testcase ends with failure
+#| default: '1'
+#
 # End:
 from tbotlib import tbot
 
+tb.define_variable('tc_ub_boot_linux_cycle', '1')
+
 # here starts the real test
 logging.info("args: %s %s %s", tb.config.ub_boot_linux_cmd, tb.config.state_linux_timeout, tb.config.linux_prompt_default)
+
 # set board state for which the tc is valid
 tb.set_board_state("u-boot")
 
@@ -30,42 +40,41 @@ try:
 except:
     pass
 
-loop = True
-while (loop):
+loop = 0
+while (loop < int(tb.config.tc_ub_boot_linux_cycle)):
     ret = tb.tbot_rup_and_check_strings(c, sl)
     if ret == '0':
         tmp = True
+        loop = 0
         continue
     elif ret == '1':
         # login
         tb.write_stream(c, tb.config.linux_user, send_console_start=False)
         got_login = 1
+        loop = 0
         continue
     elif ret == '2':
         if got_login:
 	    tb.write_stream_passwd(c, tb.config.linux_user, tb.config.boardname)
+            loop = 0
         continue
-    elif ret == '3':
-        tb.tbot_trigger_wdt()
-    elif ret == '4':
-        tb.tbot_trigger_wdt()
     elif ret == 'prompt':
         # we are in linux
         tb.set_prompt(c, tb.config.linux_prompt, 'linux')
         c.set_timeout(oldt)
-        loop = False
+        tb.end_tc(True)
     elif ret == 'exception':
-        logging.warning('Timeout while trying to boot Linux')
+        logging.warning('Timeout while trying to boot Linux %s', loop)
         if first == 1:
             # send Ctrl-C
             tb.send_ctrl_c(c)
             first = 0
-        else:
-            c.set_timeout(oldt)
-            tb.end_tc(False)
+            loop = 0
     else:
         # if we have trigger strings, we land here
         tb.tbot_trigger_wdt()
+        loop = 0
 
-
-tb.end_tc(True)
+    loop += 1
+c.set_timeout(oldt)
+tb.end_tc(False)
