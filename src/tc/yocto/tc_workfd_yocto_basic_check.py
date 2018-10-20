@@ -20,11 +20,20 @@
 #| default: 'yes'
 #
 # - tb.config.tc_workfd_yocto_basic_check_board_specific
-#| if != 'none, call testcase with this name
-#| default: 'none'
+#| if != 'none, contains a list of testcasenames
+#| which get called.
+#| default: '[]'
 #
 # - tb.config.tc_demo_yocto_test_checks
 #| list of strings, which must be in 'dmesg' output
+#| default: '[]'
+#
+# - tb.config.tc_workfd_yocto_basic_check_basic_cmd
+#| contains a list of dictionaries from format:
+#| {"cmd":"commandstring", "val":"expected value"}
+#| comand(s) get executed and "val" must come back.
+#| end command must have exit code 0.
+#| if "val" = "undef", only returncode get checked.
 #| default: '[]'
 #
 # - tb.config.tc_workfd_yocto_basic_check_regfiles
@@ -38,9 +47,10 @@
 from tbotlib import tbot
 
 tb.define_variable('tc_workfd_yocto_basic_check_rootfsversion', 'yes')
-tb.define_variable('tc_workfd_yocto_basic_check_board_specific', 'none')
+tb.define_variable('tc_workfd_yocto_basic_check_board_specific', '[]')
 tb.define_variable('tc_demo_yocto_test_checks', '[]')
 tb.define_variable('tc_workfd_yocto_basic_check_regfiles', '[]')
+tb.define_variable('tc_workfd_yocto_basic_check_basic_cmd', '[]')
 
 # boot into linux
 tb.set_board_state("linux")
@@ -61,8 +71,20 @@ if ret == True:
     for tb.config.tc_lx_create_reg_file_name in tb.config.tc_workfd_yocto_basic_check_regfiles:
         tb.eof_call_tc("tc_lx_check_reg_file.py")
 
+if tb.config.tc_workfd_yocto_basic_check_basic_cmd != '[]':
+    bcmd = tb.config.tc_workfd_yocto_basic_check_basic_cmd
+    tb.statusprint("start basic checks")
+    for bl in bcmd:
+        if bl["val"] == 'undef':
+            tb.eof_write_cmd(tb.c_con, bl["cmd"])
+        else:
+            tb.eof_write_cmd_check(tb.c_con, bl["cmd"], bl["val"])
+
 # call board specific checks
-if tb.config.tc_workfd_yocto_basic_check_board_specific != 'none':
-    tb.eof_call_tc(tb.config.tc_workfd_yocto_basic_check_board_specific)
+if tb.config.tc_workfd_yocto_basic_check_board_specific != '[]':
+    tc = tb.config.tc_workfd_yocto_basic_check_board_specific
+    tb.statusprint("Call board specific testcases")
+    for tcname in tc:
+        tb.eof_call_tc(tcname)
 
 tb.end_tc(True)
