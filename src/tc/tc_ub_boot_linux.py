@@ -13,7 +13,7 @@
 # End:
 from tbotlib import tbot
 
-tb.define_variable('tc_ub_boot_linux_cycle', '1')
+tb.define_variable('tc_ub_boot_linux_cycle', '2')
 
 # here starts the real test
 logging.info("args: %s %s %s", tb.config.ub_boot_linux_cmd, tb.config.state_linux_timeout, tb.config.linux_prompt_default)
@@ -45,18 +45,18 @@ while (loop < int(tb.config.tc_ub_boot_linux_cycle)):
     ret = tb.tbot_rup_and_check_strings(c, sl)
     if ret == '0':
         tmp = True
-        loop = 0
+        loop = -1
         continue
     elif ret == '1':
         # login
         tb.write_stream(c, tb.config.linux_user, send_console_start=False)
         got_login = 1
-        loop = 0
+        loop = -1
         continue
     elif ret == '2':
         if got_login:
 	    tb.write_stream_passwd(c, tb.config.linux_user, tb.config.boardname)
-            loop = 0
+            loop = -1
         continue
     elif ret == 'prompt':
         # we are in linux
@@ -69,11 +69,11 @@ while (loop < int(tb.config.tc_ub_boot_linux_cycle)):
             # send Ctrl-C
             tb.send_ctrl_c(c)
             first = 0
-            loop = 0
+            loop = -1
     else:
         # if we have trigger strings, we land here
         tb.tbot_trigger_wdt()
-        loop = 0
+        loop = -1
 
     loop += 1
 c.set_timeout(oldt)
