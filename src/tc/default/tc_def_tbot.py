@@ -27,7 +27,7 @@
 #
 # - tb.config.tc_lab_tftp_dir
 #| path to tftp directory on lab PC
-#| default: '/srv/tftpboot/' + tb.config.boardname
+#| default: '/srv/tftpboot/' + tb.config.tftpboardname
 #
 # - tb.config.tc_workfd_work_dir
 #| tbots workdirectory on labor PC
@@ -258,7 +258,7 @@ if not tb.config.tc_workfd_work_dir.endswith(os.sep):
 try:
     tb.config.tc_lab_tftp_dir
 except:
-    tb.config.tc_lab_tftp_dir = '/srv/tftpboot/' + tb.config.boardname
+    tb.config.tc_lab_tftp_dir = '/srv/tftpboot/' + tb.config.tftpboardname
 if not tb.config.tc_lab_tftp_dir.endswith(os.sep):
     tb.config.tc_lab_tftp_dir + os.sep
 
