@@ -1479,6 +1479,7 @@ class tbot(object):
         :param arg1: connection
         """
         c.expect_prompt()
+        self.gotprompt = True
         self.buf = c.get_log()
         return True
 
