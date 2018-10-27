@@ -15,7 +15,6 @@
 from tbotlib import tbot
 
 tb.define_variable('tc_workfd_check_if_cmd_exist_cmdname', 'none')
-logging.info("args: workfd %s", tb.workfd)
 
 tmp = 'command -v ' + tb.config.tc_workfd_check_if_cmd_exist_cmdname + ' >/dev/null 2>&1 || { echo >&2 "not installed.";}'
 tb.eof_write(tb.workfd, tmp)
