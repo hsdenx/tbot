@@ -28,6 +28,10 @@ class html_log(object):
         self.fd = open(self.tb.resultdir + '/' + self.htmlfile, 'w')
         self.dotnr = 0
         self.htmlid = 0
+        self.conlog = ''
+        self.cpclog = ''
+        self.ctrlog = ''
+        self.canmlog = ''
 
     def create_htmlfile(self):
         """create the html file
@@ -124,8 +128,8 @@ class html_log(object):
         self.fd.write('</div>\n')
         self.fd.write('\n')
 
-    def _write_con_log_block(self, log):
-        if log == '':
+    def _write_con_log_block(self):
+        if self.conlog == '':
             return
         self.htmlid += 1
         self.fd.write('<!-- console log of testcase -->\n')
@@ -133,7 +137,7 @@ class html_log(object):
         self.fd.write('<div class="stream-header block-header">console</div>\n')
         self.fd.write('<div class="stream-content block-content">\n')
         self.fd.write('<xmp>\n')
-        self.fd.write(log)
+        self.fd.write(self.conlog)
         self.fd.write('</xmp>\n')
         self.fd.write('<div class="stream-trailer block-trailer">End stream: console</div>\n')
         self.fd.write('<div class="status-pass"></div>\n')
@@ -142,8 +146,8 @@ class html_log(object):
         self.fd.write('<!-- end of console log of testcase -->\n')
         self.fd.write('\n')
 
-    def _write_cpc_log_block(self, log):
-        if log == '':
+    def _write_cpc_log_block(self):
+        if self.cpclog == '':
             return
         self.htmlid += 1
         self.fd.write('<!-- ctrl cpc log of testcase -->\n')
@@ -151,7 +155,7 @@ class html_log(object):
         self.fd.write('<div class="stream-header block-header">ctrl cpc</div>\n')
         self.fd.write('<div class="stream-content block-content">\n')
         self.fd.write('<xmp>\n')
-        self.fd.write(log)
+        self.fd.write(self.cpclog)
         self.fd.write('</xmp>\n')
         self.fd.write('<div class="stream-trailer block-trailer">End stream: ctrl cpc</div>\n')
         self.fd.write('<div class="status-pass"></div>\n')
@@ -160,8 +164,8 @@ class html_log(object):
         self.fd.write('<!-- end of ctrl cpc log of testcase -->\n')
         self.fd.write('\n')
 
-    def _write_ctrl_log_block(self, log):
-        if log == '':
+    def _write_ctrl_log_block(self):
+        if self.ctrlog == '':
             return
         self.htmlid += 1
         self.fd.write('<!-- ctrl log of testcase -->\n')
@@ -169,7 +173,7 @@ class html_log(object):
         self.fd.write('<div class="stream-header block-header">control</div>\n')
         self.fd.write('<div class="stream-content block-content">\n')
         self.fd.write('<xmp>\n')
-        self.fd.write(log)
+        self.fd.write(self.ctrlog)
         self.fd.write('</xmp>\n')
         self.fd.write('<div class="stream-trailer block-trailer">End stream: control</div>\n')
         self.fd.write('<div class="status-pass"></div>\n')
@@ -178,8 +182,8 @@ class html_log(object):
         self.fd.write('<!-- end of control log of testcase -->\n')
         self.fd.write('\n')
 
-    def _write_canm_log_block(self, log):
-        if log == '':
+    def _write_canm_log_block(self):
+        if self.canmlog == '':
             return
         self.htmlid += 1
         self.fd.write('<!-- canm log of testcase -->\n')
@@ -187,7 +191,7 @@ class html_log(object):
         self.fd.write('<div class="stream-header block-header">canm</div>\n')
         self.fd.write('<div class="stream-content block-content">\n')
         self.fd.write('<xmp>\n')
-        self.fd.write(log)
+        self.fd.write(self.canmlog)
         self.fd.write('</xmp>\n')
         self.fd.write('<div class="stream-trailer block-trailer">End stream: control</div>\n')
         self.fd.write('<div class="status-pass"></div>\n')
@@ -204,6 +208,8 @@ class html_log(object):
         self.fd.write('<div class="section-trailer block-trailer">' + name + '</div>\n')
         if status == 'True':
             self.fd.write('<div class="status-pass">\n')
+        elif status == 'skipped':
+            self.fd.write('<div class="status-skipped">\n')
         else:
             self.fd.write('<div class="status-fail">\n')
         self.fd.write('<pre>' + ststr + '\n')
@@ -214,7 +220,24 @@ class html_log(object):
         self.fd.write('<!-- end of a testcase -->\n')
         self.fd.write('\n')
 
+    def write_log_block(self):
+        # write con block need log
+        self._write_con_log_block()
+        # write cpc block need log
+        self._write_cpc_log_block()
+        # write ctrl need log
+        self._write_ctrl_log_block()
+        # write canm need log
+        self._write_canm_log_block()
+        # write end of tc block (name, status)
+        self.conlog = ''
+        self.cpclog = ''
+        self.ctrlog = ''
+        self.canmlog = ''
+
     def _get_event_id(self, el):
+        if 'SET_PTEST_' in el['id']:
+            return el['id']
         if el['id'] == 'WDT':
             return el['id']
         if el['id'] == 'ERROR_STRING':
@@ -234,6 +257,12 @@ class html_log(object):
         return 'none'
 
     def _get_event_name(self, el):
+        if el['id'] == 'SET_PTEST_BEGIN':
+            return el['val']
+        if el['id'] == 'SET_PTEST_END':
+            return el['val']
+        #if el['typ'] == 'SET_PTEST_SUBSTART':
+        #    return 'undef'
         return el['fname']
 
     def _get_next_event(self, el):
@@ -249,10 +278,10 @@ class html_log(object):
         if name != 'StartHTML':
             self._write_tc_start_block(name)
 
-        conlog =''
-        ctrlog =''
-        cpclog =''
-        canmlog =''
+        self.conlog =''
+        self.ctrlog =''
+        self.cpclog =''
+        self.canmlog =''
         el = 'start'
         while el != '':
             el = self._get_next_event(evl)
@@ -266,50 +295,76 @@ class html_log(object):
             tc_name = self._get_event_name(el)
 
             if typ == 'Start' or typ == 'Boardname' or typ == 'StartFkt':
-                # write con block need log
-                self._write_con_log_block(conlog)
-                # write cpc block need log
-                self._write_cpc_log_block(cpclog)
-                # write ctrl need log
-                self._write_ctrl_log_block(ctrlog)
-                # write canm need log
-                self._write_canm_log_block(canmlog)
-                # write end of tc block (name, status)
-                conlog = ''
-                cpclog = ''
-                ctrlog = ''
-                canmlog = ''
+                self.write_log_block()
                 self._write_testcase(tc_name, evl)
+
+            if typ == 'SET_PTEST_START':
+                continue
+
+            if typ == 'SET_PTEST_STOP':
+                continue
+
+            if typ == 'SET_PTEST_SUBSTART':
+                continue
+
+            if typ == 'SET_PTEST_SUM':
+                self.ptest_stat = el['val']
+                continue
+
+            if typ == 'SET_PTEST_SUM_ALL':
+                self.ptest_stat = el['val']
+                self.write_log_block()
+                self.conlog += self.ptest_stat
+                self.write_log_block()
+                continue
+
+            if typ == 'SET_PTEST_BEGIN':
+            #if typ == 'SET_PTEST_BEGIN' or typ == 'SET_PTEST_SUBSTART':
+                self.ptest_ok = True
+                self.ptest_stat = ''
+                self.write_log_block()
+                self._write_testcase(tc_name, evl)
+
+            if typ == 'SET_PTEST_ERROR':
+                self.ptest_ok = False
 
             # get status (end of TC) parse "End" or "BoardnameEnd" check if name == name !
             if typ == 'End' or typ == 'BoardnameEnd':
                 if tc_name != name:
                     print("not sync with tc name\n", tc_name, name)
                 status = el['val']
-                # write con block need log
-                self._write_con_log_block(conlog)
-                # write cpc block need log
-                self._write_cpc_log_block(cpclog)
-                # write ctrl need log
-                self._write_ctrl_log_block(ctrlog)
-                # write canm need log
-                self._write_canm_log_block(canmlog)
-                # write end of tc block (name, status)
+                self.write_log_block()
                 self._write_tc_end(name, status)
+                return
+
+            #if typ == 'SET_PTEST_SUM_PASS' or typ == 'SET_PTEST_SUM_SKIP' or typ == 'SET_PTEST_SUM_FAIL' or typ == 'SET_PTEST_END':
+            if typ == 'SET_PTEST_END':
+                self.write_log_block()
+                self.conlog += self.ptest_stat
+                self.write_log_block()
+                #status = 'False'
+                #if typ == 'SET_PTEST_SUM_PASS':
+                #    status = 'True'
+                #if typ == 'SET_PTEST_SUM_SKIP':
+                #    status = 'skipped'
+                val = 'False'
+                if self.ptest_ok:
+                    val = 'True'
+                self._write_tc_end(tc_name, val)
                 return
 
             if typ == 'WDT':
                 wdtstr = '\n\nWDT triggered\n\n'
-                conlog += wdtstr
-                ctrlog += wdtstr
-                cpclog += wdtstr
+                self.conlog += wdtstr
+                self.ctrlog += wdtstr
+                self.cpclog += wdtstr
                 continue
 
             if typ == 'ERROR_STRING':
                 wdtstr = '\n\nError String ' + el['val'] + ' found\n\n'
-                conlog += wdtstr
-                ctrlog += wdtstr
-                cpclog += wdtstr
+                self.conlog += wdtstr
+                self.ctrlog += wdtstr
+                self.cpclog += wdtstr
                 continue
 
             if typ == 'log':
@@ -319,27 +374,27 @@ class html_log(object):
                 if el['fname'] == 'tb_con':
                     loglin = el['val']
                     if loglin.startswith("r "):
-                        conlog += loglin[2:]
+                        self.conlog += loglin[2:]
                     if loglin.startswith("re "):
-                        conlog += loglin[3:]
+                        self.conlog += loglin[3:]
                     if loglin.startswith("er "):
-                        conlog += loglin[2:]
+                        self.conlog += loglin[2:]
                 if el['fname'] == 'tb_ctrl':
                     loglin = el['val']
                     if loglin.startswith("r "):
-                        ctrlog += loglin[2:]
+                        self.ctrlog += loglin[2:]
                     if loglin.startswith("re "):
-                        ctrlog += loglin[3:]
+                        self.ctrlog += loglin[3:]
                 if el['fname'] == 'tb_cpc':
                     loglin = el['val']
                     if loglin.startswith("r "):
-                        cpclog += loglin[2:]
+                        self.cpclog += loglin[2:]
                     if loglin.startswith("re "):
-                        cpclog += loglin[3:]
+                        self.cpclog += loglin[3:]
                 if el['fname'] == 'tb_canm':
                     loglin = el['val']
                     if loglin.startswith("r "):
-                        canmlog += loglin[2:]
+                        self.canmlog += loglin[2:]
                 continue
 
     def _write_log(self):
