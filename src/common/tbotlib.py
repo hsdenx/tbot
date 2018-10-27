@@ -265,6 +265,7 @@ class tbot(object):
         self.event = events(self, 'log/event.log')
         self.event.create_event(self.starttestcase, self.config.boardname, "Boardname", True)
         if self.eventsim != 'none':
+            self.call_tc('tc_def_tbot.py')
             self.event.create_event(self.starttestcase, 'eventsim', "BoardnameEnd", False)
             sys.exit(0)
 
