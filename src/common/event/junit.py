@@ -15,6 +15,9 @@ class junit_backend(object):
 
        pip install junit-xml
 
+       source:
+       https://github.com/kyrus/python-junit-xml/blob/master/junit_xml/__init__.py
+
        jenkins setup:
 
        install jenkins plugin:
@@ -109,6 +112,21 @@ class junit_backend(object):
         el.pop(0)
         return ret
 
+    def _get_log(self, el):
+        logline = el['val']
+        if logline[0] == 'r':
+            logline = logline[2:]
+            # convert to unicode
+            # see
+            # https://stackoverflow.com/questions/21129020/how-to-fix-unicodedecodeerror-ascii-codec-cant-decode-byte
+            if isinstance(logline, str):
+                logline = logline.decode('ascii', 'ignore').encode('ascii') #note: this removes the character and encodes back to string.
+            elif isinstance(logline, unicode):
+                logline = logline.encode('ascii', 'ignore')
+            return logline
+
+        return ''
+
     def _get_event_name(self, el):
         return el['fname']
 
@@ -136,8 +154,76 @@ class junit_backend(object):
                 if el['val'] == 'False':
                     self.error_string += 'Failed\n'
 
+    def _ptest_runner(self, testcases):
+        evl = list(self.tb.event.event_list)
+        el = 'start'
+        error_string = ''
+        logct = ''
+        tcname = ''
+        start = False
+        pas = 0
+        skip = 0
+        fail = 0
+        while el != '':
+            el = self._get_next_event(evl)
+            if el == '':
+                continue
+            if el['typ'] != 'EVENT':
+                continue
+
+            if el['id'] == 'SET_PTEST_START':
+                start = True
+                stime = strptime(el['time'], "%Y-%m-%d %H:%M:%S")
+                continue
+
+            if el['id'] == 'SET_PTEST_STOP':
+                return
+
+            if el['id'] == 'SET_PTEST_BEGIN':
+                logct = ''
+                pas = 0
+                skip = 0
+                fail = 0
+                continue
+
+            if el['id'] == 'SET_PTEST_PASS':
+                pas += 1
+                continue
+
+            if el['id'] == 'SET_PTEST_SKIP':
+                skip += 1
+                continue
+
+            if el['id'] == 'SET_PTEST_FAIL':
+                fail += 1
+                continue
+
+            if el['id'] == 'log' and start == True:
+                logct += self._get_log(el)
+                continue
+
+            if el['id'] == 'SET_PTEST_END':
+                name = el['val']
+                etime = strptime(el['time'], "%Y-%m-%d %H:%M:%S")
+                diff = mktime(etime) - mktime(stime)
+                res = str('info: pas %d skipped: %d fail: %d' % (pas, skip, fail))
+                logct += res
+                tc = TestCase(self.testgrp, name, float(diff), logct, '')
+                if pas == 0 and skip > 0:
+                    tc.add_skipped_info(res)
+                if pas == 0 and skip == 0 and fail > 0:
+                    tc.add_failure_info(res)
+                if pas == 0 and skip == 0 and fail == 0:
+                    tc.add_error_info(res)
+
+                testcases.append(tc)
+                continue
+
     def _get_testcases(self, testcases):
         for cur_tclist in self.tclist:
+            if cur_tclist == 'tc_linux_ptest_runner.py':
+                self._ptest_runner(testcases)
+                continue
             evl = list(self.tb.event.event_list)
             el = 'start'
             error_string = ''
@@ -180,17 +266,7 @@ class junit_backend(object):
                         testcases.append(tc)
                 if eid == 'log':
                     if self.record_log == True:
-                        logline = el['val']
-                        if logline[0] == 'r':
-                            logline = logline[2:]
-                            # convert to unicode
-                            # see
-                            # https://stackoverflow.com/questions/21129020/how-to-fix-unicodedecodeerror-ascii-codec-cant-decode-byte
-                            if isinstance(logline, str):
-                                logline = logline.decode('ascii', 'ignore').encode('ascii') #note: this removes the character and encodes back to string.
-                            elif isinstance(logline, unicode):
-                                logline = logline.encode('ascii', 'ignore') 
-                            logct += logline
+                        logct += self._get_log(el)
 
     def create_junit_file(self):
         """create the junit file
