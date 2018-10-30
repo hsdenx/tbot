@@ -31,11 +31,10 @@
 
 from tbotlib import tbot
 
-tb.config.linux_get_ifconfig_dev = 'eth0'
 tb.workfd = tb.c_con
 tb.set_board_state("linux")
 
-tb.define_variable('linux_get_ifconfig_dev', '')
+tb.define_variable('linux_get_ifconfig_dev', 'eth0')
 
 c = tb.workfd
 dev = tb.config.linux_get_ifconfig_dev
