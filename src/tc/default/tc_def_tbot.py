@@ -249,18 +249,20 @@ tb.define_variable('lab_tmp_dir', '/var/tmp')
 tb.define_variable('compile_pc_workdir', tb.config.tc_lab_source_dir)
 
 # set all path variables with an ending os.sep
-if not tb.config.lab_tmp_dir.endswith(os.sep):
-    tb.config.lab_tmp_dir + os.sep
-if not tb.config.tc_lab_source_dir.endswith(os.sep):
-    tb.config.tc_lab_source_dir + os.sep
-if not tb.config.tc_workfd_work_dir.endswith(os.sep):
-    tb.config.tc_workfd_work_dir + os.sep
+if tb.config.lab_tmp_dir.endswith(os.sep) == False:
+    tb.config.lab_tmp_dir += os.sep
+if tb.config.tc_lab_source_dir.endswith(os.sep) == False:
+    tb.config.tc_lab_source_dir += os.sep
+if tb.config.tc_workfd_work_dir.endswith(os.sep) == False:
+    tb.config.tc_workfd_work_dir += os.sep
 try:
     tb.config.tc_lab_tftp_dir
 except:
     tb.config.tc_lab_tftp_dir = '/srv/tftpboot/' + tb.config.tftpboardname
-if not tb.config.tc_lab_tftp_dir.endswith(os.sep):
-    tb.config.tc_lab_tftp_dir + os.sep
+    logging.info("default tc_lab_tftp_dir = %s", tb.config.tc_lab_tftp_dir)
+if tb.config.tc_lab_tftp_dir.endswith(os.sep) == False:
+    tb.config.tc_lab_tftp_dir += os.sep
+    logging.info("default tc_lab_tftp_dir = %s", tb.config.tc_lab_tftp_dir)
 
 tb.gotprompt = True
 tb.end_tc(True)
