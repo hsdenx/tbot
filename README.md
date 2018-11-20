@@ -12,6 +12,17 @@
 - [License](#license)
 
 
+## New tbot
+
+This is the old version of tbot, which is deprecated. Please
+use the new version of tbot found on:
+
+	https://github.com/Rahix/tbot
+
+Documentation is available here:
+
+	https://rahix.de/tbot
+
 ## Short description
 
 - execute testcases on real hw

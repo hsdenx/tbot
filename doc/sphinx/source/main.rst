@@ -12,7 +12,14 @@ Especially tasks like compiling source code,
 installing the resulting images on the target
 and execute testcases on the new bootet images.
 
-Sources are hosted at https://github.com/hsdenx/tbot
+This is the old version of tbot, which is deprecated. Please
+use the new version of tbot found on:
+
+       https://github.com/Rahix/tbot
+
+Documentation is available here:
+
+       https://rahix.de/tbot
 
 .. toctree::
    :maxdepth: 3

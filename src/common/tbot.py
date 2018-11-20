@@ -50,7 +50,10 @@ except:
             os.pardir
         )
     )
-    print("**** option w: %s lab: %s cfg: %s log: %s tc: %s v %d a %s" % (args.workdir, args.labfile, args.cfgfile, args.logfile, args.tc, args.verbose, args.arguments))
+    print("This version of tbot is deprecated")
+    print("You should use the new version of tbot, found on:")
+    print("https://github.com/Rahix/tbot")
+    print("documentation: https://github.com/Rahix/tbot")
     tb = tbot(args.workdir, args.labfile, args.cfgfile, args.logfile, args.verbose, args.arguments, args.tc, args.eventsim, args.pwfile)
 
 def signal_term_handler(signal, frame):
